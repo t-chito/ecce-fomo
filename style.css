@@ -193,7 +193,16 @@ body {
 }
 
 .article__body a:hover {
-  text-decoration: none;
+  opacity: 0.75;
+}
+
+.article__pick-label {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin: 20px 0 8px;
 }
 
 .summary {

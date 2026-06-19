@@ -74,7 +74,10 @@ Feedly の Saved for Later（あとで読む）に溜まった記事の本文を
       <ul>
         <li>要点</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="URL">タイトル</a>（理由）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="URL">タイトル</a>：理由</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="URL">出典タイトル</a></li>

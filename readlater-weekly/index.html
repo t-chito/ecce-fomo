@@ -38,7 +38,12 @@
         <li>安全確保について、hookやpermission設定で十分とする一般的紹介と、それを抜け穴だらけと断じてIAMとサンドボックスで守れと説く「デバッグはもう人間の仕事ではなくなった」が正面から食い違う。</li>
         <li>完全自動化を志向する事例と、社内環境では人を残すハイブリッドが完走率を上げると説く「社内Chromeで3連敗した話」とで、自動化の射程に対する判断が割れている。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/dinii/articles/debugging-is-solved">デバッグはもう人間の仕事ではなくなった</a>（本番DB・ログへのアクセス付与から、permission機能を信用するなという権限設計、Agent Teamsによる仮説検証まで、運用設計の論点を最も体系的かつ具体的なコード付きで通している一次情報）。<a href="https://zenn.dev/kobao/articles/64a72dc0167ca3">Claude Codeに株・仮想通貨botを300個作らせて見えてきたこと</a>（300→200→20→5という生々しい選別の歩留まり、データスヌーピングやリーク、疑似データ捏造といったAI特有の落とし穴を実体験ベースで列挙した、他に代えがたい実測記録）。<a href="https://zenn.dev/nnakapa/articles/lab-19-opus47-gpt55-code-review">Opus 4.7 と GPT-5.5 のレビュー特性を統計的に明らかにした</a>（720ケースの統計と等価性検定で、モデルごとのレビュー人格差を採点コメントの実例つきで切り分けた、議論ではなく計測に踏み込んだ稀な検証）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/dinii/articles/debugging-is-solved">デバッグはもう人間の仕事ではなくなった</a>：本番DB・ログへのアクセス付与から、permission機能を信用するなという権限設計、Agent Teamsによる仮説検証まで、運用設計の論点を最も体系的かつ具体的なコード付きで通している一次情報</li>
+        <li><a href="https://zenn.dev/kobao/articles/64a72dc0167ca3">Claude Codeに株・仮想通貨botを300個作らせて見えてきたこと</a>：300→200→20→5という生々しい選別の歩留まり、データスヌーピングやリーク、疑似データ捏造といったAI特有の落とし穴を実体験ベースで列挙した、他に代えがたい実測記録</li>
+        <li><a href="https://zenn.dev/nnakapa/articles/lab-19-opus47-gpt55-code-review">Opus 4.7 と GPT-5.5 のレビュー特性を統計的に明らかにした</a>：720ケースの統計と等価性検定で、モデルごとのレビュー人格差を採点コメントの実例つきで切り分けた、議論ではなく計測に踏み込んだ稀な検証</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/hataluck/articles/0752919b305a9f">AI が大量にアウトプットしてくるので認知負荷を下げる Skill を作った</a></li>
@@ -73,7 +78,11 @@
         <li>圧縮率の数字は環境依存かつ自己申告が多く、「8選」は自身の94%に疑義を付し、mdq は再測定とカバレッジ確認を強く求めている。</li>
         <li>課金構造の理解（従量課金か定額か）が節約戦略の前提を左右し、「$40/日から1週間でも余裕」はプラン変更とツール導入を別レイヤーの施策として切り分けている。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/okamyuji/articles/claude-code-max-x20-token-savings">Claude Codeのトークン消費が$40/日から1週間でも余裕になった全手法</a>（課金モデルの構造差を公式ドキュメント付きで分析したうえで、節約手法を入出力・記憶・ワークフローの3層に体系化しており、原因不明な点も正直に留保しているため、全体像をつかむ起点として最も有用）。<a href="https://qiita.com/dahatake/items/ce9917268d8d18aa9b6c?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Markdownファイルの読み込みトークン消費量を最大98%以上圧縮する markdown-query スキル</a>（圧縮率の数字の読み方、再測定の必要、運用で初めて分かる落とし穴まで踏み込んでおり、数字に踊らされないための実践的な視点が得られる）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/okamyuji/articles/claude-code-max-x20-token-savings">Claude Codeのトークン消費が$40/日から1週間でも余裕になった全手法</a>：課金モデルの構造差を公式ドキュメント付きで分析したうえで、節約手法を入出力・記憶・ワークフローの3層に体系化しており、原因不明な点も正直に留保しているため、全体像をつかむ起点として最も有用</li>
+        <li><a href="https://qiita.com/dahatake/items/ce9917268d8d18aa9b6c?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Markdownファイルの読み込みトークン消費量を最大98%以上圧縮する markdown-query スキル</a>：圧縮率の数字の読み方、再測定の必要、運用で初めて分かる落とし穴まで踏み込んでおり、数字に踊らされないための実践的な視点が得られる</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/acntechjp/articles/1396e20b5167ce">Claude Max 20xプランでも足りないので、トークン節約のためにやったこと8選</a></li>
@@ -96,7 +105,12 @@
         <li>LLM生成の知識ベースは誤りが定着・汚染するリスクを持つ。lintをLLMに任せる流派と、整合性検証を静的解析へ分離する流派（contextlint）が並立する。</li>
         <li>「AIにどこまで任せるか」で意見が割れる。自動増殖を手放し人間が整理を握る運用と、自動lintで保つ運用が対立。規模が小さければ長文脈モデルへの全文投入で十分という反対意見もある。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/nori_handa/articles/llm-knowledge-base-karpathy-wiki">社内の知見をAIが漏らさず拾う唯一の設計思想 ― Karpathy氏のLLM Wikiを実践して分かったこと</a>（LLM Wiki・Pinecone Nexus・Advanced RAG・progressive disclosureを一枚の比較表に束ね、限界とコスト緩和策まで踏み込んでおり、このテーマ全体の見取り図になる）。<a href="https://zenn.dev/tsurubee/articles/llm-wiki-connecting-knowledge">Andrej Karpathy氏のLLM Wikiを1ヶ月運用してわかった、LLMの知識を『繋げる力』</a>（1ヶ月の実運用から、別々に取り込んだ論文群が一つの評価バイアスのパターンへ統合された具体例を示し、抽象論を実測で裏づけている）。<a href="https://zenn.dev/snaga/articles/2026-06-14-doctools-with-pageindex">超精密インデックス「PageIndex」で実現する推論ベースRAG（JTC版）</a>（類似性から構造への転換、ノイズ除去最優先の思想、PPTやExcelへの適用という、Wiki系とは別経路で同じ原則に到達した実装例として読む価値が高い）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/nori_handa/articles/llm-knowledge-base-karpathy-wiki">社内の知見をAIが漏らさず拾う唯一の設計思想 ― Karpathy氏のLLM Wikiを実践して分かったこと</a>：LLM Wiki・Pinecone Nexus・Advanced RAG・progressive disclosureを一枚の比較表に束ね、限界とコスト緩和策まで踏み込んでおり、このテーマ全体の見取り図になる</li>
+        <li><a href="https://zenn.dev/tsurubee/articles/llm-wiki-connecting-knowledge">Andrej Karpathy氏のLLM Wikiを1ヶ月運用してわかった、LLMの知識を『繋げる力』</a>：1ヶ月の実運用から、別々に取り込んだ論文群が一つの評価バイアスのパターンへ統合された具体例を示し、抽象論を実測で裏づけている</li>
+        <li><a href="https://zenn.dev/snaga/articles/2026-06-14-doctools-with-pageindex">超精密インデックス「PageIndex」で実現する推論ベースRAG（JTC版）</a>：類似性から構造への転換、ノイズ除去最優先の思想、PPTやExcelへの適用という、Wiki系とは別経路で同じ原則に到達した実装例として読む価値が高い</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/0rv3/articles/b6a7172bfda1ed">Claude Code × Obsidian で『記憶の二層構造』を作る</a></li>
@@ -126,7 +140,11 @@
         <li>再現性の扱いに食い違いがある。プロンプト自動チューニングの記事は固定シナリオ・新規AI dispatch・hold-outという厳密な手法で再現性を測るのに対し、プロンプト検証のQiita記事は主観評価で3回ずつ実行する程度にとどまり、本人も少数回検証で差が限定的と認めている。後者は前者の言う主観バイアスの罠にそのまま当てはまる外れ値といえる。</li>
         <li>役割付与の効果にも食い違いがある。Qiita記事は「世界最高のエンジニア」のような過剰な役割付与がかえって精度を下げると主観で確認するが、実際のところさまざまな解釈があると留保しており、結論としては弱い。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/yamaken0107/articles/2b3d2a0b059aa0">仕様駆動開発(SDD)から、意図駆動開発(IDD)へ</a>（SDDの構造的欠陥とADRによる解決を、仕様書とADRの本質的な違いまで掘り下げて論じており、テーマ全体の転換点を最も明快に示す）。<a href="https://zenn.dev/mizchi/articles/empirical-prompt-tuning">プロンプトの再現性をAIに自動チューニングさせる方法 ~ 暗黙知を排除する</a>（記事自身を同手法のループに通して7反復で6/20から16/20まで改善する過程を全公開しており、再現性をどう実測するかの具体が密度高く書かれている）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/yamaken0107/articles/2b3d2a0b059aa0">仕様駆動開発(SDD)から、意図駆動開発(IDD)へ</a>：SDDの構造的欠陥とADRによる解決を、仕様書とADRの本質的な違いまで掘り下げて論じており、テーマ全体の転換点を最も明快に示す</li>
+        <li><a href="https://zenn.dev/mizchi/articles/empirical-prompt-tuning">プロンプトの再現性をAIに自動チューニングさせる方法 ~ 暗黙知を排除する</a>：記事自身を同手法のループに通して7反復で6/20から16/20まで改善する過程を全公開しており、再現性をどう実測するかの具体が密度高く書かれている</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/myntai/books/spec-driven-frontier">仕様駆動開発最前線 — SDLC を一周描き直す Living Book</a></li>
@@ -153,7 +171,11 @@
         <li>原則は守るルールではなく開発を楽にする知恵であり、DRYやメソッド分割は機械的に適用せず認知負荷と変更理由で判断する。</li>
         <li>過剰設計への疑念とレイヤー分離の擁護が対立するが、規模と寿命で選ぶ点とAI時代に判断コストが支配的になる点では一致する。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/pdfractal/articles/b6f83bbc319501">なぜ、2000年代には巷で耳にした「UML」を現在では全く耳にしないのか？</a>（ラショナル起源の重いUMLからファウラーの軽いUML、MDAの不渡り、クラウドとCI/CDによる変更速度の上昇まで、出典つきの史実で設計の重さの損益分岐を論じており、他記事が前提にする変更容易性という軸の歴史的な裏づけになる）。あわせて <a href="https://zenn.dev/neoai/articles/b843fc78203295">5年間のRails開発者がDDDに出会って考えが変わった話</a>（住所カラム分割やCI時間の短縮といった具体例で、レイヤー分離の利点を実測に近い体験として語り、AI時代の判断コスト論まで踏み込む）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/pdfractal/articles/b6f83bbc319501">なぜ、2000年代には巷で耳にした「UML」を現在では全く耳にしないのか？</a>：ラショナル起源の重いUMLからファウラーの軽いUML、MDAの不渡り、クラウドとCI/CDによる変更速度の上昇まで、出典つきの史実で設計の重さの損益分岐を論じており、他記事が前提にする変更容易性という軸の歴史的な裏づけになる</li>
+        <li><a href="https://zenn.dev/neoai/articles/b843fc78203295">5年間のRails開発者がDDDに出会って考えが変わった話</a>：住所カラム分割やCI時間の短縮といった具体例で、レイヤー分離の利点を実測に近い体験として語り、AI時代の判断コスト論まで踏み込む</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/seita1996/books/architecture-study-guide">Architecture Study Guide</a></li>
@@ -185,7 +207,11 @@
         <li>振る舞いベースのテストは「生きた仕様書」となり、人間だけでなくAIへのコンテキストや探索の指示書としても機能するという、AI時代ならではの結合点が複数記事に現れる。</li>
         <li>「振る舞いを見よ」の原則にInfrastructure層という例外があり、共有フィクスチャの許容や枠組みの抽象度でも記事間に意図的な食い違いがある。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://qiita.com/takishun_schoo/items/5b5fd06d488119daa899?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">「テストコードは仕様書になる」クリーンアーキテクチャの各層で「振る舞い」をテストするべき理由</a>（振る舞いテストの原則と層ごとの例外、Before/Afterの具体コードまで揃い、このテーマ全体の軸になる考え方を最も実装に近い粒度で押さえられるため）。<a href="https://zenn.dev/horicchy/articles/7076932bff319b">QAエンジニアがAIスキルを作った理由：「画面UIは5つしかない」という気づきに至るまで</a>（影響範囲を逆引きで網羅するという発想転換が、AIへの探索指示書という形でテスト観点の網羅性に直結しており、AI時代のテスト戦略として独自性が高いため）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://qiita.com/takishun_schoo/items/5b5fd06d488119daa899?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">「テストコードは仕様書になる」クリーンアーキテクチャの各層で「振る舞い」をテストするべき理由</a>：振る舞いテストの原則と層ごとの例外、Before/Afterの具体コードまで揃い、このテーマ全体の軸になる考え方を最も実装に近い粒度で押さえられるため</li>
+        <li><a href="https://zenn.dev/horicchy/articles/7076932bff319b">QAエンジニアがAIスキルを作った理由：「画面UIは5つしかない」という気づきに至るまで</a>：影響範囲を逆引きで網羅するという発想転換が、AIへの探索指示書という形でテスト観点の網羅性に直結しており、AI時代のテスト戦略として独自性が高いため</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://qiita.com/Kudo_panda/items/509bdc7e9ab639abf0b4?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">テストアーキテクチャの全体戦略：品質定義から継続的改善まで</a></li>
@@ -210,7 +236,11 @@
         <li>外れ値は border-shape である。表現力は高いが Firefox / Safari 未対応かつ Working Draft 段階で、Modern Web Guidance の「全ブラウザ対応のみ抽出」という方針と相反する。</li>
         <li>食い違いとして、AI への知識付与の標準が Agent Skills（Vercel 提唱とされる）と MCP（Anthropic 提唱）に分かれており、出自の異なる仕組みが並立している。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/ubie_dev/articles/modern-css-dos-donts">GoogleのModern Web Guidanceに学ぶ、モダンCSSのDos / Don'ts大全</a>（全ブラウザ対応に絞った Dos / Don'ts が caniuse リンク付きで網羅され、明日の実装にそのまま効く密度の高さがある）。<a href="https://zenn.dev/yy/books/b62994c6b0b1e9">デザイナーのためのコンポーネント設計論</a>（6原則を関心の分離で体系化し、Radix の Dialog と AlertDialog のように見た目が同じでも意味で分ける判断軸を与える点が、CSS から AI 連携まで全テーマの土台になる）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/ubie_dev/articles/modern-css-dos-donts">GoogleのModern Web Guidanceに学ぶ、モダンCSSのDos / Don'ts大全</a>：全ブラウザ対応に絞った Dos / Don'ts が caniuse リンク付きで網羅され、明日の実装にそのまま効く密度の高さがある</li>
+        <li><a href="https://zenn.dev/yy/books/b62994c6b0b1e9">デザイナーのためのコンポーネント設計論</a>：6原則を関心の分離で体系化し、Radix の Dialog と AlertDialog のように見た目が同じでも意味で分ける判断軸を与える点が、CSS から AI 連携まで全テーマの土台になる</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/ubie_dev/articles/modern-css-dos-donts">GoogleのModern Web Guidanceに学ぶ、モダンCSSのDos / Don'ts大全</a></li>
@@ -237,7 +267,11 @@
         <li>網羅性は一律に悪ではない。検証と根拠の明示を欠けばスロップになり、バージョン固定と実機・ソース照合を伴えば質の高いリファレンスになる。</li>
         <li>チェックリストや図解などの構造化は、読み手の判断コストを下げるか膨らませるかで評価が割れ、記事間で推奨と批判に分かれる。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/takna/articles/hermes-desktop-settings-guide">Hermes Desktop の設定 186 項目を実機とソースで全部調べて、日本語ガイドを公開した</a>（バージョン固定・Computer Useによる実機監査・設定APIとソース照合という再現可能な検証手順を具体的に示しており、量と質を両立させる方法論として参考になる）。あわせて <a href="https://zenn.dev/ttaniguchi/articles/ai-prompting-next">AIが書く量を増やすより、AIスロップを減らしたい</a>（スロップを「人間の判断に使いにくい成果物」と定義し直す視点が、このテーマ全体の軸になる）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/takna/articles/hermes-desktop-settings-guide">Hermes Desktop の設定 186 項目を実機とソースで全部調べて、日本語ガイドを公開した</a>：バージョン固定・Computer Useによる実機監査・設定APIとソース照合という再現可能な検証手順を具体的に示しており、量と質を両立させる方法論として参考になる</li>
+        <li><a href="https://zenn.dev/ttaniguchi/articles/ai-prompting-next">AIが書く量を増やすより、AIスロップを減らしたい</a>：スロップを「人間の判断に使いにくい成果物」と定義し直す視点が、このテーマ全体の軸になる</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/ttaniguchi/articles/ai-prompting-next">AIが書く量を増やすより、AIスロップを減らしたい</a></li>
@@ -256,7 +290,10 @@
         <li>共通点は、レイアウトパターンやデザインシステムという土台を事前に用意することで生成AIの出力の振れ幅を抑え、調整作業を減らすという発想にある。</li>
         <li>食い違いは、人間が握る領分の置き場所にある。TOKIUMはストーリー構成と視線誘導という伝達設計を人間に残し、ラッコ社は見た目の統一を仕組みに任せ、仕上げと事実確認だけを人間に残す。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://zenn.dev/tokium_dev/articles/slide-deck-craft-with-ai">「ストーリー」と「視線誘導」を意識しながら、生成AIとともにイイ感じのスライドを作る</a>（生成AI版と手書き版を具体的に比較し、生成AIがスライドで狙ったものを出しにくい理由を導入とまとめの連動・視線誘導という観点から分解しているため、ツールに依存せず応用が利く知見が得られる）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/tokium_dev/articles/slide-deck-craft-with-ai">「ストーリー」と「視線誘導」を意識しながら、生成AIとともにイイ感じのスライドを作る</a>：生成AI版と手書き版を具体的に比較し、生成AIがスライドで狙ったものを出しにくい理由を導入とまとめの連動・視線誘導という観点から分解しているため、ツールに依存せず応用が利く知見が得られる</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://zenn.dev/tokium_dev/articles/slide-deck-craft-with-ai">「ストーリー」と「視線誘導」を意識しながら、生成AIとともにイイ感じのスライドを作る</a></li>
@@ -279,7 +316,12 @@
         <li>ローカルAIの束: ACE-Step-1.5は単一モデルでText2MusicとRepaintを実現、VoiceboxはElevenLabsとWisprFlowをローカルで代替する音声入出力スタジオ。</li>
         <li>雇用論の束: AIによる大量解雇は誇張で、レイオフはAIウォッシングで正当化された別要因が駆動している。コード生成率65%でも雇用は減っていない。</li>
       </ul>
-      <p>全文を読む価値がある記事: <a href="https://techfeed.io/entries/6a2b2177931f6b51a2595ddc?from=rss">「AIでエンジニア大量解雇」は嘘だった — コード生成率65%でも雇用が減らない本当の理由</a>（BlockのCEO発言と社内データの矛盾という具体例を伴ってAIウォッシングを論じ、要約以上の根拠を持つ議論だから）。<a href="https://qiita.com/ktdatascience/items/aad4e937dcb024c16e75?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">【AWS】踏み台サーバーとは何か</a>（踏み台を攻撃対象面の概念で捉え直し、2026年のSSM実装まで一気通貫で説明していて応用が利くから）。<a href="https://zenn.dev/dress_code/articles/a0e4fbf842ebfd">デプロイ速度を約50%高速化した話</a>（各打ち手の削減幅を実測表で示し、本番設定を実測値で決める判断過程まで追える実践記録だから）。</p>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://techfeed.io/entries/6a2b2177931f6b51a2595ddc?from=rss">「AIでエンジニア大量解雇」は嘘だった — コード生成率65%でも雇用が減らない本当の理由</a>：BlockのCEO発言と社内データの矛盾という具体例を伴ってAIウォッシングを論じ、要約以上の根拠を持つ議論だから</li>
+        <li><a href="https://qiita.com/ktdatascience/items/aad4e937dcb024c16e75?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">【AWS】踏み台サーバーとは何か</a>：踏み台を攻撃対象面の概念で捉え直し、2026年のSSM実装まで一気通貫で説明していて応用が利くから</li>
+        <li><a href="https://zenn.dev/dress_code/articles/a0e4fbf842ebfd">デプロイ速度を約50%高速化した話</a>：各打ち手の削減幅を実測表で示し、本番設定を実測値で決める判断過程まで追える実践記録だから</li>
+      </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://techfeed.io/entries/6a2b2177931f6b51a2595ddc?from=rss">「AIでエンジニア大量解雇」は嘘だった — コード生成率65%でも雇用が減らない本当の理由</a></li>
