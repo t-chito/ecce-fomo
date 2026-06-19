@@ -188,12 +188,12 @@ body {
 
 .article__body a {
   color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .article__body a:hover {
-  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .article__pick-label {
