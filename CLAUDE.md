@@ -2,21 +2,25 @@
 
 Routine が毎日生成するニュースを HTML 化し GitHub Pages で公開する repo。このファイルは、次にこの repo を触る Claude が外部との結合点で踏み外さないための行動指針を記す。コードや `SKILL.md` を読めば分かることは書かない。
 
+## このファイルの対象
+
+このファイルは手作業の修正と発行 Routine の両方が読む。フロー系の指針（`git pull`、PR、main 直 push の使い分けなど）は手作業向けで、発行 Routine セッション（`/news-publish` を実行する claude.ai のセッション）は自分に適用せず SKILL.md と Routine 指示欄の指示に従う。外部結合点の契約（`notify.yml` のコミットメッセージ形式、`feedly-saved` の挙動など）は両者が守る。
+
 ## 作業前に必ず
 
 ローカルで作業を始める前に `git pull` する。Routine が main へ直接 push しているため、手元の HEAD は本番より古いことが多い。古い状態を base に編集すると、最新の発行分を巻き戻す危険がある。
 
-## 修正は PR を切り、main 直 push は発行に限る
+## 修正は PR を切る
 
-記事の発行（発行系 Routine が呼ぶ `/news-publish`）だけが main に直接 push する。毎日自動で走り人手のレビューを挟めないための例外である。それ以外の修正、たとえばテンプレートやスタイルの変更、リファクタ、新トピックの追加などは、main に直接 push せず PR を切ってユーザーのレビューを経る。
+テンプレートやスタイルの変更、リファクタ、新トピックの追加などの修正作業は、main に直接 push せず PR を切ってユーザーのレビューを経る。
 
-remote の Routine セッションには、指定の feature ブランチで開発し他ブランチへ無断 push するなというプロンプトが run ごとに注入される。発行系 Routine はこれを claude.ai の指示欄の明示許可で上書きして main に push している。SKILL.md の push 指示ではこの注入を上書きできないので、main 直 push を SKILL.md 側で強制しようとしない。
+発行系 Routine の `/news-publish` だけが main に直接 push するが、これは毎日自動で走り人手のレビューを挟めないための例外で、claude.ai の Routine 指示欄に書かれた明示許可で動いている正規フローである。手作業の修正側でこのフローを真似ない（同じ経路で main に push しない、SKILL.md の push 指示を編集してこの仕組みを再現しようとしない）。
 
 ## 新トピックを追加するとき
 
 repo の編集だけでは完了しない。定期発行は claude.ai/code/routines の Routine 設定（repo 外）に依存する。`<topic>/prompt.md` の作成・ハブ `index.html` への行追加まで終えても、Routine 側に `/news-publish <topic>` の登録がなければ自動発行は始まらない。repo を変更したら「Routine への登録が別途必要」とユーザーに伝えるまでが完了。repo 編集だけで完了報告しない。
 
-追加作業は main に直接 push せず PR で行う。PR を出す前に Claude は試し発行し、その出力をユーザーに見せて確認を求める一手を必ず挟む。ユーザーが内容と紙面を読んで `prompt.md` の調整を指示するので、了承を得てから PR に進む。
+PR を出す前に Claude は試し発行し、その出力をユーザーに見せて確認を求める一手を必ず挟む。ユーザーが内容と紙面を読んで `prompt.md` の調整を指示するので、了承を得てから PR に進む。
 
 `<topic>/prompt.md` は `jiji/prompt.md` を雛形にする。Skill のパース規則は緩いので、紙名・補助ラベルの書式を独自に変えると masthead の生成挙動が読めなくなる。
 
