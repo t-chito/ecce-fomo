@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年6月16日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年6月23日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年6月16日">
+<meta property="og:title" content="フロントエンドニュース — 2026年6月23日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,90 +23,52 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年6月16日（月）</span>
+        <span>2026年6月23日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
-      <section class="summary">
+            <section class="summary">
         <h2 class="summary__title">まとめ</h2>
-        <p>今週のフロントエンドを一言で表すなら「速度と安全」。TypeScript 7.0 Beta が GoベースのコンパイラでTS 6.0比10倍速という数字を引っ提げて登場し、Angular 22 がSignal-First時代の本格幕開けを宣言した。一方、npm供給チェーン攻撃「Miasmaキャンペーン」が @redhat-cloud-services スコープの32パッケージを汚染し、セキュリティ意識を引き締める週となった。Node.js のセキュリティリリースも翌17日に控えており、アップデート対応を優先したい。</p>
+        <p>今週は「先週の予告が現実になった一週間」。先週ベータだった TypeScript 7.0 が 6 月 18 日に RC へ進み、安定版が約 1 か月後（7 月中旬目安）に視野へ入った。同じ 18 日、先週「17 日予告」としていた Node.js のセキュリティリリースが実際に公開され、全サポート系（22.23.0 / 24.17.0 / 26.3.1）で 13 件の CVE、うち High が 2 件という具体像が判明。crypto と TLS の High はすべての稼働中ラインに影響するため、まずここを塞ぎたい。エコシステムでは Vite/Rolldown を擁する VoidZero の Cloudflare 傘下入りという統治面の地殻変動が続き、CSS は Interop 2026 / Baseline 2026 が新年度の焦点を固めた。</p>
       </section>
 
       <section class="topic">
         <h2 class="topic__title">今週の重要ポイント</h2>
 
         <article class="article">
-          <h3 class="article__headline">TypeScript 7.0 Beta — GoコンパイラでTS史上最大の性能革命</h3>
+          <h3 class="article__headline">TypeScript 7.0、ベータから RC へ — 安定版が射程に</h3>
           <div class="article__body">
-            <p>4月21日に公開されたTypeScript 7.0 Betaは、コンパイラをGoへ完全移植した初のベータ版。型チェックの意味論はTS 6.0と同一を保ちつつ、ベンチマークでは約10倍の高速化を達成した。安定版リリースは6月末から7月初旬が見込まれている。</p>
-            <p>現時点では es2021 以降のターゲットのみサポートし、デコレータやウォッチモードはまだ未対応。VS Code拡張との本格統合は2026年中ごろを予定。</p>
+            <p>6 月 18 日、Microsoft が TypeScript 7.0 の Release Candidate を公開した。先週の本紙で取り上げたベータからの正式な前進で、RC は即日 npm から入手できる。Go へ移植したネイティブコンパイラは型チェックがおおむね 10 倍速とされ、安定版（GA）は RC から約 1 か月後、7 月中旬ごろが目安とされている。</p>
+            <p>あくまで「書き直し」ではなく「移植」で、型チェックの意味論は従来と同一を保つ点が引き続き強調されている。1 年超のプレリリース検証を経て、すでに数百万行規模のコードベースや CI で実用に供されており、日常のワークフローでの評価に十分耐えるという位置づけ。本番採用前の検証を始めるなら、まさに今が好機。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://visualstudiomagazine.com/articles/2026/04/21/typescript-7-0-beta-arrives-on-go-based-foundation-with-10x-speed-claim.aspx">TypeScript 7.0 Beta Arrives on Go-Based Foundation With 10x Speed Claim — Visual Studio Magazine</a></li>
-            <li><a href="https://coderoasis.com/typescript-7-0-beta-go-compiler-project-corsa-10x-faster/">TypeScript 7.0 Beta Is Out — The Compiler Is Now Written in Go and It's 10x Faster</a></li>
+            <li><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-rc/">Announcing TypeScript 7.0 RC — TypeScript Blog</a></li>
+            <li><a href="https://www.digitalapplied.com/blog/typescript-7-0-rc-go-native-compiler-2026-upgrade-guide">TypeScript 7.0 RC: The Go-Native Compiler Has Landed — Digital Applied</a></li>
           </ul>
         </article>
 
         <article class="article">
-          <h3 class="article__headline">Angular 22 正式リリース — Signal-Firstアーキテクチャが本番稼働へ</h3>
+          <h3 class="article__headline">Node.js セキュリティリリース公開 — 全系統で 13 CVE、High が 2 件</h3>
           <div class="article__body">
-            <p>6月3日にリリースされたAngular 22は、Signal Forms・Zoneless・OnPushがすべて本番安定版に昇格し、「Signal-First」時代の実質的な出発点となった。セレクタレスコンポーネントやdebounced()シグナルなど使い勝手を高める機能も追加。</p>
-            <p>CLIにはAIアシスタントと連携する実験的MCPサーバーが同梱され、コード生成・マイグレーション支援・ドキュメント検索を自動化できる。</p>
+            <p>先週「6 月 17 日に予定」と伝えた Node.js のセキュリティリリースは、6 月 18 日（木）に v22.23.0 / v24.17.0 / v26.3.1 として公開された。アドバイザリは WebCrypto・TLS・HTTP/2・HTTP・DNS・Permission Model などにまたがる 13 件の CVE をまとめており、大半は Medium / Low だが High が 2 件含まれる。</p>
+            <p>High の 1 件目は WebCrypto の整数オーバーフロー（CVE-2026-48933）。<code>subtle.encrypt()</code> に 2GiB の倍数長の入力が渡るとプロセスが異常終了し、DoS につながる。2 件目は TLS の認証バイパス（CVE-2026-48618）で、Unicode のドット区切りの正規化がリゾルバと検証側でずれることに起因し、ワイルドカード証明書の深さ検証をすり抜けられる。いずれも稼働中の全ライン（22 / 24 / 26）に影響するため、未パッチのまま回避できるバージョンは存在しない。即時のアップデートを推奨する。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://medium.com/@amit.mahida9292/angular-22-the-release-that-finally-makes-angular-feel-10-years-ahead-9ea7fdb7b994">Angular 22: The Release That Finally Makes Angular Feel 10 Years Ahead — Medium</a></li>
-            <li><a href="https://medium.com/@onkar20/angular-22-is-the-most-important-angular-release-in-years-4d5ce3172fb7">Angular 22: The "Signal-First" Era Is Finally Here — Medium</a></li>
+            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Thursday, June 18, 2026 Security Releases</a></li>
+            <li><a href="https://www.digitalapplied.com/blog/nodejs-june-2026-security-releases-cve-patch-guide">Node.js June 2026 Security Releases: CVE Patch Guide — Digital Applied</a></li>
           </ul>
         </article>
 
         <article class="article">
-          <h3 class="article__headline">npm供給チェーン攻撃「Miasma」— インストール時にマルウェアが自動実行</h3>
+          <h3 class="article__headline">Svelte 6 月号 — リアルタイム購読 <code>query.live()</code> が前進</h3>
           <div class="article__body">
-            <p>6月1日、Wiz Research が @redhat-cloud-services スコープの32パッケージへの不正改ざんを報告。npm install 実行と同時に4.2 MBの難読化ペイロードが走る仕組みで、認証情報を窃取するワーム型マルウェア「Miasma」が確認されている。</p>
-            <p>該当パッケージを利用している場合は即時バージョン確認と依存ツリーの監査を推奨。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages">Miasma: Supply Chain Attack Targeting RedHat npm Packages — Wiz Blog</a></li>
-            <li><a href="https://socradar.io/blog/axios-npm-supply-chain-attack-2026-ciso-guide/">Axios npm Hijack 2026: Everything You Need to Know — SOCRadar</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">Svelte June 2026 — TypeScript 6.0 サポートと SvelteKit の破壊的変更</h3>
-          <div class="article__body">
-            <p>Svelte Language ToolsがTypeScript 6.0に対応し、language server・svelte2tsx・svelte-checkの各パッケージが更新された。SvelteKit ではリモートフォームのバリデーション漏れを検出する警告が追加された。</p>
-            <p>破壊的変更として、リモートクエリの <code>.run()</code> が廃止。すべてのコンテキストで <code>await query()</code> を直接使用する形に移行が必要。</p>
+            <p>SvelteKit のリモート関数まわりが実用度を上げた。新しい <code>query.live(...)</code> はサーバーからのリアルタイムデータを扱いやすくし、長寿命の購読を async-iterable として回せる。さらにリモートクエリをイベントハンドラ・非同期コールバック・モジュールスコープのどこでも <code>await</code> でき、キャッシュの重複排除がリアクティブ／非リアクティブ双方で共有されるようになった。</p>
+            <p>先週触れた TypeScript 6.0 対応・<code>.run()</code> 廃止に続く動きで、サーバー状態をフロントに引き込む際の「待てる場所」が一気に広がった点が今号の見どころ。テンプレート内で値を宣言できるようになるなど、書き味の改善も入っている。</p>
           </div>
           <ul class="article__sources">
             <li><a href="https://svelte.dev/blog/whats-new-in-svelte-june-2026">What's new in Svelte: June 2026 — svelte.dev</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">Node.js セキュリティリリース — 6月17日（火）公開予定</h3>
-          <div class="article__body">
-            <p>Node.js プロジェクトは6月17日にセキュリティリリースを予告している。詳細は公開後に明らかになるが、CVE情報の確認とアップデート対応は速やかに行いたい。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Wednesday, June 17, 2026 Security Releases</a></li>
-          </ul>
-        </article>
-      </section>
-
-      <section class="topic">
-        <h2 class="topic__title">言語・コンパイラ</h2>
-
-        <article class="article">
-          <h3 class="article__headline">TypeScript 6.0 → 7.0 への移行パス</h3>
-          <div class="article__body">
-            <p>3月23日にリリースされたTypeScript 6.0は、JavaScriptベースの最終版として位置づけられ、多数の非推奨フラグと削除が含まれる。7.0への移行を意識したコードベース整理を今から進めておくことが推奨される。</p>
-            <p>TS 6.0→7.0では意味論が保たれるため、型チェックの挙動変化は最小限の見込みだが、古いコンパイルターゲット（ES2020以下）は7.0では当面非サポートになる点に注意。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://visualstudiomagazine.com/articles/2026/03/23/typescript-6-0-ships-as-final-javascript-based-release-clears-path-for-go-native-7-0.aspx">TypeScript 6.0 Ships as Final JavaScript-Based Release — Visual Studio Magazine</a></li>
-            <li><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-6-0/">Announcing TypeScript 6.0 — TypeScript Blog</a></li>
           </ul>
         </article>
       </section>
@@ -115,23 +77,14 @@
         <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
         <article class="article">
-          <h3 class="article__headline">React 19 系の現況とコンパイラの動向</h3>
+          <h3 class="article__headline">シグナル／コンパイラへの収束、2026 年の現在地</h3>
           <div class="article__body">
-            <p>現在の安定版は React 19.2.6（5月6日リリース）。React Compiler による自動メモ化がエコシステム全体に広がりを見せており、<code>useMemo</code>・<code>useCallback</code> の手書きが不要になるユースケースが増えている。React 20は開発中で、非ブロッキングUI更新と中断可能レンダリングがコアテーマとなっている。</p>
+            <p>主要フレームワークは、細粒度リアクティビティ・サーバーファーストレンダリング・コンパイラ駆動の最適化・AI 支援ワークフローという 4 テーマへ収束しつつある。React は Compiler による自動メモ化で <code>useMemo</code>/<code>useCallback</code> の手書きを不要にし、Angular は Signals でバンドルを縮小、Vue は Vapor Mode で仮想 DOM を外す方向、Svelte は Runes で言語レベルに反応性を埋め込む。「どのフレームワークか」より「どのリアクティビティ実装を選ぶか」という議論軸が定着してきた。</p>
+            <p>採用比率では依然 React が約 47% で首位、Next.js・Angular・Vue が続き、Svelte は約 7%。Create React App は役目を終え、新規は Vite が標準ツールという整理も改めて確認された。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://endoflife.date/react">React | endoflife.date</a></li>
-            <li><a href="https://mohitdecodes.medium.com/react-20-features-improvements-and-future-direction-f39b81645200">React 20: Features, Improvements, and Future Direction — Medium</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">シグナルベース・リアクティビティの業界収束</h3>
-          <div class="article__body">
-            <p>Angular がSignalsを標準化し、Vue は Vapor Mode で粒度の細かいトラッキングを進化させ、React Compilerも宣言的・リアクティブなパターンへの移行を後押ししている。フレームワーク固有の差異より「どのシグナル実装を選ぶか」という軸で議論されることが増えている。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://blog.logrocket.com/angular-vs-react-vs-vue-js-performance/">Angular vs. React vs. Vue.js: A performance guide for 2026 — LogRocket Blog</a></li>
+            <li><a href="https://www.nucamp.co/blog/javascript-framework-trends-in-2026-what-s-new-in-react-next.js-vue-angular-and-svelte">JavaScript Framework Trends in 2026 — Nucamp</a></li>
+            <li><a href="https://react.dev/blog">React Blog — react.dev</a></li>
           </ul>
         </article>
       </section>
@@ -140,23 +93,14 @@
         <h2 class="topic__title">エコシステム・ツール</h2>
 
         <article class="article">
-          <h3 class="article__headline">Vite 8 が Rolldown 本番ビルドを標準化</h3>
+          <h3 class="article__headline">VoidZero が Cloudflare 傘下へ — Vite/Rolldown の統治が動く</h3>
           <div class="article__body">
-            <p>4月20日リリースのVite 8.0.9 は、本番ビルドエンジンとしてRolldownを採用した初の安定版。Node.js・Deno・Bunのいずれも動作環境としてサポートし、Webpack 5からの移行先としての地位を確立しつつある。Rsbuild 1.6 は大規模Webpack構成向けのスムーズな移行パス、Bun 1.3 はランタイム・パッケージ管理・バンドルを一本化したい場合の選択肢となっている。</p>
+            <p>6 月初旬、Evan You が 2023 年に立ち上げた VoidZero の Cloudflare による買収が報じられた。VoidZero は Vite（ビルドツール）・Rolldown（Rust 製バンドラ）・Oxc（パーサ／トランスフォーマ）・Vitest（テストランナー）という次世代ツールチェーンを束ねる中核で、フロントエンド基盤の統治体制に関わる動きとして今週も受け止め方の議論が続いている。</p>
+            <p>技術面では、3 月に出た Vite 8 が Rolldown を単一の Rust 製バンドラとして本採用済みで、プラグイン互換を保ちつつ大幅な高速化を実現している。OSS としての継続性とロードマップへの影響を、利用側としては当面ウォッチしておきたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://techbytes.app/posts/frontend-tooling-2026-vite-rsbuild-bun-cheat-sheet/">Frontend Tooling 2026: Vite, Rsbuild & Bun Cheat Sheet</a></li>
-            <li><a href="https://github.com/vitejs/vite/releases">Releases · vitejs/vite — GitHub</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">VS Code June 2026 — Autopilot がデフォルト有効化</h3>
-          <div class="article__body">
-            <p>Microsoftが公開した6月版VS Code更新では、Autopilot（AIコーディング支援）がデフォルトONに切り替わり、エージェントセッションのバックグラウンド送信も追加された。TypeScript 7.0 Betaとの連携を見越したEditorの基盤整備が進んでいる。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://developer.wordpress.org/news/2026/06/whats-new-for-developers-june-2026/">What's new for developers? (June 2026) — WordPress Developer Blog</a></li>
+            <li><a href="https://www.nexgismo.com/blog/cloudflare-voidzero-vite-8-rolldown-guide-2026-3">Cloudflare Buys VoidZero: Vite 8, Rolldown & What Changes — Nexgismo</a></li>
+            <li><a href="https://vite.dev/blog/announcing-vite8">Vite 8.0 is out! — vite.dev</a></li>
           </ul>
         </article>
       </section>
@@ -165,13 +109,13 @@
         <h2 class="topic__title">セキュリティ</h2>
 
         <article class="article">
-          <h3 class="article__headline">npm 供給チェーン攻撃の対策チェックリスト</h3>
+          <h3 class="article__headline">Node.js アップデートの当て方 — 優先順位の付け方</h3>
           <div class="article__body">
-            <p>Miasmaキャンペーンを受け、フロントエンドチームが今すぐ確認すべき3点がある。①<code>@redhat-cloud-services/*</code> スコープのパッケージを直接・間接で使っていないか依存ツリーを監査する、②CI/CDで <code>npm audit</code> を強制し、スコア閾値を超えたらビルドを止める、③lockfileを常にコミットし差分レビューを習慣化する。</p>
+            <p>今回の Node.js リリースを受けて、フロントエンド／フルスタックチームが今すぐ確認したい点。①稼働中ランタイムと CI/CD で使う Node のバージョンを 22.23.0 / 24.17.0 / 26.3.1 以降へ引き上げる、②TLS 認証バイパス（CVE-2026-48618）はサーバー間通信の信頼境界に効くため、証明書検証に依存する経路を優先的に潰す、③WebCrypto の DoS（CVE-2026-48933）は大きな入力を扱う暗号処理がある場合に効くので、該当箇所の有無を棚卸しする。LTS・Current いずれも対象な点に注意。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages">Miasma: Supply Chain Attack Targeting RedHat npm Packages — Wiz Blog</a></li>
-            <li><a href="https://cybersecuritynews.com/red-hat-cloud-services-npm-packages/">Multiple Red Hat Cloud Services npm Packages Compromised — CyberSecurityNews</a></li>
+            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Thursday, June 18, 2026 Security Releases</a></li>
+            <li><a href="https://cyberpress.org/critical-node-js-security-release-patches/">Critical Node.js Security Release Patches Vulnerabilities — Cyberpress</a></li>
           </ul>
         </article>
       </section>
@@ -180,13 +124,14 @@
         <h2 class="topic__title">デザイン・CSS</h2>
 
         <article class="article">
-          <h3 class="article__headline">2026年CSS — ブラウザがJavaScriptを置き換え始める</h3>
+          <h3 class="article__headline">Interop 2026 / Baseline 2026 — 今年の相互運用の焦点が固まる</h3>
           <div class="article__body">
-            <p>Container Queries・<code>:has()</code>・CSS Nesting・<code>@layer</code> はすべての主要ブラウザで本番利用可能になり、スタイル設計の基本語彙として定着した。スクロールアニメーション・マソンリーレイアウト・ネイティブポップオーバーなど、これまでJSライブラリが担っていた機能がCSSに移行しつつあるが、ブラウザ実装はまだ展開中のためプロダクション使用には注意が必要。</p>
+            <p>ブラウザ各社（Apple・Google・Igalia・Microsoft・Mozilla）が進める Interop 2026 は、20 のフォーカスエリアを掲げる（うち 15 が新規、5 が 2025 からの継続）。アニメーションタイムライン系プロパティ（<code>animation-timeline</code> / <code>scroll-timeline</code> / <code>view-timeline</code>）、HTML 属性値を CSS に取り込む <code>attr()</code>、<code>contrast-color()</code>、スクロール駆動アニメーション、View Transitions、<code>&lt;dialog&gt;</code> と <code>:open</code> 擬似クラス、<code>popover="hint"</code> などが並ぶ。</p>
+            <p>2026 年中に全コアブラウザで相互運用に達した機能は「Baseline 2026」として整理される。ライブラリで補ってきた領域がプラットフォーム標準へ移る流れが続いており、採用判断は webstatus.dev などで対応状況を確認しながら進めたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://blog.logrocket.com/css-in-2026/">CSS in 2026: The new features reshaping frontend development — LogRocket Blog</a></li>
-            <li><a href="https://medium.com/codex/the-most-anticipated-css-features-of-2026-browsers-can-now-replace-a-lot-of-javascript-c8e9328f4e89">The Most Anticipated CSS Features of 2026 — Medium / CodeX</a></li>
+            <li><a href="https://web.dev/blog/interop-2026">Interop 2026: Continuing to improve the web for developers — web.dev</a></li>
+            <li><a href="https://web.dev/baseline/2026">Baseline 2026 — web.dev</a></li>
           </ul>
         </article>
       </section>
@@ -195,22 +140,22 @@
         <h2 class="topic__title">来週の注目ポイント</h2>
 
         <article class="article">
-          <h3 class="article__headline">6月17日 Node.js セキュリティリリース</h3>
+          <h3 class="article__headline">TypeScript 7.0 GA に向けた最終局面</h3>
           <div class="article__body">
-            <p>Node.js の定期セキュリティリリースが6月17日に公開予定。全サポート版（LTS・Current）が対象になる見込みで、CVE内容が明らかになり次第、速やかなアップデートが求められる。CI/CDのNode.jsバージョンも含めて確認しておきたい。</p>
+            <p>RC から約 1 か月後とされる安定版リリースに向け、来週以降は RC の検証報告や移行ガイドの拡充が続く見込み。古いコンパイルターゲットやウォッチモード・デコレータ周りの対応状況、エディタ統合の進捗を公式ブログと GitHub の milestone で継続ウォッチしたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Wednesday, June 17, 2026 Security Releases</a></li>
+            <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
           </ul>
         </article>
 
         <article class="article">
-          <h3 class="article__headline">TypeScript 7.0 安定版リリースに向けた最終チェック</h3>
+          <h3 class="article__headline">Node.js パッチ適用後の追跡</h3>
           <div class="article__body">
-            <p>6月末〜7月初旬とされるTypeScript 7.0安定版リリースに向け、Betaでの検証結果やES2020以下ターゲットへの影響報告が来週も続く見込み。公式ブログとGitHubのmilestoneを継続ウォッチしたい。</p>
+            <p>6 月 18 日リリースの適用が一巡する来週は、各 CVE の追加情報や回帰報告、Docker 公式イメージ・ホスティング各社のランタイム更新タイミングの確認が要点になる。特に TLS 認証バイパスは影響範囲が読みにくいため、後続の解説記事を追っておきたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://devblogs.microsoft.com/typescript/progress-on-typescript-7-december-2025/">Progress on TypeScript 7 — TypeScript Blog</a></li>
+            <li><a href="https://nodejs.org/en/blog/vulnerability">Node.js Vulnerability Blog — nodejs.org</a></li>
           </ul>
         </article>
       </section>
