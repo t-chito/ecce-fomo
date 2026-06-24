@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM ニュース — 2026年6月17日</title>
+<title>LLM ニュース — 2026年6月24日 | Ecce Fomo</title>
+<meta name="description" content="Consummatum est.">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ecce Fomo">
+<meta property="og:title" content="LLM ニュース — 2026年6月24日">
+<meta property="og:description" content="Consummatum est.">
+<meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">LLM ニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年6月17日（水）</span>
+        <span>2026年6月24日（水）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -23,7 +32,7 @@
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
   <p>
-    今週の LLM 業界は「フロンティアモデルを巡る地政学」が前面に出た。米政府が国家安全保障を理由に Anthropic の最上位モデル Claude Fable 5 / Mythos 5 への外国籍ユーザーのアクセスを停止する輸出規制指令を出し、Anthropic は全ユーザー向けに Fable 5 を一時停止した。ほぼ同時に中国の Zhipu が GLM 5.2 を MIT ライセンスで完全オープンソース化し、規制で囲い込む米国と開放で押し出す中国という対照が鮮明になった。実利面では「エージェントの本番投入」が共通テーマで、Anthropic は Claude Code の経済価値を定量化した研究と Managed Agents の本番運用ガイドを、OpenAI は Codex の大型アップデートとリリース前に挙動を予測する Deployment Simulation を公開。動画生成では xAI の Grok Imagine Video 1.5 が API 一般提供に入った。
+    今週の LLM 業界は「エージェントが製品の中心レイヤーへ移る」流れが一段と鮮明になった。Anthropic は Claude Code を発展させた <strong>Claude Tag</strong> を投入し、Slack のチャンネルに常駐して自律的にタスクをこなす「チームメイト」型のエージェントを打ち出した。同社は社内プロダクトチームのコードの 65% をこの内製版が書いていると公表している。OpenAI は防衛セキュリティに振り切った <strong>Daybreak</strong> を拡張し、GPT-5.5-Cyber 正式版・Codex Security・Patch the Planet で「機械の速度で脆弱性を塞ぐ」構想を具体化した。人材面では Google DeepMind から二大流出が起き、Transformer 共著者の Noam Shazeer が OpenAI へ、AlphaFold で 2024 年ノーベル化学賞の John Jumper が Anthropic へ移籍する。Grok は /goal で長時間自律実行、Gemini は Spark で常駐エージェントと、各社が同じ方向に動いた一週間だった。
   </p>
 </section>
 
@@ -31,197 +40,160 @@
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">米政府が Claude Fable 5 / Mythos 5 に輸出規制 — 全ユーザーで利用停止</h3>
+    <h3 class="article__headline">Anthropic、Claude Tag を発表 — Slack に常駐する「チームメイト」型エージェント</h3>
     <div class="article__body">
-      <p>米政府が国家安全保障権限を根拠に、米国内外を問わずすべての外国籍ユーザー（Anthropic の外国籍従業員を含む）による Fable 5・Mythos 5 へのアクセスを停止する輸出規制指令を発出。Anthropic は遵守のため両モデルを全顧客向けに停止した。公開直後の最上位モデルが規制で即座に封じられる異例の事態となった。</p>
+      <p>Anthropic が Claude Code を発展させた Claude Tag を公開。Slack のチャンネルにメンバーとして加わり、タグ付けでタスクを委譲すると段階分解して自律的に処理し、PR の作成・マージやデータ分析、インシデント対応までスレッド内で完結させる。個人ではなくチーム共有のエージェントで、独自のアイデンティティと記憶を持つのが特徴。Opus 4.8 上で動き、Team / Enterprise プランのベータで提供される。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://www.anthropic.com/news/fable-mythos-access">Anthropic — Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a></li>
-      <li><a href="https://www.aljazeera.com/news/2026/6/13/us-orders-anthropic-to-disable-ai-models-for-all-foreign-nationals">Al Jazeera — US orders Anthropic to disable AI models for all foreign nationals</a></li>
+      <li><a href="https://x.com/claudeai/status/2069468693017268244">Claude (X) — Introducing Claude Tag, a new way for teams to work with Claude</a></li>
+      <li><a href="https://techcrunch.com/2026/06/23/anthropics-claude-tag-is-learning-your-company-one-slack-message-at-a-time/">TechCrunch — Anthropic's Claude Tag is learning your company, one Slack message at a time</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Zhipu が GLM 5.2 を MIT で完全オープン化 — 1M コンテキストの長尺エージェント特化</h3>
+    <h3 class="article__headline">OpenAI、Daybreak を拡張 — GPT-5.5-Cyber 正式版とオープンソース防衛</h3>
     <div class="article__body">
-      <p>中国の Zhipu (Z.ai) が GLM 5.2 を MIT ライセンスで完全オープンソース化。744B パラメータ（アクティブ 40B）の MoE で、コンテキスト長は前世代の約 5 倍となる 100 万トークン、長尺の計画・実装・デバッグを横断する自律的ソフトウェアエンジニアリングに照準を合わせる。米国が最上位モデルを規制で囲う週に、対照的にフロンティア級モデルを無制限で開放した格好だ。</p>
+      <p>OpenAI がセキュリティ特化プログラム Daybreak を拡張。信頼できる防御者向けに GPT-5.5-Cyber 正式版を投入し、CyberGym で 85.6%（GPT-5.5 は 81.8%）の新 SOTA を主張。Codex 内で脆弱性を発見・検証・修正する Codex Security プラグイン、cURL・Python・Go など主要 OSS の保守者を支援する Patch the Planet、Cloudflare・CrowdStrike など 20 社超が参加する Cyber Partner Program を同時に打ち出した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://stable-learn.com/en/glm-5-2-open-source-release/">StableLearn — GLM-5.2 Goes Fully Open: 753B Parameters, 1M Context</a></li>
-      <li><a href="https://codersera.com/blog/glm-5-2-release-1m-context-coding-2026/">Codersera — GLM 5.2 Release — 1M Context, Coding-First</a></li>
+      <li><a href="https://openai.com/index/daybreak-securing-the-world/">OpenAI — Daybreak: Tools for securing every organization in the world</a></li>
+      <li><a href="https://siliconangle.com/2026/06/22/openai-expands-daybreak-patch-planet-full-gpt-5-5-cyber-release/">SiliconANGLE — OpenAI expands Daybreak with Patch the Planet and full GPT-5.5-Cyber release</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Anthropic Economic Index、Claude Code の価値増大を定量化</h3>
+    <h3 class="article__headline">Google DeepMind から二大流出 — Shazeer が OpenAI、Jumper が Anthropic へ</h3>
     <div class="article__body">
-      <p>Anthropic が約 40 万件の Claude Code セッション（2025年10月〜2026年4月）を分析し、利用が end-to-end のエージェント的作業へ移行し、タスクあたりの経済価値が約 25% 上昇したと報告。人間が「何を作るか（計画）」を担い Claude が「どう作るか（実行）」を担う分業や、ドメイン専門性が高いほど 1 プロンプトで Claude がこなす仕事量が増えるという傾向を示した。Claude Code の run-rate 収益は 25 億ドルを突破したとされる。</p>
+      <p>同じ週に DeepMind の中核人材が二人、それぞれライバルへ移籍することが明らかになった。Gemini 共同リードで「Attention Is All You Need」共著者の Noam Shazeer が OpenAI へ。Sam Altman は「OpenAI 創業当初から最も一緒に働きたかった一人。10 年かかった」と歓迎した。さらに AlphaFold で 2024 年ノーベル化学賞を受けた John Jumper が、約 9 年在籍した DeepMind を離れ Anthropic へ移ることを表明。Demis Hassabis は「AlphaFold で成し遂げたことは世界を変えた」と謝意を述べた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://www.anthropic.com/research/economic-index-primitives">Anthropic — The Anthropic Economic Index report: New building blocks for understanding AI use</a></li>
-      <li><a href="https://x.com/AnthropicAI/status/2066969532380721386">Anthropic (X) — a framework for tracking Claude Code as it scales</a></li>
+      <li><a href="https://www.benzinga.com/markets/tech/26/06/53269428/google-gemini-co-lead-noam-shazeer-joins-openai-sam-altman-says-its-10-years-in-the-making">Benzinga — Google Gemini Co-Lead Noam Shazeer Joins OpenAI</a></li>
+      <li><a href="https://www.cnbc.com/2026/06/19/john-jumper-to-leave-google-deepmind-for-anthropic.html">CNBC — John Jumper to leave Google DeepMind for Anthropic</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI、リリース前に挙動を予測する Deployment Simulation を公開</h3>
+    <h3 class="article__headline">各社が「自律実行」を前面に — Grok /goal、Gemini Spark</h3>
     <div class="article__body">
-      <p>OpenAI が、実際の運用データを使ってモデルの挙動をリリース前に予測する手法 Deployment Simulation を発表。旧モデルの応答を取り除いた匿名化済みの会話を新候補モデルで再生成し、本番投入後にどの程度の頻度で望ましくない挙動が出るかを事前に見積もる。約 130 万件の会話を用い、ステートフルなツールを伴うエージェント運用にも拡張した。</p>
+      <p>常駐・自律で動くエージェントへ各社が一斉に寄せた。xAI（SpaceXAI）は Grok Build に /goal を追加し、複数ラウンドのサブエージェントが単一ゴールを実装・検証しながら長時間タスクを自律実行する仕組みを公開。Google は「あなたの 24/7 のパーソナル AI エージェント」と称する Gemini Spark を訴求し、DevRel の Logan Kilpatrick は「スーパーアプリ時代に入った感覚」と評した。Claude Tag と合わせ、エージェントの形が「対話ボット」から「常駐する実行主体」へ移る週となった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://openai.com/index/deployment-simulation/">OpenAI — Predicting model behavior before release by simulating deployment</a></li>
-      <li><a href="https://www.marktechpost.com/2026/06/16/openai-deployment-simulation/">MarkTechPost — OpenAI Deployment Simulation Extends Pre-Deployment Risk Assessment to Agentic Coding</a></li>
+      <li><a href="https://x.com/grok/status/2069095154691272933">Grok (X) — Introducing /goal in Grok Build</a></li>
+      <li><a href="https://x.com/OfficialLoganK/status/2067811321354281072">Logan Kilpatrick (X) — feels like we are entering the super app era</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">モデルと規制</h2>
+  <h2 class="topic__title">エージェントの新形態</h2>
 
   <article class="article">
-    <h3 class="article__headline">輸出規制の波紋 — Build Day は Opus 4.8 に切替、Cognition も Fable 5 を撤去</h3>
+    <h3 class="article__headline">Claude Tag — 「ボット」ではなく多人数で共有する実行主体</h3>
     <div class="article__body">
-      <p>指令は金曜夜に届き、Anthropic は週末にかけて Fable 5 を全面停止。混乱を受けて 5 時間・週次のレート上限を全ユーザーでリセットし、開発者向け Build Day は Fable 5 ではなく Opus 4.8 を使って予定通り開催する形に切り替えた。Devin を提供する Cognition も自社製品から Fable 5 を撤去するなど、エコシステム全体へ即座に波及した。政府書簡は具体的な安全保障上の懸念を明示しておらず、Anthropic の理解では Fable 5 の「ジェイルブレイク」手法が把握されたことが背景にあるとされる。Fable 5 を巡るアクセス制限は週末を過ぎても継続し、Anthropic とホワイトハウスの対立が長引いている。</p>
+      <p>Anthropic の Boris Cherny は、Claude Tag を「単なる Slack のボットではない」と説明する。プロアクティブ（自分から動く）・マルチプレイヤー（チーム共有）・独自のアイデンティティと記憶を持つ点が従来のチャット型と異なり、チャンネルを追ううちに業務文脈を蓄積するため、毎回ゼロから説明する必要がない。アンビエント動作をオンにすると、止まったスレッドのフォローや他チャンネルからの関連情報の提示など、依頼を待たずに介入する。Anthropic 自身、社内プロダクトチームのコードの 65% をこの内製版が書いており、Claude Tag を構築したコードの大半もそれが書いたと公表している。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/">Fortune — Anthropic disables Fable and Mythos AI models following U.S. government export ban</a></li>
-      <li><a href="https://9to5mac.com/2026/06/12/anthropic-pulls-claude-mythos-5-and-claude-fable-5-following-us-government-directive/">9to5Mac — Anthropic pulls Claude Mythos 5 and Claude Fable 5 following US government directive</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2065597942602531163">Claude Developers (X) — Suspending access to Claude Fable 5; other models remain available</a></li>
+      <li><a href="https://x.com/bcherny/status/2069474681749754272">Boris Cherny (X) — We're launching Claude Tag today; proactive, multiplayer, with its own identity and memory</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2069468900216234010">Claude Developers (X) — Claude Tag now writes 65% of our product team's code</a></li>
+      <li><a href="https://fortune.com/2026/06/23/anthropic-claude-tag-virtual-employee-tool-slack/">Fortune — Anthropic launches Claude Tag, a tool that works like a virtual employee within Slack</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">オープンウェイトの存在感 — GLM 5.2 が Notion など製品に即組込み</h3>
+    <h3 class="article__headline">Grok と Gemini も常駐・長時間自律へ</h3>
     <div class="article__body">
-      <p>GLM 5.2 は公開直後から実プロダクトへの統合が進み、Notion が Baseten 経由で GLM 5.2 を「長尺タスク向けの新しいオープンウェイトモデル」として早速採用した。MIT ライセンスで重みが Hugging Face / ModelScope から自由に入手できることが、西側プロダクトへの取り込みハードルを下げている。米国が最上位モデルを規制で締める一方、オープンウェイトの中国製モデルが現場の選択肢として広がる構図が浮かぶ。ベンチマーク値は公開時点で未提示で、性能の主張は今後の検証待ちである。</p>
+      <p>xAI は /goal に加え、Word プラグインや HeyGen・Interactive Brokers などのコネクタを相次いで投入し、Grok を業務やデータの上に常駐させる方向を強めた。Google は Gemini Spark を「ユーザーの指示の下で最初から最後まで重い作業をこなす常駐エージェント」と位置づけ、Gemini 3.5 Flash では Gmail から旅程を読み取って時差ボケ対策の睡眠スケジュールをカレンダーに登録するデモを示した。エージェントを「呼び出して使う道具」から「常に控える担当者」へと寄せる設計思想が、プロバイダ横断で共通している。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/NotionHQ/status/2066963258985320550">Notion (X) — New open-weight model: GLM 5.2 is now available in Notion (via Baseten)</a></li>
-      <li><a href="https://pasqualepillitteri.it/en/news/4948/glm-5-2-fully-open-frontier-ai-us-block">Pasquale Pillitteri — GLM-5.2 Open Source: Zhipu's Answer to the US AI Block</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェント基盤・本番投入</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Claude Managed Agents、本番投入の知見と自前サンドボックス対応</h3>
-    <div class="article__body">
-      <p>Anthropic の Applied AI チームが、エージェントを本番に乗せる際の課題（認証情報、サンドボックス化、可観測性など）と Managed Agents がそれをどう解くかをまとめたブログを公開。あわせて、利用者が制御するサンドボックス上でエージェントを動かす構成を可能にし、blaxel・e2b・Google Cloud・Namespace など各プロバイダ向けのガイドを追加した。エージェントが長時間動き多くのコードを実行・操作するほど、自前ハーネスの維持コストが重くなるという、運用主体の関心への回答という位置づけだ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2066926619714007115">Claude Developers (X) — How do teams get agents into production? (Applied AI blog)</a></li>
-      <li><a href="https://chatforest.com/builders-log/claude-managed-agents-scheduled-deployments-vault-env-vars-june-2026/">ChatForest — Claude Managed Agents Now Has Cron Scheduling and Vault Credentials</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Claude Agent SDK の別枠クレジット移行は延期</h3>
-    <div class="article__body">
-      <p>Claude Agent SDK とヘッドレスモード（<code>claude -p</code>）の利用を別枠クレジットへ切り替える予定が、当初告知から延期されたことがメールで通知された。ハーネスを自前で組む開発者の課金体系に直結する変更で、Managed Agents への誘導と合わせて、エージェント運用の「どこにコストを置くか」を巡る設計判断が業界の論点になりつつある。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/oikon48/status/2066692211115507976">oikon (X) — Agent SDK・ヘッドレスモードの別枠クレジット化が延期</a></li>
+      <li><a href="https://x.com/GeminiApp/status/2069143097586700794">Gemini (X) — Gemini Spark is your 24/7 personal AI agent</a></li>
+      <li><a href="https://x.com/xai/status/2067638691275907084">xAI (X) — Grok models are now available on Databricks Agent Bricks</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェント・開発ツール</h2>
+  <h2 class="topic__title">AI ×セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI Codex 大型更新 — レート上限のバンキングとデスクトップ Computer Use</h3>
+    <h3 class="article__headline">「機械の速度で脆弱性を塞ぐ」 — Daybreak が発見から修正・パートナー網まで</h3>
     <div class="article__body">
-      <p>OpenAI が Codex を相次いで強化した。Plus / Pro 向けにレート上限リセットを「貯めて好きなタイミングで使う」バンキング機能を投入（6/11〜24 は紹介で追加リセット獲得）。さらに macOS / Windows でのデスクトップ Computer Use、バックグラウンドのブラウザ操作向け Chrome 拡張、ワークフローや技術スタックを覚える Memories を追加。CLI 側でも <code>/usage</code> のトークン統計や Claude Code からの設定・チャット <code>/import</code> など、競合からの移行を意識した機能が並んだ。</p>
+      <p>Daybreak の今回の拡張は、脆弱性の「発見」だけでなく「修正の実装とマージ」までを射程に入れた点が新しい。OpenAI のモデルは主要ブラウザ・ネットワーク機器・OS の重大脆弱性に対してパッチを生成し始めており、Patch the Planet は Trail of Bits・HackerOne らと組んで研究者に Codex Security とモデルを供給し、保守者と直接協働する。30 超のプロジェクトが参加表明し、初期には cURL・Go・Python・Sigstore などが名を連ねる。Sam Altman は米政府（USG）やセキュリティ業界と連携して「すべての企業を守る」と述べ、防衛特化モデルを国家・産業のインフラ防護に結びつける姿勢を見せた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developers.openai.com/codex/changelog">OpenAI — Codex Changelog</a></li>
-      <li><a href="https://cryptobriefing.com/openai-codex-free-rate-limit-reset/">Crypto Briefing — OpenAI introduces free banked reset system for Codex users</a></li>
+      <li><a href="https://openai.com/index/patch-the-planet/">OpenAI — Patch the Planet: a Daybreak initiative to support open source maintainers</a></li>
+      <li><a href="https://x.com/sama/status/2069121360744550796">Sam Altman (X) — We want to help all companies be secure, working with the USG and the security ecosystem</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Claude Code は週内に 2.1.177〜2.1.179 を連続リリース</h3>
+    <h3 class="article__headline">コーディングエージェントにセキュリティ審査が標準装備へ</h3>
     <div class="article__body">
-      <p>Claude Code が一週間で 2.1.177〜2.1.179 を立て続けに公開。ripgrep ベースの Grep をツール説明で推奨してコード検索を高速化したほか、権限ルールでのツール指定、ストリーム中断時の部分応答の保持、サンドボックスの denyRead / allow 制御などを順次追加した。エージェント型コーディング環境の細かな運用品質を詰める動きが続いている。</p>
+      <p>セキュリティを開発フローに常設する動きは OpenAI 以外にも広がる。Cognition は Devin Review にセキュリティレビューを標準で組み込み、PR を開くたびにスキャナが見逃す脆弱性を自動検出し、各々の説明と修正案を起草する構成にした。コード生成エージェントが「速く書く」段階から、「書いたものが安全か検証する」段階を内蔵する方向へ進んでおり、GPT-5.5-Cyber のような防衛特化モデルがその裏側を支える構図が見えてきた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeCodeLog/status/2066982474467434829">Claude Code Log (X) — Claude Code 2.1.179 highlights</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2066638360014102825">Claude Code Log (X) — Claude Code 2.1.178 highlights (ripgrep Grep, permission rules)</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">OpenAI、リアルタイム音声の次世代「GPT-Realtime-2」を示唆</h3>
-    <div class="article__body">
-      <p>OpenAI の Greg Brockman 氏が「GPT-Realtime-2 は何か新しいものだ」とデモ付きで投稿し、リアルタイム音声・対話モデルの次世代が近いことを示唆した。エージェントの「目と手」（Computer Use）に続き、「耳と口」にあたるリアルタイム対話の刷新が、対話型エージェントの体験を一段押し上げる可能性がある。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/gdb/status/2067100786098831681">Greg Brockman (X) — GPT-Realtime-2 is something new</a></li>
+      <li><a href="https://x.com/cognition/status/2067649690921820212">Cognition (X) — Security review is now part of every Devin Review</a></li>
+      <li><a href="https://x.com/OpenAI/status/2069104283824640023">OpenAI (X) — Expanding Daybreak: Codex Security plugin and full GPT-5.5-Cyber</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">メディア生成・コンシューマー</h2>
+  <h2 class="topic__title">AI for Science・ロボティクス</h2>
 
   <article class="article">
-    <h3 class="article__headline">xAI、Grok Imagine Video 1.5 を API 一般提供 — 720p・物理表現を強化</h3>
+    <h3 class="article__headline">OpenAI、科学・医療での実証を相次いで公開</h3>
     <div class="article__body">
-      <p>xAI が画像から動画を生成する Grok Imagine Video 1.5 を API で一般提供開始。リアリズムと物理表現を高め生成速度も向上させ、出力は最大 720p、音声生成も標準で含む。コンシューマー向けには待ち時間を大幅に短縮した Video 1.5 Fast も展開した。動画生成は Image-to-Video のリーダーボードでも上位を争う競争領域となっており、xAI が API 提供で開発者の取り込みを狙う。</p>
+      <p>OpenAI は今週、科学領域での実証を畳みかけた。Boston Children's Hospital と Harvard との共同研究を NEJM AI に発表し、o3 Deep Research が未解決の希少小児疾患症例の再検討を助けたと報告。生命科学研究支援を測る新ベンチマーク LifeSciBench（173 名の科学者が関与、750 問）を公開し、GPT-5.4 が文献調査から検証済みの実験結果まで創薬プロジェクトを駆動した事例も示した。さらに健康相談で GPT-5.5 Instant が上位の Thinking モデルと同等に達したとし、週 2.3 億人が ChatGPT に健康・ウェルネスを尋ねる現状を踏まえ、緊急性の認識を強化したと説明した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.ai/news/grok-imagine-1-5">xAI — Grok Imagine 1.5 Preview</a></li>
-      <li><a href="https://x.com/xai/status/2067092899335159819">xAI (X) — Imagine Video 1.5 is generally available in our API</a></li>
+      <li><a href="https://x.com/OpenAI/status/2067625110199247353">OpenAI (X) — NEJM AI study: o3 Deep Research helps revisit unsolved rare pediatric cases</a></li>
+      <li><a href="https://x.com/OpenAI/status/2067346916929937827">OpenAI (X) — Introducing LifeSciBench</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Google、NotebookLM を AI Ultra で全面展開・Gemini に「Daily Brief」</h3>
+    <h3 class="article__headline">Anthropic Project Fetch Phase 2 — Opus 4.7 が人間の約 20 倍速でロボ犬を制御</h3>
     <div class="article__body">
-      <p>Google は、より高機能になった NotebookLM 体験を Google AI Ultra 契約者向けに世界で 100% 展開したと発表。チャートや画像、スプレッドシートなどの生成に対応する。Gemini アプリでは、起床前に一日を整理する朝のエージェント「Daily Brief」を提供開始するなど、コンシューマー向けの常時稼働エージェント機能の拡充が進む。</p>
+      <p>Anthropic の Frontier Red Team が Project Fetch の第 2 フェーズを公開。ロボ犬（robodog）を Claude にプログラムさせる課題で、Opus 4.7 単独が前年の最良人間チーム（Opus 4.1 補助）より約 20 倍速く、人間が完了した全課題を 10 倍以上速くこなしたうえ、約 10 分の 1 のコード量で同等以上の成功率を出した。ただしビーチボールを「取ってくる（fetch）」精密動作には依然苦戦しており、自律 AI が物理世界でどこで破綻するかを測る安全研究としての性格が強い。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/NotebookLM/status/2066981609258229764">NotebookLM (X) — More powerful NotebookLM now 100% rolled out to Google AI Ultra</a></li>
-      <li><a href="https://x.com/GeminiApp/status/2066917638568333400">Gemini App (X) — Daily Brief, your new morning AI agent</a></li>
+      <li><a href="https://www.anthropic.com/research/project-fetch-phase-two">Anthropic — Project Fetch: Phase two</a></li>
+      <li><a href="https://x.com/AnthropicAI/status/2067651699486200091">Anthropic (X) — Phase 2 of Project Fetch: Opus 4.7 ~20x faster than last year's best human team</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">主要発表・動向まとめ</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>主体</th><th>内容</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>米政府 / Anthropic</td><td>輸出規制指令で Fable 5・Mythos 5 を全ユーザー停止。Build Day は Opus 4.8 に切替、対立は継続</td></tr>
-        <tr><td>Zhipu (Z.ai)</td><td>GLM 5.2（744B MoE・1M コンテキスト）を MIT で完全オープン化。Notion などが即採用</td></tr>
-        <tr><td>Anthropic</td><td>Economic Index で Claude Code を分析（タスク価値 +25%、run-rate 25 億ドル）／Managed Agents の本番投入ガイド</td></tr>
-        <tr><td>OpenAI</td><td>Deployment Simulation を公開／Codex にレート上限バンキング・Computer Use・Memories を追加</td></tr>
-        <tr><td>xAI</td><td>Grok Imagine Video 1.5 を API 一般提供（720p・音声付き）、Video 1.5 Fast も展開</td></tr>
-        <tr><td>Google</td><td>NotebookLM を AI Ultra で全面展開／Gemini に朝のエージェント Daily Brief</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h2 class="topic__title">開発ツール・インフラ</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Claude Code に Artifacts と双方向 Design 連携</h3>
+    <div class="article__body">
+      <p>Anthropic は Claude Code に Artifacts を追加。セッションから PR ウォークスルーや常時更新されるダッシュボードなどのインタラクティブなページを生成し、社内限定リンクでチーム共有できる（Team / Enterprise ベータ）。あわせて Claude Design と Claude Code が双方向に同期するようになり、/design-sync でデザインシステムをリポジトリに取り込んで実コンポーネントに対して開発したり、作ったものを Design 側へ戻してキャンバスで編集し続けられる。MCP では Enterprise-Managed Auth 拡張に対応し、管理者が組織のコネクタを一括認可できるようにした。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/claudeai/status/2067671912038240487">Claude (X) — New in Claude Code: Artifacts</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2067391951725629941">Claude Developers (X) — Claude Code and Claude Design now sync both ways</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Codex は「実演で教える」へ、xAI は SpaceXAI として企業データ基盤に接続</h3>
+    <div class="article__body">
+      <p>OpenAI の Greg Brockman は、Codex を実演（demonstration）で教えられるようになったと示し、アプリの全機能テストや iOS アプリ開発の改善例を相次いで投稿。「ソフトウェアエンジニアリングは半年前すら思い出せないほど変わった」と述べた。リアルタイム音声の GPT-Realtime-2 も予告された。xAI 側は SpaceX との統合後「SpaceXAI」のブランドで、Grok モデルを Databricks Agent Bricks から企業データに接続し、エンタープライズのエージェント基盤に食い込む動きを見せている。開発・実行の主役がエージェントへ移る前提で、各社が配備面（IDE・企業データ・音声）を押さえに来た一週間だった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/gdb/status/2067700691062464887">Greg Brockman (X) — you can now teach Codex by demonstration</a></li>
+      <li><a href="https://x.com/gdb/status/2067043685611790653">Greg Brockman (X) — software engineering is so different now</a></li>
+    </ul>
+  </article>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">来週の注目ポイント</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Fable 5 の行方、GLM 5.2 の API/検証、リアルタイム音声の次世代</h3>
-    <div class="article__body">
-      <ul>
-        <li><strong>Fable 5 / Mythos 5 の規制の帰趨</strong> — Anthropic とホワイトハウスの対立がどう収束するか。外国籍ユーザー向けアクセスの再開条件や、他社フロンティアモデルへの規制波及の有無が焦点。</li>
-        <li><strong>GLM 5.2 の API 一般提供とベンチマーク</strong> — 重み公開に続く API 提供と、未公開だった性能数値の検証。オープンウェイトがフロンティア級にどこまで迫るかが問われる。</li>
-        <li><strong>GPT-Realtime-2 の正式発表</strong> — 示唆された次世代リアルタイム音声モデルの仕様・提供時期。対話型エージェントの体験を左右する。</li>
-        <li><strong>エージェント本番化のコスト設計</strong> — Claude Agent SDK の課金変更（延期分）の再告知や、Managed Agents 採用の広がり。自前ハーネス vs マネージドの選択が引き続き論点。</li>
-      </ul>
-    </div>
-  </article>
+  <div class="article__body">
+    <p>OpenAI DevDay 2026 の応募が始まった（開催 9/29・サンフランシスコ、応募締切 7/10）。Claude Tag のより広いプラン展開、GPT-5.5-Cyber の信頼防御者向け提供の拡大、Patch the Planet 参加プロジェクトの増加が当面の観測点になる。DeepMind の人材流出が組織やロードマップにどう波及するかも、来週以降の続報を追いたい。</p>
+  </div>
 </section>
     </main>
 
