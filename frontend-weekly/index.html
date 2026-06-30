@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年6月23日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年6月30日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年6月23日">
+<meta property="og:title" content="フロントエンドニュース — 2026年6月30日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,52 +23,53 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年6月23日（火）</span>
+        <span>2026年6月30日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
-            <section class="summary">
+      <section class="summary">
         <h2 class="summary__title">まとめ</h2>
-        <p>今週は「先週の予告が現実になった一週間」。先週ベータだった TypeScript 7.0 が 6 月 18 日に RC へ進み、安定版が約 1 か月後（7 月中旬目安）に視野へ入った。同じ 18 日、先週「17 日予告」としていた Node.js のセキュリティリリースが実際に公開され、全サポート系（22.23.0 / 24.17.0 / 26.3.1）で 13 件の CVE、うち High が 2 件という具体像が判明。crypto と TLS の High はすべての稼働中ラインに影響するため、まずここを塞ぎたい。エコシステムでは Vite/Rolldown を擁する VoidZero の Cloudflare 傘下入りという統治面の地殻変動が続き、CSS は Interop 2026 / Baseline 2026 が新年度の焦点を固めた。</p>
+        <p>今週はメタフレームワークとランタイムが「サーバーの速さで、クライアントの手触りを」を競った一週間。Vercel は 6 月 24 日に Next.js 16.3 のプレビューを公開し、Server Components を捨てずに SPA 並みの体感を狙う <code>Instant Navigations</code> を投入。翌 25 日には Deno 2.9 が <code>deno desktop</code> で「Web スタックのまま単一バイナリの native アプリ」を実験的に解禁した。先週 RC（6 月 18 日）が出た TypeScript 7.0 は GA（7 月中旬目安）の最終局面に入り、Vite も 8.1.0 で <code>server.fs.deny</code> を広げて足元を固めた。フレームワーク選びの軸は「どのリアクティビティか」から「ナビゲーションとビルドの体感をどう詰めるか」へ移りつつある。</p>
       </section>
 
       <section class="topic">
         <h2 class="topic__title">今週の重要ポイント</h2>
 
         <article class="article">
-          <h3 class="article__headline">TypeScript 7.0、ベータから RC へ — 安定版が射程に</h3>
+          <h3 class="article__headline">Next.js 16.3 プレビュー — <code>Instant Navigations</code> で SPA の手触りを取り戻す</h3>
           <div class="article__body">
-            <p>6 月 18 日、Microsoft が TypeScript 7.0 の Release Candidate を公開した。先週の本紙で取り上げたベータからの正式な前進で、RC は即日 npm から入手できる。Go へ移植したネイティブコンパイラは型チェックがおおむね 10 倍速とされ、安定版（GA）は RC から約 1 か月後、7 月中旬ごろが目安とされている。</p>
-            <p>あくまで「書き直し」ではなく「移植」で、型チェックの意味論は従来と同一を保つ点が引き続き強調されている。1 年超のプレリリース検証を経て、すでに数百万行規模のコードベースや CI で実用に供されており、日常のワークフローでの評価に十分耐えるという位置づけ。本番採用前の検証を始めるなら、まさに今が好機。</p>
+            <p>6 月 24 日、Vercel が Next.js 16.3 のプレビューを公開した。目玉は <code>Instant Navigations</code>。サーバーレンダリングの「ネットワーク待ち」で SPA に見劣りしていた遷移を、ルートごとに 3 つの挙動から選んで詰める設計だ。Suspense でローディングシェルを即時ストリーミングする <strong>Stream</strong>、<code>'use cache'</code> 済みの UI を即返す <strong>Cache</strong>、従来どおり待たせる <strong>Block</strong> をルート単位で指定できる。</p>
+            <p>もう一つの軸が <strong>Partial Prefetching</strong>。これまではリンクごとに prefetch していたため、サイドバーにチャットリンクが 20 本あれば 20 回リクエストが飛んでいた。新方式はルートごとに再利用可能なシェルを 1 度だけ取得してクライアントにキャッシュし、クリック時はシェルが即描画され残りがストリームで埋まる。開発支援として遅い遷移を開発時エラーで知らせる Instant Insights、DevTools の Navigation Inspector、Playwright 用の <code>instant()</code> ヘルパも揃う。インストールは <code>next@preview</code> から。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://nextjs.org/blog/next-16-3-instant-navigations">Next.js 16.3: Instant Navigations — nextjs.org</a></li>
+            <li><a href="https://alternativeto.net/news/2026/6/next-js-16-3-preview-adds-instant-navigations-and-partial-prefetching/">Next.js 16.3 preview adds instant navigations and partial prefetching — AlternativeTo</a></li>
+          </ul>
+        </article>
+
+        <article class="article">
+          <h3 class="article__headline">Deno 2.9 公開 — <code>deno desktop</code> で Web スタックから native アプリ</h3>
+          <div class="article__body">
+            <p>6 月 25 日に Deno 2.9 がリリースされた。看板機能は <code>deno desktop</code>。Electron のボイラープレート無しで、UI は webview、ロジックは Deno で動かし、全体を単一の配布バイナリにコンパイルする。出力は OS ネイティブ形式のインストーラ（macOS は <code>.app</code>/<code>.dmg</code>、Windows は <code>.exe</code>/<code>.msi</code>、Linux は <code>.AppImage</code>/<code>.deb</code>/<code>.rpm</code>）で、Next.js・Astro・Fresh・Remix・Nuxt・SvelteKit・SolidStart・TanStack Start・Vite SSR のフレームワーク自動検出に対応する。</p>
+            <p>移行まわりも進んだ。<code>deno install</code> が npm・pnpm・yarn・Bun のロックファイルを直接読めるようになり、パッケージマネージャの乗り換えが「移行作業」ではなく数コマンドで済む。hello-world のコールドスタートは 2.8 の 34ms から 17ms へほぼ半減した。なお <code>deno desktop</code> は 2.9 時点では experimental で、一部のプラットフォーム機能はなお実装途上である点に注意したい。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://deno.com/blog/v2.9">Deno 2.9 — deno.com</a></li>
+            <li><a href="https://www.theregister.com/software/2026/06/24/deno-project-is-going-to-add-cross-platform-desktop-apps-in-next-major-update/">Deno project is going to add cross-platform desktop apps — The Register</a></li>
+          </ul>
+        </article>
+
+        <article class="article">
+          <h3 class="article__headline">TypeScript 7.0、GA 最終局面 — エディタ統合も前進</h3>
+          <div class="article__body">
+            <p>先週 RC（6 月 18 日）が出た Go ネイティブの TypeScript 7.0 は、RC から約 1 か月後とされる GA（7 月中旬目安）に向けて検証フェーズへ入った。型チェックは 6.0 比でおおむね 10 倍速とされ、「書き直し」ではなく「移植」なので型の意味論は従来と同一を保つ。RC は npm から即入手でき、1 年超のプレリリース検証を経て本番評価に十分耐えるという位置づけだ。</p>
+            <p>足元ではエディタ統合も動いた。Visual Studio 2026（18.6 Insiders 3）で TypeScript 7 ベータがデフォルト有効になり、IDE 側の既定が新コンパイラへ寄り始めた。本番採用前の検証を始めるなら、RC とエディタ更新が揃った今が好機。</p>
           </div>
           <ul class="article__sources">
             <li><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-rc/">Announcing TypeScript 7.0 RC — TypeScript Blog</a></li>
-            <li><a href="https://www.digitalapplied.com/blog/typescript-7-0-rc-go-native-compiler-2026-upgrade-guide">TypeScript 7.0 RC: The Go-Native Compiler Has Landed — Digital Applied</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">Node.js セキュリティリリース公開 — 全系統で 13 CVE、High が 2 件</h3>
-          <div class="article__body">
-            <p>先週「6 月 17 日に予定」と伝えた Node.js のセキュリティリリースは、6 月 18 日（木）に v22.23.0 / v24.17.0 / v26.3.1 として公開された。アドバイザリは WebCrypto・TLS・HTTP/2・HTTP・DNS・Permission Model などにまたがる 13 件の CVE をまとめており、大半は Medium / Low だが High が 2 件含まれる。</p>
-            <p>High の 1 件目は WebCrypto の整数オーバーフロー（CVE-2026-48933）。<code>subtle.encrypt()</code> に 2GiB の倍数長の入力が渡るとプロセスが異常終了し、DoS につながる。2 件目は TLS の認証バイパス（CVE-2026-48618）で、Unicode のドット区切りの正規化がリゾルバと検証側でずれることに起因し、ワイルドカード証明書の深さ検証をすり抜けられる。いずれも稼働中の全ライン（22 / 24 / 26）に影響するため、未パッチのまま回避できるバージョンは存在しない。即時のアップデートを推奨する。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Thursday, June 18, 2026 Security Releases</a></li>
-            <li><a href="https://www.digitalapplied.com/blog/nodejs-june-2026-security-releases-cve-patch-guide">Node.js June 2026 Security Releases: CVE Patch Guide — Digital Applied</a></li>
-          </ul>
-        </article>
-
-        <article class="article">
-          <h3 class="article__headline">Svelte 6 月号 — リアルタイム購読 <code>query.live()</code> が前進</h3>
-          <div class="article__body">
-            <p>SvelteKit のリモート関数まわりが実用度を上げた。新しい <code>query.live(...)</code> はサーバーからのリアルタイムデータを扱いやすくし、長寿命の購読を async-iterable として回せる。さらにリモートクエリをイベントハンドラ・非同期コールバック・モジュールスコープのどこでも <code>await</code> でき、キャッシュの重複排除がリアクティブ／非リアクティブ双方で共有されるようになった。</p>
-            <p>先週触れた TypeScript 6.0 対応・<code>.run()</code> 廃止に続く動きで、サーバー状態をフロントに引き込む際の「待てる場所」が一気に広がった点が今号の見どころ。テンプレート内で値を宣言できるようになるなど、書き味の改善も入っている。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://svelte.dev/blog/whats-new-in-svelte-june-2026">What's new in Svelte: June 2026 — svelte.dev</a></li>
+            <li><a href="https://devblogs.microsoft.com/visualstudio/typescript-7-beta-now-enabled-by-default-in-visual-studio-2026-18-6-insiders-3/">TypeScript 7 Beta Now Enabled by Default in Visual Studio 2026 — Visual Studio Blog</a></li>
           </ul>
         </article>
       </section>
@@ -77,14 +78,14 @@
         <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
         <article class="article">
-          <h3 class="article__headline">シグナル／コンパイラへの収束、2026 年の現在地</h3>
+          <h3 class="article__headline">Turbopack の地ならし — メモリと永続キャッシュ、Rust 版 React Compiler</h3>
           <div class="article__body">
-            <p>主要フレームワークは、細粒度リアクティビティ・サーバーファーストレンダリング・コンパイラ駆動の最適化・AI 支援ワークフローという 4 テーマへ収束しつつある。React は Compiler による自動メモ化で <code>useMemo</code>/<code>useCallback</code> の手書きを不要にし、Angular は Signals でバンドルを縮小、Vue は Vapor Mode で仮想 DOM を外す方向、Svelte は Runes で言語レベルに反応性を埋め込む。「どのフレームワークか」より「どのリアクティビティ実装を選ぶか」という議論軸が定着してきた。</p>
-            <p>採用比率では依然 React が約 47% で首位、Next.js・Angular・Vue が続き、Svelte は約 7%。Create React App は役目を終え、新規は Vite が標準ツールという整理も改めて確認された。</p>
+            <p>Next.js 16.3 は遷移だけでなくビルド基盤も底上げした。Turbopack には、長時間の開発セッションでコンパイラのメモリを回収する Memory Eviction、連続ビルドを速める Persistent Cache for Builds、Rust で再実装された React Compiler、<code>import.meta.glob</code> 対応が入った。日々の <code>dev</code> が重くなりにくく、CI のビルドも積み増しが効く方向だ。</p>
+            <p>AI/エージェント連携も今号の特徴。<code>AGENTS.md</code> 経由でバージョン整合したドキュメントをエージェントに読ませる仕組み、複数ステップを駆動する First-party Skills、React の内部を覗ける Agent Browser、対処方法を示す actionable errors、より小さく焦点を絞った MCP サーバなどが並ぶ。フレームワークが「人間と LLM の両方が読む対象」へ寄っていく流れが、メタフレームワーク側でも具体化してきた。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://www.nucamp.co/blog/javascript-framework-trends-in-2026-what-s-new-in-react-next.js-vue-angular-and-svelte">JavaScript Framework Trends in 2026 — Nucamp</a></li>
-            <li><a href="https://react.dev/blog">React Blog — react.dev</a></li>
+            <li><a href="https://nextjs.org/blog/next-16-3-instant-navigations">Next.js 16.3: Instant Navigations — nextjs.org</a></li>
+            <li><a href="https://byteiota.com/next-js-16-3-instant-navigations-and-agent-devtools-are-here/">Next.js 16.3: Instant Navigations and Agent DevTools Are Here — byteiota</a></li>
           </ul>
         </article>
       </section>
@@ -93,29 +94,14 @@
         <h2 class="topic__title">エコシステム・ツール</h2>
 
         <article class="article">
-          <h3 class="article__headline">VoidZero が Cloudflare 傘下へ — Vite/Rolldown の統治が動く</h3>
+          <h3 class="article__headline">Vite 8.1.0 — Rolldown 追従と <code>server.fs.deny</code> の強化</h3>
           <div class="article__body">
-            <p>6 月初旬、Evan You が 2023 年に立ち上げた VoidZero の Cloudflare による買収が報じられた。VoidZero は Vite（ビルドツール）・Rolldown（Rust 製バンドラ）・Oxc（パーサ／トランスフォーマ）・Vitest（テストランナー）という次世代ツールチェーンを束ねる中核で、フロントエンド基盤の統治体制に関わる動きとして今週も受け止め方の議論が続いている。</p>
-            <p>技術面では、3 月に出た Vite 8 が Rolldown を単一の Rust 製バンドラとして本採用済みで、プラグイン互換を保ちつつ大幅な高速化を実現している。OSS としての継続性とロードマップへの影響を、利用側としては当面ウォッチしておきたい。</p>
+            <p>6 月 23 日に Vite 8.1.0 が出た。同梱の Rolldown を 1.1.2 へ更新しつつ、開発サーバの <code>server.fs.deny</code>（配信を拒否するファイルのリスト）に一般的な機微ファイルを追加して既定を厳しくした。3 月に Vite 8 が Rolldown を単一の Rust 製バンドラとして本採用して以降、本体はパッチで安定度とセキュリティ既定を詰める局面に入っている。</p>
+            <p>VoidZero の Cloudflare 傘下入りという統治面の動きが続くなか、利用側として見るべきは「日々のリリースが止まらず、既定が安全側へ寄っているか」。今回の <code>server.fs.deny</code> 拡張はその一例で、アップデートはそのまま取り込んで問題になりにくい性質のものだ。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://www.nexgismo.com/blog/cloudflare-voidzero-vite-8-rolldown-guide-2026-3">Cloudflare Buys VoidZero: Vite 8, Rolldown & What Changes — Nexgismo</a></li>
-            <li><a href="https://vite.dev/blog/announcing-vite8">Vite 8.0 is out! — vite.dev</a></li>
-          </ul>
-        </article>
-      </section>
-
-      <section class="topic">
-        <h2 class="topic__title">セキュリティ</h2>
-
-        <article class="article">
-          <h3 class="article__headline">Node.js アップデートの当て方 — 優先順位の付け方</h3>
-          <div class="article__body">
-            <p>今回の Node.js リリースを受けて、フロントエンド／フルスタックチームが今すぐ確認したい点。①稼働中ランタイムと CI/CD で使う Node のバージョンを 22.23.0 / 24.17.0 / 26.3.1 以降へ引き上げる、②TLS 認証バイパス（CVE-2026-48618）はサーバー間通信の信頼境界に効くため、証明書検証に依存する経路を優先的に潰す、③WebCrypto の DoS（CVE-2026-48933）は大きな入力を扱う暗号処理がある場合に効くので、該当箇所の有無を棚卸しする。LTS・Current いずれも対象な点に注意。</p>
-          </div>
-          <ul class="article__sources">
-            <li><a href="https://nodejs.org/en/blog/vulnerability/june-2026-security-releases">Node.js — Thursday, June 18, 2026 Security Releases</a></li>
-            <li><a href="https://cyberpress.org/critical-node-js-security-release-patches/">Critical Node.js Security Release Patches Vulnerabilities — Cyberpress</a></li>
+            <li><a href="https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md">vite CHANGELOG — github.com/vitejs/vite</a></li>
+            <li><a href="https://github.com/vitejs/vite/releases">Releases · vitejs/vite — github.com</a></li>
           </ul>
         </article>
       </section>
@@ -124,13 +110,13 @@
         <h2 class="topic__title">デザイン・CSS</h2>
 
         <article class="article">
-          <h3 class="article__headline">Interop 2026 / Baseline 2026 — 今年の相互運用の焦点が固まる</h3>
+          <h3 class="article__headline">Baseline 月次ダイジェスト — プラットフォーム標準への移行が続く</h3>
           <div class="article__body">
-            <p>ブラウザ各社（Apple・Google・Igalia・Microsoft・Mozilla）が進める Interop 2026 は、20 のフォーカスエリアを掲げる（うち 15 が新規、5 が 2025 からの継続）。アニメーションタイムライン系プロパティ（<code>animation-timeline</code> / <code>scroll-timeline</code> / <code>view-timeline</code>）、HTML 属性値を CSS に取り込む <code>attr()</code>、<code>contrast-color()</code>、スクロール駆動アニメーション、View Transitions、<code>&lt;dialog&gt;</code> と <code>:open</code> 擬似クラス、<code>popover="hint"</code> などが並ぶ。</p>
-            <p>2026 年中に全コアブラウザで相互運用に達した機能は「Baseline 2026」として整理される。ライブラリで補ってきた領域がプラットフォーム標準へ移る流れが続いており、採用判断は webstatus.dev などで対応状況を確認しながら進めたい。</p>
+            <p>CSS/Web プラットフォーム側は、ライブラリで補ってきた領域がブラウザ標準へ移る流れが今月も続いている。直近の Baseline では <code>image-rendering</code>（拡大縮小時のスケーリングアルゴリズム制御。ピクセルアートや QR コードに有効）、下線がグリフを避ける挙動を強制する <code>text-decoration-skip-ink: all</code>、同一オリジンの複数コンテキストから使える SharedWorker API などが「Newly available」に加わった。</p>
+            <p>2026 年の Interop では anchor positioning（純 CSS で要素を別要素に係留＝Floating UI / Popper.js が担っていた仕事）や container style queries が中心テーマに据わる。採用判断は webstatus.dev などで各機能の対応状況を確認しながら進めたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://web.dev/blog/interop-2026">Interop 2026: Continuing to improve the web for developers — web.dev</a></li>
+            <li><a href="https://web.dev/blog/baseline-digest-may-2026">May 2026 Baseline monthly digest — web.dev</a></li>
             <li><a href="https://web.dev/baseline/2026">Baseline 2026 — web.dev</a></li>
           </ul>
         </article>
@@ -140,9 +126,9 @@
         <h2 class="topic__title">来週の注目ポイント</h2>
 
         <article class="article">
-          <h3 class="article__headline">TypeScript 7.0 GA に向けた最終局面</h3>
+          <h3 class="article__headline">TypeScript 7.0 GA カウントダウン</h3>
           <div class="article__body">
-            <p>RC から約 1 か月後とされる安定版リリースに向け、来週以降は RC の検証報告や移行ガイドの拡充が続く見込み。古いコンパイルターゲットやウォッチモード・デコレータ周りの対応状況、エディタ統合の進捗を公式ブログと GitHub の milestone で継続ウォッチしたい。</p>
+            <p>RC から約 1 か月後とされる GA に向け、来週以降は RC の検証報告・移行ガイドの拡充が要点。古いコンパイルターゲットやウォッチモード・デコレータ周りの対応状況、エディタ統合の進捗を公式ブログと GitHub の milestone で継続ウォッチしたい。</p>
           </div>
           <ul class="article__sources">
             <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
@@ -150,12 +136,13 @@
         </article>
 
         <article class="article">
-          <h3 class="article__headline">Node.js パッチ適用後の追跡</h3>
+          <h3 class="article__headline">Next.js 16.3 と Deno 2.9 の「プレビュー後」</h3>
           <div class="article__body">
-            <p>6 月 18 日リリースの適用が一巡する来週は、各 CVE の追加情報や回帰報告、Docker 公式イメージ・ホスティング各社のランタイム更新タイミングの確認が要点になる。特に TLS 認証バイパスは影響範囲が読みにくいため、後続の解説記事を追っておきたい。</p>
+            <p>Next.js 16.3 はプレビュー、<code>deno desktop</code> は experimental という段階。来週は実利用の知見（Partial Prefetching の効きどころ、desktop ビルドの実機検証）が出てくる見込みで、安定版・正式版へ向けた API の固まり方を追っておきたい。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://nodejs.org/en/blog/vulnerability">Node.js Vulnerability Blog — nodejs.org</a></li>
+            <li><a href="https://nextjs.org/blog">Next.js Blog — nextjs.org</a></li>
+            <li><a href="https://deno.com/blog">Deno Blog — deno.com</a></li>
           </ul>
         </article>
       </section>
