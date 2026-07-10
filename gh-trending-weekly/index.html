@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年7月3日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年7月10日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年7月3日">
+<meta property="og:title" content="GitHub トレンド — 2026年7月10日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月3日（金）</span>
+        <span>2026年7月10日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,178 +31,169 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の週間トレンドは、先週まで主役だった「エージェントを動かすハーネス」から、エージェントに渡す<strong>中身</strong>——スキル集・テンプレート・仕様フォーマット——へと重心が広がった。Claude Code / Codex を価値投資の研究フレームワークに仕立てた xbtlin/ai-berkshire が週間 +7,000★ 近くで急上昇し、232 のエージェント人格を束ねた agency-agents、コーディングエージェントに Web サイトを複製させる ai-website-cloner-template、デザインシステムをエージェント可読にする Google Labs の design.md が続いた。先週首位の calesthio/OpenMontage は +1 万★ で依然トップ級を維持。エージェントの「記憶」層でも DeusData/codebase-memory-mcp が今週も +9,800★ と伸び、topoteretes/cognee が並んだ。AI 以外では、識別子を一切持たないメッセージング simplex-chat と、無料枠サービスの定番リスト free-for-dev、自前ホストの旅行計画 TREK が安定した支持を集めた。</p>
+  <p>今週の週間トレンドは、先週まで続いた「エージェントに渡す中身（スキル・仕様）」の潮流が一段進み、<strong>ベンダーの垣根を越えた連携</strong>と<strong>ローカル志向</strong>の二軸に集約された。象徴は OpenAI 公式の <code>codex-plugin-cc</code>——Claude Code の中から Codex を呼んでレビュー・タスク委譲する、競合同士をつなぐプラグインが週間 +4,800★ 近くで急伸した。Meta はエージェント可読を掲げるデザインシステム astryx を公開し、Microsoft は <code>dotnet/skills</code>、Alibaba は page-agent と、大手が相次いでエージェント向け資産を投下している。基盤側では複数エージェントを束ねる herdr、隔離実行する CubeSandbox、231+ プロバイダを束ねる OmniRoute が伸びた。もう一方の軸はプライバシー・ローカルで、会議を端末内で完結させる meetily が週間 +8,885★ で今週の伸び頭、HuggingFace の speech-to-speech も続いた。先週上位の strix・orca・ai-berkshire は今週も残り、AI 一色の傾向は変わらない。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントに渡す「中身」——スキル・テンプレート・仕様</h2>
+  <h2 class="topic__title">ベンダーの垣根を越えるエージェント連携</h2>
 
   <article class="article">
-    <h3 class="article__headline">xbtlin/ai-berkshire — Claude Code / Codex で組む価値投資リサーチ框架（週間 +6,989★）</h3>
+    <h3 class="article__headline">openai/codex-plugin-cc — Claude Code から Codex を呼ぶ OpenAI 公式プラグイン（週間 +4,792★ / 累計 2.7万★）</h3>
     <div class="article__body">
-      <p>今週最大の伸びを見せた新顔。Warren Buffett・Charlie Munger らの価値投資の方法論を、Claude Code / Codex 上で回す研究フレームワークとして実装したもの。企業の深掘り調査・決算レビュー・業界スクリーニング・ポートフォリオ管理・投資チェックリストなど、18 の専門「スキル」を備える。</p>
-      <p>特徴は、単一視点の AI 分析に頼らず、複数のエージェントを異なる投資哲学のもとで並列に走らせ、各投資案件を四つの競合する視点から批判的に検討する「マルチエージェント敵対分析」にある。「合格／不合格／グレーゾーン」を明示する構造化された意思決定フレームと、計算のクロスバリデーションを行う財務ツールを組み合わせる。主体は Python、ライセンスは MIT。エージェントの器ではなく、特定領域の「思考の型」をスキルとして与える方向を象徴する動きだ。</p>
+      <p>OpenAI が公式に公開した、Claude Code のワークフローの中から Codex を使うためのプラグイン。競合するコーディングエージェント同士をつなぐという構図が注目を集め、今週の話題をさらった。既存の作業環境を離れずに、コードレビューやタスクの委譲を Codex に任せられる。</p>
+      <p><code>/codex:review</code> の通常レビュー、前提や設計判断に切り込む <code>/codex:adversarial-review</code>、デバッグや実装を丸ごと預ける <code>/codex:rescue</code>、Claude Code のセッションを Codex 側の永続スレッドへ移す <code>/codex:transfer</code> を備え、<code>/codex:status</code>・<code>/codex:result</code>・<code>/codex:cancel</code> でバックグラウンドジョブを管理する。Codex の検証が通るまで Claude の応答をブロックする任意のレビューゲートも持つ。ChatGPT サブスクリプション（無料枠を含む）または OpenAI API キーと Node.js 18.18 以上が必要。主体は JavaScript、ライセンスは Apache-2.0。「どちらか一方を選ぶ」ではなく「両方を協調させる」方向を、当のベンダーが後押しし始めた点が象徴的だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a></li>
+      <li><a href="https://github.com/openai/codex-plugin-cc">openai/codex-plugin-cc</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">msitarzewski/agency-agents — 232 のエージェント人格を束ねた「AI 代理店」（週間 +9,484★）</h3>
+    <h3 class="article__headline">facebook/astryx — 人とエージェントが同じ道具で作る Meta のデザインシステム（週間 +4,087★ / 累計 7.6千★）</h3>
     <div class="article__body">
-      <p>エンジニアリング・デザイン・マーケティング・営業・プロダクト・セキュリティ・財務・ゲーム開発・GIS など 16 部門にまたがる、232 の専門 AI エージェント人格を収めたコレクション。README は「指先に完結する AI 代理店」と謳う。汎用プロンプトではなく、各エージェントに固有のプロセス・成果物・成功指標を持たせている点を特徴とする。</p>
-      <p>Claude Code・GitHub Copilot・Cursor・OpenCode など 10 以上のツールへネイティブに組み込め、ワンクリック導入のデスクトップアプリ（macOS／Linux／Windows）とマルチツール変換スクリプトを備える。主体は Shell（84.7%）と Python、ライセンスは MIT。前週の各種「スキル集」に続き、今度は職能別の「人格集」がまとめて流通し始めている。</p>
+      <p>Meta が公開したオープンソースのデザインシステム。「人とエージェントのために作られた」を掲げ、API・ドキュメント・CLI を一体で設計し、人間の開発者と AI アシスタントが同じ参照・同じ流儀で UI を組めるようにする。社内で最も使われる最大のデザインシステムとして育ったものを外部公開したという。</p>
+      <p>TypeScript 対応の 150 以上のアクセシブルな React コンポーネント、neutral・butter・chocolate・matcha など 7 つのテーマ、ダークモード、CSS カスタムプロパティによるブランド単位のテーミングを備える。コンポーネントのスキャフォールドやドキュメント生成を担う CLI を持ち、その CLI を支える API を AI エージェントやビルドツールも同じように叩ける。命名・prop・合成の規則を全コンポーネントで統一し、数個覚えれば残りの挙動を人も AI も予測できる設計を強調する。Tailwind・CSS modules・素の CSS のいずれとも併用可能で、リポジトリには <code>CLAUDE.md</code>／<code>AGENTS.md</code> を同梱する。現時点では beta、ライセンスは MIT。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/msitarzewski/agency-agents">msitarzewski/agency-agents</a></li>
+      <li><a href="https://github.com/facebook/astryx">facebook/astryx</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">JCodesMore/ai-website-cloner-template — サイトを Next.js に複製させるテンプレート（週間 +4,843★）</h3>
+    <h3 class="article__headline">dotnet/skills — .NET / C# 開発をエージェントに教える公式スキル集（週間 +886★ / 累計 4.5千★）</h3>
     <div class="article__body">
-      <p>コーディングエージェントを使って、既存 Web サイトをクリーンな Next.js コードベースへ「リバースエンジニアリング」するための再利用テンプレート。URL を指定して <code>/clone-website</code> を実行すると、エージェントがサイトを解析し、デザイントークンとアセットを抽出、コンポーネント仕様を書き起こし、各セクションを並列に再構築する。</p>
-      <p>偵察→基盤構築→コンポーネント仕様→並列ビルド→組み立て、という多段パイプラインで動き、Claude Code・GitHub Copilot・Cursor・Windsurf など 11 以上のエージェントに対応する。技術スタックは Next.js 16・React 19・shadcn/ui・Tailwind CSS v4・TypeScript strict。プラットフォーム移行、失われたソースコードの復元、実運用サイトからの学習を想定用途に挙げる。ライセンスは MIT。</p>
+      <p>Microsoft の .NET チームによる、AI コーディングエージェントに .NET・C# プロジェクトを扱わせるためのスキルとカスタムエージェントのコレクション。C# の言語サーバー（LSP）連携を組み込み、データアクセス・診断・ビルド・パッケージ管理・アップグレード・MAUI・AI/ML・ASP.NET Core・Blazor・テストなど多領域の開発タスクをカバーする。</p>
+      <p>テストフレームワークの移行ツールやテンプレートエンジンによるプロジェクト雛形生成を備え、.NET 11 の機能にも対応する。<code>agentskills.io</code> のオープン標準に沿い、Copilot CLI・Claude Code・VS Code・Cursor・Codex CLI などのプラグインマーケットプレイス経由で導入できる。主体は C#、ライセンスは MIT。先週の各種「スキル集」に続き、大手プラットフォーマー自身が自社言語向けのスキルを公式に配り始めた例だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/JCodesMore/ai-website-cloner-template">JCodesMore/ai-website-cloner-template</a></li>
+      <li><a href="https://github.com/dotnet/skills">dotnet/skills</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">google-labs-code/design.md — デザインシステムをエージェント可読にする仕様フォーマット（週間 +6,240★）</h3>
+    <h3 class="article__headline">alibaba/page-agent — ページ内で動く JavaScript 製 GUI エージェント（週間 +4,459★ / 累計 2.6万★）</h3>
     <div class="article__body">
-      <p>Google Labs による、コーディングエージェントがデザインシステムを一貫して理解・適用できるようにするためのフォーマット仕様。機械可読なデザイントークン（YAML）と、人間可読な設計意図の記述（Markdown 散文）を一つのファイルに束ね、エージェントに「デザインシステムの永続的で構造化された理解」を与えることを狙う。</p>
-      <p>DESIGN.md ファイルの lint・diff・エクスポートを行う CLI ツール、WCAG コントラスト比チェックを含むトークン検証、Tailwind や W3C Design Token 形式へのエクスポート、構造・意味の誤りを捕らえる 9 つの lint ルールを備える。主体は TypeScript（96.1%）、ライセンスは Apache-2.0。現時点では alpha 段階。エージェントに「見た目のルール」を規格として渡す試みで、design.md という命名自体が README／AGENTS.md といった既存慣習の延長線上にある。</p>
+      <p>Alibaba による、Web インターフェースを自然言語で操作するためのページ内 GUI エージェント。ブラウザ拡張・Python・ヘッドレスブラウザを必要とせず、JavaScript を組み込むだけで動く点を特徴とする。スクリーンショットに頼らず、テキストベースで DOM を解析・操作する。</p>
+      <p>ローカル配置を含む複数の LLM に対応し、複数ページにまたがるタスク向けの任意の Chrome 拡張、beta の MCP サーバー対応を持つ。SaaS への AI コパイロット組み込み、ERP／CRM のスマートなフォーム入力、自然言語による Web アクセシビリティ、MCP クライアントからのブラウザ制御を想定用途に挙げる。主体は TypeScript、ライセンスは MIT。エージェントを Web ページの内側に住まわせる、ブラウザ操作系の新しい形だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/google-labs-code/design.md">google-labs-code/design.md</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">AI メディア生成とエージェントの「記憶」</h2>
-
-  <article class="article">
-    <h3 class="article__headline">calesthio/OpenMontage — エージェント型の動画制作システム、依然トップ級（週間 +10,199★ / 累計 3.2万★）</h3>
-    <div class="article__body">
-      <p>先週の首位から続いて今週も週間 +1 万★ を集めたリポジトリ。README は「世界初のオープンソースなエージェント型動画制作システム。12 のパイプライン、52 のツール、500 以上のエージェントスキル」と謳う。Claude・Cursor・Copilot などの AI コーディングアシスタントを自動の動画制作スタジオに変え、ユーザーが平易な言葉で要望を伝えると、エージェントが調査・脚本・素材生成・編集・最終合成までを担う。</p>
-      <p>解説動画・トーキングヘッド・シネマティック予告編・ドキュメンタリー・アニメーション・ポッドキャストなど 12 の制作パイプラインを持ち、動画／画像生成・音声合成・音楽・ミキシング・字幕の 52 ツールを束ねる。Kling・Runway・Google Veo・ローカル GPU モデルなど 14 以上の動画生成プロバイダに対応し、Archive.org・NASA・Wikimedia Commons などの無料アーカイブから実写ドキュメンタリーも作れる。ライセンスは AGPLv3。前週の「スキルを大量に束ねたエージェント」路線を体現するプロジェクトとして定着しつつある。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/calesthio/OpenMontage">calesthio/OpenMontage</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">DeusData/codebase-memory-mcp — コードベースを知識グラフ化する MCP、今週も上位（週間 +9,873★ / 累計 2.5万★）</h3>
-    <div class="article__body">
-      <p>ソースコードから永続的な知識グラフを構築し、AI エージェントがファイルを逐次探索せずに構造を把握できるようにする MCP サーバー。先週（週間 +8,000★）に続き今週も +9,800★ 超を集め、トレンド上位を維持した。平均的なリポジトリをミリ秒で、Linux カーネルでも 3 分で全索引化すると謳い、tree-sitter で 158 言語に対応、主要言語ではハイブリッド LSP による型解決を行う。</p>
-      <p>検索・呼び出し経路の追跡・デッドコード検出・アーキテクチャ分析・影響マッピングなど多数の MCP ツールを備え、ファイル単位の探索に比べトークンを大幅に削減できるとする。依存ゼロの単一静的バイナリと 3D グラフ可視化 UI を持ち、Claude Code・Zed・Aider など複数のエージェントと連携する。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/DeusData/codebase-memory-mcp">DeusData/codebase-memory-mcp</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">topoteretes/cognee — エージェント向けの AI メモリ基盤（週間 +4,531★ / 累計 2.7万★）</h3>
-    <div class="article__body">
-      <p>「エージェントのためのオープンソース AI メモリプラットフォーム」。セッションを跨いで長期記憶を保つために、自前ホストの知識グラフを継続的に構築する。多様な形式のデータを取り込み、ベクトル埋め込み・グラフ推論・認知科学に基づくオントロジー生成を組み合わせて、概念間の関係を張りながら文脈を保持する。</p>
-      <p>「remember／recall／forget／improve」の 4 操作を中核に、Postgres・Neo4j・SQLite などのバックエンド、複数 LLM プロバイダ対応、Python／Rust／TypeScript のクライアントを備える。RAG（検索拡張生成）とエージェント設計の交点に立つプロジェクトで、codebase-memory-mcp と並び「エージェントに記憶をどう持たせるか」という今週の裏テーマを形づくる。ライセンスは Apache-2.0。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/topoteretes/cognee">topoteretes/cognee</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">stablyai/orca — 並列エージェントの「艦隊」を操る ADE（週間 +3,574★ / 累計 1.1万★）</h3>
-    <div class="article__body">
-      <p>先週に続きランクインした、複数のコーディングエージェントを並列で走らせる ADE（Agentic Development Environment）。README は「並列エージェントの艦隊（fleet）で作業するための ADE。自分のサブスクで任意のコーディングエージェントを動かせる。デスクトップとモバイルで利用可能」と説明する。1 つのプロンプトから複数エージェントを隔離された worktree で同時に走らせ、結果を比較してベストをレビュー・マージできる。</p>
-      <p>遠隔から監視・操舵するモバイルアプリ、WebGL レンダリングの高機能ターミナル、UI 要素をクリックして HTML/CSS をプロンプトに注入する Design Mode、SSH worktree、注釈可能な AI diff などを備え、Claude Code・Codex・OpenCode など 20 以上のエージェントに対応する。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
+      <li><a href="https://github.com/alibaba/page-agent">alibaba/page-agent</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">セキュリティ・コンピュータビジョン</h2>
+  <h2 class="topic__title">エージェントを束ねる・隔離する基盤</h2>
 
   <article class="article">
-    <h3 class="article__headline">usestrix/strix — 自律型 AI ペネトレーションテストツール（週間 +4,743★ / 累計 3.3万★）</h3>
+    <h3 class="article__headline">ogulcancelik/herdr — 端末で複数エージェントを多重化するマルチプレクサ（週間 +4,756★ / 累計 1.5万★）</h3>
     <div class="article__body">
-      <p>アプリの脆弱性を自律的に発見・検証する AI ペネトレーションテストツール。静的解析ではなく、実際に動的実行して概念実証（PoC）エクスプロイトを走らせることで脆弱性を裏づける点を特徴とする。複数の AI エージェントを協調させて、OWASP Top 10 を含む広範なスキャンを行う。</p>
-      <p>動く実証付きのレポート、修正の指針、開発者向け CLI と GitHub Actions 連携、自動パッチとコンプライアンス対応レポートを備える。アプリケーションセキュリティ、迅速なペンテスト、バグバウンティ自動化、CI/CD での本番前ブロックを想定用途に挙げる。主体は Python、ライセンスは Apache 2.0。先週の攻撃的セキュリティ系スキル集に続き、今週は「自律的に攻める」ツール本体がランクインした。</p>
+      <p>ターミナル環境向けのエージェント・マルチプレクサ。複数の AI エージェントを一つのターミナル画面の中で同時に管理し、セッションを切り離して再接続できる。ブロック中・作業中・完了といったエージェントの状態をリアルタイムに可視化する。</p>
+      <p>ターミナルを切り替えても状態を保つセッション永続化、エージェント自身がペインを生成して互いに協調できるネイティブなソケット API、キーボード・マウス両対応、拡張可能なプラグイン機構を備える。Electron に依存しない単一の軽量な Rust バイナリである点を売りにする。ライセンスは AGPLv3（組織向けの商用ライセンスも用意）。先週の orca に代表される「並列エージェントの艦隊を操る」路線が、より軽量なターミナル常駐ツールとして広がっている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/ogulcancelik/herdr">ogulcancelik/herdr</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">TencentCloud/CubeSandbox — AI エージェント向けの高速・隔離サンドボックス（週間 +2,284★ / 累計 9.5千★）</h3>
+    <div class="article__body">
+      <p>Tencent Cloud による、AI エージェントのための「即時・並行・安全・軽量」なサンドボックスサービス。LLM が生成した信頼できないコードを、隔離された仮想マシン内で安全に実行することを狙う。KVM ベースで専用のゲスト OS カーネルを用いるハードウェアレベルの隔離を提供し、60ms 未満のコールドスタートとインスタンスあたり 5MB 未満のメモリ増加を謳う。</p>
+      <p>E2B SDK 互換による移行のしやすさ、管理・監視の Web コンソール、API キーをサンドボックス外に保つ資格情報保管庫、ドメイン許可リストと監査ログによる egress 制御、スナップショット・クローン・ロールバック、コスト最適化のための自動一時停止／再開を備える。ARM64・x86_64 の双方に対応。主体は Rust・Go・C、ライセンスは Apache 2.0。エージェントに「手足」を与えるうえで避けて通れない実行環境の安全性に、クラウド事業者が本体を投入した格好だ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/TencentCloud/CubeSandbox">TencentCloud/CubeSandbox</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">diegosouzapw/OmniRoute — 231+ プロバイダを束ねる無料 AI ゲートウェイ（週間 +4,119★ / 累計 1.5万★）</h3>
+    <div class="article__body">
+      <p>単一のエンドポイントから多数の AI プロバイダへリクエストを振り分ける、オープンソースの無料 AI ゲートウェイ。README は 237 プロバイダ（うち 90 以上が無料）に対応すると謳い、Claude Code・Cursor・Cline・Copilot などのコーディングツールを複数モデルへ接続し、自動フォールバックとトークン圧縮を効かせる。</p>
+      <p>優先度・重み付け・コスト最適化・フュージョンなど 17 のルーティング戦略、トークンを 15〜95% 削減するというスタック型の圧縮、95 ツールを持つ MCP サーバーと A2A エージェントプロトコル、チーム間でのクォータ共有と公平スケジューリング、PII 検出やプロンプトインジェクション対策のガードレールを備える。npm・Docker・デスクトップ（Electron）・Android（Termux）・PWA と配布形態も幅広い。主体は TypeScript、ライセンスは MIT。多プロバイダ時代のコスト最適化とレジリエンスを一枚で担う層として支持を集めた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ローカル・プライバシー志向の AI</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Zackriya-Solutions/meetily — 端末内で完結するプライバシー重視の会議アシスタント（週間 +8,885★ / 累計 2.2万★）</h3>
+    <div class="article__body">
+      <p>今週の伸び頭。会議の記録・文字起こし・要約を、クラウドに送らずローカルマシン上で完結させる、プライバシー重視の AI 会議アシスタント。Whisper や Parakeet を使ったリアルタイムのローカル文字起こしと、Ollama・Claude・Groq・OpenRouter に対応した AI 要約を組み合わせる。</p>
+      <p>macOS・Windows・Linux のマルチプラットフォームに対応し、GPU アクセラレーションを効かせた音声ミキシング、既存音声ファイルの取り込みと強化、OpenAI 互換エンドポイントのカスタム指定を備える。防衛・法務・医療・コンプライアンス領域など、機密性の高い会話の完全な統制を必要とする組織を主要な想定利用者に挙げる。主体は Rust・TypeScript・C++、ライセンスは MIT。クラウド前提の議事録 SaaS に対し、データ主権を軸にしたローカル完結型が強い支持を得た。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/Zackriya-Solutions/meetily">Zackriya-Solutions/meetily</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">huggingface/speech-to-speech — オープンモデルで組む低遅延の音声エージェント（週間 +788★ / 累計 5.9千★）</h3>
+    <div class="article__body">
+      <p>Hugging Face による、オープンソースモデルだけで音声エージェントを組むためのパイプライン。「VAD → STT → LLM → TTS」というモジュール構成を取り、OpenAI Realtime 互換の WebSocket API を備える。各段を差し替え可能にし、完全にローカルで低遅延の音声対話を実現することを狙う。</p>
+      <p>STT には Parakeet TDT や Whisper 系、TTS には Qwen3-TTS や Kokoro、LLM にはローカルの transformers・mlx-lm・OpenAI 互換 API と、複数のバックエンドを選べる。リアルタイムサーバー・ローカル・WebSocket・TCP ソケットの複数モードで動き、多言語対応と言語自動判定、Pocket TTS による任意の音声クローンを持つ。Reachy Mini ロボット上で実運用されているという。主体は Python、ライセンスは Apache 2.0。テキスト系に続き、音声もローカル・オープンで組む流れが定着しつつある。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/huggingface/speech-to-speech">huggingface/speech-to-speech</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">マルチモーダル・メタ・教育、そして継続組</h2>
+
+  <article class="article">
+    <h3 class="article__headline">bradautomates/claude-video — Claude に動画を解析させるフレーム抽出ツール（週間 +3,630★ / 累計 7.0千★）</h3>
+    <div class="article__body">
+      <p>動画をダウンロードしてフレームを抽出し、文字起こしと合わせて Claude に渡すことで、動画コンテンツを解析させるツール。<code>/watch</code> コマンドに動画の URL やローカルファイルを与えると、利用可能なら字幕（無料）を取得し、シーンを意識したフレームを設定可能な粒度で抜き出す。字幕が無い場合は Whisper API による音声書き起こしにフォールバックする。</p>
+      <p>動画の構成や「フック」の分析、スクリーン録画からのバグ診断、内容の要約、プレイリストの検索可能なノート化、全編を見ずに要点だけ抜き出す、といった用途を挙げる。主体は Python、ライセンスは MIT。テキスト中心だったコーディングエージェントに、動画という入力を安価に足す小道具として注目された。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/bradautomates/claude-video">bradautomates/claude-video</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">asgeirtj/system_prompts_leaks — 各社 AI のシステムプロンプトを集めた資料庫（週間 +7,149★ / 累計 5.6万★）</h3>
+    <div class="article__body">
+      <p>Claude・ChatGPT・Gemini・Grok など各社チャットボットのシステムプロンプトを抽出・収集して整理したリポジトリ。Anthropic・OpenAI・Google・xAI・Microsoft といった提供元ごとに分類し、モデルのバージョン間でプロンプトの変化を diff で追える。ツール仕様や連携用プロンプトも含む。</p>
+      <p>AI のシステム指示を理解するための教育的な資料として位置づけられ、累計 5.6万★ に達する定番アーカイブになっている。ライセンスは CC0-1.0（パブリックドメイン提供）。エージェント自体を作る動きが盛り上がる裏で、「既存のエージェントが実際どう指示されているか」を覗く AI 自己言及的なメタ資料への関心も根強い。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/asgeirtj/system_prompts_leaks">asgeirtj/system_prompts_leaks</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">harvard-edge/cs249r_book — 「ML システム」を学ぶ Harvard の教材（週間 +1,969★ / 累計 2.7万★）</h3>
+    <div class="article__body">
+      <p>孤立したモデルではなく、本番で動く効率的・堅牢な知的システムを作る「AI エンジニアリング」を教える、統合型のカリキュラム。機械学習とシステム工学をつなぐ理論・メンタルモデルを扱う 2 巻構成の教科書を核に、学習者が ML の内部を 20 モジュールで自作する TinyTorch、設計トレードオフを探る Marimo ノートブックのインタラクティブ実習を備える。</p>
+      <p>大規模での制約をモデル化する MLSys·im シミュレータ、Arduino・Raspberry Pi・組込み向けのハードウェア実習キット、面接想定問題集、講師向け資料まで揃う。主体は Python ほか、ライセンスは構成要素ごとに異なる（教科書等は CC-BY-NC-SA 4.0、TinyTorch は MIT など）。AI 実装ツールが賑わう中で、その土台を体系的に学ぶ長編教材も安定した支持を保った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/harvard-edge/cs249r_book">harvard-edge/cs249r_book</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">継続組 — strix・orca・ai-berkshire が今週も上位に</h3>
+    <div class="article__body">
+      <p>先週取り上げた顔ぶれのうち三つが、今週もトレンドに残った。自律型 AI ペネトレーションテスト <a href="https://github.com/usestrix/strix">usestrix/strix</a> は週間 +8,370★・累計 4.0万★ と伸びを維持し、動的実行で PoC エクスプロイトを走らせて脆弱性を裏づける路線が定着している。並列エージェントの艦隊を操る ADE <a href="https://github.com/stablyai/orca">stablyai/orca</a> は週間 +4,111★ で、今週の herdr と同じ「複数エージェントの束ね」テーマを分け合った。Claude Code / Codex で価値投資リサーチを回す <a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a> も週間 +3,757★ で残り、特定領域の「思考の型」をスキルとして与える流れが一過性でないことを示した。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/usestrix/strix">usestrix/strix</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Robbyant/lingbot-map — ストリーミング映像から 3D を再構成する基盤モデル（週間 +2,012★）</h3>
-    <div class="article__body">
-      <p>連続するカメラ映像から、リアルタイムにシーンを 3D 再構成するフィードフォワード型の 3D 基盤モデル。座標のグラウンディング・密な幾何手がかり・ドリフト補正を扱う Geometric Context Transformer を核に、中解像度で約 20 FPS のストリーミング推論を実現し、1 万フレームを超える系列でも安定して動くとする。</p>
-      <p>屋内ウォークスルー・屋外の走行シーケンス・合成のワールドモデルデータなど多様な状況に対応し、KITTI・Oxford Spires・7-Scenes といった標準データセットでの評価ベンチマークと、すぐ動くサンプルシーンを同梱する。SLAM・空間理解の領域で、AI 一色のトレンドの中では珍しいコンピュータビジョン系の伸び頭。主体は Python、ライセンスは Apache 2.0。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/Robbyant/lingbot-map">Robbyant/lingbot-map</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">interviewstreet/hiring-agent — 履歴書を採点する AI エージェント（週間 +1,689★）</h3>
-    <div class="article__body">
-      <p>履歴書の解析と採点を自動化する、AI による候補者評価システム。PDF の履歴書を構造化データへ変換し、GitHub プロフィールのシグナルで補強したうえで、複数カテゴリにわたる客観スコアを生成する。職歴・学歴・スキル・プロジェクトといった節を抽出し、公平性を制約に組み込んだ採点を、根拠と説明つきで返す。</p>
-      <p>ローカルの Ollama モデルまたは Google Gemini など複数の LLM バックエンドに対応し、バッチ処理向けの CSV 出力と、加点／減点を追跡する説明可能なスコアリングを備える。主体は Python、ライセンスは MIT。採用・人事の領域にもエージェント化の波が及んでいることを示す一例だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/interviewstreet/hiring-agent">interviewstreet/hiring-agent</a></li>
+      <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
+      <li><a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a></li>
     </ul>
   </article>
 </section>
 
-<section class="topic">
-  <h2 class="topic__title">プライバシー・定番リソース</h2>
-
-  <article class="article">
-    <h3 class="article__headline">simplex-chat/simplex-chat — 識別子を一切持たないメッセージング網（週間 +6,376★ / 累計 1.8万★）</h3>
-    <div class="article__body">
-      <p>「いかなる種類のユーザー識別子も持たずに動作する、初のメッセージングネットワーク——設計から 100% プライベート」。ユーザー ID を割り当てず、二重ラチェット暗号（ポスト量子耐性を含む）と使い捨てのリレーノードによって、プラットフォーム側からも外部の観測者からも、利用者の身元・連絡先・メタデータを守ることを掲げる。</p>
-      <p>iOS／Android のモバイルアプリ、デスクトップ／ターミナルの CLI クライアントを備え、グループ・ファイル・音声／ビデオ通話、IP アドレスを隠すプライベートなメッセージ経路、任意の Tor 連携に対応する。主体は Haskell・Kotlin・Swift、ライセンスは AGPL-3.0。AI 一辺倒のトレンドの中で、プライバシー志向の通信基盤が根強い支持を示した。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/simplex-chat/simplex-chat">simplex-chat/simplex-chat</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">ripienaar/free-for-dev — 無料枠サービスを集めた定番リスト（週間 +4,416★ / 累計 12.8万★）</h3>
-    <div class="article__body">
-      <p>開発者・インフラ担当者に役立つ「無料枠（free tier）」を持つ SaaS／PaaS／IaaS を網羅した、コミュニティ運営の一覧。クラウドプロバイダ・API・データベース・CI/CD・テスト・セキュリティ・コラボレーションなど 40 以上のカテゴリに、1,600 を超える無料枠サービスを整理する。各サービスの無料枠の制限や条件も併記する。</p>
-      <p>掲載基準は「（期間限定の場合）少なくとも 1 年続く本物の無料枠を持つ as-a-service 提供」で、セルフホスト型ソフトや、TLS/SSL を有料枠に限るサービスは除外する。1,600 人超の貢献者による 7,000 以上のコミットで維持される、Markdown ベースの定番リポジトリ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/ripienaar/free-for-dev">ripienaar/free-for-dev</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">mauriceboe/TREK — 自前ホストの旅行・トリップ計画アプリ（週間 +2,676★ / 累計 9千★）</h3>
-    <div class="article__body">
-      <p>リアルタイム同期でトリップを共同編集できる、セルフホスト型の旅行計画アプリ。行程計画・費用管理・旅の記録を一つのプラットフォームにまとめる。ドラッグ&ドロップの日程プランニングとインタラクティブな地図、WebSocket による複数人のリアルタイム共同編集、費用の割り勘と予算管理、持ち物リスト、予約管理を備える。</p>
-      <p>オフラインで使える PWA 対応、OIDC プロバイダによるシングルサインオン、MCP（Model Context Protocol）経由の AI 連携、写真付きの旅行ジャーナル、訪問国トラッキング（Atlas）も持つ。主体は TypeScript（NestJS + React/Vite）、地図は Leaflet と Mapbox GL、DB は SQLite、Docker で手軽にデプロイできる。ライセンスは AGPL-3.0。なお今週はジョーク的な kunchenguid/no-mistakes（「git push no-mistakes」）も上位に顔を出したが、こうした短命なネタ枠はここでは触れる程度に留める。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/mauriceboe/TREK">mauriceboe/TREK</a></li>
-    </ul>
-  </article>
-</section>
     </main>
 
     <footer>
