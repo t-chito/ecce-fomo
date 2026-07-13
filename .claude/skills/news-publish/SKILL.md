@@ -110,11 +110,11 @@ argument-hint: <topic>
 </li>
 ```
 
-### 6. commit & push
+### 6. commit & push（発行 PR を作る）
 
-`git add .` の後、コミットメッセージは `[$ARGUMENTS] YYYY-MM-DD 更新` の形（`$ARGUMENTS` の値を埋める）にして `git commit` し、`git push origin main` する。コミットメッセージは通知タイトルにも使われる。
+`git add .` の後、コミットメッセージは `[$ARGUMENTS] YYYY-MM-DD 更新` の形（`$ARGUMENTS` の値を埋める）にして `git commit` する。コミットメッセージは通知タイトルにも使われる。
 
-この `git push origin main` はこのフローの発行そのもの。配信は main の内容が GitHub Pages にそのまま出る仕組みなので、PR にすると発行されない。また `/news-publish` は Routine から無人で定期実行されるため、確認を求めても応じる人はおらず発行が止まるだけ。よって確認や PR 化を挟まず push まで実行しきる。
+main へ直接 push しない（Routine 環境では git proxy が main への push を弾く）。現在の作業ブランチ（`claude/…`）へ `git push` し、この変更で PR を作る。**PR タイトルはコミット 1 行目と同じ `[$ARGUMENTS] YYYY-MM-DD 更新` にすること**。`.github/workflows/auto-merge-news.yml` がこのタイトル形式の PR を検知して main へ squash-merge し、その時点で GitHub Pages への配信と通知が走る。確認や手動マージは挟まず、PR 作成まで実行しきる（無人実行なので確認を求めても応じる人はいない）。
 
 ### 7. 発行後の処理（任意）
 
@@ -124,7 +124,7 @@ argument-hint: <topic>
 
 ## 通知
 
-通知は GitHub Actions (`.github/workflows/notify.yml`) が main への push 検知時に自動で送る。Skill 側で通知処理は行わない。
+通知は GitHub Actions が自動で送る。Skill 側で通知処理は行わない。発行 PR の auto-merge 経由では `auto-merge-news.yml` が、手動の main push では `notify.yml` が、それぞれ ntfy を送る。
 
 ## エラーハンドリング
 

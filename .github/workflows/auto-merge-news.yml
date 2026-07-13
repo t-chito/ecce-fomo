@@ -1,0 +1,57 @@
+name: Auto-merge and notify news PRs
+
+# Routine (news-publish) は main へ直接 push できない（Routine 環境の git proxy が
+# main への push を弾く）。そのため発行は claude/… ブランチへ push して PR を作る形を取る。
+# この workflow がその「発行 PR」を検知して main へ squash-merge し、発行を確定させる。
+#
+# 通知について: main への push は通常 notify.yml が拾って ntfy を送るが、ここでの merge は
+# GITHUB_TOKEN 由来のため notify.yml が発火しない（GitHub の workflow 再帰防止仕様）。
+# よって発行 PR の通知はこの workflow が直接送る。notify.yml は手動 main push 用に残す。
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge-and-notify:
+    # 発行 PR だけを対象にする。タイトルが `[<topic>] … 更新` 形式・base が main・draft でない、を満たす PR のみ。
+    # それ以外（手で立てた修正 PR 等）は対象外＝人のレビューに委ねる。
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.draft == false &&
+      startsWith(github.event.pull_request.title, '[') &&
+      endsWith(github.event.pull_request.title, '更新')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Squash-merge the publish PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge "${{ github.event.pull_request.number }}" \
+            --squash --delete-branch \
+            --repo "${{ github.repository }}"
+
+      - name: Send ntfy notification
+        # notify.yml と同じ規約（先頭 [<topic>] を抜く / [test] はハブトップ）でクリック先 URL を組む。
+        # 参照元は PR タイトル。notify.yml の sed とこのロジックは同じ契約を共有する。
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          OWNER: ${{ github.repository_owner }}
+          TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          TOPIC_NAME=$(echo "$TITLE" | sed -n 's/^\[\([^]]*\)\].*/\1/p')
+          if [ -n "$TOPIC_NAME" ] && [ "$TOPIC_NAME" != "test" ]; then
+            CLICK_URL="https://${OWNER}.github.io/ecce-fomo/${TOPIC_NAME}/"
+          else
+            CLICK_URL="https://${OWNER}.github.io/ecce-fomo/"
+          fi
+          curl -X POST \
+            -H "Title: $TITLE" \
+            -H "Click: $CLICK_URL" \
+            -H "Tags: newspaper" \
+            -d "更新がありました" \
+            "https://ntfy.sh/${TOPIC}"
