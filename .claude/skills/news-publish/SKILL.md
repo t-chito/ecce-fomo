@@ -114,7 +114,7 @@ argument-hint: <topic>
 
 `git add .` の後、コミットメッセージは `[$ARGUMENTS] YYYY-MM-DD 更新` の形（`$ARGUMENTS` の値を埋める）にして `git commit` し、`git push origin main` する。コミットメッセージは通知タイトルにも使われる。
 
-この `git push origin main` はこのフローの発行そのもの。配信は main の内容が GitHub Pages にそのまま出る仕組みなので、PR にすると発行されない。また `/news-publish` は Routine から無人で定期実行されるため、確認を求めても応じる人はおらず発行が止まるだけ。よって確認や PR 化を挟まず push まで実行しきる。ただし手動で試し発行するなど対話的に呼ばれた場合はこの限りではなく、ユーザーの指示に従う。
+この `git push origin main` はこのフローの発行そのもの。配信は main の内容が GitHub Pages にそのまま出る仕組みなので、PR にすると発行されない。また `/news-publish` は Routine から無人で定期実行されるため、確認を求めても応じる人はおらず発行が止まるだけ。よって確認や PR 化を挟まず push まで実行しきる。
 
 ### 7. 発行後の処理（任意）
 
