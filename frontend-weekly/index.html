@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年7月13日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年7月7日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年7月13日">
+<meta property="og:title" content="フロントエンドニュース — 2026年7月7日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,117 +23,123 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月13日（月）</span>
+        <span>2026年7月7日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="summary">
-  <h2 class="summary__title">まとめ</h2>
-  <p>今週は「ツールチェーンがネイティブへ渡り切った週」だった。先週 RC だった Go ネイティブの <strong>TypeScript 7.0 が 7 月 8 日に GA</strong> し、フルビルドで 8〜12 倍、VS Code の型検査は 125 秒から約 11 秒へ短縮された。標準の <code>tsc</code> がそのままネイティブ実装になり、型の意味論は 6.0 と同一のまま速さだけが載る。ただし Vue・Svelte・Astro・MDX のエディタ完全対応はプログラマティック API を待つ 7.1 送りで、単純アップグレードとはいかない点が今号最大の注意所だ。Vite 8 / Rolldown・oxc（Rust）に TypeScript（Go）が合流し、フロントのビルド基盤は「JS で書かれたツールを別言語のネイティブ実装へ置き換える」波が主軸になった。同じ 7 月 8 日には Node.js 26.5.0 も出て、Temporal 既定化・年 1 メジャーへの移行と足並みが揃う。競争軸は「どのフレームワークか」から「型検査・ビルド・起動のフリクションをネイティブでどこまで削るか」へ移っている。</p>
-</section>
+        <h2 class="summary__title">まとめ</h2>
+        <p>今週は「ツールチェーンの合流」が通底したテーマ。Svelte の 7 月号は SvelteKit の設定を Vite プラグインへ直接渡せるようにし、<code>svelte.config.js</code> という別ファイルを不要化する方向を打ち出した。設定・言語ツール・CLI が SvelteKit 3 の姿へ揃っていく動きだ。先週 RC（6 月 18 日）が出た Go ネイティブの TypeScript 7.0 は GA 秒読みに入り、7 月 5 日にも改めて技術メディアが取り上げた。開発ツール側では Chrome 140 の DevTools が Styles ペインに Baseline 表示を載せ、「このプロパティは使ってよいか」をエディタから引かずに判断できるようになった。フレームワークの競争軸が「どのリアクティビティか」から「設定・型検査・採用判断のフリクションをどこまで削るか」へ移りつつある。</p>
+      </section>
 
-<section class="topic">
-  <h2 class="topic__title">今週の重要ポイント</h2>
+      <section class="topic">
+        <h2 class="topic__title">今週の重要ポイント</h2>
 
-  <article class="article">
-    <h3 class="article__headline">TypeScript 7.0 が GA — Go ネイティブの <code>tsc</code>、フルビルド 8〜12 倍</h3>
-    <div class="article__body">
-      <p>先週 RC だった Go ネイティブ版 TypeScript が、7 月 8 日に 7.0 として GA した。Go への移植（書き直しではなく port）により型検査ロジックは 6.0 と構造的に同一で、コンパイラが強制する意味論は従来と変わらない。にもかかわらず、ネイティブコード速度と共有メモリのマルチスレッド化でフルビルドはおおむね 8〜12 倍速く、VS Code コードベースの型検査は 125 秒から 11 秒未満（約 11.9 倍）へ落ちた。配布は実験的だった <code>tsgo</code> という別名ではなく、標準の <code>tsc</code> バイナリがそのままネイティブ実装として出る形に収束した。</p>
-      <p>ただし本番投入前に一点押さえたい。<strong>Vue・Svelte・Astro・MDX のエディタ完全対応は 7.0 には間に合わず、プログラマティック API の実装を待つ 7.1 送り</strong>になった。これらのフレームワークは型情報を得るために TypeScript の API を叩くため、単一ファイルコンポーネントの補完・型チェックがエディタで十全に効くのは次のマイナー以降になる。素の <code>.ts</code>/<code>.tsx</code> 主体のプロジェクトは今すぐ恩恵を受けられるが、SFC 中心のスタックは 7.1 を待つか、当面は 6.x 系のエディタ体験を併用する判断になる。1 年超のプレリリースを経た本命リリースだけに、この配布の谷を正しく見切ることが移行の要だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/">Announcing TypeScript 7.0 — TypeScript Blog</a></li>
-      <li><a href="https://www.devclass.com/development/2026/07/10/speedier-type-checks-in-typescript-70-as-first-stable-go-release-ships/5269206">Speedier type checks in TypeScript 7.0 as first stable Go release ships — DevClass</a></li>
-      <li><a href="https://www.techtimes.com/articles/320049/20260710/typescript-7-now-stable-10-faster-builds-not-vue-svelte-yet.htm">TypeScript 7 Now Stable: 10× Faster Builds, But Not for Vue or Svelte Yet — TechTimes</a></li>
-      <li><a href="https://visualstudiomagazine.com/articles/2026/07/08/typescript-7-arrives-to-rock-vs-code-with-go-powered-speed.aspx">TypeScript 7 Arrives to Rock VS Code with Go-Powered Speed — Visual Studio Magazine</a></li>
-    </ul>
-  </article>
+        <article class="article">
+          <h3 class="article__headline">Svelte 7 月号 — SvelteKit の設定を Vite プラグインへ、<code>svelte.config.js</code> を不要化</h3>
+          <div class="article__body">
+            <p>7 月の「What's new in Svelte」で、SvelteKit の設定をそのまま Vite プラグインへ渡せるようになった。これまで独立して置いていた <code>svelte.config.js</code> が必須ではなくなり、Vite の設定に一本化できる。設定ファイルが二重化していた状態が解消され、ビルドツールの中心である Vite の側へ寄る流れが明確になった。</p>
+            <p>あわせて明示的な環境変数（explicit environment variables）が導入され、これは SvelteKit 3 で <code>$env/*</code> モジュールがどう振る舞うかのプレビューにあたる。言語ツールと <code>sv</code> CLI も Svelte の新しい <code>{@const ...}</code> 宣言タグに対応し、コンパイラ・エディタ・CLI がひと揃いで足並みを揃えた。個々は小粒でも、SvelteKit 3 に向けて土台を整地する一連の動きとして読める。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://svelte.dev/blog/whats-new-in-svelte-july-2026">What's new in Svelte: July 2026 — svelte.dev</a></li>
+          </ul>
+        </article>
 
-  <article class="article">
-    <h3 class="article__headline">ネイティブ・ツールチェーンの合流 — Go の型検査に Rust のビルド系が揃う</h3>
-    <div class="article__body">
-      <p>TypeScript 7.0 の GA は単発の速さ自慢ではなく、ここ 1 年進んできた「JS で書かれたフロントツールを別言語のネイティブ実装へ置き換える」流れの節目にあたる。バンドラは Vite 8 が Rolldown（Rust）を単一の既定バンドラとして取り込み済みで、Rolldown の変換パイプラインや Vite 8 の React プラグインには oxc（Rust 製の JS/TS パーサ・変換・lint 基盤、VoidZero が Vite/Rolldown と一体で開発）が組み込まれている。lint も oxlint・Biome という Rust 製が ESLint の置き換え候補として実運用段階に入った。</p>
-      <p>今週これに TypeScript（Go）の型検査が正式合流したことで、パース・変換・バンドル・lint・型検査という主要工程がひと通りネイティブ実装で揃った。言語こそ Go と Rust に分かれるが、狙いは共通で「大規模コードベースで CPU とメモリと待ち時間を削る」ことだ。個々のツールの速度比較より、フロントの標準ツールチェーン全体が数年がかりでネイティブへ移り終えつつある、という構図が週単位の読みどころになる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://oxc.rs/">The JavaScript Oxidation Compiler (oxc) — oxc.rs</a></li>
-      <li><a href="https://vite.dev/blog/announcing-vite8">Vite 8.0 is out! — vite.dev</a></li>
-      <li><a href="https://dev.to/dataformathub/deep-dive-why-rust-based-tooling-is-dominating-javascript-in-2026-3dbl">Deep Dive: Why Rust-Based Tooling is Dominating JavaScript in 2026 — DEV</a></li>
-    </ul>
-  </article>
+        <article class="article">
+          <h3 class="article__headline">TypeScript 7.0、GA 秒読み — RC から GA へ、<code>tsgo</code> から <code>tsc</code> へ</h3>
+          <div class="article__body">
+            <p>6 月 18 日に RC が出た Go ネイティブの TypeScript 7.0 は、RC から約 1 か月後とされる GA（7 月中旬目安）に向けた検証フェーズが続く。7 月 5 日には Slashdot をはじめ技術メディアが改めて「ついに RC に到達」と取り上げ、1 年超のプレリリースを経た本番評価フェーズであることを再確認した。型チェックは 6.0 比でおおむね 10 倍速とされ、パース・型チェック・出力を並列に走らせる点が速さの源だ。</p>
+            <p>移行者が押さえるべきは配布経路の整理。RC は標準の <code>tsc</code> バイナリで配られ、実験的に配られてきた <code>tsgo</code> という別名は nightly 側に残る形になった。「書き直し」ではなく「移植」なので型の意味論は従来と同一を保つ。本番採用前の検証を始めるなら、RC が npm から即入手できる今が好機だ。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-rc/">Announcing TypeScript 7.0 RC — TypeScript Blog</a></li>
+            <li><a href="https://developers.slashdot.org/story/26/07/05/2335217/go-based-typescript-70-finally-reaches-release-candidate-stage">Go-based TypeScript 7.0 Finally Reaches Release Candidate Stage — Slashdot</a></li>
+            <li><a href="https://www.infoworld.com/article/4191918/typescript-7-0-reaches-release-candidate-stage.html">Go-based TypeScript 7.0 reaches release candidate stage — InfoWorld</a></li>
+          </ul>
+        </article>
 
-  <article class="article">
-    <h3 class="article__headline">Node.js 26.5.0 — 同じ 7 月 8 日、Temporal 既定化と年 1 メジャーへ</h3>
-    <div class="article__body">
-      <p>Node.js も 7 月 8 日に 26.5.0（Current）を出した。パッチ号としては <code>blob.textStream()</code> の追加、テキストを直接インポートする <code>--experimental-import-text</code>、イベントループ 1 反復ごとの遅延サンプリングなど小粒な改善が中心だが、背景の Node.js 26 系そのものが節目だ。Temporal API が既定で有効になり、V8 は 14.6、Undici は 8.0 に上がり、旧来の非推奨 API が整理された。</p>
-      <p>リリース運用も転換点にある。Node.js 26 は 10 月に LTS へ入るまで約半年 Current を務めるが、これが従来の奇数/偶数スケジュール最後の号で、Node 27 以降は<strong>年 1 回のメジャー</strong>へ移る。ネイティブ・ツールチェーンが速さを競う一方で、ランタイム側は標準 API の拡充（Temporal）と予測可能なリリース間隔という「地固め」に軸足を置いている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://nodejs.org/en/blog/release/v26.5.0">Node.js 26.5.0 (Current) — nodejs.org</a></li>
-      <li><a href="https://www.infoq.com/news/2026/07/nodejs-26-temporal/">Node.js 26: Temporal API Enabled by Default, V8 14.6 — InfoQ</a></li>
-      <li><a href="https://www.infoq.com/news/2026/06/nodejs-release-changes/">Node.js Moves to One Major Release Per Year, Starting with Node 27 — InfoQ</a></li>
-    </ul>
-  </article>
-</section>
+        <article class="article">
+          <h3 class="article__headline">Chrome 140 DevTools — Styles ペインに Baseline 表示、採用判断をその場で</h3>
+          <div class="article__body">
+            <p>Chrome 140 の DevTools で、Elements パネルの Styles セクションに Baseline 情報が載った。CSS プロパティにホバーすると、そのプロパティが各主要ブラウザでどの Baseline 段階（Newly available / Widely available）にあるかがカードで表示される。Widely・Newly のカードには相互運用が始まった日付も示され、「いつから安全か」をその場で確認できる。</p>
+            <p>これまで webstatus.dev や MDN を別タブで引いていた「このプロパティは本番で使ってよいか」の判断が、書いているスタイルの脇で完結する。CSS の新機能がプラットフォーム標準へ移る流れが続くなか、採用判断のフリクションを削るツール側の後押しとして意味が大きい。Chrome 140 はアナウンス時点でベータ、まもなく安定版へ降りる段階だった。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://developer.chrome.com/blog/new-in-devtools-140">What's new in DevTools, Chrome 140 — Chrome for Developers</a></li>
+            <li><a href="https://web.dev/blog/baseline-devtools-css">Baseline for CSS properties now in Chrome DevTools — web.dev</a></li>
+          </ul>
+        </article>
+      </section>
 
-<section class="topic">
-  <h2 class="topic__title">ビルドツール・ランタイム</h2>
+      <section class="topic">
+        <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
-  <article class="article">
-    <h3 class="article__headline">Next.js 16.3 プレビュー — Turbopack がメモリ最大 90% 減・永続キャッシュ・Rust 版 React Compiler</h3>
-    <div class="article__body">
-      <p>6 月 29 日に出た Next.js 16.3 のプレビュー（<code>next@preview</code> で導入、安定版はまだ）は、native toolchain の波が Next 本体にも及んでいることを示す。目玉は Turbopack で、大規模アプリの開発サーバのメモリ使用を最大 90% 削減し、永続ビルドキャッシュで本番ビルドを最大 5.5 倍高速化した。あわせて React Compiler の実験的な Rust 移植版と、Vite 互換の <code>import.meta.glob</code> が入った。</p>
-      <p>長い開発セッションでコンパイラのメモリを回収するメモリエビクション、ビルド間で再利用できる永続キャッシュと、狙いは TypeScript 7.0 や Rolldown と同じ「大規模での待ち時間とリソースを削る」ことに一致する。React Compiler まで Rust へ移植し始めた点は、フロントのビルド系がフレームワークの内側までネイティブ化している証左だ。まだプレビューなので、評価は <code>next@preview</code> で行い、本番は安定版を待つのが筋になる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/next-16-3-turbopack">Turbopack: What's New in Next.js 16.3 — nextjs.org</a></li>
-    </ul>
-  </article>
-</section>
+        <article class="article">
+          <h3 class="article__headline">Deno 2.9.1 — <code>deno desktop</code> の追い込みパッチ</h3>
+          <div class="article__body">
+            <p>先週（6 月 25 日）に <code>deno desktop</code> で「Web スタックのまま単一バイナリの native アプリ」を実験的に解禁した Deno は、7 月 1 日に 2.9.1 のパッチを出した。desktop 関連の追加・修正が中心で、experimental として出した機能を実利用に耐える形へ詰める段階に入っている。hello-world のコールドスタートが 2.8 の 34ms から 17ms へほぼ半減した性能面の改善はそのまま引き継ぐ。</p>
+            <p><code>deno desktop</code> は 2.9 時点で experimental の位置づけであり、一部プラットフォーム機能はなお実装途上。今回のような小刻みなパッチで安定度を上げていく局面なので、試すなら最新パッチに追従しておきたい。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://github.com/denoland/deno/releases/tag/v2.9.1">Release v2.9.1 · denoland/deno — github.com</a></li>
+            <li><a href="https://deno.com/blog/v2.9">Deno 2.9 — deno.com</a></li>
+          </ul>
+        </article>
 
-<section class="topic">
-  <h2 class="topic__title">ブラウザ・プラットフォーム</h2>
+        <article class="article">
+          <h3 class="article__headline">Angular の「signal-first」が既定に — v22 の定着</h3>
+          <div class="article__body">
+            <p>6 月 3 日に出た Angular 22 は、Angular 21 で experimental だった Signal Forms を stable に格上げし、新規プロジェクトの既定を signal 中心（zoneless・OnPush 既定、テストランナーは Vitest）へ振り切った「signal-first」リリースだった。今週はその路線が実プロジェクトへ浸透していく地固めの週で、React・Svelte が進めてきた signal / runes ベースのリアクティビティに Angular も既定として合流した格好だ。</p>
+            <p>Reactive Forms からの移行や zone.js 撤去の schematics が揃っているため、既存アプリの評価を始めるハードルは下がっている。フレームワーク横断で「明示的なリアクティビティ」が共通言語になりつつある点が、週単位の動向として読み取れる。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://blog.ninja-squad.com/2026/06/03/what-is-new-angular-22.0">What's new in Angular 22.0? — Ninja Squad</a></li>
+            <li><a href="https://angular.love/angular-21-whats-new">Angular 21 – What's New? — angular.love</a></li>
+          </ul>
+        </article>
+      </section>
 
-  <article class="article">
-    <h3 class="article__headline">Interop 2026 の中間状況 — ブロック要因は Safari 59・Firefox 43・Chromium 9</h3>
-    <div class="article__body">
-      <p>Chrome・Firefox・Safari・Edge の 4 陣営が協調する Interop 2026 は、コンテナ要素、ハイライト文字のカスタムスタイル、ローカルデータベース、WebAssembly、スクロールスナップ、View Transitions、WebRTC などを対象に、年末までに主要ブラウザで揃えることを目標に進む。前年の Interop 2025 はスコアが 25 から 95 まで伸び、Same-Document View Transitions・CSS Anchor Positioning・Navigation API・CSS <code>@scope</code>・URLPattern といった大物がクロスブラウザで使えるようになった実績を残した。</p>
-      <p>7 月時点の分析では、機能が「広く利用可能（Widely available）」になるのを妨げているブロック要因が、6 月 30 日時点で Safari が単独で 59 件、Firefox が 43 件、Chromium が 9 件と偏る。CSS テストの通過率は Firefox 84.9%、Safari 86% と拮抗しつつも、どのエンジンが何を止めているかで採用可能な機能の地図が変わる。前掲の DevTools への Baseline 表示（Chrome 140）と合わせ、「いつ・どのブラウザで安全に使えるか」を実装の脇で判断できる材料が今年は着実に増えている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://webkit.org/blog/17818/announcing-interop-2026/">Announcing Interop 2026 — WebKit</a></li>
-      <li><a href="https://hacks.mozilla.org/2026/02/launching-interop-2026/">Launching Interop 2026 — Mozilla Hacks</a></li>
-      <li><a href="https://infrequently.org/2026/07/abject-praise/">Abject Praise — Infrequently Noted</a></li>
-    </ul>
-  </article>
-</section>
+      <section class="topic">
+        <h2 class="topic__title">ライブラリ・UI</h2>
 
-<section class="topic">
-  <h2 class="topic__title">来週の注目ポイント</h2>
+        <article class="article">
+          <h3 class="article__headline">Ext JS 8.0 GA — 電子署名・QR・Font Awesome 7・ES2025</h3>
+          <div class="article__body">
+            <p>Sencha が Ext JS 8.0 を GA としてリリースした。140 超のプリインテグレート済み UI コンポーネント群に、アプリ内で書類に署名できる Responsive Digital Signature Pad と、決済・小売・物流の QR ワークフロー向けの QR Code Reader &amp; Generator（いずれも Classic / Modern 両トールキット対応）を追加した。</p>
+            <p>アイコンは Font Awesome 7.x を既定に採用（FA5 と後方互換）、言語サポートは ES2025 まで拡張し、グリッドの水平バッファリングや Lockable Grid Plugin、Modern トールキットの ARIA 対応も入った。エンタープライズ用途のフルスタックな UI キットとして、書き直し不要の後方互換を保ったままの底上げが今号の性格だ。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://www.sencha.com/blog/whats-in-ext-js-8-0/">What's New in Ext JS 8.0 — Sencha</a></li>
+          </ul>
+        </article>
+      </section>
 
-  <article class="article">
-    <h3 class="article__headline">TypeScript 7.1 — Vue/Svelte/Astro のエディタ完全対応</h3>
-    <div class="article__body">
-      <p>7.0 で保留になったプログラマティック API と、それに依存する Vue・Svelte・Astro・MDX のエディタ完全対応がどこまで固まるかが最大の関心事。SFC 中心のスタックはこのマイナーが実質的な移行の合図になるため、公式ブログと GitHub の milestone を継続ウォッチしたい。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
-    </ul>
-  </article>
+      <section class="topic">
+        <h2 class="topic__title">来週の注目ポイント</h2>
 
-  <article class="article">
-    <h3 class="article__headline">Svelte 8 月号と Next.js 16.3 の安定化</h3>
-    <div class="article__body">
-      <p>7 月号で <code>svelte.config.js</code> 廃止と明示的な環境変数（SvelteKit 3 の <code>$env/*</code> 先取り）を打ち出した Svelte の 8 月号が、移行手順をどこまで具体化するか。あわせてプレビュー段階の Next.js 16.3（Turbopack の永続キャッシュ・Rust 版 React Compiler）が安定版へ降りるタイミングも追いたい。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://svelte.dev/blog">Blog • Svelte — svelte.dev</a></li>
-      <li><a href="https://nextjs.org/blog">Next.js Blog — nextjs.org</a></li>
-    </ul>
-  </article>
-</section>
+        <article class="article">
+          <h3 class="article__headline">TypeScript 7.0 GA カウントダウン</h3>
+          <div class="article__body">
+            <p>RC から約 1 か月後とされる GA に向け、来週以降は移行ガイドの拡充と検証報告が要点。<code>tsc</code> への一本化、古いコンパイルターゲットやウォッチモード・デコレータまわりの対応状況、エディタ統合の進捗を公式ブログと GitHub の milestone で継続ウォッチしたい。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
+          </ul>
+        </article>
+
+        <article class="article">
+          <h3 class="article__headline">SvelteKit 3 に向けた <code>$env</code> 移行の続報</h3>
+          <div class="article__body">
+            <p>7 月号でプレビューされた明示的な環境変数は SvelteKit 3 の <code>$env/*</code> の姿を先取りしたもの。来週以降は移行手順や破壊的変更の輪郭がどこまで固まるか、<code>svelte.config.js</code> 廃止に向けた実プロジェクトの反応とあわせて追いたい。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://svelte.dev/blog">Blog • Svelte — svelte.dev</a></li>
+          </ul>
+        </article>
+      </section>
     </main>
 
     <footer>
