@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年7月9日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年7月16日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年7月9日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年7月16日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月9日（木）</span>
+        <span>2026年7月16日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,99 +31,87 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の二本柱は「コーディング特化モデルの競争激化」と「Claude Code のメンテナンス機能の強化」。Claude Code は肥大化した skill・MCP・CLAUDE.md を掃除する <code>/checkup</code> を追加し、モデルと Effort レベルの使い分けを公式に整理した。外では SpaceXAI が「初のコーディング/エージェント特化」を掲げる Grok 4.5 を Cursor と共同学習で投入し、Cognition は 1000 tok/s の SWE-1.7 を Devin に載せた。加えて OpenAI が主要ベンチ SWE-Bench Pro の 30% が壊れているとする監査結果を公表し、推奨を撤回している。</p>
+  <p>今週のプロダクト視点の主役は「Claude Code のデスクトップ強化」と「アーティファクトの"配れるアプリ"化」。デスクトップ版にアプリ内ブラウザが載り、Claude がドキュメントやデザインを自分で開いて操作できるようになった。アーティファクトは公開共有・複数人での同時編集・MCP コネクタ接続に対応し、Claude Code や Claude Tag から「作って配れる小さなアプリ」を出せる素材に変わりつつある。CLI は 2.1.206〜2.1.211 を一週間で連発し、Bedrock/Vertex での auto mode 既定 ON、スクリーンリーダー対応、subagent 出力の stream-json 転送を追加した。外では SpaceXAI が Grok Build（ハーネス）をオープンソース化し、Devin Fusion が Fable 5 を採用して「高いモデルなのにタスク単価は下がる」という意外なコスト観測を報告している。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline"><code>/checkup</code>（=<code>/doctor</code>）——増えすぎた skill・MCP・CLAUDE.md を棚卸しする</h3>
+    <h3 class="article__headline">デスクトップにアプリ内ブラウザ——Claude が docs もデザインも自分で開いて触る</h3>
     <div class="article__body">
-      <p>2.1.205 で <code>/doctor</code> が本格的なセットアップ点検コマンドに刷新され、<code>/checkup</code> はそのエイリアスとして案内された。bcherny が挙げた用途は、(1) 使っていない skill/MCP/plugin を整理してコンテキストを節約、(2) ローカルの CLAUDE.md と check-in 済み CLAUDE.md の重複を除去、(3) 肥大化した root CLAUDE.md を入れ子の CLAUDE.md と skill へ分割、(4) 遅い hook を無効化、(5) Claude Code 自体の更新——の5つ。</p>
-      <p>エージェントを長く使うほど設定とコンテキストが太り、パフォーマンスと精度を圧迫していく。その「棚卸し」を一発で回す運用ツールで、oikon48 も日本語で紹介している。地味だが、日常的に一番効く追加になりそうな機能。</p>
+      <p>Claude Code のデスクトップ版にアプリ内ブラウザが載った。ローカルの dev サーバに対してやっているのと同じ要領で、Claude がドキュメントやデザイン、任意のサイトを開いて読み、クリックし、操作できる。サンドボックス化されており、どこまで触らせるかは設定できる。</p>
+      <p>これまで「URL を貼って要約させる」止まりだった外部情報の取り込みが、エージェント自身がブラウザを運転して調べ物や動作確認まで回す形に近づいた。実装中に仕様ページを開いて確認する、デザインを見て寄せる、といった往復がセッション内で完結する。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/bcherny/status/2074997570317779038">@bcherny — New in Claude Code: /checkup</a></li>
-      <li><a href="https://x.com/oikon48/status/2075042015092559907">@oikon48 — /checkup (=/doctor) の解説</a></li>
-      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2075635283211772279">@ClaudeDevs — Claude Code desktop に in-app browser</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">モデルと Effort レベル——「賢さ」と「やり切る深さ」は別の軸</h3>
+    <h3 class="article__headline">アーティファクトが"配れるアプリ"に——公開共有・同時編集・MCP コネクタ接続</h3>
     <div class="article__body">
-      <p>Anthropic が Claude Code のモデル選択と Effort レベルについての解説記事を公開した。ポイントは両者が独立した軸だという整理で、モデルは「頭の良さ・専門性」を決め、Effort レベルは思考時間だけでなく「読むファイルの量や検証の深さ＝どこまで作業を広げてやり切るか」を決める。</p>
-      <p>同じモデルでも Effort を上げれば調査と検証が深くなる、という現場の肌感覚が公式に言語化された形。モデルを上げるのか Effort を上げるのかで無駄なコストを避けられるので、使い分けの指針として押さえておきたい。</p>
+      <p>アーティファクト周りが一週間で大きく前に出た。まず公開共有とマルチプレイヤー編集に対応し、リンクを知っていれば誰でも閲覧でき、複数人が同じアーティファクトを一緒に編集できるようになった（公開共有と社内共有、Team/Enterprise でのマルチプレイヤー）。しかもこれらは Claude Code のセッションからも、Slack 上の Claude Tag からも作れる。「Slack のスレッドでダッシュボードを頼むと動くページが返ってきて、そのまま社内に配れる」という導線だ。</p>
+      <p>さらに 7/15、アーティファクトが MCP コネクタを呼べるようになった。作った本人がセッションを回し直さなくても、閲覧者それぞれの MCP コネクタ経由でライブデータを取りに行き、各自が権限を持つ範囲だけを表示する。thomas（trq212）は「Claude Tag で作ったプロジェクトのダッシュボードを、他の人や自分のローカル Claude Code セッションからも編集する」使い方を挙げている。プロトタイプを作って社外にまで出せる、一度作れば MCP でライブに更新される——アーティファクトが使い捨ての生成物から、共有して使い続けるツールへと性格を変えつつある。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/oikon48/status/2074903665463427266">@oikon48 — モデルと Effort レベルの公式記事紹介</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2076789349145092230">@ClaudeDevs — Artifacts が公開共有・マルチプレイヤー編集に対応</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2077489907350856038">@ClaudeDevs — Artifacts が MCP コネクタを呼べるように</a></li>
+      <li><a href="https://x.com/trq212/status/2076790799011131735">@trq212 — Claude Code セッションから編集するダッシュボードの例</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Fable 5 を「助言役」に——Sonnet 5 実行と組み合わせてコストを抑える</h3>
+    <h3 class="article__headline">2.1.206〜2.1.211——auto mode 既定 ON（Bedrock/Vertex）、スクリーンリーダー対応、subagent 出力の転送</h3>
     <div class="article__body">
-      <p>Fable 5 の全有料プラン開放が 7/12 まで延長されたのに合わせ、ClaudeDevs がコスト最適化の定番パターンを共有した。ひとつは Advisor パターンで、実行役の Sonnet 5 が要所で Fable 5 に助言を求める形。大半のトークンは安い実行役レートで課金される。もうひとつは Fable 5 が計画して Sonnet 5 ワーカーに委譲する Orchestrator パターンだ。</p>
-      <p>数字も出ている。SWE-bench Pro では「Sonnet 5＋Fable 5 アドバイザー」が Fable 5 単体の約 92% のスコアを約 63% のコストで達成（Fable 5 の呼び出しはタスクあたり概ね1回）。BrowseComp でも Orchestrator 構成が Fable 5 の 96% を 46% のコストで出したという。一方、Advisor 設定時にエラーへ遭遇する報告も出ており、セッションのコンテキストサイズが引き金と見られている。大きな文脈で使うときは注意したい。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2074606058128224365">@ClaudeDevs — Fable 5 の使い方パターン（Advisor / Orchestrator）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2074606059864625355">@ClaudeDevs — SWE-bench Pro でのコスト比較</a></li>
-      <li><a href="https://x.com/oikon48/status/2074890456203436291">@oikon48 — Advisor 設定時のエラー報告</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">2.1.203〜2.1.205——トランスクリプト改ざん防止と <code>rm -rf</code> の確認</h3>
-    <div class="article__body">
-      <p>直近リリースは安全側の作り込みが目立つ。2.1.205 では auto mode にセッション・トランスクリプトファイルの改ざんをブロックするルールを追加し、未解決の変数を含む <code>rm -rf</code> を実行する前に確認するようにした。ほかに <code>--json-schema</code> が不正スキーマ時に黙って非構造化出力を返す問題や、Windows の worktree 削除が NTFS junction／symlink 経由で worktree 外のファイルを消してしまう問題を修正。</p>
-      <p>2.1.203 ではログイン期限切れ前の警告や、バックグラウンドエージェント周りの多数の修正が入った。派手な新機能より、エージェントに任せたときの「事故らなさ」を積み上げる週だった。</p>
+      <p>この一週間で 2.1.206 から 2.1.211 まで一気に進んだ。機能面の目玉は3つ。(1) 2.1.207 で Bedrock / Vertex AI / Foundry では auto mode がオプトイン不要の既定 ON になった（<code>disableAutoMode</code> で無効化可、既定モデルも Opus 4.8 に）。(2) 2.1.208 でスクリーンリーダーモード（<code>--ax-screen-reader</code> / <code>CLAUDE_AX_SCREEN_READER=1</code>）が入り、プレーンテキスト描画でアクセシビリティを改善。長時間セッションのメモリリーク修正や入力応答性の改善も同時に入った。(3) 2.1.211 で <code>--forward-subagent-text</code> フラグ／環境変数が追加され、subagent のテキストと thinking を stream-json 出力に含められるようになった——下流のシステムがサブエージェントの中身を受け取れる。</p>
+      <p>安全側の作り込みも続く。2.1.210 では <code>isolation: 'worktree'</code> のサブエージェントが main リポジトリに対して git 破壊コマンドを走らせられてしまう問題や、<code>ultracode</code> キーワードが webhook や PR コメントなど非人間入力で発火する問題を修正。2.1.211 では権限プレビューが bidi・ゼロ幅文字を無害化し、承認メッセージの見た目を細工されないようにした。派手な新機能というより、エージェントに任せたときの土台を毎日削り込んでいる。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2074971760315838689">@ClaudeCodeLog — 2.1.205 ハイライト</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2075749688960004373">@ClaudeCodeLog — 2.1.207（Bedrock/Vertex で auto mode 既定 ON）</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2077535907326910773">@ClaudeCodeLog — 2.1.211（subagent 出力の stream-json 転送）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Cowork がモバイル/Web へ——PC を閉じても走り続ける</h3>
+    <h3 class="article__headline">「自動化してドメイン知識をインフラに焼く」——中の人とエンジニアの共通テーマ</h3>
     <div class="article__body">
-      <p>Claude Cowork のモバイル・Web 版が発表された（Max プランを皮切りに数週かけてベータ提供）。デスクで渡したタスクの続きをスマホで受け取れるほか、スケジュールしたタスクは PC がオフでも実行される——朝6時に準備を走らせておけば、判断が要る所だけスマホに質問が来る、という使い方だ。</p>
-      <p>Chat と Cowork は Web/デスクトップで一つのホームに統合され、プロジェクトと成果物が両者で共有される。タスクを渡す操作が会話を始めるのと同じ入り口になる。Cowork の倍増枠は 8/5 まで延長された。</p>
+      <p>今週は Claude Code の作り手側から、使い方の指針が相次いだ。bcherny は「昔から一番強いエンジニアは自分の作業を自動化することに時間を使ってきた（vim の自動化、lint ルールで繰り返しミスを潰す等）」とし、エージェント時代にその重要性がさらに増すと述べる。Boris の発言も oikon48 が紹介しており、「自動化し、ドメイン知識をインフラとしてエンコードすることがますます重要になる。モデルが賢くなりハーネスが成熟するほど、このエンコード作業は楽になる」という趣旨だ。</p>
+      <p>プロンプトの型についても、thomas（trq212）が「thin prompts / thick artifacts + context / thin skills（薄いプロンプト・厚い成果物とコンテキスト・薄いスキル）」という整理を投げている。ツールの新機能を追うだけでなく、繰り返す判断を skill やインフラに落とし込む——今週の Claude Code 界隈の関心は、この「エンコード」に寄っていた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/claudeai/status/2074525815820169320">@claudeai — Cowork がモバイル/Web へ</a></li>
-      <li><a href="https://x.com/claudeai/status/2074525817762164891">@claudeai — PC オフでもスケジュール実行</a></li>
+      <li><a href="https://x.com/bcherny/status/2077460395279692197">@bcherny — 作業の自動化の重要性について</a></li>
+      <li><a href="https://x.com/oikon48/status/2077541640085053541">@oikon48 — Boris「ドメイン知識をインフラにエンコードする」</a></li>
+      <li><a href="https://x.com/trq212/status/2077539537992229076">@trq212 — thin prompts / thick artifacts / thin skills</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">コーディング特化モデルが各社から</h2>
+  <h2 class="topic__title">ハーネスをめぐる動き</h2>
 
   <article class="article">
-    <h3 class="article__headline">Grok 4.5——SpaceXAI 初の「コーディング/エージェント特化」、Cursor と共同学習</h3>
+    <h3 class="article__headline">SpaceXAI が Grok Build をオープンソース化——ハーネスを公開して信頼性を上げる</h3>
     <div class="article__body">
-      <p>SpaceXAI が Grok 4.5 を発表した。「コーディングとエージェントのために特化して学習した初のモデル」を掲げ、Cursor と共同で訓練したと明言している。想定するのは大規模コードベースや、複数リポジトリ・数百の skill・多様なツールにまたがる長時間タスク。skill と MCP の活用に強いとしており、Cursor / Cursor CLI / Grok Build / コンソールで利用できる（EU は今月後半予定、開始時は制限リセットで無料）。Notion にも搭載された。</p>
-      <p>汎用モデルの副産物としてコーディングが強い、ではなく「最初からエージェント用途に振った」と打ち出した点が今週最大の話題。フロンティアの知能を高速・低コストで、という訴求も含め、Cursor 陣営としての一手が明確になった。</p>
+      <p>SpaceXAI が Grok Build をオープンソース化し、あわせて全ユーザーの利用制限をリセットした。Grok Build CLI の Git リポジトリを含むコードを公開し、「信頼できて堅牢なハーネスを作るのを誰でも支援できるようにする」ためだとしている。前週に Grok 4.5 を「コーディング/エージェント特化」と打ち出したのに続く一手で、モデルだけでなくエージェントを動かす器（ハーネス）そのものを開くことで、外部の目とコントリビューションを取り込みにいく形だ。</p>
+      <p>プライバシー面も明示している。zero data retention（ZDR）を使うチームでは trace もコードデータも一切保持せず、API キー利用の Grok Build も ZDR を尊重するという。OpenAI の Codex が「オープンソースのハーネスを選ぶ理由」に言及していたこととも響き合い、ハーネスを開いて標準化・検証可能にする流れが各社で見えてきた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/SpaceXAI/status/2074915721684086811">@SpaceXAI — Grok 4.5 発表</a></li>
-      <li><a href="https://x.com/SpaceXAI/status/2074915723487678904">@SpaceXAI — 大規模コードベース・長時間タスク向け</a></li>
-      <li><a href="https://x.com/SpaceXAI/status/2074915726155211036">@SpaceXAI — 提供先（Cursor / Grok Build / console）</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2077494535387828644">@SpaceXAI — Grok Build をオープンソース化、利用制限リセット</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2076692402442846289">@SpaceXAI — Grok Build と ZDR（データ保持）について</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">SWE-1.7 が Devin に——1000 tok/s の低コスト near-frontier</h3>
+    <h3 class="article__headline">OpenAI、Codex アプリを ChatGPT デスクトップアプリへ統合——ChatGPT Work とともに</h3>
     <div class="article__body">
-      <p>Cognition が最も高性能という SWE-1.7 を公開し、Devin（Web/Desktop/CLI）で即日利用可能にした。フロンティアモデルと数ポイント差の性能を大幅に安いコストで、しかも 1000 tok/s の「lightning モード」で出すという。Kimi K2.7 をベースに Devin ハーネス上で RL 学習し、長時間タスクで self-compact する設計だ。</p>
-      <p>挙動としては、編集前の調査・リサーチにより多くの時間を使うのが特徴。独自ベンチ FrontierCode（「実際にマージしたくなるコードか」を評価する）で cost-performance の Pareto を前進させたとしており、「速さ×安さ×マージ品質」を同時に狙う路線が続いている。</p>
+      <p>先週の OpenAI の大型リリースは、プロダクト／ハーネスの統合という点で product 視点でも見逃せない。5 か月前に出した Codex アプリが下地となって、新しい ChatGPT デスクトップアプリが登場し、Chat・Work・Codex が一つのアプリに同居する形になった。あわせて発表された ChatGPT Work は、Codex と GPT-5.6 を動力にアプリやファイルをまたいで行動し、必要なら数時間ひとつの仕事に張り付く新しいエージェントだ（デスクトップが最も強力、Web/モバイルにも展開）。Codex 側にも「アプリ内でファイルを直接編集」「PR を離れずに確認・レビュー」などの開発者向け強化が入った。</p>
+      <p>sama は「エージェント系プロダクト（Codex と ChatGPT Work）の利用がこの一週間で 2.5 倍」と述べている。コーディングエージェントの入り口が専用アプリから汎用のデスクトップアプリへ寄っていく動きで、Claude 側の「Chat と Cowork を一つのホームに統合」とも並走する構図になっている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/cognition/status/2074882968770728416">@cognition — SWE-1.7 発表</a></li>
-      <li><a href="https://x.com/devindesktop/status/2074886730444882066">@devindesktop — Devin Desktop / CLI で利用可能</a></li>
+      <li><a href="https://x.com/OpenAI/status/2075274271845404744">@OpenAI — ChatGPT Work（Codex + GPT-5.6 のエージェント）</a></li>
+      <li><a href="https://x.com/ajambrosino/status/2075274362501074944">@ajambrosino — 新 ChatGPT デスクトップアプリは Codex アプリが下地</a></li>
     </ul>
   </article>
 </section>
@@ -132,38 +120,23 @@
   <h2 class="topic__title">ツールの実務アップデート</h2>
 
   <article class="article">
-    <h3 class="article__headline">Codex CLI 0.143.0——リモートプラグインが既定 ON、npm マーケットプレイス</h3>
+    <h3 class="article__headline">Devin Fusion が Fable 5 を採用——「高いモデルなのにタスク単価は下がる」</h3>
     <div class="article__body">
-      <p>OpenAI の Codex CLI 0.143.0 が公開。リモートプラグインが既定で有効になり npm マーケットプレイスに対応、macOS/Windows のシステムプロキシ（PAC/WPAD）をサポート、Bedrock 版の新モデル（Sol/Terra/Luna、最大 reasoning）を追加した。プラグイン配布を npm に寄せる流れが CLI 系エージェントでも続いており、拡張の入手経路が標準化されつつある。</p>
+      <p>Cognition が Devin Fusion に Fable 5 を組み込んだ。興味深いのはコストの観測で、Fable 5 は Opus 4.8 より単価が高いモデルにもかかわらず、Devin Fusion 上ではタスクあたりのコストがむしろ Opus 4.8 より低くなったという。委譲（delegation）まわりでコスト効率の改善が見られたとしている。</p>
+      <p>「モデル単体の価格」ではなく「ハーネスの中で1タスクを終えるまでの総コスト」で見ると、賢いモデルほど無駄な往復が減って安く上がることがある——という現場の肌感覚を、実プロダクトの数字で裏づけた形。モデル選定を単価表だけで決めない、という判断材料になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/Codex_Changelog/status/2074669139042677008">@Codex_Changelog — Codex CLI 0.143.0</a></li>
+      <li><a href="https://x.com/cognition/status/2076714965344342382">@cognition — Devin Fusion が Fable 5 を採用（タスク単価の観測）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">CodeRabbit——レビューの「うるささ」を3プロファイルで調整</h3>
+    <h3 class="article__headline">Codex CLI 0.144.5——危険コマンド検出を拡張、<code>rm</code> の強制実行をより広く捕捉</h3>
     <div class="article__body">
-      <p>CodeRabbit が、同じコードでもレビューの深さを選べる3プロファイルを紹介した。Quiet（最重要の指摘のみ）／Chill（バランス・既定）／Assertive（最も網羅的）の3段階で、チームのレビュー文化に合わせて指摘量を調整できる。AI レビューを常用するほど「多すぎる指摘」が摩擦になるため、濃度をダイヤルで決められるのは実務的な改善だ。</p>
+      <p>OpenAI の Codex CLI が 0.144.5 を公開。危険コマンドの検出を拡張し、強制的な <code>rm</code> のバリエーションをより多く捕まえ、コマンド拒否の理由をより明確に返すようにした。Claude Code 側でも未解決変数を含む <code>rm -rf</code> の確認やトランスクリプト改ざん防止が入っていたのと同様、エージェントにシェルを任せる前提での「事故らせない」作り込みが CLI 各社で並行して進んでいる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/coderabbitai/status/2074887957874700506">@coderabbitai — レビュープロファイル（Quiet / Chill / Assertive）</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ベンチマークの信頼性</h2>
-
-  <article class="article">
-    <h3 class="article__headline">OpenAI が SWE-Bench Pro を監査——タスクの 30% が「壊れている」として推奨を撤回</h3>
-    <div class="article__body">
-      <p>OpenAI が、広く使われるコーディングベンチ SWE-Bench Pro を監査し、もはやフロンティア能力を確実には測れないとして、研究コミュニティへの推奨を撤回した。タスクの約 30% に問題があり、隠れた要件・矛盾する指示・厳しすぎるテスト・不完全な採点基準のせいで、正しい解が失敗してしまうと指摘する。監査にはモデルベースの調査エージェントと、5 名の独立した経験豊富なエンジニアのレビューを併用したという。</p>
-      <p>各社が「SWE-bench 系で何 %」と競う一方で、その物差し自体が歪んでいれば比較は成り立たない。コーディングモデルの進歩に合わせて、ベンチも harder / fairer / trustworthy にする必要がある——数字の受け取り方を一段慎重にさせる問題提起だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/OpenAI/status/2074972179385720836">@OpenAI — SWE-Bench Pro 監査（30% が破損）</a></li>
-      <li><a href="https://x.com/OpenAI/status/2074972182640492731">@OpenAI — 監査手法（調査エージェント＋独立レビュー）</a></li>
+      <li><a href="https://x.com/Codex_Changelog/status/2077620556308832417">@Codex_Changelog — Codex CLI 0.144.5</a></li>
     </ul>
   </article>
 </section>
