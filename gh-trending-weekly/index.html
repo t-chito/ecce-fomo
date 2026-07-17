@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年7月10日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年7月17日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年7月10日">
+<meta property="og:title" content="GitHub トレンド — 2026年7月17日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月10日（金）</span>
+        <span>2026年7月17日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,169 +31,172 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の週間トレンドは、先週まで続いた「エージェントに渡す中身（スキル・仕様）」の潮流が一段進み、<strong>ベンダーの垣根を越えた連携</strong>と<strong>ローカル志向</strong>の二軸に集約された。象徴は OpenAI 公式の <code>codex-plugin-cc</code>——Claude Code の中から Codex を呼んでレビュー・タスク委譲する、競合同士をつなぐプラグインが週間 +4,800★ 近くで急伸した。Meta はエージェント可読を掲げるデザインシステム astryx を公開し、Microsoft は <code>dotnet/skills</code>、Alibaba は page-agent と、大手が相次いでエージェント向け資産を投下している。基盤側では複数エージェントを束ねる herdr、隔離実行する CubeSandbox、231+ プロバイダを束ねる OmniRoute が伸びた。もう一方の軸はプライバシー・ローカルで、会議を端末内で完結させる meetily が週間 +8,885★ で今週の伸び頭、HuggingFace の speech-to-speech も続いた。先週上位の strix・orca・ai-berkshire は今週も残り、AI 一色の傾向は変わらない。</p>
+  <p>今週の週間トレンドは、先週まで続いた「エージェントに渡す中身（スキル・仕様）」の潮流が<strong>デザイン領域へ一気に流れ込んだ</strong>週になった。象徴は上位に並んだ二つの競合——「AI が生成した見た目にならない UI」を掲げる <code>Nutlope/hallmark</code>（週間 +6,573★）と、同じ狙いの <code>pbakaus/impeccable</code>（週間 +2,360★）で、いずれも 57／46 個の「slop 検出ルール」で AI の凡庸なデザインを機械的に潰す。Google の <code>stitch-skills</code> も加わり、デザインをスキルとして配る動きが一気に前景化した。もう一つの軸は<strong>ドメイン業務の代行</strong>で、トレーディング（Vibe-Trading）・就職活動（ai-job-search）・Office 文書（OfficeCLI）と、具体的な仕事をまるごとエージェントに預けるツールが軒並み週間 +3,500〜5,400★ で伸びた。土台側では端末・ファイルを操る DesktopCommanderMCP、MCP とヘッドレスを備えて書き換え中の OpenCut、艦隊型 ADE の orca が続伸。先週の codex-plugin-cc・OmniRoute・herdr も再びランクインし、AI エージェント一色の傾向は今週も揺るがない。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ベンダーの垣根を越えるエージェント連携</h2>
+  <h2 class="topic__title">AI に「デザインの目」を持たせる</h2>
 
   <article class="article">
-    <h3 class="article__headline">openai/codex-plugin-cc — Claude Code から Codex を呼ぶ OpenAI 公式プラグイン（週間 +4,792★ / 累計 2.7万★）</h3>
+    <h3 class="article__headline">Nutlope/hallmark — 「AI くささ」を 57 個の検査で潰すデザインスキル（週間 +6,573★ / 累計 1.2万★）</h3>
     <div class="article__body">
-      <p>OpenAI が公式に公開した、Claude Code のワークフローの中から Codex を使うためのプラグイン。競合するコーディングエージェント同士をつなぐという構図が注目を集め、今週の話題をさらった。既存の作業環境を離れずに、コードレビューやタスクの委譲を Codex に任せられる。</p>
-      <p><code>/codex:review</code> の通常レビュー、前提や設計判断に切り込む <code>/codex:adversarial-review</code>、デバッグや実装を丸ごと預ける <code>/codex:rescue</code>、Claude Code のセッションを Codex 側の永続スレッドへ移す <code>/codex:transfer</code> を備え、<code>/codex:status</code>・<code>/codex:result</code>・<code>/codex:cancel</code> でバックグラウンドジョブを管理する。Codex の検証が通るまで Claude の応答をブロックする任意のレビューゲートも持つ。ChatGPT サブスクリプション（無料枠を含む）または OpenAI API キーと Node.js 18.18 以上が必要。主体は JavaScript、ライセンスは Apache-2.0。「どちらか一方を選ぶ」ではなく「両方を協調させる」方向を、当のベンダーが後押しし始めた点が象徴的だ。</p>
+      <p>Claude Code・Cursor・Codex 向けのデザインスキルで、いかにも AI が作った風の見た目にならない Web UI を生成することを目的とする。「57 個の slop テストゲート」と自己批評を通し、LLM が陥りがちなデザインの初期値（凡庸なフォント選択やカード偏重のレイアウトなど）を避けるという。</p>
+      <p>組み込みの 20 テーマに加え、独自デザインが要るブリーフ向けのカスタムテーマを持つ。動作モードは「新規 UI を作る」「既存コードを監査する」「レイアウトを再設計する」「憧れのサイトからデザインの型を学ぶ」の 4 つで、各ページを自己完結した HTML + CSS として出力する。導入は <code>npx skills add nutlope/hallmark</code> か手動でのファイル配置。主体は CSS・HTML、ライセンスは MIT。エージェントに「仕様」を渡す先週までの流れが、いよいよ「美的判断」の領域にまで広がった象徴的なツールだ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/Nutlope/hallmark">Nutlope/hallmark</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">pbakaus/impeccable — 23 コマンドと 46 検出ルールで UI 品質を底上げ（週間 +2,360★ / 累計 4.7万★）</h3>
+    <div class="article__body">
+      <p>hallmark と狙いを同じくする、AI コーディングエージェント向けのデザイン指針システム。構造化したデザイン文脈・コマンド・品質チェックを与え、AI が生成するフロントエンドの質を引き上げる。単一の <code>/impeccable</code> コマンドに audit・polish・critique・animate など 23 のサブコマンドをぶら下げる構成を取る。</p>
+      <p>初回の <code>/impeccable init</code> でプロダクトとデザインの文脈を <code>PRODUCT.md</code>／<code>DESIGN.md</code> に取り込み、以後はそれを参照する。API 呼び出しなしでデザインのアンチパターン（多用されるフォント、コントラスト不足、カード偏重など）を見つける 46 個の決定論的な検出ルール、ブラウザで結果を見ながら詰めるライブ反復モード、対応 IDE に問題を表示するデザインフックを備える。Cursor・Claude Code・Copilot・Gemini CLI・Codex CLI ほか幅広いツールに対応。主体は JavaScript、ライセンスは Apache 2.0。hallmark と並び、「AI のデザイン初期値をどう矯正するか」が今週の中心テーマになったことを示す。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">google-labs-code/stitch-skills — Google Stitch と組むデザイン系スキル集（週間 +1,090★ / 累計 7.6千★）</h3>
+    <div class="article__body">
+      <p>Google Labs による、Agent Skills のオープン標準に沿ったスキルとプラグインの集合。Google Stitch と連携し、Claude Code・Cursor など複数のコーディングエージェントを横断して動く。コードとビジュアルデザインの相互変換や、Stitch デザインからの本番向けコンポーネント生成を担う。</p>
+      <p>プラグインは 3 系統で、コードからデザインを起こす・画面を生成する・デザインシステムを管理する「Design」、React／React Native コンポーネントや Remotion 動画・ダッシュボードを作る「Build」、<code>DESIGN.md</code> 生成やプロンプト強化・デザインの規約検証を行う「Utilities」に分かれる。利用には Stitch MCP サーバーをエージェント環境に構成しておく必要がある。主体は TypeScript、ライセンスは Apache 2.0。大手が公式にデザイン系スキルを配り始めた点で、hallmark・impeccable のコミュニティ発の動きと呼応する。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/google-labs-code/stitch-skills">google-labs-code/stitch-skills</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エージェントに実務ドメインを任せる</h2>
+
+  <article class="article">
+    <h3 class="article__headline">HKUDS/Vibe-Trading — 自然言語で回すパーソナル・トレーディング・エージェント（週間 +5,407★ / 累計 2.4万★）</h3>
+    <div class="article__body">
+      <p>自然言語の問いを実行可能なトレーディング分析に変換する、オープンソースの AI リサーチ基盤。市場データ・戦略生成・バックテスト・自律取引をエージェント的なアーキテクチャで一体化する。永続メモリと多ターンのリサーチワークフローを持つ自己改善型エージェントが核となる。</p>
+      <p>投資委員会・クオンツデスク・リスク委員会といった複数エージェントのチーム編成、A 株・香港／米国株・暗号資産・先物・為替をまたぐバックテスト、証券会社の取引記録から売買ルールを抽出して実際の取引と突き合わせる「Shadow Account」を備える。Qlib・Kakushadze・GTJA・学術系の 4 つの「zoo」に計 452 のプリセット alpha、フォールバック付きの 19 の無料市場データ源、Telegram・Slack・Discord・WeChat 等での配信、TradingView Pine Script／TDX／MetaTrader 5 へのエクスポートを持つ。主体は Python（FastAPI）＋React／TypeScript、ライセンスは MIT。「金融の思考の型」をエージェントに載せる路線が高い伸びを見せた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/HKUDS/Vibe-Trading">HKUDS/Vibe-Trading</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">MadsLorentzen/ai-job-search — 端末内で完結する就活自動化フレームワーク（週間 +3,558★ / 累計 2.3万★）</h3>
+    <div class="article__body">
+      <p>Claude Code 上に組まれた、求人の評価・CV の調整・カバーレター作成・面接準備までを自動化する就職活動フレームワーク。すべてローカルで動く点を掲げる。求人票をスクレイプして適合度で並べる <code>/scrape</code>、適合評価から CV・カバーレターの作成、相互レビュー、PDF 化、ATS 検証までを一気通貫で回す <code>/apply</code> を中心に据える。</p>
+      <p>ほかに、段階別の面接準備とモック面接・STAR 事例のひも付けを行う <code>/interview</code>、応募の追跡・保管の <code>/outcome</code>、求人の一括採点 <code>/rank</code>、GitHub やポートフォリオからプロフィールを補強する <code>/expand</code>、スキルギャップを学習提案付きで分析する <code>/upskill</code>、オフラインで見られる応募ダッシュボードを生成する <code>/html-report</code> を備える。経歴の捏造をしない方針を明記し、測定可能な成果の記録やスキル分析からの意外なキャリア発見も狙う。主体は TypeScript・Python、ライセンスは MIT。個人の生活実務をエージェントに預ける代表例として支持を集めた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">iOfficeAI/OfficeCLI — Office 不要で文書を操る、エージェント向け Office スイート（週間 +5,342★ / 累計 1.9万★）</h3>
+    <div class="article__body">
+      <p>AI エージェントや開発者が Word・Excel・PowerPoint を、Office のインストールなしにプログラムから作成・読み取り・編集できるコマンドラインツール。.NET ランタイムを埋め込んだ単一の自己完結バイナリで動く。高忠実度で文書を可視化する HTML レンダリングエンジンを内蔵する。</p>
+      <p>350 以上の Excel 関数の自動評価とピボットテーブル生成、<code>{{key}}</code> プレースホルダーを使ったテンプレート差し込み、「意味的なビュー → DOM 操作 → 生の XML」という三層アーキテクチャ、編集中の自動更新ライブプレビュー、全コマンドの JSON 出力、<code>/slide[1]/shape[2]</code> のようなパス指定での要素アドレッシング、AI 連携用の MCP サーバーを備える。データ源からの帳票自動生成、バッチ文書処理、CI/CD でのヘッドレス生成などを想定用途に挙げる。主体は C#、ライセンスは Apache 2.0。エージェントの「事務作業の手足」として、業務文書の自動化に本腰を入れたツールだ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/iOfficeAI/OfficeCLI">iOfficeAI/OfficeCLI</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エージェントの土台・実行環境</h2>
+
+  <article class="article">
+    <h3 class="article__headline">wonderwhy-er/DesktopCommanderMCP — 端末・ファイルを Claude に握らせる MCP サーバー（週間 +1,991★ / 累計 8.4千★）</h3>
+    <div class="article__body">
+      <p>Claude Desktop の中から端末操作・ファイルシステム操作・コード編集を行えるようにする MCP サーバー。プロセス管理を伴うコマンド実行、ファイルの検索・読み書き、外科的なテキスト置換によるコード編集を提供する。</p>
+      <p>Excel・PDF・DOCX の扱い、プロセス出力のストリーミングとページング、設定管理、包括的な監査ログ、Markdown エディタ付きのファイルプレビュー UI、ChatGPT・Claude Web からの Remote MCP 経由アクセスを備える。複雑なコードベースの探索、システムタスクの自動化、複数プロジェクトをまたいだ精密な変更、CSV／JSON／Excel でのデータ分析、開発サーバーやデータベースとの連携を想定用途に挙げる。主体は TypeScript、ライセンスは MIT。派手なエージェント機能の下で、エージェントに「実行できる手」を与える地味だが不可欠な層として根強い支持を保つ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/wonderwhy-er/DesktopCommanderMCP">wonderwhy-er/DesktopCommanderMCP</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">OpenCut-app/OpenCut — MCP とヘッドレスを備えて作り直す CapCut 代替（週間 +11,731★ / 累計 7.4万★）</h3>
+    <div class="article__body">
+      <p>今週の伸び頭。Web・デスクトップ・モバイル向けの無料オープンソース動画エディタで、CapCut のオープンソース代替として位置づけられる。現在は全面的なアーキテクチャの作り直しの最中にある。旧版は opencut.app で引き続き利用でき、書き換え版は new.opencut.app で開発中だ。</p>
+      <p>作り直し版で計画されているのは、拡張のための Editor API、サードパーティ製プラグインの一級サポート、Rust 製の統一コアからデスクトップ・モバイル・ブラウザを横断する構成、そして<strong>AI エージェント向けの MCP サーバー統合と、自動化・バッチレンダリング向けのヘッドレスモード</strong>、組み込みのスクリプティング機能である。主体は TypeScript（コアは Rust）、ライセンスは MIT。純粋なクリエイター向けツールでありながら、動画編集にも MCP／ヘッドレスでエージェント連携を織り込む設計が、今週最大のスター獲得につながった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/OpenCut-app/OpenCut">OpenCut-app/OpenCut</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">stablyai/orca — 並列エージェントの艦隊を操る ADE（継続・週間 +5,736★ / 累計 2.1万★）</h3>
+    <div class="article__body">
+      <p>先週に続きトレンド上位に残った、複数の AI コーディングエージェントを並列に統率する ADE（Agent Development Environment）。Claude Code・Codex・OpenAI 系モデルなどを、隔離した git worktree の中で同時に走らせ、出力を突き合わせて比較できる。</p>
+      <p>並列 worktree のオーケストレーション、iOS／Android のモバイル連携アプリ、WebGL レンダリングと永続スクロールバックを備えたターミナル分割、UI 要素をクリックして HTML／CSS をプロンプトに注入する Design Mode、GitHub・Linear とのネイティブ連携、強力なマシンでリモート実行する SSH worktree、diff への注釈ツール、スクリプト用の CLI を持つ。主体は TypeScript、ライセンスは MIT。リポジトリは 800 を超えるリリースを重ね、7 月 17 日時点で v1.4.144 と活発な更新が続く。今週の herdr と同じ「複数エージェントの束ね」テーマの本命として定着している。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">知識をスキルに、学びをエージェントに</h2>
+
+  <article class="article">
+    <h3 class="article__headline">kangarooking/cangjie-skill — 本や動画を「実行可能なスキル」に蒸留する（週間 +1,043★ / 累計 3.4千★）</h3>
+    <div class="article__body">
+      <p>本・長尺動画・ポッドキャストといった高密度なコンテンツから、方法論やフレームワークを抽出し、AI エージェントが実際に呼び出せる構造化・実行可能なスキルへと蒸留するツール。原典の「型」を再利用可能なツールパッケージに変換する。</p>
+      <p>アドラーの分析的読書法に三重の検証フィルタと実行志向の構造化を組み合わせた「RIA-TV++」という 7 段階のパイプラインを核に据える。書籍・動画／ポッドキャストの書き起こし・インタビュー・講義を処理し、依存関係マップ・テストケース・境界ドキュメントを備えたスキルパックを生成する。クロスドメイン検証・予測力の評価・独自性チェックで抽出物を選別する。バフェットの手紙、コピーライティング、行動心理学、古典など 20 以上の完成スキルパックを同梱する。主体は Python、ライセンスは MIT。先週から続く「特定領域の思考の型をスキルとして与える」流れを、知識の蒸留という上流工程から支える。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/kangarooking/cangjie-skill">kangarooking/cangjie-skill</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Shubhamsaboo/awesome-llm-apps — 100+ の実動する AI アプリ集（週間 +5,589★ / 累計 12.3万★）</h3>
+    <div class="article__body">
+      <p>クローンして手を入れ、そのまま動かせる 100 以上のオープンソースな AI エージェント／RAG アプリを集めたリポジトリ。累計 12万★ を超える定番アーカイブで、本番想定でエンドツーエンドに検証された実装を集めることを掲げる。</p>
+      <p>セキュリティ検証付きの再利用可能なエージェントスキル、API キーだけで動く単一ファイルのスターター、ツール・メモリ・多段推論を持つ高度なマルチエージェントチーム、リアルタイム音声エージェント、スケジュールやイベントを監視する常駐エージェント、基本から agentic まで幅広い RAG パイプライン、テキストを超えて対話的コンポーネントを描く Generative UI、永続的なメモリシステムまでを網羅する。Claude・Gemini・GPT・DeepSeek・Llama・Qwen などに対応。主体は Python、ライセンスは Apache 2.0。個別ツールが乱立する中で、「作り方の見本市」としての存在感を保った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/Shubhamsaboo/awesome-llm-apps">Shubhamsaboo/awesome-llm-apps</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">HKUDS/DeepTutor — 学習をまるごと束ねるエージェント・ネイティブな学びの作業場（週間 +1,283★ / 累計 2.7万★）</h3>
+    <div class="article__body">
+      <p>チュータリング・問題解決・クイズ生成・リサーチ・可視化・習熟練習を一つの拡張可能なシステムに統合した、エージェント・ネイティブな学習ワークスペース。LLM を核にした個人化教育プラットフォームとして動く。Chat・Quiz・Research・Visualize・Solve・Mastery Path の各モードを、統一されたエージェントループの上で回す。</p>
+      <p>知識ベース・書籍・ノート・ペルソナを結ぶ学習文脈、外部の Claude Code インスタンスを相談相手にする Subagents や常駐 IM 上の Partners、LlamaIndex・PageRAG・GraphRAG・LightRAG・Obsidian をまたぐ多エンジンの知識検索、EduHub 経由で導入するコミュニティスキル、トレースと統合を持つ三層の可視化可能なメモリ、CLI、ワークスペースを分離するマルチユーザー運用を備える。主体は Python・TypeScript、ライセンスは Apache 2.0。エージェント基盤の設計思想を、そのまま「学び」の道具立てに応用した例だ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">継続組 — 先週の顔ぶれが今週も上位に</h2>
+
+  <article class="article">
+    <h3 class="article__headline">codex-plugin-cc・OmniRoute・herdr が再びトレンド入り</h3>
+    <div class="article__body">
+      <p>先週取り上げた三つが今週もランクに残った。Claude Code から Codex を呼ぶ OpenAI 公式プラグイン <a href="https://github.com/openai/codex-plugin-cc">openai/codex-plugin-cc</a> は週間 +1,908★・累計 2.9万★ と伸びを維持し、競合ベンダーのエージェント同士をつなぐ路線が定着している。231+ プロバイダを束ねる無料 AI ゲートウェイ <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a> は週間 +3,920★・累計 1.8万★ で、多プロバイダ時代のコスト最適化とレジリエンスを担う層としての支持が続く。端末に常駐して複数エージェントを多重化する Rust 製マルチプレクサ <a href="https://github.com/ogulcancelik/herdr">ogulcancelik/herdr</a> も週間 +2,502★・累計 1.7万★ で残り、今週上位の orca と並んで「並列エージェントの束ね」テーマを分け合った。エージェントを作る・つなぐ・束ねるという骨格が、一過性でないことを改めて示している。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/openai/codex-plugin-cc">openai/codex-plugin-cc</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">facebook/astryx — 人とエージェントが同じ道具で作る Meta のデザインシステム（週間 +4,087★ / 累計 7.6千★）</h3>
-    <div class="article__body">
-      <p>Meta が公開したオープンソースのデザインシステム。「人とエージェントのために作られた」を掲げ、API・ドキュメント・CLI を一体で設計し、人間の開発者と AI アシスタントが同じ参照・同じ流儀で UI を組めるようにする。社内で最も使われる最大のデザインシステムとして育ったものを外部公開したという。</p>
-      <p>TypeScript 対応の 150 以上のアクセシブルな React コンポーネント、neutral・butter・chocolate・matcha など 7 つのテーマ、ダークモード、CSS カスタムプロパティによるブランド単位のテーミングを備える。コンポーネントのスキャフォールドやドキュメント生成を担う CLI を持ち、その CLI を支える API を AI エージェントやビルドツールも同じように叩ける。命名・prop・合成の規則を全コンポーネントで統一し、数個覚えれば残りの挙動を人も AI も予測できる設計を強調する。Tailwind・CSS modules・素の CSS のいずれとも併用可能で、リポジトリには <code>CLAUDE.md</code>／<code>AGENTS.md</code> を同梱する。現時点では beta、ライセンスは MIT。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/facebook/astryx">facebook/astryx</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">dotnet/skills — .NET / C# 開発をエージェントに教える公式スキル集（週間 +886★ / 累計 4.5千★）</h3>
-    <div class="article__body">
-      <p>Microsoft の .NET チームによる、AI コーディングエージェントに .NET・C# プロジェクトを扱わせるためのスキルとカスタムエージェントのコレクション。C# の言語サーバー（LSP）連携を組み込み、データアクセス・診断・ビルド・パッケージ管理・アップグレード・MAUI・AI/ML・ASP.NET Core・Blazor・テストなど多領域の開発タスクをカバーする。</p>
-      <p>テストフレームワークの移行ツールやテンプレートエンジンによるプロジェクト雛形生成を備え、.NET 11 の機能にも対応する。<code>agentskills.io</code> のオープン標準に沿い、Copilot CLI・Claude Code・VS Code・Cursor・Codex CLI などのプラグインマーケットプレイス経由で導入できる。主体は C#、ライセンスは MIT。先週の各種「スキル集」に続き、大手プラットフォーマー自身が自社言語向けのスキルを公式に配り始めた例だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/dotnet/skills">dotnet/skills</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">alibaba/page-agent — ページ内で動く JavaScript 製 GUI エージェント（週間 +4,459★ / 累計 2.6万★）</h3>
-    <div class="article__body">
-      <p>Alibaba による、Web インターフェースを自然言語で操作するためのページ内 GUI エージェント。ブラウザ拡張・Python・ヘッドレスブラウザを必要とせず、JavaScript を組み込むだけで動く点を特徴とする。スクリーンショットに頼らず、テキストベースで DOM を解析・操作する。</p>
-      <p>ローカル配置を含む複数の LLM に対応し、複数ページにまたがるタスク向けの任意の Chrome 拡張、beta の MCP サーバー対応を持つ。SaaS への AI コパイロット組み込み、ERP／CRM のスマートなフォーム入力、自然言語による Web アクセシビリティ、MCP クライアントからのブラウザ制御を想定用途に挙げる。主体は TypeScript、ライセンスは MIT。エージェントを Web ページの内側に住まわせる、ブラウザ操作系の新しい形だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/alibaba/page-agent">alibaba/page-agent</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントを束ねる・隔離する基盤</h2>
-
-  <article class="article">
-    <h3 class="article__headline">ogulcancelik/herdr — 端末で複数エージェントを多重化するマルチプレクサ（週間 +4,756★ / 累計 1.5万★）</h3>
-    <div class="article__body">
-      <p>ターミナル環境向けのエージェント・マルチプレクサ。複数の AI エージェントを一つのターミナル画面の中で同時に管理し、セッションを切り離して再接続できる。ブロック中・作業中・完了といったエージェントの状態をリアルタイムに可視化する。</p>
-      <p>ターミナルを切り替えても状態を保つセッション永続化、エージェント自身がペインを生成して互いに協調できるネイティブなソケット API、キーボード・マウス両対応、拡張可能なプラグイン機構を備える。Electron に依存しない単一の軽量な Rust バイナリである点を売りにする。ライセンスは AGPLv3（組織向けの商用ライセンスも用意）。先週の orca に代表される「並列エージェントの艦隊を操る」路線が、より軽量なターミナル常駐ツールとして広がっている。</p>
-    </div>
-    <ul class="article__sources">
+      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
       <li><a href="https://github.com/ogulcancelik/herdr">ogulcancelik/herdr</a></li>
     </ul>
   </article>
-
-  <article class="article">
-    <h3 class="article__headline">TencentCloud/CubeSandbox — AI エージェント向けの高速・隔離サンドボックス（週間 +2,284★ / 累計 9.5千★）</h3>
-    <div class="article__body">
-      <p>Tencent Cloud による、AI エージェントのための「即時・並行・安全・軽量」なサンドボックスサービス。LLM が生成した信頼できないコードを、隔離された仮想マシン内で安全に実行することを狙う。KVM ベースで専用のゲスト OS カーネルを用いるハードウェアレベルの隔離を提供し、60ms 未満のコールドスタートとインスタンスあたり 5MB 未満のメモリ増加を謳う。</p>
-      <p>E2B SDK 互換による移行のしやすさ、管理・監視の Web コンソール、API キーをサンドボックス外に保つ資格情報保管庫、ドメイン許可リストと監査ログによる egress 制御、スナップショット・クローン・ロールバック、コスト最適化のための自動一時停止／再開を備える。ARM64・x86_64 の双方に対応。主体は Rust・Go・C、ライセンスは Apache 2.0。エージェントに「手足」を与えるうえで避けて通れない実行環境の安全性に、クラウド事業者が本体を投入した格好だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/TencentCloud/CubeSandbox">TencentCloud/CubeSandbox</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">diegosouzapw/OmniRoute — 231+ プロバイダを束ねる無料 AI ゲートウェイ（週間 +4,119★ / 累計 1.5万★）</h3>
-    <div class="article__body">
-      <p>単一のエンドポイントから多数の AI プロバイダへリクエストを振り分ける、オープンソースの無料 AI ゲートウェイ。README は 237 プロバイダ（うち 90 以上が無料）に対応すると謳い、Claude Code・Cursor・Cline・Copilot などのコーディングツールを複数モデルへ接続し、自動フォールバックとトークン圧縮を効かせる。</p>
-      <p>優先度・重み付け・コスト最適化・フュージョンなど 17 のルーティング戦略、トークンを 15〜95% 削減するというスタック型の圧縮、95 ツールを持つ MCP サーバーと A2A エージェントプロトコル、チーム間でのクォータ共有と公平スケジューリング、PII 検出やプロンプトインジェクション対策のガードレールを備える。npm・Docker・デスクトップ（Electron）・Android（Termux）・PWA と配布形態も幅広い。主体は TypeScript、ライセンスは MIT。多プロバイダ時代のコスト最適化とレジリエンスを一枚で担う層として支持を集めた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
-    </ul>
-  </article>
 </section>
-
-<section class="topic">
-  <h2 class="topic__title">ローカル・プライバシー志向の AI</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Zackriya-Solutions/meetily — 端末内で完結するプライバシー重視の会議アシスタント（週間 +8,885★ / 累計 2.2万★）</h3>
-    <div class="article__body">
-      <p>今週の伸び頭。会議の記録・文字起こし・要約を、クラウドに送らずローカルマシン上で完結させる、プライバシー重視の AI 会議アシスタント。Whisper や Parakeet を使ったリアルタイムのローカル文字起こしと、Ollama・Claude・Groq・OpenRouter に対応した AI 要約を組み合わせる。</p>
-      <p>macOS・Windows・Linux のマルチプラットフォームに対応し、GPU アクセラレーションを効かせた音声ミキシング、既存音声ファイルの取り込みと強化、OpenAI 互換エンドポイントのカスタム指定を備える。防衛・法務・医療・コンプライアンス領域など、機密性の高い会話の完全な統制を必要とする組織を主要な想定利用者に挙げる。主体は Rust・TypeScript・C++、ライセンスは MIT。クラウド前提の議事録 SaaS に対し、データ主権を軸にしたローカル完結型が強い支持を得た。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/Zackriya-Solutions/meetily">Zackriya-Solutions/meetily</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">huggingface/speech-to-speech — オープンモデルで組む低遅延の音声エージェント（週間 +788★ / 累計 5.9千★）</h3>
-    <div class="article__body">
-      <p>Hugging Face による、オープンソースモデルだけで音声エージェントを組むためのパイプライン。「VAD → STT → LLM → TTS」というモジュール構成を取り、OpenAI Realtime 互換の WebSocket API を備える。各段を差し替え可能にし、完全にローカルで低遅延の音声対話を実現することを狙う。</p>
-      <p>STT には Parakeet TDT や Whisper 系、TTS には Qwen3-TTS や Kokoro、LLM にはローカルの transformers・mlx-lm・OpenAI 互換 API と、複数のバックエンドを選べる。リアルタイムサーバー・ローカル・WebSocket・TCP ソケットの複数モードで動き、多言語対応と言語自動判定、Pocket TTS による任意の音声クローンを持つ。Reachy Mini ロボット上で実運用されているという。主体は Python、ライセンスは Apache 2.0。テキスト系に続き、音声もローカル・オープンで組む流れが定着しつつある。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/huggingface/speech-to-speech">huggingface/speech-to-speech</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">マルチモーダル・メタ・教育、そして継続組</h2>
-
-  <article class="article">
-    <h3 class="article__headline">bradautomates/claude-video — Claude に動画を解析させるフレーム抽出ツール（週間 +3,630★ / 累計 7.0千★）</h3>
-    <div class="article__body">
-      <p>動画をダウンロードしてフレームを抽出し、文字起こしと合わせて Claude に渡すことで、動画コンテンツを解析させるツール。<code>/watch</code> コマンドに動画の URL やローカルファイルを与えると、利用可能なら字幕（無料）を取得し、シーンを意識したフレームを設定可能な粒度で抜き出す。字幕が無い場合は Whisper API による音声書き起こしにフォールバックする。</p>
-      <p>動画の構成や「フック」の分析、スクリーン録画からのバグ診断、内容の要約、プレイリストの検索可能なノート化、全編を見ずに要点だけ抜き出す、といった用途を挙げる。主体は Python、ライセンスは MIT。テキスト中心だったコーディングエージェントに、動画という入力を安価に足す小道具として注目された。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/bradautomates/claude-video">bradautomates/claude-video</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">asgeirtj/system_prompts_leaks — 各社 AI のシステムプロンプトを集めた資料庫（週間 +7,149★ / 累計 5.6万★）</h3>
-    <div class="article__body">
-      <p>Claude・ChatGPT・Gemini・Grok など各社チャットボットのシステムプロンプトを抽出・収集して整理したリポジトリ。Anthropic・OpenAI・Google・xAI・Microsoft といった提供元ごとに分類し、モデルのバージョン間でプロンプトの変化を diff で追える。ツール仕様や連携用プロンプトも含む。</p>
-      <p>AI のシステム指示を理解するための教育的な資料として位置づけられ、累計 5.6万★ に達する定番アーカイブになっている。ライセンスは CC0-1.0（パブリックドメイン提供）。エージェント自体を作る動きが盛り上がる裏で、「既存のエージェントが実際どう指示されているか」を覗く AI 自己言及的なメタ資料への関心も根強い。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/asgeirtj/system_prompts_leaks">asgeirtj/system_prompts_leaks</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">harvard-edge/cs249r_book — 「ML システム」を学ぶ Harvard の教材（週間 +1,969★ / 累計 2.7万★）</h3>
-    <div class="article__body">
-      <p>孤立したモデルではなく、本番で動く効率的・堅牢な知的システムを作る「AI エンジニアリング」を教える、統合型のカリキュラム。機械学習とシステム工学をつなぐ理論・メンタルモデルを扱う 2 巻構成の教科書を核に、学習者が ML の内部を 20 モジュールで自作する TinyTorch、設計トレードオフを探る Marimo ノートブックのインタラクティブ実習を備える。</p>
-      <p>大規模での制約をモデル化する MLSys·im シミュレータ、Arduino・Raspberry Pi・組込み向けのハードウェア実習キット、面接想定問題集、講師向け資料まで揃う。主体は Python ほか、ライセンスは構成要素ごとに異なる（教科書等は CC-BY-NC-SA 4.0、TinyTorch は MIT など）。AI 実装ツールが賑わう中で、その土台を体系的に学ぶ長編教材も安定した支持を保った。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/harvard-edge/cs249r_book">harvard-edge/cs249r_book</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">継続組 — strix・orca・ai-berkshire が今週も上位に</h3>
-    <div class="article__body">
-      <p>先週取り上げた顔ぶれのうち三つが、今週もトレンドに残った。自律型 AI ペネトレーションテスト <a href="https://github.com/usestrix/strix">usestrix/strix</a> は週間 +8,370★・累計 4.0万★ と伸びを維持し、動的実行で PoC エクスプロイトを走らせて脆弱性を裏づける路線が定着している。並列エージェントの艦隊を操る ADE <a href="https://github.com/stablyai/orca">stablyai/orca</a> は週間 +4,111★ で、今週の herdr と同じ「複数エージェントの束ね」テーマを分け合った。Claude Code / Codex で価値投資リサーチを回す <a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a> も週間 +3,757★ で残り、特定領域の「思考の型」をスキルとして与える流れが一過性でないことを示した。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/usestrix/strix">usestrix/strix</a></li>
-      <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
-      <li><a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a></li>
-    </ul>
-  </article>
-</section>
-
     </main>
 
     <footer>
