@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年7月14日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年7月21日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年7月14日">
+<meta property="og:title" content="フロントエンドニュース — 2026年7月21日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月14日（火）</span>
+        <span>2026年7月21日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,62 +31,79 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週の主役が「ネイティブ・コンパイラの着地（TypeScript 7.0 GA）」だったのに対し、今週はその波が<strong>フレームワーク本体と運用プロセスへ染み出した週</strong>だった。Rust 製コンパイラと Vite 8／Rolldown に載せ替えた <strong>Astro 7 が 7 月 8〜13 日に 7.0.7〜7.0.9 と連続パッチ</strong>を切り、メジャー直後の安定化を急ぐ。並行して <strong>Next.js は場当たり的だったセキュリティ修正を「予告付きの定例リリース」へ制度化</strong>し、初回を 7 月 20 日に予告した。ブラウザ側では 2026 年に安全に使える機能群 <strong>Baseline 2026 の輪郭が固まり、Anchor Positioning がその目玉</strong>として据わった。速さ競争が一巡し、軸は「予測可能なリリース間隔」「いつ・どのブラウザで使えるかの明示」という地固めへ移っている。</p>
+  <p>先週号で「速さ競争が一巡し、軸は予測可能なリリース運用へ移った」と読んだが、今週はその読みが具体的な出来事で裏づけられた週だった。先週予告された <strong>Next.js 初の月次セキュリティリリースが 7 月 21 日に予定どおり着地</strong>し、9 件（高 4・中 5）の修正を 16.2 系・15.5 系へまとめて配った。制度化された「予告付き・定例」の実効性が最初の一号で試された格好だ。もう一方の主役は <strong>TypeScript 7 の GA 一週間後の現実</strong>で、Go 製ネイティブコンパイラ自体は無事故で堅牢な一方、<strong>Vue・Svelte・Astro のテンプレート型チェックは 7.1 のプログラマティック API が出るまで動かせず</strong>、現場は「tsc は TS7・ESLint 用に TS6 を併用」という折衷で凌いでいる。ブラウザでは <strong>Chrome 142</strong> が View Transitions の仕様追随と scroll-marker 擬似クラス、WebRTC のポスト量子暗号を載せた。今週の通奏低音は「新しい速さをどう安全に・計画的に運用へ落とすか」である。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js、セキュリティ修正を「予告付き定例リリース」へ制度化 — 初回は 7 月 20 日</h3>
+    <h3 class="article__headline">Next.js、初の月次セキュリティリリースが予定どおり着地 — 9 件を 16.2／15.5 系へ</h3>
     <div class="article__body">
-      <p>Next.js が、これまで脆弱性が見つかるたびに不定期で出していたセキュリティ修正を、<strong>事前予告付きの定例リリース</strong>という正式なプロセスへ切り替えると表明した。最初の定例セキュリティリリースは 7 月 20 日に予定され、複数の問題をまとめて修正する見込み。5 月には DoS・ミドルウェア／プロキシのバイパス・SSRF・キャッシュポイズニング・XSS など広範な 13 件の勧告を協調リリースした経緯があり、今回の制度化はその反省を運用に落とし込む動きにあたる。</p>
-      <p>利用側の実務としては、緊急パッチが飛び込みで来る前提から、<strong>「決まった日にまとめて来る」前提へ運用を組み替えられる</strong>のが大きい。CI に取り込むタイミングや検証枠をあらかじめ確保しやすくなり、業務アプリの計画的なアップグレードが立てやすくなる。速さの話題が続いたフロント界隈で、フレームワークの成熟度がリリース運用の予測可能性で測られ始めた象徴的な一手だ。</p>
+      <p>先週号で「初回の定例セキュリティリリースが実際に何件・どの深刻度を含み、予告どおりの日程で出るか」を最大の関心事として挙げたが、その答えが出た。Vercel は <strong>7 月 21 日に Next.js 初の月次セキュリティリリースを公開</strong>し、<strong>高 4 件・中 5 件の計 9 件の脆弱性</strong>を、サポート中の <strong>16.2 系と 15.5 系</strong>へまとめてパッチした。CVE 番号や具体的な悪用手法といった技術詳細は、利用者の更新が行き渡るのを待つ協調的ディスクロージャの方針から、パッチ公開後に別記事で明かされる。</p>
+      <p>読みどころは、5 月に 13 件を場当たり的に協調リリースした反省を「事前予告・毎月・まとめて」という運用へ落とし込み、その第一号が宣言どおりの日程で回ったこと自体にある。緊急性の高い実悪用ケースには従来どおり随時パッチを出す例外を残しつつ、平時は「決まった日にまとめて来る」前提へと利用側の検証枠・CI 取り込みを組み替えられる。フロントの成熟度がベンチマークではなくリリース運用の予測可能性で測られ始めた、という先週の見立てを地で行く一手だ。なお本リリースの新バージョン番号は、5 月版で到達した 15.5.18／16.2.6 よりさらに上の系列パッチにあたる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog">Next.js Blog — nextjs.org</a></li>
+      <li><a href="https://nextjs.org/blog/next-security-release-program">Next.js Security Release and Our Next Patch Release — nextjs.org</a></li>
+      <li><a href="https://cybersecuritynews.com/next-js-monthly-security-updates/">Next.js Launches Monthly Security Release Program as First Update Patches 9 Vulnerabilities — Cyber Security News</a></li>
       <li><a href="https://releasebot.io/updates/vercel/next-js">Next.js Updates by Vercel — Releasebot</a></li>
-      <li><a href="https://vercel.com/changelog/next-js-may-2026-security-release">Next.js May 2026 security release — Vercel</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Astro 7 が連続パッチで安定化 — Rust コンパイラ＋Vite 8／Rolldown、ネイティブ化の波がフレームワーク本体へ</h3>
+    <h3 class="article__headline">TypeScript 7 GA 一週間 — コンパイラは無事故、しかし Vue・Svelte は 7.1 待ちで足止め</h3>
     <div class="article__body">
-      <p>6 月下旬にメジャーが出た Astro 7 が、<strong>7 月 8 日の 7.0.7 から 13 日の 7.0.8・7.0.9 まで立て続けにパッチ</strong>を重ね、リリース直後の安定化を急いでいる。Astro 7 の目玉は <code>.astro</code> コンパイラを（従来の Go 実装から）<strong>Rust へ全面書き直し</strong>し、対応プラットフォームにはネイティブバイナリ、それ以外は WASM フォールバックという構成に移した点。バンドラは Vite 8 の Rolldown に載せ替え、Markdown／MDX も Rust パイプラインを通す。公式ベンチではビルド時間が 15〜61% 短縮し、一部サイトは 2 倍以上速くなったとする。</p>
-      <p>先週号で追った「JS 製ツールを別言語のネイティブ実装へ置き換える」流れが、ツール単体（TypeScript の型検査、Rolldown／oxc）を越えて<strong>フレームワークのコンパイラ本体にまで及んだ</strong>のが今週の読みどころ。加えて Astro 7 は AI コーディングエージェント向けに、エージェント検出・バックグラウンド dev サーバ・構造化 JSON ログといった機能や、<code>src/fetch.ts</code> でリクエストパイプラインを制御する Advanced Routing を入れた。メジャー直後ゆえパッチが速い時期でもあり、本番投入は 7.0.x の落ち着きを見てからが妥当だ。</p>
+      <p>7 月 8 日に GA した <strong>TypeScript 7.0（Go 製ネイティブコンパイラ）</strong>は、一週間を経てもコンパイラ本体に致命的な不具合が出ず、フルビルドで 8〜12 倍という速度も概ね実測どおりに立った。問題は周辺エコシステムに残る。<strong>Vue・Svelte・Astro・MDX のテンプレート型チェックは TS7 上では動かせない</strong>。Volar 系ツールが依存する旧プログラマティック API が、7.0 では保留されたまま <strong>7.1（歴史的な 3〜4 か月周期から 10 月ごろ）</strong>までお預けだからだ。</p>
+      <p>そこで今週定着したのが「割り切りの併用構成」だ。<strong>tsc のプロジェクト型チェックは TS7</strong> に載せて速度を取り、<strong>ESLint 系の型情報だけは Microsoft の <code>@typescript/typescript6</code> 互換パッケージで TS6 を固定</strong>して回す。先週号で「7.1 が SFC 中心スタックの移行の合図になる」と書いた点が、裏返しに「7.1 が出るまでは SFC スタックはフル移行できない」という一週間の現実として確定した。コンパイラの速さは本物だが、それを毎日の型チェックに全面適用できるのは 7.1 到来後、というのが現時点の実務的な結論になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://astro.build/blog/astro-7/">Astro 7.0 — astro.build</a></li>
-      <li><a href="https://github.com/withastro/astro/releases">Releases · withastro/astro — GitHub</a></li>
-      <li><a href="https://www.developersdigest.tech/blog/astro-7-rust-vite-8-release">Astro 7.0: Rust Compiler, Vite 8, and Up to 61% Faster Builds — Developers Digest</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/typescript-7-native-compiler-early-adopter-migration-readiness">TypeScript 7 One Week In: Migration Readiness Check — Digital Applied</a></li>
+      <li><a href="https://byteiota.com/typescript-7-go-native-compiler/">TypeScript 7.0 GA: 10x Faster, Vue and Svelte Must Wait — byteiota</a></li>
+      <li><a href="https://www.techtimes.com/articles/320049/20260710/typescript-7-now-stable-10-faster-builds-not-vue-svelte-yet.htm">TypeScript 7 Now Stable: 10× Faster Builds, But Not for Vue or Svelte Yet — Tech Times</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Baseline 2026 の輪郭が固まる — 目玉は Anchor Positioning</h3>
+    <h3 class="article__headline">Chrome 142 — View Transitions が仕様に追随、scroll-marker 擬似クラスと WebRTC のポスト量子暗号</h3>
     <div class="article__body">
-      <p>2026 年に主要ブラウザで安全に使える機能群 <strong>Baseline 2026</strong> の姿が固まってきた。その筆頭に据わったのが <strong>CSS Anchor Positioning</strong> で、ある要素を別の要素へ純粋な CSS で係留できる。これはこれまで Floating UI や Popper.js が担ってきたポップオーバー配置の仕事をライブラリなしで置き換えるもので、実装から外部依存を 1 つ減らせる。ほかに View Transitions 向けの擬似クラス（<code>:active-view-transition</code> ／ <code>:active-view-transition-type()</code>）、<code>@starting-style</code> と <code>transition-behavior: allow-discrete</code> による入場アニメーションなどが「Newly available」入りした。</p>
-      <p>先週号で触れた Interop 2026 の進行や DevTools の Baseline 表示と地続きの話で、<strong>「いつ・どのブラウザで安全に使えるか」を実装の脇で判断できる材料</strong>が今年は着実に増えている。日付・時刻を扱う Temporal は Chrome では 2026 年初頭に入ったが Firefox・Safari 未対応で、Baseline 入りには両者の実装待ちという温度差も残る。「Baseline に入った ＝ 主力ブラウザで足並みが揃った」を採否の一次基準に置くのが、今年の堅い運用になる。</p>
+      <p><strong>Chrome 142</strong> が、CSS と認証・セキュリティにまたがる更新を載せて出た。View Transitions では、CSSWG の決議に合わせて <code>::view-transition</code> の <code>position</code> を <code>fixed</code> から <strong><code>absolute</code> へ変更</strong>し、加えてトランジションオブジェクトを自前で保持しなくても参照できる <strong><code>document.activeViewTransition</code></strong> を追加した。CSS には、アクティブな <code>:target</code> を基準にスクロールマーカーを指す <strong><code>:target-before</code>／<code>:target-after</code> 擬似クラス</strong>が入り、カルーセル的な UI の状態表現がライブラリなしで書きやすくなる。</p>
+      <p>基盤側でも動きがある。WebRTC を UDP 上で守る DTLS に <strong>ポスト量子暗号アルゴリズム</strong>を導入し、リアルタイム通信の長期的な盗聴耐性を先回りで固めた。FedCM は、サードパーティ iframe からの資格情報共有時に <strong>トップレベルではなく iframe 自身のオリジンを UI に表示</strong>するよう改め、ユーザーが「誰に共有するのか」を正しく判断できるようにした。先週号の Chrome 141（ローカルネットワークアクセスの許可制、<code>ariaNotify</code>）に続き、ブラウザが「既定を締める・標準 API を増やす」方向で着実に進んでいる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://web.dev/baseline/2026">Baseline 2026 — web.dev</a></li>
-      <li><a href="https://www.buildmvpfast.com/blog/web-platform-baseline-2026-new-features-browser-support">Web Platform Baseline 2026: New Features Safe to Use</a></li>
+      <li><a href="https://developer.chrome.com/release-notes/142">Chrome 142 Release notes — Chrome for Developers</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ブラウザ・プラットフォーム</h2>
+  <h2 class="topic__title">セキュリティ・運用</h2>
 
   <article class="article">
-    <h3 class="article__headline">Chrome 141 — ローカルネットワークアクセスを許可制に、ariaNotify で動的更新の読み上げを改善</h3>
+    <h3 class="article__headline">なぜ今「月次・予告制」なのか — AI 由来の脆弱性報告が増える中での制度設計</h3>
     <div class="article__body">
-      <p>Baseline の底上げと並行して、ブラウザ実装側も動いている。<strong>Chrome 141</strong> は、Web ページからユーザーのローカルネットワーク（社内機器や開発サーバなど）への通信を<strong>許可プロンプトの背後へ隔離</strong>し、悪用の入口を塞いだ。アクセシビリティでは <code>ariaNotify</code> が入り、DOM 更新に紐づかない変化（非同期の完了通知など）を、従来の ARIA ライブリージョンより確実かつ制御しやすい形でスクリーンリーダーに読み上げさせられるようになった。さらに、AI 言語モデルを裏に持つ入力テキストの校正 API がオリジントライアルとして提供される。</p>
-      <p>ローカルネットワーク制限は既存ページの副作用に注意が要るが、<strong>プライバシー・セキュリティの既定を締める方向</strong>は各エンジン共通の潮流だ。<code>ariaNotify</code> のように「動的 UI の通知」を標準 API で扱えるようになる流れは、SPA でのアクセシビリティ実装の定石を書き換えていく。</p>
+      <p>Next.js の月次化を単発のプロセス改善で終わらせず、背景まで含めて読むと今週の含意が見えてくる。5 月の 13 件協調リリースに象徴されるように、フレームワークへ寄せられる脆弱性報告は <strong>AI を使った探索によって量・頻度ともに押し上げられている</strong>。個別に不定期パッチを出し続けると、利用側は「いつ来るか読めない緊急対応」に追われ、逆に更新遅延や適用漏れを招きやすい。</p>
+      <p>そこで「実悪用の緊急ケースは随時、それ以外は毎月まとめて予告付きで」と二層に整理したのが今回の設計だ。攻撃者に手がかりを与えないための <strong>CVE 詳細の後出し（協調ディスクロージャ）</strong>と、防御側が検証枠を確保できる <strong>事前予告</strong>を両立させる狙いがある。これは Next.js 固有の話にとどまらず、報告の主体が人間中心から自動探索へ移りつつある時代に、メタフレームワークが取りうる運用テンプレートとして参照されていくだろう。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/release-notes/141">Chrome 141 Release notes — Chrome for Developers</a></li>
+      <li><a href="https://cyberpress.org/next-js-launches-monthly-security-release-program/">Next.js Launches Monthly Security Release Program as AI-Discovered Flaws Surge — CyberPress</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/nextjs-security-release-program-monthly-patch-cadence-2026">Next.js Monthly Security Releases: Team Patch Playbook — Digital Applied</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ビルドツール・エコシステム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">ネイティブ移行の“実務” — 大規模アプリ向けに Vite 8.1 の Bundled Dev Mode が効いてくる</h3>
+    <div class="article__body">
+      <p>TS7 の一週間が示したのは「ネイティブ実装の速さは本物だが、全面適用には周辺の整備待ちがある」という構図で、これはビルドツール側にも共通する。<strong>Rolldown を単一バンドラに据えた Vite 8</strong> の系譜では、<strong>Vite 8.1 が実験的な Bundled Dev Mode（旧 Full Bundle Mode）</strong>を提供しており、1 万コンポーネント級のアプリで <strong>起動が約 15 倍・フルリロードが約 10 倍</strong>という計測が示されている。今週は <strong>8.1.5 パッチ（7 月 16 日）</strong>が出て、この大規模向け高速化路線の安定化が進んだ。</p>
+      <p>あわせて Vite は、チャンクを安定させてキャッシュ効率を上げる Chunk Import Map、WASM/ESM 統合、そして Rust 製の <strong>Lightning CSS</strong> を将来のデフォルト候補として取り込む動きを見せる。TypeScript のコンパイラ、Astro の <code>.astro</code> コンパイラ、Vite のバンドラと、フロントの基盤が軒並みネイティブ実装へ載せ替わる大きな流れの中で、今週は「速くなった基盤を実プロジェクトの規模で安定運用へ持ち込む」局面に入ったことが読み取れる。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://vite.dev/blog/announcing-vite8-1">Vite 8.1 is out! — vite.dev</a></li>
+      <li><a href="https://www.heise.de/en/news/Web-Development-Vite-8-1-to-accelerate-large-applications-11342552.html">Vite 8.1 to accelerate large applications — heise online</a></li>
+      <li><a href="https://github.com/vitejs/vite/releases">Releases · vitejs/vite — GitHub</a></li>
     </ul>
   </article>
 </section>
@@ -95,9 +112,9 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">7 月 20 日の Next.js 定例セキュリティリリース</h3>
+    <h3 class="article__headline">Next.js 月次リリースの CVE 詳細公開と、制度の“二号目”</h3>
     <div class="article__body">
-      <p>今週予告された初回の定例セキュリティリリースが、実際に何件・どの深刻度の勧告を含むかが最大の関心事。制度化の実効性を測る最初の材料になるため、対象バージョンと修正内容、そして「予告どおりの日程で確実に出るか」を追いたい。あわせてプレビュー段階の Next.js 16.3（Turbopack の永続キャッシュ・Rust 版 React Compiler）の安定化タイミングも継続ウォッチ。</p>
+      <p>今週着地した初回リリースについて、後追いで公開される <strong>CVE 番号・影響範囲・具体的な修正内容</strong>が最初の焦点。9 件の内訳（とくに高 4 件が何のクラスの脆弱性か）が分かれば、自社アプリでの露出評価がしやすくなる。あわせて、月次という周期が二号目以降も宣言どおりの日程で回るか、初回だけの見栄えで終わらないかを継続ウォッチしたい。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://nextjs.org/blog">Next.js Blog — nextjs.org</a></li>
@@ -105,13 +122,12 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">TypeScript 7.1 と Astro 7.0.x の落ち着き</h3>
+    <h3 class="article__headline">TypeScript 7.1 のプログラマティック API と SFC スタックの“解禁”</h3>
     <div class="article__body">
-      <p>先週 GA した TypeScript 7.0 で保留になったプログラマティック API と、それに依存する Vue・Svelte・Astro・MDX のエディタ完全対応が 7.1 でどこまで固まるか。SFC 中心のスタックにとっては実質的な移行の合図になる。加えて、メジャー直後で連続パッチが続く Astro 7.0.x がどのバージョンで落ち着き、本番投入の目安が立つかも見ておきたい。</p>
+      <p>Vue・Svelte・Astro・MDX のテンプレート型チェックを TS7 上で動かせるようにする <strong>プログラマティック API は 7.1（10 月ごろ想定）</strong>待ち。来週の短期で GA する話ではないが、7.1 のロードマップやプレビュー情報、<code>@typescript/typescript6</code> 併用がいつまで必要かの見通しが出てくれば、SFC 中心スタックの本格移行計画を立てる材料になる。ネイティブ化の恩恵を「型チェック全面」に広げられる時期の手がかりとして追う。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
-      <li><a href="https://github.com/withastro/astro/releases">Releases · withastro/astro — GitHub</a></li>
     </ul>
   </article>
 </section>
