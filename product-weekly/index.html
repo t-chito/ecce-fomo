@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年7月16日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年7月23日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年7月16日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年7月23日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月16日（木）</span>
+        <span>2026年7月23日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,112 +31,124 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週のプロダクト視点の主役は「Claude Code のデスクトップ強化」と「アーティファクトの"配れるアプリ"化」。デスクトップ版にアプリ内ブラウザが載り、Claude がドキュメントやデザインを自分で開いて操作できるようになった。アーティファクトは公開共有・複数人での同時編集・MCP コネクタ接続に対応し、Claude Code や Claude Tag から「作って配れる小さなアプリ」を出せる素材に変わりつつある。CLI は 2.1.206〜2.1.211 を一週間で連発し、Bedrock/Vertex での auto mode 既定 ON、スクリーンリーダー対応、subagent 出力の stream-json 転送を追加した。外では SpaceXAI が Grok Build（ハーネス）をオープンソース化し、Devin Fusion が Fable 5 を採用して「高いモデルなのにタスク単価は下がる」という意外なコスト観測を報告している。</p>
+  <p>今週のプロダクト視点の主役は「エージェントが実物を触る」方向への一段の踏み込み。Claude Code のデスクトップ版が iOS シミュレータと連携し、Claude がビルドした iOS アプリを隣のパネルで自分で起動・操作しながら仕上げられるようになった（macOS + Xcode、public beta）。セキュリティも自前のインフラに寄り、Claude Code 用の「Claude Security」プラグインが beta で登場——コミット前に手元の Claude 推論で脆弱性スキャンをかけられる。CLI は 2.1.215〜2.1.218 を一週間で連発し、`/code-review` のバックグラウンド subagent 化、ripgrep ベースの Grep 徹底、スクリーンリーダーモードの実装完了などを積んだ。外では Cognition が「Devin をどこでも動かす」Devin Outposts を出し、Codex CLI 0.145.0 がマルチエージェント V2 に踏み込んだ。そして「スキルは拾うより育てる」という現場観が、Cowork の"録画してスキル化"機能と個人エンジニアの発信の両方から浮かび上がった一週間だった。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">デスクトップにアプリ内ブラウザ——Claude が docs もデザインも自分で開いて触る</h3>
+    <h3 class="article__headline">デスクトップが iOS シミュレータと連携——Claude が自分でアプリを起動して仕上げる</h3>
     <div class="article__body">
-      <p>Claude Code のデスクトップ版にアプリ内ブラウザが載った。ローカルの dev サーバに対してやっているのと同じ要領で、Claude がドキュメントやデザイン、任意のサイトを開いて読み、クリックし、操作できる。サンドボックス化されており、どこまで触らせるかは設定できる。</p>
-      <p>これまで「URL を貼って要約させる」止まりだった外部情報の取り込みが、エージェント自身がブラウザを運転して調べ物や動作確認まで回す形に近づいた。実装中に仕様ページを開いて確認する、デザインを見て寄せる、といった往復がセッション内で完結する。</p>
+      <p>Claude Code のデスクトップ版が iOS シミュレータと連携するようになった。iOS アプリをビルドして走らせると、会話のすぐ隣のパネルにシミュレータが開く。Claude は動いているアプリを見て、自分でタップやスクロールをして操作し、完成まで反復する。もちろんユーザーもいつでもシミュレータを自分で触れる。macOS のみ・Xcode が必要で、今日から public beta。</p>
+      <p>先週のデスクトップ版アプリ内ブラウザ（Claude が任意サイトを開いて操作する）に続く動きで、「ローカル dev サーバに対してやっていること」がモバイルの実機動作確認にまで広がった格好だ。UI を実装させたあと、シミュレータ上での挙動を Claude 自身が見て直す——という往復がセッション内で閉じる。今週の x で最大級のエンゲージメントを集めた発表で、モバイル開発をエージェントに任せる導線として注目された。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2075635283211772279">@ClaudeDevs — Claude Code desktop に in-app browser</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2079674432038248611">@ClaudeDevs — Claude Code desktop が iOS シミュレータ連携</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2079674433854452046">@ClaudeDevs — Claude がアプリを見て操作・反復する</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">アーティファクトが"配れるアプリ"に——公開共有・同時編集・MCP コネクタ接続</h3>
+    <h3 class="article__headline">「Claude Security」プラグインが beta——コミット前に手元の推論で脆弱性スキャン</h3>
     <div class="article__body">
-      <p>アーティファクト周りが一週間で大きく前に出た。まず公開共有とマルチプレイヤー編集に対応し、リンクを知っていれば誰でも閲覧でき、複数人が同じアーティファクトを一緒に編集できるようになった（公開共有と社内共有、Team/Enterprise でのマルチプレイヤー）。しかもこれらは Claude Code のセッションからも、Slack 上の Claude Tag からも作れる。「Slack のスレッドでダッシュボードを頼むと動くページが返ってきて、そのまま社内に配れる」という導線だ。</p>
-      <p>さらに 7/15、アーティファクトが MCP コネクタを呼べるようになった。作った本人がセッションを回し直さなくても、閲覧者それぞれの MCP コネクタ経由でライブデータを取りに行き、各自が権限を持つ範囲だけを表示する。thomas（trq212）は「Claude Tag で作ったプロジェクトのダッシュボードを、他の人や自分のローカル Claude Code セッションからも編集する」使い方を挙げている。プロトタイプを作って社外にまで出せる、一度作れば MCP でライブに更新される——アーティファクトが使い捨ての生成物から、共有して使い続けるツールへと性格を変えつつある。</p>
+      <p>Claude Code 向けの Claude Security プラグインが beta で公開された。変更差分をコミット前にスキャンして脆弱性を洗い出したり、コードベース全体のフルスキャンを走らせたりが、すべてターミナルから——しかも普段使っている Claude の推論の上で——できる。外部のセキュリティ SaaS に差分を送るのではなく、いま回しているエージェント基盤の延長でセキュアレビューを済ませられるのが売りだ。</p>
+      <p>同じ週に OpenAI の Greg Brockman も「サイバー防御に自社モデルを使う codex security プラグイン」を案内しており、コーディングエージェントに脆弱性検出を組み込む動きは各社で並走している。エージェントにコードを書かせるほど、その場でのセキュリティ点検を CLI に内蔵する需要が高まっている構図だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2076789349145092230">@ClaudeDevs — Artifacts が公開共有・マルチプレイヤー編集に対応</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2077489907350856038">@ClaudeDevs — Artifacts が MCP コネクタを呼べるように</a></li>
-      <li><a href="https://x.com/trq212/status/2076790799011131735">@trq212 — Claude Code セッションから編集するダッシュボードの例</a></li>
+      <li><a href="https://x.com/claudeai/status/2079990597973057691">@claudeai — Claude Security プラグイン（beta）</a></li>
+      <li><a href="https://x.com/gdb/status/2080149982359831017">@gdb — codex security プラグイン（サイバー防御向け）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">2.1.206〜2.1.211——auto mode 既定 ON（Bedrock/Vertex）、スクリーンリーダー対応、subagent 出力の転送</h3>
+    <h3 class="article__headline">2.1.215〜2.1.218——<code>/code-review</code> のバックグラウンド化、ripgrep Grep、スクリーンリーダー実装完了</h3>
     <div class="article__body">
-      <p>この一週間で 2.1.206 から 2.1.211 まで一気に進んだ。機能面の目玉は3つ。(1) 2.1.207 で Bedrock / Vertex AI / Foundry では auto mode がオプトイン不要の既定 ON になった（<code>disableAutoMode</code> で無効化可、既定モデルも Opus 4.8 に）。(2) 2.1.208 でスクリーンリーダーモード（<code>--ax-screen-reader</code> / <code>CLAUDE_AX_SCREEN_READER=1</code>）が入り、プレーンテキスト描画でアクセシビリティを改善。長時間セッションのメモリリーク修正や入力応答性の改善も同時に入った。(3) 2.1.211 で <code>--forward-subagent-text</code> フラグ／環境変数が追加され、subagent のテキストと thinking を stream-json 出力に含められるようになった——下流のシステムがサブエージェントの中身を受け取れる。</p>
-      <p>安全側の作り込みも続く。2.1.210 では <code>isolation: 'worktree'</code> のサブエージェントが main リポジトリに対して git 破壊コマンドを走らせられてしまう問題や、<code>ultracode</code> キーワードが webhook や PR コメントなど非人間入力で発火する問題を修正。2.1.211 では権限プレビューが bidi・ゼロ幅文字を無害化し、承認メッセージの見た目を細工されないようにした。派手な新機能というより、エージェントに任せたときの土台を毎日削り込んでいる。</p>
+      <p>この一週間で 2.1.215 から 2.1.218 まで進んだ。開発体験に効く変更が中心だ。(1) 2.1.218 で <code>/code-review</code> がバックグラウンドの subagent として走るようになり、レビュー出力で会話が埋まらず、後続の <code>/</code> コマンドはそのレビューを対象に積める。(2) 2.1.217 でプロンプトが検索タスクに ripgrep ベースの Grep ツールを使うよう明示され、検索が速く正確になった。あわせて絵文字ショートコード補完（<code>:heart:</code> → ❤️）や、トランスクリプト書き込み失敗（ディスク満杯など）の警告も入った。(3) 先週入り始めたスクリーンリーダーモードは実装が進み、2.1.218 では単語・行削除の際に消えたテキストを読み上げるようになった。</p>
+      <p>土台の作り込みも続く。2.1.215 では Claude が <code>/verify</code> と <code>/code-review</code> を自動実行しなくなり（必要なときに手動で呼ぶ形に）、2.1.216 は長時間セッションでのメッセージ正規化が二次的に遅くなる問題を修正、<code>sandbox.filesystem.disabled</code> でネットワーク制御を残したままファイル分離だけ切れるようにした。2.1.217 では同時 subagent 数に既定 20 の上限を設けた。派手な新機能というより、エージェントに長く任せたときの安定性とレビュー動線を毎日削り込んでいる。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2075749688960004373">@ClaudeCodeLog — 2.1.207（Bedrock/Vertex で auto mode 既定 ON）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2077535907326910773">@ClaudeCodeLog — 2.1.211（subagent 出力の stream-json 転送）</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2080045045156098131">@ClaudeCodeLog — 2.1.218（/code-review のバックグラウンド化）</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2079685060626637018">@ClaudeCodeLog — 2.1.217（ripgrep Grep・絵文字補完）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">「自動化してドメイン知識をインフラに焼く」——中の人とエンジニアの共通テーマ</h3>
+    <h3 class="article__headline">Claude Design × Claude Code——「フロントエンドが本当に良い」と <code>/design</code> の実感</h3>
     <div class="article__body">
-      <p>今週は Claude Code の作り手側から、使い方の指針が相次いだ。bcherny は「昔から一番強いエンジニアは自分の作業を自動化することに時間を使ってきた（vim の自動化、lint ルールで繰り返しミスを潰す等）」とし、エージェント時代にその重要性がさらに増すと述べる。Boris の発言も oikon48 が紹介しており、「自動化し、ドメイン知識をインフラとしてエンコードすることがますます重要になる。モデルが賢くなりハーネスが成熟するほど、このエンコード作業は楽になる」という趣旨だ。</p>
-      <p>プロンプトの型についても、thomas（trq212）が「thin prompts / thick artifacts + context / thin skills（薄いプロンプト・厚い成果物とコンテキスト・薄いスキル）」という整理を投げている。ツールの新機能を追うだけでなく、繰り返す判断を skill やインフラに落とし込む——今週の Claude Code 界隈の関心は、この「エンコード」に寄っていた。</p>
+      <p>Anthropic の thomas（trq212）が「<code>/design</code> をこんなに遅くまで打たずにいたのが悔しい。Claude Design と Claude Code でフロントエンドをやるのは本当に良い」と投稿し、フロントエンド作業での Claude Design の手応えを共有した。先週アーティファクトが"配れるアプリ"化した流れに続き、UI を作る側の体験としても Claude Code に Design を組み合わせる使い方が現場で評価され始めている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/bcherny/status/2077460395279692197">@bcherny — 作業の自動化の重要性について</a></li>
-      <li><a href="https://x.com/oikon48/status/2077541640085053541">@oikon48 — Boris「ドメイン知識をインフラにエンコードする」</a></li>
-      <li><a href="https://x.com/trq212/status/2077539537992229076">@trq212 — thin prompts / thick artifacts / thin skills</a></li>
+      <li><a href="https://x.com/trq212/status/2080090919832084753">@trq212 — Claude Design と Claude Code でのフロントエンド</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ハーネスをめぐる動き</h2>
+  <h2 class="topic__title">スキルは「拾う」より「育てる」</h2>
 
   <article class="article">
-    <h3 class="article__headline">SpaceXAI が Grok Build をオープンソース化——ハーネスを公開して信頼性を上げる</h3>
+    <h3 class="article__headline">Cowork が「録画してスキル化」——作業を撮って話すと Claude が再実行できる手順に</h3>
     <div class="article__body">
-      <p>SpaceXAI が Grok Build をオープンソース化し、あわせて全ユーザーの利用制限をリセットした。Grok Build CLI の Git リポジトリを含むコードを公開し、「信頼できて堅牢なハーネスを作るのを誰でも支援できるようにする」ためだとしている。前週に Grok 4.5 を「コーディング/エージェント特化」と打ち出したのに続く一手で、モデルだけでなくエージェントを動かす器（ハーネス）そのものを開くことで、外部の目とコントリビューションを取り込みにいく形だ。</p>
-      <p>プライバシー面も明示している。zero data retention（ZDR）を使うチームでは trace もコードデータも一切保持せず、API キー利用の Grok Build も ZDR を尊重するという。OpenAI の Codex が「オープンソースのハーネスを選ぶ理由」に言及していたこととも響き合い、ハーネスを開いて標準化・検証可能にする流れが各社で見えてきた。</p>
+      <p>Claude Cowork に、自分の作業を録画してスキルにする機能が入った。画面を録画しながらタスクをこなし、やっていることを声で説明すると、Claude がそれを何度でも再実行できるスキルに変換する。デスクトップアプリの「+」メニューの「Record a skill」から使え、Pro / Max / Team で利用できる。今週の x で最大のエンゲージメントを集めた発表で、「手順をコードで書き起こす」のではなく「やってみせて教える」というスキル生成の入り口が広がった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/SpaceXAI/status/2077494535387828644">@SpaceXAI — Grok Build をオープンソース化、利用制限リセット</a></li>
-      <li><a href="https://x.com/SpaceXAI/status/2076692402442846289">@SpaceXAI — Grok Build と ZDR（データ保持）について</a></li>
+      <li><a href="https://x.com/claudeai/status/2079595988998554047">@claudeai — Cowork でスキルを録画して教える</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI、Codex アプリを ChatGPT デスクトップアプリへ統合——ChatGPT Work とともに</h3>
+    <h3 class="article__headline">「拾ってきた Skill はほとんど役に立たない」——t_wada の運用論</h3>
     <div class="article__body">
-      <p>先週の OpenAI の大型リリースは、プロダクト／ハーネスの統合という点で product 視点でも見逃せない。5 か月前に出した Codex アプリが下地となって、新しい ChatGPT デスクトップアプリが登場し、Chat・Work・Codex が一つのアプリに同居する形になった。あわせて発表された ChatGPT Work は、Codex と GPT-5.6 を動力にアプリやファイルをまたいで行動し、必要なら数時間ひとつの仕事に張り付く新しいエージェントだ（デスクトップが最も強力、Web/モバイルにも展開）。Codex 側にも「アプリ内でファイルを直接編集」「PR を離れずに確認・レビュー」などの開発者向け強化が入った。</p>
-      <p>sama は「エージェント系プロダクト（Codex と ChatGPT Work）の利用がこの一週間で 2.5 倍」と述べている。コーディングエージェントの入り口が専用アプリから汎用のデスクトップアプリへ寄っていく動きで、Claude 側の「Chat と Cowork を一つのホームに統合」とも並走する構図になっている。</p>
+      <p>この「スキルを育てる」というテーマは、個人エンジニアの発信とも響き合った。t_wada は「どこかから拾ってくる Agent Skill で役に立つものはほとんど無い（もちろん例外はある）。チームや組織が自分たちに合わせた Agent Skill を作って運用（新規作成・更新・廃棄）できる、その"スキルを育てる能力"のほうがはるかに大事」と述べる。続けて「その意味では、拾ってくる Agent Skill で最も役立つのは skill-creator（スキルを作るスキル）かもしれない」とも。</p>
+      <p>Cowork の録画スキル化が「作る」入り口を下げる一方で、価値は既製品を集めることではなく自組織の文脈に合わせて回し続けることにある——という指摘だ。ツールの新機能と現場の運用観が、今週はどちらも「スキルをどう育てるか」に収斂した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/OpenAI/status/2075274271845404744">@OpenAI — ChatGPT Work（Codex + GPT-5.6 のエージェント）</a></li>
-      <li><a href="https://x.com/ajambrosino/status/2075274362501074944">@ajambrosino — 新 ChatGPT デスクトップアプリは Codex アプリが下地</a></li>
+      <li><a href="https://x.com/t_wada/status/2079845013610205541">@t_wada — 拾う Skill より自組織で育てる Skill</a></li>
+      <li><a href="https://x.com/t_wada/status/2080145679545229343">@t_wada — 最も役立つのは skill-creator かも</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ツールの実務アップデート</h2>
+  <h2 class="topic__title">エージェントを「どこで動かすか」</h2>
 
   <article class="article">
-    <h3 class="article__headline">Devin Fusion が Fable 5 を採用——「高いモデルなのにタスク単価は下がる」</h3>
+    <h3 class="article__headline">Devin Outposts——Devin を自分のマシンで動かす</h3>
     <div class="article__body">
-      <p>Cognition が Devin Fusion に Fable 5 を組み込んだ。興味深いのはコストの観測で、Fable 5 は Opus 4.8 より単価が高いモデルにもかかわらず、Devin Fusion 上ではタスクあたりのコストがむしろ Opus 4.8 より低くなったという。委譲（delegation）まわりでコスト効率の改善が見られたとしている。</p>
-      <p>「モデル単体の価格」ではなく「ハーネスの中で1タスクを終えるまでの総コスト」で見ると、賢いモデルほど無駄な往復が減って安く上がることがある——という現場の肌感覚を、実プロダクトの数字で裏づけた形。モデル選定を単価表だけで決めない、という判断材料になる。</p>
+      <p>Cognition が Devin Outposts を発表した。Mac mini、ラボの GPU ボックス、プライベートネットワーク内の VM、社内サービスの隣に置いた Kubernetes クラスタなど、任意のマシン上で Devin のセッションを走らせられる。Devin のエージェントループ（推論・計画）は引き続き Devin のクラウドで動き、コマンド実行・ファイル編集・リポジトリアクセスといった実作業だけを自分が管理するマシンで行う——という切り分けだ。内部サービスへのアクセスを自社のプロキシや権限の内側に閉じたまま、エージェントに手を動かさせられる。</p>
+      <p>Cloudflare Workers（エッジで隔離サンドボックス）、Daytona（スナップショットから 90ms 未満で起動）、E2B、Modal、Namespace（M5 の Mac で Xcode + computer use）、NVIDIA Brev（GPU デバッグ）と、用途別のデプロイテンプレートが同時に用意された。エージェントの「頭」はベンダー側に置きつつ「手」を自社インフラに下ろす形は、Claude Code デスクトップの iOS シミュレータ連携とも通じる、実環境で動かすための整備の流れだ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/cognition/status/2076714965344342382">@cognition — Devin Fusion が Fable 5 を採用（タスク単価の観測）</a></li>
+      <li><a href="https://x.com/cognition/status/2079612226252726615">@cognition — Devin Outposts 発表</a></li>
+      <li><a href="https://x.com/cognition/status/2079612232284229952">@cognition — Cloudflare Workers での実行</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Codex CLI 0.144.5——危険コマンド検出を拡張、<code>rm</code> の強制実行をより広く捕捉</h3>
+    <h3 class="article__headline">Codex CLI 0.145.0——マルチエージェント V2、音声入力、スレッド履歴</h3>
     <div class="article__body">
-      <p>OpenAI の Codex CLI が 0.144.5 を公開。危険コマンドの検出を拡張し、強制的な <code>rm</code> のバリエーションをより多く捕まえ、コマンド拒否の理由をより明確に返すようにした。Claude Code 側でも未解決変数を含む <code>rm -rf</code> の確認やトランスクリプト改ざん防止が入っていたのと同様、エージェントにシェルを任せる前提での「事故らせない」作り込みが CLI 各社で並行して進んでいる。</p>
+      <p>OpenAI の Codex CLI が 0.145.0 を公開。目玉は3点で、(1) 音声入力とリアルタイム V3 ストリーミング、(2) マルチエージェント V2（サブエージェント、並行実行、ロール）、(3) 検索・再開・メモリ付きのスレッド履歴。Claude Code 側が subagent の背景実行や同時数上限の調整を進めているのと同じ週に、Codex もサブエージェントと並行制御を本格化させた。CLI 各社が「1人のエージェント」から「複数を束ねて回す」段階へ、ほぼ足並みを揃えて進んでいる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/Codex_Changelog/status/2077620556308832417">@Codex_Changelog — Codex CLI 0.144.5</a></li>
+      <li><a href="https://x.com/Codex_Changelog/status/2079635540224172084">@Codex_Changelog — Codex CLI 0.145.0</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">現場の視点</h2>
+
+  <article class="article">
+    <h3 class="article__headline">「大げさすぎる」という直感が、エージェントのオーバーエンジニアリングを止める</h3>
+    <div class="article__body">
+      <p>コーディングエージェントを実務で回すうえでの勘所も共有された。t_wada は「『この問題の解決策がここまで大げさになるのはおかしい』という直感が、コーディングエージェントのオーバーエンジニアリング傾向へのブレーキになっている。ただ、この直感を（エージェントに）教えるのがなかなか難しい」と指摘する。エージェントは放っておくと過剰に汎用的・堅牢な実装に振れやすく、それを押し戻すのは人間側の「筋の良さ」の感覚だ——という現場感だ。</p>
+      <p>あわせて「AI と関係なくやるべきことをやる。するとそこに AI の生産性が掛け算される」とも投稿しており、土台となる設計判断や規律があってこそエージェントの生産性が乗る、という見立てを示している。ツールの新機能を追う一方で、任せる前提の"効かせ方"に関心が集まった一週間だった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/t_wada/status/2080143534737457402">@t_wada — オーバーエンジニアリングへのブレーキとしての直感</a></li>
+      <li><a href="https://x.com/t_wada/status/2080158419986919603">@t_wada — AI の生産性は掛け算</a></li>
     </ul>
   </article>
 </section>
