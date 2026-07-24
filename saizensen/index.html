@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最前線 — 2026年7月24日 | Ecce Fomo</title>
+<meta name="description" content="Consummatum est.">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ecce Fomo">
+<meta property="og:title" content="最前線 — 2026年7月24日">
+<meta property="og:description" content="Consummatum est.">
+<meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+      <h1 class="masthead__title"><a href="../">最前線</a></h1>
+      <div class="masthead__meta">
+        <span>2026年7月24日（金）</span>
+        <span>過去2週間</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="summary">
+        <h2 class="summary__title">まとめ</h2>
+        <p>最前線の中心議題は「プロンプトを書く」から「エージェントを回すループを設計する」への移行で、Claude Code 作者の Boris Cherny 自身が「もうプロンプトしない、仕事はループを書くこと」と公言している。一方で世間の言説とのギャップも鮮明になってきた。skill を書く動きは広がったが「いつ完成と言えるか」を誰も定義できておらず、エージェント一般でも問いは「何ができるか」から「確認なしで何を任せられるか」に移っている。喧伝が省略しているのは評価・停止条件・検証といった地味な工学で、最前線はまさにそこを作り込んでいる。</p>
+      </section>
+
+      <section class="topic">
+        <h2 class="topic__title">今週の最前線</h2>
+        <article class="article">
+          <h3 class="article__headline">「プロンプトを書く仕事は終わった」— Boris Cherny とループエンジニアリング</h3>
+          <div class="article__body">
+            <p>Claude Code を作った Anthropic の Boris Cherny は「私はもう Claude にプロンプトしない。Claude にプロンプトするループを走らせていて、私の仕事はループを書くことだ」と語る。Peter Steinberger が 6 月 7 日に投稿した「コーディングエージェントにプロンプトするのはもうやめるべきで、エージェントにプロンプトするループを設計すべきだ」は 24 時間で 500 万ビューに達し、Addy Osmani がこの実践を「ループエンジニアリング」と命名して用語が定着した。</p>
+            <p>中身は具体的だ。ループに必要なのはトリガー（PR が開く、スケジュール、人間の「go」）と検証可能なゴール（到達したか機械的に判定できる終了状態）の 2 つで、1 ターンは discovery・handoff・verification・persistence・scheduling の 5 つの動作に分解される。よくある失敗は 3 つ — メモリファイルが無く毎ループゼロから始まる、サブエージェント分割が無く 1 体に全部やらせる、停止条件が無く寝ている間に課金され続ける。「大半のビルダーはこのうち 2 つ以上を踏んでいる」というのが実践者側の観察で、無限ループ・ゴールドリフト・トークンコスト爆発は edge case ではなく production の定番問題とされる。</p>
+            <p>通説とのギャップ: 世間ではまだ「良いプロンプトの書き方」が語られ続けているが、最前線の関心はプロンプト単発の質ではなく、検証と停止を備えた制御系の設計に完全に移っている。自分の実践をキャリブレーションするなら、「ループに memory・sub-agent 分割・停止条件の 3 点が揃っているか」がそのままチェックリストになる。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://thenewstack.io/loop-engineering/">The New Stack: The Anthropic leader who built Claude Code says he ditched prompting</a></li>
+            <li><a href="https://x.com/steipete/status/2063697162748260627">Peter Steinberger: You shouldn't be prompting coding agents anymore</a></li>
+            <li><a href="https://www.techtimes.com/articles/318828/20260622/claude-code-loop-engineering-stop-prompting-start-designing-autonomous-agent-workflows.htm">Claude Code Loop Engineering: Stop Prompting, Start Designing Autonomous Agent Workflows</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">Anthropic 社内の実践: 大規模マイグレーションと「orchestrator への移行」</h3>
+          <div class="article__body">
+            <p>Anthropic は 7 月に「大規模コードマイグレーションを Claude Code でどう回しているか」を公開した。同社の 2026 Agentic Coding Trends Report と合わせて読むと、社内実践の方向は一貫している。エージェントは単発の補助から実装のより大きな塊を担う存在になり、より長時間走り、エージェント同士で協調する。その結果、エンジニアの役割は実装者から「エージェントの監督・システム設計・出力レビュー」を担う orchestrator に再編される、という整理だ。</p>
+            <p>これはループエンジニアリングの話と同じ現象を組織側から見たもので、「個人の工夫」ではなく「ラボが社内の開発体制ごと作り替えている」段階にあることを示す。キャリブレーション上の含意: エージェントに書かせること自体はもう最前線ではなく、複数エージェントを協調させる仕組みとレビュー体制の設計が現在の水準線になっている。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://claude.com/blog">Anthropic: How Anthropic runs large-scale code migrations with Claude Code（claude.com/blog）</a></li>
+            <li><a href="https://tessl.io/blog/8-trends-shaping-software-engineering-in-2026-according-to-anthropics-agentic-coding-report/">Anthropic: 8 agentic coding trends shaping software engineering in 2026</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">Simon Willison の運用知: 判断は main loop に残し、実装は下位モデルに出す</h3>
+          <div class="article__body">
+            <p>Simon Willison は 7 月頭のポストで、コーディングタスクの振り分け方針を具体的に書いている。実装作業は適切な下位モデルを選んでサブエージェントで走らせ、判断・レビュー・統合は main loop（上位モデル）に残す。「実装作業に最上位モデルが要ることは稀」という理由で、これはコスト論であると同時に、どの工程にモデルの知性が実際に効くかという切り分けの表明でもある。</p>
+            <p>Willison のスタンス自体がキャリブレーションの素材になる。彼はコーディングエージェントでは高い生産性を出しつつ、ブラウザエージェントというカテゴリには一貫して懐疑的で、6 月には「AI 熱狂派は時間との競争、懐疑派はエントロピーとの競争をしている」として、両者の現実認識を繋ぐフィードバックループが存在しないことを組織設計の問題として指摘した。「全部に強気」でも「全部に弱気」でもない、領域ごとに張り方を変える態度が最前線の標準といえる。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">simonwillison.net: Fable's judgement</a></li>
+            <li><a href="https://simonwillison.net/2026/Jun/4/ai-enthusiasts-ai-skeptics/">simonwillison.net: AI enthusiasts are in a race against time, AI skeptics are in a race against entropy</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="topic">
+        <h2 class="topic__title">検証: 喧伝と実態</h2>
+        <article class="article">
+          <h3 class="article__headline">「skill を書けば資産が積み上がる」— 完成条件を誰も言えない</h3>
+          <div class="article__body">
+            <p><strong>言説:</strong> エージェントに skill を書かせて自動蓄積すれば、組織の知識が資産として積み上がる。</p>
+            <p><strong>実態:</strong> 「みんなエージェントの skill を書いているが、いつ完成と言えるかをほぼ誰も言えない」という指摘が 7 月に出た。skill ファイルの価値は中に入っている専門知識の質でしか決まらず、研究側でも one-shot で自動生成した skill は実行ベースの検証を通さない限り挙動の信頼性が出ないことが繰り返し示されている（生成した skill を実行トレースで修正する SkillRevise のような研究が出てくること自体が、素の自動生成では足りない証拠でもある）。Simon Willison は Skills を「MCP より大きい」と評価しているが、それは仕組みの評価であって、自動生成で中身が埋まるという話ではない。</p>
+            <p><strong>キャリブレーション:</strong> skill の価値は「書いた数」ではなく「検証済みの専門知識がどれだけ入っているか」。自動生成に任せて溜まった skill は、検証を通すまで資産ではなく在庫。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://medium.com/@shereshevsky/everyone-is-writing-skills-for-their-agents-almost-nobody-can-say-when-theyre-complete-e686e3b288db">Everyone Is Writing Skills for Their Agents. Almost Nobody Can Say When They're Complete.</a></li>
+            <li><a href="https://arxiv.org/html/2606.01139v2">SkillRevise: Improving LLM-Authored Agent Skills via Trace-Conditioned Skill Revision</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">「エージェントは何でもできる」— 問いは「確認なしで何を任せられるか」に移った</h3>
+          <div class="article__body">
+            <p><strong>言説:</strong> エージェントはもう何でもできる。デモを見ろ。</p>
+            <p><strong>実態:</strong> 2026 年半ばの実践側の総括では、面白い問いは「エージェントに何ができるか」から「確認なしで何を任せられるか」に移った、とされる。喧伝が省略しているのは evaluation・error handling・retry・guardrail・fallback・human checkpoint という地味な工学で、タスクを本当に手放せるか（監督をやめられるか）を決めるのは信頼性の側。これはループエンジニアリングが停止条件と検証を中心に据えていることと正確に対応している。デモの派手さと「手放せる範囲」の間のギャップが、いま喧伝と実態の最大の乖離点。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://gravity.fast/blog/are-ai-agents-overhyped-mid-2026/">Are AI Agents Overhyped? A Mid-2026 Reality Check</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="topic">
+        <h2 class="topic__title">深掘りキュー</h2>
+        <article class="article">
+          <div class="article__body">
+            <p>時間を投資して本編にあたる価値があるもの。</p>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=SlGRN8jh2RI">Anthropic's Boris Cherny: Why Coding Is Solved, and What Comes Next</a>（Sequoia AI Ascent 2026）: ループエンジニアリングを本人が語る一次ソース。二次記事は要点しか拾っておらず、「コーディングは解決済み」の含意と留保は本編でしか分からない</li>
+              <li><a href="https://www.youtube.com/watch?v=RkQQ7WEor7w">Boris Cherny: Claude Code & the Future of Engineering</a>（Acquired Unplugged）: 上と対になるロングインタビュー。プロダクト戦略側から同じ話を語っており、2 本合わせると個人の工夫と組織戦略の両面が揃う</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 最前線
+    </footer>
+  </div>
+</body>
+</html>
