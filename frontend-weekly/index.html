@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年7月21日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年7月28日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年7月21日">
+<meta property="og:title" content="フロントエンドニュース — 2026年7月28日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月21日（火）</span>
+        <span>2026年7月28日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,62 +31,79 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週号で「速さ競争が一巡し、軸は予測可能なリリース運用へ移った」と読んだが、今週はその読みが具体的な出来事で裏づけられた週だった。先週予告された <strong>Next.js 初の月次セキュリティリリースが 7 月 21 日に予定どおり着地</strong>し、9 件（高 4・中 5）の修正を 16.2 系・15.5 系へまとめて配った。制度化された「予告付き・定例」の実効性が最初の一号で試された格好だ。もう一方の主役は <strong>TypeScript 7 の GA 一週間後の現実</strong>で、Go 製ネイティブコンパイラ自体は無事故で堅牢な一方、<strong>Vue・Svelte・Astro のテンプレート型チェックは 7.1 のプログラマティック API が出るまで動かせず</strong>、現場は「tsc は TS7・ESLint 用に TS6 を併用」という折衷で凌いでいる。ブラウザでは <strong>Chrome 142</strong> が View Transitions の仕様追随と scroll-marker 擬似クラス、WebRTC のポスト量子暗号を載せた。今週の通奏低音は「新しい速さをどう安全に・計画的に運用へ落とすか」である。</p>
+  <p>先週号の「来週の注目ポイント」に挙げた 2 つが、そのまま今週の主役になった。<strong>Next.js 初の月次セキュリティリリースの中身が公開</strong>され、高 4・中 5 の 9 件が Server Actions の DoS・SSRF、Turbopack 単一ロケールでの Middleware バイパス、Image Optimization の SVG DoS など具体像を伴って明らかになったうえ、<strong>4 日後（7 月 25 日）には追いパッチ 16.2.12／15.5.22</strong>が続いた。もう一方の TS7 待ちだった SFC スタックでは、<strong>Vue 3.6 が RC 入りし Vapor Mode が feature-complete</strong>に到達、alien-signals によるリアクティビティ刷新も載って「3.0 以来最大」と評される節目を迎えた。ただし Vue のテンプレート型チェックは依然 TS7.1 待ちで、同じ TS7 の壁は <strong>Next.js 15.5 が「TypeScript 7 以上を明示的に弾く」一方 16.2 は対応を backport</strong>という形でフレームワーク内部にも表面化した。ブラウザでは <strong>Chrome 143</strong> が anchor positioning の fallback スタイルと XSLT 非推奨開始を載せている。今週の通奏低音は「予告どおり届いた安全運用」と「速い新実装が RC まで来ても型基盤の解禁は 7.1 待ち」という二本の確定である。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js、初の月次セキュリティリリースが予定どおり着地 — 9 件を 16.2／15.5 系へ</h3>
+    <h3 class="article__headline">Next.js 月次セキュリティリリースの中身が公開 — 9 件の内訳が判明、4 日後に追いパッチ</h3>
     <div class="article__body">
-      <p>先週号で「初回の定例セキュリティリリースが実際に何件・どの深刻度を含み、予告どおりの日程で出るか」を最大の関心事として挙げたが、その答えが出た。Vercel は <strong>7 月 21 日に Next.js 初の月次セキュリティリリースを公開</strong>し、<strong>高 4 件・中 5 件の計 9 件の脆弱性</strong>を、サポート中の <strong>16.2 系と 15.5 系</strong>へまとめてパッチした。CVE 番号や具体的な悪用手法といった技術詳細は、利用者の更新が行き渡るのを待つ協調的ディスクロージャの方針から、パッチ公開後に別記事で明かされる。</p>
-      <p>読みどころは、5 月に 13 件を場当たり的に協調リリースした反省を「事前予告・毎月・まとめて」という運用へ落とし込み、その第一号が宣言どおりの日程で回ったこと自体にある。緊急性の高い実悪用ケースには従来どおり随時パッチを出す例外を残しつつ、平時は「決まった日にまとめて来る」前提へと利用側の検証枠・CI 取り込みを組み替えられる。フロントの成熟度がベンチマークではなくリリース運用の予測可能性で測られ始めた、という先週の見立てを地で行く一手だ。なお本リリースの新バージョン番号は、5 月版で到達した 15.5.18／16.2.6 よりさらに上の系列パッチにあたる。</p>
+      <p>先週号で最大の焦点に挙げた「初回リリースの CVE 詳細と 9 件の内訳」に答えが出た。7 月 21 日に着地した <strong>16.2.11／15.5.21</strong> が塞いだ高 4・中 5 の脆弱性は、<strong>App Router の Server Actions における DoS</strong>、<strong>rewrites と Server Actions を突いた SSRF</strong>、<strong>Turbopack の単一ロケール構成での Middleware／Proxy バイパス</strong>、レスポンスボディに影響する <strong>キャッシュ混同（cache confusion）</strong>、<strong>Image Optimization API の SVG による DoS</strong>、内部 Server Function エンドポイントの露出、Edge ランタイムでの Server Action ペイロードの無制限受け入れ、といった内訳だった。攻撃者に手がかりを渡さない協調ディスクロージャの方針どおり、パッチ普及を待ってから具体像が開示された格好だ。</p>
+      <p>さらに読みどころは、初回で終わらせない運用が早くも回ったこと。<strong>7 月 25 日に 16.2.12／15.5.22 の追いパッチ</strong>が出て、TypeScript 7 対応の backport やドキュメント修正を届けた。「決まった日にまとめて来る」制度が、初号の見栄えだけでなく直後の追随でも機能した点が、先週の「二号目まで宣言どおり回るか」という問いへの早い前振りになっている。緊急性の高い実悪用ケースには随時パッチという例外を残しつつ、平時は月次・予告付きで検証枠を組める前提が実データで裏づけられた一週間だった。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://nextjs.org/blog/next-security-release-program">Next.js Security Release and Our Next Patch Release — nextjs.org</a></li>
-      <li><a href="https://cybersecuritynews.com/next-js-monthly-security-updates/">Next.js Launches Monthly Security Release Program as First Update Patches 9 Vulnerabilities — Cyber Security News</a></li>
-      <li><a href="https://releasebot.io/updates/vercel/next-js">Next.js Updates by Vercel — Releasebot</a></li>
+      <li><a href="https://releasebot.io/updates/vercel/next-js">Next.js Updates by Vercel（16.2.11／15.5.21／16.2.12／15.5.22 changelog）— Releasebot</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/nextjs-security-release-program-monthly-patch-cadence-2026">Next.js Monthly Security Releases: Team Patch Playbook — Digital Applied</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">TypeScript 7 GA 一週間 — コンパイラは無事故、しかし Vue・Svelte は 7.1 待ちで足止め</h3>
+    <h3 class="article__headline">Vue 3.6 が RC 入り — Vapor Mode が feature-complete、alien-signals でリアクティビティを刷新</h3>
     <div class="article__body">
-      <p>7 月 8 日に GA した <strong>TypeScript 7.0（Go 製ネイティブコンパイラ）</strong>は、一週間を経てもコンパイラ本体に致命的な不具合が出ず、フルビルドで 8〜12 倍という速度も概ね実測どおりに立った。問題は周辺エコシステムに残る。<strong>Vue・Svelte・Astro・MDX のテンプレート型チェックは TS7 上では動かせない</strong>。Volar 系ツールが依存する旧プログラマティック API が、7.0 では保留されたまま <strong>7.1（歴史的な 3〜4 か月周期から 10 月ごろ）</strong>までお預けだからだ。</p>
-      <p>そこで今週定着したのが「割り切りの併用構成」だ。<strong>tsc のプロジェクト型チェックは TS7</strong> に載せて速度を取り、<strong>ESLint 系の型情報だけは Microsoft の <code>@typescript/typescript6</code> 互換パッケージで TS6 を固定</strong>して回す。先週号で「7.1 が SFC 中心スタックの移行の合図になる」と書いた点が、裏返しに「7.1 が出るまでは SFC スタックはフル移行できない」という一週間の現実として確定した。コンパイラの速さは本物だが、それを毎日の型チェックに全面適用できるのは 7.1 到来後、というのが現時点の実務的な結論になる。</p>
+      <p>先週号で「TS7.1 を待つ SFC スタック」の代表に挙げた Vue が、その足止めとは別の軸で大きな節目を迎えた。<strong>7 月 18 日に Vue 3.6.0-rc.1</strong> が公開され、数年来のロードマップだった <strong>Vapor Mode が feature-complete</strong> に到達した。Vapor Mode は Single-File Component 単位で opt-in する新しいコンパイル戦略で、<code>&lt;script setup&gt;</code> に <code>vapor</code> 属性を付けると仮想 DOM を介さずランタイムを大きく省き、js-framework-benchmark で <strong>Solid や Svelte 5 と同等の速度</strong>を示すとされる。既存 API のサブセットをほぼ同じ挙動でサポートし、部分導入から小規模アプリの全面採用まで想定する設計だ。</p>
+      <p>同時に <strong>@vue/reactivity を alien-signals ベースで全面書き換え</strong>し、push-pull の遅延評価で computed の性能を上げつつ <strong>メモリ使用量を約 14% 削減</strong>する。こちらはコンポーネントコードを触らずに効く基盤刷新で、Vapor を使わないアプリにも恩恵が及ぶ。RC 段階のため Vapor Mode 自体はまだ unstable 扱いだが、「3.0 以来最大の Vue リリース」と評される内容が GA 目前まで来た。先週の「ネイティブ実装・脱仮想 DOM の速さ競争」という文脈に、React・Svelte に続いて Vue が本命の一手で並んだ形になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://www.digitalapplied.com/blog/typescript-7-native-compiler-early-adopter-migration-readiness">TypeScript 7 One Week In: Migration Readiness Check — Digital Applied</a></li>
-      <li><a href="https://byteiota.com/typescript-7-go-native-compiler/">TypeScript 7.0 GA: 10x Faster, Vue and Svelte Must Wait — byteiota</a></li>
-      <li><a href="https://www.techtimes.com/articles/320049/20260710/typescript-7-now-stable-10-faster-builds-not-vue-svelte-yet.htm">TypeScript 7 Now Stable: 10× Faster Builds, But Not for Vue or Svelte Yet — Tech Times</a></li>
+      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core（v3.6.0-rc.1）— GitHub</a></li>
+      <li><a href="https://repojournal.com/showcase/vuejs/2026-07-18">Vue 3.6 RC lands with Vapor Mode complete and reactivity rewrite — RepoJournal</a></li>
+      <li><a href="https://blog.imseankim.com/vue-3-6-beta-vapor-mode-virtual-dom-solidjs-svelte-feature-complete-2026/">Vue 3.6 Vapor Mode Hits Feature-Complete — Sean Kim</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Chrome 142 — View Transitions が仕様に追随、scroll-marker 擬似クラスと WebRTC のポスト量子暗号</h3>
+    <h3 class="article__headline">Chrome 143 — anchor positioning の fallback スタイル、そして XSLT 非推奨の開始</h3>
     <div class="article__body">
-      <p><strong>Chrome 142</strong> が、CSS と認証・セキュリティにまたがる更新を載せて出た。View Transitions では、CSSWG の決議に合わせて <code>::view-transition</code> の <code>position</code> を <code>fixed</code> から <strong><code>absolute</code> へ変更</strong>し、加えてトランジションオブジェクトを自前で保持しなくても参照できる <strong><code>document.activeViewTransition</code></strong> を追加した。CSS には、アクティブな <code>:target</code> を基準にスクロールマーカーを指す <strong><code>:target-before</code>／<code>:target-after</code> 擬似クラス</strong>が入り、カルーセル的な UI の状態表現がライブラリなしで書きやすくなる。</p>
-      <p>基盤側でも動きがある。WebRTC を UDP 上で守る DTLS に <strong>ポスト量子暗号アルゴリズム</strong>を導入し、リアルタイム通信の長期的な盗聴耐性を先回りで固めた。FedCM は、サードパーティ iframe からの資格情報共有時に <strong>トップレベルではなく iframe 自身のオリジンを UI に表示</strong>するよう改め、ユーザーが「誰に共有するのか」を正しく判断できるようにした。先週号の Chrome 141（ローカルネットワークアクセスの許可制、<code>ariaNotify</code>）に続き、ブラウザが「既定を締める・標準 API を増やす」方向で着実に進んでいる。</p>
+      <p>先週号の Chrome 142（View Transitions の仕様追随、scroll-marker 擬似クラス）に続き、<strong>Chrome 143</strong> の Release notes が出そろった。CSS では、アンカー配置要素がどの <code>position-try-fallbacks</code> を採用したかに応じて子孫を出し分けられる <strong><code>@container anchored(fallback)</code></strong> が入り、テザーやアニメーションを配置結果に連動させやすくなる。加えて <strong><code>background-position-x/y</code> の辺基準ロングハンド</strong>で背景画像を端からの相対位置で指定でき、OpenType グリフ置換に使う言語を上書きする <strong><code>font-language-override</code></strong> も追加された。</p>
+      <p>基盤側では 2 つの締めが目を引く。<strong>FedCM は IdP が構造化 JSON を返せる</strong>ようになる一方、プライバシー強化として <code>.well-known/web-identity</code> に direct endpoints 形式を必須化し、client_metadata 経由のクロスサイトな identity 相関を防ぐ。そして <strong>セキュリティ上の懸念と利用減から XSLT v1.0 の非推奨が始まった</strong>。ほかにも WebTransport のプロトコルネゴシエーション、Isolated Web Apps 向け Smart Card API、ICU 77（Unicode 16）への更新など、標準 API の拡張と旧機能の整理が同居する。先週に続き「既定を締めつつ標準を増やす」方向性が続いている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/release-notes/142">Chrome 142 Release notes — Chrome for Developers</a></li>
+      <li><a href="https://developer.chrome.com/release-notes/143">Chrome 143 Release notes — Chrome for Developers</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">セキュリティ・運用</h2>
+  <h2 class="topic__title">型チェックとエコシステム</h2>
 
   <article class="article">
-    <h3 class="article__headline">なぜ今「月次・予告制」なのか — AI 由来の脆弱性報告が増える中での制度設計</h3>
+    <h3 class="article__headline">TS7 の壁がフレームワーク内部に露出 — Next.js 15.5 は「7 以上を拒否」、16.2 は対応 backport</h3>
     <div class="article__body">
-      <p>Next.js の月次化を単発のプロセス改善で終わらせず、背景まで含めて読むと今週の含意が見えてくる。5 月の 13 件協調リリースに象徴されるように、フレームワークへ寄せられる脆弱性報告は <strong>AI を使った探索によって量・頻度ともに押し上げられている</strong>。個別に不定期パッチを出し続けると、利用側は「いつ来るか読めない緊急対応」に追われ、逆に更新遅延や適用漏れを招きやすい。</p>
-      <p>そこで「実悪用の緊急ケースは随時、それ以外は毎月まとめて予告付きで」と二層に整理したのが今回の設計だ。攻撃者に手がかりを与えないための <strong>CVE 詳細の後出し（協調ディスクロージャ）</strong>と、防御側が検証枠を確保できる <strong>事前予告</strong>を両立させる狙いがある。これは Next.js 固有の話にとどまらず、報告の主体が人間中心から自動探索へ移りつつある時代に、メタフレームワークが取りうる運用テンプレートとして参照されていくだろう。</p>
+      <p>先週号で「コンパイラの速さは本物だが、SFC 中心スタックの型チェックは 7.1 待ち」と読んだ構図が、今週は Next.js の中に具体化した。追いパッチで <strong>16.2.12 は TypeScript 7 対応を backport</strong> して取り込む一方、<strong>15.5.22 は「TypeScript 7.0 以上を、実行可能なエラーメッセージ付きで拒否する」</strong>挙動を明示的に入れた。同じフレームワークの現行系列でも、TS7 を迎え入れる版とまだ受け付けない版が並走している、というのが 7.1 前夜の実態を端的に表している。</p>
+      <p>そしてこの壁は、今週 RC に達した Vue にもそのまま残る。Vapor Mode と reactivity 刷新でランタイムは一段速くなったが、<strong>Vue のテンプレート型チェック（Volar 系）が依存する旧プログラマティック API は TS7.0 では保留</strong>されたままで、TS7.1（10 月ごろ想定）を待つ点は先週から変わらない。速い新実装が RC・GA へ進む動きと、その型基盤の全面解禁が 7.1 に括られている構図が、フレームワークとメタフレームワークの双方で今週いっそう鮮明になった。当面は「tsc は TS7・型情報付き ESLint は TS6 併用」という折衷を続ける現場が多い。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://cyberpress.org/next-js-launches-monthly-security-release-program/">Next.js Launches Monthly Security Release Program as AI-Discovered Flaws Surge — CyberPress</a></li>
-      <li><a href="https://www.digitalapplied.com/blog/nextjs-security-release-program-monthly-patch-cadence-2026">Next.js Monthly Security Releases: Team Patch Playbook — Digital Applied</a></li>
+      <li><a href="https://releasebot.io/updates/vercel/next-js">Next.js Updates by Vercel（15.5.22: Reject TypeScript &gt;= 7.0）— Releasebot</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/typescript-7-native-compiler-early-adopter-migration-readiness">TypeScript 7 One Week In: Migration Readiness Check — Digital Applied</a></li>
+      <li><a href="https://byteiota.com/typescript-7-go-native-compiler/">TypeScript 7.0 GA: 10x Faster, Vue and Svelte Must Wait — byteiota</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">フレームワーク・ランタイム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">React 19.2.8 パッチ — Compiler は正式版として定着</h3>
+    <div class="article__body">
+      <p>React も 7 月 21 日に <strong>19.2.8</strong>（あわせて 19.1.9／19.0.8）をリリースした。&lt;Activity&gt; や useEffectEvent、Performance Tracks などを載せた 19.2 系のメンテナンスパッチで、破壊的変更のない安定運用寄りの更新にあたる。トピックとしては、以前は experimental だった <strong>React Compiler がもはや実験的ではなく正式（stable）</strong>として扱われる段階に入っている点が背景にある。useMemo／useCallback を手で撒く最適化から、ビルド時に自動最適化する前提へと現場の作法が移りつつある。</p>
+      <p>ランタイム側では <strong>Deno 2.7</strong> が Temporal API、Windows ARM 対応、npm overrides を載せて Node.js・Bun との競争を続けている。フレームワークのメジャー更新（Vue 3.6 RC）とパッチ運用（React 19.2.8）、ランタイムの機能追加が並走し、エコシステム全体としては「大玉の RC と、その周りの着実なメンテナンス」が同居する一週間だった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/react/react/releases/tag/v19.2.8">Release 19.2.8 (July 21st, 2026) · facebook/react — GitHub</a></li>
+      <li><a href="https://www.programming-helper.com/tech/deno-2026-javascript-runtime-challenging-nodejs-bun">Deno 2026: Temporal API, Windows ARM, npm overrides — Programming Helper</a></li>
     </ul>
   </article>
 </section>
@@ -95,15 +112,14 @@
   <h2 class="topic__title">ビルドツール・エコシステム</h2>
 
   <article class="article">
-    <h3 class="article__headline">ネイティブ移行の“実務” — 大規模アプリ向けに Vite 8.1 の Bundled Dev Mode が効いてくる</h3>
+    <h3 class="article__headline">Turbopack の永続キャッシュ運用と、Astro のパッチ整備</h3>
     <div class="article__body">
-      <p>TS7 の一週間が示したのは「ネイティブ実装の速さは本物だが、全面適用には周辺の整備待ちがある」という構図で、これはビルドツール側にも共通する。<strong>Rolldown を単一バンドラに据えた Vite 8</strong> の系譜では、<strong>Vite 8.1 が実験的な Bundled Dev Mode（旧 Full Bundle Mode）</strong>を提供しており、1 万コンポーネント級のアプリで <strong>起動が約 15 倍・フルリロードが約 10 倍</strong>という計測が示されている。今週は <strong>8.1.5 パッチ（7 月 16 日）</strong>が出て、この大規模向け高速化路線の安定化が進んだ。</p>
-      <p>あわせて Vite は、チャンクを安定させてキャッシュ効率を上げる Chunk Import Map、WASM/ESM 統合、そして Rust 製の <strong>Lightning CSS</strong> を将来のデフォルト候補として取り込む動きを見せる。TypeScript のコンパイラ、Astro の <code>.astro</code> コンパイラ、Vite のバンドラと、フロントの基盤が軒並みネイティブ実装へ載せ替わる大きな流れの中で、今週は「速くなった基盤を実プロジェクトの規模で安定運用へ持ち込む」局面に入ったことが読み取れる。</p>
+      <p>先週の「速くなった基盤を実プロジェクト規模で安定運用へ持ち込む」局面は、ビルドツール側でも続く。<strong>Next.js 16.3（@preview）の Turbopack</strong> は、<code>turbopackFileSystemCacheForBuild</code> で <code>next build</code> にも永続ディスクキャッシュを効かせられるようになり、CI で <code>.next</code> を実行間で引き継げば再ビルドの計算を再利用できる。長時間の dev セッションでのメモリ使用も大きく下がる方向で、Vercel 自社サイトでの hardening を経ての段階的な提供だ（安定版ラインは 16.2 のまま）。「速さの前にキャッシュ運用を決める」という設計判断が実務の論点として定着しつつある。</p>
+      <p>ビルドチェーンの上流では、<strong>Astro が 7.1.x のパッチ（7 月 27 日時点で 7.1.4）</strong>を重ねて Vite 8／Rolldown 世代の安定化を進めている。TypeScript のネイティブコンパイラ、Astro の <code>.astro</code> コンパイラ、Vite の Rolldown、そして今週 RC に達した Vue の Vapor と、フロントの基盤が軒並みネイティブ／脱仮想 DOM へ載せ替わる流れの中で、各層が「メジャーで飛躍し、パッチで実運用へ均す」サイクルに入っている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://vite.dev/blog/announcing-vite8-1">Vite 8.1 is out! — vite.dev</a></li>
-      <li><a href="https://www.heise.de/en/news/Web-Development-Vite-8-1-to-accelerate-large-applications-11342552.html">Vite 8.1 to accelerate large applications — heise online</a></li>
-      <li><a href="https://github.com/vitejs/vite/releases">Releases · vitejs/vite — GitHub</a></li>
+      <li><a href="https://nextjs.org/blog/next-16-3-turbopack">Turbopack: What's New in Next.js 16.3 — nextjs.org</a></li>
+      <li><a href="https://astrobuild.eu/en/releases">Astro.js releases: all versions and changelog — AstroBuild</a></li>
     </ul>
   </article>
 </section>
@@ -112,9 +128,19 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js 月次リリースの CVE 詳細公開と、制度の“二号目”</h3>
+    <h3 class="article__headline">Vue 3.6 の GA と、Vapor Mode の unstable 解除の見通し</h3>
     <div class="article__body">
-      <p>今週着地した初回リリースについて、後追いで公開される <strong>CVE 番号・影響範囲・具体的な修正内容</strong>が最初の焦点。9 件の内訳（とくに高 4 件が何のクラスの脆弱性か）が分かれば、自社アプリでの露出評価がしやすくなる。あわせて、月次という周期が二号目以降も宣言どおりの日程で回るか、初回だけの見栄えで終わらないかを継続ウォッチしたい。</p>
+      <p>今週 RC に達した Vue 3.6 が <strong>rc から stable（GA）へ</strong>いつ進むか、そして feature-complete でも「unstable」と位置づけられた <strong>Vapor Mode が本番推奨に格上げされる条件</strong>が最初の焦点。alien-signals リアクティビティは既存アプリにも効くため、GA 後の移行ガイドや実測ベンチ、Nuxt 側の追随ステータスが出てくれば、採用計画を立てる材料になる。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Next.js 月次セキュリティの「二号目」と、15.5 系の TS7 対応判断</h3>
+    <div class="article__body">
+      <p>初号が予告どおり着地し追いパッチも回った以上、次は <strong>8 月に予定される二号目</strong>が同じ日程規律で出るかが継続ウォッチ。あわせて、16.2 が backport した <strong>TypeScript 7 対応を 15.5 系も受け入れる方向へ転じるのか、それとも「拒否」を維持</strong>するのかは、旧 LTS を使い続けるチームの移行計画に直結する。CVE 番号の追加公開があれば自社アプリの露出評価にも反映したい。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://nextjs.org/blog">Next.js Blog — nextjs.org</a></li>
@@ -122,9 +148,9 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">TypeScript 7.1 のプログラマティック API と SFC スタックの“解禁”</h3>
+    <h3 class="article__headline">TypeScript 7.1 のプログラマティック API — SFC テンプレート型チェック解禁の前提</h3>
     <div class="article__body">
-      <p>Vue・Svelte・Astro・MDX のテンプレート型チェックを TS7 上で動かせるようにする <strong>プログラマティック API は 7.1（10 月ごろ想定）</strong>待ち。来週の短期で GA する話ではないが、7.1 のロードマップやプレビュー情報、<code>@typescript/typescript6</code> 併用がいつまで必要かの見通しが出てくれば、SFC 中心スタックの本格移行計画を立てる材料になる。ネイティブ化の恩恵を「型チェック全面」に広げられる時期の手がかりとして追う。</p>
+      <p>Vue・Svelte・Astro・MDX のテンプレート型チェックを TS7 上で動かす鍵となる <strong>プログラマティック API は 7.1（10 月ごろ想定）</strong>待ち。来週の短期で GA する話ではないが、ロードマップやプレビュー、<code>@typescript/typescript6</code> 併用がいつまで必要かの見通しが出れば、Vue 3.6 GA と足並みをそろえた型基盤の全面移行計画を描ける。ネイティブ化の恩恵を「型チェック全面」へ広げられる時期の手がかりとして追う。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
