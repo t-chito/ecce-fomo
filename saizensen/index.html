@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最前線 — 2026年7月29日 | Ecce Fomo</title>
+<meta name="description" content="Consummatum est.">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ecce Fomo">
+<meta property="og:title" content="最前線 — 2026年7月29日">
+<meta property="og:description" content="Consummatum est.">
+<meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+      <h1 class="masthead__title"><a href="../">最前線</a></h1>
+      <div class="masthead__meta">
+        <span>2026年7月29日（水）</span>
+        <span>過去2週間</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="summary">
+  <h2 class="summary__title">まとめ</h2>
+  <p>Claude Code の Boris Cherny が Startup School で 36 分話した内容から、指示を消す方法と、長時間タスクの実際を扱う。ほかに、エージェントのキャッシュがどこで壊れるかを解説した Pi の記事、自動化を畳んだ Dex Horthy の記録、Opus 5 のコストを実際に測った投稿を取り上げる。</p>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">実践者の記録</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Boris Cherny は、指示を消してから足し直している</h3>
+    <div class="article__body">
+      <p>Claude Code を作った Boris Cherny が、Y Combinator の Startup School で 36 分話している。動画の公開は 7 月 27 日。Opus 5 が出た翌日の登壇で、聞き手は Diana Hu。</p>
+      <p>Opus 5 に合わせてシステムプロンプトを 8 割削除した、という話から始まる。やり方は本人が説明している。新しいモデルが出るたびにシステムプロンプトを全部消し、1 行ずつ戻して各行の影響を見る。研究でいう ablation と同じで、消すことで効果を測る。戻す行は予測で決めず、まず消して実際に使い、同じところで繰り返しつまずくのを見てから戻す。「モデルは毎回この指示を読むので、本当に必要かを確かめたい」と言っている。Claude Code には全システムプロンプトを消す未公開の環境変数（simple mode）があり、社内ではこれを ablation に使っている。「プロンプトが無いほうがモデルは少し賢い」というのが本人の観察だが、製品として使うには一部の指示が要る、とも言っている。モデルの性能のためではなく使い勝手のためだ、という区別。</p>
+      <p>同じ扱いを eval にもしている。聞き手が「コードとプロンプトは消すが eval は残して足していくということか」と整理したのに対し、本人はそこまでは言わないと断っている。eval が生き延びるのはモデル 1〜3 世代分で、たいていは飽和するので捨てて作り直す、という説明だった。使う側への助言も同じ形で出ている。半年ごとに CLAUDE.md と skill と hook を消して、モデルがどうなるか見てみるとよい、と。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">Boris Cherny: We Cut 80% of Claude Code’s Prompt（Y Combinator、2026-07-27 公開、36 分）</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">同じトークで、長く走らせたタスクの中身も話している</h3>
+    <div class="article__body">
+      <p>Bun の JavaScript ランタイムを Zig から Rust へ書き換えた件は、Bun 側が元々テストが厚いことを利用して、プロンプト 1 つと dynamic workflow で 11 日走らせ、10 万行を超える規模を書き換えた。現在の Claude Code はこれを使っている。ただし聞き手が「一発で？」と訊いたのを本人が否定していて、途中で軌道修正を入れている。もう一つは本人の実験で、Electron 製のデスクトップアプリを Swift に書き換えさせている。指示は、Mac の仮想マシンで Electron 版を動かしてスクリーンショットを撮り、Swift 版とピクセル単位で比べ、終わるまで止まるな、というもの。登壇時点で 14〜15 日走り続けていた。何体のエージェントが動いたかは「分からない、数千から数万だと思う」と答えている。</p>
+      <p>うまく使う人とそうでない人を分けるものは何か、という問いに、本人は「LinkedIn のインフルエンサーの言うことを聞かないこと」と答え、続けて、みんな one weird trick を探しているがそんなものは無い、と言っている。挙げているのは、モデルには少し難しすぎるくらいの課題を渡すこと、そして自分で結果を検証できる手段を渡すこと。検証については「みんなが最も正しくできていないもの」だと言っている。長年コードを書いてきた人ほど、手順を細かく指定して自分と同じやり方をさせようとする失敗に陥りやすい、とも。なお「コーディングは解決済み」という自分の以前の発言には留保を付けていて、解決したのは自分がやる種類のコーディングであって、深いシステムコードや分散システム、ピクセル単位の UI 検証ではまだつまずく、と言っている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://www.youtube.com/watch?v=qyPCVqFUyDo">Boris Cherny: We Cut 80% of Claude Code’s Prompt（Y Combinator、2026-07-27 公開、36 分）</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Pi は、キャッシュを守るためにツールの足し方を変えた</h3>
+    <div class="article__body">
+      <p>コーディングエージェント Pi を作っている Earendil が、7 月 22 日に KV キャッシュの解説記事を出している。エージェントのハーネスがキャッシュを助けているのか壊しているのかが議論になっていたので、仕組みの説明と、Pi が何をしているか（していないか）を書いた、という趣旨。Armin Ronacher が告知している。</p>
+      <p>キャッシュが効くのはリクエストの先頭が前回と一致している間だけで、記事はそれが切れる箇所を列挙している。ツールを 1 つ足す、1 つ消す、スキーマを変える、あるいは並び順が変わるだけでも、不一致の位置が先頭近くまで移動する。アイドル時間も効く。Anthropic の既定の保持は 5 分で、これはコーディングの作業リズムより短い。「Fable を使っていてコーヒーを取りに行き、10 分後に戻ってきて『やあ』と一言送ると、思ったより高くつく」と書かれている。ほかに、モデルの切り替え、セッションの木構造を前の枝に戻る操作、システムプロンプトに時刻や拡張機能の差し込みが入る場合。</p>
+      <p>Pi が取った対処は、ツールを後から足すときに元のツール一覧へ差し込まないこと。会話の途中のツール実行結果の位置でツールが使えるようになる形にして、それより前を保てるようにしている。逆に、やらないことも書いてある。コンテキストの積極的な刈り込みはしない。書き換えの費用が将来の節約を上回ることが多いためで、損益分岐を「一度の書き換え費用 ≒ 編集後に残るトークン数 ×（キャッシュ無しの単価 − キャッシュ読み出しの単価）」という形で置いている。記事は自分たちの限界も書いていて、リクエストがマシンを離れた後の層は制御できず、ゲートウェイが同一ワーカーへの振り分けを守る保証は無い、としている。Pi が実際にどう動いているかの大規模なデータも持っていない、と Armin Ronacher は別途書いている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://earendil.com/posts/prompt-caching/">Prompt Caching in Agents（Earendil、2026-07-22）</a></li>
+      <li><a href="https://x.com/mitsuhiko/status/2080243367535898707">Armin Ronacher による告知</a> / <a href="https://x.com/mitsuhiko/status/2080311683612823756">規模のデータが無いという補足</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Dex Horthy は、人がコードを読まない運用を畳んだ記録を出した</h3>
+    <div class="article__body">
+      <p>HumanLayer の Dex Horthy が「Why Software Factories Fail」を公開し、24 時間で 25 万閲覧に届いたと本人が書いている。内容は、人間のレビューを外した完全自動の開発ラインがなぜ失敗するかで、根拠の中心は自社の記録である。2025 年 7 月に自分たちで人を外した運用をやり、本番障害が続いた末に手動レビューへ戻した。コードの劣化が進んだ部分は結局手で書き直した、と書いている。</p>
+      <p>主張は、モデルはコードベースの品質を時間をかけて維持・改善することができない、という点に置かれている。理由として挙げているのはベンチマークの採点方式で、SWE-bench Multilingual などはテストが通ったかどうかの二値で採点し、保守性を損なったことへの減点が無い。そのため、テストを通すために例外を握り潰す、雑に型を変換するといった書き方が学習される、という説明。あわせて「モデルが良いコードと悪いコードを確実に見分けられるなら、最初から良いほうを書いていたはずだ」とも書いている。代わりに取っているのは、実装前に段階を踏む進め方（プロダクトレビュー、システム設計、型と呼び出し関係の設計、そして縦に薄く通す実装）と、人によるレビューを残すこと。</p>
+      <p>本人が自分で付けている留保が多い記事でもある。中心の主張については「私には証明できない。あなたにも証明できない」と書いている。品質維持を測るベンチマークが存在しないことも自分で挙げている。引用している外部の調査（レビュー無しでマージされた PR の比率や、PR あたりの障害の増加など）についても、因果の証拠ではなく相関の信号だと断っている。さらに、自分はこの領域の道具を売っているので以下の話は多少偏っているかもしれない、と冒頭近くで書いている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Why Software Factories Fail（Dex Horthy）</a></li>
+      <li><a href="https://x.com/dexhorthy/status/2081058573556306030">閲覧数についての本人の投稿（2026-07-25）</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Opus 5 のコストを測った人たち</h2>
+
+  <article class="article">
+    <h3 class="article__headline">「トークン効率」の告知と、手元の請求</h3>
+    <div class="article__body">
+      <p>7 月 24 日の Opus 5 公開にあたり、Anthropic の Alex Albert は「知能の水準を上げつつ、あらゆる領域でトークン効率を高めることに多大な労力を割いた」と書いている。同じ週に、使った側の数字が別々に出ている。</p>
+      <p>Dex Horthy は公開当日から slopCodeBench というベンチマークで Opus 5、Sonnet 5、Opus 4.8 を並走させ、途中経過を随時投稿した。1 問目（circuit_eval、チェックポイント 8 個）では Opus 5 が勝ち、最後まで残った不具合は Opus 5 が 2 件、Sonnet 5 が 7 件、Opus 4.8 が 12 件。ただし到達までの費用は Sonnet の約 2 倍で、44 ドル対 24 ドルだったと書いている。チェックポイントごとのテスト失敗数も出していて、Opus 4.8 が 1→2→4→4→6→8→10 と増えていくのに対し、Opus 5 は 0→0→0→1 だった。2 問目では順位が入れ替わっている。全部終えた後の本人の総括は、Opus 5 が勝ちはしたがどれも大した出来ではない、というもので、まだ飽和していないベンチマークが手に入ったことのほうが収穫だと書いている。</p>
+      <p>Armin Ronacher は翌日、Opus 5 はかなり気に入っているが、とにかく高くトークンを食う、と書いている。前出の Boris Cherny のトークでは費用の話は出ていない。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/alexalbert__/status/2080703118086693121">Alex Albert（2026-07-24）</a></li>
+      <li><a href="https://x.com/dexhorthy/status/2080744594447413554">Dex Horthy・テスト失敗数</a> / <a href="https://x.com/dexhorthy/status/2080771780839657830">同・1 問目の結果と費用</a> / <a href="https://x.com/dexhorthy/status/2080822483889119241">同・総括</a></li>
+      <li><a href="https://x.com/mitsuhiko/status/2081122755018158481">Armin Ronacher（2026-07-25）</a></li>
+    </ul>
+  </article>
+</section>
+
+    </main>
+
+    <footer>
+      © 2026 最前線
+    </footer>
+  </div>
+</body>
+</html>
