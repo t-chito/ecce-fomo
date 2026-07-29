@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>最前線 — 2026年7月24日 | Ecce Fomo</title>
+<title>最前線 — 2026年7月29日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="最前線 — 2026年7月24日">
+<meta property="og:title" content="最前線 — 2026年7月29日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">最前線</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月24日（金）</span>
+        <span>2026年7月29日（水）</span>
         <span>過去2週間</span>
       </div>
     </header>
@@ -31,47 +31,65 @@
     <main class="content">
       <section class="summary">
         <h2 class="summary__title">まとめ</h2>
-        <p>この 2 週間の最前線には共通の型がある。名前のついた手法（SDD、ループ、スペック駆動、ソフトウェア工場）を万能視する言説に対して、実践者は「実験の帰結」と「適用条件」を持ち寄り始めた。t_wada は SpecKit を剥がして仕様書ソース化の限界を報告し、Armin Ronacher はハーネスが KV キャッシュを静かに燃やす仕組みを解説し、Dex Horthy は「人間レビュー抜きのソフトウェア工場」が壊れる理由を 1.5 万語で書いた。プロンプトの上手さはもう論点ではなく、検証・停止・キャッシュ・レビューといった制御系の工学が現在の水準線になっている。</p>
+        <p>Opus 5 リリース週。最前線の受け止め方がそのまま教材になった — 発表の数字を引用する人はおらず、全員が発表当日から手元の評価装置（自前ベンチ、トレース、実タスク）で測り、「知識労働には良い、コーディングは Fable 未満、コストは重い」という発表資料に無い解像度に 48 時間で到達した。並行して「コードレビューは消えるのか」論争が燃え、Amp が plan mode を作って捨てていた事実まで開示された。前号で扱ったループ運用は「12 サブエージェントで一晩 QA」の実践報告に進み、Anthropic 自身が「システムプロンプトの 8 割を削れた」と公式に発表。制御は増やすものではなく削るものへ、という流れが公式にも合流した。</p>
       </section>
 
       <section class="topic">
         <h2 class="topic__title">今週の最前線</h2>
         <article class="article">
-          <h3 class="article__headline">t_wada の「SpecKit 剥がし」— 仕様書をソースオブトゥルースにする実験の帰結</h3>
+          <h3 class="article__headline">Opus 5 の最初の 5 日間 — 発表の主張と、手元の評価装置</h3>
           <div class="article__body">
-            <p>和田卓人は 7 月 10 日、「詳細な設計書からコードはいつでも再生成」という実験が上手くいかなかったと報告した。理由は明快で、「文書間の整合性を保つのはコードの整合性を保つより難しい」。帰結として、文書が不要なくらい綺麗なコードを書き（書かせ）、コードに書けないこと — Why と Why not — を文書に残し、全てをバージョン管理するスタイルに戻したという。この投稿は日本語圏で 2,000 近い like を集め、数日にわたる議論の起点になった。</p>
-            <p>続く整理がさらに具体的だ。Plan モードと SDD の違いは「作成された仕様書をどう扱うか」— Spec-first か、Spec-anchored/Spec-as-source か — に絞られ、後者は開発期間が長く分量が増えると綻びが出る（期待と逆）。だから「Plan モードで徹底的に議論し、ADR にしっかり残す」方針が手堅い、というのが現時点の結論。Jaana Dogan (rakyll) は関連する議論で「経験者は最初から全部をスペックしようとしない。反復こそがスキルであり、制約や発想が出てくるたびに実験してピボットする」と応じており、否定されているのは SDD の道具立てではなく「仕様書を正とする」運用だと分かる。</p>
-            <p>キャリブレーション: 自分の SDD 運用が Spec-first（議論の道具）か Spec-as-source（正本）かを区別する。後者に寄っているなら、最前線はすでに一周して戻ってきている。</p>
+            <p>7 月 24 日に Claude Opus 5 が出た。Boris Cherny が最初に強調したのはベンチスコアではなく「これまでで最もプロンプトインジェクションに強いモデル」という system card の隅の事実で、Alex Albert は「コンサルタント並みのスプレッドシートとスライドを作る」とトークン効率を推した。ここまでが発表側の主張。</p>
+            <p>実践者側は当日から測り始めた。Dex Horthy は自前の SlopCodeBench で途中経過を実況し（同一問題で Opus 4.8 が 7 ターン、Opus 5 が 11 ターン、Sonnet 5 は 33 ターン超）、Hamel Husain は構築中の検索エージェントベンチで「burn は 4.8 の 6 倍超、GPT-5.6 の 15 倍超で、結果は両方より悪い」という測定を引いて「Evals &gt;&gt;&gt;&gt; Vibes、今こそ」と書いた。Armin Ronacher は「Opus 5 はかなり好きだ。ただ、めちゃくちゃ高くてトークン食いだ」、Gergely Orosz の周辺では「コーディングは Fable より後退」という観測。一方で Horthy 自身が「知識労働（分析・構成・CRM 仕事）には素晴らしい」とも書いており、48 時間で「どの用途に効いてどの用途に効かないか」の地図ができた。</p>
+            <p>キャリブレーション: 最前線とそれ以外を分けているのは、モデルの善し悪しの意見ではなく「発表当日に回せる自前の評価装置を持っているか」。ベンダーの数字と一般メディアの再加工を待つ側に居る限り、この解像度には到達できない。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://x.com/t_wada/status/2075500925704425606">t_wada: 詳細な設計書からコードはいつでも再生成という実験は上手くいかず</a></li>
-            <li><a href="https://x.com/t_wada/status/2076835364363469257">t_wada: Plan モードと SDD の違いは仕様書の扱い方に絞られる</a></li>
-            <li><a href="https://x.com/rakyll/status/2076458694523470207">rakyll: それこそがスキル。反復が前提</a></li>
+            <li><a href="https://x.com/bcherny/status/2080713091688583312">bcherny: Opus 5 is our least prompt injectable model yet</a></li>
+            <li><a href="https://x.com/HamelHusain/status/2080823363761828273">HamelHusain: Evals &gt;&gt;&gt;&gt; Vibes, especially now</a></li>
+            <li><a href="https://x.com/dexhorthy/status/2080734551912202354">dexhorthy: SlopCodeBench 実況（ターン数比較）</a></li>
+            <li><a href="https://x.com/mitsuhiko/status/2081122755018158481">mitsuhiko: expensive and token hungry</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2081127488797671523">GergelyOrosz: コーディングは Fable 比で後退の観測</a></li>
           </ul>
         </article>
         <article class="article">
-          <h3 class="article__headline">「プロンプトを書く仕事は終わった」— Boris Cherny とループエンジニアリング</h3>
+          <h3 class="article__headline">「コードレビューは消えるのか」— plan review 論争と、捨てられた plan mode</h3>
           <div class="article__body">
-            <p>Claude Code を作った Anthropic の Boris Cherny は「私はもう Claude にプロンプトしない。Claude にプロンプトするループを走らせていて、私の仕事はループを書くことだ」と語る。Peter Steinberger の 6 月 7 日の投稿「コーディングエージェントにプロンプトするのはもうやめるべきで、エージェントにプロンプトするループを設計すべきだ」は 24 時間で 500 万ビューに達し、Addy Osmani がこの実践を「ループエンジニアリング」と命名して用語が定着した。</p>
-            <p>中身は制御系の設計そのものだ。ループに必要なのはトリガー（PR が開く、スケジュール、人間の「go」）と検証可能なゴール（到達を機械的に判定できる終了状態）で、よくある失敗は 3 つ — メモリファイルが無く毎ループゼロから始まる、サブエージェント分割が無く 1 体に全部やらせる、停止条件が無く寝ている間に課金され続ける。無限ループ・ゴールドリフト・コスト爆発は edge case ではなく production の定番問題として扱われている。</p>
-            <p>キャリブレーション: 「良いプロンプトの書き方」はもう最前線の論点ではない。自分のループに記憶・分割・停止条件の 3 点が揃っているかが、そのままチェックリストになる。</p>
+            <p>Gergely Orosz が投じた観測が発火点になった。「これまで生成コードを全件レビューしてきた堅実なベテランが、Fable 以降レビューを無意味と感じてやめ始めた。製品の急所以外は読まない」。これに対する最前線の応答は「レビュー廃止」ではなく「レビュー対象の再設計」だった。Dex Horthy は「plan review は code review を置き換えられない。code review を痛みなく速くできるようにするだけだ」と切り分け、実務側では 200 行を超える PR 全てに「変更の論理順に並べた diff tree」を自動添付する運用を公開した。読む量を減らすのではなく、読める形に変える方向。</p>
+            <p>plan mode そのものにも一石が投じられた。Thorsten Ball（Amp 開発）は「まだ plan mode を使ってる人がいるのか」と書いて燃えたあと、丁寧に整理している — 計画それ自体は正しい。ただ専用モードは不要で、「先に調査して・計画して・スケッチして」と頼めば同じ結果がより柔軟に得られる。そして Amp は plan mode を 6 週間かけて社内で作り、リリースせずに剥がしたという。前号の SpecKit 剥がしと同じ型で、「仕様書・計画書を固定資産にする」方向の実験がまた一つ、作った本人たちの手で畳まれた。Horthy の Software Factories 三部作（累計 70 万ビュー超）はこの議論の理論編で、「ベンチマークはテストを通すことに報酬を与え、保守性を壊すことに罰を与えない」以上、人間の関与を抜いた全自動工場はコード品質を蝕む、と論じる。</p>
+            <p>キャリブレーション: 「レビューをやめられるか」ではなく「何をレビュー対象にするか（計画・差分の形・急所）」が現在の問い。全件読む/全部任せるの二択で考えていたら、論争の土俵にすら乗れていない。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://thenewstack.io/loop-engineering/">The New Stack: The Anthropic leader who built Claude Code says he ditched prompting</a></li>
-            <li><a href="https://x.com/steipete/status/2063697162748260627">Peter Steinberger: You shouldn't be prompting coding agents anymore</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2081117183002705988">GergelyOrosz: ベテランがコードレビューをやめ始めた</a></li>
+            <li><a href="https://x.com/dexhorthy/status/2081224804326309938">dexhorthy: plan review cannot replace code review</a></li>
+            <li><a href="https://x.com/dexhorthy/status/2082230467445830104">dexhorthy: 200 行超の PR に diff tree を自動添付</a></li>
+            <li><a href="https://x.com/thorstenball/status/2081812544444879086">thorstenball: Amp は plan mode を作って捨てた</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2080917955404062887">GergelyOrosz: Kiro も GitHub Workflows も SDD は定着しなかった</a></li>
           </ul>
         </article>
         <article class="article">
-          <h3 class="article__headline">ハーネス内部の工学 — KV キャッシュを「静かに燃やさない」設計</h3>
+          <h3 class="article__headline">ループ運用の続報 — 一晩 QA・66 ラウンドの自動レビュー・エージェント間連携</h3>
           <div class="article__body">
-            <p>Armin Ronacher (mitsuhiko) は、エージェントハーネスが KV キャッシュを助けているのか静かに燃やしているのかという議論を受けて、キャッシュの動作原理を解説する記事を公開した。要点: キャッシュはトークン列の前方一致でしか効かず、1 トークンの差分でそれ以降が全て無効になる。だからツールを会話の途中で外すとキャッシュは全滅する一方、追加は末尾差分で済む。タイムスタンプ入りの動的 system prompt は害で、コンパクションは「キャッシュのリセット」として意図的にやるべき操作になる。彼の Pi はこの原理に沿って「キャッシュを壊さない動的ツールロード」を実装し、キャッシュヒット率と再課金トークンを可視化した。</p>
-            <p>同じ週、Steinberger は Opus 4.8 が想定分布から外れた使い方で性能が落ちる観測に対し「システムと戦っても勝てない」として、自前ハーネスから公式 claude CLI を直接呼ぶコードパスを追加したと明かした。モデル単体の能力ではなく、モデルとハーネスの噛み合わせが実効性能を決めるという認識が、作っている側の共通見解になりつつある。Thorsten Ball の冷や水も添えておく — 毎日大量のトークンを使い、フロンティアモデルに早期アクセスしている本人ですら、リリース直後の精緻で断定的な分析を見るたびに「もう少し時間をかけてから言え」と思う、と。</p>
+            <p>前号で扱ったループエンジニアリングは、この週、具体的な運用報告に進んだ。Peter Steinberger はリリース準備の QA をこう回している — 「OpenClaw の end-to-end QA を実 API キーでやれ。12 サブエージェントで機能を分担し、ポート別に dev gateway を立て、一部はストレステストに回せ。worktree を使い、自律的に PR を作れ。目標はバグ 200 件。毎回根本原因を直せ、対症療法は禁止」。重要なのは彼の添え書きで、「以前はこの種のワークフローはコンパクション境界で崩壊するか、モデルがチート（ズル）を始めた」— つまりこの運用が成立すること自体が新しい。同じ週に自動レビュー skill が 1 つのリファクタで 66 ラウンド回った記録も出た。</p>
+            <p>さらに一歩先の風景として、「うちのエージェントがバグを報告し、Bun 側のエージェントがその夜のうちに直した」という Bun の robobun 運用への言及がある。エージェント同士が issue tracker を介して非同期に協働する構図は、ループが単一リポジトリの内側から、プロジェクト間の境界を越え始めたことを示す。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://earendil.com/posts/prompt-caching/">Armin Ronacher: How KV caches actually work（earendil.com）</a></li>
-            <li><a href="https://x.com/mitsuhiko/status/2080243367535898707">mitsuhiko: agent harnesses are helping or quietly torching their caches</a></li>
-            <li><a href="https://x.com/steipete/status/2080318789980201224">steipete: hard to fight the system</a></li>
-            <li><a href="https://x.com/thorstenball/status/2075681288976302164">thorstenball: just give it more time</a></li>
+            <li><a href="https://x.com/steipete/status/2081169373784633552">steipete: massive parallel QA（compaction 境界とチートが過去形になった）</a></li>
+            <li><a href="https://x.com/steipete/status/2081169376317932017">steipete: 実際の QA プロンプト全文</a></li>
+            <li><a href="https://x.com/steipete/status/2080899298838098034">steipete: autoreview skill 66 ラウンド</a></li>
+            <li><a href="https://x.com/steipete/status/2081767828278170002">steipete: robobun — エージェント間のバグ報告と修正</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">Anthropic 公式「システムプロンプトの 8 割を削った」— 制御は足すものから削るものへ</h3>
+          <div class="article__body">
+            <p>Anthropic が Claude 5 世代向けの context engineering 指針を公式に出した。核になる事実: Claude Code のシステムプロンプトを、性能を落とさずに 8 割以上削減できた。原則は「ルールから判断へ」（禁止事項の列挙をやめ、『周囲のコードに馴染むコードを書け』のような判断基準を渡す）、「事前情報から progressive disclosure へ」（詳細ガイドは skill に分割し、必要なときだけロード）、「CLAUDE.md は軽く」（推論で分かることを書かず、repo 固有の罠に絞る）。日本語圏では t_wada が「判断はモデルに委ね、CLAUDE.md は軽量に保ち、詳細は Skill 化して必要な時に必要なコンテクストを渡す」と要約して広めた。</p>
+            <p>これは前号の 2 つの線 — ハーネスが KV キャッシュを壊さないための「安定した prefix + 末尾追加」の原理、そして Dex Horthy の intentional compaction（「完璧な skill も計画の形も無い。context を練って形を変え、セッション間や autocompact 境界を越えて運ぶことを学べ」）— と同じ方向を向いている。プロンプトを厚くする時代の終わりを、ラボ自身が宣言した形。</p>
+            <p>キャリブレーション: 自分の CLAUDE.md やシステムプロンプトが「モデルを信用しない前提の分厚い規則集」になっていないか。削って性能が落ちるかを測る、が次の一手。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering for Claude 5 generation models</a></li>
+            <li><a href="https://x.com/t_wada/status/2080801490273448284">t_wada: システムプロンプト 8 割削減の要約</a></li>
+            <li><a href="https://x.com/dexhorthy/status/2081735519021801691">dexhorthy: intentional compaction</a></li>
           </ul>
         </article>
       </section>
@@ -79,27 +97,28 @@
       <section class="topic">
         <h2 class="topic__title">検証: 喧伝と実態</h2>
         <article class="article">
-          <h3 class="article__headline">「skill を書けば資産が積み上がる」— 完成条件を誰も言えない</h3>
+          <h3 class="article__headline">「2 人のエンジニア + エージェント軍団」— Anthropic 内部はまだ 6〜8 人チーム</h3>
           <div class="article__body">
-            <p><strong>言説:</strong> エージェントに skill を書かせて自動蓄積すれば、組織の知識が資産として積み上がる。</p>
-            <p><strong>実態:</strong> 「みんなエージェントの skill を書いているが、いつ完成と言えるかをほぼ誰も言えない」という指摘が 7 月に出た。skill の価値は中に入っている専門知識の質でしか決まらず、研究側でも one-shot で自動生成した skill は実行ベースの検証を通さない限り信頼性が出ないことが示されている（生成 skill を実行トレースで修正する SkillRevise のような研究が出てくること自体が、素の自動生成では足りない証拠でもある）。Simon Willison は Skills を「MCP より大きい」と評価するが、それは仕組みの評価であって、自動生成で中身が埋まるという話ではない。</p>
-            <p><strong>較正:</strong> skill の価値は「書いた数」ではなく「検証済みの専門知識がどれだけ入っているか」。検証を通していない自動生成 skill は資産ではなく在庫。</p>
+            <p><strong>言説:</strong> 開発チームはもう人間 2 人とエージェントの群れで回る。組織はエージェント中心に再編済み。</p>
+            <p><strong>実態:</strong> Pragmatic Engineer が Anthropic 社内のソフトウェア開発を取材した記事で、Claude Platform の Head of Engineering、Katelyn Lesse 本人がこう答えている — 「『2 人の人間とエージェントの群れ』という話を聞くが、我々はそこにいない。今もチームは平均 6〜8 人だ」。最も AI 漬けの会社の内部実態がこれで、変わったのは頭数ではなく仕事の中身。同じ週の swyx の観測が変化の実際の所在を突いている — 「AI ネイティブな IC・プレイングコーチには猛烈な強気市場、『Head of なんとか』型マネージャには猛烈な弱気市場。エージェント 10 体を 1 年管理した経験 &gt; 人間 10〜100 人を 10 年管理した経験、という乱暴な単純化すら成り立ちつつある」。Gergely Orosz は同時期に、スタートアップの CTO / VPE が数ヶ月で燃え尽きて辞めていくトレンドを報告しており、絞られているのは組織図の人数ではなく特定の役割だと分かる。</p>
+            <p><strong>較正:</strong> 「チームがエージェントに置き換わった」はまだ実態ではない。実際に起きているのは役割の中身の組み替えと、その評価市場の急激な分岐。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://medium.com/@shereshevsky/everyone-is-writing-skills-for-their-agents-almost-nobody-can-say-when-theyre-complete-e686e3b288db">Everyone Is Writing Skills for Their Agents. Almost Nobody Can Say When They're Complete.</a></li>
-            <li><a href="https://arxiv.org/html/2606.01139v2">SkillRevise: Improving LLM-Authored Agent Skills via Trace-Conditioned Skill Revision</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2082133116026569019">GergelyOrosz: Anthropic 内部取材 — still 6-8 people teams</a></li>
+            <li><a href="https://x.com/swyx/status/2082199414656127010">swyx: AI ネイティブ IC は強気市場、Head of X は弱気市場</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2081845248120988114">GergelyOrosz: CTO / VPE の離脱トレンド</a></li>
           </ul>
         </article>
         <article class="article">
-          <h3 class="article__headline">「設計は賢いモデル、実装は安いモデル」— 適用条件が抜けている</h3>
+          <h3 class="article__headline">「SaaS はエージェント内製で置き換えられる」— Linear に出戻った現場</h3>
           <div class="article__body">
-            <p><strong>言説:</strong> 設計・レビューを上位モデルに、実装を下位モデルに振り分ければコストと品質を両立できる。</p>
-            <p><strong>実態:</strong> この分業は最前線でも実践されている — Simon Willison は「実装は適切な下位モデルをサブエージェントで走らせ、判断・レビュー・統合は main loop に残す。実装作業に最上位モデルが要ることは稀」と運用を公開している。ただし同じ週、日本語圏では「実装のほうが難易度が高い場合にやってはいけない」という指摘が流れ、t_wada が同意を示した。両者は矛盾していない。このルールの本質はコスト削減ではなく「判断をどこに残すか」であり、タスクの難所が実装側にあるなら分業の前提が崩れる。</p>
-            <p><strong>較正:</strong> 手法名（モデル分業）ではなく適用条件（難所がどこか）で判断する。難所が設計にあるなら分業は効き、実装にあるなら逆効果。</p>
+            <p><strong>言説:</strong> コード生成が安くなったので、チケット管理も監視も feature flag も内製して SaaS を解約できる。</p>
+            <p><strong>実態:</strong> 実際に内製へ移行したチームの続報が出た — vibecoding した社内ツールの維持がプロダクト開発の時間を食い潰し、Linear に出戻った。Gergely Orosz の整理: 「再構築は楽しい演習だが、アップデートとオンコールを自分の問題にしたいのか?」。企業利用なら SSO・RBAC・コンプライアンス認証の維持が毎年続く、という指摘も並ぶ。作るコストは劇的に下がったが、所有するコスト（保守・当番・監査）はほぼ下がっていない。</p>
+            <p><strong>較正:</strong> 「作れるか」で判断せず「所有したいか」で判断する。内製置換の損益分岐は生成コストではなく運用コストで決まる。</p>
           </div>
           <ul class="article__sources">
-            <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">simonwillison.net: Fable's judgement</a></li>
-            <li><a href="https://x.com/t_wada/status/2076536583801745694">t_wada: それな（実装のが難易度高い場合にやってはいけない）</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2081717797483094377">GergelyOrosz: vibecoded 内製ツールから Linear へ出戻り</a></li>
+            <li><a href="https://x.com/GergelyOrosz/status/2081740788485001669">GergelyOrosz: 内製の compliance 維持コスト</a></li>
           </ul>
         </article>
       </section>
@@ -110,10 +129,10 @@
           <div class="article__body">
             <p>時間を投資して本編にあたる価値があるもの。</p>
             <ul>
-              <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy: Why Software Factories Fail (or: harness engineering is not enough)</a>（約 1.5 万語、1 時間級）: 「人間レビュー抜きの全自動ソフトウェア工場」がコード品質を蝕む理由と、それでも速度を出すための具体策（設計フェーズの前倒し、vertical slice、仕様段階のレビュー）。ベンチマークは「テストを通すこと」に報酬を与え「保守性を壊さないこと」には罰を与えない、という指摘が核</li>
-              <li><a href="https://x.com/t_wada/status/2080423868213387567">t_wada: AI DevEx Conference 2026 基調講演「2026年のソフトウェア開発を考える（2026/07版）」資料</a>: SpecKit 剥がしの結論を含む、日本語で読める現時点の総括。今号 1 本目の背景が体系立てて入っている</li>
-              <li><a href="https://www.youtube.com/watch?v=SlGRN8jh2RI">Anthropic's Boris Cherny: Why Coding Is Solved, and What Comes Next</a>（Sequoia AI Ascent 2026）: ループエンジニアリングを本人が語る一次ソース。二次記事は要点しか拾っておらず、「コーディングは解決済み」の含意と留保は本編でしか分からない</li>
-              <li><a href="https://www.youtube.com/watch?v=RkQQ7WEor7w">Boris Cherny: Claude Code &amp; the Future of Engineering</a>（Acquired Unplugged）: 上と対になるロングインタビュー。個人の工夫と組織戦略の両面が揃う</li>
+              <li><a href="https://x.com/dexhorthy/status/2080697380379427275">Dex Horthy: Why Software Factories Fail 三部作（X articles）</a>（各 30〜60 分）: 前号で GitHub 版をキューに入れた論考が三部作として正式公開され、累計 70 万ビュー超。Part III は SlopCodeBench による Opus 5 実測で、理論と手元評価が 1 本に繋がっている。今週のレビュー論争の理論的背景</li>
+              <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering for Claude 5 generation models</a>（20 分）: 「8 割削減」の具体的な before/after と原則集。自分の CLAUDE.md を隣に開いて読む類の文書</li>
+              <li><a href="https://www.youtube.com/watch?v=tqUDjc1HzO4">Shreya Shankar × Hamel Husain: coding agent だけで evals を始める</a>（動画）: トレースをクラスタし、自前のアノテーションアプリを作り、AI にアノテーションを監視させてサンプリングを適応させる、という evals 立ち上げの最小構成。sh_reya の「LLM judge は evals ではなく計測器。eval は人間のラベル」という切り分けとセットで</li>
+              <li><a href="https://x.com/simonw/status/2082205602772844978">初の自律エージェントによるサイバー攻撃 — OpenAI の全面開示を Simon Willison が読む</a>: サンドボックスを破ってインフラ攻撃に至った初の事例と、その異例の透明性レポート。エージェントに権限を渡す全員にとっての一次資料</li>
             </ul>
           </div>
         </article>
