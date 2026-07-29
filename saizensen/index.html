@@ -32,7 +32,7 @@
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
   <p>Dex Horthy が「Why Software Factories Fail」で示したのは、コーディングモデルの採点機構そのものの欠落だった。SWE-bench Multilingual の 1 タスクは FAIL_TO_PASS と PASS_TO_PASS の合否だけで 1 か 0 を返し、どう到達したかは採点されない。保守性を壊すことへのペナルティは、報酬関数の中に存在しない。</p>
-  <p>同じ 7 月、Peter Steinberger らの autoreview skill の SKILL.md が公開された。450 行のうち、バグの見つけ方に割かれた分量はごく一部で、大半は「見つけた後にどこまで直してよいか」の権限規定である。スコープの凍結手順、2 サイクル未収束での停止、diff が元の 2 倍を超えたら報告して止まる、といった数値つきの停止則が並ぶ。</p>
+  <p>対照的なのが、OpenClaw の agent-skills にある autoreview skill の SKILL.md（448 行）である。規範パートの重心は、バグの見つけ方ではなく「見つけた後にどこまで直してよいか」の権限規定に置かれている。スコープの凍結手順、2 サイクル未収束での停止、diff が元の 2 倍を超えたら報告して止まる、といった数値つきの停止則が並ぶ。</p>
   <p>この 2 本は対立して見えて、実際にはレイヤーが違う。Horthy が「人間の steering が要る」と言った部分が、レビュー時点の対話から、事前に書かれた契約文へ移動している。そして Anthropic は同じ月に Claude Code の system prompt を 80% 超削除したと書いている。削られたのは能力に関する規則で、autoreview が書き足したのは権限に関する規則である。</p>
 </section>
 
@@ -63,7 +63,7 @@
 
       <p>なぜ RL 側でこれを直せないのか。テストは数秒で合否を返すから、モデル世代ごとに何百万ループも回せる。一方で悪い設計のコスト関数が返るのは数週間から数年後 ―― 誰かが 1 行直すつもりでそのファイルを開き、同じ編集を 11 箇所に入れる羽目になり、3 ファイル先が静かに壊れていないか祈る、その瞬間である。そのインシデントを、それを引き起こした設計判断まで backprop する経路がない。Horthy は「モデルの保守性能力を測る良いベンチマークは存在しない」と明示し、自分にもそれを証明できないと断っている（脚注では、gpt-5.5 xhigh に見事なリファクタをさせられるのは事実だが、そう指示するには自分のコードベースを理解していなければならない、と補足している）。</p>
 
-      <p>前進している評価として 3 つが名指しされている。SWE-Marathon（Abundant AI）は「Excel を全機能クローンせよ」級の約 400 時間タスクを、単一の pass/fail ビットではなく複合報酬チャネルで採点する。DeepSWE（Datacurve）は現実には作られなかった OSS 課題を使うことで訓練データ汚染を構造的に回避する（ただし品質は解かない）。Cognition の Frontier Code は複数 PR にまたがるタスクで、<strong>pre-patch のコードに対して落ちないテストを書いたらペナルティ</strong>という決定論的な品質判定（mutation testing の発想）を入れ、さらに diff に対してコード品質ルールを持つ judge モデルを走らせる。それでも Horthy の但し書きが効く ―― モデルが良し悪しを確実に判別できるのなら、最初から良い方を書いていたはずだ、と。</p>
+      <p>前進している評価として 3 つが名指しされている。SWE-Marathon（Abundant AI）は「Excel を全機能クローンせよ」級の約 400 時間タスクを、単一の pass/fail ビットではなく複合報酬チャネルで採点する。DeepSWE（Datacurve）は現実には作られなかった OSS 課題を使うことで訓練データ汚染を構造的に回避する（ただし品質は解かない）。Cognition の Frontier Code は複数 PR にまたがるタスクで、<strong>pre-patch のコードに対して落ちないテストを書いたらペナルティ</strong>という決定論的な品質判定（mutation testing の発想）を入れ、さらに diff に対してコード品質ルールを持つ judge モデルを走らせる。それでも Horthy の但し書きが効く ―― モデルが良し悪しを確実に判別できるのなら、最初から良い方を書いていたとしても不思議はない、と（原文も「想像に難くない」「書いていたかもしれない」という二重の留保付きで書かれている）。</p>
 
       <p>ここから彼が引くのが天井と床の線である。レビューエージェントもトークンの追加投入も、間抜けなミスを拾うので<strong>床は上げる</strong>。だが<strong>天井は動かさない</strong>。天井は RL で教えられた分であり、良い設計はまだ教え方がわかっていない。</p>
 
@@ -75,7 +75,7 @@
       </ul>
       <p>いずれもモデルが下書きし、人間が言い争う。どれも「やらなければコードレビュー中に暗黙で決めることになる決定」であり、レビュー時は考えを変えるのが最も高くつく時点だ、というのが理由づけである。</p>
 
-      <p>運用の数値も具体的だ。全タスクのうち約 40% は oneshot か軽いフィードバック 1〜2 往復で済ませる。中規模はプロダクト設計とシステム設計を 1 枚の計画書にまとめ、フェーズ分割しない。大物だけ全段を通す（大規模リファクタではプロダクト段を飛ばす）。実装は 1〜3 スライスずつ投げ、100〜200 行の単位で読んで方向を直す ―― 2000 行超の向こう側で何が壊れているかわからない状態になるより安い、という判断である。手戻りの閾値は <strong>20%</strong>：それ以上の手戻りを要する PR は提出者とレビュアの双方に知的・情緒的な負荷をかけると彼は書き、AI の oneshot PR は 50% 寄りだと見積もっている。エージェントが書いたコードベースが「重くなり始める」のは 3〜6 ヶ月というのが彼の体感値だ。</p>
+      <p>運用の数値も具体的だ。全タスクのうち約 40% は oneshot か軽いフィードバック 1〜2 往復で済ませる。中規模はプロダクト設計とシステム設計を 1 枚の計画書にまとめ、フェーズ分割しない。大物だけ全段を通す（大規模リファクタではプロダクト段を飛ばす）。実装は 1〜3 スライスずつ投げる。そのコードを重視する場合、あるいはその領域でのモデルの出来に懐疑的な場合は、各段でコードも読む ―― 100〜200 行の単位で確認して舵を切る方が、2000 行超の向こう側で何が壊れているか分からない状態になるより安い、という条件付きの判断である。手戻りの閾値は <strong>20%</strong>：それ以上の手戻りを要する PR は提出者とレビュアの双方に知的・情緒的な負荷をかけると彼は書き、AI の oneshot PR は 50% 寄りだと見積もっている。エージェントが書いたコードベースが「重くなり始める」のは 3〜6 ヶ月というのが彼の体感値だ。</p>
 
       <p>外部データとしては Faros AI のレポートが引かれている。レビューコメント数 +25%、コメント長 +22.7%、レビューを完全に飛ばしてマージされる PR +31.3%、PR あたりインシデント +242.7%、月次インシデント +57.9%、開発者あたりバグ +54%。Horthy 自身が「因果の決定打ではなく相関のシグナル」と留保をつけている点は、そのまま読者側の留保にすべきだ。結論として彼が置くのは、10〜100 倍ではなく「2〜3 倍、安全に」という目標設定である。</p>
     </div>
@@ -92,7 +92,7 @@
 <section class="topic">
   <h2 class="topic__title">深掘り 2｜運用の側</h2>
   <article class="article">
-    <h3 class="article__headline">レビューを自動で回している当事者が書いた、止まるための契約 450 行</h3>
+    <h3 class="article__headline">レビューを自動で回すために書かれた、止まるための契約 448 行</h3>
     <div class="article__body">
       <p>autoreview は OpenClaw の agent-skills に入っている「出荷前クローズアウト用のコードレビュー」skill である。構造化レビューのヘルパーを 1 回呼ぶだけの薄い皮に見えるが、SKILL.md の実体は、エージェントに何をさせないかを列挙した契約書だ。Horthy の議論と突き合わせる価値があるのは、これがまさに「レビューエージェントを足せば解決する」側の最も真剣な実装だからである。</p>
 
@@ -178,25 +178,25 @@
 <section class="topic">
   <h2 class="topic__title">突き合わせ</h2>
   <article class="article">
-    <h3 class="article__headline">天井の話と権限の話は別の話だった ― 削った 80% と足した 450 行が同じ月に共存する理由</h3>
+    <h3 class="article__headline">天井の話と権限の話は別の話だった ― 削った 80% と足した 448 行が両立する理由</h3>
     <div class="article__body">
       <p>表面上、この 2 本は真っ向から対立する。Horthy は「レビューエージェントとトークンは床を上げるが天井は動かさない、当面の判定者はあなただ、コードを読め」と言う。autoreview は別モデルにレビューさせて自動で回すための道具である。だが SKILL.md を実際に読むと、対立が想定したところに無い。</p>
 
-      <p><strong>450 行の重心は、バグの見つけ方ではない。</strong>見つけ方に関する記述は「P0 のみ」「セキュリティ観点は常に含むが正当な機能を潰すな」程度で終わる。残りは、見つけた後にどこまで動いてよいかの規定である。ベースラインの 6 項目、3 分類、5 つの停止条件、2 サイクル、2 倍、critical 例外の 5 項目、リリース freeze。これは Horthy が「人間の steering が要る」と言った部分の移動先だ。レビュー時点で人間がその都度下していた「これは今直す／これは別 PR／これは設計会議」の判断が、事前に書かれた契約文に前倒しされている。Horthy 自身の言い方に翻訳すれば、これも front-loading である ―― 彼が計画段に前倒ししたのに対し、autoreview は権限の境界を前倒ししている。</p>
+      <p><strong>規範パートの重心は、バグの見つけ方ではない。</strong>見つけ方に関する記述は「P0 のみ」「セキュリティ観点は常に含むが正当な機能を潰すな」程度で終わる。448 行の内訳では、Contract・Scope Governor・リリース規律という規範の中核が約 70 行、残りは CLI 仕様・モデル設定・隔離設定などの運用記述である。その規範 70 行のほぼ全部が、見つけた後にどこまで動いてよいかの規定に費やされている。ベースラインの 6 項目、3 分類、5 つの停止条件、2 サイクル、2 倍、critical 例外の 5 項目、リリース freeze。これは Horthy が「人間の steering が要る」と言った部分の移動先だ。レビュー時点で人間がその都度下していた「これは今直す／これは別 PR／これは設計会議」の判断が、事前に書かれた契約文に前倒しされている。Horthy 自身の言い方に翻訳すれば、これも front-loading である ―― 彼が計画段に前倒ししたのに対し、autoreview は権限の境界を前倒ししている。</p>
 
-      <p><strong>一致点は、レビュアの判断を権威にしていないこと。</strong>Horthy の最も鋭い一文は「モデルが良し悪しを確実に判別できるのなら、最初から良い方を書いていたはずだ」である。autoreview のこれへの回答は「判別させない、適用させる」だ。出力は advisory、全指摘は実コードパスと隣接ファイルを読んで検証、却下すべき類型は列挙済み。オラクルはモデルではなく、人間が書いた契約文の側にある。同じ機構がいま 3 箇所に同時に現れている ―― Cognition の Frontier Code が RL 評価の中で diff にコード品質ルールの judge を走らせ、Anthropic は Claude Managed Agents（beta）で rubric に対して別の grader エージェントを走らせ失敗を自動で差し戻し、autoreview は出荷前に別モデルを呼ぶ。Horthy の反論は 3 つとも同じように当たる。当たらないのは、rubric や契約を人間が書いた部分だけである。</p>
+      <p><strong>一致点は、レビュアの判断を権威にしていないこと。</strong>Horthy の見立てで最も射程が長いのは、モデルが良し悪しを確実に判別できるのなら最初から良い方を書いていたとしても不思議はない、という一節である（原文は留保付きの推量として書かれている）。autoreview のこれへの回答は「モデルの判別を権威にしない」だ。出力は advisory、全指摘は実コードパスと隣接ファイルを読んで検証、却下すべき類型は列挙済み。オラクルはモデルではなく、人間が書いた契約文の側にある。同じ機構がいま 3 箇所に同時に現れている ―― Cognition の Frontier Code が RL 評価の中で diff にコード品質ルールの judge を走らせ、Anthropic は Claude Managed Agents（beta）で rubric に対して別の grader エージェントを走らせ失敗を自動で差し戻し、autoreview は出荷前に別モデルを呼ぶ。Horthy の反論は 3 つとも同じように当たる。当たらないのは、rubric や契約を人間が書いた部分だけである。</p>
 
       <p><strong>三点目に Anthropic の context engineering 記事を置くと、線が引ける。</strong>Anthropic は Opus 5 / Fable 5 世代のために Claude Code の system prompt を 80% 超削除し、コーディング評価に計測可能な劣化はなかったと書いている。削られた代表例が「コードでは既定でコメントを書くな。複数段落の docstring や複数行のコメントブロックを決して書くな ― 1 行まで」で、新しい版は「周囲のコードのように読めるコードを書け。コメント密度・命名・イディオムを合わせろ」。ツール使用の第 1 原則だった「例を与えよ」も撤回され、「例はモデルを特定の探索空間に閉じ込める、代わりにインターフェースを設計しろ」に置き換わった（Todo ツールで pending / in_progress / completed という列挙を出すこと自体が使い方のヒントになり、「in_progress は 1 件だけ」という指示が要求挙動を定義する、という説明つき）。Simon Willison が Cat Wu と Thariq Shihipar から拾った例も同じ方向で、「小さなコピーやデザイン変更ではテストを更新するな」と条件を切るより、テストを書くかどうかの判断自体をモデルに委ねる方が良い、という助言だった。</p>
 
-      <p>同じ 7 月に、autoreview は 450 行の規則を書いている。これは矛盾ではなく、規則の種類が違う。<strong>Anthropic が削ったのは能力に関する規則（どう書くか）</strong>で、モデルが賢くなれば不要になる種類のものだ。<strong>autoreview が書いたのは権限に関する規則（どこまでやってよいか、何を fail closed にするか）</strong>で、これはモデルの性能とは独立している。gpt-5.6-sol がどれだけ賢くても、「この PR のオーナー境界はここまで」「リリースブランチではリファクタしない」「cursor CLI は絶対ホストパスを読めるから使わない」は、モデルが導出できる情報ではない。記事自身がこの例外を明示している ―― 「skill を overconstrained にするな、<em>ただし極めて重要な領域は除く</em>」「skill は、あなた／チーム／プロダクトに固有の意見・知識・ベストプラクティスを符号化するときが最良」。autoreview の規則はほぼ全部この例外の側にある。</p>
+      <p>一方で autoreview は 448 行の規則を書いている。これは矛盾ではなく、規則の種類が違う。<strong>Anthropic が削ったのは能力に関する規則（どう書くか）</strong>で、モデルが賢くなれば不要になる種類のものだ。<strong>autoreview が書いたのは権限に関する規則（どこまでやってよいか、何を fail closed にするか）</strong>で、これはモデルの性能とは独立している。gpt-5.6-sol がどれだけ賢くても、「この PR のオーナー境界はここまで」「リリースブランチではリファクタしない」「cursor CLI は絶対ホストパスを読めるから使わない」は、モデルが導出できる情報ではない。記事自身がこの例外を明示している ―― 「skill を overconstrained にするな、<em>ただし極めて重要な領域は除く</em>」「skill は、あなた／チーム／プロダクトに固有の意見・知識・ベストプラクティスを符号化するときが最良」。autoreview の規則はほぼ全部この例外の側にある。</p>
 
-      <p>ただし autoreview は同じ記事の別の助言には従っていない。Anthropic は「長い skill はできる限り progressive disclosure を使い、複数ファイルに分割せよ」と書いているが、autoreview は単一の 450 行である。これは検証可能な不一致で、どちらが正しいかはここでは決まらない。決まるのは、この文書が毎回全部コンテキストに載っているという事実だけだ。</p>
+      <p>ただし autoreview は同じ記事の別の助言には従っていない。Anthropic は「長い skill はできる限り progressive disclosure を使い、複数ファイルに分割せよ」と書いているが、autoreview は単一の 448 行である。これは検証可能な不一致で、どちらが正しいかはここでは決まらない。決まるのは、この文書が毎回全部コンテキストに載っているという事実だけだ。</p>
 
-      <p><strong>本当に対立している 1 点。</strong>autoreview の既定レビューエンジンは Codex（<code>gpt-5.6-sol</code>）であって Claude ではない。この skill が Claude 系のハーネスからも使われることを考えると、これは意図的な賭けである ―― 生成したモデルとは別の訓練を受けたモデルなら、天井の形も違う。Horthy の主張が正しければ、これは天井を動かすのではなく、床の形を変えるだけだ。Horthy 自身が「レビューエージェントとトークンは間抜けなミスを拾って床を上げる」と認めているので、両者は「別モデルのレビューには意味がある」までは合意していて、「それで人間がコードを読まなくて済むか」で別れる。autoreview の答えは、SKILL.md の中に既に書いてある ―― 全指摘を実コードパスを読んで検証しろ。読むのが人間かメインエージェントかは、この文書は指定していない。</p>
+      <p><strong>本当に対立している 1 点。</strong>autoreview の既定レビューエンジンは Codex（<code>gpt-5.6-sol</code>）であって Claude ではない。この skill が Claude 系のハーネスからも使われることを考えると、これは意図的な賭けである ―― 生成したモデルとは別の訓練を受けたモデルなら、天井の形も違う。Horthy の主張が正しければ、これは天井を動かすのではなく、床の形を変えるだけだ。Horthy 自身が「レビューエージェントとトークンは間抜けなミスを拾って床を上げる」と認めているので、両者は「別モデルのレビューには意味がある」までは合意していて、「それで人間がコードを読まなくて済むか」で別れる。autoreview の答えは、SKILL.md の中に既に書いてある ―― 全指摘を実コードパスを読んで検証しろ。検証の主体としては、レビュアパネルの節で「メインエージェント」が名指しされている。ただしそれが人間の読解を代替してよいとまでは、この文書は書いていない。</p>
 
       <p><strong>どちらが自分の状況に効くかの判定。</strong>以下は YES/NO と数値で答えられる。</p>
       <ul>
-        <li>エージェントが書き始めてから <strong>3〜6 ヶ月</strong>を超えたコードベースか。超えていないなら、Horthy の 4 段（プロダクト／アーキ／プログラム設計／垂直スライス）は過剰である。彼自身、約 40% のタスクは oneshot で通している。</li>
+        <li>いま投げようとしているタスクは、Horthy の配分のどこに落ちるか。彼は約 <strong>40%</strong> を oneshot（＋軽い手直し 1〜2 往復）、中規模はプロダクトとシステム設計を 1 枚の計画書にまとめ、大物だけ 4 段全部（プロダクト／アーキ／プログラム設計／垂直スライス）を通す。全部に 4 段を通しているなら過剰、全部 oneshot なら計画段が抜けている。なお「エージェントが書いたコードベースは <strong>3〜6 ヶ月</strong>で苦しくなり始める」は彼の体感値で、タスク規模とは別の軸の話である。</li>
         <li>直近 20 本の PR のうち、<strong>手戻り 20% 超</strong>のものが半分以上か。半分以上なら、レビュー段を足すのではなく計画段を足す方が効く。レビューを速くしても、手戻りの量は減らない。</li>
         <li>レビュー起点の修正が <strong>2 サイクル</strong>で収束しているか。していないなら、残っている指摘は in-scope blocker ではない可能性が高い。分類していないだけの状態と、収束していない状態は区別がつかない。66 ラウンド回るワークフローが健全かどうかは、その 66 が「毎回何かに収束した 66」だったか、「同じ場所を 66 回叩いた」かで決まる。ログで区別できる。</li>
         <li>今の PR の diff は、元のファイル数か非テスト LOC の <strong>2 倍</strong>を超えたか。超えていたら、そのレビューループはもう最初と別の仕事をしている。</li>
@@ -252,7 +252,7 @@
           <tbody>
             <tr><td>Standalone</td><td>毎回は要らない横断チェック（pre-commit セキュリティスキャン、pre-PR アクセシビリティ監査、ライセンスヘッダ検証）</td><td>毎変更後に走らせるようになったら卒業。embed か chain へ</td></tr>
             <tr><td>Embedded</td><td>1 つのワークフローに属するチェック。生成側 skill の本体末尾に 1 行追加するのが最小形</td><td>自分で編集できる skill か、SKILL.md を自分が管理する project レベルの skill でのみ可能。組み込み skill と plugin 管理 skill（更新で上書きされる）は不可 → chain する</td></tr>
-            <tr><td>Chained</td><td>複数の検証済み受け渡しを端から端まで走らせる。改変できない skill に検証を足す唯一の方法（ラッパー skill が元を呼び、次に検証 skill を呼ぶ）</td><td>片方だけ単独で走らせたいことがあるならやめる。トークン消費が増えるので広く配る前にテスト</td></tr>
+            <tr><td>Chained</td><td>複数の検証済み受け渡しを端から端まで走らせる。改変できない skill に検証を足す方法でもある（ラッパー skill が元を呼び、次に検証 skill を呼ぶ）</td><td>片方だけ単独で走らせたいことがあるならやめる。トークン消費が増えるので広く配る前にテスト</td></tr>
             <tr><td>On every PR</td><td>chain が固まってから。著者の几帳面さに依存せず同じゲートを通す</td><td>chain が流動的な間は止めておく。調整のたびにチーム可視のイベントになる</td></tr>
           </tbody>
         </table>
@@ -273,27 +273,27 @@
     <h3 class="article__headline">断片</h3>
     <div class="article__body">
       <ul>
-        <li><strong>検証ループの置き場所は 4 通りで、卒業の合図が決まっている。</strong>Anthropic の記事は standalone / embedded / chained / PR ゲートの 4 段を挙げ、それぞれの離脱条件を書いている。standalone を卒業する合図は「毎回の変更のあとに走らせている」こと。embedded（生成側 skill の本文末尾に検証を 1 行足す）が使えないのは、built-in skill と plugin 管理の skill ―― 更新で上書きされるため、そこは chain にする。PR 全体のゲート化はチェーンが固まるまで待て、調整のたびにチーム全体に見える事象になるから。挙げられている例が良い ―― 「backfill ステップ無しでカラムを落とすマイグレーションを却下する」は決定論的な規則だが、汎用リンタは絶対に書かない、プロジェクト固有の規則である。<a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">出典</a></li>
+        <li><strong>検証ループの置き場所は 4 通りで、卒業の合図が決まっている。</strong>Anthropic の記事は standalone / embedded / chained / PR ゲートの 4 段を挙げ、それぞれの離脱条件を書いている。standalone を卒業する合図は「毎回の変更のあとに走らせている」こと。embedded（生成側 skill の本文末尾に検証を 1 行足す）が使えないのは、built-in skill と plugin 管理の skill ―― 更新で上書きされるため、そこは chain にする。PR 全体のゲート化はチェーンが固まるまで待て、調整のたびにチーム全体に見える事象になるから。挙げられている例が良い ―― 「backfill ステップ無しでカラムを落とすマイグレーションを却下する」は決定論的な規則だが、汎用リンタは検出しない。プロジェクト固有のものなら検出する、という種類の規則である。<a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">出典</a></li>
 
         <li><strong>その chain を、Anthropic の Claude Code チーム自身が日常で回している。</strong>同じ記事に実物が載っている ―― <code>/code-review</code> がバグを探し、<code>/simplify</code> が diff を整え、<code>/verify</code> skill が end-to-end の挙動を確認し、UI に触った変更なら独自の <code>/design</code> skill が <code>DESIGN.md</code> のガイドラインと突き合わせる。autoreview が 1 つの skill 内に畳んでいる closeout を、4 つに分けて連鎖させた形になっている。<a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">出典</a></li>
 
-        <li><strong>progressive disclosure にはキャッシュの請求書がついてくる。</strong>Anthropic は「ツールを deferred loading にして、必要になったら ToolSearch で定義を引かせればコンテキストを食わない」と書いている。Armin Ronacher（Earendil）の解説はその裏側を扱う ―― ツール定義はシステムプロンプトに畳み込まれて会話より前に置かれるので、ツールを 1 個足す・消す・スキーマを変える・並び順を変えるだけで、最初の不一致点がプロンプトの先頭近くに移動し、その後ろの会話が全部再計算される。数千トークンのスキーマを節約して数万トークンの会話を再課金する、という形になる。逃げ道は message-anchored な additive tool loading（Anthropic 系の deferred definitions と <code>tool_reference</code>、OpenAI 系の tool-search item）で、これは追加のときだけ成立する ―― 削除・入れ替え・毎ターンの再構築は効かない。数字も 2 つ：Anthropic の既定キャッシュ TTL は 5 分で、多くの開発作業（ビルド、テスト、diff を読む時間）より短い。Claude Code はサブスクリプション利用者向けにこれを 1 時間に上げている、と Ronacher は同社コードベースからの観察として書いている。履歴の刈り込みの損益分岐も式で置いてある ―― 一度きりの書き直しコスト ≒ 編集後に生き残るトークン数 ×（非キャッシュ単価 − キャッシュ読み単価）、対して毎ターンの節約 ≒ 刈ったトークン数 × キャッシュ読み単価。出典: <a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」（2026-07-22）</a></li>
+        <li><strong>progressive disclosure にはキャッシュの請求書がついてくる（前号で扱った記事の、まだ書いていなかった部分）。</strong>Anthropic は「ツールを deferred loading にして、必要になったら ToolSearch で定義を引かせればコンテキストを食わない」と書いている。Earendil Engineering の解説はその裏側を扱う ―― ツール定義はシステムプロンプトに畳み込まれて会話より前に置かれるので、ツールを 1 個足す・消す・スキーマを変える・並び順を変えるだけで、最初の不一致点がプロンプトの先頭近くに移動し、その後ろの会話が全部再計算される。わずかなスキーマトークンを節約して数万トークンの会話を再課金する、という形になる。逃げ道は message-anchored な additive tool loading（Anthropic 系の deferred definitions と <code>tool_reference</code>、OpenAI 系の tool-search item）で、これは追加のときだけ成立する ―― 削除・入れ替え・毎ターンの再構築は効かない。数字も 2 つ：Anthropic の既定キャッシュ TTL は 5 分で、多くの開発作業（ビルド、テスト、diff を読む時間）より短い。Claude Code はサブスクリプション利用者向けにこれを 1 時間に上げている、と同社コードベースからの観察として書かれている。履歴の刈り込みの損益分岐も式で置いてある ―― 一度きりの書き直しコスト ≒ 編集後に生き残るトークン数 ×（非キャッシュ単価 − キャッシュ読み単価）、対して毎ターンの節約 ≒ 刈ったトークン数 × キャッシュ読み単価。出典: <a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」（2026-07-22）</a></li>
 
         <li><strong>CLAUDE.md に書くべきなのは gotcha であって概要ではない。</strong>Anthropic の推奨は、リポジトリが何のためのものかを簡潔に書いたら、残りのトークンはコードベース内の落とし穴に使え（例として「型は 1 つのモノリシックなファイルに置いていて他には無い」）。ファイルシステムやリポジトリを見ればわかる「当たり前のこと」を書くな。そして spec は markdown である必要がない ―― 詳細なテストスイート、他のコードベースにあるポートすべき関数、HTML アーティファクトも spec として使える。デザインについては「説明やスクリーンショットより HTML モックアップの方が良い結果を出す」と明言している。整理用に <code>/doctor</code> コマンドが用意された。<a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">出典</a></li>
 
         <li><strong>モデル選択そのものを判断に委ねると、何が永続化されるか。</strong>Simon Willison は「全コーディングタスクで、適切な低出力モデルを自分の判断で選び、サブエージェントで走らせろ」と Claude Code に指示し、生成された memory ファイル（<code>~/.claude/projects/&lt;project&gt;/memory/delegate-coding-to-subagents.md</code>、<code>node_type: memory</code> / <code>type: feedback</code>）には、実装は sonnet、機械的な編集は haiku、判断・レビュー・統合はメインループに残す、という適用規則が書かれた。autoreview がレビュアのモデル切り替えを「アカウントアクセス失敗以外は禁止」と固定しているのとは、対極の設計判断である。<a href="https://simonwillison.net/2026/Jul/3/judgement/">出典</a></li>
 
-        <li><strong>Opus 5（7/24 リリース）の評価は用途で割れている。</strong>Boris Cherny はスコアより「これまでで最も prompt injection に強い」ことを挙げる。Gergely Orosz は「コード書きでは Fable ほど良くない」。Dex Horthy は「knowledge work には素晴らしい、コーディングはまだあまり試していない」としてグラフィックス・ブログ執筆・取引分析・CRM を挙げる。Hamel Husain が引用したベンチでは、検索エージェントのトークン burn が Opus 4.8 の 6 倍超・gpt5.6 の 15 倍超で結果は両方より悪かった。Armin Ronacher は「かなり好きだが、めちゃくちゃ高くてトークンを食う」。<a href="https://x.com/bcherny/status/2080713091688583312">bcherny</a> / <a href="https://x.com/GergelyOrosz/status/2081127488797671523">GergelyOrosz</a> / <a href="https://x.com/HamelHusain/status/2080823363761828273">HamelHusain</a> / <a href="https://x.com/dexhorthy/status/2081237726872076715">dexhorthy</a></li>
+        <li><strong>Opus 5（7/24 リリース）の評価は用途で割れている。</strong>Boris Cherny はスコアより「これまでで最も prompt injection に強い」ことを挙げる。Gergely Orosz は「コード書きでは Fable ほど良くない」。Dex Horthy は「knowledge work には素晴らしい、コーディングはまだあまり試していない」としてグラフィックス・ブログ執筆・取引分析・CRM を挙げる。Hamel Husain が引用したベンチでは、検索エージェントのトークン burn が Opus 4.8 の 6 倍超・gpt5.6 の 15 倍超で結果は両方より悪かった。Armin Ronacher（@mitsuhiko）は「かなり好きだが、めちゃくちゃ高くてトークンを食う」。<a href="https://x.com/bcherny/status/2080713091688583312">bcherny</a> / <a href="https://x.com/GergelyOrosz/status/2081127488797671523">GergelyOrosz</a> / <a href="https://x.com/HamelHusain/status/2080823363761828273">HamelHusain</a> / <a href="https://x.com/dexhorthy/status/2081237726872076715">dexhorthy</a> / <a href="https://x.com/mitsuhiko/status/2081122755018158481">mitsuhiko</a></li>
 
         <li><strong>「2 人の人間とエージェントの群れ」はまだどこにも無い、と Anthropic 側が言った。</strong>Claude Platform の Head of Engineering、Katelyn Lesse は Gergely Orosz の取材に「その話をよく聞くが、我々はそこにいない。今もチームは平均 6〜8 人」と答えている。同じ週に swyx が「input/output トークン単価はコスト指標として去年のうちに死んだ、$/task に軸を更新していないなら真面目に受け取られない」と書いた。前者は組織サイズ、後者は測定単位の話で、どちらも「何倍速くなったか」以外の物差しを要求している。<a href="https://x.com/GergelyOrosz/status/2082133116026569019">Lesse 発言</a> / <a href="https://x.com/swyx/status/2081904230768816487">swyx</a></li>
 
-        <li><strong>plan mode という専用モードは、作った側でも剥がされている。</strong>Thorsten Ball は「Amp にも plan mode があった。6 週間、社内だけ。リリースせずに剥がした」と書き、計画そのものを否定したのではなく「専用モードを使ったことがない、『先に調査／計画／スケッチして』と頼めば同じ結果でより柔軟」と補足した。同じ週に Dex Horthy は「plan review は code review を置き換えられない。code review が痛みなく速く済む確率を上げるだけだ」と書いている。深掘り 1 の 4 段は、この位置づけで読むのが正しい。<a href="https://x.com/thorstenball/status/2081812544444879086">thorstenball</a> / <a href="https://x.com/dexhorthy/status/2081224804326309938">dexhorthy</a></li>
+        <li><strong>plan mode という専用モードは、作った側でも剥がされている。</strong>Thorsten Ball は「Amp にも plan mode があった。6 週間、社内だけ。リリースせずに剥がした」と書き、計画そのものを否定したのではなく「専用モードを使ったことがない、『先に調査／計画／スケッチして』と頼めば同じ結果でより柔軟」と補足した。同じ週に Dex Horthy は「plan review は code review を置き換えられない。code review が痛みなく速く済む確率を上げるだけだ」と書いている。深掘り 1 の 4 段は、この位置づけで読むのが正しい。<a href="https://x.com/thorstenball/status/2081812544444879086">thorstenball（plan mode 撤去）</a> / <a href="https://x.com/thorstenball/status/2081721346417930384">同（補足）</a> / <a href="https://x.com/dexhorthy/status/2081224804326309938">dexhorthy</a></li>
       </ul>
     </div>
     <ul class="article__sources">
       <li><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic: Building verification loops in Claude Code with skills</a></li>
       <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering for Claude 5 generation models</a></li>
-      <li><a href="https://earendil.com/posts/prompt-caching/">Armin Ronacher / Earendil Engineering「Prompt Caching In Agents」（2026-07-22）全文</a></li>
+      <li><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」（2026-07-22）全文</a></li>
       <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison「Fable's judgement」（2026-07-03）</a></li>
     </ul>
   </article>
@@ -334,7 +334,7 @@
             </tr>
             <tr>
               <td>5</td>
-              <td><a href="https://earendil.com/posts/prompt-caching/">Armin Ronacher「Prompt Caching In Agents」</a></td>
+              <td><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」</a></td>
               <td>20〜25 分</td>
               <td>ツール定義の追加・削除・並べ替えが会話全体のキャッシュを無効化する機序と、刈り込みの損益分岐式。progressive disclosure を採る前に、その請求書を見積もるために要る</td>
             </tr>
@@ -352,7 +352,7 @@
       <li><a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">openclaw/agent-skills: autoreview SKILL.md</a></li>
       <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy: Why Software Factories Fail</a></li>
       <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering</a> / <a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Building verification loops with skills</a></li>
-      <li><a href="https://earendil.com/posts/prompt-caching/">Armin Ronacher: Prompt Caching In Agents</a> / <a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison: Fable's judgement</a></li>
+      <li><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering: Prompt Caching In Agents</a> / <a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison: Fable's judgement</a></li>
     </ul>
   </article>
 </section>
