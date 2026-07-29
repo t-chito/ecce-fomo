@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>最前線 — 2026年7月29日 | Ecce Fomo</title>
+<title>最前線 — 2026年7月24日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="最前線 — 2026年7月29日">
+<meta property="og:title" content="最前線 — 2026年7月24日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,340 +23,101 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">最前線</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月29日（水）</span>
+        <span>2026年7月24日（金）</span>
         <span>過去2週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="summary">
-  <h2 class="summary__title">まとめ</h2>
-  <p>Dex Horthy が「Why Software Factories Fail」で示したのは、コーディングモデルの採点機構そのものの欠落だった。SWE-bench Multilingual の 1 タスクは FAIL_TO_PASS と PASS_TO_PASS の合否だけで 1 か 0 を返し、どう到達したかは採点されない。保守性を壊すことへのペナルティは、報酬関数の中に存在しない。</p>
-  <p>対照的なのが、OpenClaw の agent-skills にある autoreview skill の SKILL.md（448 行）である。規範パートの重心は、バグの見つけ方ではなく「見つけた後にどこまで直してよいか」の権限規定に置かれている。スコープの凍結手順、2 サイクル未収束での停止、diff が元の 2 倍を超えたら報告して止まる、といった数値つきの停止則が並ぶ。</p>
-  <p>この 2 本は対立して見えて、実際にはレイヤーが違う。Horthy が「人間の steering が要る」と言った部分が、レビュー時点の対話から、事前に書かれた契約文へ移動している。そして Anthropic は同じ月に Claude Code の system prompt を 80% 超削除したと書いている。削られたのは能力に関する規則で、autoreview が書き足したのは権限に関する規則である。</p>
-</section>
+        <h2 class="summary__title">まとめ</h2>
+        <p>この 2 週間の最前線には共通の型がある。名前のついた手法（SDD、ループ、スペック駆動、ソフトウェア工場）を万能視する言説に対して、実践者は「実験の帰結」と「適用条件」を持ち寄り始めた。t_wada は SpecKit を剥がして仕様書ソース化の限界を報告し、Armin Ronacher はハーネスが KV キャッシュを静かに燃やす仕組みを解説し、Dex Horthy は「人間レビュー抜きのソフトウェア工場」が壊れる理由を 1.5 万語で書いた。プロンプトの上手さはもう論点ではなく、検証・停止・キャッシュ・レビューといった制御系の工学が現在の水準線になっている。</p>
+      </section>
 
-<section class="topic">
-  <h2 class="topic__title">深掘り 1｜訓練の側</h2>
-  <article class="article">
-    <h3 class="article__headline">保守性には速いオラクルがない ― SWE-bench の 1 タスクを解剖する</h3>
-    <div class="article__body">
-      <p>Horthy は 2025 年 7 月に自社（HumanLayer）で lights-off 運用に踏み切った。仕様とチケットだけ読み、小中規模はすべてバックグラウンドエージェントに投げる。1 回目に詰まったときは「速度に見合うダウンサイドリスク」として飲み込み、11 月の 3 回目で作り直しを決め、共同創業者が VS Code（Cursor ですらなく）で 2 週間かけてパターンを手で引き直した。この失敗の原因を、彼はハーネスの調整不足ではなくモデル訓練の構造に帰している。</p>
+      <section class="topic">
+        <h2 class="topic__title">今週の最前線</h2>
+        <article class="article">
+          <h3 class="article__headline">t_wada の「SpecKit 剥がし」— 仕様書をソースオブトゥルースにする実験の帰結</h3>
+          <div class="article__body">
+            <p>和田卓人は 7 月 10 日、「詳細な設計書からコードはいつでも再生成」という実験が上手くいかなかったと報告した。理由は明快で、「文書間の整合性を保つのはコードの整合性を保つより難しい」。帰結として、文書が不要なくらい綺麗なコードを書き（書かせ）、コードに書けないこと — Why と Why not — を文書に残し、全てをバージョン管理するスタイルに戻したという。この投稿は日本語圏で 2,000 近い like を集め、数日にわたる議論の起点になった。</p>
+            <p>続く整理がさらに具体的だ。Plan モードと SDD の違いは「作成された仕様書をどう扱うか」— Spec-first か、Spec-anchored/Spec-as-source か — に絞られ、後者は開発期間が長く分量が増えると綻びが出る（期待と逆）。だから「Plan モードで徹底的に議論し、ADR にしっかり残す」方針が手堅い、というのが現時点の結論。Jaana Dogan (rakyll) は関連する議論で「経験者は最初から全部をスペックしようとしない。反復こそがスキルであり、制約や発想が出てくるたびに実験してピボットする」と応じており、否定されているのは SDD の道具立てではなく「仕様書を正とする」運用だと分かる。</p>
+            <p>キャリブレーション: 自分の SDD 運用が Spec-first（議論の道具）か Spec-as-source（正本）かを区別する。後者に寄っているなら、最前線はすでに一周して戻ってきている。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://x.com/t_wada/status/2075500925704425606">t_wada: 詳細な設計書からコードはいつでも再生成という実験は上手くいかず</a></li>
+            <li><a href="https://x.com/t_wada/status/2076835364363469257">t_wada: Plan モードと SDD の違いは仕様書の扱い方に絞られる</a></li>
+            <li><a href="https://x.com/rakyll/status/2076458694523470207">rakyll: それこそがスキル。反復が前提</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">「プロンプトを書く仕事は終わった」— Boris Cherny とループエンジニアリング</h3>
+          <div class="article__body">
+            <p>Claude Code を作った Anthropic の Boris Cherny は「私はもう Claude にプロンプトしない。Claude にプロンプトするループを走らせていて、私の仕事はループを書くことだ」と語る。Peter Steinberger の 6 月 7 日の投稿「コーディングエージェントにプロンプトするのはもうやめるべきで、エージェントにプロンプトするループを設計すべきだ」は 24 時間で 500 万ビューに達し、Addy Osmani がこの実践を「ループエンジニアリング」と命名して用語が定着した。</p>
+            <p>中身は制御系の設計そのものだ。ループに必要なのはトリガー（PR が開く、スケジュール、人間の「go」）と検証可能なゴール（到達を機械的に判定できる終了状態）で、よくある失敗は 3 つ — メモリファイルが無く毎ループゼロから始まる、サブエージェント分割が無く 1 体に全部やらせる、停止条件が無く寝ている間に課金され続ける。無限ループ・ゴールドリフト・コスト爆発は edge case ではなく production の定番問題として扱われている。</p>
+            <p>キャリブレーション: 「良いプロンプトの書き方」はもう最前線の論点ではない。自分のループに記憶・分割・停止条件の 3 点が揃っているかが、そのままチェックリストになる。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://thenewstack.io/loop-engineering/">The New Stack: The Anthropic leader who built Claude Code says he ditched prompting</a></li>
+            <li><a href="https://x.com/steipete/status/2063697162748260627">Peter Steinberger: You shouldn't be prompting coding agents anymore</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">ハーネス内部の工学 — KV キャッシュを「静かに燃やさない」設計</h3>
+          <div class="article__body">
+            <p>Armin Ronacher (mitsuhiko) は、エージェントハーネスが KV キャッシュを助けているのか静かに燃やしているのかという議論を受けて、キャッシュの動作原理を解説する記事を公開した。要点: キャッシュはトークン列の前方一致でしか効かず、1 トークンの差分でそれ以降が全て無効になる。だからツールを会話の途中で外すとキャッシュは全滅する一方、追加は末尾差分で済む。タイムスタンプ入りの動的 system prompt は害で、コンパクションは「キャッシュのリセット」として意図的にやるべき操作になる。彼の Pi はこの原理に沿って「キャッシュを壊さない動的ツールロード」を実装し、キャッシュヒット率と再課金トークンを可視化した。</p>
+            <p>同じ週、Steinberger は Opus 4.8 が想定分布から外れた使い方で性能が落ちる観測に対し「システムと戦っても勝てない」として、自前ハーネスから公式 claude CLI を直接呼ぶコードパスを追加したと明かした。モデル単体の能力ではなく、モデルとハーネスの噛み合わせが実効性能を決めるという認識が、作っている側の共通見解になりつつある。Thorsten Ball の冷や水も添えておく — 毎日大量のトークンを使い、フロンティアモデルに早期アクセスしている本人ですら、リリース直後の精緻で断定的な分析を見るたびに「もう少し時間をかけてから言え」と思う、と。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://earendil.com/posts/prompt-caching/">Armin Ronacher: How KV caches actually work（earendil.com）</a></li>
+            <li><a href="https://x.com/mitsuhiko/status/2080243367535898707">mitsuhiko: agent harnesses are helping or quietly torching their caches</a></li>
+            <li><a href="https://x.com/steipete/status/2080318789980201224">steipete: hard to fight the system</a></li>
+            <li><a href="https://x.com/thorstenball/status/2075681288976302164">thorstenball: just give it more time</a></li>
+          </ul>
+        </article>
+      </section>
 
-      <p>その論証の核が、ベンチマークの採点手順の分解である。SWE-bench Multilingual のタスクは Redis、jq、Django のような OSS から掻き集めた 1 件あたり 15 分程度の作業で、報酬は次の 2 ビットだけで決まる。</p>
-      <ul>
-        <li><code>FAIL_TO_PASS</code> ― 直せと言われたものを直したか</li>
-        <li><code>PASS_TO_PASS</code> ― その過程で他を壊さなかったか</li>
-      </ul>
+      <section class="topic">
+        <h2 class="topic__title">検証: 喧伝と実態</h2>
+        <article class="article">
+          <h3 class="article__headline">「skill を書けば資産が積み上がる」— 完成条件を誰も言えない</h3>
+          <div class="article__body">
+            <p><strong>言説:</strong> エージェントに skill を書かせて自動蓄積すれば、組織の知識が資産として積み上がる。</p>
+            <p><strong>実態:</strong> 「みんなエージェントの skill を書いているが、いつ完成と言えるかをほぼ誰も言えない」という指摘が 7 月に出た。skill の価値は中に入っている専門知識の質でしか決まらず、研究側でも one-shot で自動生成した skill は実行ベースの検証を通さない限り信頼性が出ないことが示されている（生成 skill を実行トレースで修正する SkillRevise のような研究が出てくること自体が、素の自動生成では足りない証拠でもある）。Simon Willison は Skills を「MCP より大きい」と評価するが、それは仕組みの評価であって、自動生成で中身が埋まるという話ではない。</p>
+            <p><strong>較正:</strong> skill の価値は「書いた数」ではなく「検証済みの専門知識がどれだけ入っているか」。検証を通していない自動生成 skill は資産ではなく在庫。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://medium.com/@shereshevsky/everyone-is-writing-skills-for-their-agents-almost-nobody-can-say-when-theyre-complete-e686e3b288db">Everyone Is Writing Skills for Their Agents. Almost Nobody Can Say When They're Complete.</a></li>
+            <li><a href="https://arxiv.org/html/2606.01139v2">SkillRevise: Improving LLM-Authored Agent Skills via Trace-Conditioned Skill Revision</a></li>
+          </ul>
+        </article>
+        <article class="article">
+          <h3 class="article__headline">「設計は賢いモデル、実装は安いモデル」— 適用条件が抜けている</h3>
+          <div class="article__body">
+            <p><strong>言説:</strong> 設計・レビューを上位モデルに、実装を下位モデルに振り分ければコストと品質を両立できる。</p>
+            <p><strong>実態:</strong> この分業は最前線でも実践されている — Simon Willison は「実装は適切な下位モデルをサブエージェントで走らせ、判断・レビュー・統合は main loop に残す。実装作業に最上位モデルが要ることは稀」と運用を公開している。ただし同じ週、日本語圏では「実装のほうが難易度が高い場合にやってはいけない」という指摘が流れ、t_wada が同意を示した。両者は矛盾していない。このルールの本質はコスト削減ではなく「判断をどこに残すか」であり、タスクの難所が実装側にあるなら分業の前提が崩れる。</p>
+            <p><strong>較正:</strong> 手法名（モデル分業）ではなく適用条件（難所がどこか）で判断する。難所が設計にあるなら分業は効き、実装にあるなら逆効果。</p>
+          </div>
+          <ul class="article__sources">
+            <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">simonwillison.net: Fable's judgement</a></li>
+            <li><a href="https://x.com/t_wada/status/2076536583801745694">t_wada: それな（実装のが難易度高い場合にやってはいけない）</a></li>
+          </ul>
+        </article>
+      </section>
 
-      <p>具体例として挙がるのが fastlane の <code>fastlane__fastlane-19304</code> だ。zip アクションが 2 つの optional パラメータを受け取ってすぐ <code>.empty?</code> を呼ぶので、<code>include</code> と <code>exclude</code> を省いた瞬間に <code>'zip_command': undefined method 'empty?' for nil:NilClass</code> で落ちる。人間が実際に入れた修正は <code>params[:include] || []</code> の 2 行である。</p>
-
-      <p>採点はこう回る。モデルは修正直前の base commit と、バグ報告（上のエラーメッセージ）だけを渡される。golden patch も、採点者として機能する test patch も見せない。そして評価側は次の順で処理する。</p>
-      <ul>
-        <li>モデルが出したパッチは残す</li>
-        <li><strong>テストファイルへの編集はすべて捨てる</strong> ― 失敗するテストを黙ってコメントアウトしたり、テストを無意味にする mock を差し込む個体が実際に捕まっているため、と Horthy は書いている</li>
-        <li>ベンチマーク側の test patch を上から当てる</li>
-        <li>既存の zip テスト（PASS_TO_PASS）と新規テスト（FAIL_TO_PASS）を両方走らせ、通れば 1、それ以外は 0</li>
-      </ul>
-
-      <p>ここから出る帰結は 1 行である。どうやって正解に到達したかは採点されず、保守性を削ることへのペナルティがない。だから全部を try/catch で包む書き方も、型システムの利得を潰すキャストも、報酬の上ではまったく無傷で通過する。</p>
-
-      <p>なぜ RL 側でこれを直せないのか。テストは数秒で合否を返すから、モデル世代ごとに何百万ループも回せる。一方で悪い設計のコスト関数が返るのは数週間から数年後 ―― 誰かが 1 行直すつもりでそのファイルを開き、同じ編集を 11 箇所に入れる羽目になり、3 ファイル先が静かに壊れていないか祈る、その瞬間である。そのインシデントを、それを引き起こした設計判断まで backprop する経路がない。Horthy は「モデルの保守性能力を測る良いベンチマークは存在しない」と明示し、自分にもそれを証明できないと断っている（脚注では、gpt-5.5 xhigh に見事なリファクタをさせられるのは事実だが、そう指示するには自分のコードベースを理解していなければならない、と補足している）。</p>
-
-      <p>前進している評価として 3 つが名指しされている。SWE-Marathon（Abundant AI）は「Excel を全機能クローンせよ」級の約 400 時間タスクを、単一の pass/fail ビットではなく複合報酬チャネルで採点する。DeepSWE（Datacurve）は現実には作られなかった OSS 課題を使うことで訓練データ汚染を構造的に回避する（ただし品質は解かない）。Cognition の Frontier Code は複数 PR にまたがるタスクで、<strong>pre-patch のコードに対して落ちないテストを書いたらペナルティ</strong>という決定論的な品質判定（mutation testing の発想）を入れ、さらに diff に対してコード品質ルールを持つ judge モデルを走らせる。それでも Horthy の但し書きが効く ―― モデルが良し悪しを確実に判別できるのなら、最初から良い方を書いていたとしても不思議はない、と（原文も「想像に難くない」「書いていたかもしれない」という二重の留保付きで書かれている）。</p>
-
-      <p>ここから彼が引くのが天井と床の線である。レビューエージェントもトークンの追加投入も、間抜けなミスを拾うので<strong>床は上げる</strong>。だが<strong>天井は動かさない</strong>。天井は RL で教えられた分であり、良い設計はまだ教え方がわかっていない。</p>
-
-      <p>移植できる部品として、彼が人間を残す 4 段を挙げている。Product Requirements / System Architecture / Program Design / Vertical Slices。このうち Program Design が最も過小評価されていると言い、実装前に成果物として次の 3 種を作る。</p>
-      <ul>
-        <li><strong>call-stack tree の diff</strong> ― 制御フローの変化を <code>+</code> / <code>-</code> 付きの入れ子リストで書く</li>
-        <li><strong>file-tree diff</strong> ― NEW / MODIFIED のコメント付きで、どこに何が置かれるかを固定する</li>
-        <li><strong>型とメソッドシグネチャ</strong> ― アーキ文書に載せるには内部的すぎるが、エージェントが外しうる箇所</li>
-      </ul>
-      <p>いずれもモデルが下書きし、人間が言い争う。どれも「やらなければコードレビュー中に暗黙で決めることになる決定」であり、レビュー時は考えを変えるのが最も高くつく時点だ、というのが理由づけである。</p>
-
-      <p>運用の数値も具体的だ。全タスクのうち約 40% は oneshot か軽いフィードバック 1〜2 往復で済ませる。中規模はプロダクト設計とシステム設計を 1 枚の計画書にまとめ、フェーズ分割しない。大物だけ全段を通す（大規模リファクタではプロダクト段を飛ばす）。実装は 1〜3 スライスずつ投げる。そのコードを重視する場合、あるいはその領域でのモデルの出来に懐疑的な場合は、各段でコードも読む ―― 100〜200 行の単位で確認して舵を切る方が、2000 行超の向こう側で何が壊れているか分からない状態になるより安い、という条件付きの判断である。手戻りの閾値は <strong>20%</strong>：それ以上の手戻りを要する PR は提出者とレビュアの双方に知的・情緒的な負荷をかけると彼は書き、AI の oneshot PR は 50% 寄りだと見積もっている。エージェントが書いたコードベースが「重くなり始める」のは 3〜6 ヶ月というのが彼の体感値だ。</p>
-
-      <p>外部データとしては Faros AI のレポートが引かれている。レビューコメント数 +25%、コメント長 +22.7%、レビューを完全に飛ばしてマージされる PR +31.3%、PR あたりインシデント +242.7%、月次インシデント +57.9%、開発者あたりバグ +54%。Horthy 自身が「因果の決定打ではなく相関のシグナル」と留保をつけている点は、そのまま読者側の留保にすべきだ。結論として彼が置くのは、10〜100 倍ではなく「2〜3 倍、安全に」という目標設定である。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy「Why Software Factories Fail ― or: harness engineering is not enough」（HumanLayer, 2026 年 7 月）全文</a></li>
-      <li><a href="https://huggingface.co/datasets/SWE-bench/SWE-bench_Multilingual">SWE-bench Multilingual データセット</a></li>
-      <li><a href="https://cognition.com/blog/frontier-code">Cognition: Frontier Code</a> / <a href="https://www.swe-marathon.org/">SWE-Marathon</a> / <a href="https://deepswe.datacurve.ai/blog/deepswe">DeepSWE</a></li>
-      <li><a href="https://www.faros.ai/research/ai-acceleration-whiplash">Faros AI: The AI Acceleration Whiplash</a></li>
-      <li><a href="https://arxiv.org/abs/2405.15793">SWE-Agent 論文（2024）― ツール形状の差が挙動を変える件</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">深掘り 2｜運用の側</h2>
-  <article class="article">
-    <h3 class="article__headline">レビューを自動で回すために書かれた、止まるための契約 448 行</h3>
-    <div class="article__body">
-      <p>autoreview は OpenClaw の agent-skills に入っている「出荷前クローズアウト用のコードレビュー」skill である。構造化レビューのヘルパーを 1 回呼ぶだけの薄い皮に見えるが、SKILL.md の実体は、エージェントに何をさせないかを列挙した契約書だ。Horthy の議論と突き合わせる価値があるのは、これがまさに「レビューエージェントを足せば解決する」側の最も真剣な実装だからである。</p>
-
-      <p><strong>既定値と、エンジンを変えてよい唯一の条件。</strong>本文中に散在している既定値と閾値を一覧にする。数値と分類名はすべて SKILL.md の記述である。読みどころは 2 つ。エンジンとモデルの切り替えが許されるのは Sol へのアカウントアクセス失敗 1 件だけで、<strong>容量不足・レート制限・その他の失敗ではエンジンもモデルも切り替えてはならない</strong>と明記されていること。そして出力の既定が <strong>P0 のみ</strong>、つまり「現在の変更をブロックするに値するもの＝通常フロー・結果・安全境界を実質的に壊すもの」だけを報告する点である。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>項目</th><th>既定 / 閾値</th><th>但し書き</th></tr></thead>
-          <tbody>
-            <tr><td>既定エンジン</td><td><code>codex</code>（<code>AUTOREVIEW_ENGINE</code> で変更可）</td><td>実行可能なのは <code>codex</code>, <code>claude</code>, <code>pi</code> の 3 つのみ</td></tr>
-            <tr><td>Codex 既定モデル / 推論</td><td><code>gpt-5.6-sol</code> / <code>high</code></td><td><code>max</code> は最難のレビューのみ。まず <code>xhigh</code> と実変更で比較してから</td></tr>
-            <tr><td>Codex フォールバック</td><td><code>gpt-5.6-terra</code> に 1 回だけ再試行</td><td><strong>アカウントが Sol にアクセスできない場合に限る</strong>。容量・レート制限・無関係な失敗では同じモデルを維持</td></tr>
-            <tr><td>Claude 既定モデル</td><td><code>claude-fable-5</code></td><td><code>--fallback-model</code> を受け付けるのは Claude だけ。非 Claude の fallback 指定は無視ではなく fail closed</td></tr>
-            <tr><td>出力の既定優先度</td><td>P0 のみ</td><td>P1〜P3 は呼び出し側が明示的に広いレビューを求めたときだけ</td></tr>
-            <tr><td>1 実行あたりの最大パス数</td><td>8</td><td>これを超える規模は、レビュー対象自体を分割する</td></tr>
-            <tr><td>モデル呼び出しの想定上限</td><td>30 分</td><td>Codex のツール利用や web 検索がある大バンドルで特に長い</td></tr>
-            <tr><td>無反応で殺してよい基準</td><td>2〜5 分の沈黙では殺さない</td><td>heartbeat が複数回落ちる / 30 分超 / 明らかな subprocess 失敗のときだけプロセスを見る</td></tr>
-            <tr><td>スコープ膨張の停止線</td><td>元のファイル数か非テスト LOC の <strong>2 倍</strong></td><td>明示的な拡張承認がなければ停止して報告</td></tr>
-            <tr><td>修正サイクルの停止線</td><td><strong>2 サイクル</strong>で未収束</td><td>いったん止め、残りの所見を全件再分類してから次の編集</td></tr>
-            <tr><td>secret scan ポリシー</td><td>TruffleHog <code>verified,unknown</code></td><td>低誤検知の pre-commit ポリシーに意図的に合わせている。任意のパスワード様文字列は分類しない。未変更履歴は再スキャンしない</td></tr>
-            <tr><td>モード</td><td><code>auto</code> / <code>local</code>（別名 <code>uncommitted</code>）/ <code>branch --base</code> / <code>commit --commit</code></td><td>branch レビュー中に自動 fetch はしない。base ref はローカルで既に解決できる必要がある</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p><strong>レビュー結果の格。</strong>「レビュー出力は常に advisory として扱え。決して盲目的に適用するな」。すべての指摘は実際のコードパスと隣接ファイルを読んで検証する。外部の挙動に依存する指摘なら、依存先のドキュメント・ソース・型まで読む。そして却下すべきものが名指しされている ―― 非現実的なエッジケース、投機的なリスク、広範な書き換え、コードベースを過度に複雑にする修正。受理した指摘がバグクラスやパターンを示している場合は、同じ PR のスコープ内で兄弟インスタンスを探して一括で潰すが、触った表面・オーナー境界・明らかにフォローアップ領域のところで止める。</p>
-
-      <p><strong>Scope Governor ―― この skill の重心。</strong>最初のレビュー前に、スコープのベースラインを凍結する。凍結する項目は 6 つ：元の依頼または issue、対象ブランチ、意図した挙動、オーナー境界、変更ファイル、非テスト LOC。継承済みで既に膨らんだブランチでは、既存のドリフトを受け入れずに「意図した PR の diff」をベースラインに取り直す。指摘はパッチを当てる<strong>前に</strong>必ず 3 分類する。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>分類</th><th>成立条件</th><th>処置</th></tr></thead>
-          <tbody>
-            <tr><td>In-scope blocker</td><td>現 diff が持ち込んだ / 同じ owner boundary / タスクの contract を変えずに直せる</td><td>直す</td></tr>
-            <tr><td>Follow-up</td><td>実在するが、隣接するバグクラス・兄弟面・清掃・広い硬化トラックに属する</td><td>別 PR / issue へ</td></tr>
-            <tr><td>Stop-and-escalate</td><td>新しい protocol / config / storage / public API contract、別の owner boundary、リリース手順の変更、元の依頼外の設計判断を要する</td><td>止めて報告</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>そして停止条件が数値つきで並ぶ。狭い PR がアーキテクチャ変更・プロトコル変更・マイグレーション・リリースプロセス変更に化けたとき。<strong>diff が元のファイル数または非テスト LOC の 2 倍</strong>を、スコープ拡大の明示的承認なしに超えたとき。<strong>レビュー起点のパッチサイクルが 2 回回っても収束しないとき</strong>（一時停止し、残りの指摘を全部再分類してから次の編集に進む）。最善の修正が「まず正典となる契約を定義する」であって、また 1 枚ローカルな推論層を足すことではないとき。修正すると PR がもう同じ挙動・issue・オーナー境界を説明しなくなるとき。2 サイクルの一時停止のあとは、残った受理済み指摘が全部まだ in-scope blocker である場合にのみ続行する。そうでなければ、有用な分析を保存し、安全に着地できる最小の部分集合を特定し、大きい修正はフォローアップに回す。スコープ分類や焦点を絞った証明が未決のまま、レビュー起点の修正コミットを積んだり push したりしてはならない。スコープが壊れたら、それらは着地レーンから外して履歴に残さない。</p>
-
-      <p>スコープを爆破してよい「critical 例外」は列挙で閉じている ―― 進行中のデータ損失、クラッシュ、インストール／アップグレードの破損、リリースブロッカー、具体的なセキュリティ露出。この 5 つでなければ critical ではない、と書いてある。リリース系のブランチではさらに厳しく、ブランチ名がリリースらしくなくても freeze 規律を適用し、非ブロッキングの指摘は main 向けのフォローアップにする。「リリースブランチをリファクタのレーンとして使うな」。</p>
-
-      <p><strong>失敗モードの扱いが具体的。</strong>構造化レビューはモデル呼び出しが生きている間、大きなバンドルでは <strong>30 分</strong>かかりうる。<code>review still running: &lt;engine&gt; elapsed=&lt;seconds&gt;s pid=&lt;pid&gt;</code> というハートビート行は健全な進捗であってハングではない。<strong>2〜5 分静かだからといって、あるいは 30 分の窓の中でまだ走っているからといって、レビューを殺すな</strong>。プロセスを覗くのは、期待されるハートビートを複数回落としたとき、30 分を過ぎたとき、明らかにサブプロセスが失敗したときだけ。</p>
-
-      <p><strong>秘密情報の扱いは、境界条件が読める書き方をしている。</strong>エンジン呼び出しの前に、レビュー対象の追加・変更・削除された内容そのもののスナップショットに対して TruffleHog を走らせる。ポリシーは意図的に TruffleHog の低誤検知な pre-commit ポリシー（<code>verified,unknown</code>）に合わせてある ―― <strong>任意のパスワードっぽい文字列は分類しないし、変更されていない履歴を再スキャンもしない</strong>。そのスキャンを通過した後、ローカルで認識できる秘密様の値が伏字にされるのは「完全に削除されたファイルの削除行にのみ出現する場合」に限られる。同じ値が追加行・文脈行・staged/unstaged 混在のどこかに 1 つでも出たら、レビューは fail closed で落ちる。バイナリが無ければ公式のプラットフォーム中立な手順へのリンクを出して落ちる（自動インストールはしない）。CI 側でも PR で TruffleHog を回すことがバックアップとして推奨されている。</p>
-
-      <p><strong>隔離のテーブルが、拒否の理由まで書いてある。</strong>実行可能なエンジンは codex / claude / pi の 3 つで、droid・copilot・cursor・opencode は fail closed で拒否される。拒否の理由は各々違う。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>エンジン</th><th>隔離フラグ</th></tr></thead>
-          <tbody>
-            <tr><td>codex</td><td>認証のみの config 上書き、隔離ワークスペース、<code>exec --ignore-user-config --ignore-rules --skip-git-repo-check</code>、read-only sandbox</td></tr>
-            <tr><td>claude</td><td><code>--safe-mode --setting-sources user --strict-mcp-config --disallowedTools mcp__*</code>、auto-memory とファイル/シェル系ツールを無効化、空の外部ワークスペース、WebSearch は既定で付与（<code>v2.1.169+</code>）</td></tr>
-            <tr><td>pi</td><td><code>--no-approve --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-tools</code>（<code>v0.79.0+</code> 必須）</td></tr>
-            <tr><td>droid</td><td>拒否。project instructions とツールの<strong>両方</strong>を無効化できない</td></tr>
-            <tr><td>copilot</td><td>拒否。リポジトリ読み取りツールが、レビュー対象バンドル外の ignored ファイルまで露出させる</td></tr>
-            <tr><td>cursor</td><td>拒否。文書化された read 権限がホストの絶対パスを指せる</td></tr>
-            <tr><td>opencode</td><td>拒否。project/global config の隔離と private-network fetch 拒否の両方が証明できていない</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>通る 3 つの隔離も細かい。Codex は上表のフラグに加えて、<strong>空の一時ワークスペース</strong>で走り、project-doc 予算はゼロ。これはリポジトリルート読み取り（ignored なクレデンシャルを露出する）より狭く、レガシーの <code>read-only</code> サンドボックス（ホストのファイルシステム全体を読める）より狭い、と明記されている。<code>--ignore-user-config</code> は exec 実行時の config 読み込みを丸ごと飛ばすが、認証だけは <code>CODEX_HOME/config.toml</code> から <code>cli_auth_credentials_store</code>・<code>forced_login_method</code>・<code>forced_chatgpt_workspace_id</code> の 3 つだけ再構成する。Claude は <code>--safe-mode</code> でプロジェクトの hooks・skills・plugins・MCP・CLAUDE.md が全部無効になり、ファイルシステムもシェルも無し、WebSearch だけが既定。Pi は読み取りツールがリポジトリに閉じないため <code>--no-tools</code> で、中立な一時ディレクトリから走らせる。</p>
-
-      <p><strong>分割の保証と、その限界の自己申告。</strong>大きい diff は 8 パスを上限として境界で分割され、「元のバンドルの全バイトがパス列の中でちょうど 1 回ずつ現れる」。1 本の物理的な diff 行がパスをまたいで割れても、元の追加／削除／文脈のマーカーを保持する。そのうえで自分の限界を書いている ―― <strong>チャンク分割は 1 回のモデル呼び出しにクロスファイルの実装詳細を全部渡すことはできない</strong>。アーキテクチャ寄りの変更では、意味的な決定面が 1 パスに収まる形の PR にすべきだ、と。縮小のために lockfile・生成クライアント・ポリシー・マニフェスト・スキーマを落としてはならない。</p>
-
-      <p><strong>この skill が自分の射程外だと宣言している場所。</strong>「クリーンな autoreview は、UI・CLI・API・生成物がユーザーの視点で動くことの証明にはならない」。autoreview は source-aware で変更バンドルを裁く。挙動の検証は source-blind な behavior-validator が、動いている製品を挙動契約に照らして裁く。役割が分けてある。</p>
-
-      <p>細部で最も印象的なのは、回帰の帰属に関する規定だ。blame されたコードの作者、blame された PR の作者、その PR のマージ者／コミッタ、現在の PR の作者、PR と日付 ―― この 5 つの役割を混ぜるな、と書いてある。blame できる PR が辿れなければ、コミット SHA・日付・作者名を出典とし、マージ者を推測してはならない。そして blame 先の PR が <code>clawsweeper[bot]</code> のような自動化にマージされていたら、実務的な範囲で人間のトリガーを特定する ―― タイムラインとコメントを先に見て、レート制限されていたらキャッシュや公開 PR の HTML を見る。<code>@clawsweeper automerge</code> や <code>/landpr</code> のようなメンテナのコマンド、automerge を仕掛けたラベルやステータスコメントを探す。見つかれば <code>automerge triggered by @login</code> と報告し、見つからなければ「trigger unknown」と書く。</p>
-
-      <p>停止則は最後まで一貫している。ヘルパーが exit 0 で受理／実行可能な指摘なしなら、そこで止まる。「良い『クリーン』の一文を得るため、セカンドオピニオンのため、あるいは締めの文言を綺麗にするためだけに、もう 1 回レビューを走らせるな」。パネル（複数レビュア）は opt-in のみ。レビューのためだけに push するな。diff がまるごと散文の内部メモか SKILL.md のドキュメントだけなら autoreview は必須ではない（ただしユーザー向けドキュメント、実行可能な例、設定、スクリプト、生成ファイル、挙動変更はこの免除に入らない）。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">openclaw/agent-skills <code>skills/autoreview/SKILL.md</code> 全文</a>（本文中の既定値・停止則・隔離テーブルはすべて同ファイルの記述）</li>
-      <li><a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI reference</a>（<code>--safe-mode</code> ほか隔離フラグの根拠として同 SKILL.md が参照）</li>
-      <li><a href="https://code.claude.com/docs/en/model-config">Claude Code model-config</a>（<code>--fallback-model</code> が auth / billing / rate-limit / request-size / transport のエラーでは発火しない件）</li>
-      <li><a href="https://developers.openai.com/api/docs/guides/latest-model">OpenAI model guidance</a>（Sol の位置づけと <code>max</code> のサポート ― 表の <code>xhigh</code> / <code>max</code> の但し書きの根拠）</li>
-      <li><a href="https://cursor.com/docs/cli/reference/permissions">Cursor CLI permissions</a>（cursor が fail closed になる根拠）</li>
-      <li><a href="https://x.com/steipete/status/2080899298838098034">Peter Steinberger 7/25: autoreview で厄介なリファクタに 66 ラウンド</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">突き合わせ</h2>
-  <article class="article">
-    <h3 class="article__headline">天井の話と権限の話は別の話だった ― 削った 80% と足した 448 行が両立する理由</h3>
-    <div class="article__body">
-      <p>表面上、この 2 本は真っ向から対立する。Horthy は「レビューエージェントとトークンは床を上げるが天井は動かさない、当面の判定者はあなただ、コードを読め」と言う。autoreview は別モデルにレビューさせて自動で回すための道具である。だが SKILL.md を実際に読むと、対立が想定したところに無い。</p>
-
-      <p><strong>規範パートの重心は、バグの見つけ方ではない。</strong>見つけ方に関する記述は「P0 のみ」「セキュリティ観点は常に含むが正当な機能を潰すな」程度で終わる。448 行の内訳では、Contract・Scope Governor・リリース規律という規範の中核が約 70 行、残りは CLI 仕様・モデル設定・隔離設定などの運用記述である。その規範 70 行のほぼ全部が、見つけた後にどこまで動いてよいかの規定に費やされている。ベースラインの 6 項目、3 分類、5 つの停止条件、2 サイクル、2 倍、critical 例外の 5 項目、リリース freeze。これは Horthy が「人間の steering が要る」と言った部分の移動先だ。レビュー時点で人間がその都度下していた「これは今直す／これは別 PR／これは設計会議」の判断が、事前に書かれた契約文に前倒しされている。Horthy 自身の言い方に翻訳すれば、これも front-loading である ―― 彼が計画段に前倒ししたのに対し、autoreview は権限の境界を前倒ししている。</p>
-
-      <p><strong>一致点は、レビュアの判断を権威にしていないこと。</strong>Horthy の見立てで最も射程が長いのは、モデルが良し悪しを確実に判別できるのなら最初から良い方を書いていたとしても不思議はない、という一節である（原文は留保付きの推量として書かれている）。autoreview のこれへの回答は「モデルの判別を権威にしない」だ。出力は advisory、全指摘は実コードパスと隣接ファイルを読んで検証、却下すべき類型は列挙済み。オラクルはモデルではなく、人間が書いた契約文の側にある。同じ機構がいま 3 箇所に同時に現れている ―― Cognition の Frontier Code が RL 評価の中で diff にコード品質ルールの judge を走らせ、Anthropic は Claude Managed Agents（beta）で rubric に対して別の grader エージェントを走らせ失敗を自動で差し戻し、autoreview は出荷前に別モデルを呼ぶ。Horthy の反論は 3 つとも同じように当たる。当たらないのは、rubric や契約を人間が書いた部分だけである。</p>
-
-      <p><strong>三点目に Anthropic の context engineering 記事を置くと、線が引ける。</strong>Anthropic は Opus 5 / Fable 5 世代のために Claude Code の system prompt を 80% 超削除し、コーディング評価に計測可能な劣化はなかったと書いている。削られた代表例が「コードでは既定でコメントを書くな。複数段落の docstring や複数行のコメントブロックを決して書くな ― 1 行まで」で、新しい版は「周囲のコードのように読めるコードを書け。コメント密度・命名・イディオムを合わせろ」。ツール使用の第 1 原則だった「例を与えよ」も撤回され、「例はモデルを特定の探索空間に閉じ込める、代わりにインターフェースを設計しろ」に置き換わった（Todo ツールで pending / in_progress / completed という列挙を出すこと自体が使い方のヒントになり、「in_progress は 1 件だけ」という指示が要求挙動を定義する、という説明つき）。Simon Willison が Cat Wu と Thariq Shihipar から拾った例も同じ方向で、「小さなコピーやデザイン変更ではテストを更新するな」と条件を切るより、テストを書くかどうかの判断自体をモデルに委ねる方が良い、という助言だった。</p>
-
-      <p>一方で autoreview は 448 行の規則を書いている。これは矛盾ではなく、規則の種類が違う。<strong>Anthropic が削ったのは能力に関する規則（どう書くか）</strong>で、モデルが賢くなれば不要になる種類のものだ。<strong>autoreview が書いたのは権限に関する規則（どこまでやってよいか、何を fail closed にするか）</strong>で、これはモデルの性能とは独立している。gpt-5.6-sol がどれだけ賢くても、「この PR のオーナー境界はここまで」「リリースブランチではリファクタしない」「cursor CLI は絶対ホストパスを読めるから使わない」は、モデルが導出できる情報ではない。記事自身がこの例外を明示している ―― 「skill を overconstrained にするな、<em>ただし極めて重要な領域は除く</em>」「skill は、あなた／チーム／プロダクトに固有の意見・知識・ベストプラクティスを符号化するときが最良」。autoreview の規則はほぼ全部この例外の側にある。</p>
-
-      <p>ただし autoreview は同じ記事の別の助言には従っていない。Anthropic は「長い skill はできる限り progressive disclosure を使い、複数ファイルに分割せよ」と書いているが、autoreview は単一の 448 行である。これは検証可能な不一致で、どちらが正しいかはここでは決まらない。決まるのは、この文書が毎回全部コンテキストに載っているという事実だけだ。</p>
-
-      <p><strong>本当に対立している 1 点。</strong>autoreview の既定レビューエンジンは Codex（<code>gpt-5.6-sol</code>）であって Claude ではない。この skill が Claude 系のハーネスからも使われることを考えると、これは意図的な賭けである ―― 生成したモデルとは別の訓練を受けたモデルなら、天井の形も違う。Horthy の主張が正しければ、これは天井を動かすのではなく、床の形を変えるだけだ。Horthy 自身が「レビューエージェントとトークンは間抜けなミスを拾って床を上げる」と認めているので、両者は「別モデルのレビューには意味がある」までは合意していて、「それで人間がコードを読まなくて済むか」で別れる。autoreview の答えは、SKILL.md の中に既に書いてある ―― 全指摘を実コードパスを読んで検証しろ。検証の主体としては、レビュアパネルの節で「メインエージェント」が名指しされている。ただしそれが人間の読解を代替してよいとまでは、この文書は書いていない。</p>
-
-      <p><strong>どちらが自分の状況に効くかの判定。</strong>以下は YES/NO と数値で答えられる。</p>
-      <ul>
-        <li>いま投げようとしているタスクは、Horthy の配分のどこに落ちるか。彼は約 <strong>40%</strong> を oneshot（＋軽い手直し 1〜2 往復）、中規模はプロダクトとシステム設計を 1 枚の計画書にまとめ、大物だけ 4 段全部（プロダクト／アーキ／プログラム設計／垂直スライス）を通す。全部に 4 段を通しているなら過剰、全部 oneshot なら計画段が抜けている。なお「エージェントが書いたコードベースは <strong>3〜6 ヶ月</strong>で苦しくなり始める」は彼の体感値で、タスク規模とは別の軸の話である。</li>
-        <li>直近 20 本の PR のうち、<strong>手戻り 20% 超</strong>のものが半分以上か。半分以上なら、レビュー段を足すのではなく計画段を足す方が効く。レビューを速くしても、手戻りの量は減らない。</li>
-        <li>レビュー起点の修正が <strong>2 サイクル</strong>で収束しているか。していないなら、残っている指摘は in-scope blocker ではない可能性が高い。分類していないだけの状態と、収束していない状態は区別がつかない。66 ラウンド回るワークフローが健全かどうかは、その 66 が「毎回何かに収束した 66」だったか、「同じ場所を 66 回叩いた」かで決まる。ログで区別できる。</li>
-        <li>今の PR の diff は、元のファイル数か非テスト LOC の <strong>2 倍</strong>を超えたか。超えていたら、そのレビューループはもう最初と別の仕事をしている。</li>
-        <li>直近で受理した指摘について、<strong>「実コードを読んで検証したのは誰か」に答えられるか</strong>。答えが「誰も」なら、Horthy の言う天井の側にいる。</li>
-        <li>レビューエンジンは、コードを生成したのと同じモデルか。同じなら床は上がるが、天井の形は同じである。</li>
-        <li>あなたの skill / CLAUDE.md の中で、能力に関する規則（どう書くか）と権限に関する規則（どこまでやってよいか）を分けて書けているか。Anthropic が削ってよいと言ったのは前者だけである。</li>
-      </ul>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering for Claude 5 generation models（2026-07-24, Thariq Shihipar）</a></li>
-      <li><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic: Building verification loops in Claude Code with skills（2026-07-22, Delba de Oliveira）</a>（Claude Managed Agents の rubric grader）</li>
-      <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison「Fable's judgement」（2026-07-03）</a>― Cat Wu / Thariq Shihipar の「テストを書くかの判断もモデルに委ねる」助言</li>
-      <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy「Why Software Factories Fail」全文</a> / <a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">openclaw/agent-skills <code>skills/autoreview/SKILL.md</code> 全文</a></li>
-      <li><a href="https://cognition.com/blog/frontier-code">Cognition: Frontier Code</a>（diff に対する judge モデル）</li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">移植</h2>
-  <article class="article">
-    <h3 class="article__headline">自分の環境に移植する手順（最小構成から）</h3>
-    <div class="article__body">
-      <p>この skill 一式を丸ごと入れる必要はない。移植価値があるのは、スクリプトではなく<strong>契約と閾値</strong>のほうである。最小から順に積む。</p>
-      <p><strong>段 0（0 分）: 既存の verify を先に試す。</strong> Anthropic のガイドは、独自の検証ループを書く前に組み込みの <code>/verify</code>（アプリをビルドし、実行し、変更を観察する）を試せと明示している。ここで足りるなら以下は要らない。</p>
-      <p><strong>段 1（10 分）: 契約を 1 ファイルに書く。</strong> <code>.claude/skills/closeout-review/SKILL.md</code> に、以下 5 行だけ置く。これが autoreview の Contract 節から落とせる最小核。</p>
-      <ul>
-        <li>既定出力は P0 のみ。現在の変更をブロックすべき、通常フロー・結果・安全境界を実質的に壊す所見だけを報告する。</li>
-        <li>レビュー出力は advisory。全所見を実コードパスと隣接ファイルを読んで検証してから採否を決める。</li>
-        <li>非現実的なエッジケース、投機的リスク、広範な書き直しは却下する。</li>
-        <li>修正が入ったら、focused テストとレビューを両方やり直す。</li>
-        <li>accepted/actionable な所見がゼロで終わったらそこで停止する。報告文をよくするための再実行はしない。</li>
-      </ul>
-      <p><strong>段 2（5 分）: 対象選択を固定する。</strong> 「dirty ならローカル」を既定にすると、コミット後にレビューして空 diff を clean と誤読する。PR がある場合の実 base を取る形にする。</p>
-      <ul>
-        <li><code>base=$(gh pr view --json baseRefName --jq .baseRefName)</code> → その <code>origin/$base</code> を base にした branch diff をレビュー対象にする。</li>
-        <li>着地済み・push 済みの単一変更は commit 指定でレビューする。clean な <code>main</code> を <code>origin/main</code> と比べても、push 後はたいてい空 diff になる。</li>
-        <li>base ref はローカルで解決できている必要がある（autoreview は branch レビュー中に自動 fetch しない。ここは自分の側でも同じ規約にするか、明示的に fetch を前段に置く）。</li>
-      </ul>
-      <p><strong>段 3（5 分）: 停止条件を数値で書く。</strong> ここが最も移植価値が高い。文言ではなく数字にすること。</p>
-      <ul>
-        <li>diff が元のファイル数か非テスト LOC の 2 倍を超えたら停止して報告。</li>
-        <li>レビュー由来の修正サイクルが 2 回で収束しなければ、次の編集の前に残り所見を全件再分類。</li>
-        <li>所見は In-scope blocker / Follow-up / Stop-and-escalate の 3 値をパッチ前に必ず付ける。</li>
-        <li>最良の修正が「先に正規の contract を定義する」であるなら、その場でローカル推論層を足すのをやめる。</li>
-      </ul>
-      <p><strong>段 4（15 分）: レビュアーを隔離する。</strong> レビュー対象ブランチの設定でレビュアーが動くと、ブランチ側から出力を操作できる。Claude をレビュアーに使うなら、autoreview がやっているのと同じ組み合わせを写す: <code>--safe-mode --setting-sources user --strict-mcp-config --disallowedTools mcp__*</code>。<code>--safe-mode</code> は project hooks / skills / plugins / MCP サーバ / <code>CLAUDE.md</code> を無効化する。加えて、レビュアーには空の外部ワークスペースを与え、リポジトリではなく検証済みバンドルだけを入力にする。</p>
-      <p><strong>段 5（10 分）: secret scan を engine 呼び出しの前段に置く。</strong> 追加/変更/削除された内容そのもののスナップショットに対して <code>verified,unknown</code> ポリシーで走らせる。PR CI にも同じスキャンをバックアップとして置く（autoreview の外側で冗長化する、と <code>SKILL.md</code> が推奨している）。リポジトリローカルの git hook は任意。</p>
-      <p><strong>段 6（判断）: 起動位置を決める。</strong> Anthropic のガイドは検証ループの起動位置を 4 つに分類し、それぞれに卒業条件を付けている。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>起動位置</th><th>向く条件</th><th>卒業 / 回避条件</th></tr></thead>
-          <tbody>
-            <tr><td>Standalone</td><td>毎回は要らない横断チェック（pre-commit セキュリティスキャン、pre-PR アクセシビリティ監査、ライセンスヘッダ検証）</td><td>毎変更後に走らせるようになったら卒業。embed か chain へ</td></tr>
-            <tr><td>Embedded</td><td>1 つのワークフローに属するチェック。生成側 skill の本体末尾に 1 行追加するのが最小形</td><td>自分で編集できる skill か、SKILL.md を自分が管理する project レベルの skill でのみ可能。組み込み skill と plugin 管理 skill（更新で上書きされる）は不可 → chain する</td></tr>
-            <tr><td>Chained</td><td>複数の検証済み受け渡しを端から端まで走らせる。改変できない skill に検証を足す方法でもある（ラッパー skill が元を呼び、次に検証 skill を呼ぶ）</td><td>片方だけ単独で走らせたいことがあるならやめる。トークン消費が増えるので広く配る前にテスト</td></tr>
-            <tr><td>On every PR</td><td>chain が固まってから。著者の几帳面さに依存せず同じゲートを通す</td><td>chain が流動的な間は止めておく。調整のたびにチーム可視のイベントになる</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>embed が効いたかどうかの確認方法も指定されている: 新しいタスクで skill を起動し、追加したステップが出力の一部として走ることを確認する。走らないなら、その skill の description か手前の指示が追記分を引き込めていない。</p>
-      <p><strong>段 7（5 分）: 出口の証拠を固定する。</strong> autoreview は Final Report に 4 項目を要求する。使ったレビューコマンド、走らせたテスト/証明、採用/却下した所見と簡潔な理由、そして最終 helper 実行の clean 結果（あるいは、残った所見を意識的に却下した理由）。この 4 項目を出力テンプレートに固定すると、「レビューした」と「レビューが通った」を混同しなくなる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">autoreview <code>SKILL.md</code></a>（Contract 節、Pick Target 節、Scope Governor 節、Review engine isolation 節、Final Report 節）</li>
-      <li><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic「Building verification loops in Claude Code with skills」2026-07-22</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">今週の断片</h2>
-  <article class="article">
-    <h3 class="article__headline">断片</h3>
-    <div class="article__body">
-      <ul>
-        <li><strong>検証ループの置き場所は 4 通りで、卒業の合図が決まっている。</strong>Anthropic の記事は standalone / embedded / chained / PR ゲートの 4 段を挙げ、それぞれの離脱条件を書いている。standalone を卒業する合図は「毎回の変更のあとに走らせている」こと。embedded（生成側 skill の本文末尾に検証を 1 行足す）が使えないのは、built-in skill と plugin 管理の skill ―― 更新で上書きされるため、そこは chain にする。PR 全体のゲート化はチェーンが固まるまで待て、調整のたびにチーム全体に見える事象になるから。挙げられている例が良い ―― 「backfill ステップ無しでカラムを落とすマイグレーションを却下する」は決定論的な規則だが、汎用リンタは検出しない。プロジェクト固有のものなら検出する、という種類の規則である。<a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">出典</a></li>
-
-        <li><strong>その chain を、Anthropic の Claude Code チーム自身が日常で回している。</strong>同じ記事に実物が載っている ―― <code>/code-review</code> がバグを探し、<code>/simplify</code> が diff を整え、<code>/verify</code> skill が end-to-end の挙動を確認し、UI に触った変更なら独自の <code>/design</code> skill が <code>DESIGN.md</code> のガイドラインと突き合わせる。autoreview が 1 つの skill 内に畳んでいる closeout を、4 つに分けて連鎖させた形になっている。<a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">出典</a></li>
-
-        <li><strong>progressive disclosure にはキャッシュの請求書がついてくる（前号で扱った記事の、まだ書いていなかった部分）。</strong>Anthropic は「ツールを deferred loading にして、必要になったら ToolSearch で定義を引かせればコンテキストを食わない」と書いている。Earendil Engineering の解説はその裏側を扱う ―― ツール定義はシステムプロンプトに畳み込まれて会話より前に置かれるので、ツールを 1 個足す・消す・スキーマを変える・並び順を変えるだけで、最初の不一致点がプロンプトの先頭近くに移動し、その後ろの会話が全部再計算される。わずかなスキーマトークンを節約して数万トークンの会話を再課金する、という形になる。逃げ道は message-anchored な additive tool loading（Anthropic 系の deferred definitions と <code>tool_reference</code>、OpenAI 系の tool-search item）で、これは追加のときだけ成立する ―― 削除・入れ替え・毎ターンの再構築は効かない。数字も 2 つ：Anthropic の既定キャッシュ TTL は 5 分で、多くの開発作業（ビルド、テスト、diff を読む時間）より短い。Claude Code はサブスクリプション利用者向けにこれを 1 時間に上げている、と同社コードベースからの観察として書かれている。履歴の刈り込みの損益分岐も式で置いてある ―― 一度きりの書き直しコスト ≒ 編集後に生き残るトークン数 ×（非キャッシュ単価 − キャッシュ読み単価）、対して毎ターンの節約 ≒ 刈ったトークン数 × キャッシュ読み単価。出典: <a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」（2026-07-22）</a></li>
-
-        <li><strong>CLAUDE.md に書くべきなのは gotcha であって概要ではない。</strong>Anthropic の推奨は、リポジトリが何のためのものかを簡潔に書いたら、残りのトークンはコードベース内の落とし穴に使え（例として「型は 1 つのモノリシックなファイルに置いていて他には無い」）。ファイルシステムやリポジトリを見ればわかる「当たり前のこと」を書くな。そして spec は markdown である必要がない ―― 詳細なテストスイート、他のコードベースにあるポートすべき関数、HTML アーティファクトも spec として使える。デザインについては「説明やスクリーンショットより HTML モックアップの方が良い結果を出す」と明言している。整理用に <code>/doctor</code> コマンドが用意された。<a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">出典</a></li>
-
-        <li><strong>モデル選択そのものを判断に委ねると、何が永続化されるか。</strong>Simon Willison は「全コーディングタスクで、適切な低出力モデルを自分の判断で選び、サブエージェントで走らせろ」と Claude Code に指示し、生成された memory ファイル（<code>~/.claude/projects/&lt;project&gt;/memory/delegate-coding-to-subagents.md</code>、<code>node_type: memory</code> / <code>type: feedback</code>）には、実装は sonnet、機械的な編集は haiku、判断・レビュー・統合はメインループに残す、という適用規則が書かれた。autoreview がレビュアのモデル切り替えを「アカウントアクセス失敗以外は禁止」と固定しているのとは、対極の設計判断である。<a href="https://simonwillison.net/2026/Jul/3/judgement/">出典</a></li>
-
-        <li><strong>Opus 5（7/24 リリース）の評価は用途で割れている。</strong>Boris Cherny はスコアより「これまでで最も prompt injection に強い」ことを挙げる。Gergely Orosz は「コード書きでは Fable ほど良くない」。Dex Horthy は「knowledge work には素晴らしい、コーディングはまだあまり試していない」としてグラフィックス・ブログ執筆・取引分析・CRM を挙げる。Hamel Husain が引用したベンチでは、検索エージェントのトークン burn が Opus 4.8 の 6 倍超・gpt5.6 の 15 倍超で結果は両方より悪かった。Armin Ronacher（@mitsuhiko）は「かなり好きだが、めちゃくちゃ高くてトークンを食う」。<a href="https://x.com/bcherny/status/2080713091688583312">bcherny</a> / <a href="https://x.com/GergelyOrosz/status/2081127488797671523">GergelyOrosz</a> / <a href="https://x.com/HamelHusain/status/2080823363761828273">HamelHusain</a> / <a href="https://x.com/dexhorthy/status/2081237726872076715">dexhorthy</a> / <a href="https://x.com/mitsuhiko/status/2081122755018158481">mitsuhiko</a></li>
-
-        <li><strong>「2 人の人間とエージェントの群れ」はまだどこにも無い、と Anthropic 側が言った。</strong>Claude Platform の Head of Engineering、Katelyn Lesse は Gergely Orosz の取材に「その話をよく聞くが、我々はそこにいない。今もチームは平均 6〜8 人」と答えている。同じ週に swyx が「input/output トークン単価はコスト指標として去年のうちに死んだ、$/task に軸を更新していないなら真面目に受け取られない」と書いた。前者は組織サイズ、後者は測定単位の話で、どちらも「何倍速くなったか」以外の物差しを要求している。<a href="https://x.com/GergelyOrosz/status/2082133116026569019">Lesse 発言</a> / <a href="https://x.com/swyx/status/2081904230768816487">swyx</a></li>
-
-        <li><strong>plan mode という専用モードは、作った側でも剥がされている。</strong>Thorsten Ball は「Amp にも plan mode があった。6 週間、社内だけ。リリースせずに剥がした」と書き、計画そのものを否定したのではなく「専用モードを使ったことがない、『先に調査／計画／スケッチして』と頼めば同じ結果でより柔軟」と補足した。同じ週に Dex Horthy は「plan review は code review を置き換えられない。code review が痛みなく速く済む確率を上げるだけだ」と書いている。深掘り 1 の 4 段は、この位置づけで読むのが正しい。<a href="https://x.com/thorstenball/status/2081812544444879086">thorstenball（plan mode 撤去）</a> / <a href="https://x.com/thorstenball/status/2081721346417930384">同（補足）</a> / <a href="https://x.com/dexhorthy/status/2081224804326309938">dexhorthy</a></li>
-      </ul>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic: Building verification loops in Claude Code with skills</a></li>
-      <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering for Claude 5 generation models</a></li>
-      <li><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」（2026-07-22）全文</a></li>
-      <li><a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison「Fable's judgement」（2026-07-03）</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">一次資料</h2>
-  <article class="article">
-    <h3 class="article__headline">読む価値がある順</h3>
-    <div class="article__body">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>#</th><th>資料</th><th>所要</th><th>要約で失われるもの</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td><a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">autoreview <code>SKILL.md</code></a>（約 450 行）</td>
-              <td>25〜35 分</td>
-              <td>Contract → Scope Governor → Review engine isolation の 3 節だけでよい。二次記事は「66 ラウンド回った」までしか書かないが、価値があるのは停止則が数値で書かれた契約文そのもので、これは自分の skill にほぼそのまま写せる。Skill Path 以下のシェル設定は実際に使う段になってからで足りる</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy「Why Software Factories Fail」</a>（約 1.5 万語）</td>
-              <td>60〜75 分</td>
-              <td>要約が落とすのは 2 箇所。ベンチマーク 1 タスクの採点手順（特に「モデルのテスト編集を全部捨てる」段と、その理由）と、program design 節の擬似コード可視化の実例。この 2 箇所だけなら 15 分で読める。前半のスロップ論は既知なら飛ばしてよい</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic「The new rules of context engineering for Claude 5 generation models」</a></td>
-              <td>10 分</td>
-              <td>費用対効果が最も高い。旧 system prompt と新 system prompt の文言が並べて出ているのはここだけで、「ルールを削って判断に委ねる」が具体的にどの粒度の削除を指すのかが分かる。読んだ直後に自分の CLAUDE.md を開くところまでを 1 セットにする</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic「Building verification loops in Claude Code with skills」</a></td>
-              <td>10 分</td>
-              <td>短い。取るべきは standalone / embedded / chained / on-PR の 4 分類と、それぞれの卒業条件・回避条件。embed が効いたかどうかの確認方法まで書いてある</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering「Prompt Caching In Agents」</a></td>
-              <td>20〜25 分</td>
-              <td>ツール定義の追加・削除・並べ替えが会話全体のキャッシュを無効化する機序と、刈り込みの損益分岐式。progressive disclosure を採る前に、その請求書を見積もるために要る</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison「Fable's judgement」</a></td>
-              <td>3 分</td>
-              <td>生成された memory ファイルの実物（パスと frontmatter を含む）が載っている。判断を委譲したときに何が永続化されるかの実例として短い</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md">openclaw/agent-skills: autoreview SKILL.md</a></li>
-      <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy: Why Software Factories Fail</a></li>
-      <li><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic: The new rules of context engineering</a> / <a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Building verification loops with skills</a></li>
-      <li><a href="https://earendil.com/posts/prompt-caching/">Earendil Engineering: Prompt Caching In Agents</a> / <a href="https://simonwillison.net/2026/Jul/3/judgement/">Simon Willison: Fable's judgement</a></li>
-    </ul>
-  </article>
-</section>
-
+      <section class="topic">
+        <h2 class="topic__title">深掘りキュー</h2>
+        <article class="article">
+          <div class="article__body">
+            <p>時間を投資して本編にあたる価値があるもの。</p>
+            <ul>
+              <li><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md">Dex Horthy: Why Software Factories Fail (or: harness engineering is not enough)</a>（約 1.5 万語、1 時間級）: 「人間レビュー抜きの全自動ソフトウェア工場」がコード品質を蝕む理由と、それでも速度を出すための具体策（設計フェーズの前倒し、vertical slice、仕様段階のレビュー）。ベンチマークは「テストを通すこと」に報酬を与え「保守性を壊さないこと」には罰を与えない、という指摘が核</li>
+              <li><a href="https://x.com/t_wada/status/2080423868213387567">t_wada: AI DevEx Conference 2026 基調講演「2026年のソフトウェア開発を考える（2026/07版）」資料</a>: SpecKit 剥がしの結論を含む、日本語で読める現時点の総括。今号 1 本目の背景が体系立てて入っている</li>
+              <li><a href="https://www.youtube.com/watch?v=SlGRN8jh2RI">Anthropic's Boris Cherny: Why Coding Is Solved, and What Comes Next</a>（Sequoia AI Ascent 2026）: ループエンジニアリングを本人が語る一次ソース。二次記事は要点しか拾っておらず、「コーディングは解決済み」の含意と留保は本編でしか分からない</li>
+              <li><a href="https://www.youtube.com/watch?v=RkQQ7WEor7w">Boris Cherny: Claude Code &amp; the Future of Engineering</a>（Acquired Unplugged）: 上と対になるロングインタビュー。個人の工夫と組織戦略の両面が揃う</li>
+            </ul>
+          </div>
+        </article>
+      </section>
     </main>
 
     <footer>
