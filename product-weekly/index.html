@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年7月23日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年7月30日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年7月23日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年7月30日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月23日（木）</span>
+        <span>2026年7月30日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,124 +31,113 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週のプロダクト視点の主役は「エージェントが実物を触る」方向への一段の踏み込み。Claude Code のデスクトップ版が iOS シミュレータと連携し、Claude がビルドした iOS アプリを隣のパネルで自分で起動・操作しながら仕上げられるようになった（macOS + Xcode、public beta）。セキュリティも自前のインフラに寄り、Claude Code 用の「Claude Security」プラグインが beta で登場——コミット前に手元の Claude 推論で脆弱性スキャンをかけられる。CLI は 2.1.215〜2.1.218 を一週間で連発し、`/code-review` のバックグラウンド subagent 化、ripgrep ベースの Grep 徹底、スクリーンリーダーモードの実装完了などを積んだ。外では Cognition が「Devin をどこでも動かす」Devin Outposts を出し、Codex CLI 0.145.0 がマルチエージェント V2 に踏み込んだ。そして「スキルは拾うより育てる」という現場観が、Cowork の"録画してスキル化"機能と個人エンジニアの発信の両方から浮かび上がった一週間だった。</p>
+  <p>今週の主役は Claude Opus 5 の投入（7/24）と、それが「プロダクトの中身」を一斉に入れ替えた動きだ。Claude Code は既定モデルが Opus 5（1M・high effort 既定）に切り替わり、同日のうちに Devin・Notion・CodeRabbit といった各コーディングプロダクトが差し替えを済ませた——モデルの発表より、プロダクトが足並みを揃えて乗せ替えた速さのほうが今週らしい。Claude Code 側は 2.1.219 で nested subagent（既定で深さ3）・厳格な allowlist・<code>DirectoryAdded</code> フックなどを積み、Anthropic の中の人は「新モデル向けに Claude Code のシステムプロンプトを約80%削った」知見まで公開した。プロトコル面では MCP が launch 以来最大の更新でステートレス化し、serverless/edge に置けるようになった。Codex 陣営も音声（GPT-Live）でのエージェント操作、CLI 0.146.0 のプラグイン・マーケットプレイス、Codex Security CLI の OSS 化と並走。Grok Build もプラグイン経済を広げ、Devin は初の"フロンティア級"OSS モデル Kimi K3 を載せた。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">デスクトップが iOS シミュレータと連携——Claude が自分でアプリを起動して仕上げる</h3>
+    <h3 class="article__headline">既定モデルが Opus 5 に——high effort 既定、Fast モード、<code>/claude-api migrate</code></h3>
     <div class="article__body">
-      <p>Claude Code のデスクトップ版が iOS シミュレータと連携するようになった。iOS アプリをビルドして走らせると、会話のすぐ隣のパネルにシミュレータが開く。Claude は動いているアプリを見て、自分でタップやスクロールをして操作し、完成まで反復する。もちろんユーザーもいつでもシミュレータを自分で触れる。macOS のみ・Xcode が必要で、今日から public beta。</p>
-      <p>先週のデスクトップ版アプリ内ブラウザ（Claude が任意サイトを開いて操作する）に続く動きで、「ローカル dev サーバに対してやっていること」がモバイルの実機動作確認にまで広がった格好だ。UI を実装させたあと、シミュレータ上での挙動を Claude 自身が見て直す——という往復がセッション内で閉じる。今週の x で最大級のエンゲージメントを集めた発表で、モバイル開発をエージェントに任せる導線として注目された。</p>
+      <p>7/24、Claude Opus 5 が Claude Code とプラットフォームに投入され、Opus クラスの既定モデルが Opus 5（1M コンテキスト）に切り替わった。Claude Code では <strong>既定で high effort</strong> で走り、難しい問題では上げ、速く安く回したいときは下げる、という調整が前提になっている。約2.5倍速の Fast モードも用意され、既存ワークロードの移行は Claude Code 内で <code>/claude-api migrate</code>（組み込み claude-api skill がモデル文字列を更新し、Opus 5 向けのプロンプト改善も提案）で済む。単に <code>/model claude-opus-5</code> で切り替えることもできる。</p>
+      <p>プロダクト目線で効くのは、中の人の実感の共有だ。Anthropic の Boris Cherny は「Opus 5 はコーディング・データ分析・設計・ナレッジワークに強いが、それ以上に嬉しいのは<strong>これまでで最も prompt injection に強いモデル</strong>だという点」と述べ、エージェントに長く任せるうえでの安全余裕を強調した。Thomas（trq212）は「Claude 5 ファミリーを綺麗に締めくくる一台。素晴らしい daily driver で、計画・ブレスト・最難のバグ潰しは Fable と組ませるのが良い」と、Opus 5＋Fable の役割分担を勧めている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2079674432038248611">@ClaudeDevs — Claude Code desktop が iOS シミュレータ連携</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2079674433854452046">@ClaudeDevs — Claude がアプリを見て操作・反復する</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2080703243722854516">@ClaudeDevs — Opus 5 is live in Claude Code（スレッド）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2080703251469758943">@ClaudeDevs — <code>/claude-api migrate</code> で既存ワークロードを移行</a></li>
+      <li><a href="https://x.com/bcherny/status/2080713091688583312">@bcherny — 最も prompt injection に強いモデル</a></li>
+      <li><a href="https://x.com/trq212/status/2080703339306913985">@trq212 — Opus 5 は daily driver、Fable と組ませる</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">「Claude Security」プラグインが beta——コミット前に手元の推論で脆弱性スキャン</h3>
+    <h3 class="article__headline">2.1.219／2.1.220——nested subagent（深さ3）、厳格 allowlist、<code>DirectoryAdded</code> フック</h3>
     <div class="article__body">
-      <p>Claude Code 向けの Claude Security プラグインが beta で公開された。変更差分をコミット前にスキャンして脆弱性を洗い出したり、コードベース全体のフルスキャンを走らせたりが、すべてターミナルから——しかも普段使っている Claude の推論の上で——できる。外部のセキュリティ SaaS に差分を送るのではなく、いま回しているエージェント基盤の延長でセキュアレビューを済ませられるのが売りだ。</p>
-      <p>同じ週に OpenAI の Greg Brockman も「サイバー防御に自社モデルを使う codex security プラグイン」を案内しており、コーディングエージェントに脆弱性検出を組み込む動きは各社で並走している。エージェントにコードを書かせるほど、その場でのセキュリティ点検を CLI に内蔵する需要が高まっている構図だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/claudeai/status/2079990597973057691">@claudeai — Claude Security プラグイン（beta）</a></li>
-      <li><a href="https://x.com/gdb/status/2080149982359831017">@gdb — codex security プラグイン（サイバー防御向け）</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">2.1.215〜2.1.218——<code>/code-review</code> のバックグラウンド化、ripgrep Grep、スクリーンリーダー実装完了</h3>
-    <div class="article__body">
-      <p>この一週間で 2.1.215 から 2.1.218 まで進んだ。開発体験に効く変更が中心だ。(1) 2.1.218 で <code>/code-review</code> がバックグラウンドの subagent として走るようになり、レビュー出力で会話が埋まらず、後続の <code>/</code> コマンドはそのレビューを対象に積める。(2) 2.1.217 でプロンプトが検索タスクに ripgrep ベースの Grep ツールを使うよう明示され、検索が速く正確になった。あわせて絵文字ショートコード補完（<code>:heart:</code> → ❤️）や、トランスクリプト書き込み失敗（ディスク満杯など）の警告も入った。(3) 先週入り始めたスクリーンリーダーモードは実装が進み、2.1.218 では単語・行削除の際に消えたテキストを読み上げるようになった。</p>
-      <p>土台の作り込みも続く。2.1.215 では Claude が <code>/verify</code> と <code>/code-review</code> を自動実行しなくなり（必要なときに手動で呼ぶ形に）、2.1.216 は長時間セッションでのメッセージ正規化が二次的に遅くなる問題を修正、<code>sandbox.filesystem.disabled</code> でネットワーク制御を残したままファイル分離だけ切れるようにした。2.1.217 では同時 subagent 数に既定 20 の上限を設けた。派手な新機能というより、エージェントに長く任せたときの安定性とレビュー動線を毎日削り込んでいる。</p>
+      <p>この一週間の CLI は 2.1.219 と 2.1.220 の 2 本。目玉の 2.1.219 は 27 の変更を含み、Opus 5 を既定に切り替えたうえで土台を広げた。(1) <strong>subagent が入れ子でさらに subagent を起動</strong>できるようになり、既定で深さ3まで。あわせて stream-json 出力で nested subagent がフォワードされる。(2) <code>sandbox.network.strictAllowlist</code> を追加し、allowlist に無いホストへのアクセスを<strong>確認プロンプトなしで拒否</strong>できる。(3) セッション途中でディレクトリを登録するための <code>DirectoryAdded</code> フックを新設。(4) ワークフローのサイズを動的に決める <code>workflowSizeGuideline</code> 設定を追加。fast モードからは Opus 4.7 が外れ、<code>/fast</code> は Opus 5 と Opus 4.8 に適用されるようになった。</p>
+      <p>翌日の 2.1.220 は 1 変更のみで、クラッシュ低減と応答の安定性向上に絞ったバグ修正リリース。派手な機能追加より、Opus 5 を既定にした直後の足元固めに寄せた一週間だった。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2080045045156098131">@ClaudeCodeLog — 2.1.218（/code-review のバックグラウンド化）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2079685060626637018">@ClaudeCodeLog — 2.1.217（ripgrep Grep・絵文字補完）</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2080705868518056235">@ClaudeCodeLog — 2.1.219（Opus 5 既定・27 変更）</a></li>
+      <li><a href="https://x.com/ClaudeCodeLog/status/2080705879616127244">@ClaudeCodeLog — 2.1.219（strictAllowlist ほか）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Claude Design × Claude Code——「フロントエンドが本当に良い」と <code>/design</code> の実感</h3>
+    <h3 class="article__headline">「システムプロンプトを約80%削った」——新モデル向けの書き方の知見</h3>
     <div class="article__body">
-      <p>Anthropic の thomas（trq212）が「<code>/design</code> をこんなに遅くまで打たずにいたのが悔しい。Claude Design と Claude Code でフロントエンドをやるのは本当に良い」と投稿し、フロントエンド作業での Claude Design の手応えを共有した。先週アーティファクトが"配れるアプリ"化した流れに続き、UI を作る側の体験としても Claude Code に Design を組み合わせる使い方が現場で評価され始めている。</p>
+      <p>Opus 5 世代に合わせ、Anthropic の Thomas（trq212）が「<strong>新しいモデル向けに Claude Code のシステムプロンプトを約80%削った</strong>。そこから、システムプロンプト・スキル・CLAUDE.md をどう書くかについて学んだことを共有する」と投稿し、今週の x で最大級の反響を集めた。モデルが賢くなるほど、細かく手取り足取り指示するより余計な足場を外したほうが良く動く——という方向で、指示文の"減らし方"が実務の関心事になっている。</p>
+      <p>Claude Code を長く使う側にとっては、CLAUDE.md やスキルを「盛る」よりも、新モデルに合わせて削ぎ落とす見直しが効く、という手触りの共有だ。プロダクトの新機能を追う一方で、同じプロダクトを新エンジン向けにどうチューニングするかに注目が移った。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/trq212/status/2080090919832084753">@trq212 — Claude Design と Claude Code でのフロントエンド</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">スキルは「拾う」より「育てる」</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Cowork が「録画してスキル化」——作業を撮って話すと Claude が再実行できる手順に</h3>
-    <div class="article__body">
-      <p>Claude Cowork に、自分の作業を録画してスキルにする機能が入った。画面を録画しながらタスクをこなし、やっていることを声で説明すると、Claude がそれを何度でも再実行できるスキルに変換する。デスクトップアプリの「+」メニューの「Record a skill」から使え、Pro / Max / Team で利用できる。今週の x で最大のエンゲージメントを集めた発表で、「手順をコードで書き起こす」のではなく「やってみせて教える」というスキル生成の入り口が広がった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/claudeai/status/2079595988998554047">@claudeai — Cowork でスキルを録画して教える</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">「拾ってきた Skill はほとんど役に立たない」——t_wada の運用論</h3>
-    <div class="article__body">
-      <p>この「スキルを育てる」というテーマは、個人エンジニアの発信とも響き合った。t_wada は「どこかから拾ってくる Agent Skill で役に立つものはほとんど無い（もちろん例外はある）。チームや組織が自分たちに合わせた Agent Skill を作って運用（新規作成・更新・廃棄）できる、その"スキルを育てる能力"のほうがはるかに大事」と述べる。続けて「その意味では、拾ってくる Agent Skill で最も役立つのは skill-creator（スキルを作るスキル）かもしれない」とも。</p>
-      <p>Cowork の録画スキル化が「作る」入り口を下げる一方で、価値は既製品を集めることではなく自組織の文脈に合わせて回し続けることにある——という指摘だ。ツールの新機能と現場の運用観が、今週はどちらも「スキルをどう育てるか」に収斂した。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/t_wada/status/2079845013610205541">@t_wada — 拾う Skill より自組織で育てる Skill</a></li>
-      <li><a href="https://x.com/t_wada/status/2080145679545229343">@t_wada — 最も役立つのは skill-creator かも</a></li>
+      <li><a href="https://x.com/trq212/status/2080710971228918066">@trq212 — Claude Code のシステムプロンプトを約80%削った</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントを「どこで動かすか」</h2>
+  <h2 class="topic__title">Opus 5、コーディングプロダクトに一斉展開</h2>
 
   <article class="article">
-    <h3 class="article__headline">Devin Outposts——Devin を自分のマシンで動かす</h3>
+    <h3 class="article__headline">Devin・Notion・CodeRabbit が同日で差し替え</h3>
     <div class="article__body">
-      <p>Cognition が Devin Outposts を発表した。Mac mini、ラボの GPU ボックス、プライベートネットワーク内の VM、社内サービスの隣に置いた Kubernetes クラスタなど、任意のマシン上で Devin のセッションを走らせられる。Devin のエージェントループ（推論・計画）は引き続き Devin のクラウドで動き、コマンド実行・ファイル編集・リポジトリアクセスといった実作業だけを自分が管理するマシンで行う——という切り分けだ。内部サービスへのアクセスを自社のプロキシや権限の内側に閉じたまま、エージェントに手を動かさせられる。</p>
-      <p>Cloudflare Workers（エッジで隔離サンドボックス）、Daytona（スナップショットから 90ms 未満で起動）、E2B、Modal、Namespace（M5 の Mac で Xcode + computer use）、NVIDIA Brev（GPU デバッグ）と、用途別のデプロイテンプレートが同時に用意された。エージェントの「頭」はベンダー側に置きつつ「手」を自社インフラに下ろす形は、Claude Code デスクトップの iOS シミュレータ連携とも通じる、実環境で動かすための整備の流れだ。</p>
+      <p>今週特徴的だったのは、Opus 5 が<strong>各プロダクトに発表当日ほぼ同時に載った</strong>ことだ。Cognition は「Claude Opus 5 が Devin で利用可能。FrontierCode 1.1 で Opus 5 は Fable 級の性能に半額で迫る」と告知。Notion は「今日の新モデル：Claude Opus 5 が Notion に入った」と即日対応を示し、ハードなタスク（複数ツールをまたぐ作業など）には最も undo 率の低い Opus モデルを、と使い分けを案内した。</p>
+      <p>コードレビューの CodeRabbit は自社ベンチで Opus 5 を計測し、「これまで測った中で最も的確で実行可能なコメントを書いた（自社ベースライン 35.2% に対し 39.3%）。一方で既知バグの検出は 61.1%→55.2% とやや落ちた」と、精度は上がったが取りこぼしは増えた、という具体的なトレードオフを公開した。モデルの是非というより、各プロダクトが「自分たちのベンチと使い方で測って即日採否を決める」体制になっている——という点がプロダクト視点での注目だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/cognition/status/2079612226252726615">@cognition — Devin Outposts 発表</a></li>
-      <li><a href="https://x.com/cognition/status/2079612232284229952">@cognition — Cloudflare Workers での実行</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Codex CLI 0.145.0——マルチエージェント V2、音声入力、スレッド履歴</h3>
-    <div class="article__body">
-      <p>OpenAI の Codex CLI が 0.145.0 を公開。目玉は3点で、(1) 音声入力とリアルタイム V3 ストリーミング、(2) マルチエージェント V2（サブエージェント、並行実行、ロール）、(3) 検索・再開・メモリ付きのスレッド履歴。Claude Code 側が subagent の背景実行や同時数上限の調整を進めているのと同じ週に、Codex もサブエージェントと並行制御を本格化させた。CLI 各社が「1人のエージェント」から「複数を束ねて回す」段階へ、ほぼ足並みを揃えて進んでいる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/Codex_Changelog/status/2079635540224172084">@Codex_Changelog — Codex CLI 0.145.0</a></li>
+      <li><a href="https://x.com/cognition/status/2080701373406920891">@cognition — Opus 5 が Devin で利用可能</a></li>
+      <li><a href="https://x.com/NotionHQ/status/2080700934439809034">@NotionHQ — Claude Opus 5 が Notion に</a></li>
+      <li><a href="https://x.com/coderabbitai/status/2080701295036375486">@coderabbitai — 自社レビューベンチでの Opus 5 計測</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">現場の視点</h2>
+  <h2 class="topic__title">MCP がステートレスに——launch 以来最大のプロトコル更新</h2>
 
   <article class="article">
-    <h3 class="article__headline">「大げさすぎる」という直感が、エージェントのオーバーエンジニアリングを止める</h3>
+    <h3 class="article__headline">serverless／edge に置けるリモート MCP サーバへ</h3>
     <div class="article__body">
-      <p>コーディングエージェントを実務で回すうえでの勘所も共有された。t_wada は「『この問題の解決策がここまで大げさになるのはおかしい』という直感が、コーディングエージェントのオーバーエンジニアリング傾向へのブレーキになっている。ただ、この直感を（エージェントに）教えるのがなかなか難しい」と指摘する。エージェントは放っておくと過剰に汎用的・堅牢な実装に振れやすく、それを押し戻すのは人間側の「筋の良さ」の感覚だ——という現場感だ。</p>
-      <p>あわせて「AI と関係なくやるべきことをやる。するとそこに AI の生産性が掛け算される」とも投稿しており、土台となる設計判断や規律があってこそエージェントの生産性が乗る、という見立てを示している。ツールの新機能を追う一方で、任せる前提の"効かせ方"に関心が集まった一週間だった。</p>
+      <p>7/28、MCP の新版「MCP 2026-07-28」が公開され、launch 以来最大の更新として <strong>プロトコルがステートレス化</strong>した。これまでリモート MCP サーバの運用はセッション状態の管理が必要で、動かせる場所が制約されていた。ステートレスになったことで、serverless やエッジのインフラにデプロイしたり、任意のロードバランサーの背後で水平スケールさせたりできる。エージェントに繋ぐ外部ツールを"軽くどこでも"立てられる方向で、MCP サーバを配る側のプロダクト運用が一段楽になる。</p>
+      <p>あわせて拡張の正式な道として <strong>Extensions</strong> が用意された。例として (1) サンドボックス化した iframe 内でサーバ側描画の UI を出す「MCP Apps」、(2) 長時間・非同期の処理を扱う「Tasks」、(3) 「Enterprise Managed Auth」。認証まわりのハードニングと、正式な deprecation ポリシーの導入も含まれる。プロトコルとして"作り込んで長く使う"段階に入った格好だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/t_wada/status/2080143534737457402">@t_wada — オーバーエンジニアリングへのブレーキとしての直感</a></li>
-      <li><a href="https://x.com/t_wada/status/2080158419986919603">@t_wada — AI の生産性は掛け算</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2082164248697069935">@ClaudeDevs — MCP 2026-07-28 はステートレスに</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2082164250496348268">@ClaudeDevs — serverless／edge にデプロイ可能</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2082164251834323312">@ClaudeDevs — Extensions（MCP Apps／Tasks／Managed Auth）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2082164253109395882">@ClaudeDevs — 認証ハードニングと deprecation ポリシー</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Codex 陣営：音声操作とプラグイン・マーケットプレイス</h2>
+
+  <article class="article">
+    <h3 class="article__headline">音声で複数エージェントを差配、CLI 0.146.0、Security CLI を OSS 化</h3>
+    <div class="article__body">
+      <p>OpenAI の Codex も並走した。まずデスクトップの ChatGPT Voice が GPT-Live で強化され、<strong>音声だけで PC を操作し、ChatGPT Work や Codex で走る複数エージェントを差配</strong>できるようになった（iOS からペアの遠隔アクセス経由でも可）。Codex アプリ 26.715 では macOS の最前面ウィンドウを文脈に取り込む screen context や複数フォルダ・プロジェクトが入り、CLI は 0.146.0 で <strong>named session・ピン留めスレッド・サイド会話</strong>、<strong>プラグイン manifest／workspace publishing／新しい marketplace</strong>、ページング付きの thread forking を追加。「1つのエージェント」から「複数を束ねて共有・再利用する」方向へ踏み込んでいる。</p>
+      <p>セキュリティ面では、OpenAI が <strong>Codex Security CLI を OSS 化</strong>した（<code>npm i @openai/codex-security</code>）。リポジトリのスキャン、実行をまたいだ検出結果の追跡、修正の検証、CI/CD へのセキュリティチェック追加ができる。先週の Anthropic「Claude Security」プラグインに続き、コーディングエージェントに脆弱性検出を組み込む動きが各社で並んだ——ただし OpenAI 側は最初から OSS として出した点が対照的だ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/OpenAI/status/2080378182469857576">@OpenAI — ChatGPT Voice で複数エージェントを操作</a></li>
+      <li><a href="https://x.com/Codex_Changelog/status/2080375424316567829">@Codex_Changelog — Codex app 26.715</a></li>
+      <li><a href="https://x.com/Codex_Changelog/status/2082301625453219843">@Codex_Changelog — Codex CLI 0.146.0（プラグイン marketplace ほか）</a></li>
+      <li><a href="https://x.com/OpenAI/status/2082263717916586117">@OpenAI — Codex Security CLI を OSS 化</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Grok Build のプラグイン経済と、Devin に載った初の"フロンティア級"OSS モデル</h3>
+    <div class="article__body">
+      <p>エージェントに"手足"を足す動きも続いた。xAI の Grok Build は公式プラグインを相次いで整え、Exa・Tavily・TinyFish といった web 検索／取得プラグインを追加。エージェントにリアルタイムの web 接続を与えるプラグイン経済が形になってきている。</p>
+      <p>Devin では、Cognition が <strong>Kimi K3 を Devin Desktop / CLI に追加</strong>した。FrontierCode 1.1 で「テストした中で初めてフロンティア級に迫った OSS モデル」と位置づけ、Devin 内ではバグの再現やコンテキスト管理に強いと報告している。基盤モデルのオープン化議論が業界で騒がしい一週間だったが、プロダクト側では「OSS モデルを実運用のエージェントにどう載せるか」という実装の話として着地した。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/SpaceXAI/status/2080731124729512283">@SpaceXAI — Grok Build に Exa プラグイン</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2082517754712842386">@SpaceXAI — Grok Build に TinyFish プラグイン</a></li>
+      <li><a href="https://x.com/cognition/status/2081766141454925992">@cognition — Kimi K3 が Devin Desktop / CLI に</a></li>
     </ul>
   </article>
 </section>
