@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年7月24日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年7月31日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年7月24日">
+<meta property="og:title" content="GitHub トレンド — 2026年7月31日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月24日（金）</span>
+        <span>2026年7月31日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,104 +31,132 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週は「AI にデザインの目を持たせる」流れが主役だったが、今週の週間トレンドは<strong>コーディングエージェント本体の新顔ラッシュ</strong>に主役が移った。Moonshot が TypeScript 製の次世代 CLI <code>kimi-code</code> を投入し（既存の Python 版 <code>kimi-cli</code> はそこへ吸収されていく）、Rust で性能を極める harness <code>jcode</code>、そして LLM API からエージェントループ・TUI・CLI までを束ねる <code>pi</code>（＋その Web UI <code>pi-web</code>）が揃ってランクイン。エージェントを「どう名乗らせ、どう速く動かすか」の競争が一段と激しくなった。もう一つの軸は<strong>文脈の知能化</strong>で、今週の実質トップ <code>code-review-graph</code>（週間 +6,257★）はコードベースをグラフ化し、エージェントに「読むべき所」だけを渡して 38〜528 倍のトークン削減を謳う。デザイン系スキルの潮流も途切れず、先週の <code>hallmark</code> に <code>ui-skills</code> が加わった。そしてエージェントの外側でも、地政学ダッシュボード <code>worldmonitor</code>（今週最大の +9,054★）、3D シーン復元の基盤モデル <code>lingbot-map</code>、異種混合 LLM 推論の <code>ktransformers</code> が大きく伸び、AI 一色ながらも裾野の広がりを見せた週になった。</p>
+  <p>先週はエージェント「本体」の新顔ラッシュだったが、今週の主役は<strong>エージェントに配る「スキル」そのもの</strong>に移った。Matt Pocock の <code>skills</code>（週間 +12,147★）を筆頭に、返答を要点先行に矯正する <code>i-have-adhd</code>、発散と枝刈りで発想を広げる <code>adhd</code>、技術書 PDF をスキルに変換する <code>book-to-skill</code> が揃ってランクイン。先週の「デザインをスキルで配る」流れが、集中・思考法・書籍知識まで一気に広がった週になった。もう一つの軸は<strong>Rust 製ツールの上位独占</strong>で、今週の最大の伸びは人間とエージェントが同じ場で協働する自己ホスト基盤 <code>block/buzz</code>（週間 +12,444★・今週トップ）。Web フレームワーク <code>topcoat</code>、オフライン文法チェッカ <code>harper</code> も並んだ。さらに Alibaba 社内発の AI コードレビュー <code>open-code-review</code>、エージェント専用ブラウザ <code>ego-lite</code>、金融時系列の基盤モデル <code>Kronos</code> なども目立ち、先週からの <code>pi</code>・<code>jcode</code>・<code>worldmonitor</code>・<code>OmniRoute</code> も上位を維持した。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">コーディングエージェントの新顔ラッシュ</h2>
+  <h2 class="topic__title">「スキル」がエージェント配布の主役に</h2>
 
   <article class="article">
-    <h3 class="article__headline">MoonshotAI/kimi-code — Moonshot が投入する次世代エージェント CLI（週間 +1,610★ / 累計 4.9千★）</h3>
+    <h3 class="article__headline">mattpocock/skills — 実務エンジニア向けのスキル集（週間 +12,147★ / 累計 19.7万★）</h3>
     <div class="article__body">
-      <p>端末内で動く AI コーディングエージェント。コードの読み書き、シェルコマンドの実行、ファイル検索、Web ページの取得を行い、返ってきたフィードバックを見て次の一手を自分で選ぶ、という自律ループを核に据える。Moonshot（Kimi）の CLI エージェントを「次世代エージェントの出発点」と位置づけて打ち出したものだ。</p>
-      <p>単一バイナリでの最小依存インストール、画面録画やデモ動画をエージェントに読ませる動画入力、対話的に設定できる MCP サポート、並列で個別タスクを進めるサブエージェント、Agent Client Protocol（ACP）経由での Zed・JetBrains 連携、要所でコマンドを差し込むライフサイクルフック、拡張用のプラグイン機構を備える。主体は TypeScript、ライセンスは MIT。既存の <code>kimi-cli</code> がここへ収斂していく設計で、モデルベンダー自身が公式 CLI を磨く動きの新たな一例となった。</p>
+      <p>Matt Pocock による、Claude Code や Codex などの AI コーディングアシスタント向けに再利用できるエージェントスキル（プロンプトのテンプレートとワークフロー）を束ねたコレクション。「意図と出力のズレ」「冗長さ」「バグ」「アーキテクチャの劣化」といった AI 支援開発で起きがちな失敗に対し、小さく・適応しやすく・組み合わせ可能な実践を、確立された工学原則に基づいて配ることを掲げる。</p>
+      <p>ユーザーが明示的に呼ぶスキルとして <code>/grill-with-docs</code>・<code>/grill-me</code>・<code>/triage</code>・<code>/to-spec</code>・<code>/implement</code>・<code>/improve-codebase-architecture</code>・<code>/wayfinder</code> を、モデル側が自動で呼ぶスキルとしてテスト駆動開発・デバッグ・コードレビュー・ドメインモデリング・プロトタイピング・リサーチを備える。導入時に課題管理先（GitHub・Linear・ローカルファイル）とトリアージ用ラベルを選ぶ構成で、Claude Code プラグイン（<code>/plugin install mattpocock-skills</code>）または <code>npx skills@latest add mattpocock/skills</code> で入れられる。主体は JavaScript/TypeScript、ライセンスは MIT。今週いちばん存在感を放った「スキルとしての実践の配布」の代表例だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/MoonshotAI/kimi-code">MoonshotAI/kimi-code</a></li>
+      <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">MoonshotAI/kimi-cli — kimi-code へ発展途上の Python 版 CLI（週間 +1,528★ / 累計 1.1万★）</h3>
+    <h3 class="article__headline">ayghri/i-have-adhd — 返答を「要点先行」に矯正するスキル（週間 +4,978★ / 累計 1.4万★）</h3>
     <div class="article__body">
-      <p>同じ Moonshot による、端末ベースの AI エージェント。コードの読み書き・シェル実行・Web 取得を行い、目的達成に向けて実行中に方針を自律調整する。README 自身が「Kimi CLI は Kimi Code CLI へと進化している」と明言しており、今週上位に並んだ <code>kimi-code</code> の前身・並走版という立ち位置にある。</p>
-      <p>Ctrl-X でアプリを抜けずにシェルモードへ切り替えるコマンド実行、VS Code 拡張、Zed・JetBrains をつなぐ ACP、Zsh プラグイン連携、マネージド／アドホック両方式の MCP サポートを備える。<code>kimi-code</code> への移行時には設定が自動で引き継がれる。主体は Python、ライセンスは Apache 2.0。同じ名前・同じ狙いの CLI が言語違いで並んでトレンド入りしたこと自体が、Moonshot がこの領域に本腰を入れている証左だ。</p>
+      <p>Claude Code・Codex などのコーディングアシスタント向けに、AI の返答をより直接的で行動志向な形に整形するスキル/プラグイン。前置きの冗長さを嫌い、明快さを求める開発者を対象にする。</p>
+      <p>「まず行動から」始める応答フォーマット、番号付きの複数ステップ、脇道の情報の抑制、不要な締め文の排除を軸に、「次のアクションを先頭に置く」「具体的な次の一手で締める」「リスト項目は 5 個まで」など 10 の構造ルールを課す。README には冗長版から直接版へ変わる before/after の例が載り、「Hope this helps!」のような決まり文句を削る。<code>/i-have-adhd</code> コマンドで呼び出すか、fork してルールを自分好みに調整できる。設定は Markdown と JSON、ライセンスは MIT。「デザインの初期値を矯正する」先週の流れが、今週は「返答の作法を矯正する」方向へ広がった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/MoonshotAI/kimi-cli">MoonshotAI/kimi-cli</a></li>
+      <li><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">1jehuang/jcode — 性能とスキル上限を上げにいく Rust 製 harness（週間 +2,586★ / 累計 1.1万★）</h3>
+    <h3 class="article__headline">UditAkhourii/adhd — 発散と枝刈りで発想を広げるスキル（週間 +791★ / 累計 2.9千★）</h3>
     <div class="article__body">
-      <p>「スキルの上限を引き上げる」ことを掲げるコーディングエージェント harness。マルチセッション運用・無限のカスタマイズ性・性能を主眼に据え、Claude Code・Cursor Agent・GitHub Copilot CLI といった競合よりメモリ消費が少なく起動が速いことを前面に出す。単一セッションで 27.8MB、10 並列でも約 117MB という省メモリ、初回描画までの時間が競合比 6〜245 倍速いといった数値を並べる。</p>
-      <p>意味ベクトル埋め込みでメモリを自動検索し、背景処理で記憶を抽出・統合する記憶システム、共有リポジトリ上で複数エージェントが同時作業し衝突を自動検知・解決する「Swarm」、jcode 自身をエージェントが書き換える自己改変・リロード基盤、Claude・OpenAI・Copilot・Gemini・Azure・Ollama・LM Studio までの幅広いプロバイダ対応、Firefox 連携のブラウザ自動化を備える。主体は Rust、ライセンスは MIT。性能を売りにした Rust 製 harness が、モデルベンダー製 CLI と別の切り口でトレンドに食い込んだ。</p>
+      <p>同じ「adhd」の名でも狙いは対照的で、こちらは Claude・Codex の Agent SDK 上に構築された「枝刈り付き Tree-of-Thought（思考の木）」の思考フレームワーク。設計判断・曖昧なデバッグ・命名・API 面の設計・戦略づくりといった、決まった正解のない創造的で開かれた問題を対象にする。</p>
+      <p>核となるのは二段構えの仕組みだ。発散フェーズでは、互いに文脈を共有しない N 本の並列・独立した推論プロセスを、それぞれ別の認知フレームで走らせ、アンカリング（引きずられ）を防ぐ。収束フェーズでは別の批評パスが、新規性・実現性・適合性の軸でアイデアを採点し、魅力的だが破綻したアイデアに理由付きで印を付け、近いものをまとめ、上位候補を深掘りする。「採点し、罠を刈り、生き残りを深める」という枝刈りが要だ。6 つの工学問題での評価で、単発ベースライン比 約2.9倍の新規性・5.2倍の罠検出を示すという。主体は TypeScript/Node.js、ライセンスは MIT。同名でも「要点を絞る」と「発想を広げる」が並び立つのが今週のスキル熱を象徴する。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/1jehuang/jcode">1jehuang/jcode</a></li>
+      <li><a href="https://github.com/UditAkhourii/adhd">UditAkhourii/adhd</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">earendil-works/pi — LLM API からループ・TUI・CLI までを束ねるツールキット（週間 +4,495★ / 累計 7.7万★）</h3>
+    <h3 class="article__headline">virgiliojr94/book-to-skill — 技術書 PDF をスキルに変換（週間 +4,135★ / 累計 1.4万★）</h3>
     <div class="article__body">
-      <p>統一 LLM API・エージェントループ・TUI・コーディングエージェント CLI を一体で提供する AI エージェントツールキット。OpenAI・Anthropic・Google など複数プロバイダに対応し、自己拡張できるコーディングエージェントを核とする。モノレポは、多プロバイダを一枚の API に束ねる <code>pi-ai</code>、ツール呼び出しと状態管理を司るランタイム <code>pi-agent-core</code>、対話的な CLI エージェント <code>pi-coding-agent</code> の 3 パッケージからなり、差分レンダリングを持つ端末 UI ライブラリ <code>pi-tui</code> も同梱する。</p>
-      <p>依存の厳密なピン留めと整合性検証によるサプライチェーン安全性、権限を絞りたい場合のコンテナ隔離ガイド、OSS の作業セッションを公開して実利用データからエージェントを鍛える仕組みなどを特徴に挙げる。主体は TypeScript、ライセンスは MIT。単機能のエージェントではなく「エージェントを作るための土台一式」を配る路線が、今週も大きな支持を集めた。</p>
+      <p>技術書・文書・研究資料を、コーディングアシスタントで使える構造化されたエージェントスキルへ変換するツール。静的な PDF を、対話的に問い合わせられるリソースへ作り替えることで、知識の定着とアクセス性の問題に取り組む。</p>
+      <p>PDF・EPUB・DOCX・TXT・Markdown・reStructuredText・AsciiDoc・HTML・RTF・MOBI/AZW/AZW3 と多数の形式を処理し、中核メンタルモデル・章ごとのファイル・用語集・デザインパターン・クイックリファレンスへと整理して出力する。全文を一度に文脈へ流し込むのではなく章を必要時に読み込む設計で、典型的な問い合わせで「本を丸ごと文脈に入れる場合の約24〜51分の1」のトークン量で済むという。GitHub Copilot CLI・Amp・Claude Code など、オープンな Agent Skills 標準に対応する複数プラットフォームで動く。コードは Python、ライセンスは MIT（処理対象の書籍・文書自体には及ばない）。書籍の知識をスキルという形に落とし込む発想が、今週の潮流にもう一つの角度を加えた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Rust 製ツールが上位を占める</h2>
+
+  <article class="article">
+    <h3 class="article__headline">block/buzz — 人間とエージェントが同じ場で協働する基盤（今週トップ・週間 +12,444★ / 累計 1.9万★）</h3>
+    <div class="article__body">
+      <p>今週いちばんスターを集めたリポジトリ。Block, Inc. 発の、人間と AI エージェントが同じワークスペースで一緒に作るための自己ホスト可能なプラットフォームで、「A workspace where humans and agents build together」と位置づける。</p>
+      <p>Nostr リレーをベースにした統一イベントログを核に、メッセージ・反応・ワークフロー・Git イベントを、すべて署名された同じ種類のイベントとして記録する。エージェントは「ボット」ではなく独自の鍵と監査証跡を持つチームメンバーとして扱われ、会話・パッチ・ワークフロー実行・承認を一箇所から検索・監査できる。デスクトップ（Tauri + React）、モバイル（Flutter）、CLI（<code>buzz-cli</code>）とマルチプラットフォームに対応する。バックエンドは Rust、ライセンスは Apache 2.0。エージェント「本体」の競争が一巡した先で、人間との協働をどう記録・監査するかという土台づくりが今週の首位に立った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/block/buzz">block/buzz</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">tokio-rs/topcoat — Rust でフルスタック Web を作るフレームワーク（週間 +1,263★ / 累計 4.0千★）</h3>
+    <div class="article__body">
+      <p>Tokio チームによる、フルスタック Web アプリを作るための「モジュラーで全部入り」の Rust フレームワーク。シンプルさと生産性を重視し、サーバーサイドレンダリングと任意のクライアント対話性で完結したアプリを Rust で組めることを狙う。</p>
+      <p>非同期 DB アクセスを伴うサーバーサイドのコンポーネントレンダリング、WebAssembly を必要とせず JavaScript にコンパイルされる <code>$(...)</code> 式でのクライアント反応性、プロジェクト構造から推論されるモジュールベースのルーティング、Tailwind CSS の組み込み対応、内容ハッシュ付きのアセットバンドル、shadcn/ui ベースの既製 UI コンポーネントを備える。シグナル・イベントハンドラ・反応的更新に対応し、htmx・Alpine AJAX・Datastar とも連携する。言語は Rust、ライセンスは MIT。ただし README は「初期段階かつ実験的で、破壊的変更が入る」と明記する。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/tokio-rs/topcoat">tokio-rs/topcoat</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Automattic/harper — オフライン・プライバシー重視の文法チェッカ（週間 +2,026★ / 累計 1.4万★）</h3>
+    <div class="article__body">
+      <p>Automattic による、オフラインでプライバシーファーストな英語文法チェッカ。データをサーバーに送る Grammarly や、メモリを食う LanguageTool の弱点への代替として設計された。</p>
+      <p>「高速・オープンソース・Rust 製」を掲げ、ミリ秒単位の校正と「LanguageTool の 50 分の 1 未満」というメモリ使用量、完全にプライベートなオフライン動作を売りにする。WebAssembly でブラウザ内でも動くほど小さく、VS Code・Neovim・Helix・Emacs・Zed など複数エディタに対応し、Obsidian プラグインと Language Server Protocol もサポートする。言語は Rust、ライセンスは Apache 2.0。現状は英語のみだが、他言語へ拡張できる設計だとする。Rust 製ツールが上位を占める今週の中で、地味だが実用的な一角を担った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/Automattic/harper">Automattic/harper</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">コードレビューとエージェント基盤</h2>
+
+  <article class="article">
+    <h3 class="article__headline">alibaba/open-code-review — Alibaba 社内発の AI コードレビュー（週間 +5,322★ / 累計 1.7万★）</h3>
+    <div class="article__body">
+      <p>Alibaba グループの社内公式 AI コードレビュー支援ツールを起源とし、数万人規模の開発者で検証したのちオープンソース化されたという、自動コードレビューの CLI ツール。Git の差分を解析し、変更されたファイルをツール利用能力を持つエージェント経由で設定可能な LLM に渡し、行レベルの精度で構造化されたレビューコメントを生成する。ファイル全体をスキャンする監査用途にも使える。</p>
+      <p>「決定的なパイプライン＋LLM エージェント」のハイブリッド構成、行レベルの正確なコメント、NPE・スレッド安全性・XSS・SQL インジェクションを狙った作り込み済みルールセットを持ち、OpenAI・Anthropic など複数の LLM プロバイダに対応する。Claude Code・Codex・Cursor と連携し、CI/CD にも組み込める。汎用エージェントとのベンチマークで「精度と F1 が大きく高く、トークン消費は約 9 分の 1」だとする。主体は Go（一部 TypeScript/JavaScript）、ライセンスは Apache 2.0。先週トップだったグラフ型の <code>code-review-graph</code> に続き、レビュー領域が今週も強い。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">先週の顔ぶれも上位を維持 — pi・jcode・OmniRoute</h3>
+    <div class="article__body">
+      <p>先週取り上げたエージェント基盤が今週も残った。統一 LLM API・エージェントループ・TUI・コーディング CLI を一体で提供する <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> は週間 +4,799★・累計 8.1万★ で、多プロバイダを一枚に束ねる <code>pi-ai</code> やランタイム <code>pi-agent-core</code> を核とする路線を維持した。RAM 効率を最優先する Rust 製 harness <a href="https://github.com/1jehuang/jcode">1jehuang/jcode</a> は週間 +3,107★・累計 1.4万★ で、単一セッション 27.8MB・初回描画 14ms（競合比 27 倍速）といった省メモリ性能と、意味ベクトルによる記憶・Swarm 協調・自己改変モードを引き続き打ち出す。無料の AI ゲートウェイ <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a> も週間 +8,464★・累計 3.6万★ と大きく伸び、多プロバイダ時代のコスト最適化層としての支持を固めた。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/earendil-works/pi">earendil-works/pi</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">agegr/pi-web — pi コーディングエージェントのブラウザ作業場（週間 +1,050★ / 累計 2.5千★）</h3>
-    <div class="article__body">
-      <p>上記 pi コーディングエージェントのセッションファイルを読み取り、CLI 一辺倒だった操作にグラフィカルな作業場を与えるローカルの Web UI。プロジェクトごとに過去の会話を一覧・呼び出しでき、端末履歴を手で探さずに済む。</p>
-      <p>途中のメッセージから再開したり別の枝を作って探索する会話フロー、サイドバーからの git worktree 切り替え（セッションとファイルエクスプローラが追従する）、片側でプロジェクトのファイルを見ながらもう片側でソース・ドキュメント・画像・音声・PDF をプレビューする二画面構成、コンテキスト使用量・コスト・圧縮状態・システムプロンプトの可視化、モデルや認証・スキルのトグルをブラウザ上で管理する設定画面を備える。主体は TypeScript（Next.js）、ライセンスは MIT。CLI エージェントが増えるほど、こうした GUI レイヤーの需要も並んで立ち上がることを示す。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/agegr/pi-web">agegr/pi-web</a></li>
+      <li><a href="https://github.com/1jehuang/jcode">1jehuang/jcode</a></li>
+      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントに「読むべき所」だけを渡す — 文脈の知能化</h2>
+  <h2 class="topic__title">エージェント専用ブラウザ</h2>
 
   <article class="article">
-    <h3 class="article__headline">tirth8205/code-review-graph — コードベースをグラフ化し 38〜528 倍のトークン削減（週間 +6,257★ / 累計 2.6万★）</h3>
+    <h3 class="article__headline">citrolabs/ego-lite — エージェントとユーザーが同居できるブラウザ（週間 +5,037★ / 累計 6.8千★）</h3>
     <div class="article__body">
-      <p>今週の実質トップ。AI コーディングツールがコードベース全体を読み込む無駄を、リポジトリの構造知識グラフで解消するローカルファーストのツール。変更の「blast radius（影響半径）」を計算し、影響を受けそうな関数・クラス・ファイルだけに文脈を絞ることで、コンテキストウィンドウの消費を大幅に減らす。実リポジトリで 38〜528 倍、中央値で約 82 倍のトークン削減を示し、fastapi では 95万トークンを 2,169 トークンまで狭めたという。</p>
-      <p>Tree-sitter でコードを AST グラフ（関数・クラスのノードと、呼び出し・継承・テストのエッジ）に落とし、ファイル変更時は 2 秒未満で差分更新する。MCP 経由で 30 の専用ツールを提供し、CLI・GitHub Actions・IDE 連携から使える。Python・JS/TS・Go・Rust・Java・C/C++ など 40 以上の言語に対応し、Codex・Claude Code・Cursor・Windsurf・Zed・Copilot などを 1 コマンドで自動設定する。D3.js の力学配置グラフによる可視化、Leiden 法によるコミュニティ検出、リスク採点付きの PR レビュー用 GitHub Action も持つ。主体は Python、ライセンスは MIT。エージェント本体の競争と並んで、「何を読ませるか」を賢くする層が今週いちばん伸びた。</p>
+      <p>AI エージェントがブラウザ自動化を実行しつつ、ユーザーは同じブラウザで邪魔されずに作業を続けられる、エージェント専用のブラウザアプリ。Claude Code・Codex などのエージェントが Web タスクを自動化する際、ユーザー自身の閲覧とぶつからないよう切り分けることを主眼に置く。</p>
+      <p>「同じブラウザ・別のワークスペース」という設計で、エージェントは隔離された Spaces（同一ブラウザ内の並列ワークスペース）で並行してマルチタスクをこなす。Chrome のログイン・Cookie・拡張・ブックマークを引き継ぎ、AI が認識するための「市場最強のページ Snapshot」を掲げる。<code>ego-browser</code> スキル経由で任意のエージェント CLI から直接使え、CLI ベースではなくコードベースの手法で複雑なタスクを速く実行し、競合比「最大 2.5 倍速い」とする。言語は JavaScript、ライセンスは MIT。対応は現状 macOS で、Windows・Linux はロードマップ上にある。エージェントが増えるほど、その「手足」となるブラウザ層の需要も立ち上がることを示す。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/tirth8205/code-review-graph">tirth8205/code-review-graph</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">デザインをスキルで配る流れは今週も</h2>
-
-  <article class="article">
-    <h3 class="article__headline">ibelick/ui-skills — デザインエンジニア向けのスキル集（週間 +2,139★ / 累計 6.2千★）</h3>
-    <div class="article__body">
-      <p>「デザインエンジニアのためのスキル」を掲げる CLI ベースのツール。実証済みの UI 実装パターンとベストプラクティスをカテゴリ別に整理し、コマンドラインから発見・取得できるようにする。<code>npx ui-skills start</code> で開始し、カテゴリを辿ってスキル種別を一覧し、<code>baseline-ui</code> のような具体的な実装を引き出す、という流れを取る。</p>
-      <p>モーション表現などのカテゴリに分類された、そのまま使えるパターンを中心に据え、デザイナーやフロントエンドエンジニアが実装の手本を素早く参照して開発を加速し、プロジェクト間で一貫性を保つことを狙う。主体は JavaScript/TypeScript、ライセンスは MIT。ホストは ui-skills.com。先週の <code>hallmark</code>・<code>impeccable</code> が「AI のデザイン初期値を矯正する」検査型だったのに対し、こちらは「使えるパターンを配る」カタログ型で、デザイン×スキルの潮流に別の角度から加わった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/ibelick/ui-skills">ibelick/ui-skills</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Nutlope/hallmark — 先週の主役が今週も高位を維持（継続・週間 +5,797★ / 累計 1.7万★）</h3>
-    <div class="article__body">
-      <p>先週の当欄トップだった、AI くさい見た目にならない Web UI を生成するデザインスキル。57 個の slop テストゲートと自己批評で、LLM が陥りがちなデザインの初期値を機械的に潰す。今週も週間 +5,797★ とランキング上位に残り、<code>ui-skills</code> の新規参入と合わせて、デザインをスキルとして配る動きが一過性でないことを裏づけた。導入は <code>npx skills add nutlope/hallmark</code>。主体は CSS/HTML、ライセンスは MIT。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/Nutlope/hallmark">Nutlope/hallmark</a></li>
+      <li><a href="https://github.com/citrolabs/ego-lite">citrolabs/ego-lite</a></li>
     </ul>
   </article>
 </section>
@@ -137,51 +165,45 @@
   <h2 class="topic__title">エージェントの外側で伸びたもの</h2>
 
   <article class="article">
-    <h3 class="article__headline">koala73/worldmonitor — 今週最大の伸び、AI で束ねる地政学インテリジェンス盤（週間 +9,054★ / 累計 7.3万★）</h3>
+    <h3 class="article__headline">shiyu-coder/Kronos — 金融ローソク足の基盤モデル（週間 +2,258★ / 累計 3.5万★）</h3>
     <div class="article__body">
-      <p>今週いちばんスターを集めたリポジトリ。世界中のデータを一枚のダッシュボードに集約するリアルタイム地政学インテリジェンス基盤で、AI によるニュース統合とインフラ監視を組み合わせる。15 カテゴリにまたがる 500 以上の厳選ニュースフィードを AI で処理し、3D グローブと平面 WebGL の二系統の地図で可視化する。</p>
-      <p>軍事・経済・災害のシグナルを跨いで相関させるクロスストリーム分析、主要 31 カ国のストレスを採点する Country Instability Index、29 の証券取引所や商品・暗号資産をカバーする多資産の金融レーダー、単一コードベースから world／tech／finance など 6 種のサイトを派生させる構成、Ollama によるローカル AI（API キー不要）、RTL 対応 25 言語の多言語化を備える。Web だけでなく MCP サーバー・REST API・CLI・各言語 SDK（Python/Ruby/Go）からも使える。主体は TypeScript（Three.js／deck.gl／Tauri 2）、ライセンスは AGPL-3.0。コーディング以外の領域でも、情報を束ねてエージェント連携まで用意する設計が大きな支持につながった。</p>
+      <p>AI コーディング一色のトレンドの中で、定量金融の分野から伸びたリポジトリ。45 を超える世界の取引所のデータで学習した、金融ローソク足（K 線）向けの初のオープンソース基盤モデルを謳う。市場のローソク足系列を扱い、複数の資産クラスで価格予測タスクを行うことを狙う。</p>
+      <p>デコーダのみの Transformer 構成を金融市場データで事前学習し、専用トークナイザで OHLCV（始値・高値・安値・終値・出来高）を離散トークンへ量子化してから自己回帰学習する二段フレームワークを取る。パラメータ数 4.1M〜499.2M の mini/small/base/large のモデル群、複数時系列を同時処理するバッチ予測、中国 A 株を例にしたファインチューニング手順、BTC/USDT の 24 時間予測ライブデモを備える。主体は Python、ライセンスは MIT。LLM 以外の基盤モデルもトレンドに食い込む流れが今週も続いた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/shiyu-coder/Kronos">shiyu-coder/Kronos</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">CoreBunch/Instatic — Webflow/Framer/WordPress のオープン代替（週間 +2,872★ / 累計 6.9千★）</h3>
+    <div class="article__body">
+      <p>Webflow・Framer・WordPress の代替を掲げる、オープンソースで自己ホスト可能なビジュアル CMS。ビジュアルエディタ・コンテンツエンジン・パブリッシャを 1 つの Bun サーバーに統合し、「クリーンな静的ページ」を出力することに軸足を置く。</p>
+      <p>カラートークン・タイプスケール・スペーシングスケールを持つデザインシステム、型付きパラメータで再利用できるコンポーネントシステム、独自データテーブル・フォーム・アクセス制御を伴うコンテンツ管理、フォルダ整理と使用状況追跡付きのメディア管理、権限制御付きのサンドボックス化プラグイン機構、ページを本物の編集可能なノードとして扱う AI エージェント、監査ログと二要素認証を備える。出力は「エディタの仕掛けを一切残さない素のセマンティック HTML とコンパクトな CSS」で、フレームワークのランタイムを持たず静的ファイルのように読み込むという。ランタイムは Bun（TypeScript）、管理画面は React 19 + Vite、DB は SQLite または Postgres、プラグインは QuickJS-WASM サンドボックス。ライセンスは MIT で、階層やオープンコア制限を設けない。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/CoreBunch/Instatic">CoreBunch/Instatic</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">moeru-ai/airi — 自己ホストの AI コンパニオン（週間 +2,815★ / 累計 4.6万★）</h3>
+    <div class="article__body">
+      <p>AI バーチャルストリーマー「Neuro-sama」の能力を再現することを目指す、自己ホスト可能なオープンソースの AI コンパニオンプラットフォーム。ユーザーが所有・操作できる「サイバー・リビング・ビーイング（デジタルの存在）」を掲げ、リアルタイム会話・ゲームプレイ・各種の対話タスクをこなす。</p>
+      <p>リアルタイム音声チャット、Minecraft・Factorio・Kerbal Space Program・Helldivers 2 のゲームプレイ、Web ブラウザ・デスクトップ（Windows/macOS）・モバイルのマルチプラットフォーム対応、Discord・Telegram 連携、OpenAI・Claude・Mistral など複数のモデルプロバイダ対応、VRM・Live2D アバターとアニメーション、WebGPU によるローカル推論、音声認識・音声合成を備える。技術は Vue.js・TypeScript・WebAssembly・WebGPU を中心に、デスクトップでは NVIDIA CUDA・Apple Metal のネイティブ対応も持つ。ライセンスは MIT。プロプライエタリな AI VTuber への、所有と自己ホストを重んじるオープンな代替として支持を集めた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/moeru-ai/airi">moeru-ai/airi</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">koala73/worldmonitor — 地政学インテリジェンス盤は今週も上位（継続・週間 +6,150★ / 累計 7.7万★）</h3>
+    <div class="article__body">
+      <p>先週も取り上げた、リアルタイムの地政学インテリジェンス・ダッシュボード。AI によるニュース統合・地政学監視・インフラ追跡を組み合わせ、今週も週間 +6,150★ と伸び続けて累計 7.7万★ に達した。15 カテゴリにまたがる 500 以上の厳選フィードを AI で統合し、3D グローブと WebGL 平面地図（56 種のレイヤー）で可視化する。31 カ国の Country Instability Index（CII）v8、29 取引所・商品・暗号資産の金融追跡、API キー不要の Ollama ローカル AI、world/tech/finance など 6 派生版、25 言語（RTL 対応）を備え、REST API・MCP サーバー・CLI・各言語 SDK からも使える。主体は TypeScript（Three.js／deck.gl／Tauri 2）、ライセンスは AGPL-3.0。エージェント熱の外側でも、情報を束ねてエージェント連携まで用意する設計が支持を保っている。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/koala73/worldmonitor">koala73/worldmonitor</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Robbyant/lingbot-map — ストリーミング映像から 3D 復元する基盤モデル（週間 +4,435★ / 累計 1.5万★）</h3>
-    <div class="article__body">
-      <p>AI エージェント一色のトレンドの中で、純粋なビジョン研究として伸びたリポジトリ。ストリーミング映像から場面を復元するフィードフォワード型の 3D 基盤モデルで、座標のグラウンディング・密な幾何手がかり・長距離のドリフト補正を単一のストリーミング枠組みに統合する「Geometric Context Transformer」を提案する。</p>
-      <p>反復最適化を要さないフィードフォワード構成と、メモリ効率の良いページド KV キャッシュ注意機構により、518×378 解像度・1 万フレーム超の系列でも約 20FPS の推論を実現するという。長尺の 3D 動画復元、リアルタイムのストリーミング地図化、屋内外シーンの取得、空マスキングを伴う動的シーン処理、空撮やウォークスルーを想定用途に挙げ、ブラウザビューアでの対話的可視化やオフラインレンダリングも備える。主体は Python、ライセンスは Apache 2.0。LLM 以外の基盤モデルもトレンドに食い込むことを示した一件だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/Robbyant/lingbot-map">Robbyant/lingbot-map</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">kvcache-ai/ktransformers — CPU/GPU 混在で巨大 MoE を回す推論・微調整基盤（週間 +1,507★ / 累計 1.9万★）</h3>
-    <div class="article__body">
-      <p>清華大学 MADSys Lab 発の、異種混合ハードウェアで LLM 推論・微調整を最適化する柔軟なフレームワーク。CPU と GPU に計算を分散し、巨大モデルを手元のハードで現実的に走らせることを狙う。AMX/AVX による CPU カーネル最適化と MoE 最適化、INT4/INT8/FP8 量子化に対応し、DeepSeek-R1（FP8）を 8×L20 GPU で約 88 トークン/秒の出力速度で回すといった数値を示す。</p>
-      <p>LLaMA-Factory と統合した SFT で DeepSeek-V3/R1 級の超巨大 MoE を少ないメモリで微調整でき、4×RTX 4090 で 3.7 iter/秒に達するという。NUMA 対応のメモリ管理、SGLang との本番連携、DeepSeek・Qwen・GLM・Kimi など新しめのアーキテクチャへの Day0 対応を備える。主体は Python、ライセンスは Apache 2.0。派手なエージェント層の下で、「巨大モデルをどう安く動かすか」の推論最適化も着実に注目を集めている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/kvcache-ai/ktransformers">kvcache-ai/ktransformers</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">継続組 — 先週の顔ぶれが今週も上位に</h2>
-
-  <article class="article">
-    <h3 class="article__headline">OmniRoute・DeepTutor・awesome-llm-apps が再びトレンド入り</h3>
-    <div class="article__body">
-      <p>先週取り上げた常連が今週も残った。無料の AI ゲートウェイ <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a> は対応プロバイダを 290+・モデル 500+ に広げ、週間 +8,673★・累計 2.8万★ と今週も大きく伸びて、多プロバイダ時代のコスト最適化とレジリエンスを担う層としての支持を固めた。エージェント・ネイティブな学習ワークスペース <a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a> は週間 +2,661★・累計 3.0万★ で定着し、100 以上の実動 AI アプリを集めた定番アーカイブ <a href="https://github.com/Shubhamsaboo/awesome-llm-apps">Shubhamsaboo/awesome-llm-apps</a> も週間 +4,390★・累計 12.7万★ と、個別ツールが乱立する中で「作り方の見本市」としての存在感を保った。エージェントを作る・つなぐ・学ぶという骨格が、今週の新顔ラッシュの土台としても機能し続けている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
-      <li><a href="https://github.com/HKUDS/DeepTutor">HKUDS/DeepTutor</a></li>
-      <li><a href="https://github.com/Shubhamsaboo/awesome-llm-apps">Shubhamsaboo/awesome-llm-apps</a></li>
     </ul>
   </article>
 </section>
