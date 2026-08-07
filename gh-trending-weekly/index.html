@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年7月31日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年8月7日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年7月31日">
+<meta property="og:title" content="GitHub トレンド — 2026年8月7日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年7月31日（金）</span>
+        <span>2026年8月7日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,179 +31,142 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週はエージェント「本体」の新顔ラッシュだったが、今週の主役は<strong>エージェントに配る「スキル」そのもの</strong>に移った。Matt Pocock の <code>skills</code>（週間 +12,147★）を筆頭に、返答を要点先行に矯正する <code>i-have-adhd</code>、発散と枝刈りで発想を広げる <code>adhd</code>、技術書 PDF をスキルに変換する <code>book-to-skill</code> が揃ってランクイン。先週の「デザインをスキルで配る」流れが、集中・思考法・書籍知識まで一気に広がった週になった。もう一つの軸は<strong>Rust 製ツールの上位独占</strong>で、今週の最大の伸びは人間とエージェントが同じ場で協働する自己ホスト基盤 <code>block/buzz</code>（週間 +12,444★・今週トップ）。Web フレームワーク <code>topcoat</code>、オフライン文法チェッカ <code>harper</code> も並んだ。さらに Alibaba 社内発の AI コードレビュー <code>open-code-review</code>、エージェント専用ブラウザ <code>ego-lite</code>、金融時系列の基盤モデル <code>Kronos</code> なども目立ち、先週からの <code>pi</code>・<code>jcode</code>・<code>worldmonitor</code>・<code>OmniRoute</code> も上位を維持した。</p>
+  <p>今週の GitHub 週間トレンドは二つの流れが軸になった。ひとつは <strong>DeepSeek 4（Flash / PRO）の登場が呼んだローカル推論・コーディングエージェントの波</strong>。Redis 作者 antirez が C で書いた専用推論エンジン <code>ds4</code>（DwarfStar）、DeepSeek ネイティブのターミナルエージェント <code>DeepSeek-Reasonix</code>（週間 +4,203★）、単一 4GB GPU で 70B を動かす <code>airllm</code>（週間 +5,222★）が同じ週に並んだ。もうひとつは先週から続く<strong>「スキル」配布のさらなる拡大</strong>で、今週トップはセキュリティ／リバースエンジニアリング用のスキルルーター <code>reverse-skill</code>（週間 +10,091★・今週最大の伸び）。技術書をスキル化する <code>book-to-skill</code>、返答を要点先行に矯正する <code>i-have-adhd</code> も上位を維持した。さらにエージェントのチーム記憶を束ねる Tencent の <code>TencentDB-Agent-Memory</code>（週間 +6,444★）、人間とエージェントの協働基盤 <code>block/buzz</code>（継続）、Claude Cowork のオープン代替 <code>openwork</code>、Rust 製コードレビュー TUI <code>tuicr</code>、JVM 向けエージェント基盤 <code>embabel-agent</code> なども顔を出し、教材の定番 <code>AI-For-Beginners</code> も週間 +9,164★ と再燃した。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">「スキル」がエージェント配布の主役に</h2>
+  <h2 class="topic__title">DeepSeek 4 が呼んだローカル推論・エージェントの波</h2>
 
   <article class="article">
-    <h3 class="article__headline">mattpocock/skills — 実務エンジニア向けのスキル集（週間 +12,147★ / 累計 19.7万★）</h3>
+    <h3 class="article__headline">antirez/ds4 — Redis 作者による DeepSeek 4 専用ローカル推論エンジン（週間 +1,319★ / 累計 2.1万★）</h3>
     <div class="article__body">
-      <p>Matt Pocock による、Claude Code や Codex などの AI コーディングアシスタント向けに再利用できるエージェントスキル（プロンプトのテンプレートとワークフロー）を束ねたコレクション。「意図と出力のズレ」「冗長さ」「バグ」「アーキテクチャの劣化」といった AI 支援開発で起きがちな失敗に対し、小さく・適応しやすく・組み合わせ可能な実践を、確立された工学原則に基づいて配ることを掲げる。</p>
-      <p>ユーザーが明示的に呼ぶスキルとして <code>/grill-with-docs</code>・<code>/grill-me</code>・<code>/triage</code>・<code>/to-spec</code>・<code>/implement</code>・<code>/improve-codebase-architecture</code>・<code>/wayfinder</code> を、モデル側が自動で呼ぶスキルとしてテスト駆動開発・デバッグ・コードレビュー・ドメインモデリング・プロトタイピング・リサーチを備える。導入時に課題管理先（GitHub・Linear・ローカルファイル）とトリアージ用ラベルを選ぶ構成で、Claude Code プラグイン（<code>/plugin install mattpocock-skills</code>）または <code>npx skills@latest add mattpocock/skills</code> で入れられる。主体は JavaScript/TypeScript、ライセンスは MIT。今週いちばん存在感を放った「スキルとしての実践の配布」の代表例だ。</p>
+      <p>Redis の作者 Salvatore Sanfilippo（antirez）が公開した、コンシューマ機で大規模言語モデルをローカル実行するための推論エンジン。README では「DwarfStar」と名乗り、ページ上部の説明は「DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm」。クラウドに頼らず、DeepSeek V4 Flash / PRO と GLM 5.2 を手元のマシンやワークステーションで動かすことを狙う。</p>
+      <p>バックエンドは macOS を主対象とする Metal、マルチ GPU を含む NVIDIA CUDA、AMD Strix Halo 向けの ROCm。「自己完結していて、意図的に守備範囲を狭く取った、汎用の GGUF ランナーではない」設計を掲げ、モデルロード・プロンプト描画・ツール呼び出し・KV 状態管理・HTTP サーバー・コーディングエージェントを一体で作り込み・テストしている。128GB ラップトップや 512GB ワークステーションでの実行、テンソル／パイプライン並列による複数マシン分散といった用途を想定する。言語は C（CUDA・Metal 実装を含む）、ライセンスは MIT。汎用ランタイムを避けて特定モデルに特化する、という選択が今週の DeepSeek 熱を象徴する。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
+      <li><a href="https://github.com/antirez/ds4">antirez/ds4</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">ayghri/i-have-adhd — 返答を「要点先行」に矯正するスキル（週間 +4,978★ / 累計 1.4万★）</h3>
+    <h3 class="article__headline">esengine/DeepSeek-Reasonix — DeepSeek ネイティブのターミナルエージェント（週間 +4,203★ / 累計 3.3万★）</h3>
     <div class="article__body">
-      <p>Claude Code・Codex などのコーディングアシスタント向けに、AI の返答をより直接的で行動志向な形に整形するスキル/プラグイン。前置きの冗長さを嫌い、明快さを求める開発者を対象にする。</p>
-      <p>「まず行動から」始める応答フォーマット、番号付きの複数ステップ、脇道の情報の抑制、不要な締め文の排除を軸に、「次のアクションを先頭に置く」「具体的な次の一手で締める」「リスト項目は 5 個まで」など 10 の構造ルールを課す。README には冗長版から直接版へ変わる before/after の例が載り、「Hope this helps!」のような決まり文句を削る。<code>/i-have-adhd</code> コマンドで呼び出すか、fork してルールを自分好みに調整できる。設定は Markdown と JSON、ライセンスは MIT。「デザインの初期値を矯正する」先週の流れが、今週は「返答の作法を矯正する」方向へ広がった。</p>
+      <p>ターミナル環境向けの AI コーディングエージェント。単一の静的 Go バイナリを土台に、設定とプラグインで駆動する構成を取る。ページ上部の説明は「A DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.」で、長時間セッションでのプレフィックスキャッシュ安定性を軸に、トークンコストを抑えて起動しっぱなしで使えることを狙う。</p>
+      <p>設定駆動・複数モデル対応・MCP サーバー経由のプラグイン駆動・文脈維持のためのキャッシュ意識・クロスプラットフォームのゼロフリクション配布を打ち出す。GitHub topics には <code>coding-agent</code>・<code>deepseek</code>・<code>prompt-caching</code>・<code>r1</code>・<code>tui</code>・<code>tool-use</code> などが並ぶ。主体は Go（VS Code 拡張は TypeScript）、ライセンスは MIT。<code>ds4</code> が「動かす土台」なら、こちらは DeepSeek を前提に据えた「エージェント側」で、同じモデル世代の登場が両端を同時に押し上げた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></li>
+      <li><a href="https://github.com/esengine/DeepSeek-Reasonix">esengine/DeepSeek-Reasonix</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">UditAkhourii/adhd — 発散と枝刈りで発想を広げるスキル（週間 +791★ / 累計 2.9千★）</h3>
+    <h3 class="article__headline">lyogavin/airllm — 単一 4GB GPU で 70B 推論（週間 +5,222★ / 累計 3.0万★）</h3>
     <div class="article__body">
-      <p>同じ「adhd」の名でも狙いは対照的で、こちらは Claude・Codex の Agent SDK 上に構築された「枝刈り付き Tree-of-Thought（思考の木）」の思考フレームワーク。設計判断・曖昧なデバッグ・命名・API 面の設計・戦略づくりといった、決まった正解のない創造的で開かれた問題を対象にする。</p>
-      <p>核となるのは二段構えの仕組みだ。発散フェーズでは、互いに文脈を共有しない N 本の並列・独立した推論プロセスを、それぞれ別の認知フレームで走らせ、アンカリング（引きずられ）を防ぐ。収束フェーズでは別の批評パスが、新規性・実現性・適合性の軸でアイデアを採点し、魅力的だが破綻したアイデアに理由付きで印を付け、近いものをまとめ、上位候補を深掘りする。「採点し、罠を刈り、生き残りを深める」という枝刈りが要だ。6 つの工学問題での評価で、単発ベースライン比 約2.9倍の新規性・5.2倍の罠検出を示すという。主体は TypeScript/Node.js、ライセンスは MIT。同名でも「要点を絞る」と「発想を広げる」が並び立つのが今週のスキル熱を象徴する。</p>
+      <p>大規模言語モデルを最小の GPU メモリで動かすためのオープンソース推論フレームワーク。GPU 上に一度に 1 層だけを載せる方式で、推論時のメモリ要件を大きく削る。ページ上部の説明は「AirLLM 70B inference with single 4GB GPU」。</p>
+      <p>README は「量子化・蒸留・枝刈りを使わずに、70B の大規模言語モデルを単一の 4GB GPU カードで動かせるほど推論メモリ使用量を劇的に減らす」と説明する。topics には <code>llama</code>・<code>llm</code>・<code>lora</code>・<code>qlora</code>・<code>chinese-llm</code> などが並ぶ。主体は Python、ライセンスは Apache 2.0。既存プロジェクトだが、ローカルで大型モデルを動かしたい需要が高まる中で今週あらためて大きく伸び、DeepSeek 世代のローカル実行熱に乗った格好だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/UditAkhourii/adhd">UditAkhourii/adhd</a></li>
+      <li><a href="https://github.com/lyogavin/airllm">lyogavin/airllm</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">「スキル」配布はセキュリティまで広がる</h2>
+
+  <article class="article">
+    <h3 class="article__headline">zhaoxuya520/reverse-skill — セキュリティ／リバースエンジニアリングのスキルルーター（今週トップ・週間 +10,091★ / 累計 2.0万★）</h3>
+    <div class="article__body">
+      <p>今週いちばんスターを伸ばしたリポジトリ。Claude Code・Cursor・Cline などの AI エージェントを、サイバーセキュリティのタスクにおいて適切なツールとワークフローへ誘導する、ルーティングと方法論のパッケージ。ページ上部の説明は「Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack」で、AI ルーティング＋オンデマンドのツールチェーン・ブートストラップ＋自己進化する知識ベースを掲げる。</p>
+      <p>解決しようとするのは「エージェントがリバースエンジニアリング・ペネトレーションテスト・CTF に直面したとき、どのツールを使いどの手順を踏むべきかの指針を欠く」という課題。APK・バイナリ・.NET・JavaScript のリバースエンジニアリング、認可されたペネトレーションテスト、セキュリティ研究、CTF 競技を対象領域とし、自動ルーティング・ツール検出・反復可能なワークフローを提供する。主体は PowerShell／Python／Bash、ライセンスは MIT（CTF-Sandbox-Orchestrator サブモジュールは GPLv3）。先週まで「デザイン」「思考法」「書籍知識」へ広がったスキル配布の潮流が、今週はセキュリティ領域にまで及び、そのまま今週の首位を取った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/zhaoxuya520/reverse-skill">zhaoxuya520/reverse-skill</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">virgiliojr94/book-to-skill — 技術書 PDF をスキルに変換（週間 +4,135★ / 累計 1.4万★）</h3>
+    <h3 class="article__headline">スキル配布の常連も継続 — book-to-skill・i-have-adhd</h3>
     <div class="article__body">
-      <p>技術書・文書・研究資料を、コーディングアシスタントで使える構造化されたエージェントスキルへ変換するツール。静的な PDF を、対話的に問い合わせられるリソースへ作り替えることで、知識の定着とアクセス性の問題に取り組む。</p>
-      <p>PDF・EPUB・DOCX・TXT・Markdown・reStructuredText・AsciiDoc・HTML・RTF・MOBI/AZW/AZW3 と多数の形式を処理し、中核メンタルモデル・章ごとのファイル・用語集・デザインパターン・クイックリファレンスへと整理して出力する。全文を一度に文脈へ流し込むのではなく章を必要時に読み込む設計で、典型的な問い合わせで「本を丸ごと文脈に入れる場合の約24〜51分の1」のトークン量で済むという。GitHub Copilot CLI・Amp・Claude Code など、オープンな Agent Skills 標準に対応する複数プラットフォームで動く。コードは Python、ライセンスは MIT（処理対象の書籍・文書自体には及ばない）。書籍の知識をスキルという形に落とし込む発想が、今週の潮流にもう一つの角度を加えた。</p>
+      <p>先週取り上げたスキル系も上位に残った。技術書 PDF をスキル化する <a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a>（週間 +3,903★・累計 1.8万★）は、PDF・EPUB・DOCX などを章単位のオンデマンド読み込みに整理し、「本を丸ごと文脈に入れる場合の 24〜51 分の 1」のトークンで問い合わせに答えると謳う設計を維持。<code>SKILL.md</code>・章別ファイル・用語集・パターンカタログ・チートシートを生成し、Agent Skills 標準に準拠して複数プラットフォームで動く。返答を要点先行に矯正する <a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a>（週間 +3,628★・累計 1.8万★）も、「まず行動」「番号付きの手順」「リストは 5 個まで」「前置きと締め文の排除」といった 10 の構造ルールを課す路線を保ち、Claude・Cursor・Gemini・Qwen・Kimi に対応する。どちらも MIT ライセンスで、スキルを配布物として磨く動きが今週も続いていることを示す。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a></li>
+      <li><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Rust 製ツールが上位を占める</h2>
+  <h2 class="topic__title">エージェントの記憶と協働</h2>
 
   <article class="article">
-    <h3 class="article__headline">block/buzz — 人間とエージェントが同じ場で協働する基盤（今週トップ・週間 +12,444★ / 累計 1.9万★）</h3>
+    <h3 class="article__headline">TencentCloud/TencentDB-Agent-Memory — チーム単位のエージェント記憶ハブ（週間 +6,444★ / 累計 1.7万★）</h3>
     <div class="article__body">
-      <p>今週いちばんスターを集めたリポジトリ。Block, Inc. 発の、人間と AI エージェントが同じワークスペースで一緒に作るための自己ホスト可能なプラットフォームで、「A workspace where humans and agents build together」と位置づける。</p>
-      <p>Nostr リレーをベースにした統一イベントログを核に、メッセージ・反応・ワークフロー・Git イベントを、すべて署名された同じ種類のイベントとして記録する。エージェントは「ボット」ではなく独自の鍵と監査証跡を持つチームメンバーとして扱われ、会話・パッチ・ワークフロー実行・承認を一箇所から検索・監査できる。デスクトップ（Tauri + React）、モバイル（Flutter）、CLI（<code>buzz-cli</code>）とマルチプラットフォームに対応する。バックエンドは Rust、ライセンスは Apache 2.0。エージェント「本体」の競争が一巡した先で、人間との協働をどう記録・監査するかという土台づくりが今週の首位に立った。</p>
+      <p>AI エージェント向けに、会話・ドキュメント・コードを再利用可能な記憶資産へ変換する、チーム単位のメモリ管理システム。README では「会話・ドキュメント・コードを、Chat Memory・Skill・LLM-Wiki・Code-Graph という 4 つの再利用可能な記憶資産に変え、それらをガバナンスのもとでエージェントやフレームワーク横断に共有・装備する」と説明する。</p>
+      <p>狙いは、エージェントを使ったワークフローで繰り返し発生する作業を減らし、チームをまたいで永続的・体系的・共有可能な知識を作ること。topics には <code>ai-agent</code>・<code>embedding</code>・<code>long-term-memory</code>・<code>memory</code>・<code>vector-search</code>・<code>local-first</code> などが並ぶ。主体は JavaScript/TypeScript（npm パッケージあり）、ライセンスは MIT。エージェント「本体」の競争が一巡した先で、記憶をどう蓄え・共有するかという層に注目が移りつつあることを示す。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">TencentCloud/TencentDB-Agent-Memory</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">block/buzz — 人間とエージェントが協働する自己ホスト基盤は今週も上位（継続・週間 +5,903★ / 累計 2.5万★）</h3>
+    <div class="article__body">
+      <p>先週の首位に続き今週も大きく伸びた、Block, Inc. 発の協働プラットフォーム。ページ上部の説明は「A hive mind communication platform」で、人間と AI エージェントが共有ルームで一緒に作業できる自己ホスト可能なワークスペースを提供する。Nostr リレーをベースにした統一イベントログと監査証跡を核に据える。</p>
+      <p>過去の経緯（レシート）付きで質問し、スコープ付き権限でエージェントに課題をトリアージさせ、機能ブランチを協働ルームに変え、会話をコードのパッチやワークフロー実行と一緒に検索し、エージェントに独自の暗号鍵を通じて人間と同じワークスペースアクセスを与える、といった機能を持つ。Rust ワークスペースとして Axum・PostgreSQL・Redis・S3/MinIO 上に構築され、NIP-01 Nostr プロトコル・認証・全文検索・監査ログ・マルチテナント分離を実装する。ライセンスは Apache 2.0。エージェントの協働を「どう記録し監査するか」という土台づくりが、今週も支持を集めた。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/block/buzz">block/buzz</a></li>
     </ul>
   </article>
-
-  <article class="article">
-    <h3 class="article__headline">tokio-rs/topcoat — Rust でフルスタック Web を作るフレームワーク（週間 +1,263★ / 累計 4.0千★）</h3>
-    <div class="article__body">
-      <p>Tokio チームによる、フルスタック Web アプリを作るための「モジュラーで全部入り」の Rust フレームワーク。シンプルさと生産性を重視し、サーバーサイドレンダリングと任意のクライアント対話性で完結したアプリを Rust で組めることを狙う。</p>
-      <p>非同期 DB アクセスを伴うサーバーサイドのコンポーネントレンダリング、WebAssembly を必要とせず JavaScript にコンパイルされる <code>$(...)</code> 式でのクライアント反応性、プロジェクト構造から推論されるモジュールベースのルーティング、Tailwind CSS の組み込み対応、内容ハッシュ付きのアセットバンドル、shadcn/ui ベースの既製 UI コンポーネントを備える。シグナル・イベントハンドラ・反応的更新に対応し、htmx・Alpine AJAX・Datastar とも連携する。言語は Rust、ライセンスは MIT。ただし README は「初期段階かつ実験的で、破壊的変更が入る」と明記する。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/tokio-rs/topcoat">tokio-rs/topcoat</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Automattic/harper — オフライン・プライバシー重視の文法チェッカ（週間 +2,026★ / 累計 1.4万★）</h3>
-    <div class="article__body">
-      <p>Automattic による、オフラインでプライバシーファーストな英語文法チェッカ。データをサーバーに送る Grammarly や、メモリを食う LanguageTool の弱点への代替として設計された。</p>
-      <p>「高速・オープンソース・Rust 製」を掲げ、ミリ秒単位の校正と「LanguageTool の 50 分の 1 未満」というメモリ使用量、完全にプライベートなオフライン動作を売りにする。WebAssembly でブラウザ内でも動くほど小さく、VS Code・Neovim・Helix・Emacs・Zed など複数エディタに対応し、Obsidian プラグインと Language Server Protocol もサポートする。言語は Rust、ライセンスは Apache 2.0。現状は英語のみだが、他言語へ拡張できる設計だとする。Rust 製ツールが上位を占める今週の中で、地味だが実用的な一角を担った。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/Automattic/harper">Automattic/harper</a></li>
-    </ul>
-  </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">コードレビューとエージェント基盤</h2>
+  <h2 class="topic__title">オープン代替とツール、そして教材の再燃</h2>
 
   <article class="article">
-    <h3 class="article__headline">alibaba/open-code-review — Alibaba 社内発の AI コードレビュー（週間 +5,322★ / 累計 1.7万★）</h3>
+    <h3 class="article__headline">different-ai/openwork — Claude Cowork のオープンソース代替（週間 +2,939★ / 累計 2.1万★）</h3>
     <div class="article__body">
-      <p>Alibaba グループの社内公式 AI コードレビュー支援ツールを起源とし、数万人規模の開発者で検証したのちオープンソース化されたという、自動コードレビューの CLI ツール。Git の差分を解析し、変更されたファイルをツール利用能力を持つエージェント経由で設定可能な LLM に渡し、行レベルの精度で構造化されたレビューコメントを生成する。ファイル全体をスキャンする監査用途にも使える。</p>
-      <p>「決定的なパイプライン＋LLM エージェント」のハイブリッド構成、行レベルの正確なコメント、NPE・スレッド安全性・XSS・SQL インジェクションを狙った作り込み済みルールセットを持ち、OpenAI・Anthropic など複数の LLM プロバイダに対応する。Claude Code・Codex・Cursor と連携し、CI/CD にも組み込める。汎用エージェントとのベンチマークで「精度と F1 が大きく高く、トークン消費は約 9 分の 1」だとする。主体は Go（一部 TypeScript/JavaScript）、ライセンスは Apache 2.0。先週トップだったグラフ型の <code>code-review-graph</code> に続き、レビュー領域が今週も強い。</p>
+      <p>AI ワークフローを共有するための、無料・オープンソースのデスクトップアプリ。ページ上部の説明は「The open-source alternative to Claude Cowork (powered by opencode)」で、macOS・Windows・Linux に対応する。</p>
+      <p>ユーザーが AI のワークフロー・スキル・連携を作成・共有・再利用できるようにし、専用デスクトップアプリとして使うほか、MCP（Model Context Protocol）として Claude Code・Cursor・ChatGPT など他のエージェントとつなぐこともできる。主体は JavaScript/TypeScript（Electron ベース、pnpm ワークスペース構成）。商用のエージェント製品に対する「オープンな置き換え」を掲げるリポジトリが、今週も一定の支持を集めた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></li>
+      <li><a href="https://github.com/different-ai/openwork">different-ai/openwork</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">先週の顔ぶれも上位を維持 — pi・jcode・OmniRoute</h3>
+    <h3 class="article__headline">agavra/tuicr — vim キーバインドのコードレビュー TUI（週間 +741★ / 累計 2.5千★）</h3>
     <div class="article__body">
-      <p>先週取り上げたエージェント基盤が今週も残った。統一 LLM API・エージェントループ・TUI・コーディング CLI を一体で提供する <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> は週間 +4,799★・累計 8.1万★ で、多プロバイダを一枚に束ねる <code>pi-ai</code> やランタイム <code>pi-agent-core</code> を核とする路線を維持した。RAM 効率を最優先する Rust 製 harness <a href="https://github.com/1jehuang/jcode">1jehuang/jcode</a> は週間 +3,107★・累計 1.4万★ で、単一セッション 27.8MB・初回描画 14ms（競合比 27 倍速）といった省メモリ性能と、意味ベクトルによる記憶・Swarm 協調・自己改変モードを引き続き打ち出す。無料の AI ゲートウェイ <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a> も週間 +8,464★・累計 3.6万★ と大きく伸び、多プロバイダ時代のコスト最適化層としての支持を固めた。</p>
+      <p>ターミナル上で動くコードレビュー用の TUI アプリ。ページ上部の説明は「a code review TUI with vim keybindings」で、README では「GitHub・GitLab・Bitbucket・クリップボードへエクスポートできる」と補う。GitHub 風の連続 diff をターミナルに表示し、行・範囲・ファイル・レビュー単位でのコメントに対応、レビューの進捗をセッション横断で追跡する。</p>
+      <p>git・jj（Jujutsu）・Mercurial に対応し、未コミットの変更・コミット範囲・プルリクエストのレビューをこなせる。レビュー結果は GitHub・GitLab・Bitbucket へ直接送れる。topics は <code>code-review</code>・<code>rust</code>・<code>tui</code>・<code>ai-tools</code>。主体は Rust、ライセンスは MIT。AI コードレビュー系が続くトレンドの中で、こちらは「人間が端末で素早くレビューする」側のツールとして伸びた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/earendil-works/pi">earendil-works/pi</a></li>
-      <li><a href="https://github.com/1jehuang/jcode">1jehuang/jcode</a></li>
-      <li><a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェント専用ブラウザ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">citrolabs/ego-lite — エージェントとユーザーが同居できるブラウザ（週間 +5,037★ / 累計 6.8千★）</h3>
-    <div class="article__body">
-      <p>AI エージェントがブラウザ自動化を実行しつつ、ユーザーは同じブラウザで邪魔されずに作業を続けられる、エージェント専用のブラウザアプリ。Claude Code・Codex などのエージェントが Web タスクを自動化する際、ユーザー自身の閲覧とぶつからないよう切り分けることを主眼に置く。</p>
-      <p>「同じブラウザ・別のワークスペース」という設計で、エージェントは隔離された Spaces（同一ブラウザ内の並列ワークスペース）で並行してマルチタスクをこなす。Chrome のログイン・Cookie・拡張・ブックマークを引き継ぎ、AI が認識するための「市場最強のページ Snapshot」を掲げる。<code>ego-browser</code> スキル経由で任意のエージェント CLI から直接使え、CLI ベースではなくコードベースの手法で複雑なタスクを速く実行し、競合比「最大 2.5 倍速い」とする。言語は JavaScript、ライセンスは MIT。対応は現状 macOS で、Windows・Linux はロードマップ上にある。エージェントが増えるほど、その「手足」となるブラウザ層の需要も立ち上がることを示す。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/citrolabs/ego-lite">citrolabs/ego-lite</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントの外側で伸びたもの</h2>
-
-  <article class="article">
-    <h3 class="article__headline">shiyu-coder/Kronos — 金融ローソク足の基盤モデル（週間 +2,258★ / 累計 3.5万★）</h3>
-    <div class="article__body">
-      <p>AI コーディング一色のトレンドの中で、定量金融の分野から伸びたリポジトリ。45 を超える世界の取引所のデータで学習した、金融ローソク足（K 線）向けの初のオープンソース基盤モデルを謳う。市場のローソク足系列を扱い、複数の資産クラスで価格予測タスクを行うことを狙う。</p>
-      <p>デコーダのみの Transformer 構成を金融市場データで事前学習し、専用トークナイザで OHLCV（始値・高値・安値・終値・出来高）を離散トークンへ量子化してから自己回帰学習する二段フレームワークを取る。パラメータ数 4.1M〜499.2M の mini/small/base/large のモデル群、複数時系列を同時処理するバッチ予測、中国 A 株を例にしたファインチューニング手順、BTC/USDT の 24 時間予測ライブデモを備える。主体は Python、ライセンスは MIT。LLM 以外の基盤モデルもトレンドに食い込む流れが今週も続いた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/shiyu-coder/Kronos">shiyu-coder/Kronos</a></li>
+      <li><a href="https://github.com/agavra/tuicr">agavra/tuicr</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">CoreBunch/Instatic — Webflow/Framer/WordPress のオープン代替（週間 +2,872★ / 累計 6.9千★）</h3>
+    <h3 class="article__headline">embabel/embabel-agent — JVM 向けのエージェントフレームワーク（週間 +154★ / 累計 4.0千★）</h3>
     <div class="article__body">
-      <p>Webflow・Framer・WordPress の代替を掲げる、オープンソースで自己ホスト可能なビジュアル CMS。ビジュアルエディタ・コンテンツエンジン・パブリッシャを 1 つの Bun サーバーに統合し、「クリーンな静的ページ」を出力することに軸足を置く。</p>
-      <p>カラートークン・タイプスケール・スペーシングスケールを持つデザインシステム、型付きパラメータで再利用できるコンポーネントシステム、独自データテーブル・フォーム・アクセス制御を伴うコンテンツ管理、フォルダ整理と使用状況追跡付きのメディア管理、権限制御付きのサンドボックス化プラグイン機構、ページを本物の編集可能なノードとして扱う AI エージェント、監査ログと二要素認証を備える。出力は「エディタの仕掛けを一切残さない素のセマンティック HTML とコンパクトな CSS」で、フレームワークのランタイムを持たず静的ファイルのように読み込むという。ランタイムは Bun（TypeScript）、管理画面は React 19 + Vite、DB は SQLite または Postgres、プラグインは QuickJS-WASM サンドボックス。ライセンスは MIT で、階層やオープンコア制限を設けない。</p>
+      <p>Java 仮想マシン（JVM）上でエージェント型 AI アプリを構築するためのフレームワーク。ページ上部の説明は「Agent framework for the JVM. Pronounced Em-BAY-bel」。README は「LLM を用いた対話と、コードやドメインモデルをシームレスに混ぜてエージェント的なフローを JVM 上で書く」ことを掲げ、直接 LLM API を叩くより高い抽象度を提供して、AI 対応のエンタープライズ Java アプリを作りやすくすることを狙う。</p>
+      <p>主体は Kotlin（Java 開発者にとって自然な使い方も想定）で、Spring Framework・Spring Boot 上に構築される。topics には <code>agentic-ai</code>・<code>multi-agents-orchestration</code>・<code>java</code>・<code>kotlin</code>・<code>spring</code> などが並ぶ。ライセンスは Apache 2.0。エージェント基盤が Python・Rust・Go 中心で語られがちな中、JVM／Spring 圏に軸足を置く数少ない選択肢として存在感を示した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/CoreBunch/Instatic">CoreBunch/Instatic</a></li>
+      <li><a href="https://github.com/embabel/embabel-agent">embabel/embabel-agent</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">moeru-ai/airi — 自己ホストの AI コンパニオン（週間 +2,815★ / 累計 4.6万★）</h3>
+    <h3 class="article__headline">microsoft/AI-For-Beginners — 定番の AI 入門教材が再燃（週間 +9,164★ / 累計 6.3万★）</h3>
     <div class="article__body">
-      <p>AI バーチャルストリーマー「Neuro-sama」の能力を再現することを目指す、自己ホスト可能なオープンソースの AI コンパニオンプラットフォーム。ユーザーが所有・操作できる「サイバー・リビング・ビーイング（デジタルの存在）」を掲げ、リアルタイム会話・ゲームプレイ・各種の対話タスクをこなす。</p>
-      <p>リアルタイム音声チャット、Minecraft・Factorio・Kerbal Space Program・Helldivers 2 のゲームプレイ、Web ブラウザ・デスクトップ（Windows/macOS）・モバイルのマルチプラットフォーム対応、Discord・Telegram 連携、OpenAI・Claude・Mistral など複数のモデルプロバイダ対応、VRM・Live2D アバターとアニメーション、WebGPU によるローカル推論、音声認識・音声合成を備える。技術は Vue.js・TypeScript・WebAssembly・WebGPU を中心に、デスクトップでは NVIDIA CUDA・Apple Metal のネイティブ対応も持つ。ライセンスは MIT。プロプライエタリな AI VTuber への、所有と自己ホストを重んじるオープンな代替として支持を集めた。</p>
+      <p>「12 Weeks, 24 Lessons, AI for All!」を掲げる Microsoft の AI 入門カリキュラム。今週は週間 +9,164★ と、ランキング上位に食い込むほど大きく伸びた。ニューラルネットワーク・深層学習・コンピュータビジョン・自然言語処理・記号 AI・遺伝的アルゴリズム・強化学習・マルチエージェント・AI 倫理を、実行可能な Jupyter ノートブックとクイズ・ラボで学べる構成。</p>
+      <p>PyTorch と TensorFlow の双方でコード例を用意し、GitHub Actions による 50 以上の言語への自動翻訳、初心者向けの入門セクション、Discord などのコミュニティ支援を備える。主体は Python（Jupyter Notebook）、ライセンスは MIT。エージェントや推論エンジンの新顔が並ぶ中で、基礎を学び直す需要も根強いことをうかがわせる一週間だった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/moeru-ai/airi">moeru-ai/airi</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">koala73/worldmonitor — 地政学インテリジェンス盤は今週も上位（継続・週間 +6,150★ / 累計 7.7万★）</h3>
-    <div class="article__body">
-      <p>先週も取り上げた、リアルタイムの地政学インテリジェンス・ダッシュボード。AI によるニュース統合・地政学監視・インフラ追跡を組み合わせ、今週も週間 +6,150★ と伸び続けて累計 7.7万★ に達した。15 カテゴリにまたがる 500 以上の厳選フィードを AI で統合し、3D グローブと WebGL 平面地図（56 種のレイヤー）で可視化する。31 カ国の Country Instability Index（CII）v8、29 取引所・商品・暗号資産の金融追跡、API キー不要の Ollama ローカル AI、world/tech/finance など 6 派生版、25 言語（RTL 対応）を備え、REST API・MCP サーバー・CLI・各言語 SDK からも使える。主体は TypeScript（Three.js／deck.gl／Tauri 2）、ライセンスは AGPL-3.0。エージェント熱の外側でも、情報を束ねてエージェント連携まで用意する設計が支持を保っている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/koala73/worldmonitor">koala73/worldmonitor</a></li>
+      <li><a href="https://github.com/microsoft/AI-For-Beginners">microsoft/AI-For-Beginners</a></li>
     </ul>
   </article>
 </section>
