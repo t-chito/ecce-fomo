@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年8月4日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年8月11日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年8月4日">
+<meta property="og:title" content="フロントエンドニュース — 2026年8月11日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月4日（火）</span>
+        <span>2026年8月11日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,44 +31,46 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週号の主役だった「予告つきセキュリティの定例運用」が、今週はフレームワークからランタイム層へ飛び火した。<strong>Node.js が 7 月 29 日に協調セキュリティリリース</strong>を出し、11 件（高 3・中 5・低 3）を <strong>26.5.1／24.18.1／22.23.2</strong> で一斉に塞いだ。高深刻度は HTTP/2 の 2 件と Permission Model のパス境界の 1 件で、Next.js の月次と同じ「まとめて・同時に」という運用律がそのまま runtime に現れた。もう一つの通奏低音「ネイティブで速い基盤」は、今週は大玉の GA ではなく足元のツール層で進んだ。<strong>SvelteKit 3 が @next プレビュー入り</strong>し、<strong>Oxlint 1.75 が型認識リントを stable 化</strong>、<strong>Rolldown 1.2</strong> も HMR 周りを詰めた。一方で先週 RC まで来た二枚看板、<strong>Vue 3.6 は RC のまま（GA は秋見込み）</strong>、<strong>TS7 のテンプレート型チェック解禁も 7.1（10 月ごろ）待ち</strong>という足踏みは今週も動かず、「速い実装は先行するが、型基盤の全面解禁は秋にまとめて」という構図が続いている。</p>
+  <p>先週号で通奏低音だった「予告つきセキュリティの定例運用」が、今週は現実の大規模インシデントに変わった。<strong>8 月 4 日、Shai-Hulud 系のワームが <code>keyv</code> とその周辺 400 以上のパッケージを汚染</strong>し、しかも<strong>npm の trusted publishing（GitHub Actions の OIDC 発行）を悪用</strong>して正規の provenance 付きで配布された点が転換点になった。これを受け GitHub/npm は「サプライチェーン攻撃の遮断」を掲げ、staged publishing・install script の既定無効化（npm v12）・Dependabot のクールダウンなど一連の防御を前面に出した。もう一つの主役、先週 preview だった <strong>Next.js 16.3 が 8 月 3 日に GA</strong>。Instant Navigations が stable 化し、dev メモリ最大 90% 減・<code>next build</code> の TypeScript 7 型チェック・SSR スループット +22% と、16.0 以来最大の更新になった。エコシステム側でも <strong>TanStack Table V9</strong> が 2 年越しで正式化し、ライブラリ群も一斉に版を上げた。「安全運用が予告どおり届く」という先週の確定が、今週は<strong>攻撃の実害と、それに対する制度的な締め直し</strong>という形で一段深く現れた週だった。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Node.js が協調セキュリティリリース — 11 件を 3 系列同時に、高深刻度は HTTP/2 と Permission Model</h3>
+    <h3 class="article__headline">npm/GitHub Actions のサプライチェーン攻撃が trusted publishing を突破 — keyv 系 400+ 汚染、GitHub は防御を制度化</h3>
     <div class="article__body">
-      <p>先週号が「Next.js の月次セキュリティ＝予告つき・まとめて着地」を最大の焦点に据えた直後、同じ運用律がランタイム側でも回った。<strong>7 月 29 日（水）、Node.js が 26.x／24.x／22.x の全アクティブ系列で協調リリース</strong>を出し、<strong>26.5.1・24.18.1・22.23.2</strong> をそろって公開した。修正は<strong>計 11 件（高 3・中 5・低 3）</strong>で、依存もあわせて undici（8.9.0／7.29.0／6.28.0）と llhttp 9.4.3 を引き上げている。「決まったタイミングでまとめて来る」ため、CI やインフラ側で検証・ロールアウトの枠を組みやすい点は Next.js の月次と同じ狙いだ。</p>
-      <p>高深刻度の 3 件は運用インパクトが読みやすい。<strong>CVE-2026-56846</strong> は HTTP/2 の保持ヘッダが <code>maxSessionMemory</code> の上限を回避してリモートからメモリを枯渇させられるもの、<strong>CVE-2026-56848</strong> は <code>nghttp2_session_mem_recv()</code> 実行中に送信処理が再入して起きるヒープ use-after-free、<strong>CVE-2026-58043</strong> は Permission Model の radix-tree なプレフィックス境界処理の綻びで、<code>--permission</code> の allowlist 外のパスを読み書きできてしまうというもの。<strong>HTTP/2 を終端しているサーバと、<code>--permission</code> でサンドボックス的に締めている構成</strong>が優先更新対象になる。先週の「安全運用が予告どおり届く」という確定が、今週は基盤ランタイムでも同じ形で示された。</p>
+      <p>先週号は Node.js の協調セキュリティリリースを「予告つき・まとめて着地」の runtime 版として据えたが、今週はそのセキュリティ潮流が<strong>攻撃側の実害</strong>として噴出した。<strong>8 月 4 日、Shai-Hulud 系のワームが週次ダウンロード約 1.27 億の <code>keyv</code> と関連パッケージを侵害</strong>し、数時間で 400 以上・月間 20 億インストール規模へ拡散した。最大の論点は手口で、攻撃者は維持者の GitHub アカウントを乗っ取って main へ直接 push し即座に新版を切ることで、<strong>npm の trusted publishing（長期トークンではなく GitHub Actions の OIDC で発行する経路）を通し、正規の provenance が付いたまま</strong>汚染版を配布した。CI/CD を信頼の起点に据えた仕組みそのものが逆用された格好だ。</p>
+      <p>GitHub/npm は「Disrupting supply chain attacks on npm and GitHub Actions」で、4〜7 月にかけて積み上げてきた防御を一気に前面化した。要は<strong>公開前に承認と 2FA を挟む staged publishing</strong>、高影響アカウントのメール変更・2FA リカバリ時の <strong>72 時間読み取り専用化</strong>、<code>actions/checkout</code> が fork PR の untrusted コードを既定でブロック、そして <strong>npm v12 で install script と git/remote URL 依存を既定無効化</strong>、<strong>Dependabot に既定 3 日のクールダウン</strong>（セキュリティ修正は除外）を入れて、汚染版が検知前に伝播する速度を落とす。先週の「安全運用が予告どおり届く」という受け身の確定が、今週は<strong>信頼の前提（provenance/OIDC）が破られ得るという現実と、それを織り込んだ制度設計</strong>へと更新された。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nodejs.org/en/blog/vulnerability/july-2026-security-releases">Wednesday, July 29, 2026 Security Releases — nodejs.org</a></li>
-      <li><a href="https://nodejs.org/en/blog/release/v26.5.0">Node.js 26.5 リリースノート系列 — nodejs.org</a></li>
+      <li><a href="https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/">Disrupting supply chain attacks on npm and GitHub Actions — The GitHub Blog</a></li>
+      <li><a href="https://www.sygnia.co/threat-reports-and-advisories/shai-hulud-returns-software-supply-chain-attack-npm-keyv/">Shai-Hulud Returns: When Software Trust Becomes the Attack Surface — Sygnia</a></li>
+      <li><a href="https://github.blog/security/supply-chain-security/our-plan-for-a-more-secure-npm-supply-chain/">Our plan for a more secure npm supply chain — The GitHub Blog</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">SvelteKit 3 が @next プレビュー入り — 13 本の先行版で shallow routing と設定・環境変数を再編</h3>
+    <h3 class="article__headline">Next.js 16.3 が GA — preview だった Instant Navigations が stable 化、dev メモリ90%減・TS7 型チェック・SSR +22%</h3>
     <div class="article__body">
-      <p>先週まで RC・GA の主役は Vue と Next.js だったが、今週はもう一つの Volar 系スタックである Svelte が大きく動いた。月次の「What's new in Svelte（8 月）」で <strong>SvelteKit 3 の最初の @next リリース</strong>が告知され、<strong>7 月中に 13 本のプレビュー版</strong>が積まれたことが明らかになった。目玉は <strong>shallow routing の <code>goto</code> への統合</strong>で、<code>pushState</code>／<code>replaceState</code> を <code>goto</code> の <code>state</code> オプション（+<code>persistState</code>）に一本化する（3.0.0-next.13）。あわせて <code>noScroll</code>／<code>keepFocus</code> を単一の <code>reset</code> に畳み、ナビゲーション API の面積を絞っている。</p>
-      <p>構成面の変更も実務に効く。<strong>SvelteKit の設定を <code>vite.config.js</code> に直接書けるようになり、<code>svelte.config.js</code> を省略可能</strong>にする方向へ舵を切った。加えて <code>$env/*</code> を将来的に置き換える<strong>明示的な環境変数</strong>の初回プレビュー、ビルド情報を露出する <code>$app/manifest</code>、旧 <code>$service-worker</code> を差し替える <code>$app/service-worker</code>、本番ソースマップ対応（next.11）などが入った。安定版側も remote forms の <code>submitted</code> 追加（2.69.0）や <code>defineEnvVars</code> の <code>@sveltejs/kit/env</code> への移設（2.70.0）が進む。Svelte のテンプレート型チェックも Vue 同様 TS7.1 待ちである点は変わらないが、フレームワーク本体は次メジャーの輪郭を先に固めにきた。</p>
+      <p>先週 preview として取り上げた 16.3 が、<strong>8 月 3 日（月）に正式リリース</strong>された。目玉の <strong>Instant Navigations</strong>（<code>cacheComponents</code> と <code>partialPrefetching</code> の 2 フラグで opt-in）が stable に到達し、ルート単位のローディングシェルを prefetch して SPA 並みの即時遷移を server-driven のまま実現する。検証系も揃い、遅い遷移を自動で洗い出す <strong>Instant Insights</strong>、シェルを一時停止して確認する <strong>Navigation Inspector</strong>、Playwright の <code>instant()</code> ヘルパが同梱される。これらの挙動は将来のメジャーで既定化される予定だ。</p>
+      <p>全アプリに効く改善も広い。Turbopack のディスクキャッシュとメモリ eviction を既定化して <strong>dev のメモリを最大 90% 削減</strong>（vercel.com で 21.5GB→2GB）、<code>next build</code> でも FS キャッシュが効いて CI で最大 5.5 倍速のケースを報告。<strong><code>next build</code> の型チェックに先月出た TypeScript 7 を使える</strong>ようになり（<code>typescript@^7</code> を入れるだけ）、App Router の描画層を web streams から <strong>ネイティブ Node.js streams へ置換して負荷時スループット +22%</strong>。実験扱いでは <strong>Turbopack 内で走る Rust 版 React Compiler</strong>（cold 34%・warm 46% 短縮）と、切断時に処理を保留して再接続で再試行する <code>experimental.useOffline</code> も入った。先週「preview で成熟中」と書いた機能群が、そのまま安定版として着地した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://svelte.dev/blog/whats-new-in-svelte-august-2026">What's new in Svelte: August 2026 — svelte.dev</a></li>
+      <li><a href="https://nextjs.org/blog/next-16-3">Next.js 16.3 — nextjs.org</a></li>
+      <li><a href="https://nextjs.org/blog/next-16-3-instant-navigations">Next.js 16.3: Instant Navigations — nextjs.org</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">型認識・Rust 製ツールチェーンが前進 — Oxlint 1.75 が型認識リントを stable 化、Rolldown 1.2 も成熟</h3>
+    <h3 class="article__headline">TanStack Table V9 が正式版 — 2 年越しで tree-shakable 化、TanStack Store で状態管理を刷新</h3>
     <div class="article__body">
-      <p>「ネイティブで速い基盤」という先週からの軸は、今週フレームワークではなくリンタ／バンドラの層で具体化した。<strong>Oxlint 1.75 で型認識リント（type-aware linting）が stable</strong> に到達し、<strong>型情報を要する 43 個のルール</strong>が追加で有効化された。TS7（tsc ネイティブ化）はテンプレート型チェッカ勢をまだ載せられない一方で、Rust 製リンタ側は「型を見るチェック」を先に実運用へ出してきた格好で、`tsc は TS7・型情報付きリントは別系統` という折衷の現実的な受け皿になる。</p>
-      <p>バンドラ側でも <strong>Rolldown 1.2</strong> が HMR・watcher・tree-shaking・ソースマップを一段詰め、Vite 8 が採る Rust 単一バンドラ路線の安定化が続く。周辺では <strong>pnpm 11.11〜11.14</strong> がワークスペースのリリース管理と診断ツールを拡充し、<strong>magic-string 1.0</strong> がソース操作ユーティリティの節目を迎えた。TS ネイティブ化・Rolldown・Oxlint と、フロントの下回りが軒並み Rust／ネイティブへ載せ替わる流れの中で、今週は「速い基盤の上でリント精度を落とさない」ための整備が前に出た。</p>
+      <p>ライブラリの大玉も同じ 8 月 4 日に着地した。<strong>2 年以上の開発を経て TanStack Table V9 が GA</strong>。内部を <strong>tree-shakable なプラグイン（feature）アーキテクチャ</strong>に組み替え、状態管理を <strong>TanStack Store ベース</strong>へ載せ替えた。row/column/cell/header の API を共有プロトタイプに移したことで、大規模テーブルで V8 より<strong>メモリ使用量を大幅に削減</strong>し、細粒度リアクティビティと <strong>React Compiler 互換</strong>で不要な再描画を抑える。6 月のベータから積み上げてきた設計変更が固まった形で、フレームワーク別の adapter と移行ガイドが用意される。</p>
+      <p>状態管理は「atoms（TanStack Store）か controlled か」を選べる設計で、既存の controlled パターンを保ちつつ、必要なら Store の細粒度購読へ移れる。破壊的変更を含むメジャーのため、V8 からの移行はフレームワーク別ガイドの参照が前提になるが、下回りが Rust/ネイティブへ寄る一方で JS ライブラリ側は「共有プロトタイプ＋ストア」でメモリと再描画を締める、という今週の別の潮流を象徴する更新だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/291">This Week In React #291（Oxlint 1.75 / Rolldown 1.2 / pnpm / magic-string）— thisweekinreact.com</a></li>
-      <li><a href="https://vite.dev/blog/announcing-vite8">Vite 8.0 is out!（Rolldown 単一バンドラ路線）— vite.dev</a></li>
+      <li><a href="https://tanstack.com/blog/announcing-tanstack-table-v9">Announcing TanStack Table V9 — TanStack Blog</a></li>
+      <li><a href="https://www.infoq.com/news/2026/07/tanstack-table-v9-beta/">TanStack Table V9 Beta: Tree-Shakable Features, TanStack Store State — InfoQ</a></li>
     </ul>
   </article>
 </section>
@@ -77,39 +79,48 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js 16.3 の Instant Navigations が preview で成熟 — 7/21 セキュリティ修正も canary/preview に取り込み</h3>
+    <h3 class="article__headline">Vue 3.6 は今週も RC のまま — 秋の GA 待ち、SolidStart 2.0 と Node 24.19 が周辺を固める</h3>
     <div class="article__body">
-      <p>先週は 16.3 preview の Turbopack 永続キャッシュを取り上げたが、16.3 系のもう一つの目玉<strong>Instant Navigations</strong>（と Partial Prefetching）も preview で形を整えつつある。リンクごとの prefetch をやめ、<strong>ルート単位で再利用可能なローディングシェルを 1 つだけ prefetch してクライアントにキャッシュ</strong>する設計で、ナビゲーションを Streaming（Suspense のシェル表示）か Caching（<code>use cache</code> の再利用）で即時化し、必要な経路だけ Block でサーバ待ちに戻せる。<code>cacheComponents</code> と <code>partialPrefetching</code> の両フラグを有効化して <code>next@preview</code> で試せる、opt-in の段階提供だ。DevTools の Navigation Inspector や Playwright 用 <code>instant()</code> ヘルパといった検証系も同梱される。</p>
-      <p>運用面では、先週の月次セキュリティとの接続が見える。<strong>7 月 21 日に 16.2.11／15.5.21 で塞いだ高 4・中 5 の修正が、16.3.0-canary.92／preview.7 にも取り込まれ</strong>、16.3 が stable 化した時点でその系列にも入る。安定版ラインを 16.2 に据えつつ、preview 側で新機能とセキュリティ修正を並走させる「メジャーで飛躍・パッチで均す」サイクルが、16.3 でも一貫している。</p>
+      <p>先週「RC のまま GA 待ち」とした <strong>Vue 3.6 は今週も動かず</strong>、7 月 22 日の rc.2 から先へは進んでいない。Vapor Mode は feature-complete だが RC 段階では unstable 扱いのままで、テンプレート型チェック（Volar 系）の TS7 対応が 7.1 待ちである構図も不変だ。一方で他の full-stack 系は版を上げた。<strong>SolidStart 2.0</strong> が Solid v1 を土台に基盤を刷新し、Solid 系のフルスタック開発の足場を整えた。ランタイムでは <strong>Node 24.19</strong> が <code>stream.compose</code> を安定化し、TLS/TCP 設定や <code>fs.readFile()</code> のカスタムバッファ、<code>--experimental-import-text</code> フラグを追加。先週の協調セキュリティリリース（26.5.1／24.18.1／22.23.2）に続く 24 系の通常更新で、runtime 側は「セキュリティは協調・機能は各系列で漸進」というリズムを保っている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/next-16-3-instant-navigations">Next.js 16.3: Instant Navigations — nextjs.org</a></li>
-      <li><a href="https://nextjs.org/blog/july-2026-security-release">July 2026 Security Release — nextjs.org</a></li>
+      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core（v3.6.0-rc.2 のまま）— GitHub</a></li>
+      <li><a href="https://thisweekinreact.com/newsletter/293">This Week In React #293（SolidStart 2.0 / Node 24.19）— thisweekinreact.com</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Vue 3.6 は RC のまま GA 待ち — Vapor は feature-complete、解禁は秋にまとまる見込み</h3>
+    <h3 class="article__headline">ビルド・サーバ層も更新 — Vite 8.2、Hono 4.13、Svelte 8 月号は SvelteKit 3 プレビューを継続</h3>
     <div class="article__body">
-      <p>先週号で「3.0 以来最大」と評した Vue 3.6 は、今週は新展開ではなく<strong>据え置きの確認</strong>だった。<strong>7 月 18 日の rc.1／22 日の rc.2</strong> のあと、stable（GA）は秋ごろ見込みという位置づけが続く。Vapor Mode は feature-complete だが RC 段階では unstable 扱いのままで、alien-signals による reactivity 刷新（省メモリ）は既存アプリにも効く一方、<strong>Vue のテンプレート型チェック（Volar 系）は TS7.0 では動かず 7.1 待ち</strong>という壁も先週から不変だ。今週 @next に入った SvelteKit 3 と合わせ、「本命の新実装は RC・preview まで来たが、型基盤の全面解禁は TS7.1（10 月ごろ）へ束ねられている」という秋待ちの構図が、SFC 系スタック全体で共通している。</p>
+      <p>下回りのツールも足並みをそろえた。<strong>Vite 8.2</strong> はトップレベルの <code>input</code> オプション、未対応ネイティブローダの警告、PostCSS 設定の型を追加。サーバ側では <strong>Hono 4.13</strong> が最大 1.25 倍の性能向上に加え <strong>HTTP <code>QUERY</code> メソッド</strong>対応と 405（Method Not Allowed）ミドルウェアを載せた。先週 @next 入りを報じた <strong>SvelteKit 3</strong> は、Svelte の 8 月号でプレビューが継続。zero-config なエラー props と <code>refreshAll</code>、新しい <code>$app/*</code> モジュールが積まれ、<code>vite-plugin-svelte@7.2.0</code> や言語サーバの最適化、Svelte Inspector のコンテキストメニュー追加も入った。「速い基盤を stable の一歩手前まで詰める」動きが、Vite・Hono・SvelteKit の各層で並行して進んでいる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core（v3.6.0-rc.1／rc.2）— GitHub</a></li>
+      <li><a href="https://thisweekinreact.com/newsletter/293">This Week In React #293（Vite 8.2 / Hono 4.13）— thisweekinreact.com</a></li>
+      <li><a href="https://svelte.dev/blog/whats-new-in-svelte-august-2026">What's new in Svelte: August 2026 — svelte.dev</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エコシステム・ツール</h2>
+  <h2 class="topic__title">エコシステム・ライブラリ</h2>
 
   <article class="article">
-    <h3 class="article__headline">shadcn が React Aria を一級サポート、CSS は Lightning CSS 1.33、そしてエージェント評価の ReactBench</h3>
+    <h3 class="article__headline">UI・状態管理ライブラリが一斉更新 — React Aria 1.20、Base UI 1.7、MobX 7.0、SWR 2.5</h3>
     <div class="article__body">
-      <p>コンポーネント／CSS 周りも動いた。<strong>shadcn CLI 4.13.1</strong> が Radix・Base UI に続いて <strong>React Aria を一級のヘッドレス選択肢</strong>として加え、アクセシビリティ基盤の選択肢が広がった。CSS ツールでは <strong>Lightning CSS 1.33</strong> が <code>alpha()</code>、アンカー配置の <code>@position-try</code>、擬似要素サポートを追加し、先週の Chrome 143/144 系で進む anchor positioning のブラウザ実装に、ビルド側の変換が追随している。周辺では <strong>Astro 7.1</strong> がページネーション制御・CSP 設定・複数 dev サーバを載せてパッチ整備を継続した。</p>
-      <p>異色の一手として、Million.js チームが <strong>ReactBench</strong> を公開した。実プロダクト規模の React タスクでコーディングエージェントの成果を、挙動・パフォーマンス・アクセシビリティ・コード品質の観点から採点するベンチマークで、初期の首位は GPT 5.6 とされる。フレームワークやツールの更新と並んで、「AI にフロントの実装をどこまで任せられるか」を定量で測る土俵づくりが、エコシステムの話題として一段前に出てきた。</p>
+      <p>Next.js 16.3 GA に合わせるように、周辺ライブラリも版を上げた。<strong>React Aria 1.20</strong> は PreviewTrigger（プレビュー付きポップオーバー）、インラインタグの TokenField、ネイティブのコンテキストメニュー、操作可能なテーブル行、そして <strong>Next.js 16 の RSC collection 対応</strong>を追加。<strong>Base UI 1.7</strong> はバンドルを約 3% 削減しつつモバイル UX と <code>ScrollArea.Thumb</code> のオーバースクロール挙動を改善した。状態管理では <strong>MobX 7.0</strong> がレガシー互換を切って ESM バンドルを縮小（mobx-react-lite／mobx-react の分離は維持）、<strong>SWR 2.5</strong> が実験的な RSC データ preload とキャッシュ破棄・クエリ中断のための <code>unload()</code> API を入れた。<strong>React Hook Form 7.84</strong>（<code>&lt;Form /&gt;</code> の submit 改善）、<strong>React Three Fiber 9.7</strong>（reconciler を react-dom に整合）、<strong>Styled Components 6.5</strong>（型チェック高速化）も更新され、先週の shadcn の React Aria 一級サポートに続いてアクセシビリティ基盤の選択肢がさらに広がった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/291">This Week In React #291（shadcn 4.13.1 / Lightning CSS 1.33 / Astro 7.1 / ReactBench）— thisweekinreact.com</a></li>
+      <li><a href="https://thisweekinreact.com/newsletter/293">This Week In React #293（React Aria 1.20 / Base UI 1.7 / MobX 7.0 / SWR 2.5 / RHF 7.84 / R3F 9.7）— thisweekinreact.com</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">AI エージェント向けの土台づくりが前進 — WebMCP、React の browser() API、GitHub の Stacked PRs</h3>
+    <div class="article__body">
+      <p>先週の ReactBench（エージェントの実装力を採点）に続き、今週は「AI にどう web を触らせるか」の基盤が具体化した。Chrome チームの <strong>WebMCP</strong> は、クライアント側のツールをブラウザ内 AI エージェントへ公開する実験的な React 抽象で、ページが自らエージェントに操作 API を差し出す方向を示す。React 本体側では、SSR を一時停止してブラウザ専用コンポーネントを扱う client-only な <strong><code>browser()</code> API</strong> の PR が動いた。開発フローでも <strong>GitHub の Stacked PRs が public preview</strong> に入り、base の自動付け替え・部分マージ・<code>gh-stack</code> CLI 連携で、依存し合う PR を積み上げる運用がネイティブ対応になる。フレームワークやライブラリの更新と並んで、エージェントと協働する前提の道具立てが一段前に出た週でもあった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://thisweekinreact.com/newsletter/293">This Week In React #293（WebMCP / browser() / GitHub Stacked PRs）— thisweekinreact.com</a></li>
     </ul>
   </article>
 </section>
@@ -118,33 +129,23 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js 月次セキュリティの「二号目」— 8 月の定例が予定どおり出るか</h3>
+    <h3 class="article__headline">サプライチェーン防御の実効性 — staged publishing の普及と、次の Shai-Hulud 波が来るか</h3>
     <div class="article__body">
-      <p>先週の最大の宿題がそのまま残る。初号（7/21）と追いパッチ（7/25）が予告どおり回った以上、<strong>8 月に予定される二号目</strong>が同じ日程規律で着地するかが継続ウォッチだ。今週 Node.js が協調リリースを出したことで「予告つきセキュリティ」は runtime にも広がったが、Next.js 側の二号目はまだ公開されていない。あわせて、16.2 が backport した TS7 対応を <strong>15.5 系が受け入れる方向へ転じるのか、「拒否」を維持するのか</strong>も、旧 LTS 継続チームの移行計画に直結する論点として残る。</p>
+      <p>今週の最大の宿題は攻撃側と防御側の追いかけっこだ。GitHub/npm が前面化した <strong>staged publishing・install script 既定無効化（npm v12）・Dependabot クールダウン</strong>が、trusted publishing/OIDC を逆用する手口をどこまで実際に鈍らせるかが焦点になる。維持者の opt-in がどの程度進むか、そして<strong>keyv 系に続く新たな汚染波</strong>が観測されるかを継続ウォッチしたい。先週 runtime へ広がった「予告つきセキュリティ」が、今週はエコシステムの制度設計そのものへ及んだ以上、来週はその運用が試される段になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/next-security-release-program">Next.js Security Release Program — nextjs.org</a></li>
+      <li><a href="https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/">Disrupting supply chain attacks on npm and GitHub Actions — The GitHub Blog</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Vue 3.6 の GA と、SvelteKit 3 プレビューの安定化</h3>
+    <h3 class="article__headline">Vue 3.6 の GA と SvelteKit 3 プレビューの安定化 — 秋に束ねられた解禁の前段</h3>
     <div class="article__body">
-      <p>秋に束ねられた解禁の前段として、<strong>Vue 3.6 が rc から stable（GA）へ</strong>いつ進み、feature-complete でも unstable と位置づけられた <strong>Vapor Mode が本番推奨に格上げされる条件</strong>が最初の焦点。今週 @next 入りした <strong>SvelteKit 3 のプレビューがどこまで詰まるか</strong>（設定の <code>vite.config.js</code> 統合、明示的環境変数の固まり具合、shallow routing 統合の安定度）も、両 SFC 系スタックの次メジャー移行を占う材料になる。</p>
+      <p>SFC 系スタックの秋待ちは今週も続いた。<strong>Vue 3.6 が rc から stable（GA）へ</strong>いつ進み、feature-complete でも unstable と位置づけられた <strong>Vapor Mode が本番推奨へ格上げされる条件</strong>が最初の焦点。あわせて <strong>SvelteKit 3 プレビュー</strong>が設定統合・環境変数・shallow routing 統合をどこまで詰めるかも、次メジャー移行を占う材料になる。両者の型チェック解禁が <strong>TypeScript 7.1（10 月ごろ想定）のプログラマティック API</strong> に束ねられている構図は変わらず、この API の preview 更新が出れば全面移行計画が描ける。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
       <li><a href="https://svelte.dev/blog/whats-new-in-svelte-august-2026">What's new in Svelte: August 2026 — svelte.dev</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">TypeScript 7.1 のプログラマティック API — テンプレート型チェック解禁の前提</h3>
-    <div class="article__body">
-      <p>Vue・Svelte・Angular・Astro・MDX のテンプレート型チェックを TS7 上で動かす鍵となる<strong>安定版プログラマティック API は 7.1（10 月ごろ想定）</strong>が主要成果物。今週 stable 化した Oxlint の型認識リントは別系統で先行したが、Volar 系の型チェッカと typescript-eslint／ts-morph などが TS7 に載るのは 7.1 待ちで、当面は <code>@typescript/typescript6</code>（<code>tsc6</code>）併用が続く。この API の preview やロードマップ更新が出れば、Vue 3.6 GA・SvelteKit 3 と足並みをそろえた型基盤の全面移行計画を描ける。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
     </ul>
   </article>
 </section>
