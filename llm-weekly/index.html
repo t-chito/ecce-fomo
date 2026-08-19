@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM ニュース — 2026年8月12日 | Ecce Fomo</title>
+<title>LLM ニュース — 2026年8月19日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="LLM ニュース — 2026年8月12日">
+<meta property="og:title" content="LLM ニュース — 2026年8月19日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">LLM ニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月12日（水）</span>
+        <span>2026年8月19日（水）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -32,7 +32,7 @@
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
   <p>
-    今週の LLM 業界は、先週まで「評価中に AI がうっかり枠を越えた」という<strong>偶発の事故</strong>だったサイバー問題が、<strong>「フロンティアのサイバー能力を統治のもとで防御に振り向ける」という意図的な段階へ一気に進んだ</strong>一週間だった。OpenAI は次期モデル <strong>Astra を Preparedness Framework で自社初の「critical（重大）」に分類</strong>して一般公開を減速し、同時に防御者向けの <strong>GPT-5.6-Cyber と Daybreak プログラム拡張</strong>を投入、Chrome の V8 エンジンに実在の脆弱性（CVE-2026-15903）まで見つけた。Anthropic は <strong>Claude Code の auto mode をデフォルト化</strong>し、プロンプトインジェクション耐性を「未知の攻撃でほぼゼロ」に近づけたと主張。sama は「<strong>自分のシステムを守るために我々のモデルを使ってほしい</strong>」と呼びかけた。能力の側では、Anthropic の未公開研究版 Claude が <strong>Riemann ゼータ関数の下界を 41.6%→67.2% に更新</strong>し、先週の OpenAI・Astra の数学成果に応じる形で「AI が一次研究に踏み込む」流れが続いた。加えて <strong>Gemini アプリが月間 10 億ユーザー</strong>に到達、<strong>GPT-5.6 Sol が ChatGPT 全チャットの土台</strong>になり、<strong>Grok Imagine Image 2.0</strong> が登場——安全・能力・普及が同じ週に凝縮した。
+    今週の LLM 業界は、<strong>アクセル（能力・速度・普及）とブレーキ（安全）が同じ週に最大出力で踏まれた</strong>一週間だった。ブレーキ側では、先週 Astra を自社初の「critical」に分類した OpenAI が今週さらに踏み込み、<strong>展開予定の最新モデルの強化学習（RL）訓練を 2 週間、意図的に停止</strong>してレッドチームと監視の強化に充てた。sama と gdb はそろって「<strong>これからは安全への確信が AI 開発の速度を決める</strong>」と述べ、フロンティアの自己抑制を規範化しにかかった。アクセル側では、<strong>xAI が Grok 4.6 を投入</strong>すると同時に<strong>コードエディタ Cursor を取り込み</strong>、Google は<strong>速くて安い workhorse モデル Gemini 3.7 Flash</strong> を、OpenAI は <strong>Cerebras で 14 倍速の Ultrafast モード</strong>を出した。加えて、<strong>エージェントが「デモ」から「本番の主戦力」へ</strong>移る証拠——GE Aerospace が Devin で開発量をほぼ倍増、法務の ABC Legal が Claude Managed Agents 50 体でコストを最大 5 割削減——が各社から示された。能力の側では Anthropic が Riemann に続き<strong>創薬の分子設計</strong>に AI を向け、制度の側では EU AI Act 対応の透かし FAQ とリスク報告書が続いた。速さと安全がせめぎ合いながら同時に前進した週である。
   </p>
 </section>
 
@@ -40,121 +40,169 @@
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI が Astra を自社初の「critical」サイバーモデルに分類 — 公開を減速</h3>
+    <h3 class="article__headline">OpenAI がフロンティア RL 訓練を 2 週間停止 — 「安全が速度を決める」</h3>
     <div class="article__body">
-      <p>OpenAI は 8/7、次期モデル <strong>Astra を Preparedness Framework の下で自社初の「critical（重大）」サイバーリスクに該当すると評価</strong>し、一般公開を意図的に遅らせると公表した。「critical」の閾値は、<strong>多数の堅牢な実システムに対して人手を介さずゼロデイ脆弱性を発見・実装できる、あるいは高レベルの目標だけを与えられて堅牢な標的への攻撃を端から端まで自律遂行できる</strong>水準を指す。OpenAI は「想定していたシナリオ」として、隔離テスト環境・ネットワークとツールの制限・モデル重みの暗号化強化・追加監視といった管理を敷き、政府機関や独立系の AI 安全団体と連携して能力検証と対策を固めるとした。sama は「Astra は強力なモデルで、一般提供へ向け作業中。強力なモデルを一部の者だけに囲い込むのは良い戦略ではないが、そのサイバー能力ゆえに安全に出すにはもう少しだけ時間が要る」と述べた。先週 Astra が数学の未解決問題を解いて注目された同じモデルが、今週は<strong>「速く出すより、安全に出す」</strong>判断の象徴になった。</p>
+      <p>OpenAI は展開予定の最新モデルの強化学習訓練を 2 週間止め、レッドチームと監視・セキュリティの強化に充てた。sama は「モデルの進歩が極めて速くなった今、必要なら手を止めると常々言ってきた」とし、gdb は「安全への確信が今後の開発ペースを規定する」と述べた。先週の Astra「critical」宣言に続く、フロンティアの自己抑制の制度化。</p>
+    </div>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Grok 4.6 と xAI の Cursor 取り込み — 攻勢を強める xAI</h3>
+    <div class="article__body">
+      <p>xAI は Grok 4.5 から大きく改善した <strong>Grok 4.6</strong> を同一価格で投入（Devin 上のコード評価で GPT-5.6 Sol を上回り、Opus 5・Fable 5 に次ぐ位置）。同じ週に人気コードエディタ <strong>Cursor をチームに迎え入れ</strong>、ソフトウェア工学から知的労働全般へと版図を広げる姿勢を鮮明にした。</p>
+    </div>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Gemini 3.7 Flash と Ultrafast — 速度と価格の競争が本格化</h3>
+    <div class="article__body">
+      <p>Google は約 3 週間で知能を底上げし価格を半額にした workhorse モデル <strong>Gemini 3.7 Flash</strong> を投入。OpenAI は Cerebras を使い <strong>GPT-5.6 Sol を最大 14 倍速で走らせる Ultrafast モード</strong>をプレビューした。フロンティアの競争軸が「賢さ」から「同じ賢さをいかに速く・安く届けるか」へ移りつつある。</p>
+    </div>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">エージェントが「本番の主戦力」へ — GE Aerospace・ABC Legal の実例</h3>
+    <div class="article__body">
+      <p>GE Aerospace は Devin を使い一部チームの<strong>エンジニアリング出力をほぼ倍増</strong>、法務サービスの ABC Legal は <strong>Claude Managed Agents 50 体超</strong>で特定業務のコストを最大 5 割削減した。エージェントがデモや実験を越えて、実運用の成果指標で語られる段階に入った。</p>
+    </div>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">モデルリリースと推論速度</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Grok 4.6 — 同一価格でフロンティア級、Devin では Sol 超え</h3>
+    <div class="article__body">
+      <p>xAI（現 SpaceXAI）は 8/12、<strong>Grok 4.6</strong> を発表した。「Grok 4.5 から大きく改善しつつ価格は据え置き」を掲げ、投稿は 2,600 万インプレッションを超える今週最大の反響を集めた。展開も速く、同日〜翌週にかけて <strong>Devin・Pi など外部プラットフォームに順次搭載</strong>。Cognition は「Grok 4.6 は 4.5 から大きく前進し、コード性能で <strong>GPT-5.6 Sol を上回り、Opus 5・Fable 5 に次ぐ</strong>」と評した。値上げなしで一段上の知能を届ける「同価格でのアップグレード」は、フロンティア各社が横並びで進める今年の基調で、xAI はそこに<strong>週内の畳みかけ</strong>（次項の Cursor 取り込み、各種コネクタ追加）を重ねて存在感を高めた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/">OpenAI — Responding to the next frontier of critical cyber capabilities</a></li>
-      <li><a href="https://x.com/OpenAI/status/2085801349866729975">OpenAI (X) — We're treating Astra as our first "critical" model for cybersecurity</a></li>
-      <li><a href="https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/">TechCrunch — OpenAI says it slowed Astra model development over security concerns</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2087562800982077492">SpaceXAI (X) — Introducing Grok 4.6</a></li>
+      <li><a href="https://x.com/cognition/status/2087579582492987881">Cognition (X) — Grok 4.6 is now available in Devin</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2087963618637971495">SpaceXAI (X) — Grok 4.6 is now available in Pi</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">GPT-5.6-Cyber と Daybreak 拡張 — フロンティア・サイバーを「防御者の手に先に」</h3>
+    <h3 class="article__headline">Gemini 3.7 Flash — わずか 3 週間で底上げ、価格は半額の「働き者」</h3>
     <div class="article__body">
-      <p>Astra を囲い込む一方で、OpenAI は 8/10、<strong>認可された防御者向けの専用モデル GPT-5.6-Cyber を投入し、サイバー防衛イニシアチブ「Daybreak」を拡張</strong>した。<strong>Daybreak Blue</strong> はシステムレベルのガードレールを外した GPT-5.6 Sol を提供し脆弱性発見・マルウェア解析・インシデント対応などの防御作業を支援、<strong>Daybreak Red</strong> は攻撃検証・脆弱性研究に特化訓練したモデル（GPT-5.6-Cyber）を経験ある防御者に開放する。社内評価では、<strong>GPT-5.6-Cyber がエクスプロイトチェーン構築や権限昇格など高度なサイバー要求の 95% に応えた</strong>のに対し、通常の Sol は 1.5%、Daybreak Blue 版は 2% にとどまった。実運用では <strong>Chrome の V8 エンジンに未知の脆弱性 2 件（連鎖でメモリ破壊・サンドボックス脱出が可能）を発見し、Google に協調開示、CVE-2026-15903 として修正</strong>された。提供は Accenture・IBM・CrowdStrike・Cloudflare など信頼できるパートナーに限定。gdb は「防御の窓が狭まるなか、攻撃者が展開する前にフロンティアの知能を防御者の手に」と述べ、sama も別途「自分のシステムを守るために我々のモデルを使ってほしい」と呼びかけた。</p>
+      <p>Google は 8/13、<strong>Gemini 3.7 Flash</strong> を公開した。Logan Kilpatrick は「速い／<strong>3.6 Flash 比 50% 安い（年末まで）</strong>／わずか 3 週間で<strong>アルゴリズム改良により知能が大きく向上</strong>／API・AI Studio・Antigravity などで即利用可」と要点を並べ、Demis Hassabis も「ソフトウェア工学・Web 開発・知的労働に大幅アップグレード。そして超高速」と添えた。位置づけは<strong>コーディングとエージェント向けの「最も賢い workhorse」</strong>。Gemini アプリ（Spark）にも即日組み込まれ、Pro・Ultra 向けチャットにも展開。外部でも評価が速く、Cognition は「<strong>Devin の FrontierCode 1.1 で Claude Sonnet 5 級の性能を半額以下・低レイテンシで</strong>」と報告した。先週 10 億ユーザーに乗った Gemini が、今週は<strong>価格対性能の刷新</strong>で開発者層の取り込みを狙う。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/">OpenAI — Expanding Daybreak as the cyber defense window narrows</a></li>
-      <li><a href="https://x.com/OpenAI/status/2086864365379010729">OpenAI (X) — Expanding Daybreak and introducing GPT-5.6-Cyber</a></li>
-      <li><a href="https://x.com/sama/status/2086881528282587524">Sam Altman (X) — please consider using our models to help defend your systems</a></li>
-      <li><a href="https://techcrunch.com/2026/08/10/as-ai-led-attacks-multiply-openai-launches-a-new-cyber-model/">TechCrunch — As AI-led attacks multiply, OpenAI launches a new cyber model</a></li>
+      <li><a href="https://x.com/OfficialLoganK/status/2087948481721962669">Logan Kilpatrick (X) — Introducing Gemini 3.7 Flash</a></li>
+      <li><a href="https://x.com/demishassabis/status/2087950102455271765">Demis Hassabis (X) — major upgrades for software engineering, web dev &amp; knowledge work</a></li>
+      <li><a href="https://x.com/GoogleAI/status/2087949042961514983">Google AI (X) — Our most intelligent workhorse model yet for coding and agents</a></li>
+      <li><a href="https://x.com/cognition/status/2087994792819237357">Cognition (X) — Gemini 3.7 Flash is now available in Devin</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">未公開 Claude が Riemann 予想の下界を 41.6%→67.2% に更新 — AI × 数学が続く</h3>
+    <h3 class="article__headline">Ultrafast モードと Ohio データセンター — 「速く・安く届ける」インフラ競争</h3>
     <div class="article__body">
-      <p>Anthropic は 8/10、<strong>未公開の研究版 Claude に Riemann 予想へ挑ませ、予想を満たすゼータ関数の非自明零点の割合の下界を 41.6% から 67.2% へ引き上げた</strong>と公表した。Riemann 予想そのもの（1859 年提起・懸賞 100 万ドル）の証明には至らず、Anthropic も「この技術的アプローチで完全証明は期待できない」と明言するが、長年動かなかった関連問題を実際に前進させた点が注目された。過程も象徴的で、非数学者の社員が「本気で一発やってみて」と促し、あとの数学的判断はモデルに委ねた。<strong>Claude は最初に 650 個のアイデアを生成してすべて外し、2 セッション・計 3,100 万出力トークンを Claude Code 上で費やし、約 60 個のサブエージェントを束ねて並列探索と既存研究の再結合を行って新しい下界に到達</strong>した。Anthropic の数学者 2 名が論文を検証し、専門家向けの略式ノートも作成。先週 OpenAI・Astra が未解決問題を解いたのに続き、<strong>フロンティア 2 社がそろって研究水準の数学成果を示した</strong>週になった。</p>
+      <p>OpenAI は 8/13、<strong>GPT-5.6 Sol を最大 14 倍速で走らせる「Ultrafast」モード</strong>をプレビューした。<strong>Cerebras の推論基盤で最大 750 tokens/秒</strong>を出し、まず API 上の一部顧客に提供、能力拡大に応じて対象を広げる。gdb は「Sol を 14 倍速で動かせるのは痺れる」、sama は「/ultrafast」とだけ投稿して自賛した。狙いは<strong>「毎秒が効く業務」への最上位知能の投入</strong>で、フロンティアの差別化軸が知能そのものから<strong>提供速度と単価</strong>へ移っていることの表れだ。裏付けとなる計算資源の確保も続き、OpenAI は 8/17、<strong>オハイオ州パイク郡の PORTS-Pike データセンターの容量利用で SB Energy・NVIDIA・米エネルギー省と合意</strong>。sama は「ありがとう Jensen」と NVIDIA との連携を示し、旧来の産業拠点を AI 時代の電力・計算基盤へ転用する構図を打ち出した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://www.anthropic.com/research/riemann-zeta">Anthropic — Learning more about Claude's mathematical capabilities</a></li>
-      <li><a href="https://x.com/AnthropicAI/status/2086867246073401655">Anthropic (X) — We asked an unreleased research version of Claude to take a stab at the Riemann hypothesis</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Claude Code が auto mode をデフォルト化 — セッション間通信も追加</h3>
-    <div class="article__body">
-      <p>先週「Claude Code の沈黙が最長」と噂された Anthropic は、今週まとめて動いた。<strong>8/14 から Pro・Max・Team の新規セッションで auto mode（自動許可）をデフォルト化</strong>し、あらゆるツール呼び出しを別モデルの分類器が事前レビューして、要求を越える動作・見知らぬインフラへの接続・敵対的な入力に誘導された挙動をブロックする。<strong>1,053 名の有料テスターによる実験で、意図的な危険コマンドを auto mode が 89% 捕捉したのに対し人手のレビューは 13.6%（50 回目以降は約 5%）</strong>にとどまり、Anthropic は「人が全部承認するより安全」と主張。分類器の追加トークンは Pro・Max・Team では利用上限に計上しない。あわせて <strong>Claude Code のセッション同士が互いにメッセージを送れる</strong>機能（履歴やファイルではなく要約を渡し、相手が作業の途中で引き継ぐ）を追加し、self-hosted runner や Managed Agents 強化とあわせ<strong>非同期・長時間の自律実行</strong>へ舵を切った。bcherny は「モデル訓練＋入力プローブ＋意図を確認する分類器を重ねれば、未知の攻撃でも間接プロンプトインジェクションをほぼゼロにできる。1 年前には予想しなかった」と述べた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2085794862608318627">Claude Developers (X) — Starting August 14, auto mode will be the default permission mode in Claude Code</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2085817074816070014">Claude Developers (X) — New in Claude Code: your sessions can now message each other</a></li>
-      <li><a href="https://x.com/bcherny/status/2085860677990883454">Boris Cherny (X) — you can get indirect prompt injection to ~0 on unseen attacks</a></li>
-      <li><a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch — Anthropic is turning Claude Code's auto mode on by default</a></li>
+      <li><a href="https://x.com/OpenAI/status/2087947721936359705">OpenAI (X) — Previewing Ultrafast mode: GPT-5.6 Sol at up to 14x the speed</a></li>
+      <li><a href="https://x.com/gdb/status/2088111733973934346">Greg Brockman (X) — wild to see Sol at 14x speed</a></li>
+      <li><a href="https://x.com/OpenAINewsroom/status/2089364481478721572">OpenAI Newsroom (X) — Agreement to utilize capacity at the PORTS-Pike Technology Data Center</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">モデルとプロダクトの普及</h2>
+  <h2 class="topic__title">フロンティアの安全とガバナンス</h2>
 
   <article class="article">
-    <h3 class="article__headline">GPT-5.6 Sol が ChatGPT 全チャットの土台に — 無料枠に無制限 Luna も</h3>
+    <h3 class="article__headline">OpenAI が RL 訓練を 2 週間停止 — 「安全への確信が開発ペースを決める」</h3>
     <div class="article__body">
-      <p>OpenAI は 8/6、<strong>GPT-5.6 Sol を Plus・Pro の Instant と深い推論の両方の土台にし、ChatGPT のチャット体験を一本化</strong>した。高難度の事実性評価（金融・医療・法律）では <strong>GPT-5.5 Instant 比で事実誤りを含む応答が 68% 減</strong>。Plus・Pro には<strong>推論の強度を選べるスライダー</strong>を追加し、無料・Go ユーザーには <strong>GPT-5.6 Luna での無制限テキストチャットと「Think」ボタン</strong>を開放した。sama は「Sol はチャットでかなり良くなった。無料ユーザーにも無制限チャットを」と自賛。先週の GPT-5.6 大幅値下げに続き、<strong>フロンティアの知能を上位からアクセス側へ一段下ろす</strong>動きが続いている。あわせて 8/11 には <strong>ChatGPT デスクトップアプリの Linux 版（Ubuntu・Debian・Fedora 向け .deb/.rpm）をプレビュー公開</strong>し、開発者の作業環境への浸透を広げた。</p>
+      <p>OpenAI は 8/18、<strong>展開予定の最新モデルへの強化学習（RL）訓練を約 2 週間、意図的に停止した</strong>と公表した。「モデルが強力になるほど、社内で開発・テストする段階のリスクも増す」とし、停止期間を<strong>システムの堅牢化とレッドチーム</strong>に充てるという。sama は「モデルの進歩が極めて速くなった今、我々は必要と感じれば手を止めると常に言ってきた。今回はその<strong>目前の新しい能力水準</strong>に対し、アラインメント・セキュリティ・監視の基準を満たすための一手だ」と説明。gdb も「最大級の RL を含む frontier 訓練の規模拡大を一時的に緩めた。<strong>安全への確信が今後ますます AI 開発の速度を規定していく</strong>」と補足した。先週の Astra「critical」分類・公開減速に続き、<strong>「速く出すより、安全を確かめてから」を自社の運転規範として繰り返し明文化する</strong>動きが定着しつつある。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/OpenAI/status/2085434712429052386">OpenAI (X) — GPT-5.6 Sol now powers both Instant and deep reasoning; unlimited Luna for free users</a></li>
-      <li><a href="https://x.com/sama/status/2085454964814753990">Sam Altman (X) — 5.6 Sol much better in chat now, and unlimited text chat for free users</a></li>
-      <li><a href="https://x.com/OpenAI/status/2087231350134980830">OpenAI (X) — Now in preview: the ChatGPT desktop app for Linux</a></li>
+      <li><a href="https://x.com/OpenAI/status/2089777845187031262">OpenAI (X) — We temporarily paused RL training on our latest models for two weeks</a></li>
+      <li><a href="https://x.com/sama/status/2089787807611195475">Sam Altman (X) — We have paused some frontier RL training</a></li>
+      <li><a href="https://x.com/gdb/status/2089783608630284758">Greg Brockman (X) — confidence in safety will increasingly set the pace of AI development</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Gemini アプリが月間 10 億ユーザー — Google 史上最速成長</h3>
+    <h3 class="article__headline">EU AI Act 対応の透かし FAQ とリスク報告書 — 制度実装が具体化</h3>
     <div class="article__body">
-      <p>Google の <strong>Gemini アプリが月間アクティブユーザー 10 億に到達</strong>し、同社史上最速で成長したプロダクトになった。2025 年 10 月の 6.5 億から 1 年足らずで到達し、Search・Gmail・Android などに並ぶ Google 14 番目の「10 億ユーザー製品」となる。OpenAI の ChatGPT が今年 6 月に 10 億に達したのに続く節目で、<strong>音声（利用の 63%）やカメラ・画面共有といったライブ機能</strong>が牽引した。Demis Hassabis は「我々の最速成長プロダクト」と祝い、Logan Kilpatrick は「Gemma ファミリーも累計 10 億ダウンロード」と添えた。あわせて Gemini Omni の動画生成無償枠を期限まで延長するなど、消費者面でも攻勢を続けた。フロンティアの競争が能力だけでなく<strong>到達規模</strong>でも二強（OpenAI・Google）に収れんしつつある。</p>
+      <p>先週の透かし（watermarking）発表を受け、Anthropic は 8/14、寄せられた疑問に答える <strong>FAQ を公開</strong>した。要点は「<strong>EU AI Act 遵守のために実装する。同じ Code of Practice に署名した他の主要モデル開発者も同様に導入する</strong>」というもので、透かしが一社の独自策ではなく<strong>業界共通のルール対応</strong>であることを強調した。Anthropic の trq212 は「品質を落とさず透かしを入れられるのは直感に反する」として、その仕組みを説明する Claude 製のインタラクティブ資料を共有。あわせて Anthropic は <strong>Responsible Scaling Policy に基づく 2 本目のリスク報告書</strong>を公表し、自社システムのリスクと備えを定期開示する枠組みを回し始めた。Google 側も 8/14、Gemini の画像・動画・音楽生成で<strong>可視透かしの表示可否をユーザーが選べる一方、不可視の SynthID と C2PA メタデータは常時埋め込む</strong>と告知。<strong>透明性の担保を各社が横並びで制度化</strong>する週になった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://blog.google/innovation-and-ai/products/gemini-app/one-billion-monthly-users/">Google — Gemini app hits 1 billion monthly active users</a></li>
-      <li><a href="https://x.com/GeminiApp/status/2087229532382347277">Gemini App (X) — One billion monthly Gemini users and counting</a></li>
-      <li><a href="https://techcrunch.com/2026/08/11/googles-gemini-app-surges-to-one-billion-users/">TechCrunch — Google's Gemini app surges to one billion users</a></li>
+      <li><a href="https://x.com/AnthropicAI/status/2088343978873966687">Anthropic (X) — An FAQ about watermarking</a></li>
+      <li><a href="https://x.com/AnthropicAI/status/2088324824863236248">Anthropic (X) — Our second Risk Report is now available</a></li>
+      <li><a href="https://x.com/GeminiApp/status/2088277477672255830">Gemini App (X) — Choose visible watermarks; SynthID and C2PA always embedded</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">xAI が Grok Imagine Image 2.0 を投入 — 画像生成・編集で世界 2 位</h3>
+    <h3 class="article__headline">Dario Amodei が規制をめぐり公開対話 — 「集中か放任か」の二択を問い直す</h3>
     <div class="article__body">
-      <p>xAI は 8/7、次世代画像モデル <strong>Grok Imagine Image 2.0</strong> を Grok の新「Quality Mode」として一般提供した。<strong>精密な部分編集・鮮明な文字描画・事実性の向上</strong>を掲げ、デザイナーのようにタイポグラフィとレイアウトを設計するため、要素の多い複雑な画像でも崩れず小さな文字もはっきり出力する。編集ツールは指定領域だけを変える <strong>Magic Wand</strong>、精密選択の <strong>Segmentation</strong>、任意アスペクト比の <strong>Smart Resize</strong> を備え、1 回の生成で最大 5 枚の参照画像を渡せる。Arena では<strong>テキスト→画像・画像編集の双方で世界 2 位</strong>（首位は OpenAI の GPT-Image-2）にランクインし、週後半には <strong>API も開放</strong>。あわせて Grok は音声に 21 の新ボイスと Voice コネクタ（メール・予定の読み上げ、日次ブリーフ自動化）を全プラットフォームへ広げ、<strong>マルチモーダルの実用機能でフロンティアを追う</strong>姿勢を鮮明にした。</p>
+      <p>Dario Amodei は 8/15、規制のあり方をめぐる公開のやり取りに珍しく自ら参加した。「普段 SNS に時間を割かないが、これは重要な論点の核心を突く」と前置きし、<strong>「力を一部に集中させるか、まったく放任するか」という二択の立て方そのもの</strong>を問い直した。gdb の「防御側は未来が見えている。今こそ基礎を底上げし最良の AI ツールを使うべき」というサイバー防衛の呼びかけ（前週 Daybreak の延長線）とあわせ、<strong>フロンティア各社のトップが、能力の誇示ではなく「どう統治するか」を前面に置いて発信</strong>する流れが続いている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/grok/status/2085931542262526102">Grok (X) — Announcing Imagine Image 2.0, our next generation image model</a></li>
-      <li><a href="https://www.iclarified.com/101701/xai-launches-imagine-image-20-with-advanced-editing-tools-for-grok">iClarified — xAI launches Imagine Image 2.0 with advanced editing tools for Grok</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェント基盤・開発ツールの自律化</h2>
-
-  <article class="article">
-    <h3 class="article__headline">守りと運用の作り込み — Managed Agents・Codex セキュリティレビュー・Devin</h3>
-    <div class="article__body">
-      <p>攻撃能力の統治（前述）と並んで、防御側・運用側のツール整備が進んだ。Anthropic は <strong>Claude Managed Agents に 4 つの更新</strong>——セッション予算の上限設定（到達で自動一時停止・増額で再開）、<strong>作業中に強いモデルへ助言を求める「advisor」</strong>、添付リポジトリの `.claude/skills/` からのスキル読み込み、推論リージョン（US/global）の指定——を投入した。OpenAI 側は <strong>Codex が GitHub の全プルリクにインラインでセキュリティレビュー</strong>を実施できるようにし、Codex CLI にも Agent Plugins と自動承認フラグを追加。「コードと企業の安全性を高める全体イニシアチブの一環」と位置づけた。Cognition の <strong>Devin は Vercel Sandbox 上で「Outposts」を実行</strong>し、隔離マイクロ VM で Docker 実行・VPN 接続・スナップショット再開に対応。<strong>「クラウドエージェントが寝ている間に働く」</strong>非同期開発の実例が各社から示され、auto mode の常用や long-horizon タスクを前提にした運用設計が広がった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2085853169930957158">Claude Developers (X) — We shipped four updates to Claude Managed Agents this week</a></li>
-      <li><a href="https://x.com/gdb/status/2085496677725860064">Greg Brockman (X) — Codex can now perform a security review of every GitHub pull request</a></li>
+      <li><a href="https://x.com/DarioAmodei/status/2088758816376807762">Dario Amodei (X) — on regulation and the shape of the debate</a></li>
+      <li><a href="https://x.com/gdb/status/2089326994714763665">Greg Brockman (X) — defenders can see the future, and have a narrow window</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">安全・ガバナンスの制度化</h2>
+  <h2 class="topic__title">エージェントの本番導入と開発ツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">透かし・生物学ガードレール・若年層メンタルヘルス — 制度対応が具体化</h3>
+    <h3 class="article__headline">GE Aerospace・ABC Legal — エージェントが成果指標で語られる段階へ</h3>
     <div class="article__body">
-      <p>能力競争の裏で、ルールへの実装も進んだ。Anthropic は <strong>Claude が生成する全テキストに埋め込み型の透かし（watermarking）</strong>を入れると発表。EU AI Act への対応の一環で、他社も同様の透かしを追加しつつあり、たとえば「その PR が Claude Code 由来か」を検証できるようになる（限界はあると但し書き）。あわせて<strong>統計的な偏りを秘密鍵で検査するテキスト検出 API</strong> も提供予定という。安全側の調整では、Anthropic が <strong>Claude Fable 5 の生物学セーフガードを更新し、誤検知を約 85% 削減</strong>——日常的な健康・教育の質問に広く答えられるようにしつつ、ウイルス学・毒性学・分子設計などデュアルユース要求は引き続き Opus 5 へフォールバックさせ、専門的な創薬用途には開かない設計を維持した。OpenAI は <strong>米国心理学会（APA）と提携</strong>し、若年層のメンタルヘルスに関する証拠ベースの指針・セーフガードづくりに乗り出した。<strong>能力の一般化と歩調を合わせ、透明性・安全・年齢配慮の「制度側」の手当てが同じ週に束で出た</strong>。</p>
+      <p>今週は<strong>エージェントの「実運用の成果」</strong>が具体的な顧客名と数字で示された。Cognition の Devin は <strong>GE Aerospace で採用され、あるチームのエンジニアリング出力をほぼ倍増</strong>——航路最適化や燃料削減を担うソフトの開発を加速した。加えて Devin は <strong>MongoDB Atlas 上のライブデータに直接接続</strong>してクエリ・管理・クラスタ払い出しまでをタスク中に行えるようになり、「古いスキーマもコピー貼りも待ち時間もない」開発を掲げた。Anthropic 側は、法務サービスの <strong>ABC Legal が Claude Managed Agents を 50 体超のフリートとして運用し、特定業務のコストを最大 5 割削減</strong>、フィードバックループで継続改善している事例を公開した。デモや個人利用ではなく、<strong>企業の生産指標・コスト指標でエージェントを評価する</strong>語り口が主流になりつつある。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/trq212/status/2087258091821949074">Thariq (X) — All Claude generated text will have this embedded watermarking</a></li>
-      <li><a href="https://x.com/claudeai/status/2085563808773189680">Claude (X) — Updating Claude Fable 5's biology safeguards to reduce false positives</a></li>
-      <li><a href="https://x.com/OpenAINewsroom/status/2085420740850172159">OpenAI Newsroom (X) — Working with the American Psychological Association on AI and youth mental health</a></li>
+      <li><a href="https://x.com/cognition/status/2089378509882089747">Cognition (X) — GE Aerospace is using Devin; one team nearly doubled its engineering output</a></li>
+      <li><a href="https://x.com/cognition/status/2087892577185829004">Cognition (X) — Devin now works directly on your live data in MongoDB Atlas</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089436153208549876">Claude Developers (X) — ABC Legal deployed 50+ Claude Managed Agents</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Claude Code が auto mode を実装展開 — /design・Cowork・Gmail/Drive まで一気に</h3>
+    <div class="article__body">
+      <p>先週予告された <strong>auto mode（自動許可）が 8/14 に Pro・Max・Team の既定として実際に展開</strong>され（既定を設定済みなら変更前に確認）、Anthropic は開発体験の拡張を週内に畳みかけた。<strong>/design</strong>（研究プレビュー）は Claude Design のアートボード編集を CLI・Desktop に持ち込み、UI 案を選んで調整し実装まで繋げる。<strong>Claude Cowork がモバイル・Web の全有料プランに開放</strong>され、<strong>Claude が Gmail のメール送信・Google Drive のファイル管理</strong>まで担えるようになった（承認タイミングは利用者が制御）。地味だが効く改善も続き、<strong>Claude Code CLI の p99 CPU 使用が半減、Desktop の起動が約 2 倍高速化</strong>。旺盛な需要を受け、<strong>週次利用上限の +50% 拡大を 8/31 まで延長</strong>（恒久化を検討中だが容量逼迫の可能性にも言及）。<strong>「常時自律・長時間実行」を前提に、承認負荷・起動速度・接続先を一つずつ実務水準へ詰める</strong>週だった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/ClaudeDevs/status/2088332927189049738">Claude Developers (X) — Auto mode is rolling out as the default permission mode</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089471692762673408">Claude Developers (X) — Claude Code can design now (/design research preview)</a></li>
+      <li><a href="https://x.com/claudeai/status/2089806039088517356">Claude (X) — Claude can now send emails in Gmail and manage files in Google Drive</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089798442306711646">Claude Developers (X) — Extending the 50% increase to weekly Claude Code limits through August 31</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">リサーチ・AI for science</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Anthropic が創薬の分子設計に AI を向ける — Riemann に続く「一次研究」</h3>
+    <div class="article__body">
+      <p>Anthropic は 8/18、<strong>創薬における分子設計に Claude を応用する取り組み</strong>を示した。多くの薬は体内の特定の標的に結合してその働きを妨げ・変える。その「標的に強く結合する分子を設計する」最初の工程は、従来<strong>一標的あたり数週間〜数ヶ月の専門家の作業</strong>を要してきた。ここに AI を入れて時間を圧縮しようという狙いだ。先週の<strong>未公開 Claude による Riemann 予想の下界更新</strong>に続き、<strong>フロンティアのモデルを検証可能な自然科学の一次課題へ向ける</strong>流れが続いている。安全側の生物学ガードレール（前週更新、デュアルユース要求は上位モデルへフォールバック）と両立させながら、<strong>「治療に資する応用」と「悪用の抑止」を同じ設計思想で回せるか</strong>が問われる領域でもある。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/AnthropicAI/status/2089842387845804246">Anthropic (X) — Designing a molecule that can bind tightly to its target</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">業界動向</h2>
+
+  <article class="article">
+    <h3 class="article__headline">xAI が Cursor を取り込み、CodeRabbit は 143M ドル調達 — コーディング層に資本と統合が集中</h3>
+    <div class="article__body">
+      <p>資本と統合の動きも<strong>コーディング／開発ツール層</strong>に集中した。xAI（SpaceXAI）は 8/14、人気コードエディタ <strong>Cursor をチームに迎え入れる</strong>と発表。「ソフトウェア工学から始め、知的労働全般へ広げる」とし、Grok 4.6 の投入と同じ週に<strong>モデルと開発フロントエンドの垂直統合</strong>へ動いた。一方 <strong>CodeRabbit は 1 億 4,300 万ドルの Series C を評価額 15 億ドルで調達</strong>し、「ソフトウェア変更のコントロール層」を掲げて拡大。同社は攻撃者の AI 活用に対抗する <strong>CodeRabbit Security</strong>（リポジトリ全体の脆弱性探索と PR での修正提案）も投入した。フロンティアモデルの<strong>価値がコードを書く末端の体験と運用・安全のレイヤーへ降りてくる</strong>につれ、そこに買収・出資・製品拡張が束で集まる構図が鮮明になっている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/SpaceXAI/status/2088250109188608289">SpaceXAI (X) — Welcome to the SpaceXAI team! Cursor will help us move faster</a></li>
+      <li><a href="https://x.com/coderabbitai/status/2087525329132814524">CodeRabbit (X) — We raised a $143M Series C at a $1.5B valuation</a></li>
+      <li><a href="https://x.com/coderabbitai/status/2087888534753488909">CodeRabbit (X) — Introducing CodeRabbit Security</a></li>
     </ul>
   </article>
 </section>
@@ -162,7 +210,7 @@
 <section class="topic">
   <h2 class="topic__title">来週の注目ポイント</h2>
   <div class="article__body">
-    <p>最大の観測点は<strong>「critical」宣言後の Astra の行方</strong>。一般公開の時期、政府機関・独立系 AI 安全団体との能力検証、隔離テスト環境や重み保護の具体像を追いたい。防御面では、<strong>Daybreak／GPT-5.6-Cyber の実運用の広がりと、Anthropic・Google など他社の防御向けサイバーモデルの追随</strong>、V8 のような実脆弱性発見の続報が焦点。ツールでは <strong>8/14 の Claude Code auto mode デフォルト化</strong>後の現場の反応と、セッション間通信・Managed Agents を使った非同期開発の定着度。研究面では、<strong>Riemann 下界更新に対する数学界の追試・検証</strong>と、AI-for-math が「検証可能な一次研究」としてどこまで受け入れられるか。制度面では <strong>EU AI Act 対応の透かし・検出 API の実装</strong>と各社の足並み。そして普及面では、<strong>10 億ユーザーに乗った Gemini の次の一手</strong>と GPT-5.6 Sol／Grok Image 2.0 を軸にしたプロダクト競争の続きが注目される。</p>
+    <p>最大の観測点は <strong>OpenAI の「2 週間の RL 停止」明け</strong>。停止で固めたアラインメント・監視の基準がどんな形で公表され、展開予定モデル（Astra を含む次段）の解禁時期にどう反映されるかを追いたい。モデル競争では、<strong>Grok 4.6・Gemini 3.7 Flash・GPT-5.6 Sol（Ultrafast）の価格対性能をめぐる各社ベンチと現場の採用</strong>、そして <strong>xAI × Cursor 統合の具体像</strong>（Grok を組み込んだ開発体験、既存 Cursor ユーザーへの影響）。エージェント面では、<strong>GE Aerospace・ABC Legal に続く本番導入事例と、成果指標（出力・コスト）の再現性</strong>。制度面では <strong>EU AI Act 対応の透かし・検出まわりで各社の足並みがどこまで揃うか</strong>。研究面では <strong>Anthropic の分子設計（および Riemann 系の追試）が「検証可能な一次研究」としてどこまで受け入れられるか</strong>が焦点になる。</p>
   </div>
 </section>
 
