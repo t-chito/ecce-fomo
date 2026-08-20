@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年8月13日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年8月20日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年8月13日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年8月20日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月13日（木）</span>
+        <span>2026年8月20日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,102 +31,128 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週の「穴を塞ぐハードニング」に対して、今週の Claude Code は<strong>「任せる」を既定に切り替える週</strong>だった。8/14 から Pro・Max・Team で <strong>auto モードが標準の権限モード</strong>になり、しかも権限分類器のトークンは利用上限に数えない——「人間が危険コマンドを見抜けるのは 14%（50回も繰り返すと 5% 台）、分類器は 89%」という自社検証を根拠に、承認ダイアログを外して長時間タスクを回す方向へ舵を切った。あわせて<strong>セッション同士がメッセージを送り合える（SendMessage）</strong>機能が 2.1.224 で入り、今週いちばん拡散した投稿（750万インプレ・6万いいね）になった。プロダクト外周では <strong>Grok 4.6</strong> が「フロンティアの半額」で登場し即日 Devin・Cursor・Notion に載る、モデル差し替え合戦が続く。<strong>CodeRabbit は 143M ドルのシリーズ C（評価額 15億ドル）</strong>を発表して「AI コードレビュー」から「Agentic Change Management」へ看板を掛け替えた。そしてコミュニティでは、他社モデルを Claude Code のハーネスで動かして Anthropic に BAN された話が波紋を呼び、ハーネスの囲い込みという論点が浮上した週でもあった。</p>
+  <p>先週が「任せるを既定にする」週だったなら、今週の Claude Code は<strong>手触りを磨く週</strong>だった。目玉は <strong>/design（リサーチプレビュー）</strong>——Claude Design のアートボード編集を CLI／Desktop に持ち込み、「コードを書く前にデザインを触る」導線が公式機能として入った。あわせて出力スタイル <strong>Concise</strong>、<strong>CLI が p99 で CPU 半減・Desktop 起動が約2倍速</strong>という地味だが効く性能改善、そして<strong>週次利用上限の +50% を 8/31 まで延長</strong>と、日々の摩擦を削る更新が並んだ。プロダクト外周では今週最大の地殻変動が起きている。<strong>Cursor が SpaceX による 600億ドルの買収を完了して SpaceXAI 傘下に入り</strong>、その 4 日後に<strong>エージェント前提のコードホスティング「Origin」</strong>を——よりによって GitHub が大規模障害を起こした当日に——投入して GitHub に正面から並んだ。<strong>Devin</strong> はモデルを次々と無料・大幅割引で開放し、<strong>CodeRabbit</strong> は先週の 1.43 億ドル調達を「5 日で 3 プロダクト」の製品ラッシュ（Security／Triage／Change Stack）に変えた。Claude 本体も Cowork のモバイル／Web 解放や Gmail・Drive 連携で外へ広がっている。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">8/14 から auto モードが既定に——「人間の承認より安全」を数字で押し切る</h3>
+    <h3 class="article__headline">Claude Code がデザインできるようになった——/design でアートボードを CLI に</h3>
     <div class="article__body">
-      <p>今週の主役は明確だ。<strong>8 月 14 日から、Claude Code の既定の権限モードが auto モードになる</strong>（Pro・Max・Team、既に defaultMode を設定済みなら変更前に確認が入る）。auto モードは各ツール呼び出しを別の分類器で審査する方式で、Anthropic は「テストで危険なコマンドの <strong>89%</strong> を捕捉、手動承認は <strong>14%</strong> だった」と主張。さらに 1,053 人の有料テスターに、明らかに危険なコマンド（テキストのみ・実際には実行しない）を混ぜた検証では、テスターが気づいたのは <strong>13.6%</strong>、50 回もプロンプトを浴びると <strong>約 5%</strong> まで落ちた——「承認ボタンの連打は安全装置として機能しない」というのがメッセージだ。</p>
-      <p>運用上の摩擦も同時に削った。分類器が各ツール呼び出しで消費する少量のトークンは、<strong>Pro・Max・Team の利用上限に数えない</strong>（Enterprise・API は auto モード既定化に合わせて追随）。管理者は managed settings で defaultMode を固定、あるいは auto モードごと無効化でき、ユーザーは従来どおり Shift+Tab で切り替えられる。中の人の温度感も高く、Boris Cherny（@bcherny）は「チームは何ヶ月も auto モードだけを使ってきた。もう承認プロンプトには戻れない」と投稿。安全性の裏づけとして、彼は「モデル訓練＋入力プローブ＋意図を確認する分類器、を積み重ねると、未知の攻撃に対する間接プロンプトインジェクションを実質ゼロにできた」とも書いた。先週までの権限・サンドボックスのハードニングに続く「任せる前提の地ならし」が、いよいよ既定値の変更として着地する。</p>
+      <p>今週いちばんの新機能は <strong>/design スキル（リサーチプレビュー）</strong>だ。Claude Design のアートボード・ワークフローを <strong>CLI と Desktop の両方に持ち込み</strong>、Artifacts の上で動く。<code>/design</code> と打つと、作りたい UI の<strong>編集可能なアートボード</strong>が出てきて、気に入ったものを選んで手で微調整し、そのまま Claude に実装させる——「まず言葉で仕様を詰める」前に「まず見た目を触る」導線がコーディングエージェントの中に入った格好だ。</p>
+      <p>反応も早かった。@ClaudeDevs の告知は約 1.5 万いいね・166 万インプレッションに達し、個人エンジニアの trq212 は「<code>/design &lt;作りたいもの&gt;</code> を今すぐ打て」とだけ書いた投稿で拡散させた。日本語圏でも oikon48 が「Claude Design のキャンバスエディタを実行し、マルチアートボードのビジュアルを <code>.dc.html</code> のアートボードとして 1 枚のパン／ズーム可能なキャンバス上にドラフトする」と要点を紹介。コード生成一辺倒だったエージェントが「設計フェーズ」に足を伸ばした、プロダクトとしての方向転換を象徴する一手だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2085794862608318627">@ClaudeDevs — 8/14 から auto モードが既定に（89% 対 14%）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2085794865330393117">@ClaudeDevs — 1,053 人テスターの検証（13.6%→約5%）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2085794868102889473">@ClaudeDevs — 分類器のトークンは利用上限に数えない</a></li>
-      <li><a href="https://x.com/bcherny/status/2085807103382519872">@bcherny — 「もう承認プロンプトには戻れない」</a></li>
-      <li><a href="https://x.com/bcherny/status/2085860677990883454">@bcherny — 層を重ねて間接プロンプトインジェクションを実質ゼロに</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089471692762673408">@ClaudeDevs — Claude Code can design now（/design リサーチプレビュー）</a></li>
+      <li><a href="https://x.com/trq212/status/2089529798850969805">@trq212 — 「/design &lt;作りたいもの&gt; を今すぐ打て」</a></li>
+      <li><a href="https://x.com/oikon48/status/2089517398919708703">@oikon48 — /design スキルの中身を日本語で紹介</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">セッションが互いにメッセージを送り合う（SendMessage）——今週いちばん拡散した機能</h3>
+    <h3 class="article__headline">軽く・速く・簡潔に——Concise 出力と、CPU 半減・起動2倍速の地ならし</h3>
     <div class="article__body">
-      <p>2.1.224 で入った <strong>クロスセッション・メッセージング（SendMessage）</strong>は、今週最大の話題になった。別セッションに文脈を渡し直したいとき、これまでは自分で説明をやり直す必要があったが、これからは「あのセッションに伝えておいて」と Claude に頼める。送られるのは<strong>要約だけ（履歴やファイルは渡さない）</strong>で、受け取った側はタスクの途中でそれを拾う。双方向で、別セッションに質問を投げて回答を今のセッションで受け取ることもでき、<strong>Claude が自発的に</strong>「今の変更が別セッションの作業に影響する」と判断してメッセージを送ることもある。@ClaudeDevs の告知は <strong>約 750 万インプレッション・6 万いいね</strong>に達し、今週の x で群を抜いた反応を集めた。</p>
-      <p>基盤として、<code>ListAgents</code> でマシンをまたいだセッションを発見できるようになり（macOS/Linux）、2.1.225 では <strong>他マシン上の Remote Control セッションに名前で会話を開始</strong>できるようになった。2.1.228 ではクロスセッションのメッセージが<strong>折りたたみでなくインライン表示</strong>になり、受信箱なしで会話が始まってしまう不具合も修正。複数エージェントを並走させて協調させる、という運用が「実験」から「標準の使い方」に一歩近づいた。</p>
+      <p>派手さはないが日々効く更新が固まって出た。2.1.237 で<strong>出力スタイル <code>Concise</code></strong> が追加され、Claude は<strong>結論を先に述べ、前置き・冗長な説明・ナレーションを省く</strong>ようになった（探索や確認を挟んでも、その過程ではなく結果だけを返す）。<code>/config → Output style</code> か <code>settings.json</code> の <code>"outputStyle": "Concise"</code> で有効化でき、必要なら従来どおり詳細も引き出せる。</p>
+      <p>性能面では、<strong>Claude Code CLI が p99 で CPU 使用量を半分に</strong>。原因は Bun のガベージコレクタが固定タイマーで動き、Claude が最も忙しい処理の最中に割り込んで CPU を奪っていたことで、これを<strong>プロセスがアイドルになるまで待つ</strong>方式に変えた。<strong>Claude Desktop の起動も 1 か月前比で約2倍速</strong>に——バックグラウンド起動時にタイマーが絞られて JS エンジンが省電力モードに落ちていたのを、ウィンドウが隠れていても全速で起動するよう修正した。「賢くする」だけでなく「軽く・速く・簡潔に」というプロダクト品質側の投資が、今週はまとめて表に出た。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2085817074816070014">@ClaudeDevs — セッション同士がメッセージを送り合える（要約のみを渡す）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2085817075923296444">@ClaudeDevs — 双方向・Claude 側からの自発的メッセージ</a></li>
-      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（2.1.224 SendMessage／2.1.228 インライン表示）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2090245922685063634">@ClaudeDevs — 出力スタイル Concise を追加</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089509659090780193">@ClaudeDevs — CLI が p99 で CPU 半減（Bun GC の割り込みを解消）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089860955266228548">@ClaudeDevs — Claude Desktop の起動が約2倍速に</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">2.1.224〜231——self-hosted runner、Edit の厳密置換、そして「同期スキル」の締め直し</h3>
+    <h3 class="article__headline">利用上限まわりの緩和——週次 +50% を 8/31 まで延長、止まっても自動で再開</h3>
     <div class="article__body">
-      <p>リリースは 2.1.224 から 2.1.231 まで一週間で 8 本。目玉は 2.1.224 の <strong>self-hosted runner</strong>（<code>claude self-hosted-runner</code>）で、自前のマシンやコンテナを Claude Code セッションの実行先にできる（Team・Enterprise）。プライベートで統制の効いた実行環境を、クラウドではなく手元に置きたい組織向けの一手だ。あわせて Edit ツールが<strong>厳密な文字列一致でのみ置換</strong>する方式になり、部分文字列を巻き込む意図しない編集を防ぐようになった（2.1.224／225）。</p>
-      <p>先週の権限ハードニングの流れは、今週は<strong>「claude.ai と同期するスキル」の締め直し</strong>に及んだ。2.1.228 は、同期スキルがローカルのコマンドを乗っ取る（shadow する）のをやめ、シェル実行をブロックし、メタデータをサニタイズする——ローカルのコマンドを優先させ、外部同期の設定に足元をすくわれないようにした。2.1.229 は 32 変更の大型で、Remote Control の <code>--continue</code>、self-hosted runner のフック対応、長考中の SSE キープアライブ、プラグインマーケットプレイスの <code>command</code> ソースなどが入った。週末の 2.1.231 では、Slack のような<strong>事前登録 OAuth クライアントを使う MCP サーバーでサインインが失敗する</strong>リダイレクト URI 不一致を修正している。</p>
-      <p>エージェント運用基盤の Managed Agents にも 4 つ更新が入った。セッションに<strong>予算を設定</strong>して上限で一時停止（<code>budget_reached</code>）、接続リポジトリの <code>.claude/skills/</code> から<strong>スキルを自動ロード</strong>、推論リージョンを US／global で<strong>固定（<code>inference_geo</code>）</strong>、そして働くエージェントに<strong>advisor（強いモデル）を 1 行で付与</strong>してセカンドオピニオンを取れるようにした。</p>
+      <p>運用の一番痛いところ、レートリミットにも手が入った。<strong>週次の Claude Code 利用上限の +50% 増量を 8 月 31 日まで延長</strong>し、Anthropic は「恒久化したいが、モデル需要が強く今後数週間は capacity が厳しいかもしれない」と正直に添えた。この告知は約 2 万いいね・340 万インプレと、今週の x で最も強い反応を集めている。</p>
+      <p>上限に当たったときの体験も改善された。Desktop では<strong>「上限リセット後に自動で作業を続ける」チェックボックス</strong>が入り、CLI 側でも 2.1.234 で<strong>claude.ai の利用上限がリセットされると自動でセッションを再開</strong>する挙動が加わった。長時間タスクを回す前提の運用で「上限で止まって放置される」事故を減らす、地味に効く一手だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub、2.1.224〜231 の一次情報）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2085580408490451419">@ClaudeCodeLog — 2.1.224（self-hosted runner・Edit 厳密置換）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2087274049709707404">@ClaudeCodeLog — 2.1.228（同期スキルの締め直し）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2085853169930957158">@ClaudeDevs — Managed Agents に 4 つの更新（予算・スキル・inference_geo・advisor）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089798442306711646">@ClaudeDevs — 週次利用上限の +50% を 8/31 まで延長</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2088014831605702937">@ClaudeDevs — Desktop に自動継続チェックボックス</a></li>
+      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（2.1.234：上限リセット時の自動再開）</a></li>
     </ul>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Grok 4.6：「フロンティアの半額」で各プロダクトに一斉搭載</h2>
 
   <article class="article">
-    <h3 class="article__headline">出た当日に Devin・Cursor・Notion——モデル差し替え合戦の最新ラウンド</h3>
+    <h3 class="article__headline">2.1.232〜237——サブエージェント fork が既定、@メンションで別セッションへ、GitLab 一式</h3>
     <div class="article__body">
-      <p>xAI が <strong>Grok 4.6</strong> を公開した。同価格で Grok 4.5 から大きく改善したとうたい、価格は <strong>入力 $2／出力 $6（100万トークン）</strong>——「他のフロンティアモデルの半額」を前面に出した。注目は展開の速さで、発表当日に <strong>Grok Build・Cursor・Grok Bot・API</strong> で利用可能になり、Cursor と Grok Build では初週 2 倍の利用枠が付いた。</p>
-      <p>そして数時間のうちに、コーディングプロダクト側が続々と取り込んだ。<strong>Devin</strong> は「Grok 4.6 が使えるようになった。Grok 4.5 から大きく改善し、GPT-5.6 Sol を上回り、Opus 5 と Fable 5 に次ぐ」と告知。<strong>Notion</strong> も同日「Grok 4.6 が Notion で使えるようになった」と発表した。基盤モデルの新版が出るたびに、各プロダクトが最速で載せ替えてベンチ順位とコストを語る——先週の Devin×Grok（の前世代）に続く、この構図が今週も回った。プロダクトを選ぶ側にとっては「どのエージェントがどのモデルを、いつ、いくらで使えるか」が実利用の分かれ目になりつつある。</p>
+      <p>リリースは一週間で 2.1.232 から 237 まで。基盤側の効く変更が多い週だった。2.1.232 で<strong>サブエージェントの fork が既定に</strong>なり、会話とプロンプトキャッシュを丸ごと継承するようになった。あわせて<strong>プロンプト内の <code>@</code> メンションで別の Claude セッションに直接届く</strong>（先週の SendMessage の続き）。2.1.236 では新規セッションの既定モデルを指す <strong><code>ANTHROPIC_DEFAULT_MODEL</code></strong> 環境変数、SendMessage の <code>notify_when_idle</code>、auto モードで <code>Monitor</code> の許可ルールを Bash 同様に審査する変更などが入った。</p>
+      <p><strong>GitLab 対応</strong>がまとまって進んだのも今週で、MR URL を <code>--worktree</code> やエージェントビューで扱えるようになり、フッターに MR バッジ、マーケットプレイスのクローン対応、<code>glrt-</code>／<code>gloas-</code> などトークンの秘匿化まで揃った。セキュリティ面では NTLM 資格情報の漏洩ベクタや Cygwin 風シンボリックリンク・PowerShell 経由の権限バイパスを塞ぎ、<code>claude-api</code> スキルの文脈コストを約 20 万→2.5 万トークンに圧縮。エージェント運用基盤の Managed Agents にも 3 更新が入り、<strong>Self-Hosted Sandbox の作業を memory に保存</strong>できるようになった。導入事例として、ABC Legal が 50 以上のエージェント群で特定の法務タスクのコストを最大 50% 削減した話も公開された。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/SpaceXAI/status/2087562800982077492">@SpaceXAI（xAI）— Grok 4.6 発表</a></li>
-      <li><a href="https://x.com/SpaceXAI/status/2087562803075068196">@SpaceXAI — 入力 $2／出力 $6・フロンティアの半額</a></li>
-      <li><a href="https://x.com/cognition/status/2087579582492987881">@cognition — Grok 4.6 が Devin で利用可能に</a></li>
-      <li><a href="https://x.com/NotionHQ/status/2087650370592157970">@NotionHQ — Grok 4.6 が Notion で利用可能に</a></li>
+      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub、2.1.232〜237 の一次情報）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2090218983962390950">@ClaudeDevs — Managed Agents に 3 更新（Self-Hosted Sandbox の memory 保存ほか）</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2089436153208549876">@ClaudeDevs — ABC Legal が 50+ エージェントでコスト最大 50% 削減</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">CodeRabbit：143M ドル調達で「レビュー」から「変更管理」へ</h2>
+  <h2 class="topic__title">Cursor：SpaceX 傘下入りと、GitHub 障害の日に投入した「Origin」</h2>
 
   <article class="article">
-    <h3 class="article__headline">シリーズ C（評価額 15億ドル）と Agentic Change Management への看板掛け替え</h3>
+    <h3 class="article__headline">600億ドルの買収完了、4日後にエージェント前提のコードホスティングで GitHub に並ぶ</h3>
     <div class="article__body">
-      <p>先週「指摘より説明可能性」で立ち位置を語った CodeRabbit が、今週は資金で裏づけた。<strong>1.43 億ドルのシリーズ C を評価額 15 億ドルで調達</strong>（Atomico と Smash Capital が共同リード、BMW i Ventures や Datadog など新規、CRV・Scale Venture Partners などが継続）。掲げるのは「ソフトウェア変更の control layer（統制レイヤ）」で、<strong>AI コードレビューから「Agentic Change Management」へ事業を拡張</strong>すると宣言。「AI がコードを大量生産した結果、いまやボトルネックは信頼だ」という認識のもと、影響範囲の把握と出荷後のセキュリティ維持まで踏み込むという。</p>
-      <p>技術面の小ネタも、専業らしい方向だった。Baseten と組んで <strong>NVIDIA Nemotron 3.5 Lightning を CodeRabbit のルーティング判断でファインチューン</strong>し、3 時間・100 ドル未満で「従来の GPT クラスより精度 約 4% 向上」を得たと報告。汎用コーディングエージェントがレビューまで飲み込む中で、専業側は「レビュー」という単機能ではなく<strong>変更フロー全体の統制</strong>へと逃げ場を広げにきた、という構図が資金の裏づけとともに鮮明になった。</p>
+      <p>今週の外周で最大の動きは Cursor だ。8 月 14 日、<strong>SpaceX による 600 億ドル（全株式）の買収が完了</strong>し、Cursor は SpaceXAI 傘下に入った。公式アカウントは「Welcome to the SpaceXAI team! Cursor はソフトウェアエンジニアリングから知識労働へと、最も有用な AI への道を加速させる」と投稿し、約 1.6 万いいね・780 万インプレを集めた。</p>
+      <p>そして買収後初の大型プロダクトが 4 日後に来た。8 月 18 日、Cursor は<strong>「Origin」——エージェント前提で設計されたコードホスティング</strong>を有料ユーザーに投入した。PR・コードレビュー・リポジトリ保管を備え、Vercel／Depot／Buildkite が初日から連携。既存の GitHub リポジトリを<strong>同期して相互運用</strong>でき、Cursor デスクトップの新タブと専用 CLI から触れる。象徴的だったのはタイミングで、投入と同じ日に <strong>GitHub が約 6 時間 42 分・エラー率 2 割規模の大規模障害</strong>を起こし（Cursor 側は「狙ったわけではない」と釈明）、ネットは「GitHub の代替が来た日に GitHub が落ちた」と沸いた。コーディングエージェントがエディタからホスティングまで垂直統合しにいく——プロダクト選びの土俵が「補完の質」から「開発フロー全体をどこに置くか」へ広がったことを示す一件だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/coderabbitai/status/2087525329132814524">@coderabbitai — 143M ドル・評価額 15億ドルのシリーズ C</a></li>
-      <li><a href="https://x.com/coderabbitai/status/2087525332597272924">@coderabbitai — Agentic Change Management への拡張</a></li>
-      <li><a href="https://x.com/coderabbitai/status/2087175469963858146">@coderabbitai — Nemotron 3.5 をルーティング用にファインチューン</a></li>
+      <li><a href="https://x.com/SpaceXAI/status/2088250109188608289">@SpaceXAI — Cursor が SpaceXAI チームに加わる</a></li>
+      <li><a href="https://techcrunch.com/2026/08/18/cursor-capitalizes-on-github-frustration-launches-rival-hosting-platform/">TechCrunch — Cursor が GitHub 対抗のホスティング「Origin」を投入</a></li>
+      <li><a href="https://siliconangle.com/2026/08/17/cursor-launches-origin-code-hosting-service-to-compete-with-github/">SiliconANGLE — Origin の機能と GitHub 同期</a></li>
+      <li><a href="https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/">TechCrunch — SpaceX が Cursor 買収を正式完了</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">コミュニティ：ハーネスの囲い込みという論点</h2>
+  <h2 class="topic__title">Devin：モデルを次々と無料・大幅割引で開放</h2>
 
   <article class="article">
-    <h3 class="article__headline">「他社モデルを Claude Code のハーネスで動かしたら BAN された」</h3>
+    <h3 class="article__headline">SWE-1.7 と GLM-5.2 を1か月無料、GPT-5.6 Sol は70%オフ——「載せ替えの速さと安さ」で攻める</h3>
     <div class="article__body">
-      <p>プロダクトの使い勝手をめぐって、今週は「ハーネス（実行の枠組み）とモデルの結びつき」が議論になった。きっかけは、<strong>Tibo のセットアップを真似て OpenAI のモデルを Claude Code のハーネスで動かしたら Anthropic に BAN された</strong>、という報告。当の Tibo も「Anthropic には勤めていないので助けられないが、他社モデルを自分たちのハーネスで使っただけで BAN するのはおかしくないか。同じ状況の人いる？」と反応し、oikon48 らを通じて日本語圏でも共有された。</p>
-      <p>ツール（ハーネス）とモデルが別々に選べるように見えて、実際には利用規約でひも付いている——コーディングエージェントを選ぶとき、機能やモデル性能だけでなく「どのモデルを載せてよいか」という規約面まで見る必要がある、という実務的な気づきを突きつけた一件だ。auto モードの既定化や self-hosted runner のように「任せる・自前で回す」方向が進むほど、こうした運用境界の話題は増えていきそうだ。</p>
+      <p>Cognition の Devin は、今週も「どのモデルを、いくらで使えるか」を武器にした。<strong>自社モデル SWE-1.7 と GLM-5.2 を 1 か月間無料</strong>で開放（Pro・Max・Teams が Devin Desktop／CLI で使い放題）、さらに <strong>GPT-5.6 Sol を 10 月 3 日まで 70% オフ</strong>で提供すると告知した。Sol は FrontierCode 1.1 でトップ級の結果を出すモデルで、割引で「最もコスパの良いフロンティアモデルの一つ」に位置づける狙いだ。</p>
+      <p>実利用の裏づけも出した。GE Aerospace が Devin を導入し、あるチームは<strong>出力をほぼ倍増</strong>させたという事例を公開。基盤モデルが出るたびに最速で載せ替え、価格で選ばせ、導入事例で説得する——プロダクトとしての Devin の戦い方が、今週も一貫して見えた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/oikon48/status/2086263881119523208">@oikon48 — 他社モデルを Claude Code のハーネスで動かして BAN された話</a></li>
+      <li><a href="https://x.com/devindesktop/status/2088383979997241794">@devindesktop — SWE-1.7 と GLM-5.2 を1か月無料</a></li>
+      <li><a href="https://x.com/devindesktop/status/2089830350964883459">@devindesktop — GPT-5.6 Sol を 10/3 まで 70% オフ</a></li>
+      <li><a href="https://x.com/cognition/status/2089378509882089747">@cognition — GE Aerospace の Devin 導入事例</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">CodeRabbit：調達を「5日で3プロダクト」の製品ラッシュに変える</h2>
+
+  <article class="article">
+    <h3 class="article__headline">レビューから「変更管理」へ——Security・Triage・Change Stack を立て続けに投入</h3>
+    <div class="article__body">
+      <p>先週「1.43 億ドルのシリーズ C」と「Agentic Change Management への看板掛け替え」を掲げた CodeRabbit は、今週その宣言を製品で埋めにきた。同社は「<strong>1.43 億ドルを調達し、5 日で 3 プロダクトを発表した</strong>」として、<strong>CodeRabbit Security・CodeRabbit Triage・CodeRabbit Change Stack</strong> を立て続けに公開した。</p>
+      <p>目玉の <strong>CodeRabbit Security</strong> は「AI Deep Scan」でソースコードとインフラ設定を横断し、悪用可能な脆弱性を洗い出す。各指摘に<strong>カテゴリ・深刻度・CWE・ファイル・行範囲・到達可能性</strong>を付け、開発者が自力でも AI と一緒でも直せる形にする。「ルールベースのスキャナは、誰かが既に思いついた攻撃のリストにすぎない。まだ誰も書き留めていない攻撃のために作った」というメッセージで、汎用エージェントがレビューまで飲み込む流れに対し、専業らしく<strong>変更フロー全体の統制</strong>へ製品ラインを広げた格好だ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/coderabbitai/status/2088403110108471571">@coderabbitai — 5日で3プロダクト（Security／Triage／Change Stack）</a></li>
+      <li><a href="https://x.com/coderabbitai/status/2089457363283828797">@coderabbitai — CodeRabbit Security の AI Deep Scan</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">コミュニティ：中の人が示す「保守を丸ごと任せる」運用</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Boris の「Claude にアプリ保守を任せる」実験と、PR を緑にするまで回す使い方</h3>
+    <div class="article__body">
+      <p>プロダクトの使い方として今週共有されたのは、「任せる」を本気で運用に落とし込む話だった。Claude Code チームの Boris Cherny（@bcherny）は、<strong>ここ数週間、日々のアプリ保守を Claude に任せる実験</strong>をしていると投稿。<code>proj-claude-maintains-apps</code> という Slack チャンネルを作り、Claude（Claude Tag／Claude Code）に毎日自動で走るルーチンを複数実行させ、iOS・Android・Desktop・Web・CLI・Agent を対象にしているという。「まだ実験だが、成立しうる兆しが見えてきた」との温度感だ。</p>
+      <p>個人エンジニアの実践も具体的だった。amorriscode は「<strong>PR は全部 Claude Code デスクトップアプリから作らせ、CI が緑になるまで Claude 自身に反復させる</strong>」運用を紹介し、自分はより高レバレッジな仕事に集中できるようになったと書いた。auto モードの既定化や利用上限の緩和といった今週のプロダクト更新は、こうした「人はレビューだけ、実行は任せる」運用を後押しする方向で噛み合っている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://x.com/bcherny/status/2088014489438621990">@bcherny — Claude に日々のアプリ保守を任せる実験</a></li>
+      <li><a href="https://x.com/amorriscode/status/2089472668504649914">@amorriscode — PR を全部 Claude に作らせ、緑になるまで回す</a></li>
     </ul>
   </article>
 </section>
