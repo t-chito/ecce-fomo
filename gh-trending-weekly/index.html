@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年8月14日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年8月21日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年8月14日">
+<meta property="og:title" content="GitHub トレンド — 2026年8月21日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月14日（金）</span>
+        <span>2026年8月21日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,165 +31,179 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の GitHub 週間トレンドは三つの流れが軸になった。ひとつは <strong>「自律・長時間エージェントの土台」争い</strong>。今週最大の伸びは自己改善型コーディングエージェント <code>PrimeIntellect-ai/prime-agent</code>（週間 +12,476★・今週トップ）で、長時間エージェントの状態管理カーネル <code>loopx</code>、エージェントに計算環境を与える Cloudflare の <code>computer</code> が同じ週に並んだ。ふたつめは<strong>「スキル」配布への大手の参入</strong>で、Google 公式の <code>google/skills</code>（Google Cloud 向け 60+ スキル）と Addy Osmani の <code>agent-skills</code>（累計 8.7万★）が上位に食い込み、先週から続く <code>reverse-skill</code>・<code>book-to-skill</code> も伸び続けた。みっつめは<strong>文脈・記憶をグラフで持つ基盤</strong>で、説明可能性を掲げる <code>semantica</code>、モノレポ向け知識グラフ RAG の <code>code-graph-rag</code>、先週から続くチーム記憶ハブ <code>TencentDB-Agent-Memory</code>（週間 +5,388★）が並んだ。加えて OCR 不要の Rust 製 PDF 解析 <code>pdf-inspector</code>、ER 図エディタ <code>drawdb</code>、独立ブラウザ <code>ladybird</code>、そして <code>manim</code>・<code>ComfyUI</code>・<code>ChinaTextbook</code> といった定番の大型リポジトリも顔を出した。エージェント「本体」から「土台・スキル・記憶」へ関心が広がる構図が、先週よりさらに鮮明になった一週間だった。</p>
+  <p>今週の GitHub 週間トレンドは、先週まで続いた「自律・長時間エージェント本体」熱がひと段落し、代わりに<strong>エージェントを取り巻く周辺——表現・記憶・実行環境</strong>へ関心が広く散った一週間だった。首位は Claude Code / Codex 向けの編集品質ダイアグラム集 <code>diagram-design</code>（週間 +11,325★・今週トップ）で、「エージェントに図を描かせる」という新しい切り口が突出して伸びた。ふたつめの軸は先週から続く<strong>「記憶・文脈をどう持つか」</strong>で、ByteDance/Volcengine の自己進化型コンテキスト DB <code>OpenViking</code>、コーディング CLI 間の引き継ぎを狙う <code>ai-memory</code>、説明可能性を核に据えた <code>semantica</code>（先週に続き上位）が並んだ。みっつめは<strong>「手元のハードで動かす」ローカル志向</strong>で、14MB のオンデバイス基盤モデル <code>needle</code>、手持ちマシンで動くモデルを探す <code>llmfit</code>、ローカル学習・実行 UI の <code>unsloth</code>、画像から 3D を生成する <code>modly</code> が同じ潮流に乗った。加えて LLM ルーティングの <code>NVIDIA-NeMo/Switchyard</code>、Rust 製の Logitech 代替 <code>OpenLogi</code>、DHH の Linux ディストロ <code>omarchy</code>、そして定番の <code>public-apis</code>・<code>MoneyPrinterTurbo</code> が高い伸びを保った。エージェント「そのもの」から「図・記憶・実行環境・手元で動くこと」へ——関心の重心が周辺インフラへ移ったのが、今週の見どころだった。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">自律・長時間エージェントの「土台」争い</h2>
+  <h2 class="topic__title">今週の首位 — エージェント向けの表現とツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">PrimeIntellect-ai/prime-agent — 自己改善型のコーディング／長時間タスクエージェント（今週トップ・週間 +12,476★ / 累計 1.6万★）</h3>
+    <h3 class="article__headline">cathrynlavery/diagram-design — エージェントに描かせる編集品質のダイアグラム集（今週トップ・週間 +11,325★ / 累計 2.5万★）</h3>
     <div class="article__body">
-      <p>今週いちばんスターを伸ばしたリポジトリ。ページ上部の説明は「A self-improving RLM agent for coding workflows and long-running autonomous tasks.」で、コーディングと長時間の自律タスクを自動化するオープンソースエージェント。二つの中核抽象を持つ——文脈を変数として、ツールを関数呼び出しとして扱う Recursive Language Model（RLM）と、再利用可能なプロンプトやスキルを蓄積・改良し続ける Continual Harness だ。</p>
-      <p>プログラム的にツールを実行する永続的な IPython 環境、並列・バックグラウンド作業のためのサブエージェント生成、切断をまたいでセッションを維持する detach／reattach、ターン・トークン・時間の予算を設定できる自律モード、エージェント同士の直接メッセージングとオーケストレーションなどを備える。ベースプロンプトを書き換えずに補助的なハーネス状態だけを改良できる点も特徴。主体は TypeScript/JavaScript（npm パッケージを含むモノレポ）、ライセンスは MIT。分散学習で知られる Prime Intellect 発の「セッションをまたいで学び続ける」エージェントが、今週の話題をさらった。</p>
+      <p>今週いちばんスターを伸ばしたリポジトリ。ページ上部の説明は「38 editorial diagram types for Claude Code, Codex, and Pi. Self-contained HTML + SVG. No shadows. No Mermaid slop.」で、Claude Code・Codex・Pi といったコーディングエージェントに「まともな図」を描かせるための、38 種類の編集品質ダイアグラムテンプレート集。自己完結した HTML + SVG として出力され、Mermaid の機械的な見た目に頼らない設計を掲げる。</p>
+      <p>フローチャートから Sankey ダイアグラムまで幅広い図種をカバーし、ブランドに合わせた自動調整、draw.io / Mermaid からのインポート、PNG / SVG へのエクスポートに対応する。topics には <code>agent-skills</code>・<code>claude-code</code>・<code>codex</code>・<code>data-visualization</code>・<code>diagrams</code>・<code>drawio</code>・<code>mermaid</code>・<code>svg</code> などが並び、ライセンスは MIT。エージェントに「コードを書かせる」「調べさせる」に続いて「図を描かせる」という用途が独立した Skill 群として立ち上がり、突出した勢いでトレンド首位に立った。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/PrimeIntellect-ai/prime-agent">PrimeIntellect-ai/prime-agent</a></li>
+      <li><a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">huangruiteng/loopx — 長時間エージェントのための状態カーネル（週間 +1,967★ / 累計 4.7千★）</h3>
+    <h3 class="article__headline">CodebuffAI/freebuff — API キー不要の「無料のコーディングエージェント」（週間 +1,133★ / 累計 1.0万★）</h3>
     <div class="article__body">
-      <p>複数プラットフォーム（Codex・Claude Code・Cursor）をまたいで長時間の AI エージェントワークフローを統治する、軽量な状態カーネル。ページ上部の説明は「The open, provider-neutral, stateful control plane for long-running agents.」で、目的・ゲート・実行可能タスク・証跡ログ・クォータ管理といった永続的な制御状態を保ちながら、異なるエージェントランタイムに区切られた「作業ターン」を実行させる。</p>
-      <p>単発の対話では、持続的な文脈・人間の判断ゲート・ピア間の引き継ぎ・支出管理を要する長期プロジェクトを扱えない。loopx は永続的なガバナンス層を実行ランタイムから切り離し、数日がかりのエンジニアリングループやエージェントチームでスコープ・証跡・意思決定履歴を保つことを狙う。曖昧な待機状態の代わりに明示的なユーザーゲートを置き、ピア所有権とリース管理付きの順序化された ToDo、暴走支出を防ぐクォータ対応スケジューリング、ローカルファースト・読み取り専用の制御平面などを備える。主体は Python 3.11+、ライセンスは MIT。prime-agent が「学び続ける本体」なら、こちらは「長時間ループを統治する層」で、同じ長時間エージェント熱の別の側面を押し上げた。</p>
+      <p>ページ上部の説明は「The free coding agent」。サブスクリプションや API キーを用意せずに使える、AI コーディングエージェント群を提供するプロジェクト。Desktop・CLI・Web・Cloud・Chat の 5 つの形態で提供され、複数の AI モデルを束ねたマルチエージェント構成で動く。</p>
+      <p>コードベースの分析・実装・調査・コードレビューといったタスクを、専門化された複数のエージェントが分担して処理する設計。主体は TypeScript、ライセンスは Apache 2.0。有償の商用コーディングエージェントが並ぶなか、「無料・鍵不要」を前面に出した選択肢として今週ランキングに顔を出した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/huangruiteng/loopx">huangruiteng/loopx</a></li>
+      <li><a href="https://github.com/CodebuffAI/freebuff">CodebuffAI/freebuff</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">cloudflare/computer — エージェントに「コンピュータ」を与える仮想ファイルシステム基盤（週間 +3,599★ / 累計 8.0千★）</h3>
+    <h3 class="article__headline">macro-inc/macro — メール・チャット・ドキュメントを AI 記憶で束ねる統合ワークスペース（週間 +1,456★ / 累計 3.9千★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Give your agent a computer 👾」。エージェントが複数のランタイム環境でコードを実行できるようにする仮想ファイルシステム基盤で、権威ある状態を Durable Object 内の SQLite に保持し、異なる計算バックエンド向けに差し替え可能な実行面を提供する。</p>
-      <p>実行バックエンドは三種類——FUSE マウントを伴う Container、Dynamic Worker 上で bash を動かす Isolate shell、ECMAScript モジュールの Isolate JavaScript。<code>workspace.runtime.exec()</code> という統一エントリポイント、SQLite 裏付けの永続ファイルシステム、複数の実行可能サンプル、MCP（Model Context Protocol）連携、ファイルシステム操作のベンチマークツールなどを備える。フル Linux コンテナから軽量な Workers まで、異種の環境でエージェントの負荷を動かす複雑さを、統一ファイルシステムインターフェースの背後に隠す設計。ただし README には Preview/Experimental で API は不安定・本番非対応と明記される。主体は TypeScript/JavaScript、ライセンスは MIT。Cloudflare がエッジ側から「エージェントの実行環境」に参入したことを示す。</p>
+      <p>ページ上部の説明は「Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM — @-linked together with shared AI memory.」。メール・メッセージ・ドキュメント・タスク・CRM をひとつのインターフェースに統合し、双方向リンクと共有された AI メモリで全モジュールをまたいで情報を流通させるチーム向けワークスペース。</p>
+      <p>複数の分断されたツールを行き来する必要をなくすことを狙い、@ 記法で各要素をリンクし、AI 記憶を全体で共有する。topics には <code>ai-agents</code>・<code>all-in-one</code>・<code>crm</code>・<code>slack-alternative</code>・<code>workspace</code> などが並ぶ。主体は Rust バックエンドと SolidJS フロントエンド（TypeScript）、ライセンスは AGPL-3.0。「エージェント時代のオフィススイート」を志向する統合型ツールとして支持を集めた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/cloudflare/computer">cloudflare/computer</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">「スキル」配布に大手が参入</h2>
-
-  <article class="article">
-    <h3 class="article__headline">google/skills — Google 製品・技術向けの公式 Agent Skills 集（週間 +2,359★ / 累計 1.8万★）</h3>
-    <div class="article__body">
-      <p>Google 公式の、Google 製品・技術（Google Cloud を含む）向け Agent Skills を集めたリポジトリ。ページ上部の説明は「This repository contains Agent Skills for Google products and technologies, including Google Cloud.」で、エージェントの能力を拡張する再利用可能なモジュールを、ゼロから作らずに使えるようにする。</p>
-      <p>AI/ML・インフラ・データベース・アナリティクス・セキュリティ・ウェブホスティングにわたる 60 以上のスキルを収め、RAG システムやデータサイエンスのパイプライン、AI エージェントのデプロイといった複合ワークフロー向けの解も含む。GKE・BigQuery・Firebase・Cloud Run などドメイン別に整理され、Claude・Codex・Antigravity CLI といったエージェントハーネスに対応、<code>npx skills add google/skills</code> で導入できる。ライセンスは Apache 2.0。先週まで個人開発者中心だった「スキル配布」の潮流に、プラットフォーマー自身が公式スキル集を出す動きが加わった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/google/skills">google/skills</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">addyosmani/agent-skills — 「本番品質」のエンジニアリングスキル集（週間 +4,562★ / 累計 8.7万★）</h3>
-    <div class="article__body">
-      <p>Google Chrome チームの Addy Osmani による、AI コーディングエージェント向けのソフトウェアエンジニアリングのベストプラクティスを詰めたワークフローパッケージ。ページ上部の説明は「Production-grade engineering skills for AI coding agents.」で、要件定義からデプロイまでの開発ライフサイクル全体を、品質ゲート・テスト・セキュリティレビューを課す 24 の相互接続されたスキルで導く。</p>
-      <p>解こうとするのは「AI エージェントは厳密さより速さに流れ、仕様・テスト・セキュリティレビューを飛ばしがち」という課題。開発フェーズに対応する 8 個のスラッシュコマンド（<code>/spec</code>・<code>/plan</code>・<code>/build</code>・<code>/test</code>・<code>/review</code>・<code>/ship</code> ほか）、define〜ship の 24 スキル、コードレビュアー・テストエンジニア・セキュリティ監査官・ウェブ性能監査官の 4 専門ペルソナ、テスト／セキュリティ／性能／アクセシビリティの 7 チェックリストを備える。Claude Code・Cursor・Copilot・Cline・Codex・Gemini CLI ほか多数に対応。主体は Markdown、ライセンスは MIT。累計 8.7万★の巨大リポジトリが今週も +4,562★ と伸び、「スキルで規律を注入する」路線の代表格になった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">先週からの常連も継続 — reverse-skill・book-to-skill</h3>
-    <div class="article__body">
-      <p>先週取り上げたスキル系も上位に残った。セキュリティ／リバースエンジニアリング用のスキルルーター <a href="https://github.com/zhaoxuya520/reverse-skill">zhaoxuya520/reverse-skill</a>（週間 +5,270★・累計 2.5万★）は、AI エージェントをリバースエンジニアリング・認可されたペネトレーションテスト・CTF に向けて適切なツールと手順へ誘導するパッケージで、今週も高い伸びを保った。技術書 PDF をスキル化する <a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a>（週間 +3,789★・累計 2.1万★）も、PDF・EPUB・DOCX を章単位のオンデマンド読み込みに整理し、少ないトークンで問い合わせに答える設計を維持している。個人発のスキルと大手公式のスキルが同じランキングに同居する構図が、今週の「スキル」熱を象徴する。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/zhaoxuya520/reverse-skill">zhaoxuya520/reverse-skill</a></li>
-      <li><a href="https://github.com/virgiliojr94/book-to-skill">virgiliojr94/book-to-skill</a></li>
+      <li><a href="https://github.com/macro-inc/macro">macro-inc/macro</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">文脈・記憶をグラフで持つ</h2>
+  <h2 class="topic__title">エージェントの「記憶・文脈」をどう持つか（先週から継続）</h2>
 
   <article class="article">
-    <h3 class="article__headline">semantica-agi/semantica — 説明可能性を核に据えたグラフネイティブ基盤（週間 +4,073★ / 累計 7.2千★）</h3>
+    <h3 class="article__headline">volcengine/OpenViking — 自己進化するエージェント向けコンテキスト DB（週間 +2,444★ / 累計 3.1万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Graph-Native Infrastructure for Context and Accountable AI Systems」。決定の追跡や説明可能性を欠いたまま動く AI システムという課題に対し、LLM とベクトルストアの下に決定論的な基盤層を敷く。とくに、決定が規制当局の審査に耐える必要のある規制産業を意識する。</p>
-      <p>複数ソースの企業データから照会可能な文脈グラフを構築し、AI の決定を因果系譜つきの第一級オブジェクトとして記録、W3C PROV-O 準拠の来歴（provenance）トレイルを生成する。前向き連鎖・Rete・Datalog・SPARQL によるルールベース推論を LLM なしで実行し、データ競合の検出・解消やエンティティ解決も行う。Databricks（Unity Catalog）や Snowflake のネイティブコネクタ、RDF トリプルストア／ラベル付きプロパティグラフ／ベクトルストアを差し替え可能なポリグロット構成を持つ。topics には <code>ai-governance</code>・<code>explainable-ai</code>・<code>graph-rag</code>・<code>provenance</code>・<code>reasoning</code> などが並ぶ。主体は Python、ライセンスは MIT。「速く答える」より「後から説明・監査できる」ことに軸足を置く AI 基盤が、今週急伸した。</p>
+      <p>ページ上部の説明は「Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.」。エージェントの記憶（メモリ）・知識 RAG・スキルを、仮想ファイルシステム風のインターフェースの下に統合するコンテキストデータベース。エージェントが従来のファイルディレクトリをたどるように、観察・デバッグ可能な検索パターンで情報を辿れるようにする。</p>
+      <p>段階的なローディング（tiered loading）でトークンコストを抑えつつ、検索の過程を透明に保つのが特徴。topics には <code>agent-memory</code>・<code>agentic-rag</code>・<code>context-database</code>・<code>self-evolving</code> などが並ぶ。主体は Rust（Python コンポーネントを含む）、ライセンスは本体が AGPLv3・CLI とサンプルが Apache 2.0。Volcengine（ByteDance のクラウド部門）発で、先週の Tencent 系メモリハブに続き大手クラウドが「エージェントの記憶層」に本腰を入れる流れを象徴する。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/volcengine/OpenViking">volcengine/OpenViking</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">akitaonrails/ai-memory — コーディング CLI 間の「引き継ぎ」を狙う長期記憶（週間 +1,952★ / 累計 3.8千★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors」。AI コーディングエージェントがセッションをまたいで記憶を保ち、異なるベンダーのエージェント間を文脈を失わずに乗り換えられるようにするツール。</p>
+      <p>Claude Code・Codex など複数の対応エージェントからライフサイクル上の観察を収集し、検索可能な Markdown の Wiki にまとめ、ツールを移行するときの引き継ぎを提供する。ベクトルデータベースを使わず、SQLite の FTS5 による全文検索と、任意で LLM による要約の統合を組み合わせる設計。主体は Rust、ライセンスは MIT。特定のエージェントに囲い込まれない「ベンダー横断の記憶」という切り口で伸びた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/akitaonrails/ai-memory">akitaonrails/ai-memory</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">semantica-agi/semantica — 説明可能性を核に据えたグラフネイティブ基盤（先週から継続・週間 +3,674★ / 累計 1.0万★）</h3>
+    <div class="article__body">
+      <p>先週に続き今週も上位に残った。ページ上部の説明は「Graph-Native Infrastructure for Context and Accountable AI Systems」で、決定の追跡や説明可能性を欠いたまま動く AI に対し、LLM とベクトルストアの下に決定論的な基盤層を敷く。とくに、決定が規制当局の審査に耐える必要のある規制産業を意識する。</p>
+      <p>複数ソースの企業データから照会可能な文脈グラフを構築し、AI の決定を因果系譜つきの第一級オブジェクトとして記録、W3C PROV-O 準拠の来歴トレイルを生成する。前向き連鎖・Rete・Datalog・SPARQL によるルールベース推論を LLM なしで実行し、Databricks や Snowflake のネイティブコネクタ、RDF トリプルストア／プロパティグラフ／ベクトルストアを差し替え可能な構成を持つ。主体は Python、ライセンスは MIT。「速く答える」より「後から説明・監査できる」ことに軸足を置く基盤が、二週続けて支持を集めた。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/semantica-agi/semantica">semantica-agi/semantica</a></li>
     </ul>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ローカル／オンデバイスで動かす AI</h2>
 
   <article class="article">
-    <h3 class="article__headline">vitali87/code-graph-rag — モノレポ向けの知識グラフ RAG（週間 +1,628★ / 累計 4.3千★）</h3>
+    <h3 class="article__headline">cactus-compute/needle — 14MB のオンデバイス基盤モデル（週間 +3,409★ / 累計 8.2千★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs」。Tree-sitter で多言語ソースを解析し、Memgraph 上に知識グラフを構築、自然言語での照会と AI によるコード編集を可能にする RAG システム。混在言語のリポジトリを単一のグラフスキーマの下に統合する。</p>
-      <p>大規模で多言語なモノレポの探索・理解の難しさに対し、多言語 AST 解析と知識グラフ構築、自然言語クエリのグラフクエリ変換、ast-grep による構造的な検索・置換、代入や関数呼び出しをまたぐデータフロー追跡、AI 駆動のコード最適化とデッドコード検出、Claude Code など向けの MCP サーバー連携を提供する。topics には <code>claude-code</code>・<code>knowledge-graph</code>・<code>mcp</code>・<code>rag</code>・<code>tree-sitter</code> などが並ぶ。主体は Python、ライセンスは MIT。コードベースを「グラフとして持ってエージェントに渡す」アプローチが、記憶・文脈のトレンドと重なって伸びた。</p>
+      <p>ページ上部の説明は「14MB foundation model for tiny devices; phones, wearables, smart home, and robots.」。スマホ・ウェアラブル・スマートホーム・ロボットといった資源の限られた小型デバイス向けに設計された、コンパクトな基盤モデル。</p>
+      <p>README によれば、Needle 2 は約 4,500 万パラメータで、モデルサイズ 14MB・実行時メモリ約 28MB という極小フットプリントを保ちながら、ツール呼び出し・デバイス自動化・データ抽出をこなす。Simple Attention Network 型のアーキテクチャを採り、信頼度スコア、ツール検索、文法制約付きデコードによる構造化出力といった機能を内蔵する。topics には <code>gemma</code>・<code>llm</code>・<code>on-device-ai</code> などが並ぶ。主体は Python、ライセンスは Apache-2.0。「クラウドに投げない・端末で完結する AI」の実装例として突出して伸びた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/vitali87/code-graph-rag">vitali87/code-graph-rag</a></li>
+      <li><a href="https://github.com/cactus-compute/needle">cactus-compute/needle</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">TencentCloud/TencentDB-Agent-Memory — チーム単位の記憶ハブは今週も上位（継続・週間 +5,388★ / 累計 2.2万★）</h3>
+    <h3 class="article__headline">AlexsJones/llmfit — 手持ちマシンで「動くモデル」を一発で探す（週間 +1,842★ / 累計 3.3万★）</h3>
     <div class="article__body">
-      <p>先週に続き今週も大きく伸びた、AI エージェント向けのチーム単位メモリ管理システム。README では「会話・ドキュメント・コードを、Chat Memory・Skill・LLM-Wiki・Code-Graph という 4 つの再利用可能な記憶資産に変え、ガバナンスのもとでエージェントやフレームワーク横断に共有・装備する」と説明する。</p>
-      <p>Chat Memory は L0〜L3 の多層で会話を蒸留し、Skill は会話から抽出した実行手順・検証ルール付きの再利用可能ワークフロー、Wiki は LLM 向けのリンクグラフ付き構造化ドキュメント、CodeGraph はシンボル・ファイル・呼び出し関係・影響分析をインデックスする。既存のコードベース・文書・会話履歴を取り込むコールドスタート機能や、チーム管理・資産整理・エージェントのロードアウト設定を行う Memory Hub UI も備える。topics には <code>ai-agent</code>・<code>long-term-memory</code>・<code>vector-search</code>・<code>local-first</code> などが並ぶ。主体は JavaScript/TypeScript、ライセンスは MIT。エージェントの「記憶をどう蓄え・共有するか」という層が、二週続けて支持を集めた。</p>
+      <p>ページ上部の説明は「Hundreds of models &amp; providers. One command to find what runs on your hardware.」。自分のマシンの RAM・CPU・GPU を調べ、どの大規模言語モデルが快適に動くかを推薦するターミナルアプリ。</p>
+      <p>ハードウェアを検出したうえで、モデルを性能・品質・速度・文脈長といった軸でスコアリングし、最適な組み合わせを提示する。対話的なターミナル UI と CLI の両モードを備え、Ollama・llama.cpp・MLX といったバックエンドに対応する。topics には <code>gguf</code>・<code>llm</code>・<code>localai</code>・<code>mlx</code> などが並ぶ。主体は Rust、ライセンスは MIT。「そのモデル、自分の PC で動くのか？」という素朴な悩みに一発で答える点が、ローカル志向のトレンドと噛み合って伸びた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">TencentCloud/TencentDB-Agent-Memory</a></li>
+      <li><a href="https://github.com/AlexsJones/llmfit">AlexsJones/llmfit</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">unslothai/unsloth — ローカルで LLM・拡散モデルを動かし学習させる UI（週間 +3,300★ / 累計 7.4万★）</h3>
+    <div class="article__body">
+      <p>ファインチューニングの高速化ライブラリとして知られる Unsloth のリポジトリ。ページ上部の説明は「Local UI to run and train LLMs and diffusion models」とあり、ローカルで各種 AI モデルを実行・学習・デプロイするためのデスクトップ／Web スタジオとして紹介されている。</p>
+      <p>言語モデル・拡散モデル・埋め込みモデル・音声モデルなど複数のモデル種を扱い、「標準的な手法に比べて学習が 2 倍速く VRAM を 70% 削減」といった最適化を掲げる。topics には <code>fine-tuning</code>・<code>llm</code>・<code>reinforcement-learning</code>・<code>self-hosted</code>・<code>stable-diffusion</code> などが並ぶ。主体は Python、ライセンスは Apache-2.0 と AGPL-3.0 のデュアル。累計 7万★超の定番が、ローカル実行 UI という切り口で今週も +3,300★ と伸びを保った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/unslothai/unsloth">unslothai/unsloth</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">lightningpixel/modly — 画像やプロンプトから 3D モデルをローカル生成（週間 +1,855★ / 累計 7.1千★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Desktop app to generate 3D models from images or prompt using local AI — runs entirely on your GPU」。写真やプロンプトから 3D メッシュモデルを生成するデスクトップアプリで、オープンソースの AI モデルを手元の GPU 上で完結して実行する。</p>
+      <p>Windows・Linux・Apple Silicon の macOS に対応し、Hunyuan3D や TripoSG といった追加モデルを導入できる拡張機能システムを備える。topics には <code>3d</code>・<code>ai-local</code>・<code>desktop-app</code>・<code>self-hosted</code> などが並ぶ。主体は TypeScript（Python バックエンド）、ライセンスは MIT。「クラウドに送らずローカル GPU で 3D 生成」という点が、needle・llmfit・unsloth と同じローカル志向の流れに乗った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/lightningpixel/modly">lightningpixel/modly</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">定番ツールと大型リポジトリ</h2>
+  <h2 class="topic__title">ルーティング基盤と Rust 製デスクトップ</h2>
 
   <article class="article">
-    <h3 class="article__headline">firecrawl/pdf-inspector — OCR 不要の Rust 製 PDF 分類・抽出ライブラリ（週間 +3,251★ / 累計 1.5万★）</h3>
+    <h3 class="article__headline">NVIDIA-NeMo/Switchyard — モデル／プロバイダをまたぐ LLM ルーティング（週間 +932★ / 累計 2.0千★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Fast Rust library for PDF classification and text extraction. Detects whether a PDF is text-based or scanned, extracts text with position awareness, and converts to clean Markdown — all without OCR.」。すべての PDF に高価な OCR をかけるのではなく、抽出可能なテキストを既に含む PDF を賢く見分けることで、OCR をスキップするスマートなルーティング判断を可能にする。README によれば約 54% の文書で OCR を省ける。</p>
-      <p>テキストベース・スキャン・画像・混在の分類（信頼度スコア付き）、フォント情報や座標を含む位置認識つきテキスト抽出、見出し・リスト・コードブロック・表に対応する Markdown 変換、矩形／ヒューリスティックの表検出、CID フォント対応、多段組の読み順検出、ブラウザ処理向けの WebAssembly 対応などを備え、ML モデルや外部依存を持たない軽量設計。主体は Rust（Python・Node.js・WASM バインディング付き）、ライセンスは MIT。Firecrawl 発の「OCR ルーティング」を核にした実務的な PDF ツールが伸びた。</p>
+      <p>ページ上部の説明は「Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility」。OpenAI と Anthropic の API 形式を相互変換しながら、複数のモデルバックエンドやプロバイダへリクエストを振り分ける Rust 製のプロキシ。</p>
+      <p>クライアントは自分の使い慣れた API を保ったまま、A/B テスト・コスト最適化・リクエスト特性に応じた動的なモデル選択といった複数のルーティングアルゴリズムを利用できる。ベンチマークやコスト・性能の最適化を狙う。主体は Rust、ライセンスは Apache 2.0。先週の loopx や cloudflare/computer に続き、NVIDIA の NeMo チームが「エージェントの実行を束ねる中間層」に加わったことを示す。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/firecrawl/pdf-inspector">firecrawl/pdf-inspector</a></li>
+      <li><a href="https://github.com/NVIDIA-NeMo/Switchyard">NVIDIA-NeMo/Switchyard</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">drawdb-io/drawdb — ログイン不要の ER 図エディタ兼 SQL ジェネレータ（週間 +693★ / 累計 3.9万★）</h3>
+    <h3 class="article__headline">AprilNEA/OpenLogi — Rust 製・ローカル完結の Logitech Options+ 代替（週間 +2,674★ / 累計 1.2万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Free, simple, and intuitive online database diagram editor and SQL generator.」。ブラウザ上で動く ER 図（ERD）エディタで、アカウント作成なしにデータベーススキーマを視覚的に設計できる。ドラッグ&ドロップでの図の作成、SQL スクリプトのエクスポート／インポート、マイグレーション生成に対応する。</p>
-      <p>PostgreSQL・MySQL・SQLite・MariaDB・Oracle・SQL Server など複数 DB をサポートし、IndexedDB によるローカル保存、サーバーを立てれば任意のファイル共有も可能。topics には <code>database-schema</code>・<code>diagram-editor</code>・<code>erd</code>・<code>react</code>・<code>sql</code> などが並ぶ。主体は JavaScript（React フロントエンド）、ライセンスは AGPL-3.0。手早くスキーマを描いて SQL に落とせる定番ツールが、今週もランキングに顔を出した。</p>
+      <p>ページ上部の説明は「A native, local-first alternative to Logitech Options+, written in Rust — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.」。Logitech 純正の Options+ ソフトを置き換える、ローカル完結・プライバシー重視の入力デバイス設定ツール。アカウント登録もテレメトリもなしに、HID++ 経由でボタンのリマップや DPI、SmartShift を調整できる。</p>
+      <p>ネイティブ GUI を備え、macOS・Linux・Windows をまたいでボタンリマップ・DPI 調整・ジェスチャ制御・SmartShift 設定に対応する。topics には <code>hid</code>・<code>local-first</code>・<code>logitech</code>・<code>mouse-remapping</code>・<code>mx-master</code>・<code>privacy</code>・<code>rust</code> などが並ぶ。ライセンスは Apache 2.0 と MIT のデュアル。純正ソフトの重さやアカウント要求を嫌うユーザーの受け皿として、AI 以外の実務ツールでも今週上位に食い込んだ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/drawdb-io/drawdb">drawdb-io/drawdb</a></li>
+      <li><a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">LadybirdBrowser/ladybird — ゼロから作る独立ブラウザ（週間 +775★ / 累計 6.6万★）</h3>
+    <h3 class="article__headline">basecamp/omarchy — DHH による「美しく現代的で主張のある」Linux（週間 +2,395★ / 累計 2.7万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Ladybird is a truly independent web browser, using a novel engine based on web standards.」。既存エンジンをフォーク・拡張するのではなく、ウェブ標準に基づく新しいレンダリングエンジンをゼロから構築する、pre-alpha 段階のブラウザプロジェクト。</p>
-      <p>UI・WebContent レンダラ・ImageDecoder・RequestServer を分離するマルチプロセス構成、サンドボックス化されたタブプロセス、悪意あるコンテンツへの耐性を高めるプロセス外の画像デコード・ネットワーク接続などを備える。LibWeb（描画）・LibJS（JavaScript エンジン）・LibWasm・LibCrypto/LibTLS・LibGfx といった自前ライブラリ群で構成される。主体は C++、ライセンスは BSD-2-Clause。「本当に独立した」ブラウザという稀少な立ち位置が、今週も継続的な支持を集めている。</p>
+      <p>ページ上部の説明は「Beautiful, Modern &amp; Opinionated Linux」。Basecamp / Ruby on Rails で知られる DHH（David Heinemeier Hansson）が手がける、現代的な見た目と割り切った設計思想を掲げる Linux ディストリビューション。</p>
+      <p>基本操作から高度な設定までを網羅する詳細なマニュアルを備え、アプリケーション・開発ツール・カスタマイズの広範なサポートを提供する。主体は Shell、ライセンスは MIT。著名開発者が「意見の強い」既定値でまとめ上げたディストロとして注目を集め、AI 一色になりがちな週間トレンドのなかで存在感を示した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/LadybirdBrowser/ladybird">LadybirdBrowser/ladybird</a></li>
+      <li><a href="https://github.com/basecamp/omarchy">basecamp/omarchy</a></li>
     </ul>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">定番の巨大リポジトリも高い伸び</h2>
 
   <article class="article">
-    <h3 class="article__headline">定番の大型リポジトリも継続 — manim・ComfyUI・ChinaTextbook</h3>
+    <h3 class="article__headline">public-apis・MoneyPrinterTurbo — 週間ランキング上位の定番</h3>
     <div class="article__body">
-      <p>エージェント関連の新顔が並ぶ一方で、定番の巨大リポジトリも週間ランキングに残った。数学解説動画のアニメーションエンジン <a href="https://github.com/3b1b/manim">3b1b/manim</a>（週間 +1,530★・累計 9.1万★）、拡散モデル向けの最も強力でモジュラーな GUI/API/バックエンドを掲げる <a href="https://github.com/Comfy-Org/ComfyUI">Comfy-Org/ComfyUI</a>（週間 +3,122★・累計 12.8万★）、中国の教科書を集めた <a href="https://github.com/TapXWorld/ChinaTextbook">TapXWorld/ChinaTextbook</a>（週間 +2,369★・累計 7.9万★）などが顔を出した。いずれも継続的に使われる基盤・教材で、トレンドの新顔とは別の層として安定した人気を保っている。</p>
+      <p>新顔のエージェント周辺ツールが並ぶ一方で、以前から巨大な定番リポジトリも週間で大きくスターを伸ばした。無料 API を categories 別に集めたリファレンス <a href="https://github.com/public-apis/public-apis">public-apis/public-apis</a>（週間 +11,259★・累計 46万★超）は、開発者が自由に使える公開 API を探すための定番一覧で、今週は首位級の伸びを見せた。もうひとつは <a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703/MoneyPrinterTurbo</a>（週間 +9,712★・累計 11.3万★）で、ページ上部の説明は「利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频」。テーマやキーワードを与えると AI が台本・素材・字幕・BGM を組み立て、TikTok / YouTube Shorts 向けの HD 短尺動画をワンクリックで生成する。いずれも継続的に使われる大型リポジトリで、新顔のトレンドとは別の層として安定した人気を保っている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/3b1b/manim">3b1b/manim</a></li>
-      <li><a href="https://github.com/Comfy-Org/ComfyUI">Comfy-Org/ComfyUI</a></li>
-      <li><a href="https://github.com/TapXWorld/ChinaTextbook">TapXWorld/ChinaTextbook</a></li>
+      <li><a href="https://github.com/public-apis/public-apis">public-apis/public-apis</a></li>
+      <li><a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703/MoneyPrinterTurbo</a></li>
     </ul>
   </article>
 </section>
