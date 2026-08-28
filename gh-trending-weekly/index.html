@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年8月21日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年8月28日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年8月21日">
+<meta property="og:title" content="GitHub トレンド — 2026年8月28日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月21日（金）</span>
+        <span>2026年8月28日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,150 +31,128 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の GitHub 週間トレンドは、先週まで続いた「自律・長時間エージェント本体」熱がひと段落し、代わりに<strong>エージェントを取り巻く周辺——表現・記憶・実行環境</strong>へ関心が広く散った一週間だった。首位は Claude Code / Codex 向けの編集品質ダイアグラム集 <code>diagram-design</code>（週間 +11,325★・今週トップ）で、「エージェントに図を描かせる」という新しい切り口が突出して伸びた。ふたつめの軸は先週から続く<strong>「記憶・文脈をどう持つか」</strong>で、ByteDance/Volcengine の自己進化型コンテキスト DB <code>OpenViking</code>、コーディング CLI 間の引き継ぎを狙う <code>ai-memory</code>、説明可能性を核に据えた <code>semantica</code>（先週に続き上位）が並んだ。みっつめは<strong>「手元のハードで動かす」ローカル志向</strong>で、14MB のオンデバイス基盤モデル <code>needle</code>、手持ちマシンで動くモデルを探す <code>llmfit</code>、ローカル学習・実行 UI の <code>unsloth</code>、画像から 3D を生成する <code>modly</code> が同じ潮流に乗った。加えて LLM ルーティングの <code>NVIDIA-NeMo/Switchyard</code>、Rust 製の Logitech 代替 <code>OpenLogi</code>、DHH の Linux ディストロ <code>omarchy</code>、そして定番の <code>public-apis</code>・<code>MoneyPrinterTurbo</code> が高い伸びを保った。エージェント「そのもの」から「図・記憶・実行環境・手元で動くこと」へ——関心の重心が周辺インフラへ移ったのが、今週の見どころだった。</p>
+  <p>今週の GitHub 週間トレンドは、先週の「図・記憶・実行環境」といった<strong>エージェント周辺インフラ</strong>への関心が、はっきりと<strong>「プラグイン／スキルの市場」</strong>へと形を変えた一週間だった。象徴は Anthropic 自身が公開した公式のコミュニティ・プラグイン集 <code>claude-plugins-community</code> と、Cursor の <code>cursor/plugins</code>。加えて 530 件超の画像プロンプトを「Prompt as Code」＋ Skills として束ねた <code>awesome-gpt-image-2</code> が週間 +1.1万★ を集め、「エージェントに何をさせるか」をパッケージ化して配る流れが一気に可視化された。ふたつめの軸は<strong>「無料で動かす」</strong>で、週間トップの伸びを見せた本家 <code>openai/codex</code> の隣に、無料トークンをまとめて配る <code>free-claude-code</code>・<code>freellmapi</code> が並んだ。みっつめは<strong>ローカルファーストなエージェント基盤と記憶</strong>で、Apache インキュベータ入りした <code>apache/maka</code>、個人向け AI を謳う <code>openhuman</code>、先週から続く <code>OpenViking</code> が同じ潮流に乗る。<code>omarchy</code>・<code>OpenLogi</code>・<code>PostHog</code>・<code>modular</code> といった AI 一色でない実務ツールも高い伸びを保った。エージェント「本体」から「本体に差し込む部品と、それを配る場所」へ——重心が市場・エコシステム側へ移ったのが、今週の見どころだった。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">今週の首位 — エージェント向けの表現とツール</h2>
+  <h2 class="topic__title">今週の中心 — コーディングエージェントの「プラグイン／スキル市場」</h2>
 
   <article class="article">
-    <h3 class="article__headline">cathrynlavery/diagram-design — エージェントに描かせる編集品質のダイアグラム集（今週トップ・週間 +11,325★ / 累計 2.5万★）</h3>
+    <h3 class="article__headline">anthropics/claude-plugins-community — Anthropic 公式のコミュニティ・プラグイン市場（週間 +2,069★ / 累計 2.5千★）</h3>
     <div class="article__body">
-      <p>今週いちばんスターを伸ばしたリポジトリ。ページ上部の説明は「38 editorial diagram types for Claude Code, Codex, and Pi. Self-contained HTML + SVG. No shadows. No Mermaid slop.」で、Claude Code・Codex・Pi といったコーディングエージェントに「まともな図」を描かせるための、38 種類の編集品質ダイアグラムテンプレート集。自己完結した HTML + SVG として出力され、Mermaid の機械的な見た目に頼らない設計を掲げる。</p>
-      <p>フローチャートから Sankey ダイアグラムまで幅広い図種をカバーし、ブランドに合わせた自動調整、draw.io / Mermaid からのインポート、PNG / SVG へのエクスポートに対応する。topics には <code>agent-skills</code>・<code>claude-code</code>・<code>codex</code>・<code>data-visualization</code>・<code>diagrams</code>・<code>drawio</code>・<code>mermaid</code>・<code>svg</code> などが並び、ライセンスは MIT。エージェントに「コードを書かせる」「調べさせる」に続いて「図を描かせる」という用途が独立した Skill 群として立ち上がり、突出した勢いでトレンド首位に立った。</p>
+      <p>ページ上部の説明は「Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.」。Claude Cowork と Claude Code 向けの、コミュニティ製プラグインを集めた公式マーケットプレイスの読み取り専用ミラー。自動セキュリティスキャンと Anthropic の審査を通ったプラグインが並ぶ。</p>
+      <p>ユーザーは claude.com/plugins や Claude Code CLI からここのプラグインを導入でき、投稿は専用の申請ポータルを経由する設計。ベンダー自身が「エージェントに機能を追加する部品を集めて配る場所」を公式に立ち上げたことを示すリポジトリで、公開直後から一気にスターを伸ばした。エージェントの拡張が個々のツールではなく「マーケットプレイス」という単位で流通し始めた、今週を象徴する 1 本。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></li>
+      <li><a href="https://github.com/anthropics/claude-plugins-community">anthropics/claude-plugins-community</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">CodebuffAI/freebuff — API キー不要の「無料のコーディングエージェント」（週間 +1,133★ / 累計 1.0万★）</h3>
+    <h3 class="article__headline">cursor/plugins — Cursor 公式のプラグイン仕様とプラグイン集（週間 +1,732★ / 累計 5.8千★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「The free coding agent」。サブスクリプションや API キーを用意せずに使える、AI コーディングエージェント群を提供するプロジェクト。Desktop・CLI・Web・Cloud・Chat の 5 つの形態で提供され、複数の AI モデルを束ねたマルチエージェント構成で動く。</p>
-      <p>コードベースの分析・実装・調査・コードレビューといったタスクを、専門化された複数のエージェントが分担して処理する設計。主体は TypeScript、ライセンスは Apache 2.0。有償の商用コーディングエージェントが並ぶなか、「無料・鍵不要」を前面に出した選択肢として今週ランキングに顔を出した。</p>
+      <p>ページ上部の説明は「Cursor plugin specification and official plugins」。AI コードエディタ Cursor 向けの、公式プラグイン仕様と各種公式プラグインをまとめたリポジトリ。GitHub・Playwright から Salesforce・HubSpot まで、開発ツールや SaaS 製品ごとにディレクトリを分け、それぞれにマニフェストを持つ構成で提供される。</p>
+      <p>各プラグインは Skills・ルール・MCP サーバー定義を含む標準化された構造に従い、エージェントが外部システムと連携できるようにする。主体は TypeScript。Anthropic の公式マーケットプレイスと同じ週に伸びたことで、「コーディングエージェントに拡張を差し込む標準」を各ベンダーが競って整備し始めた構図がはっきり見えた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/CodebuffAI/freebuff">CodebuffAI/freebuff</a></li>
+      <li><a href="https://github.com/cursor/plugins">cursor/plugins</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">macro-inc/macro — メール・チャット・ドキュメントを AI 記憶で束ねる統合ワークスペース（週間 +1,456★ / 累計 3.9千★）</h3>
+    <h3 class="article__headline">freestylefly/awesome-gpt-image-2 — 画像プロンプトを「Prompt as Code」＋ Skills 化した工業級テンプレート集（週間 +11,300★ / 累計 2.4万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM — @-linked together with shared AI memory.」。メール・メッセージ・ドキュメント・タスク・CRM をひとつのインターフェースに統合し、双方向リンクと共有された AI メモリで全モジュールをまたいで情報を流通させるチーム向けワークスペース。</p>
-      <p>複数の分断されたツールを行き来する必要をなくすことを狙い、@ 記法で各要素をリンクし、AI 記憶を全体で共有する。topics には <code>ai-agents</code>・<code>all-in-one</code>・<code>crm</code>・<code>slack-alternative</code>・<code>workspace</code> などが並ぶ。主体は Rust バックエンドと SolidJS フロントエンド（TypeScript）、ライセンスは AGPL-3.0。「エージェント時代のオフィススイート」を志向する統合型ツールとして支持を集めた。</p>
+      <p>ページ上部の説明は「Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中」。GPT-Image2 向けに、530 件超のコミュニティ事例を逆解析して構造化した、再利用可能な画像生成プロンプトのテンプレート集。</p>
+      <p>UI・インフォグラフィック・ポスター・製品・写真・イラストなど 12 のデザインカテゴリにわたる 20 種類超の「工業級」テンプレートに加え、Claude Code などのツール向けの Skills パッケージを抽出して同梱する。topics には <code>agents</code>・<code>gpt-image-2</code>・<code>prompt-as-code</code>・<code>skills</code>・<code>workflow-automation</code> などが並び、主体は JavaScript。散在する作例を「コードのように扱えるプロンプト資産」へ変換する切り口で、今週いちばんスターを伸ばしたリポジトリのひとつになった。「プロンプトも Skill として配る」流れが、上のふたつと同じ週に噛み合った。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/macro-inc/macro">macro-inc/macro</a></li>
+      <li><a href="https://github.com/freestylefly/awesome-gpt-image-2">freestylefly/awesome-gpt-image-2</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントの「記憶・文脈」をどう持つか（先週から継続）</h2>
+  <h2 class="topic__title">「無料で動かす」— コーディングエージェント本体と無料 API 集約</h2>
 
   <article class="article">
-    <h3 class="article__headline">volcengine/OpenViking — 自己進化するエージェント向けコンテキスト DB（週間 +2,444★ / 累計 3.1万★）</h3>
+    <h3 class="article__headline">openai/codex — ターミナルで動く軽量コーディングエージェント（今週トップ級・週間 +12,358★ / 累計 11.9万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.」。エージェントの記憶（メモリ）・知識 RAG・スキルを、仮想ファイルシステム風のインターフェースの下に統合するコンテキストデータベース。エージェントが従来のファイルディレクトリをたどるように、観察・デバッグ可能な検索パターンで情報を辿れるようにする。</p>
-      <p>段階的なローディング（tiered loading）でトークンコストを抑えつつ、検索の過程を透明に保つのが特徴。topics には <code>agent-memory</code>・<code>agentic-rag</code>・<code>context-database</code>・<code>self-evolving</code> などが並ぶ。主体は Rust（Python コンポーネントを含む）、ライセンスは本体が AGPLv3・CLI とサンプルが Apache 2.0。Volcengine（ByteDance のクラウド部門）発で、先週の Tencent 系メモリハブに続き大手クラウドが「エージェントの記憶層」に本腰を入れる流れを象徴する。</p>
+      <p>ページ上部の説明は「Lightweight coding agent that runs in your terminal」。OpenAI が手がける、手元のマシンでターミナルから動く AI コーディングエージェント。ChatGPT のプランと連携し、VS Code・Cursor・Windsurf 向けの IDE プラグインやデスクトップアプリからも使える。</p>
+      <p>npm や Homebrew でインストールし、<code>codex</code> と打てばコーディング支援が始まる。主体は Rust。累計 11万★超の本家が今週さらに週間で最大級の伸びを記録し、「エージェント本体そのもの」への需要が依然として最上位にあることを示した。周辺のプラグイン市場が賑わう一方で、その受け皿となる本体が同じ週にトップを走った点が対照的だった。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/openai/codex">openai/codex</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Alishahryar1/free-claude-code — 無料トークンで各種コーディングエージェントを回す入口（週間 +4,657★ / 累計 5.1万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Use Claude Code, Codex, Pi, and OpenCode and more for free (1.3B+ free tokens) from your terminal, app, IDE, or phone like OpenClaw (voice supported + ToS friendly)」。50 を超える AI モデルプロバイダの無料枠（月あたり 13 億トークン超）を、単一のインターフェースからまとめて使えるようにするプロジェクト。</p>
+      <p>Claude Code・Codex などのコーディングエージェントを、ターミナル・デスクトップアプリ・IDE・メッセージングから動かせるようにし、障害時にはプロバイダ間で自動フォールバックする。主体は Python。有償の商用エージェントが上位を占めるなか、「無料枠を束ねて鍵の管理を肩代わりする」層として今週も高い伸びを見せた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/Alishahryar1/free-claude-code">Alishahryar1/free-claude-code</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">tashfeenahmed/freellmapi — 34 プロバイダの無料 LLM を 1 つの /v1 に束ねるルーター（週間 +2,014★ / 累計 2.1万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.」。34 のプロバイダが提供する無料枠を、OpenAI 互換の単一エンドポイントに集約する API ルーター。</p>
+      <p>リクエストを利用可能なモデルへ賢く振り分け、レート制限に達すると自動でプロバイダを切り替えつつ、キーごとの使用量を追跡して各社の無料枠規約に収める。プロバイダの資格情報は暗号化して保存し、設定・分析用のダッシュボードも備える。主体は TypeScript。「個人の実験用途に限る」と明記しつつ、無料 LLM を実務的に束ねる基盤として free-claude-code と同じ潮流に乗った。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/tashfeenahmed/freellmapi">tashfeenahmed/freellmapi</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ローカルファーストなエージェント基盤と記憶</h2>
+
+  <article class="article">
+    <h3 class="article__headline">apache/maka — 追記専用ログで動く、Apache インキュベータ入りのローカル AI ワークスペース（週間 +1,978★ / 累計 3.8千★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.」。セッションや実行記録をクラウドではなく手元のマシンに保つ、ローカルファーストなエージェント作業環境。</p>
+      <p>デスクトップ・ターミナル・評価用の各インターフェースを備え、ファイル読み書き・bash 実行・Web 検索といった組み込みツールでエージェントを動かしつつ、モデルとのやり取りやツール呼び出しを追記専用ログとして残して復旧・再現性を確保する。topics には <code>agent-runtime</code>・<code>event-sourcing</code>・<code>incubator</code>・<code>local-first</code> などが並び、主体は TypeScript。エージェント基盤が Apache のインキュベータプロジェクトとして立ち上がった点が注目を集めた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/apache/maka">apache/maka</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">tinyhumansai/openhuman — 生活のローカル記憶を育てる「個人向け超知能」（週間 +2,178★ / 累計 3.9万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.」。自分のデータから永続的なローカル記憶（Memory Tree）を構築し、複数エージェントのワークフローを束ね、統合サービス横断で深いリサーチを行う個人向け AI システム。</p>
+      <p>Obsidian 連携、100 を超える OAuth 連携、視覚的なワークフロー設計、17 のメッセージングチャネル、強制的なプライバシーモードを備え、最小限の設定で数分で立ち上がると謳う。主体は Rust。先週の needle・llmfit・OpenViking と同じ「クラウドに預けず手元で記憶を持つ」志向を、個人アシスタントという形にまとめた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/tinyhumansai/openhuman">tinyhumansai/openhuman</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">volcengine/OpenViking — 自己進化するエージェント向けコンテキスト DB（先週から継続・週間 +3,078★ / 累計 3.4万★）</h3>
+    <div class="article__body">
+      <p>先週に続き今週も上位に残った。ページ上部の説明は「Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.」。エージェントの記憶・知識 RAG・スキルを、<code>viking://</code> プロトコルによる仮想ファイルシステムとして統合するコンテキストデータベース。</p>
+      <p>情報を L0（抽象）・L1（概要）・L2（詳細）の 3 段階のローディング階層に整理してトークン消費を抑えつつ、決定論的な文脈検索を可能にする。Claude Code・Codex を含む複数のエージェントフレームワークとプラグインや MCP クライアント経由で連携する。topics には <code>agent-memory</code>・<code>agentic-rag</code>・<code>context-database</code>・<code>self-evolving</code> などが並ぶ。Volcengine（ByteDance のクラウド部門）発の「エージェントの記憶層」が、二週続けて支持を保った。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/volcengine/OpenViking">volcengine/OpenViking</a></li>
     </ul>
   </article>
-
-  <article class="article">
-    <h3 class="article__headline">akitaonrails/ai-memory — コーディング CLI 間の「引き継ぎ」を狙う長期記憶（週間 +1,952★ / 累計 3.8千★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors」。AI コーディングエージェントがセッションをまたいで記憶を保ち、異なるベンダーのエージェント間を文脈を失わずに乗り換えられるようにするツール。</p>
-      <p>Claude Code・Codex など複数の対応エージェントからライフサイクル上の観察を収集し、検索可能な Markdown の Wiki にまとめ、ツールを移行するときの引き継ぎを提供する。ベクトルデータベースを使わず、SQLite の FTS5 による全文検索と、任意で LLM による要約の統合を組み合わせる設計。主体は Rust、ライセンスは MIT。特定のエージェントに囲い込まれない「ベンダー横断の記憶」という切り口で伸びた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/akitaonrails/ai-memory">akitaonrails/ai-memory</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">semantica-agi/semantica — 説明可能性を核に据えたグラフネイティブ基盤（先週から継続・週間 +3,674★ / 累計 1.0万★）</h3>
-    <div class="article__body">
-      <p>先週に続き今週も上位に残った。ページ上部の説明は「Graph-Native Infrastructure for Context and Accountable AI Systems」で、決定の追跡や説明可能性を欠いたまま動く AI に対し、LLM とベクトルストアの下に決定論的な基盤層を敷く。とくに、決定が規制当局の審査に耐える必要のある規制産業を意識する。</p>
-      <p>複数ソースの企業データから照会可能な文脈グラフを構築し、AI の決定を因果系譜つきの第一級オブジェクトとして記録、W3C PROV-O 準拠の来歴トレイルを生成する。前向き連鎖・Rete・Datalog・SPARQL によるルールベース推論を LLM なしで実行し、Databricks や Snowflake のネイティブコネクタ、RDF トリプルストア／プロパティグラフ／ベクトルストアを差し替え可能な構成を持つ。主体は Python、ライセンスは MIT。「速く答える」より「後から説明・監査できる」ことに軸足を置く基盤が、二週続けて支持を集めた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/semantica-agi/semantica">semantica-agi/semantica</a></li>
-    </ul>
-  </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ローカル／オンデバイスで動かす AI</h2>
+  <h2 class="topic__title">AI 一色でない実務ツール・プラットフォーム</h2>
 
   <article class="article">
-    <h3 class="article__headline">cactus-compute/needle — 14MB のオンデバイス基盤モデル（週間 +3,409★ / 累計 8.2千★）</h3>
+    <h3 class="article__headline">AprilNEA/OpenLogi — Rust 製・ローカル完結の Logitech Options+ 代替（先週から継続・週間 +5,946★ / 累計 1.7万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「14MB foundation model for tiny devices; phones, wearables, smart home, and robots.」。スマホ・ウェアラブル・スマートホーム・ロボットといった資源の限られた小型デバイス向けに設計された、コンパクトな基盤モデル。</p>
-      <p>README によれば、Needle 2 は約 4,500 万パラメータで、モデルサイズ 14MB・実行時メモリ約 28MB という極小フットプリントを保ちながら、ツール呼び出し・デバイス自動化・データ抽出をこなす。Simple Attention Network 型のアーキテクチャを採り、信頼度スコア、ツール検索、文法制約付きデコードによる構造化出力といった機能を内蔵する。topics には <code>gemma</code>・<code>llm</code>・<code>on-device-ai</code> などが並ぶ。主体は Python、ライセンスは Apache-2.0。「クラウドに投げない・端末で完結する AI」の実装例として突出して伸びた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/cactus-compute/needle">cactus-compute/needle</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">AlexsJones/llmfit — 手持ちマシンで「動くモデル」を一発で探す（週間 +1,842★ / 累計 3.3万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Hundreds of models &amp; providers. One command to find what runs on your hardware.」。自分のマシンの RAM・CPU・GPU を調べ、どの大規模言語モデルが快適に動くかを推薦するターミナルアプリ。</p>
-      <p>ハードウェアを検出したうえで、モデルを性能・品質・速度・文脈長といった軸でスコアリングし、最適な組み合わせを提示する。対話的なターミナル UI と CLI の両モードを備え、Ollama・llama.cpp・MLX といったバックエンドに対応する。topics には <code>gguf</code>・<code>llm</code>・<code>localai</code>・<code>mlx</code> などが並ぶ。主体は Rust、ライセンスは MIT。「そのモデル、自分の PC で動くのか？」という素朴な悩みに一発で答える点が、ローカル志向のトレンドと噛み合って伸びた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/AlexsJones/llmfit">AlexsJones/llmfit</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">unslothai/unsloth — ローカルで LLM・拡散モデルを動かし学習させる UI（週間 +3,300★ / 累計 7.4万★）</h3>
-    <div class="article__body">
-      <p>ファインチューニングの高速化ライブラリとして知られる Unsloth のリポジトリ。ページ上部の説明は「Local UI to run and train LLMs and diffusion models」とあり、ローカルで各種 AI モデルを実行・学習・デプロイするためのデスクトップ／Web スタジオとして紹介されている。</p>
-      <p>言語モデル・拡散モデル・埋め込みモデル・音声モデルなど複数のモデル種を扱い、「標準的な手法に比べて学習が 2 倍速く VRAM を 70% 削減」といった最適化を掲げる。topics には <code>fine-tuning</code>・<code>llm</code>・<code>reinforcement-learning</code>・<code>self-hosted</code>・<code>stable-diffusion</code> などが並ぶ。主体は Python、ライセンスは Apache-2.0 と AGPL-3.0 のデュアル。累計 7万★超の定番が、ローカル実行 UI という切り口で今週も +3,300★ と伸びを保った。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/unslothai/unsloth">unslothai/unsloth</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">lightningpixel/modly — 画像やプロンプトから 3D モデルをローカル生成（週間 +1,855★ / 累計 7.1千★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Desktop app to generate 3D models from images or prompt using local AI — runs entirely on your GPU」。写真やプロンプトから 3D メッシュモデルを生成するデスクトップアプリで、オープンソースの AI モデルを手元の GPU 上で完結して実行する。</p>
-      <p>Windows・Linux・Apple Silicon の macOS に対応し、Hunyuan3D や TripoSG といった追加モデルを導入できる拡張機能システムを備える。topics には <code>3d</code>・<code>ai-local</code>・<code>desktop-app</code>・<code>self-hosted</code> などが並ぶ。主体は TypeScript（Python バックエンド）、ライセンスは MIT。「クラウドに送らずローカル GPU で 3D 生成」という点が、needle・llmfit・unsloth と同じローカル志向の流れに乗った。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/lightningpixel/modly">lightningpixel/modly</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ルーティング基盤と Rust 製デスクトップ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">NVIDIA-NeMo/Switchyard — モデル／プロバイダをまたぐ LLM ルーティング（週間 +932★ / 累計 2.0千★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility」。OpenAI と Anthropic の API 形式を相互変換しながら、複数のモデルバックエンドやプロバイダへリクエストを振り分ける Rust 製のプロキシ。</p>
-      <p>クライアントは自分の使い慣れた API を保ったまま、A/B テスト・コスト最適化・リクエスト特性に応じた動的なモデル選択といった複数のルーティングアルゴリズムを利用できる。ベンチマークやコスト・性能の最適化を狙う。主体は Rust、ライセンスは Apache 2.0。先週の loopx や cloudflare/computer に続き、NVIDIA の NeMo チームが「エージェントの実行を束ねる中間層」に加わったことを示す。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/NVIDIA-NeMo/Switchyard">NVIDIA-NeMo/Switchyard</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">AprilNEA/OpenLogi — Rust 製・ローカル完結の Logitech Options+ 代替（週間 +2,674★ / 累計 1.2万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「A native, local-first alternative to Logitech Options+, written in Rust — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.」。Logitech 純正の Options+ ソフトを置き換える、ローカル完結・プライバシー重視の入力デバイス設定ツール。アカウント登録もテレメトリもなしに、HID++ 経由でボタンのリマップや DPI、SmartShift を調整できる。</p>
-      <p>ネイティブ GUI を備え、macOS・Linux・Windows をまたいでボタンリマップ・DPI 調整・ジェスチャ制御・SmartShift 設定に対応する。topics には <code>hid</code>・<code>local-first</code>・<code>logitech</code>・<code>mouse-remapping</code>・<code>mx-master</code>・<code>privacy</code>・<code>rust</code> などが並ぶ。ライセンスは Apache 2.0 と MIT のデュアル。純正ソフトの重さやアカウント要求を嫌うユーザーの受け皿として、AI 以外の実務ツールでも今週上位に食い込んだ。</p>
+      <p>先週に続き今週も高い伸びを保った。ページ上部の説明は「⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.」。アカウント登録もテレメトリもなしに、HID++ 経由でマウス・キーボード・ウェブカムを設定できる、Logitech 純正ソフトの置き換え。</p>
+      <p>ネイティブ GUI と CLI の両方を備え、macOS・Linux・Windows をまたいでボタンのリマップ・DPI 制御・ジェスチャ割り当て・アプリごとのプロファイルに対応する。topics には <code>hid</code>・<code>local-first</code>・<code>logitech</code>・<code>mouse-remapping</code>・<code>mx-master</code>・<code>privacy</code>・<code>rust</code> などが並ぶ。純正ソフトの重さやアカウント要求を嫌う層の受け皿として、AI 以外の実務ツールで二週続けて上位に食い込んだ。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/AprilNEA/OpenLogi">AprilNEA/OpenLogi</a></li>
@@ -182,31 +160,65 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">basecamp/omarchy — DHH による「美しく現代的で主張のある」Linux（週間 +2,395★ / 累計 2.7万★）</h3>
+    <h3 class="article__headline">basecamp/omarchy — DHH による「美しく現代的で主張のある」Linux（先週から継続・週間 +5,593★ / 累計 3.3万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Beautiful, Modern &amp; Opinionated Linux」。Basecamp / Ruby on Rails で知られる DHH（David Heinemeier Hansson）が手がける、現代的な見た目と割り切った設計思想を掲げる Linux ディストリビューション。</p>
-      <p>基本操作から高度な設定までを網羅する詳細なマニュアルを備え、アプリケーション・開発ツール・カスタマイズの広範なサポートを提供する。主体は Shell、ライセンスは MIT。著名開発者が「意見の強い」既定値でまとめ上げたディストロとして注目を集め、AI 一色になりがちな週間トレンドのなかで存在感を示した。</p>
+      <p>先週に続いて上位に残った。ページ上部の説明は「Beautiful, Modern &amp; Opinionated Linux」。Basecamp / Ruby on Rails で知られる DHH（David Heinemeier Hansson）が手がける、現代的な見た目と割り切った設計思想を掲げる Linux ディストリビューション。</p>
+      <p>システムの基本からアプリケーション・設定・トラブルシューティングまでを網羅する詳細なマニュアルを備え、macOS や Windows からの移行者に向けた案内も用意する。主体は Shell。著名開発者が「意見の強い」既定値でまとめ上げたディストロとして、AI が中心の週間トレンドのなかで存在感を維持した。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/basecamp/omarchy">basecamp/omarchy</a></li>
     </ul>
   </article>
+
+  <article class="article">
+    <h3 class="article__headline">modular/modular — MAX と Mojo を含む AI 実行プラットフォーム（週間 +1,770★ / 累計 2.9万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「The Modular Platform (includes MAX &amp; Mojo)」。AI の開発とデプロイのための統合プラットフォームのオープンソース部分を収めたリポジトリ。モデルの配信・最適化を担う MAX フレームワークと、新しいプログラミング言語 Mojo を含む。</p>
+      <p>アクセラレータ向けライブラリ、OpenAI 互換エンドポイントを備えた推論サーバー、モデルパイプライン、多数のコード例を提供する。topics には <code>ai</code>・<code>machine-learning</code>・<code>max</code>・<code>mojo</code>・<code>programming-language</code> などが並び、Mojo・Python・C++ など複数言語で構成される。エージェント周りのアプリ層が賑わうなか、その下で AI を動かす実行基盤・言語のレイヤーとして着実に伸びた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/modular/modular">modular/modular</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">PostHog/posthog — 自走するプロダクトのための計測・可観測性プラットフォーム（週間 +1,511★ / 累計 3.9万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes.」。プロダクト分析と監視のための開発者向けツールを幅広く揃えたオープンソースプラットフォーム。</p>
+      <p>自動キャプチャや手動計測でユーザー行動をイベントとして捉え、セッションリプレイ・機能フラグ・A/B テスト・エラー追跡・ログなどを提供する。topics には <code>ab-testing</code>・<code>ai-analytics</code>・<code>feature-flags</code>・<code>product-analytics</code>・<code>session-replay</code> などが並び、主体は TypeScript。「エージェントが問題を診断するのに必要な文脈を捉える」と AI 観測性を前面に据え、計測基盤の側から今週のランキングに顔を出した。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/PostHog/posthog">PostHog/posthog</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">securo-finance/securo — セルフホスト・プライバシー重視の個人向け家計簿（週間 +432★ / 累計 2.5千★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Open-source personal finance manager. Self-hosted, privacy-first.」。財務データを第三者に預けず自分のインフラに置くことを重視した、セルフホスト型の家計・資産管理アプリ。</p>
+      <p>複数口座の管理、取引の記録と自動カテゴリ分け、予算管理に加え、Pluggy や Enable Banking を通じた任意の銀行連携、多通貨対応、AI 補助のチャット機能を備える。topics には <code>expense-tracker</code>・<code>finance-management</code> などが並び、主体は Python。上位の派手な AI ツールに比べれば伸びは控えめだが、「自分のデータを手元に置く」というローカルファーストの価値観が家計管理の領域にも及んでいることを示す 1 本。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/securo-finance/securo">securo-finance/securo</a></li>
+    </ul>
+  </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">定番の巨大リポジトリも高い伸び</h2>
+  <h2 class="topic__title">定番の大型リポジトリも高い伸び</h2>
 
   <article class="article">
-    <h3 class="article__headline">public-apis・MoneyPrinterTurbo — 週間ランキング上位の定番</h3>
+    <h3 class="article__headline">harry0703/MoneyPrinterTurbo — テーマから HD 短尺動画をワンクリック生成（週間 +4,951★ / 累計 11.8万★）</h3>
     <div class="article__body">
-      <p>新顔のエージェント周辺ツールが並ぶ一方で、以前から巨大な定番リポジトリも週間で大きくスターを伸ばした。無料 API を categories 別に集めたリファレンス <a href="https://github.com/public-apis/public-apis">public-apis/public-apis</a>（週間 +11,259★・累計 46万★超）は、開発者が自由に使える公開 API を探すための定番一覧で、今週は首位級の伸びを見せた。もうひとつは <a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703/MoneyPrinterTurbo</a>（週間 +9,712★・累計 11.3万★）で、ページ上部の説明は「利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频」。テーマやキーワードを与えると AI が台本・素材・字幕・BGM を組み立て、TikTok / YouTube Shorts 向けの HD 短尺動画をワンクリックで生成する。いずれも継続的に使われる大型リポジトリで、新顔のトレンドとは別の層として安定した人気を保っている。</p>
+      <p>新顔のエージェント周辺ツールが並ぶ一方で、以前から巨大な定番も週間で大きくスターを伸ばした。ページ上部の説明は「利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.」。テーマやキーワードを与えると、AI が台本を書き、素材を集め、字幕と BGM を付けて、TikTok / Instagram / YouTube Shorts 向けの HD 短尺動画をワンクリックで組み立てる。</p>
+      <p>複数の大規模言語モデルに対応し、Web インターフェースと API の両方、バッチ生成や多言語対応を備える。topics には <code>ai-video-generator</code>・<code>tiktok</code>・<code>youtube-shorts</code>・<code>text-to-speech</code>・<code>video-automation</code> などが並び、主体は Python。累計 11万★超の定番が、新顔のトレンドとは別の層として今週も安定した人気を保った。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/public-apis/public-apis">public-apis/public-apis</a></li>
       <li><a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703/MoneyPrinterTurbo</a></li>
     </ul>
   </article>
 </section>
+
     </main>
 
     <footer>
