@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年8月25日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年9月1日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年8月25日">
+<meta property="og:title" content="フロントエンドニュース — 2026年9月1日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月25日（火）</span>
+        <span>2026年9月1日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,53 +31,68 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週号は「サプライチェーン攻撃の実害と、それを織り込んだ制度設計」で締めたが、今週はエコシステムが次の段へ進んだ。最大の特徴は<strong>次期メジャーが一斉に RC に並んだこと</strong>——<code>pnpm 12</code>（Rust 全面書き換え）、<code>Vitest 5</code>、<code>Solid 2.0</code>、<code>SvelteKit 3</code>、<code>Preact 11</code>、<code>Effect v4</code> がそろって release candidate 入りし、GA ラッシュの前段が形になった。もう一つの軸は <strong>React Compiler がツールチェーンの標準機能へ落ちたこと</strong>で、Oxlint 1.79・<code>oxc-transform-react</code>・Biome 2.5.8・Bun 1.4 が相次いで対応し、「opt-in の実験」から「どのビルド系でも効く自動メモ化」へ移った。その先に <strong>React 19.3</strong>（Fragment refs と ViewTransition の stable 化）が視界に入る。そして先週の通奏低音だったセキュリティは、<strong>Next.js が 8 月 26 日のセキュリティリリースを事前予告</strong>する形で継続した。攻撃の週の次は、道具立てを一段まとめて更新する週だった。</p>
+  <p>先週号は「一斉 RC の波」と「Next.js の予告つきセキュリティリリース」の 2 つを来週の宿題として残したが、今週はその両方が<strong>予告どおり着地した</strong>。Next.js は <strong>8 月 25 日</strong>——予告した 26 日から 1 日前倒しで——critical 2 件の RCE を塞ぐ <code>16.3.3</code> / <code>15.5.24</code> を公開した。そして RC の波からは<strong>最初の GA が出た</strong>。<code>pnpm 12.0</code> が 8 月 26 日に stable 化し、Rust 全面書き換えを正式版として送り出した。一方で <code>Vitest 5</code>・<code>Vue 3.6</code>・<code>SvelteKit 3</code> はまだ RC のまま——波はまだ本格的には割れていない。低音では、フロントエンドを AI エージェントが作り変えるという Nolan Lawson の「隕石」論が広く読まれ、「DX より agent experience」という論調が水面下で広がった。予告の週の次は、予告が現実になる週だった。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">React Compiler がツールチェーン標準へ — Oxlint 1.79・oxc-transform-react・Biome 2.5.8・Bun 1.4 が一斉対応</h3>
+    <h3 class="article__headline">Next.js 8/25 セキュリティリリースが着地 — critical RCE 2 件、予告から 1 日前倒し</h3>
     <div class="article__body">
-      <p>これまで React Compiler は Babel プラグインや各フレームワーク個別の opt-in として扱われてきたが、今週その前提が変わった。8 月 18 日、<strong>Oxlint 1.79 が React Compiler サポートを追加</strong>し、あわせて新パッケージ <code>oxc-transform-react</code> が自動メモ化を担う。Oxc が自前で React Compiler を抱え込み <strong>Oxc の AST 上で直接動かす</strong>ことで統合を密にし、これは <strong><code>@vitejs/plugin-react</code> でも近く使える</strong>ようになる見込みだ。同時に <strong>Biome 2.5.8</strong> が nursery（実験）ルール <code>useReactCompiler</code> を入れ、<strong>Bun 1.4</strong> は <code>--react-compiler</code> フラグと <code>Bun.build({ reactCompiler: true })</code> でビルド段の自動メモ化を組み込む。</p>
-      <p>要は、Rust ベースの lint/transform 系（Oxc・Biome）とオールインワンのランタイム（Bun）が、判で押したように同じ週に React Compiler を取り込んだということだ。開発者が Babel を挟まずとも、使っている lint・bundler・runtime の側で自動メモ化が既定の選択肢になる。先週まで「React 本体の周辺機能」だった Compiler が、今週は<strong>ツールチェーン全体の共通装備</strong>へと位置づけを変えた。</p>
+      <p>先週号で「来週の注目」に挙げた Next.js のセキュリティリリースが、今週そのまま現実になった。当初は 8 月 26 日の予定だったが、上流依存に<strong>もう 1 件の critical 脆弱性</strong>が見つかったため <strong>8 月 25 日へ前倒し</strong>され、<code>16.3.3</code>（Active LTS）と <code>15.5.24</code>（Maintenance LTS）が公開された。塞がれたのは<strong>いずれも unauthenticated RCE の critical 2 件</strong>だ。</p>
+      <p>1 つは <strong>AVIF 画像最適化の RCE</strong>で、<code>sharp</code> が使う <code>libheif</code> の脆弱性に起因する。攻撃者が用意した AVIF 画像を Next.js が最適化するだけで任意コード実行に至るため、パッチ版は上流の修正が行き渡るまで <strong>AVIF 最適化を無効化</strong>する対処を取った。もう 1 つは <strong>Windows ホスト限定の RCE</strong>（CVE-2026-75604）で、Pages Router と App Router を併用し Cache Components を使わない構成が対象。Windows ファイルシステム上で稼働する場合に成立し、<strong>既知の回避策は無い</strong>（Linux / macOS は非該当）。先週「予告つき運用が定着した」と書いた運びは、日付を 1 日縮めつつも約束どおりパッチとして届いた。該当構成のチームは即時アップグレードが必要だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://oxc.rs/blog/2026-08-18-react-compiler-support">React Compiler Support — Oxlint / Oxc</a></li>
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（Oxlint 1.79 / Biome 2.5.8 / Bun 1.4）— thisweekinreact.com</a></li>
+      <li><a href="https://nextjs.org/blog/august-2026-security-release">August 2026 Security Release — nextjs.org</a></li>
+      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-august-2026">Upcoming Next.js August Security Release（予告）— nextjs.org</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">次期メジャーが一斉に RC 入り — pnpm 12（Rust 書き換え）、Vitest 5、Solid 2.0、SvelteKit 3、Preact 11、Effect v4</h3>
+    <h3 class="article__headline">pnpm 12.0 が GA — RC の波、最初の stable は Rust 書き換え版</h3>
     <div class="article__body">
-      <p>今週の地力は「GA」ではなく「RC の波」に出た。パッケージマネージャの <strong>pnpm 12 が RC</strong> に到達し、install エンジンを <strong>Rust で全面書き換え</strong>、Node.js ランチャーを捨てた<strong>ネイティブバイナリ</strong>として配布する。API・フラグ・設定・lockfile 形式は pnpm 11 と互換で、差分は 5 点のみ。キャッシュ済み install は 381ms→12ms（約 30 倍）、クリーン install も 6.5s→2.2s（約 3 倍）と、体感に直結する数字が並ぶ。テスト側では <strong>Vitest 5 RC</strong> が mock を既定でクリアし、fake timers が <strong>Temporal API をモック</strong>できるようになった（stable は 2〜3 週後の見込み）。</p>
-      <p>フレームワーク層も足並みをそろえた。<strong>Solid 2.0 RC</strong> は async を第一級で扱い、<strong>Rust ベースの新コンパイラ</strong>と簡素化した API を打ち出した。先週プレビュー継続と報じた <strong>SvelteKit 3 も RC</strong> へ進み、<strong>Vite 8 + Rolldown</strong> 統合、error boundaries、検証付き環境変数、remote functions を載せる。ビュー層では <strong>Preact 11 RC</strong> が <code>use()</code>・<code>createPortal()</code>・<code>useEffectEvent()</code> を追加し、関数型エフェクトの <strong>Effect v4 RC</strong> は reactive Atom と一級の React バインディングを備えた。「速い基盤を stable 一歩手前まで詰める」動きが、先週は個別だったのに対し、今週は複数プロジェクトで同時に RC として噴き出した。</p>
+      <p>先週「RC 入り」を報じた次期メジャー群のうち、<strong>最初に stable へ抜けたのは pnpm だった</strong>。<code>pnpm 12.0</code> が <strong>8 月 26 日に GA</strong>し、install エンジンの <strong>Rust 全面書き換え</strong>を正式版として送り出した。コマンド・フラグ・設定・lockfile 形式は pnpm 11 からそのまま持ち越され、既存の lockfile も <code>--frozen-lockfile</code> で動く。cycle の多いワークスペースで<strong>peer 解決が 2〜3 倍速く、メモリは約 25% 減</strong>、lockfile も小さくなる。Linux では hardlink 優先で btrfs 上の materialization がほぼ半減する。</p>
+      <p>互換を保ちつつも破壊的変更は 4 点に絞られた。git 依存は SSH ではなく<strong>正規の HTTPS URL 経由で解決</strong>、<code>pnpm-workspace.yaml</code> の未知の設定は<strong>提案つきエラー</strong>になる、循環依存は peer 解決時に正規化され<strong>並び替えても byte-identical な lockfile</strong>を生む、<code>engineStrict</code> はサブツリー全体ではなく依存エッジを辿る。まだ <code>latest</code> は pnpm 11 を指し、導入は <code>next-12</code> タグから——だが「速い基盤を stable 一歩手前まで詰める」動きは、今週ついに GA という結果を 1 つ出した。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://pnpm.io/blog/whats-different-in-pnpm-12">What's different in pnpm 12 — pnpm Blog</a></li>
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（pnpm 12 / Vitest 5 / Solid 2.0 / SvelteKit 3 / Preact 11 / Effect v4）— thisweekinreact.com</a></li>
+      <li><a href="https://pnpm.io/blog/releases/12.0">pnpm 12.0 — pnpm Blog</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">React 19.3 が視界に — Fragment refs と ViewTransition が stable 化、parallel transitions は全面有効化</h3>
+    <h3 class="article__headline">波はまだ割れていない — Vitest 5・Vue 3.6・SvelteKit 3 は RC のまま足踏み</h3>
     <div class="article__body">
-      <p>Compiler の標準化と歩調を合わせるように、React 本体の次版も近づいた。Next.js チームの確認として、<strong>Fragment refs と ViewTransition が React 19.3 で stable 機能になる</strong>ことが示された。さらに、これまでフラグ扱いだった <strong>parallel transitions が全環境で有効化</strong>される（Meta では既に本番稼働中）。19.3 自体の正式リリースは「近く」とされ、日付は未確定だが、周辺のツールチェーンが Compiler を取り込み終えたタイミングで本体の安定版が来る流れが見えてきた。エコシステム全体としては、「Compiler が下回りに定着 → 本体が新プリミティブを stable 化」という順序で世代交代が進んでいる。</p>
+      <p>pnpm が先陣を切った一方で、RC の波の大半は<strong>まだ stable に届いていない</strong>。<strong>Vitest 5</strong> は今週も RC を刻み続け、<code>5.0.0-rc.3</code>（8/28）・<code>5.0.0-rc.4</code>（8/31）と番号を進めたが、stable は未着（現行 stable は 4.1.11 のまま）。<strong>Vue 3.6</strong> も <code>rc.6</code> まで来て Vapor Mode を feature-complete としつつ GA は秋待ち、という先週の構図が続く。<strong>SvelteKit 3</strong> も RC 段階で、<strong>Vite 8 + Rolldown</strong>（esbuild+Rollup を置き換える新バンドラ）を前提に「問題なければ近く stable」と告知するにとどまった。先週「一斉 RC」と呼んだ集団は、今週は pnpm 1 銘柄が GA へ抜け、残りは横並びで最終調整を続けている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（React 19.3 / Fragment refs / ViewTransition / parallel transitions）— thisweekinreact.com</a></li>
+      <li><a href="https://github.com/vitest-dev/vitest/discussions/9664">Vitest 5 — vitest-dev/vitest Discussion #9664</a></li>
+      <li><a href="https://svelte.dev/blog/sveltekit-3-release-candidate">The SvelteKit 3 Release Candidate is here — svelte.dev</a></li>
+      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core（v3.6.0-rc.6）— GitHub</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Next.js が 8/26 のセキュリティリリースを予告 — critical 1 件、16.3.3 と 15.5.24 を同時公開予定</h3>
+    <h3 class="article__headline">「フロントエンドに隕石が落ちている」— Nolan Lawson 論が広く読まれる</h3>
     <div class="article__body">
-      <p>先週の主役だったセキュリティは、今週は「予告」という穏当な形で継続した。Next.js は <strong>8 月 26 日にスケジュール済みのセキュリティリリースを行う</strong>と事前告知し、<strong>critical 深刻度の脆弱性 1 件</strong>に対応する。パッチは <strong>16.3.3 と 15.5.24</strong> として、影響範囲・対象バージョン・アップグレード手順を含む正式アドバイザリと同時に公開される予定だ。事前に日付だけ知らせてチームに準備期間を与えるこの運用は、先週号で runtime に広がったと書いた「予告つきセキュリティリリース」が、フレームワーク側でも定着していることを示す。攻撃の実害が出た直後の週に、防御側は淡々と予定を通す構えを見せた。</p>
+      <p>リリースの列とは別に、今週は 1 本のエッセイが論調を動かした。Nolan Lawson の <strong>「フロントエンド web 開発にいま隕石が落ちている」</strong>（8/23）は、AI エージェントがフロントエンドの教育とキャリアを構造的に作り変えていると論じる。要点は 3 つ。<strong>(1)</strong> フロントのコードは backend より差し替えが利くため AI に任せる心理的障壁が低い、<strong>(2)</strong> エージェントの多くが React で学習しているため、Svelte / Solid の優れた DX よりも<strong>「agent experience」</strong>が効くようになり、特化フレームワークの魅力が相対的に下がりうる、<strong>(3)</strong> 標準化の焦点も、開発者に優しい API より Project Fugu 的な<strong>能力（capability）重視</strong>へ傾く——というものだ。著名なフロントエンド教育者が相次いで AI 側へ軸足を移している事実を挙げ、これが一時の流行ではなく職業地図そのものの変化だと位置づけた。RC の波やセキュリティ対応という「日々の道具立ての更新」の裏で、その道具を誰が・何のために書くのかという問い自体が揺れている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-august-2026">Upcoming Next.js August Security Release — nextjs.org</a></li>
+      <li><a href="https://nolanlawson.com/2026/08/23/the-asteroid-currently-hitting-frontend-web-development/">The asteroid currently hitting frontend web development — nolanlawson.com</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">セキュリティ</h2>
+
+  <article class="article">
+    <h3 class="article__headline">AVIF 最適化は当面オフ — 上流 libheif の修正待ちという構図</h3>
+    <div class="article__body">
+      <p>Next.js の 2 件のうち、影響が広いのは AVIF 最適化の RCE だ。根本原因は Next.js 自身ではなく <code>sharp</code> が内部で使う <strong><code>libheif</code></strong> にあり（GHSA-2xp9-vwfh-vxw4 / libheif 側 GHSA-g89c-p67h-r497）、攻撃者が用意した AVIF を最適化パイプラインに通すだけで成立する。上流の修正が配布網に行き渡るまで時間がかかるため、パッチ版は<strong>フレームワーク側で AVIF 最適化を止める</strong>という一時対処を選んだ。画像最適化に AVIF を使っていたサイトは、当面 WebP などにフォールバックする挙動になる点を認識しておきたい。先週のサプライチェーン騒動に続き、今週も「自分のコードではなく依存の奥で穴が開く」という、モダンフロントエンドの構造的リスクが表面化した格好だ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://nextjs.org/blog/august-2026-security-release">August 2026 Security Release（AVIF / Windows RCE の詳細）— nextjs.org</a></li>
     </ul>
   </article>
 </section>
@@ -86,37 +101,13 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Vue 3.6 は今週も RC のまま — Node 26.7 と Astro 7.2 が周辺を進める</h3>
+    <h3 class="article__headline">Vite 8 + Rolldown が RC 群の共通土台に — バンドラ統一の実地投入が進む</h3>
     <div class="article__body">
-      <p>RC の波の一方で、先週から動かない銘柄もある。<strong>Vue 3.6 は今週も rc.2（7 月 22 日）から進まず</strong>、Vapor Mode が feature-complete でも unstable 扱いという構図は変わっていない。秋の GA 待ちが続く。ランタイムでは <strong>Node.js 26.7</strong> が <strong>Perfetto トレーシング対応</strong>を追加し、プロファイリングの選択肢を広げた。静的サイト側では <strong>Astro 7.2</strong> が<strong>インクリメンタルな静的ビルド</strong>を有効化し、任意の session サポートも入れた。今週の「一斉 RC」に乗らなかったプロジェクトも、通常リリースの範囲で着実に前進している。</p>
+      <p>今週の RC 群を横に見ると、<strong>Vite 8 の Rolldown 化</strong>が共通の下敷きになりつつあることが分かる。Vite 8 は従来の esbuild + Rollup の 2 本立てをやめ、Rust 製の <strong>Rolldown 単一バンドラ</strong>へ統一する方向で、SvelteKit 3 RC はこれを前提に組まれている。先週「pnpm が Rust バイナリ」「Solid が Rust コンパイラ」と書いた流れは、ビルドチェーンの中核であるバンドラにも及んだ。フレームワーク各層が足並みをそろえて Rust ベースの基盤へ載り替える構図が、RC の波を通して一段はっきりしてきた。stable がそろえば、「Vite を使う限りバンドラは Rolldown」という前提が既定になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core（v3.6.0-rc.2 のまま）— GitHub</a></li>
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（Node 26.7 / Astro 7.2）— thisweekinreact.com</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エコシステム・ライブラリ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">TanStack が速度と API を刷新 — Router 再実装で最大 19 倍、Form 2.0 alpha</h3>
-    <div class="article__body">
-      <p>先週 Table V9 の GA を報じた TanStack は、今週はルーティングとフォームで動いた。コントリビュータによる <strong>TanStack Router の再実装</strong>が「ドロップイン置換で最大 19 倍高速」をうたい、内部の作り直しで実効性能を大きく引き上げると主張する。<strong>TanStack Form 2.0 alpha</strong> は API を再設計し、新しいバリデーションパイプラインと性能改善を盛り込んだ。加えて TanStack Start への移行事例（Lovable.dev が Next.js から段階移行）も共有され、DX は良い一方で bundler のカスタマイズが増える、という実運用の手触りが記録された。先週の「JS ライブラリはメモリと再描画を締める」流れに続き、今週は速度と API 刷新が前面に出た。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（TanStack Router 再実装 / Form 2.0 alpha / Start 移行）— thisweekinreact.com</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">UI・head 系ライブラリも更新 — shadcn React 0.3、Unhead 3.3、React Hook Form 7.85、Meta の Astryx</h3>
-    <div class="article__body">
-      <p>周辺ライブラリの更新も続いた。<strong>shadcn React 0.3</strong> は多段の質問フローを組む <code>&lt;Questionnaire&gt;</code> コンポーネントを追加。<code>&lt;head&gt;</code> 管理の <strong>Unhead 3.3</strong> はフレームワーク非依存の <code>&lt;head&gt;</code> コンポーネントと <code>&lt;Fragment&gt;</code> サポート、React 向けの修正を入れた。<strong>React Hook Form 7.85</strong> は React の <code>&lt;Activity&gt;</code>（描画を保留・再開する新プリミティブ）に対応。デザインシステム側では、Meta が <strong>StyleX ベースのカスタマイズ可能なデザインシステム Astryx</strong>（0.3 / 0.4）を出した。先週の React Aria 1.20・Base UI 1.7 に続き、アクセシビリティとスタイリングの土台がさらに厚くなっている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294（shadcn React 0.3 / Unhead 3.3 / RHF 7.85 / Astryx）— thisweekinreact.com</a></li>
+      <li><a href="https://vite.dev/blog/announcing-vite8-beta">Vite 8 Beta: The Rolldown-powered Vite — vite.dev</a></li>
+      <li><a href="https://svelte.dev/blog/sveltekit-3-release-candidate">The SvelteKit 3 Release Candidate is here — svelte.dev</a></li>
     </ul>
   </article>
 </section>
@@ -125,27 +116,26 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js 8/26 セキュリティリリースの中身 — critical 1 件の影響範囲</h3>
+    <h3 class="article__headline">次の GA は Vitest 5 か — RC の波、2 番目の卒業生を待つ</h3>
     <div class="article__body">
-      <p>まず確定しているのが <strong>8 月 26 日の Next.js セキュリティリリース</strong>だ。予告どおり <strong>16.3.3 / 15.5.24</strong> が出れば、critical 1 件の具体的な影響範囲（App Router か、特定の API か）と、15 系・16 系の両方を保守するチームのアップグレード手順が焦点になる。先週のサプライチェーン騒動に続く「予告つき」運用が、実際のパッチとしてどう着地するかを追いたい。</p>
+      <p>pnpm 12 に続く 2 番目の stable がどれになるかが次の焦点だ。<strong>Vitest 5</strong> は rc.4（8/31）まで来ており、当初予告の「RC 2〜3 週」を踏まえれば最も近い。<strong>SvelteKit 3</strong>（Vite 8 + Rolldown）と <strong>Vue 3.6</strong>（Vapor Mode / 秋 GA 予定）がそれに続くかを見たい。「一斉 RC」が実際に「一斉 GA」へ転じるのか、それとも pnpm のように 1 つずつ間隔を空けて抜けていくのか、波の割れ方そのものが来週以降の見どころになる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-august-2026">Upcoming Next.js August Security Release — nextjs.org</a></li>
+      <li><a href="https://github.com/vitest-dev/vitest/discussions/9664">Vitest 5 — vitest-dev/vitest Discussion #9664</a></li>
+      <li><a href="https://svelte.dev/blog/sveltekit-3-release-candidate">The SvelteKit 3 Release Candidate is here — svelte.dev</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">RC の波はどこまで GA に転じるか — Vitest 5・pnpm 12・SvelteKit 3、そして Vue 3.6</h3>
+    <h3 class="article__headline">Next.js パッチの浸透と AVIF 復帰 — 上流 libheif 修正の行方</h3>
     <div class="article__body">
-      <p>今週そろって RC 入りした次期メジャーが、来週以降どの順で stable へ抜けるかが次の見どころだ。<strong>Vitest 5 は 2〜3 週後の stable を予告</strong>しており最も近い。<strong>pnpm 12</strong>（Rust バイナリ）、<strong>SvelteKit 3</strong>（Vite 8 + Rolldown）、<strong>Solid 2.0</strong>、<strong>Preact 11</strong> がそれに続くかを見たい。あわせて、今週も動かなかった <strong>Vue 3.6 の GA</strong> と Vapor Mode の本番格上げが、この「一斉世代交代」にいつ合流するかが引き続きの宿題になる。</p>
+      <p>セキュリティ側では、今週出た <code>16.3.3</code> / <code>15.5.24</code> の適用がどこまで浸透するか、そして<strong>無効化された AVIF 最適化がいつ復帰するか</strong>が続報になる。復帰は上流 <code>libheif</code> の修正が配布網に行き渡ることが前提なので、フレームワークの一時対処が「恒久対処」に切り替わるまでのラグを追いたい。Windows RCE には回避策が無いため、Windows ホストのチームがどれだけ早くパッチ適用を終えられるかも実務上の関心事だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/294">This Week In React #294 — thisweekinreact.com</a></li>
-      <li><a href="https://pnpm.io/blog/whats-different-in-pnpm-12">What's different in pnpm 12 — pnpm Blog</a></li>
+      <li><a href="https://nextjs.org/blog/august-2026-security-release">August 2026 Security Release — nextjs.org</a></li>
     </ul>
   </article>
 </section>
-
     </main>
 
     <footer>
