@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年8月27日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年9月3日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年8月27日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年9月3日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年8月27日（木）</span>
+        <span>2026年9月3日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,147 +31,96 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の Claude Code は<strong>「机から離れても止まらない」方向に一気に寄せた週</strong>だった。先月ユーザーが「最初に直してほしい」と挙げた <strong>Remote Control の信頼性を作り込み</strong>、ついに<strong>スマホから直接セッションを開始</strong>できるようになった——接続が切れても勝手に再接続し、電話と CLI がモデルや作業状態まで同期する。もう一つの目玉は <strong>SendFeedback</strong>：何かが失敗したとき、Claude が<strong>自分でバグ報告を下書き</strong>してくれる。リリースは 2.1.238〜247 と過密で、<strong>複雑タスク向けの専用エージェント起動ツール</strong>、<code>/usage</code> の <strong>Loops 内訳</strong>、組織承認モデルを並べる <strong>modelPicker</strong>、<code>/permissions</code> の <strong>Auto モードタブ</strong>、そして <strong>computer use・browser・Skills・Files API の一般提供</strong>まで積み上がった。周辺では <strong>Codex がエージェントをダッシュボードに束ねて @メンションで繋ぎ</strong>、<strong>Devin が Web アプリを全面刷新</strong>、<strong>CodeRabbit が変更の"影響半径"を可視化</strong>、<strong>Claude 本体は Cowork に組み込みブラウザと統合メモリ</strong>を載せた。</p>
+  <p>今週は派手な新機能より、<strong>エージェントを本番で回すための「統制・コスト・実行基盤」を各社が同時に固めた週</strong>だった。最大の一手は <strong>Fable 5.1</strong>——Claude 5 系の最上位として 9/1 に GA になり、<strong>キャッシュ読みが 75% 安く</strong>なった。これが即座に効いて、<strong>Claude Code は Fable 5.1 を既定の Fable モデルに採用</strong>、<strong>Devin も Fable 級の実効コストを大幅に下げた</strong>。Claude Code 本体は <code>--restricted</code>・組織管理の MCP サーバ・<strong>モデル切替フック</strong>・<strong>支出上限バー</strong>と、"締める／見える化する"更新を積み上げた。周辺では <strong>Cursor が実行を自社ネットワーク内で回す self-hosted machines</strong>、<strong>Codex が Vim とプラグイン市場</strong>で日常の編集体験を、<strong>Devin がコードスキャンを定期自動化</strong>へ寄せた。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">スマホから Claude Code を起動する——Remote Control を作り込んで「机を離れても回る」へ</h3>
+    <h3 class="article__headline">Fable 5.1 が既定の Fable モデルに——最上位モデルが「キャッシュ 75% 減」で降りてきた</h3>
     <div class="article__body">
-      <p>今週いちばんの動きは <strong>Remote Control の信頼性強化</strong>だ。Anthropic は「先月あなたたちが<strong>最初に直してほしいと挙げたのが Remote Control</strong>だったので、信頼性に本気で取り組んだ」と切り出し、目に見える改善を並べた。最大の追加は<strong>スマホからのセッション開始</strong>——<code>claude remote-control</code> を動かしているマシンが Code タブの上部に<strong>デバイスカード</strong>として並び、タップしてディレクトリを選ぶだけでそのマシン上でセッションが立ち上がる。告知スレッドは約 1 万いいね・150 万インプレと、今週の x で最も強い反応を集めた。</p>
-      <p>「動くけど不安定で使えない」を潰す地道な作り込みが揃ったのが肝だ。<strong>接続が切れても自動で復帰</strong>し（ノートを一瞬閉じたり Wi-Fi を切り替えても勝手に再接続）、<strong>電話とマシンの状態が同期</strong>する——ラップトップでセッションを再開すれば電話もライブ表示のまま、Claude Code が終了すれば数秒で電話側もオフライン表示に変わる。モデルと effort レベルも電話・CLI 間で揃い、iOS では重いセッションが速く開く。スラッシュコマンドも電話から効くようになり、<code>/clear</code> で電話ビューをリセット、<code>/compact</code> で圧縮マーカー表示、<code>/diff</code> がネイティブの差分ビューを開く。「長時間タスクを投げて、あとはスマホから様子を見て指示を足す」という運用が、実用に耐える段階に入った。</p>
+      <p>9/1 に <strong>Claude Fable 5.1</strong>（<code>claude-fable-5-1</code>）が一般提供になった。Claude 5 系で Opus 5 の上に立つ<strong>最上位モデル</strong>で、数時間規模のコーディングや複数アプリをまたぐ長時間エージェント作業に振った設計だ。入出力価格（$10 / $50 per Mtok）は据え置きのまま、<strong>キャッシュ読みが $0.25 per Mtok と 75% 下がった</strong>のが実務上の目玉——同じ文脈を何度も舐めるエージェント用途では、繰り返し参照のコストがそのまま効いてくる。</p>
+      <p>Claude Code は <strong>2.1.257 でこの Fable 5.1 を「既定の Fable モデル」に採用</strong>した。Claude Code / API では effort=high、Cowork / claude.ai では medium が既定で、思考は常時オン。1M トークンのコンテキストを持つ最上位モデルが、追加設定なしで手元のエージェントに載る格好だ。「賢いモデルは高くて常用しづらい」という前提を、キャッシュ価格の側から崩しにきた一週間だった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2090933155847143498">@ClaudeDevs — Remote Control の信頼性を強化（スレッド）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2090933157243863142">@ClaudeDevs — スマホから直接セッションを開始できる</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2090933160033059303">@ClaudeDevs — 電話と CLI がモデル・effort・スラッシュコマンドまで同期</a></li>
+      <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">Claude Fable 5.1 — Claude Platform Docs</a></li>
+      <li><a href="https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads">VentureBeat — Fable 5.1 / Mythos 5.1、キャッシュ読み 75% 減</a></li>
+      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（2.1.257：Fable 5.1 を既定 Fable モデルに）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Claude が自分でバグ報告を書く——SendFeedback（2.1.247）</h3>
+    <h3 class="article__headline">2.1.248〜259——`--restricted`・組織管理 MCP・モデル切替フックで「締める」側の更新</h3>
     <div class="article__body">
-      <p>2.1.247 で入った <strong>SendFeedback</strong> は、使い勝手に効く小さな一手だ。<strong>何かが失敗したとき・Claude が自分のミスに気づいたとき・「うまくいかなかった」と伝えたとき</strong>に、Claude が<strong>フィードバック報告そのものを下書き</strong>する。ユーザーはそれをレビュー・修正して承認し、送信できる（<code>/feedback</code> から確認、<code>feedbackDrafts</code> 設定でオフにも）。</p>
-      <p>この変更を実装した中の人 @trq212 は「これは自分の変更で、出せて嬉しい。今までは <code>/feedback</code> を叩いて自分で報告を書かないといけなかったが、これからは<strong>『フィードバックを下書きして』と言うだけ</strong>でいい。報告は改善と問題把握にとても役立つのでありがたい」と投稿した。エージェントに任せる範囲が「コードを書く」だけでなく「不具合を言語化して開発元に返す」ところまで広がった格好で、日々の摩擦を一段減らす。</p>
+      <p>今週のリリースは「エージェントに何をどこまで許すか」を細かく握る方向に厚かった。<strong>2.1.248</strong> では <code>--restricted</code> フラグが入り、<strong>組み込みツールを外し、ファイルアクセスを作業ディレクトリ内に限定</strong>できるようになった。あわせて agent frontmatter の <code>experimental.cacheTtl</code> でエージェント単位の prompt キャッシュ TTL を持てる。<strong>2.1.259</strong> では組織が全ユーザーに HTTP/SSE の MCP サーバを配る <strong><code>managedMcpServers</code></strong> 管理設定と、無人ヘッドレス向けの <strong><code>--permission-prompts none</code></strong>、GitLab のマージリクエスト記法（<code>MR !N</code>）認識が加わった。</p>
+      <p><strong>2.1.251</strong> の <strong><code>PreModelSwitch</code> / <code>PostModelSwitch</code> フック</strong>は、セッション途中でモデルが切り替わる瞬間に処理を挟める。先週コミュニティで「セッション中にモデルを変えるとプロンプトキャッシュが壊れる」という注意が共有されたが、その"切替イベント"自体を捕まえられるようになった格好だ。実際 <strong>2.1.259 では OAuth トークン更新時にプロンプトキャッシュが無効化される不具合が修正</strong>され、2.1.248 でも「長時間セッションで 1 時間に一度ほどキャッシュがミスする」問題（ツール定義の再描画が原因）が潰された。地味だが、キャッシュを"壊さない"ための修正が今週まとめて入っている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2092695038270775647">@ClaudeDevs — Claude Code が失敗時にフィードバックを下書き</a></li>
-      <li><a href="https://x.com/trq212/status/2092696449616376140">@trq212 — 実装者による解説（「下書きして、と言うだけ」）</a></li>
-      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（2.1.247：SendFeedback ツール）</a></li>
+      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub、2.1.248〜259 の一次情報）</a></li>
+      <li><a href="https://releasebot.io/updates/anthropic/claude-code">Anthropic / Claude Code アップデート一覧（Releasebot）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">2.1.238〜247——専用エージェント起動ツール、/usage の Loops 内訳、modelPicker、Auto モードタブ</h3>
+    <h3 class="article__headline">支出とキャッシュを"見える化"——/usage の支出上限バー、/cost の prompt キャッシュ行</h3>
     <div class="article__body">
-      <p>リリースは一週間で 2.1.238 から 247 まで、基盤側の効く更新が並んだ。2.1.246 では<strong>複雑なマルチステップ作業のために専用エージェントを立ち上げるツール</strong>が加わり、隔離されたサブエージェント・ワークフローが組めるようになった。あわせて <code>/permissions</code> に <strong>Auto モードのタブ</strong>が入り、auto モードの分類ルールを一覧・編集できる。2.1.243 では <code>/usage</code> に <strong>Loops の内訳</strong>（ループ単位の実行回数・総トークン・実行あたりトークン・最終実行）が付き、<strong>おしゃべりな／暴走した <code>/loop</code> タスクを一目で見つけられる</strong>ようになった。同版の <strong>modelPicker</strong> は <code>/model</code> を組織承認済みの順序付き・ラベル付きリストに整える設定だ。</p>
-      <p>足回りの修正も厚い。2.1.245 で <strong>glibc 2.44 を積む Linux（Arch・CachyOS・Fedora Rawhide）での起動時クラッシュ</strong>を解消。2.1.247 では新コマンド <strong><code>/claude-api cost-optimize</code></strong> が、支出をプロファイルしてキャッシュ・バッチ・トークン衛生・モデル選択といったコスト削減の勘所を提示する。サブエージェントまわりも、初回呼び出しモデルが 404 で落ちていたのをセッションのフォールバック連鎖で救うよう直った。「賢くする」より「壊れず・軽く・見通しよく回す」側の投資が、今週はまとめて表に出た。</p>
+      <p>コスト側の可視化も一段進んだ。<strong>2.1.251</strong> で <code>/usage</code> に<strong>支出上限バー</strong>が付き、ステータスラインに <code>rate_limits.spend_limit</code> フィールドが追加された。同版の <code>/cost</code> には<strong>セッション単位の prompt キャッシュ行</strong>（ヒット率と指標）が入り、キャッシュが効いているかを一目で確認できる。前段の Fable 5.1 のキャッシュ値下げと合わせて読むと、今週の Claude Code は<strong>「キャッシュを効かせて安く回す」を計測・制御できる状態</strong>に寄せてきたのが分かる。</p>
+      <p>あわせて運用者に効くのが週次上限の恒久化だ。夏の <strong>+50% 増量プロモは 8/31 に終了</strong>し、9/14 以降は各プランのベースラインに対する<strong>恒久 +25% 増</strong>へ置き換わる（Pro / Max / Team / Enterprise 対象）。一時的なボーナスから、常時使える底上げへと切り替わる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（GitHub、2.1.238〜247 の一次情報）</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2092383817587658996">@ClaudeCodeLog — 2.1.246：専用エージェント起動ツールと Auto モードタブ</a></li>
-      <li><a href="https://x.com/ClaudeCodeLog/status/2092037167216292188">@ClaudeCodeLog — 2.1.243：/usage の Loops 内訳と modelPicker</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">computer use・browser・Skills・Files API が一般提供に——エージェントを組む土台が固まった</h3>
-    <div class="article__body">
-      <p>プラットフォーム側では、<strong>computer use、browser tool、Skills API、Files API が Claude Platform で一般提供（GA）</strong>になった。API を持たないアプリ相手でも、より少ない往復で作業を自動化でき、バージョン管理された Skills と再利用可能な部品の上に <strong>Claude Managed Agents</strong> を組める。</p>
-      <p>効率も上がった。新しい <code>computer_toolset_20260801</code> では、Claude が<strong>1 往復に 1 アクションではなく、クリック・入力・キー・スクリーンショットを 1 ターンで複数実行</strong>する。早期アクセスの顧客では<strong>タスクあたりの往復が 20〜40% 削減</strong>され、タスクが速く・安く終わったという。<code>browser_toolset_20260801</code> は、レイアウトがずれると壊れる「ピクセル狙い」ではなく、ページ構造（要素参照＋座標）を Claude に渡すことで自動化を安定させる。エージェントを「デモ」から「日々回る仕組み」へ寄せるための、地味だが本質的な GA だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2090540270219567575">@ClaudeDevs — computer use・browser・Skills・Files API が GA</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2090540271557546261">@ClaudeDevs — 1 ターンで複数アクション、往復 20〜40% 減</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2090540272690057481">@ClaudeDevs — browser_toolset は要素参照でレイアウト変化に強い</a></li>
+      <li><a href="https://github.com/anthropics/claude-code/releases">Claude Code Releases（2.1.251：spend limit バー、/cost の prompt キャッシュ行）</a></li>
+      <li><a href="https://www.digitalapplied.com/blog/claude-code-weekly-limit-reduction-september-14">週次上限：+50% プロモ終了と 9/14 以降の恒久 +25% 増</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Codex：エージェントをダッシュボードに束ね、@メンションで繋ぐ</h2>
+  <h2 class="topic__title">Cursor：エージェントの実行を「自社ネットワークの中」で回す</h2>
 
   <article class="article">
-    <h3 class="article__headline">agents ダッシュボード、タスク同士の @メンション、全マシン横断の接続</h3>
+    <h3 class="article__headline">self-hosted machines——AWS Lambda・Cloudflare・Modal・Vercel 上でエージェントを走らせる</h3>
     <div class="article__body">
-      <p>OpenAI の Codex CLI も、今週は「多数のエージェント／タスクをどう束ねるか」に踏み込んだ。<strong>0.149.0</strong> で <strong>agents ダッシュボード</strong>（タスクの検索・開始・リネーム・停止）、<strong><code>codex queue</code></strong>（ローカル／リモートのセッションへのメッセージング）、<strong><code>codex doctor</code></strong>（ネットワーク・プロキシ・更新の診断）が入った。続く <strong>0.150.0</strong> では、<strong>他のタスクを読む・作る・メッセージするための <code>@メンション</code></strong>、レスポンス／コードブロック／引用を選んで拾える <strong><code>/copy</code> ピッカー</strong>、タスクの<strong>自動タイトル付け</strong>（<code>/rename</code> が名前を提案）が加わった。</p>
-      <p>OpenAI の @ajambrosino は「<strong>Codex を全部のコンピュータにまたがって接続できる</strong>（settings → connections）」と告知。Claude Code の Remote Control が「スマホから 1 台を操る」方向なら、Codex は「複数タスク・複数マシンを 1 画面から束ねる」方向で、<strong>エージェントを"群れ"として運用する</strong>ための土台を並べてきた。似た課題に別のアプローチで各社が同時に手を伸ばしているのが今週の見どころだ。</p>
+      <p>Cursor は 9/2 に <strong>self-hosted machines</strong> を出した。エージェントのツール実行を<strong>自分たちのネットワーク基盤の中に留める</strong>のが狙いで、個人の単一マシン向けの「My Machines」と、需要に応じて容量を伸縮する<strong>チームプール</strong>を用意した。実行先として <strong>AWS Lambda・Coder・Cloudflare・Daytona・Modal・Namespace・Vercel・E2B</strong> といった既存インフラを指定でき、アイドルなマシンを休止させてコストを抑える。Linux / Mac ではデスクトップ操作を伴う computer use にも対応する。</p>
+      <p>方向性は明快だ。Claude Code の <code>--restricted</code> や組織管理 MCP が「エージェントに与える権限を絞る」なら、Cursor は<strong>「エージェントが動く場所そのものを自社の管理下に置く」</strong>。コードや秘密情報が外に出ることを警戒する組織にとって、実行基盤を自前化できるかどうかは導入可否を分ける論点で、そこに正面から応えにきた。少し前（8/27）の「リポジトリ無しでゼロから始めて Vercel に公開まで」機能と合わせ、Cursor は"クラウドエージェントの入口と土台"を同時に広げている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/Codex_Changelog/status/2092716531436413236">@Codex_Changelog — 0.150.0：@メンションでタスク間連携、/copy ピッカー</a></li>
-      <li><a href="https://x.com/Codex_Changelog/status/2090629152273817781">@Codex_Changelog — 0.149.0：agents ダッシュボード、codex queue、codex doctor</a></li>
-      <li><a href="https://x.com/ajambrosino/status/2092619436301984040">@ajambrosino — Codex を全マシン横断で接続</a></li>
+      <li><a href="https://cursor.com/changelog">Cursor Changelog（9/2：self-hosted machines、8/27：リポジトリ無しで開始）</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin：Web アプリを全面刷新</h2>
+  <h2 class="topic__title">Codex：Vim とプラグイン市場で「毎日の編集体験」を作り込む</h2>
 
   <article class="article">
-    <h3 class="article__headline">読み込み 80% 減・レンダラを作り直し、⌘K で何でも操作</h3>
+    <h3 class="article__headline">Vim の検索・undo/redo、リモート market からのプラグイン導入</h3>
     <div class="article__body">
-      <p>Cognition の Devin は、今週は中身より<strong>「毎日触る画面の速さと操作性」</strong>に投資した。Web アプリを全面刷新し、<strong>読み込みのもたつきを 80% 削減</strong>、サイドバーをカスタマイズ可能にし、<strong><code>⌘K</code> で検索・開始・ピン留め・アプリ内移動まで</strong>キーボードから完結させた。チャットのレンダラは一から作り直し、<strong>長いチャットが 55% 速く開き、INP は 36% 改善</strong>したという。</p>
-      <p>ネストしたサブエージェントの管理（子セッションが自前の VM を持ち、さらに孫を起こせる）をサイドバーから扱える点や、セッションのグルーピング・フィルタリングも入った。派手な新モデルの週ではないぶん、<strong>「大量のエージェント・セッションを日常的にさばく道具</strong>としての完成度」を各社が競い始めていることが、Devin の刷新にもよく表れている。</p>
+      <p>OpenAI の Codex CLI は今週、地味だが常用者に効く作り込みを重ねた。<strong>0.152.0</strong> で <strong>Vim の検索</strong>（<code>/</code> と <code>?</code>、マッチのハイライト）が入り、続く <strong>0.153.0</strong> で <strong>Vim の undo/redo</strong>（<code>u</code> と <code>Ctrl+R</code>）が加わった。プロンプト入力欄が本格的な Vim 操作に耐えるようになり、エディタから CLI に降りてきても指の運びが途切れない。TUI 履歴は<strong>完全なパッチと端末入力を表示</strong>するようになり、何をどう変えたかを遡りやすくなった。</p>
+      <p>拡張性も広げた。<strong>0.153.0</strong> ではプラグイン CLI が<strong>リモートのマーケットプレイスからプラグインを list / install / remove</strong> できるようになり、<strong>0.151.0</strong> では<strong>拡張がモデル処理の前に MCP ツールの結果を横取り・改変</strong>できる仕組みと、任意 MCP サーバのツール発見に猶予期間を設ける設定が入った。<strong>0.152.0</strong> の<strong>操作つきレート制限バナー</strong>（使用状況の確認・クレジット管理・上限リセット・プラン管理へ導線）も、日々の摩擦を減らす一手だ。「賢さ」より「手に馴染む道具としての完成度」で詰めてくる週だった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/cognition/status/2092643315392848191">@cognition — Devin Web アプリ刷新（読み込み 80% 減、⌘K）</a></li>
-      <li><a href="https://x.com/cognition/status/2092643316923875536">@cognition — レンダラ再構築で長いチャットが 55% 速く、INP -36%</a></li>
+      <li><a href="https://developers.openai.com/codex/changelog">Codex Changelog（0.151.0〜0.153.0：Vim、プラグイン市場、MCP 結果の横取り）</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">CodeRabbit：変更の"影響半径"を可視化する</h2>
+  <h2 class="topic__title">Devin：コードスキャンを「定期自動化」の対象に</h2>
 
   <article class="article">
-    <h3 class="article__headline">Security Blast Radius——diff に映らない下流の影響まで辿る</h3>
+    <h3 class="article__headline">デッドコードを見つける cleanup scan、/scan コマンド、スケジュール実行</h3>
     <div class="article__body">
-      <p>先週「5 日で 3 プロダクト」を打った CodeRabbit は、今週その中身を掘り下げた。目玉は <strong>Security Blast Radius</strong>。「<strong>PR が触るものの多くは diff に現れない</strong>」という問題意識から、変更の<strong>到達範囲（依存しているもの・影響を受ける消費側・カバーするテスト・周辺のリポジトリ文脈）を丸ごとマッピング</strong>し、承認前に下流への影響を調べられるようにする。7 分の解説動画つきで使い方を示した。</p>
-      <p>Blast Radius は Security Agent に同梱され、Change Stack から使える。あわせて <strong>CodeRabbit が Cursor のプラグインとして提供開始</strong>され、Cursor Agent に変更レビューを依頼したり、同梱の CodeRabbit サブエージェントにレビューを委譲したりできるようになった。汎用エージェントがレビューまで飲み込む流れに対し、専業らしく「<strong>変更が実際にどこまで波及するか</strong>」という一段深い情報で差別化しにいく構えだ。</p>
+      <p>Cognition の Devin は 9/2 に<strong>コードスキャン周り</strong>を厚くした。新設の <strong>cleanup スキャン</strong>は<strong>リポジトリ内のデッドコードや整理候補</strong>を洗い出す。コンポーザから <strong><code>/scan</code></strong> で直接スキャンを起動でき、さらに<strong>自動化（Automations）がコードスキャンをエージェント種別として扱えるようになった</strong>——つまり<strong>定期スキャンのスケジュール化や、新しいコミットの自動再スキャン</strong>が組める。findings（検出結果）タブはトリアージしやすいよう作り直され、GitLab・Jira・incident.io・GitHub のトリガーではイベント詳細が richer になった。</p>
+      <p>コスト面でも Fable 5.1 の波が届いた。Devin では<strong>Fable 級の知能が実効で大きく安くなり（キャッシュ方式の変更により、Opus より安い水準）</strong>、GPT-5.6 Sol も 10/3 まで 70% 割引で使える。レビュー系（CodeRabbit の Blast Radius など）に続き、Devin は<strong>「書く」だけでなく「溜まったコードを定期的に掃除する」役割</strong>を自動化の型に落とし込みにきている。エージェントの仕事が"一発のタスク"から"回り続ける運用"へ寄る流れが、今週も各社で揃った。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://x.com/coderabbitai/status/2091922214576689167">@coderabbitai — Security Blast Radius の解説（7 分）</a></li>
-      <li><a href="https://x.com/coderabbitai/status/2090589758888296767">@coderabbitai — Blast Radius が依存・消費側・テストを地図化</a></li>
-      <li><a href="https://x.com/coderabbitai/status/2092280838499266893">@coderabbitai — CodeRabbit が Cursor プラグインに</a></li>
+      <li><a href="https://docs.devin.ai/release-notes/2026">Devin Release Notes 2026（9/2：cleanup scan、/scan、スキャンの自動化）</a></li>
+      <li><a href="https://devin.ai/blog">Devin Blog（Fable 5.1 採用と価格）</a></li>
     </ul>
   </article>
 </section>
 
-<section class="topic">
-  <h2 class="topic__title">Claude 本体：Cowork に組み込みブラウザ、記憶をチャットと統合</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Cowork がサイドパネルでブラウザを開く／チャットと Cowork で記憶が一本化</h3>
-    <div class="article__body">
-      <p>コーディングエージェントの外周として追っている Claude Cowork にも、実務で効く更新が来た。ひとつは<strong>組み込みブラウザ</strong>：タスクがサイトを含むと、<strong>Cowork のサイドパネルにブラウザが開き、Claude が自分でナビゲート・フォーム入力して仕事を仕上げる</strong>。インストール不要で、自分のブラウザやログインとは分離される。今後 1 週間で有料プラン全体に展開。自分のブラウザで動かしたい人向けには <strong>Claude in Chrome が全有料プランで GA</strong> になった。</p>
-      <p>もうひとつは<strong>メモリの統合</strong>。<strong>チャットと Cowork で記憶が一本化</strong>され、Cowork にタスクを渡すと、Claude が<strong>これまでのチャットで得た文脈（進めているプロジェクト、上司の好み、先の四半期の顧客）から始める</strong>。記憶は設定でトピックの一覧として読み・編集・削除でき、会話中に自動更新される（「これを覚えて」で明示保存も可能）。中の人 @bcherny は「小さな改善だが、メモリがよりシンプルで強力になった」と添えた。<strong>1 つのメモリを複数の作業面で共有する</strong>設計は、エージェントに任せる運用の"文脈の持ち越し"を楽にする方向だ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/claudeai/status/2092755571455758427">@claudeai — Cowork に組み込みブラウザ</a></li>
-      <li><a href="https://x.com/claudeai/status/2092299704864284888">@claudeai — チャットと Cowork で記憶を統合</a></li>
-      <li><a href="https://x.com/bcherny/status/2092355642363453943">@bcherny — 「メモリがよりシンプルで強力に」</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">コミュニティ：セッション途中でモデルを変えるな</h2>
-
-  <article class="article">
-    <h3 class="article__headline">プロンプトキャッシュが壊れる——地味だが効く実務の注意</h3>
-    <div class="article__body">
-      <p>使い方の勘所として今週共有されたのは、個人エンジニア oikon48 の一言だった。「<strong>セッション中にモデルをガチャガチャ変えるな、プロンプトキャッシュが壊れる</strong>」——意外とやってしまいがちな落とし穴で、モデルを切り替えるたびに積み上げたキャッシュが無効化され、コストと待ち時間が跳ねる。今週の Claude Code 側の更新（<code>/model</code> を組織承認リストに整える modelPicker、<code>/usage</code> の Loops 内訳で暴走ループを可視化）は、まさにこうした「知らずに無駄を垂れ流す」箇所を減らす方向で噛み合っている。</p>
-      <p>関連して、Notion は<strong>スキルをローカルのエージェントへ持ち出す</strong>機能を出した。Notion をスキルの source of truth にしておき、<strong>Claude Code・Codex・Cursor・Gemini・Grok へ <code>SKILL.md</code>（＋承認済みファイル）をダウンロード</strong>して、どのツールでも同じ手順書で作業できる。「どのエージェントを使うか」がツール単位で分断されがちな中、<strong>スキルという単位で運用知を持ち運ぶ</strong>動きが静かに広がっている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/oikon48/status/2092278965583102135">@oikon48 — モデルを途中で変えるとプロンプトキャッシュが壊れる</a></li>
-      <li><a href="https://x.com/NotionHQ/status/2090829567451861122">@NotionHQ — スキルを Claude Code / Codex / Cursor / Gemini / Grok へ持ち出す</a></li>
-    </ul>
-  </article>
-</section>
     </main>
 
     <footer>
