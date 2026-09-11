@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年9月4日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年9月11日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年9月4日">
+<meta property="og:title" content="GitHub トレンド — 2026年9月11日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月4日（金）</span>
+        <span>2026年9月11日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,157 +31,156 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週は「プラグイン／スキルの<strong>市場</strong>」が主役だったが、今週はその市場に並ぶ<strong>スキルそのもの</strong>が一気に上位を占めた。象徴は週間トップの <code>archify</code>——アーキテクチャ図をエージェントに描かせる Agent Skill が単独で <strong>週間 +2.4万★</strong> を集め、2 位以下を大きく引き離した。165 個の検証済みスキルで「AI を科学者にする」<code>scientific-agent-skills</code>、AI に現代的な Go を書かせる JetBrains の <code>go-modern-guidelines</code>、MCP サーバーのカタログ <code>awesome-mcp-servers</code> と、「エージェントに特定領域の作法を教える部品」が並んだ。ふたつめの軸は<strong>商用 SaaS を OSS で置き換える</strong>で、Semrush/Ahrefs 代替の <code>open-seo</code> と ElevenLabs 代替の <code>VoiceStudio</code> が揃って伸びた。みっつめは<strong>モデルを自分の手で</strong>——64M の LLM をゼロから 2 時間で学習する <code>minimind</code>、Google の時系列基盤モデル <code>timesfm</code>、安全アライメントを自動除去する <code>heretic</code>。加えて、実データを載せた 3D 地球儀 <code>gods-eye-view</code> やマルチエージェント教室 <code>OpenMAIC</code> といった<strong>ブラウザで体験させるデモ</strong>が揃って週間 +1万★ を記録した。「エージェントに何をさせるか」を配る流れが、先週の器から中身へと降りてきた一週間だった。</p>
+  <p>先週は「器から中身へ」——スキルそのものが上位に現れ始めた週だった。今週はそれが加速し、週間トレンドの上位を <strong>Agent Skills がほぼ占拠</strong>した。しかも中身の性格が変わった。これまでのように「特定領域の知識」を配るのではなく、<strong>エージェントの振る舞いそのものを矯正するスキル</strong>が上位に並んだのが今週の中心だ。答えを埋もれさせず要点から返させる <code>i-have-adhd</code>、「一番怠けたシニア」のように書かせず不要なコードを書かせない <code>ponytail</code>、AI 特有の文体を消す <code>humanizer</code>——いずれも「何を知っているか」ではなく「どう振る舞うか」を仕込む。ふたつめの軸は<strong>ドメイン特化のスキル束</strong>で、38 種の編集品質な図を生む <code>diagram-design</code>、マーケ一式の <code>marketingskills</code> が伸び、先週トップの <code>archify</code> も残った。みっつめは<strong>スキルを束ねる土台</strong>——メタハーネスの <code>ECC</code> と、文脈を 98% 圧縮する <code>context-mode</code>。加えて OpenAI と Anthropic の<strong>公式スキルカタログが揃ってトレンド入り</strong>し、ブラウザ・ファイル変換・動画生成といった<strong>エージェントの「手足」</strong>（<code>chrome-devtools-mcp</code>・<code>markitdown</code>・<code>hyperframes</code>）も並走した。エージェントに「知識」を配る段から、「作法と人格」を配る段へ——トレンドの主役がもう一段降りてきた一週間だった。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">今週の中心 — エージェントに「作法」を教える Agent Skill</h2>
+  <h2 class="topic__title">今週の中心 — エージェントの「振る舞い」を仕込むスキル</h2>
 
   <article class="article">
-    <h3 class="article__headline">tt-a1i/archify — アーキテクチャ図をエージェントに描かせる Skill（今週トップ・週間 +2.4万★ / 累計 4.7万★）</h3>
+    <h3 class="article__headline">mattpocock/skills — 「本物のエンジニアのためのスキル」を .agents ごと公開（週間 約1.2万★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.」。説明やコードベースを入力すると、アーキテクチャ・ワークフロー・シーケンス・データフロー・ライフサイクルの 5 種類の図を生成する Node.js 製のレンダリングシステム。型付き JSON の中間表現を経て、単体で完結する HTML/SVG に決定論的にコンパイルする設計になっている。</p>
-      <p>複数のビジュアルプリセットとダーク／ライトのテーマを持ち、PNG・SVG に加えてアニメーション付きの WebM でも書き出せる。topics には <code>agent-skills</code>・<code>architecture-as-code</code>・<code>claude-skill</code>・<code>diagram-as-code</code>・<code>text-to-diagram</code> などが並び、Cursor・Claude Code・Codex CLI・OpenCode といったエージェント環境のチャット内から直接、レビュー前の設計確認や共有用ドキュメントを作れる。「図を描く」という単機能を Skill として切り出したこの 1 本が、2 位以下を大きく引き離して今週の週間トレンドを制した。</p>
+      <p>ページ上部の説明は「Skills for Real Engineers. Straight from my .agents directory.」。Matt Pocock 本人が自分の <code>.agents</code> ディレクトリで使っている再利用可能なエージェントスキルをまとめて公開したもの。Claude Code をはじめとする AI コーディングエージェント向けに設計されている。</p>
+      <p>README によれば、開発者とエージェントのすれ違い・過度な冗長さ・コード品質の劣化・アーキテクチャの崩れといった、AI 開発でよく起きる失敗を正すことを狙う。Claude Code プラグインやコマンドラインインストーラーで導入し、セットアップコマンドでプロジェクトごとに設定——課題トラッキング連携やドメイン固有の用語ドキュメントの整備まで——を有効化できる。「個人の作業ディレクトリの中身」がそのまま週間トップ級のスキル集になったこと自体が、今週の空気を象徴していた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">DietrichGebert/ponytail — 「一番怠けたシニア」のように書かせて、書かないコードを増やす（週間 約1.2万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.」。すぐに実装へ飛びつく前に「判断のはしご」を通させ、AI コーディングエージェントを最小限で効率的なコードへ誘導するルール系。</p>
+      <p>そのコードは本当に必要か／既にコードベースに存在しないか／標準ライブラリで足りないか／プラットフォーム標準の機能で実現できないか——を順に確認してから初めて書く。README はベンチマークとして生成行数を約 54% 削減しつつ、バリデーションやエラーハンドリングといった安全性は保つと示す。topics には <code>agent-skills</code>・<code>yagni</code>・<code>prompt-engineering</code>・<code>cursor-rules</code> などが並び、20 以上のエージェント環境にプラグインや設定ファイルで組み込める。「YAGNI をエージェントに徹底させる」という振る舞いの矯正が、単体で週間トップ争いに食い込んだ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">ayghri/i-have-adhd — 答えを埋もれさせない「ADHD フレンドリー」な出力スキル（週間 約1.0万★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「A skill to stop your coding agent from burying the answer. ADHD-friendly output.」。回答の構造を組み替え、明快さと即座に動けることを最優先させるスキル／プラグイン。</p>
+      <p>まず次にやるべき一手を冒頭に置かせ、複数手順は番号付きにし、冗長な前置きや脱線したコメントを削らせる。ADHD のマネジメント原則から引いた 10 個の書式ルールを、AI アシスタントの応答向けに翻案している。topics には <code>adhd</code>・<code>claude-skills</code>・<code>claude-code-plugin</code>・<code>developer-tools</code>・<code>productivity</code> が並び、複数の AI プラットフォームにインストール可能でフォークして自分好みに調整できる。ponytail と同じく「モデルの出力の振る舞い」を直接いじる系として上位に付けた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">blader/humanizer — AI っぽい文章の「痕跡」を消すスキル（週間 約5,200★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Agent skill that removes signs of AI-generated writing from text」。AI が生成した文章を、事実の正確さを保ったまま、より自然で人が書いたように見えるよう書き直すエージェントスキル。</p>
+      <p>助走の段取り（staged run-ups）・無理な三段構え（forced triads）・大げさな意味づけ（inflated significance）など、機械生成文に特徴的な 25 のパターンを同定して体系的に直す。テキストを直接貼り付けるか、文体を合わせるための書き手のサンプルを渡して使う。詳細を勝手に作らず、必要なら足りない情報を尋ねて事実性を保つ設計。topics は <code>agent-skills</code>・<code>ai-writing</code>・<code>writing-tools</code>・<code>prompt-engineering</code> など、主体は Markdown。コードだけでなく「文章の振る舞い」まで矯正対象が広がった一例。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/blader/humanizer">blader/humanizer</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ドメインを配る — 図・マーケ・図解のスキル束</h2>
+
+  <article class="article">
+    <h3 class="article__headline">cathrynlavery/diagram-design — 38 種の「編集品質」な図を生む図解スキル（週間 約7,300★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「38 editorial diagram types for Claude Code, Codex, and Pi. Self-contained HTML + SVG. No shadows. No Mermaid slop.」。編集品質の図を、外部依存も JavaScript も持たない単体完結の HTML/SVG として生成するデザインシステム。</p>
+      <p>Claude Code や Codex といった AI コーディングアシスタントと連携し、対象サイトのブランドカラーやタイポグラフィを自動で検出して図に反映することで、デザインソフトなしに統一感のある図版を作る。draw.io・Mermaid・Excalidraw の図を取り込んで描き直し、出力サイズ・形式・読み手のレベルに合わせて調整できる。任意でアクセシブルなアニメーションも付き、Web・スライド・印刷向けに最適化される。topics には <code>agent-skills</code>・<code>diagrams</code>・<code>svg</code>・<code>data-visualization</code> などが並ぶ。先週トップの archify と同じ「図を描く」領域で、別アプローチのスキルが並んで伸びた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">coreyhaines31/marketingskills — マーケ一式をエージェントに授けるスキル集（週間 約2,700★）</h3>
+    <div class="article__body">
+      <p>ページ上部の説明は「Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.」。AI コーディングエージェントにマーケティングの専門知識を足す、Markdown ベースの知識ファイル群。</p>
+      <p>コンバージョン率最適化・コンテンツ制作・SEO・有料広告・アナリティクス・レベニューオペレーションといった領域を扱う。CLI・プラグインマーケットプレイス・ファイルの直接コピーで導入でき、エージェントにマーケ特化のタスクを手伝わせられる。topics は <code>claude</code>・<code>codex</code>・<code>marketing</code>、MIT ライセンスで公開されコミュニティからの貢献も受け付ける。エンジニアリング以外の職能をスキルとして配る動きが、上位で存在感を見せた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/coreyhaines31/marketingskills">coreyhaines31/marketingskills</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">tt-a1i/archify — アーキテクチャ図を描く Skill、先週トップから継続（週間 約1.2万★）</h3>
+    <div class="article__body">
+      <p>先週の週間トップが今週も上位に残った。ページ上部の説明は「Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.」。説明やコードベースを入力すると、アーキテクチャ・ワークフロー・シーケンス・データフロー・ライフサイクルの 5 種類の図を生成する。</p>
+      <p>型付き JSON の中間表現を経て単体で完結する HTML/SVG に決定論的にコンパイルし、PNG・SVG・アニメ付き WebM で書き出せる。今週は同じ「図を描く」領域に diagram-design が並んで伸びており、Skill の中でも「設計・図解」というカテゴリが一つの定番ジャンルとして定着しつつあることを示している。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></li>
     </ul>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">スキルを束ねる土台 — メタハーネスと文脈の最適化</h2>
 
   <article class="article">
-    <h3 class="article__headline">K-Dense-AI/scientific-agent-skills — AI エージェントを「科学者」に変える検証済みスキル集（週間 +7,370★ / 累計 4.3万★）</h3>
+    <h3 class="article__headline">affaan-m/ECC — スキル・記憶・セキュリティを束ねるエージェント最適化システム（週間 約9,300★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery.」。生物学・化学・医学・創薬にまたがる 165 個の検証済みスキルと 100 以上の科学データベースを、コーディングエージェントから使えるようにするライブラリ。</p>
-      <p>RDKit・Scanpy・PyTorch Lightning・scikit-learn など 70 超の Python パッケージを束ね、バイオインフォマティクス・ケモインフォマティクス・臨床研究・材料科学の研究ワークフローをエージェントに実行させる。topics には <code>agent-skills</code>・<code>ai-scientist</code>・<code>drug-discovery</code>・<code>computational-biology</code> などが並び、Cursor・Claude Code・Codex などオープンな Agent Skills 標準に対応する。archify と同じく「特定領域の手続きを Skill として与える」流れの、科学寄りの代表格。</p>
+      <p>ページ上部の説明は「The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.」。個々のスキルの上に立ち、AI コーディングエージェントの土台側を整える「エージェントのための OS」を掲げる。</p>
+      <p>README によれば、68 のサブエージェント・291 の再利用可能なワークフロースキル・94 のコマンド入口を備え、Claude Code・Codex・Cursor などのハーネスにテスト駆動開発・セキュリティスキャン・コードレビュー・記憶の永続化・継続的な学習を足す。フックで実行時の自動化を、ルールでプロジェクト標準を、エージェントで委譲を担い、文脈使用量を抑えつつセッションをまたぐ記憶を保つ設計。MIT ライセンスで Windows・macOS・Linux に対応する。単体スキルの流行の裏で、それらを載せる「ハーネス最適化」層まで週間上位に来た点が今週の一断面だった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></li>
+      <li><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">JetBrains/go-modern-guidelines — AI に「今どきの Go」を書かせるためのガイドライン（週間 +1,213★ / 累計 3.2千★）</h3>
+    <h3 class="article__headline">mksglu/context-mode — ツール出力を 98% 圧縮する文脈最適化 MCP（週間 約1,600★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Help AI coding agents write modern Go」。学習データのカットオフで新しい言語機能を知らず、古いパターンに引きずられがちな AI コーディングエージェントに、現代的な Go の書き方を明示的に教えるガイドライン集。<code>go.mod</code> からプロジェクトの Go バージョンを自動検出し、1.0 から 1.27 までの適切なイディオムを適用する。</p>
-      <p>条件分岐の代わりに <code>max()</code> を、手書きループの代わりに <code>slices.Contains</code> を——といった具体的なパターン参照を与えることで、後から直すのではなく最初から慣用的なコードを書かせる。topics には <code>ai-agents</code>・<code>coding-agent</code>・<code>golang</code>・<code>guidelines</code> などが並び、Junie・Claude Code・Cursor・Codex にプラグインとして組み込める。JetBrains 自身が「モデルの弱点を補う知識」をプラグイン化した点が目を引いた。</p>
+      <p>ページ上部の説明は「Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.」。AI コーディングエージェントの文脈ウィンドウの肥大化に、ツール出力のサンドボックス化（最大 98% 削減）で対処する MCP サーバー。</p>
+      <p>セッション状態を SQLite に保存して会話の圧縮をまたいで継続させ、フックでツールのルーティングを強制する。<code>ctx_execute</code>・<code>ctx_index</code>・<code>ctx_search</code> など 11 の MCP ツールを備え、生データを会話の文脈に載せずスクリプト経由で処理させる。Claude Code・GitHub Copilot・Cursor など 17 以上のプラットフォームに、専用アダプターと危険なコマンドを自動でそらすフックで対応する。ECC と同じく「スキルを載せる前の器」を効率化する方向の一本。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/JetBrains/go-modern-guidelines">JetBrains/go-modern-guidelines</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">punkpeye/awesome-mcp-servers — MCP サーバーの定番カタログ（週間 +1,130★ / 累計 9.4万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「A collection of MCP servers.」。Model Context Protocol（MCP）のサーバー実装を体系的に集めて整理した、定番の awesome リスト。エージェントと外部サービスを標準化されたプロトコルで繋ぐ「サーバー」の総覧として機能する。</p>
-      <p>topics は <code>ai</code>・<code>mcp</code>。累計 9万★超の巨大リストが今週も着実に伸びたことは、Skill が個々の作法を教える一方で、その足元では「エージェントが繋ぐ先」を束ねる MCP のエコシステムが依然として拡大し続けていることを示している。作法（Skill）と接続（MCP）の両輪が、今週のトレンド上位で同時に賑わった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/punkpeye/awesome-mcp-servers">punkpeye/awesome-mcp-servers</a></li>
+      <li><a href="https://github.com/mksglu/context-mode">mksglu/context-mode</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">商用 SaaS を OSS で置き換える</h2>
+  <h2 class="topic__title">エージェントの「手足」— ブラウザ・変換・動画</h2>
 
   <article class="article">
-    <h3 class="article__headline">every-app/open-seo — Semrush / Ahrefs のオープンソース代替（週間 +2,941★ / 累計 1.7万★）</h3>
+    <h3 class="article__headline">ChromeDevTools/chrome-devtools-mcp — エージェントに Chrome の DevTools を渡す MCP（週間 約790★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「Open source alternative to Semrush and Ahrefs」。高価な SEO ツールのサブスクリプションではなく、ユーザー自身の DataForSEO API 資格情報を持ち込む従量課金モデルで動く、オープンソースの SEO プラットフォーム。</p>
-      <p>キーワード調査・順位追跡・競合分析・被リンク調査・サイト監査に加え、AI 上での可視性評価まで備える。topics には <code>keyword-research</code>・<code>mcp</code>・<code>seo-tools</code>・<code>site-audit</code> などが並び、主体は TypeScript。MCP サーバーと再利用可能なエージェントスキルを通じて、Claude Code・OpenClaw・Hermes といったエージェントからも SEO ワークフローを自動化できる。Docker や Cloudflare でセルフホストでき、「高い SaaS を、自分の鍵と自分のインフラで置き換える」流れの SEO 版。</p>
+      <p>ページ上部の説明は「Chrome DevTools for coding agents」。AI コーディングエージェントが実際に動く Chrome を操作・検査できるようにする Model Context Protocol サーバー。</p>
+      <p>パフォーマンストレースの取得と分析、ネットワークリクエストの検査、スクリーンショット取得、ソースマップ対応のスタックトレース付きコンソール監視といった機能を提供する。ブラウザ自動化には Puppeteer を用い、Claude・Cursor・Copilot など各種の AI コーディングアシスタントと連携する。エージェント型アプリ向けに、信頼できる自動化と踏み込んだデバッグを狙う。ChromeDevTools 公式が「エージェントにブラウザの目と手を渡す」層を出した点が目を引いた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/every-app/open-seo">every-app/open-seo</a></li>
+      <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">debpalash/VoiceStudio — 完全ローカルで動く ElevenLabs 代替（週間 +3,902★ / 累計 1.7万★）</h3>
+    <h3 class="article__headline">microsoft/markitdown — ファイルや Office 文書を Markdown に変換（週間 約4,600★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription &amp; audiobook creation in 646 languages.」。クラウドに依存せず手元のハードウェアだけで、音声合成と文字起こしを完結させるデスクトップアプリ。</p>
-      <p>短いサンプルからの声のクローン、指示文からの音声デザイン、話者を保ったままの動画の吹き替え、文字起こし、多声のオーディオブック生成に対応する。16 の TTS エンジンと 11 の音声認識エンジンを備え、646 言語をカバー。NVIDIA GPU・Apple Silicon・ROCm でのアクセラレーションに対応し、音声・プロジェクト・声は既定で端末に留まる。topics には <code>voice-cloning</code>・<code>text-to-speech</code>・<code>local-first</code>・<code>MLX</code> などが並び、主体は Python。サブスクや従量課金なしにプライバシーを保って音声を扱いたい層の受け皿として、open-seo と同じ「商用サービスの OSS 代替」潮流に乗った。</p>
+      <p>ページ上部の説明は「Python tool for converting files and office documents to Markdown.」。各種ファイル形式を Markdown 出力へ変換する軽量な Python ユーティリティで、大規模言語モデルやテキスト解析のワークフロー向けに最適化されている。</p>
+      <p>PDF・Microsoft Office 文書・画像・音声・HTML などから変換しつつ、見出し・リスト・表・リンクといった文書構造を保つ。トークン効率と、Markdown をそのまま扱える LLM との相性を重視し、出力は人が読む見やすさより機械が処理しやすさを優先する。topics には <code>markdown</code>・<code>pdf</code>・<code>microsoft-office</code>・<code>openai</code>・<code>langchain</code>・<code>autogen</code> などが並び、サードパーティ製プラグインや Azure 連携で拡張できる。エージェントに「読ませる素材」を整える定番ツールとして今週も伸びた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">モデルを自分の手で — 学習・基盤モデル・脱制約</h2>
-
-  <article class="article">
-    <h3 class="article__headline">jingyaogong/minimind — 64M の LLM をゼロから 2 時間で学習する教材（週間 +3,122★ / 累計 5.8万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「🧠 Train a 64M-parameter LLM from scratch in just 2h!」。ごく軽量な 64M パラメータの言語モデルを、最小限の計算資源とコストで完全にゼロから学習できるようにするオープンソースプロジェクト。単一の 3090 GPU で約 2 時間・およそ 3 元（約 0.43 ドル）で学習できると謳う。</p>
-      <p>モデルアーキテクチャ・トークナイズ・事前学習・教師ありファインチューニング・知識蒸留・LoRA・強化学習（DPO/PPO/GRPO、Agent RL）までを、抽象化されたサードパーティ製フレームワークに頼らず PyTorch で丸ごと実装している。データセットと学習済み重みも同梱し、llama.cpp・vLLM・Ollama などの推論エンジンや Transformers・TRL・PEFT との連携にも対応。topics は <code>artificial-intelligence</code>・<code>large-language-model</code>。「LLM を使う」ではなく「LLM を一から作って理解する」教材として、根強い支持を集めた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/jingyaogong/minimind">jingyaogong/minimind</a></li>
+      <li><a href="https://github.com/microsoft/markitdown">microsoft/markitdown</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">google-research/timesfm — Google 発の時系列基盤モデル（週間 +2,324★ / 累計 3.1万★）</h3>
+    <h3 class="article__headline">heygen-com/hyperframes — 「HTML を書けば動画になる」エージェント向けフレームワーク（週間 約4,900★）</h3>
     <div class="article__body">
-      <p>ページ上部の説明は「TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.」。Google Research が開発した、時系列予測のための事前学習済み基盤モデル。デコーダのみのニューラルネットワーク構成をとる。</p>
-      <p>可変長の単変量予測に加え、共変量を伴う多変量予測にも対応し、タスクごとの追加チューニングなしに過去のみ・動的な共変量を扱える。最大 1,000 ステップ先までの分位点予測が可能で、fev-bench・TIME Benchmark・GIFT-Eval など主要ベンチマークで高い性能を示すとする。2026 年 8 月公開の 3.0 は 200M パラメータで 16K のコンテキスト長に対応。PyPI からのインストールにも対応する。言語モデル一辺倒のトレンドのなかで、「時系列」という別領域の基盤モデルが顔を出した。</p>
+      <p>ページ上部の説明は「Write HTML. Render video. Built for agents.」。HTML・CSS・アニメーションを、ヘッドレス Chrome でのキャプチャと FFmpeg エンコードを通じて決定論的な MP4 動画に変換するオープンソースのフレームワーク。</p>
+      <p>GSAP・CSS・Lottie・Three.js・Anime.js など複数のアニメーションライブラリに対応し、ローカルレンダリング用の CLI と AWS Lambda 上の分散レンダリングの両方で動く。コンポジションはビルド不要・React 非依存のプレーンな HTML ファイルで、統合されたスキルを通じて AI コーディングエージェントに動画制作のワークフローを教える設計。同じ入力からは同じ出力が得られる決定論を重視し、CI や自動コンテンツ生成に向く。topics には <code>video</code>・<code>ffmpeg</code>・<code>puppeteer</code>・<code>gsap</code>・<code>mcp</code> などが並ぶ。エージェントの成果物が「動画」まで広がった動きを示す一本。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/google-research/timesfm">google-research/timesfm</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">p-e-w/heretic — 言語モデルの安全制約を全自動で除去（週間 +2,146★ / 累計 3.0万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Fully automatic censorship removal for language models」。方向性アブレーション（abliteration）と呼ばれる手法で、Transformer 系言語モデルから安全アライメントによる拒否挙動を自動的に取り除くツール。特定の Transformer 成分を同定して改変することで、高価な再学習なしに拒否を抑制する。</p>
-      <p>Transformer 内部の専門知識がなくても全自動で「検閲を外した」モデルを作れると謳い、モデル本来の能力は保つとする。dense モデルのほか、マルチモーダル版や各種 MoE アーキテクチャに対応し、手作業で作られた abliteration や標準的な言語モデル評価指標と結果を突き合わせている。topics は <code>abliteration</code>・<code>llm</code>・<code>transformer</code>、主体は Python。モデルを「作る／育てる」だけでなく「制約を解く」方向の関心が、上位に並んだ点が今週の一断面だった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/p-e-w/heretic">p-e-w/heretic</a></li>
+      <li><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></li>
     </ul>
   </article>
 </section>
-
-<section class="topic">
-  <h2 class="topic__title">ブラウザで体験させるデモ・プラットフォーム</h2>
-
-  <article class="article">
-    <h3 class="article__headline">bilawalsidhu/gods-eye-view — 実データを載せたブラウザ版「偵察衛星」（週間 +1.0万★ / 累計 1.7万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.」。公開されている実データ——航空機・船舶・衛星・地震・交通・公開カメラ——をフォトリアルな 3D 地球儀の上に重ねて可視化する、ブラウザで動く空間インテリジェンスのプラットフォーム。</p>
-      <p>追跡中の航空機のコックピット視点への没入や、AI エージェントによる音声操作でのナビゲーション、暗視・サーモグラフィといったセンサー風の表示スタイルなど、複数の閲覧モードを備える。topics には <code>cesium</code>・<code>osint</code>・<code>satellite-tracking</code>・<code>geospatial-intelligence</code>・<code>webgl</code> などが並び、主体は JavaScript。誰でもアクセスできる OSINT を、直感的なインターフェースで手元のブラウザに持ち込む切り口が、週間 +1万★ 超の注目を集めた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/bilawalsidhu/gods-eye-view">bilawalsidhu/gods-eye-view</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">THU-MAIC/OpenMAIC — ワンクリックで開く「マルチエージェント教室」（週間 +1.0万★ / 累計 3.1万★）</h3>
-    <div class="article__body">
-      <p>ページ上部の説明は「Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click」。任意のトピックや資料を、AI エージェントによる対話型の授業体験へと変換するプラットフォーム。話す・描く・リアルタイムで議論する AI の教師とクラスメイトが、スライド・小テスト・シミュレーション・プロジェクト型学習を届ける。</p>
-      <p>説明文や教材からワンクリックで授業を生成し、ホワイトボード・音声読み上げ・対話的な HTML シミュレーションといった多彩なコンテンツを扱う。topics には <code>agent</code>・<code>education</code>・<code>langgraph</code>・<code>multi-agent</code> などが並び、主体は TypeScript。OpenClaw・Codex・DeepSeek などのエージェント環境との連携にも対応する。「複数エージェントが役割を分けて協調する」構図を、教育という分かりやすい体験に落とし込んだ点が支持を集めた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/THU-MAIC/OpenMAIC">THU-MAIC/OpenMAIC</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">omacom/omarchy — DHH による「美しく現代的で主張のある」Linux（先週から継続・週間 +5,296★ / 累計 3.8万★）</h3>
-    <div class="article__body">
-      <p>先週に続いて上位に残った。ページ上部の説明は「Beautiful, Modern &amp; Opinionated Linux」。DHH が手がける、現代的な見た目と割り切った設計思想を掲げるエージェント志向の Linux ディストリビューション。基本操作から高度な設定までを網羅する詳細なマニュアルが実質的なドキュメントの中心になっている。</p>
-      <p>統一されたクリップボード管理・テキスト抽出・スクリーンショット・テーマ切り替えといった体験を作り込み、開発ツール・ターミナル・AI 連携・ゲーミング対応・各種システムユーティリティをあらかじめ組み込む。macOS や Windows からの移行者向けの案内、デュアルブート・無人セットアップ・セキュリティといった専門トピックの解説も用意する。AI 一色のトレンドのなかで、「意見の強い既定値でまとめ上げた OS」という別の軸で二週続けて存在感を保った。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/omacom/omarchy">omacom/omarchy</a></li>
-    </ul>
-  </article>
-</section>
-
     </main>
 
     <footer>
