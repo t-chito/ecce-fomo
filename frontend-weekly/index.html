@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年9月8日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年9月15日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年9月8日">
+<meta property="og:title" content="フロントエンドニュース — 2026年9月15日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月8日（火）</span>
+        <span>2026年9月15日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,55 +31,41 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週号は「RC の波、次の GA はどれか」と「フロントに隕石＝AI エージェント」の 2 つを宿題に残した。今週はその両方に答えが出た。<strong>Vitest 5.0 が 9 月 3 日に GA</strong>し、pnpm 12 に続く<strong>波の 2 番目の卒業生</strong>となった——先週の「次は Vitest 5 か」という見立てがそのまま当たった格好だ。そして隕石論には Vercel が実物で応じた。Next.js チームは<strong>エージェント群「Maintainer Agent」で約 3 週間に 1,462 件の issue をクローズ</strong>し、その一部は<strong>人手を介さない自動クローズ</strong>へ移し始めたと明かした（9/4）。sv CLI も <code>mcp</code> アドオンを <code>ai-tools</code> に置き換え、開発ツールの土台に「エージェント前提」が静かに敷かれつつある。一方で SvelteKit 3・Vue 3.6 はまだ RC のまま。波は 1 つずつ、間隔を空けて割れていく。</p>
+  <p>先週号は「RC の波の 3 番目の卒業生は SvelteKit 3 か Vue 3.6 か」を宿題に残した。今週その 2 つは<strong>どちらも RC のまま足踏み</strong>し、代わりに波の外から本命が抜けた——<strong>React 19.3 が 9 月 9 日に GA</strong>し、約 1 年半 experimental だった <strong>View Transitions</strong> と <strong>Fragment Refs</strong> をついに stable にした。マイナー番号ながら「長く実験段階だった目玉をまとめて卒業させる」性格の号で、今週いちばん大きな出荷だ。もう一つの軸は<strong>出荷そのものの速度</strong>。Chrome が 9 月 8 日の <strong>Chrome 153</strong> から<strong>2 週間リリースへ短縮</strong>し、プラットフォーム側の更新列車がギアを上げた。今週は「何が stable に上がるか」と「どれだけ速く回るか」——<strong>卒業と cadence</strong> の 2 語で読める。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Vitest 5.0 が GA — 予告どおり RC の波の 2 番目の卒業生に</h3>
+    <h3 class="article__headline">React 19.3 が GA — 波の次の卒業生は「見張っていた列」の外から出た</h3>
     <div class="article__body">
-      <p>先週「次の GA は Vitest 5 か」と書いた見立てが現実になった。<strong>Vitest 5.0</strong> が <strong>9 月 3 日に stable リリース</strong>され、8 月 26 日の pnpm 12 に続いて RC の波から <strong>2 番目に GA へ抜けた</strong>。目玉は Browser Mode の <strong>Trace View</strong>（操作・アサーション・DOM スナップショットを記録し、UI と HTML レポーターで一手ずつ再生できる）、引数ごとに戻り値を変える <strong><code>vi.when</code> API</strong>、そして fake timers による <strong><code>Temporal</code> API のモック</strong>だ。現実的なアプリでの実測は enterprise モノリス（1,280 モジュール）で −19%、deps 過多構成で −53% と、性能面の押し上げも大きい。破壊的変更は <strong>Vite ≥ 6.4.0 / Node.js ≥ 22.12.0</strong> 要求、<strong>未 await の非同期アサーションが失敗扱いに</strong>、<code>clearMocks</code> が既定で有効化、の 3 点が主軸。移行時はこの 3 つを先に潰しておきたい。</p>
+      <p>先週「次の GA は SvelteKit 3 か Vue 3.6 か」と見立てたが、今週抜けたのは<strong>そのどちらでもなく React</strong> だった。<strong>React 19.3</strong> が <strong>9 月 9 日に stable リリース</strong>され、目玉は 2 つ。<strong>2025 年 4 月から約 1 年半 experimental だった View Transitions</strong>（<code>&lt;ViewTransition&gt;</code> で enter / exit / update / share を宣言的にアニメーションさせる）と、<code>&lt;Fragment&gt;</code> に ref を付けて余計な <code>div</code> なしに複数子要素へ振る舞いを束ねる <strong>Fragment Refs</strong> が、そろって stable に上がった。マイナー番号だが「実験を長く続けた API をまとめて卒業させる」意味では、先週の pnpm 12・Vitest 5 に連なる波の一部として読める。破壊的変更は無く、全て追加的な更新だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://vitest.dev/blog/vitest-5.html">Vitest 5.0 is out! — vitest.dev</a></li>
+      <li><a href="https://react.dev/blog/2026/09/09/react-19-3">React 19.3 — react.dev（2026-09-09）</a></li>
+      <li><a href="https://github.com/react/react/releases/tag/v19.3.0">Release 19.3.0 · react/react — GitHub</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">先週の「隕石」が実物に — Vercel、エージェント群で Next.js の issue 1,462 件をクローズ</h3>
+    <h3 class="article__headline">Chrome が 2 週間リリースへ — 出荷の cadence がプラットフォーム側で上がった</h3>
     <div class="article__body">
-      <p>先週広く読まれた「フロントに隕石＝AI エージェント」論に、今週は最大手の 1 社が<strong>実装で応えた</strong>。Next.js チームは 9 月 4 日、<strong>約 3 週間で 1,462 件の issue をクローズ</strong>しバックログを 2,244 件（8/10 時点）から 1,000 件未満へ落とした経緯を公開した。中核は Vercel の OSS エージェント基盤 <strong>eve</strong> 上に組んだ <code>closability</code> エージェントで、sandbox 内で会話・関連 PR・コミット・リリースを調べ、報告バージョン／最新 stable／canary で<strong>再現を試み、自説に反する証拠まで探した</strong>うえで close 可否を confidence 付きで返す。判定内訳は「既に修正済み」37%・「重複」19%・「期待動作」16%。エージェントは sandbox の外では read-only で、issue 本文の指示は<strong>プロンプトインジェクション対策として無視</strong>する設計だ。当初は maintainer が全件をレビューして close していたが、今週<strong>score 80 以上を二段のエージェントで再確認し人手なしで自動クローズする運用（週 25 件から）</strong>を開始したことも明かした。隕石論が言う「フロントの仕事の作り変え」は、まず<strong>保守側の作業</strong>から目に見える形で始まっている。</p>
+      <p>フレームワークの GA を追う裏で、土台の Chrome が<strong>更新頻度そのもの</strong>を変えた。<strong>9 月 8 日の Chrome 153 stable</strong> を皮切りに、beta / stable が<strong>従来の約 4 週間から 2 週間ごと</strong>へ短縮される（Desktop / Android / iOS 共通）。各バージョンの beta は stable の 3 週間前に出るので<strong>検証窓は確保</strong>され、Dev / Canary は変更なし、企業向け Extended Stable も 8 週間のまま据え置きだ。小さく頻繁に配ることで、むしろリリース後のデバッグが切り分けやすくなるという狙い。フロント側の含意は明確で、「Chrome N でしか出ない挙動」を追う周期が半分になり、<strong>beta 追従の重要度が一段上がる</strong>。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/how-we-closed-1500-github-issues">How we closed 1,500 GitHub issues in one month — nextjs.org</a></li>
-      <li><a href="https://nolanlawson.com/2026/08/23/the-asteroid-currently-hitting-frontend-web-development/">The asteroid currently hitting frontend web development（先週号で紹介）— nolanlawson.com</a></li>
+      <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Get features faster with Chrome's two-week release cycle — Chrome for Developers</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">波の残りは足踏み — SvelteKit 3・Vue 3.6 は RC のまま、sv CLI は <code>mcp</code> を <code>ai-tools</code> へ</h3>
+    <h3 class="article__headline">見張っていた 2 つは足踏み — SvelteKit 3・Vue 3.6 は今週も RC</h3>
     <div class="article__body">
-      <p>Vitest が抜けた一方、<strong>SvelteKit 3</strong> と <strong>Vue 3.6</strong> は今週も RC 段階にとどまった。SvelteKit 3 RC は <code>3.0.0-next.24</code> まで進み、<strong>QUERY HTTP メソッドのハンドラ</strong>や、成功／失敗時にアクションページへ遷移する<strong>改良版 form actions</strong>を積んだが stable は未着。Vue 3.6 も Vapor Mode を feature-complete としつつ GA は「秋」の予告のまま据え置きだ。注目は周辺 CLI の動きで、<code>sv</code> は 1.0 プレビューで従来の <strong><code>mcp</code> アドオンを、より広い <code>ai-tools</code> アドオンに置き換えた</strong>（クライアントごとにツールを選べる）。ここでも「エージェント前提」がツールチェーンの既定に滑り込んでいる。波は「一斉 GA」ではなく、pnpm → Vitest と<strong>1 つずつ間隔を空けて割れて</strong>いる。</p>
+      <p>先週「次の卒業生」に挙げた <strong>SvelteKit 3</strong> と <strong>Vue 3.6</strong> は、今週も<strong>そろって RC 段階にとどまった</strong>。SvelteKit 3 RC は <code>3.0.0-next.25</code> まで刻み、<code>+server.js</code> の <strong>QUERY メソッドハンドラ</strong>、成功／失敗時にアクションページへ遷移する<strong>改良版 form actions</strong>、serverless 向け <code>applyReroute</code> ヘルパなどを積んだが stable は未着。Vue 3.6 も alien-signals ベースのリアクティビティ刷新と Vapor Mode を feature-complete としつつ「秋 GA」の予告のまま据え置きだ。波は「一斉」ではなく<strong>1 つずつ、しかも見立てと違う順で</strong>割れていく——今週それを卒業させたのは React だった。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://svelte.dev/blog/whats-new-in-svelte-september-2026">What's new in Svelte: September 2026 — svelte.dev</a></li>
       <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">テスト・ツール</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Vitest 5 の設計思想 — 「速さ」と「厳格化」を同時に押す</h3>
-    <div class="article__body">
-      <p>Vitest 5 は機能追加だけでなく<strong>既定値の厳格化</strong>を同時に進めたのが特徴だ。<code>vitest list</code> はテストを実行せず<strong>静的解析でファイルを列挙</strong>する挙動に変わり、locator は既定で strict に、ARIA ツリーのスナップショットをエラーに併記するようになった。プロジェクト構成も<strong>ルート設定を既定で継承</strong>する入れ子モデルへ整理され、ベンチマークは通常のテスト呼び出しに fixture として統合された。「未 await の非同期アサーションを失敗にする」「<code>clearMocks</code> を既定 on」といった変更は、これまで<strong>静かにすり抜けていた不正なテストを表に出す</strong>方向の調整で、性能の押し上げとセットで「速くて、ごまかしの効かない核」を狙っている。790 名超のコントリビューターへの謝辞が示すとおり、メジャー番号にふさわしい規模の更新になった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://vitest.dev/blog/vitest-5.html">Vitest 5.0 is out!（Trace View / vi.when / 破壊的変更の詳細）— vitest.dev</a></li>
     </ul>
   </article>
 </section>
@@ -88,12 +74,41 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Turbopack、チャンク分割の実験的コントロールを追加 — ナビゲーション性能を手で詰める</h3>
+    <h3 class="article__headline">React 19.3 の中身 — View Transitions は「Transition のときだけ」動く設計</h3>
     <div class="article__body">
-      <p>Next.js は 9 月 3 日、<strong>Turbopack の JavaScript チャンク分割を調整する実験的機能</strong>を解説した。ページ間のナビゲーション性能を高め、ページをまたいだコード共有を効かせて初回読み込みを速める狙いで、これまで自動任せだったチャンク境界に<strong>開発者が介入できる余地</strong>を開いた。8 月の一斉セキュリティリリース（<code>16.3.3</code> / <code>15.5.24</code>）以降、Next.js の焦点は Turbopack と routing・caching の地道な最適化へ戻っている。先週追っていた「AVIF 最適化の復帰（上流 <code>libheif</code> 修正待ち）」については、今週の公式ブログでは特段の続報は出ていない——一時対処のまま静かに継続している状態だ。</p>
+      <p>View Transitions は<strong>常時アニメーションではない</strong>のが要点だ。動くのは <code>startTransition</code> / Suspense の reveal / <code>useDeferredValue</code> といった <strong>Transition 経由の更新に限られ</strong>、緊急更新は即座に反映してアニメーションを飛ばす。既定はクロスフェードで、CSS クラスや Web Animations API から差し替えられる。19.3 では遷移の「原因」で見せ方を変える <code>addTransitionType</code> も追加され、カルーセルの「次／前」で方向を出し分けるといった制御が宣言的に書ける。さらに <code>react-dom</code> の <strong><code>browser()</code></strong> が、SSR で特定コンポーネントだけ Suspense を使って<strong>サーバー描画から外し</strong>、<code>localStorage</code> やタイムゾーンなどブラウザ専用 API を安全に使えるようにした。挙動面では<strong>Transition が互いに独立して描画</strong>されるようになり、遅い遷移が無関係な遷移を止めなくなった。Trusted Types 対応や、Server Component から Provider ラッパー無しで context を描ける改善も入っている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/turbopack-chunking">How Turbopack chunks your JavaScript — nextjs.org</a></li>
+      <li><a href="https://react.dev/blog/2026/09/09/react-19-3">React 19.3（View Transitions / Fragment Refs / browser() の詳細）— react.dev</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Svelte エコシステム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Svelte 5.57 と TanStack Table v9 — RC を待つ間も足回りは進む</h3>
+    <div class="article__body">
+      <p>SvelteKit 3 が RC で足踏みする一方、周辺は着実に動いた。<strong>Svelte 5.57.0</strong> は <code>SvelteMap</code> に「読むか無ければ初期化する」パターン用の <code>getOrInsert</code> / <code>getOrInsertComputed</code> を追加し、<code>createContext</code> が存在確認用の <code>has</code> を返すようになり、<code>&lt;select&gt;</code> が <code>defaultValue</code> をサポートした。ツールチェーン側は先週触れた <code>sv</code> の <code>mcp</code> → <code>ai-tools</code> 置き換えに加え、<strong>task ベースの <code>sv migrate</code></strong> に <code>sveltekit-3</code> 移行タスクが入り、新規プロジェクトは <code>$lib</code> ではなく Node の subpath imports を使う <code>#lib</code> が既定になった。エコシステムでは <strong>TanStack Table v9</strong> が<strong>初の Svelte ネイティブアダプタ</strong>を同梱し、runes に直接つながる形になった。RC 待ちの停滞感の裏で、5.x マイナーと周辺ライブラリが「3 系が来る前提」の地ならしを進めている。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://svelte.dev/blog/whats-new-in-svelte-september-2026">What's new in Svelte: September 2026（5.57 / sv / TanStack Table v9）— svelte.dev</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ブラウザ・プラットフォーム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">「宣言的 API」路線 — HTML-in-Canvas と Declarative Partial Updates</h3>
+    <div class="article__body">
+      <p>2 週間 cadence への移行と並んで、Chrome が押している方向は<strong>「重い処理を宣言的 API に肩代わりさせる」</strong>だ。<strong>HTML-in-Canvas</strong> は実 DOM 要素を WebGL / WebGPU の canvas に直接埋め込み、3D 表現の中身を検索・アクセシブル・翻訳可能・ブラウザ機能と噛み合う形で保てるようにする。<strong>Declarative Partial Updates</strong> は部分更新の定型を宣言的に扱わせ、複雑なレンダリングや性能チューニングを手続き的に書かずに済ませる狙い。cadence が速くなるほど、こうした「命令的コードを宣言に寄せる」プリミティブが早く手元に届くことになり、beta で挙動を先に確かめる価値も上がる。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://developer.chrome.com/blog/new-in-web-ui-io26">What's new in Web UI — Chrome for Developers</a></li>
+      <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Chrome's two-week release cycle — Chrome for Developers</a></li>
     </ul>
   </article>
 </section>
@@ -102,26 +117,27 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">波の 3 番目の卒業生は SvelteKit 3 か Vue 3.6 か</h3>
+    <h3 class="article__headline">Vue 3.6 の「秋 GA」は 9 月後半〜10 月が本番</h3>
     <div class="article__body">
-      <p>pnpm 12 → Vitest 5 と抜けてきた RC の波の<strong>次の GA</strong>がどれになるかが引き続きの焦点だ。<strong>SvelteKit 3</strong> は <code>next.24</code> まで RC を刻み、<code>sv</code> の task ベース移行（<code>$lib</code> → <code>#lib</code> の書き換えを含む）も整ってきた。<strong>Vue 3.6</strong> は「秋 GA」の予告が生きており、9 月後半から 10 月にかけてがいよいよ本番だ。波が「1 つずつ」割れるパターンが続くのか、複数が近接して GA するのか、割れ方そのものを来週も見ていきたい。</p>
+      <p>今週 React が波を 1 つ卒業させたことで、視線は再び <strong>Vue 3.6</strong> に戻る。「秋 GA」の予告が生きており、9 月後半から 10 月にかけてが<strong>いよいよ本番の窓</strong>だ。alien-signals ベースのリアクティビティ刷新と Vapor Mode がそのまま stable に載るのか、あるいは SvelteKit 3 が先に抜けるのか。「見立てと違う順で 1 つずつ割れる」という今週のパターンが続くのかどうかを来週も見ていきたい。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://svelte.dev/blog/whats-new-in-svelte-september-2026">What's new in Svelte: September 2026 — svelte.dev</a></li>
       <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">「保守エージェント」は他ベンダーにも広がるか</h3>
+    <h3 class="article__headline">View Transitions の stable 化が各フレームワークにどう波及するか</h3>
     <div class="article__body">
-      <p>Vercel が公開した Maintainer Agent（<code>closability</code> ほか、再現・検証・bisect・E2E・修正案作成を分担する複数エージェント群）は、OSS 基盤 <strong>eve</strong> の上に組まれている。人手なし自動クローズという踏み込みが<strong>issue 品質やコミュニティの反発</strong>にどう跳ね返るか、そして React・Vue・Svelte など他の大規模 OSS が同様の「保守側エージェント」を採り入れるかが次の見どころだ。先週の隕石論が言う変化は、まず<strong>コードを書く現場より、コードを保守・選別する現場</strong>で可視化されつつある。</p>
+      <p>React 19.3 で View Transitions と Fragment Refs が stable になったことで、次の焦点は<strong>フレームワーク側の取り込み</strong>だ。Next.js などが <code>&lt;ViewTransition&gt;</code> を前提にしたルーティング演出をどれだけ標準化するか、ルーター遷移との統合や <code>addTransitionType</code> の実運用パターンが早期に出てくるかを追う。あわせて Chrome の 2 週間 cadence が実際にどのくらい「機能が早く手元に来る」体感につながるか、最初の数サイクルの出方も見どころになる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/how-we-closed-1500-github-issues">How we closed 1,500 GitHub issues in one month — nextjs.org</a></li>
+      <li><a href="https://react.dev/blog/2026/09/09/react-19-3">React 19.3 — react.dev</a></li>
+      <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Chrome's two-week release cycle — Chrome for Developers</a></li>
     </ul>
   </article>
 </section>
+
     </main>
 
     <footer>
