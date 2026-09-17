@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年9月10日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年9月17日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年9月10日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年9月17日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月10日（木）</span>
+        <span>2026年9月17日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,89 +31,73 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週は <strong>Fable 5.1 のキャッシュ読み 75% 減</strong>が主役だったが、今週の Claude Code は<strong>「値下げしたキャッシュを、実際に効かせ切る」ための地味で徹底的な修正週</strong>だった。2.1.265／2.1.267 で <strong>OAuth トークン更新・MCP 再接続・セッション途中のツール追加・<code>/model</code> 切替・セッション再開</strong>——プロンプトキャッシュが取りこぼす経路を一斉に塞いだ。先週入った切替フックが"検知"なら、今週は"漏れ止め"だ。あわせて全プロバイダ横断で努力度に上限をかける <strong><code>maxEffortLevel</code></strong> が入り、コストの締め方がもう一段増えた。周辺では、エージェントを<strong>隔離された作業場で走らせる</strong>流れが続き、<strong>Codex が実験的な worktree 分離</strong>を、<strong>OpenHands が Docker サンドボックス込みの 1.0</strong> で応えた。派手な新機能より、"長く安全に回し続ける足回り"を各社が固め直した一週間。</p>
+  <p>今週の主役は Claude Code の外にあった——<strong>Cursor が「Projects」を全ユーザーにベータ公開</strong>し、<strong>コードを書かない"コーディネーター"が数千のサブエージェントを自前 VM 上に配って回す</strong>という、エージェント運用のスケールを一段引き上げる賭けに出た。先週まで各社が固めていた「隔離された作業場でエージェントを走らせる」流れ（Codex の worktree、OpenHands 1.0）の、その先の"束ねて指揮する"層に踏み込んだ格好だ。対する <strong>Claude Code の一週間（2.1.269→2.1.274）は派手な新機能より足回りの徹底整備</strong>——<strong><code>claude plugin eval</code></strong> でプラグインを再現可能に採点し、<strong>auto モードのサブエージェント引き継ぎを安全分類器で検問</strong>し、<strong>Remote セッションで fast mode</strong> を解禁、組織向けに <strong>料金 <code>multiplier</code></strong> と <strong><code>omitClaudeMd</code></strong> を足し、最後は <strong>MCP 接続とトランスクリプトの自己修復</strong>で長時間運用を堅牢化した。<strong>Devin は Review に必ずセキュリティ検査を通す</strong>ようにして"常駐レビュアー"の性格を強めた。要は、エージェントを「作れる」から「大量に・安全に・組織で回し続ける」段階へ、各社が一斉に配線を引き直した週だった。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">プロンプトキャッシュの取りこぼしを一斉に封鎖——2.1.265／2.1.267 の"漏れ止め"ラッシュ</h3>
+    <h3 class="article__headline">`claude plugin eval` 登場——プラグインを"再現可能に採点"できるようになった 2.1.269</h3>
     <div class="article__body">
-      <p>先週は Fable 5.1 のキャッシュ読み値下げと <code>PreModelSwitch</code> / <code>PostModelSwitch</code> フックで「キャッシュを壊さない」話が始まったが、今週はその続きを本気で詰めた。<strong>2.1.267</strong>（9/9）と <strong>2.1.265</strong>（9/8）で、プロンプトキャッシュが無駄にミスする経路が<strong>まとめて</strong>潰されている——<strong>OAuth トークンの更新時</strong>、<strong>MCP サーバの再接続やツールの再描画</strong>、<strong>ToolSearch を使わないセッションでの途中ツール追加</strong>、<strong><code>/model</code> でのモデル切替</strong>、<strong>セッション再開時のインラインツール／ツール説明の書き換え</strong>。いずれも「同じ文脈を舐め直しているのに、キャッシュ前提が微妙にズレて課金上のヒットを失う」典型パターンだ。</p>
-      <p>効きどころは明快で、Fable 5.1 のキャッシュ読み $0.25/Mtok を"割引価格のまま実際に使い切れるか"は、こうした取りこぼしをどれだけ塞げるかで決まる。先週の値下げ告知が理論値なら、今週の一連の修正は<strong>その理論値に実測を近づける作業</strong>。エージェントを長時間・複数ツールで回すほど効いてくる、地味だが本質的な週だった。</p>
+      <p><strong>2.1.269</strong>（9/11）の目玉は <strong><code>claude plugin eval</code></strong>。プラグインの eval スイートを走らせ、<strong>スコア付き・再現可能な結果を JSON と HTML レポートで</strong>吐く。これまで Skill やサブエージェント、プラグインの"効き"は体感頼みで語られがちだったが、ここにきて<strong>「良し悪しを数字で回帰テストする」土台</strong>が公式に入った。同版では <strong><code>/output-style [name]</code></strong> で全セッション種別を横断して出力スタイルを一覧・切替できるようになり、Bash がファイルを編集した際に<strong>変更差分を表示</strong>する挙動、アーティファクトの<strong>同時ウォッチ上限を 5→10</strong> に引き上げる更新も入った。Markdown をアーティファクトとして publish するとスタイル付きドキュメントとして描画されるようにもなっている。</p>
+      <p>刺さりどころは明快で、サブエージェントやスキルを"自作して積む"人ほど、次の課題は<strong>「積んだものが本当に良くなっているかを測る」</strong>ことだった。エンジニア界隈でも「ルールは Hooks/permissions、文脈知識は Skill、委譲境界は Subagent」と役割を整理する議論が定着しつつあり、<code>plugin eval</code> はその設計を<strong>検証可能にする一手</strong>。地味だが、エージェント構成を"感覚"から"計測"へ寄せる意味は大きい。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.265／2.1.267 のプロンプトキャッシュ修正）</a></li>
-      <li><a href="https://releasebot.io/updates/anthropic/claude-code">Anthropic / Claude Code アップデート一覧（Releasebot）</a></li>
+      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.269：claude plugin eval・/output-style・アーティファクトウォッチ 10 件）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">`maxEffortLevel` で努力度に天井——Bedrock／Vertex／Foundry 横断のコスト上限</h3>
+    <h3 class="article__headline">auto モードのサブエージェント引き継ぎを安全分類器で検問——"組織で・リモートで回す"足回りを増強</h3>
     <div class="article__body">
-      <p><strong>2.1.267</strong> の目玉機能は <strong><code>maxEffortLevel</code></strong> 設定だ。<strong>全プロバイダ（Bedrock・Vertex・Foundry）を横断して、エージェントが使える effort（思考の努力度）に上限をかける</strong>。同版では <code>--system-prompt-snapshot off</code> でリクエストごとにシステムプロンプトを描き直す挙動も選べるようになった。先週の <code>/usage</code> の<strong>支出上限バー</strong>が「使った額を見て止める」なら、<code>maxEffortLevel</code> は<strong>「そもそも重い思考に振れる上限を先に決める」</strong>——コストを事後の可視化と事前の制約の両側から握れるようになってきた。</p>
-      <p>加えて <strong>2.1.261</strong>（9/4）では、コンテキスト浪費を洗い出す <strong><code>/skill-doctor</code></strong>（使われていないスキルとその context コストを表示）と、組織ポリシーの読み込み失敗を <code>/status</code>・<code>claude doctor</code> に出す<strong>「Organization policy」診断行</strong>が入った。<strong>2.1.265</strong> の <code>bashOutputMaxChars</code> / <code>taskOutputMaxChars</code>（インラインで受け取る出力量を最大 128K 文字まで引き上げ）や、<code>--plugin-dir</code> にプラグイン群のフォルダを丸ごと指せる対応も、"長く回すエージェント"の取り回しを一段楽にする更新だ。</p>
+      <p>今週の Claude Code は、エージェントを<strong>大量・遠隔・組織で走らせる前提</strong>の配線を続けて足している。<strong>2.1.269</strong> では auto モードの挙動が締められ、<strong>サブエージェントからの引き継ぎ（hand-back）を専用の呼び出し経由にして安全分類器でレビューする</strong>ようになり、Monitor のウォッチにも必ず期限（最大 30 分、<code>-p</code> 実行では 10 分）が付いた。<strong>2.1.271</strong>（9/14）では <strong>Remote セッション（クラウド・self-hosted runner）でも fast mode</strong> が使えるようになり、エージェント定義に <strong><code>omitClaudeMd</code></strong>（ユーザー／プロジェクト／ローカルの CLAUDE.md を読み飛ばす）や、auto モード + サンドボックス下で Bash・PowerShell・Monitor に<strong>コマンド単位の <code>allowed_domains</code></strong> を指定する制御が加わった。</p>
+      <p>組織運用向けも一段進み、<strong>マネージド設定の <code>modelPricing</code> に <code>multiplier</code>（1〜10）</strong>が入って社内チャージバックにマークアップを乗せられるようになり、<strong>2.1.273</strong>（9/15）では LLM ゲートウェイに <code>x-claude-code-*</code> のヒントヘッダを送る <code>CLAUDE_CODE_GATEWAY_HINT_HEADERS=1</code> も追加された。先週が「プロンプトキャッシュの取りこぼし封鎖」なら、今週は<strong>「誰が・どこで・どの権限で走らせるか」を締める側</strong>の週。派手さはないが、Cursor Projects のような"大量並走"を安全に受け止めるための土台づくりが続いている。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.267：maxEffortLevel、2.1.261：/skill-doctor・組織ポリシー診断）</a></li>
+      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.269：auto モードの安全分類器・Monitor 期限、2.1.271：Remote の fast mode・omitClaudeMd・multiplier）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">2.1.265→266 のゲートウェイ回帰と即日ホットフィックス——"締める"更新の裏で出た破壊的挙動</h3>
+    <h3 class="article__headline">壊れたトランスクリプトが自己修復——2.1.274 は"長く回す"ための堅牢化</h3>
     <div class="article__body">
-      <p>締める方向の更新が続くと、認証まわりの回帰も出る。<strong>2.1.265 で入った変更が、<code>CLAUDE_CODE_USE_GATEWAY</code> 環境変数を、API キーや <code>apiKeyHelper</code>・独自認証ヘッダと併用していても Cloud ゲートウェイ経由のサインインを強制してしまう</strong>不具合を生み、<strong>2.1.266</strong>（同 9/8）で即日修正された。修正後は、この変数を単体で置いても再び無視される（＝従来の認証経路を壊さない）挙動に戻っている。</p>
-      <p>企業デプロイでプロキシやゲートウェイ設定を握っている環境ほど刺さる回帰で、同日中にパッチが出た点も含めて「リリースの回転が速いぶん、認証や環境変数の互換性は毎版チェックが要る」という運用上の教訓がそのまま出た一件。<code>2.1.x</code> を追随している人は、飛ばさずに 266 まで上げておくのが無難だ。</p>
+      <p>週末の <strong>2.1.274</strong>（9/17）は、長時間セッションで効いてくる信頼性修正が並んだ。<strong>「unexpected tool_use_id」の 400 でリトライループに陥っていたセッションが解消され、壊れたトランスクリプトが自動で自己修復</strong>するようになった。MCP 周りも厚く、<strong><code>http</code> 設定の MCP サーバが 422／4xx で繋がらない不具合</strong>、Streamable HTTP のツール呼び出しが 5 分で勝手にタイムアウトする問題、<code>listChanged</code> 宣言なしで prompts／resources が更新されない問題が一斉に直り、初回の非対話ターンで MCP 接続待ちを制御する <strong><code>CLAUDE_CODE_MCP_STARTUP_WAIT_MS</code></strong> が追加された。<strong>コンパクト済みセッションを再開すると <code>/goal</code> が失われる</strong>不具合や、self-hosted runner がトークン更新後に落ちる問題も修正されている。</p>
+      <p>メモリ逼迫時に「解放するか安全に再起動するか」を促す警告表示も入った。<strong>2.1.269 の git 権限確認の回帰を翌日 2.1.270 で即修正</strong>したのも含め、今週はリリース回転の速さと同じ速度でエッジケースを潰し続けた一週間。エージェントを何時間も・多数のツールと回すほど、この手の"取りこぼし修復"がそのまま体験の差になる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.266：CLAUDE_CODE_USE_GATEWAY 回帰の修正）</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Codex：エージェントを"隔離された作業場"で走らせる</h2>
-
-  <article class="article">
-    <h3 class="article__headline">実験的 worktree 分離と、作業を止めずに質問に答えられる inline Q&amp;A</h3>
-    <div class="article__body">
-      <p>OpenAI の Codex CLI は <strong>0.154.0</strong>（9/9）で<strong>実験的な worktree サポート</strong>を入れた。新規セッションやフォークしたセッションに<strong>隔離されたチェックアウト（作業ディレクトリ）</strong>を割り当てられるようになり、複数のエージェント作業が同じリポジトリを踏み合わずに並走できる。あわせて、<strong>Codex が作業を続けたまま、途中の質問にインラインで答えても下書きが消えない</strong>挙動や、Vim モードの Replace（undo・ドットリピート対応）、Windows でのバックグラウンドサーバ共有も加わった。</p>
-      <p>先週の Vim 検索・undo/redo やプラグイン市場が「編集体験の作り込み」なら、今週は<strong>「エージェントを走らせる場所を分ける」</strong>方向。先週 Cursor が self-hosted machines で"実行基盤を自社に置く"を、今週 Codex が"作業ツリーを分ける"を——粒度は違えど、<strong>複数エージェントを安全に同時運用するための隔離</strong>という同じ課題に各社が寄っている。なお <strong>0.153.x〜0.154.0</strong> では GPT-6-Astra がモデルピッカーと Amazon Bedrock カタログに載り、既定モデルの選び方も整理された。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://developers.openai.com/codex/changelog">Codex Changelog（0.154.0：worktree 分離・inline Q&amp;A、0.153.x：GPT-6-Astra）</a></li>
+      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.274：トランスクリプト自己修復・MCP 接続修正・/goal 復元、2.1.270：git 権限回帰の即日修正）</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">OpenHands 1.0：自分のマシンで回せるエージェントが"production-ready"に</h2>
+  <h2 class="topic__title">Cursor Projects：コードを書かない"コーディネーター"が数千のサブエージェントを指揮する</h2>
 
   <article class="article">
-    <h3 class="article__headline">Docker サンドボックス・セキュリティポリシー込みの 1.0、SWE-bench Verified 約 68%</h3>
+    <h3 class="article__headline">機能・移行・アプリ丸ごとを月単位で回す——自前 VM 上の並列サブエージェントとイベント駆動</h3>
     <div class="article__body">
-      <p>オープンソースの自律コーディングエージェント <strong>OpenHands が 1.0 に到達</strong>し、今週コミュニティで話題になった。<strong>本番運用向けの Docker サンドボックス</strong>、組み込みのセキュリティポリシー、リソース上限、プラグイン機構を備え、<strong>SWE-bench Verified を自律で約 68% 解く</strong>（Claude Opus 4.6 バックエンドで 68.4%）。有償の商用エージェントと"同じ土俵"のスコアを、<strong>自分のインフラ・自分の鍵のまま回せる</strong>ことが注目点だ。</p>
-      <p>刺さる文脈は明確で、Claude Code の <code>--restricted</code>・組織管理 MCP、Cursor の self-hosted machines、Codex の worktree 分離と、この夏の各プロダクトは揃って<strong>「エージェントに与える権限と、動かす場所を絞る」</strong>方向に来ていた。OpenHands 1.0 は、その"隔離・自己ホスト"の要求に<strong>オープンソース側から</strong>production-ready で応えた格好。コードや秘密情報を外に出せない組織にとって、商用 SaaS の代替として現実味を帯びる選択肢になってきた。</p>
+      <p>Cursor が <strong>9/10</strong>、全ユーザー向けベータとして <strong>Projects</strong> を投入した。狙いは、機能追加・大規模移行・アプリ一式のような<strong>「一回のセッションに収まらない大きな仕事」</strong>を、数週間〜数ヶ月の文脈を保ったまま回すこと。中核が<strong>コーディネーター</strong>で、これは<strong>自分ではコードを書かず、計画を立て、実装を複数のエージェントに委譲し、仕上がりを人間のレビューに戻す</strong>——いわばプロジェクトマネージャ役だ。委譲先の<strong>サブエージェントはそれぞれ独立した VM 上</strong>で、プロジェクトの隔離コピーとクリーンな文脈を持って並列に走る。作業はクラウドで進むのでラップトップを閉じても止まらず、全エージェントは<strong>同期された共有コンテキスト</strong>（ファイル・調査結果・学習した好み）を参照し、その知識ベースは時間とともに育つ。</p>
+      <p>さらにコーディネーターは <strong>Slack チャンネル・スケジュール・プルリクエストを購読</strong>し、イベントを起点に自動で作業を切り出す。ここが今週の注目点で、この夏の各プロダクトが揃って進めてきた<strong>「エージェントを隔離した場所で走らせる」</strong>（Codex の worktree、OpenHands 1.0、Cursor 自身の self-hosted machines）の一歩先——<strong>「隔離した多数のエージェントを、誰が指揮して束ねるか」</strong>という指揮層に正面から踏み込んだ。"数千のサブエージェント"という表現は誇張含みに読むべきだが、方向としては明確で、個人が単発タスクを投げる道具から、<strong>常時走り続ける小さな開発チームを一人で運用する</strong>道具へと重心を移そうとしている。実際の使い勝手（コーディネーターの計画品質、レビューに戻る粒度、コスト）はこれから各所で検証されるが、"エージェントの UI の次"を最初に大きく提示したという意味で、今週いちばん議論を呼んだ動きだ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/OpenHands/OpenHands/releases">OpenHands Releases（GitHub、1.0 の一次情報）</a></li>
-      <li><a href="https://dev.to/jamilxt/openhands-just-hit-10-heres-how-to-run-it-on-your-own-machine-without-handing-over-the-keys-5666">OpenHands 1.0 を自分のマシンで動かす（DEV Community）</a></li>
+      <li><a href="https://cursor.com/changelog">Cursor Changelog（9/10：Projects — コーディネーター・サブエージェント・イベント駆動）</a></li>
+      <li><a href="https://cursor.com/blog/2-0">Cursor 2.0 と Composer（背景となるエージェント方針）</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin：マルチ PR・マルチセッションの取り回しを整える</h2>
+  <h2 class="topic__title">Devin：レビューに必ずセキュリティ検査を通す"常駐レビュアー"へ</h2>
 
   <article class="article">
-    <h3 class="article__headline">セッション archive で子 PR も自動クローズ、複数 PR のドロップダウン、キュー投入の生存</h3>
+    <h3 class="article__headline">Devin Review が毎回セキュリティをチェック、Live Voice と 21 個の OAuth MCP で運用面も拡張</h3>
     <div class="article__body">
-      <p>Cognition の Devin は <strong>9/9</strong> の更新で、派手な新機能より<strong>複数セッション・複数 PR を捌く UI</strong>を厚くした。<strong>セッションを archive すると、一緒に archive された子セッションの開いている PR も自動でクローズ</strong>され、複数 PR を持つセッションはサイドバーに<strong>PR ごとのドロップダウン</strong>が出る。Changes / PR タブのファイルパスはクリックで組み込みエディタの diff に飛べるようになり、<strong>キューに入れたメッセージがセッションのアイドル・再開をまたいで生き残る</strong>ようになった。</p>
-      <p>先週の cleanup scan（デッドコード検出）や <code>/scan</code> の自動化が「エージェントの仕事を型に落とす」なら、今週は<strong>その仕事が生む大量の PR とセッションを、人間がどう見て回すか</strong>の整備。エージェントが一度に複数のタスク／PR を走らせる前提が当たり前になり、"束ねて管理する"側の作り込みが追いついてきた週と言える。</p>
+      <p>Cognition の Devin は <strong>9/16</strong> の更新で、<strong>Devin Review が毎レビューにセキュリティ検査を含める</strong>ようにした。任意のオプションではなく<strong>常に走る</strong>ようにした点が肝で、エージェントが量産する PR を<strong>「マージ前に必ずセキュリティの目を通す」既定動作</strong>に格上げした格好。あわせて、ライブ音声モデルを使う <strong>Live Voice Mode</strong>、composer に入力し始めた時点でセッションが起動する挙動、VM を失ったセッションをサイドバーから再起動する導線などが入った。</p>
+      <p>連携面は <strong>9/11</strong> に厚く、<strong>Dropbox・ClickHouse・Coda など 21 個の OAuth MCP サーバをワンクリック接続</strong>できるようになり、<strong>PagerDuty 連携</strong>でインシデントを automation／oncall responder に紐付けられるようになった。API に冪等キーが入って重複セッション生成を防げるようにもなっている。先週の"複数 PR・複数セッションを捌く UI"に続き、今週は<strong>「レビューを厳格化しつつ、運用・インシデント対応の配線を増やす」</strong>方向——Claude Code の安全分類器や Cursor のイベント駆動と並べると、各社が揃って<strong>「エージェントを本番運用に耐える形に締める」</strong>ところへ来ているのが分かる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://docs.devin.ai/release-notes/overview">Devin Release Notes（9/9：セッション archive の子 PR クローズ、複数 PR ドロップダウン、キュー投入の生存）</a></li>
+      <li><a href="https://docs.devin.ai/release-notes/overview">Devin Release Notes（9/16：Review の常時セキュリティ検査・Live Voice、9/11：21 個の OAuth MCP・PagerDuty）</a></li>
     </ul>
   </article>
 </section>
