@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年9月18日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年9月25日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年9月18日">
+<meta property="og:title" content="GitHub トレンド — 2026年9月25日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月18日（金）</span>
+        <span>2026年9月25日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,43 +31,80 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週はエージェントの「振る舞い」を仕込む単体スキルが週間トレンドを席巻した。今週はその熱が続きつつ、上位の顔ぶれが一気に<strong>広がった</strong>のが特徴だ。週間の伸びで首位に立ったのはスキルでも開発ツールでもなく、ブラウザ上でリアルタイムの空間情報を可視化する「スパイ衛星シミュレーター」<code>gods-eye-view</code>——AI 一色だった前週から、純粋に「動かして楽しい」バイラルなプロダクトが最上位に戻ってきた。二番手にはアリババが自社規模で鍛えた<strong>本番投入級の AI コードレビュー</strong> <code>open-code-review</code> が食い込み、エージェントが「書く」段から「レビューする」段へ進んだことを示した。三つめの軸は<strong>スキル／プラグインのカタログ化・公式化</strong>で、OpenAI の <code>plugins</code>、Anthropic の <code>knowledge-work-plugins</code> といったベンダー公式のカタログと、<code>agent-skills</code>・<code>superpowers</code> のような大型フレームワークが揃って上位に並んだ。前週トップだった振る舞い矯正系（<code>i-have-adhd</code>・<code>humanizer</code>）も勢いを保ち、並列開発の <code>worktrunk</code>、企業向け RAG の <code>WeKnora</code> といった<strong>エージェントの開発基盤</strong>も伸びた。単体スキルの流行が、配布の仕組みと本番ワークフローへと一段厚みを増した一週間だった。</p>
+  <p>先週は「エージェントの振る舞いを仕込む単体スキル」と、その配布口を公式化するカタログが週間トレンドの中心だった。今週はその熱がさらに<strong>一段深いレイヤー</strong>へ移った。週間の伸びで上位を占めたのは、単体スキルではなく<strong>エージェントを本番運用するための基盤</strong>だ。首位級にはアリババ発の AI コードレビュー <code>open-code-review</code>、Claude Code などの土台を最適化するハーネス <code>ECC</code>、複数エージェントを並列に走らせる ADE <code>orca</code> が並び、「書かせる」から「レビュー・並列運用する」への移行が鮮明になった。今週の新しい軸は<strong>エージェントの「記憶」</strong>で、長期記憶を扱う <code>hindsight</code> と、ベンダー間の引き継ぎまで担う <code>ai-memory</code> が揃って上位入りした。さらに、仕様を先に固める <code>OpenSpec</code>、職能別・金融特化のプラグイン集（<code>knowledge-work-plugins</code>・<code>financial-services</code>）、そして GPU なしで巨大 MoE を回す純 C の推論エンジン <code>colibri</code> といった尖った実装も伸びた。スキル流行の次として、記憶・オーケストレーション・仕様・縦展開という「運用の型」が一気に前景化した一週間だった。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">今週の首位級 — バイラルと「本番投入」</h2>
+  <h2 class="topic__title">今週の主役 — エージェントの「運用基盤」化</h2>
 
   <article class="article">
-    <h3 class="article__headline">bilawalsidhu/gods-eye-view — 実データで動く「スパイ衛星」シミュレーターが週間トップ（週間 約1.4万★）</h3>
+    <h3 class="article__headline">alibaba/open-code-review — アリババ規模で鍛えた AI コードレビューが週間の伸び首位級（週間 約6,900★）</h3>
     <div class="article__body">
-      <p>About は「A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.」。フォトリアルな 3D 地球儀の上に、航空機・船舶・衛星・地震・火災・カメラといった公開データをリアルタイムに重ねて可視化するブラウザアプリで、今週は週間の伸びで全体の首位に立った。</p>
-      <p>README によれば、1 万機超の航空機や 838 個の衛星カタログ、船舶や地震活動をライブのレイヤーとして表示し、追跡中の機体の内側に入り込む「コックピットモード」（地形との衝突判定つき）や、NVG・FLIR サーマル・CRT・ノワールといった複数のセンサー描画モードを備える。28 のツールを持つ AI エージェントによる音声操作でナビゲーションや注記・照会を行い、経路の描画や距離計測、公開 CCTV の 3D 地形への投影もできる。技術的には CesiumJS と Google 3D Tiles、素の JavaScript の上に構築され、SGP4 で衛星軌道を伝播し、データ点の間を補間して滑らかに動かす。多くのレイヤーは認証不要で動き、任意のキーで追加機能が開く。topics には <code>osint</code>・<code>cesium</code>・<code>satellite-tracking</code>・<code>geospatial-intelligence</code> などが並ぶ。AI 系が上位を占める中で、純粋に体験として強いプロダクトが週間トップを取った点が今週の象徴だった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/bilawalsidhu/gods-eye-view">bilawalsidhu/gods-eye-view</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">alibaba/open-code-review — アリババ規模で鍛えた AI コードレビュー（週間 約1.1万★）</h3>
-    <div class="article__body">
-      <p>About は「Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI &amp; Anthropic compatible.」。アリババ社内で使われてきた仕組みを起点とする、コマンドラインの AI コードレビューツール。</p>
-      <p>README によれば、Git の差分を解析し、変更ファイルをツール利用が可能なエージェント経由で任意の LLM に渡して、行レベルの精度を持つ構造化されたレビューコメントを生成する。ファイル全体の読み込みやコードベース検索で文脈を補いながら、ワークスペース・ブランチ・コミット・全ファイルといった走査モードを選べる。決定論的なパイプラインと LLM エージェントを組み合わせるハイブリッド構成で、NPE（ヌルポインタ例外）・スレッド安全性・XSS・SQL インジェクションを検出する多言語のルールセットを内蔵する。大きな変更集合でもレビューが抜けないようファイルのバンドルとスマートなフィルタリングを行い、Claude Code・Cursor・Kimi Code などのコーディングエージェントと連携する。primary language は Go、topics には <code>code-review</code>・<code>agent</code>・<code>agent-skills</code>・<code>repository-level-context</code> などが並ぶ。「エージェントに書かせる」ツールが多かった中で、「本番規模でレビューさせる」側が週間 2 番手に付けたのが目を引いた。</p>
+      <p>About は「Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI &amp; Anthropic compatible.」。先週も上位に入っていたが、今週は週間の伸びでほぼ全体トップに立った。</p>
+      <p>README によれば、Git の差分や全ファイルを解析し、決定論的なパイプラインと LLM エージェントを組み合わせるハイブリッド構成で、行レベルの精度を持つ構造化レビューコメントを生成する。NPE（ヌルポインタ例外）・スレッド安全性・XSS・SQL インジェクションを検出する多言語ルールセットを内蔵し、関連ファイルをまとめる smart file bundling で大きな変更集合でもレビュー漏れを抑える。ワークスペース差分・ブランチ範囲・単一コミット・全ファイル走査の各モードを持ち、MCP サーバーやプラグイン経由で Claude Code・Codex・Cursor・Kimi Code と連携し、GitHub Actions などの CI/CD にも組み込める。primary language は Go、topics は <code>code-review</code>・<code>agent</code>・<code>agent-skills</code>・<code>repository-level-context</code> など。エージェントに「書かせる」ツールが飽和する中で、「本番規模でレビューさせる」側が最上位に来たのが今週の象徴だった。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></li>
     </ul>
   </article>
+
+  <article class="article">
+    <h3 class="article__headline">affaan-m/ECC — エージェントのハーネスを丸ごと最適化するシステム（週間 約6,200★）</h3>
+    <div class="article__body">
+      <p>About は「The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.」。個別のプロンプトを繰り返す代わりに、一度導入すればエージェント側に構造化された開発の型を注入する、というアプローチのフレームワーク。</p>
+      <p>README によれば、専門エージェント群・再利用可能なスキル・コマンドをエンジニアリングのワークフロー単位で束ね、テスト駆動開発のパターン、まっさらな文脈で行うコードレビュー、セッションをまたぐ永続メモリ、成功パターンから再利用可能なスキルを自動学習する仕組みを提供する。AgentShield によるセキュリティスキャン、ルールベースの標準遵守、モデル文脈の外で決定論的チェックを走らせるランタイムフックも備える。Claude Code にはプラグインとしてネイティブ対応し、Codex・Kimi Code はガイド付きセットアップ、Cursor・OpenCode・Gemini・GitHub Copilot などにはアダプタで対応する。MIT ライセンス。単体スキルの流行が、ハーネス全体を対象にした「最適化システム」へと拡張された格好で、週間の伸びで首位級に食い込んだ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">stablyai/orca — 並列エージェントの「艦隊」を操る ADE（週間 約6,500★）</h3>
+    <div class="article__body">
+      <p>About は「Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.」。複数の AI コーディングエージェントを、隔離された worktree 上で並列にオーケストレーションする「エージェント開発環境（ADE）」。</p>
+      <p>README によれば、Claude Code・Codex・OpenCode・Pi などの CLI 系エージェントを同時に走らせて出力を比較し、好ましい結果をマージできる。永続スクロールバックを持つターミナル分割、GitHub／Linear とのネイティブ連携、デザインモード付きの埋め込みブラウザ、SSH 越しのリモート worktree、差分への注記ツール、遠隔監視用のモバイルコンパニオンアプリなどを備える。macOS・Windows・Linux のデスクトップ版に加えモバイルにも対応。topics は <code>ade</code>・<code>parallel-agents</code>・<code>orchestration</code>・<code>worktrees</code>・<code>yc-backed</code> など。先週の <code>worktrunk</code>（並列 worktree の CLI）が示した流れが、今週は GUI/モバイルを含む統合環境として週間上位に現れた。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
+    </ul>
+  </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">スキル／プラグインの「カタログ化・公式化」</h2>
+  <h2 class="topic__title">今週の新しい軸 — エージェントに「記憶」を持たせる</h2>
 
   <article class="article">
-    <h3 class="article__headline">addyosmani/agent-skills — 「本番品質」のエンジニアリング作法を束ねたスキル集（週間 約2,600★）</h3>
+    <h3 class="article__headline">vectorize-io/hindsight — 会話履歴を超えて「学習する」エージェントメモリ（週間 約3,400★）</h3>
     <div class="article__body">
-      <p>About は「Production-grade engineering skills for AI coding agents.」。シニアエンジニアが本番ソフトウェアに適用する規律と品質基準を、AI コーディングエージェント向けの構造化されたワークフローとして符号化したもの。</p>
-      <p>README によれば、spec・plan・build・test・constraints・review・webperf・code-simplify・ship という開発ライフサイクルの各段階に対応する 9 個のスラッシュコマンドと、定義からデプロイまでを網羅する計 25 のスキル（各ステップに検証ゲートつき）を持つ。コードレビュアー・テストエンジニア・セキュリティ監査・Web パフォーマンス監査の 4 つのエージェントペルソナと、テスト・セキュリティ・性能・アクセシビリティ・可観測性を扱う 7 つの参照チェックリストも備える。スキルはタスクの文脈に応じて自動起動し、<code>npx skills add</code> で導入するか Claude Code・Cursor・Copilot など 70 以上のエージェントに組み込める。各スキルには「手順を飛ばす言い訳」に反論する anti-rationalization の表が付く。topics は <code>agent-skills</code>・<code>claude-code</code>・<code>codex</code>・<code>cursor</code> など。単体スキルの流行が、体系立った「作法の束」へと集約されつつある。</p>
+      <p>About は端的に「Hindsight: Agent Memory That Learns」。単なる会話履歴の呼び戻しを超えて、エージェントが時間をかけて情報を学習・保持できるようにするメモリシステム。</p>
+      <p>README によれば、従来の RAG や知識グラフとは異なり、記憶を「世界の事実・経験・観察・メンタルモデル」に整理する生体模倣的なデータ構造を用いる。中核は retain（保存）・recall（意味・キーワード・グラフ・時間軸の複数戦略で検索）・reflect（深い分析）という 3 操作。25 以上の LLM プロバイダと 60 以上の連携に対応し、Docker・ベアメタル・Kubernetes・マネージドクラウドで展開できる。PII やシークレットのスキャンによるメモリ防御、原語を保持する多言語対応、関連する事実を重複排除された「信念」へ統合する仕組みも持つ。topics は <code>ai-memory</code>・<code>agents</code>・<code>agentic-ai</code>・<code>memory</code>。エージェントの実行基盤が整うにつれ、次の焦点が「文脈をまたいで何を覚えるか」へ移りつつあることを示す一本。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/vectorize-io/hindsight">vectorize-io/hindsight</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">akitaonrails/ai-memory — ベンダー間の引き継ぎまで担う git ベースの長期記憶（週間 約1,200★）</h3>
+    <div class="article__body">
+      <p>About は「Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors」。複数の AI コーディングエージェントやマシンをまたいで、永続的で共有可能なメモリを提供する自己完結型システム。</p>
+      <p>README によれば、git で管理される Markdown の wiki を唯一の正とし、エージェントのライフサイクルイベントをフック経由で自動記録する。Claude Code・Codex・Cursor など<strong>異なるエージェント間の引き継ぎ</strong>でプロジェクト文脈や未解決の疑問を保持し、共有サーバー上の記憶で複数マシンにまたがる作業継続を可能にする。既定では LLM を呼ばずに（キャプチャ・検索・引き継ぎが）動き、LLM 機能は任意。時間ではなく利用パターンに応じて記憶が減衰する access-weighted retention、per-person の属性付けと監査ログ、プレーンテキスト保存によるベンダーロックイン回避を掲げる。単一の Rust バイナリで、wiki ファイル・SQLite インデックス・任意の埋め込みモデルを含むデータディレクトリを管理する。前出の hindsight と並び、「記憶」を独立したレイヤーとして扱う動きが今週まとめて可視化された。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/akitaonrails/ai-memory">akitaonrails/ai-memory</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">スキル／プラグインの体系化と縦展開</h2>
+
+  <article class="article">
+    <h3 class="article__headline">addyosmani/agent-skills — 「本番品質」の開発作法を束ねたスキル集、今週も継続（週間 約3,300★）</h3>
+    <div class="article__body">
+      <p>先週も上位に入っていた一本が引き続きトレンド入り。About は「Production-grade engineering skills for AI coding agents.」。シニアエンジニアの規律と品質基準を、AI コーディングエージェント向けの構造化ワークフローとして符号化したもの。</p>
+      <p>README によれば、要件定義・計画・構築・検証・レビュー・出荷という開発ライフサイクルの各段階に対応する計 25 のスキルを提供し、各スキルに手順・検証ゲート・「手順を飛ばす言い訳」に反論する anti-rationalization の表を備える。テストやセキュリティレビューといった重要ステップを飛ばさせない設計で、CLI とネイティブ連携の両方を通じて Claude Code・Cursor・Copilot など 70 以上のエージェントで使える。primary language は Markdown、topics は <code>agent-skills</code>・<code>claude-code</code>・<code>codex</code>・<code>cursor</code> など。単体スキル流行の受け皿となる「作法の束」として、勢いを保っている。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></li>
@@ -75,84 +112,62 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">obra/superpowers — 「いきなり書かない」開発方法論つきスキルフレームワーク（週間 約3,800★）</h3>
+    <h3 class="article__headline">anthropics/knowledge-work-plugins — 職能別に Claude を「専門家化」する公式プラグイン集（週間 約1,100★）</h3>
     <div class="article__body">
-      <p>About は「An agentic skills framework &amp; software development methodology that works.」。コーディングエージェントが即座にコードへ飛びつくのではなく、体系立ててプロジェクトに取り組むための方法論を提供する。</p>
-      <p>README によれば、ワークフローはまずエージェントにプロジェクトの目的を確認する質問をさせるところから始まる。設計を読みやすい単位ごとに承認したうえで、ジュニア開発者でも追える粒度の実装計画を作り、その後「subagent-driven-development」に移ってレビューのチェックポイントを挟みながら（しばしば長時間自律的に）タスクを進める。RED-GREEN-REFACTOR のテスト駆動開発、根本原因分析による体系的デバッグ、ブレインストーミングと設計の洗練、git worktree を使った並列開発、コードレビューと協働のワークフローなどを備え、Claude Code・Cursor・Devin・Gemini など複数のエージェントに対応する。topics は <code>skills</code>・<code>sdlc</code>・<code>subagent-driven-development</code> など。前出の agent-skills と同様、スキルが「開発プロセス全体を規定するフレームワーク」へと大型化している。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/obra/superpowers">obra/superpowers</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">openai/plugins — OpenAI 公式の Codex プラグイン事例集（週間 約560★）</h3>
-    <div class="article__body">
-      <p>About は端的に「OpenAI Plugins」。README によれば、Codex 向けプラグインの厳選された事例を集めたリポジトリで、各プラグインは <code>plugins/&lt;name&gt;/</code> の下に必須のマニフェストと、任意の付随要素（skills・アプリ設定・MCP セットアップ・agents・commands・hooks・アセット）をまとめる構成を取る。</p>
-      <p>紹介される事例には、Figma（デザインツールとシステムルール）、Notion（計画と知識管理）、iOS/macOS アプリ構築（SwiftUI ワークフロー）、Web アプリ開発（デプロイとデータベース）、Expo（React Native）のほか、Netlify・Remotion・Google Slides との連携が含まれる。既定のマーケットプレイスは <code>.agents/plugins/marketplace.json</code> に設定され、API キー方式の別マーケットプレイスも用意される。ベンダー自身が「プラグインの標準構成と配布口」を公式に示した点で、次項の Anthropic 版とあわせて今週のカタログ化の流れを象徴していた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/openai/plugins">openai/plugins</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">anthropics/knowledge-work-plugins — 職能別に Claude を「専門家化」する公式プラグイン集（週間 約490★）</h3>
-    <div class="article__body">
-      <p>About は「Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork」。Claude Cowork 向けに作られ Claude Code とも互換の、役割・チーム・企業ごとに Claude を専門家へ仕立てるプラグイン集。</p>
-      <p>README によれば、生産性・セールス・カスタマーサポート・プロダクトマネジメント・マーケティング・法務・財務・データ・エンタープライズ検索・バイオ研究・Cowork プラグイン管理という 11 のプラグインをオープンソース化している。各プラグインは、Claude が自動で参照する専門知識とワークフローの「skills」、ユーザーが明示的に起動する「commands」（例: <code>/sales:call-prep</code>）、MCP サーバー経由で外部ツールに接続する「connectors」という標準構成を取る。すべて Markdown と JSON のファイルベースで、コードもインフラもビルド手順も不要で導入・カスタマイズできる。前項の OpenAI 版と並び、エンジニアリング以外の職能まで「プラグインとして配る」動きが公式レベルで揃った。</p>
+      <p>先週に続きトレンド入り。About は「Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork」。Claude Cowork 向けに作られ Claude Code とも互換の、役割・チーム・企業ごとに Claude を専門家へ仕立てるプラグイン集。</p>
+      <p>README によれば、生産性・セールス・カスタマーサポート・プロダクトマネジメント・マーケティング・法務・財務・データ・エンタープライズ検索・バイオ研究・Cowork プラグイン管理という 11 のプラグインをオープンソース化している。各プラグインは、Claude が自動参照する専門知識の「skills」、ユーザーが明示起動する「commands」、MCP サーバー経由で外部ツールに接続する「connectors」という標準構成を取り、Markdown と JSON のファイルベースで企業固有のツールや用語に合わせてカスタマイズできる。次項の金融特化版とあわせ、エンジニアリング以外の職能まで「プラグインとして配る」動きが公式レベルで続いている。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></li>
     </ul>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">振る舞いを仕込むスキルは今週も</h2>
 
   <article class="article">
-    <h3 class="article__headline">ayghri/i-have-adhd — 答えを埋もれさせない出力スキル、今週も高勢い（週間 約1.1万★）</h3>
+    <h3 class="article__headline">anthropics/financial-services — 金融業務に特化したエージェント・スキル・コネクタ集（週間 約2,400★）</h3>
     <div class="article__body">
-      <p>先週も上位に入っていた「ADHD フレンドリー」な出力スキルが、今週も週間の伸びで最上位級を維持した。About は「A skill to stop your coding agent from burying the answer. ADHD-friendly output.」。冗長な説明の代わりに「まず行動、手順は番号付き、『Hope this helps!』は書かない」という直接的な応答へエージェントを矯正する。</p>
-      <p>README によれば、要点を最初に置く・複数手順は番号付きにする・脱線を抑える・前置きと締めを削る、といった変換を軸に、リストは最大 5 項目まで、具体的な所要時間を示す、毎ターン状態を言い直す、進捗を可視化するなど 10 個のルールで動く。「ADHD の診断は不要」とうたい、Claude をはじめとするコーディングアシスタントのプラグインとして使える。topics は <code>adhd</code>・<code>claude-skills</code>・<code>claude-code-plugin</code>・<code>productivity</code> など。前週から続く「出力の作法を仕込む」系の代表格として、勢いが衰えていない。</p>
+      <p>個別ページ上では About は未設定だが、README によれば、Anthropic の Claude を基盤に金融サービス向けのワークフローを揃えたリファレンスリポジトリ。Cowork プラグインと Claude Managed Agents API テンプレートの両形態を提供する。</p>
+      <p>README によれば、ピッチ・会議準備・市場調査・決算レビュー・モデル構築・バリュエーションレビュー・GL 照合・月次決算・計算書監査・KYC スクリーニングといった計 11 のエージェントと、投資銀行・株式リサーチ・プライベートエクイティ・ファンド管理・オペレーションなどの縦割りプラグイン、そして Daloopa・Morningstar・S&amp;P Global・FactSet・Moody's・PitchBook・Box など 11 の MCP データコネクタを含む。コンプス分析・DCF/LBO モデリング・3 表モデル・提案資料作成・決算分析・KYC などをカバーする。ただし README は「投資判断や取引執行のためではなく、人によるレビュー前提のアナリスト成果物のドラフト用」であり、有資格者のサインオフを前提とする、と明示する。前項の職能別プラグインをさらに一業種に深掘りした形。primary language は Python。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a></li>
+      <li><a href="https://github.com/anthropics/financial-services">anthropics/financial-services</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">blader/humanizer — AI っぽい文章の痕跡を消すスキル、継続してトレンド入り（週間 約3,200★）</h3>
+    <h3 class="article__headline">davila7/claude-code-templates — Claude Code を設定・監視する部品カタログと CLI（週間 約1,000★）</h3>
     <div class="article__body">
-      <p>こちらも先週に続く一本。About は「Agent skill that removes signs of AI-generated writing from text」。AI が生成した文章を、事実の正確さを保ったまま、より自然で人が書いたように見えるよう書き直すエージェントスキル。</p>
-      <p>README によれば、助走の段取り・無理な三段構え・大げさな意味づけといった機械生成文に特徴的な 25 のパターンを同定し、体系的に直す。テキストを直接貼り付けるか、文体を合わせるための書き手のサンプルを渡して使い、詳細を勝手に作らず必要なら不足情報を尋ねて事実性を保つ設計。topics は <code>agent-skills</code>・<code>ai-writing</code>・<code>writing-tools</code>・<code>prompt-engineering</code> など、主体は Markdown。コードだけでなく「文章の振る舞い」を矯正する系統が、2 週続けて上位に残った。</p>
+      <p>About は「CLI tool for configuring and monitoring Claude Code」。Anthropic の Claude Code を、すぐ使える設定でまとめて強化するためのツールキット。</p>
+      <p>README によれば、専門分野別の AI エージェント、カスタムスラッシュコマンド、GitHub やデータベースなど外部サービスへの MCP 連携、設定、自動化フック、再利用可能なスキルを含む 100 以上のインストール可能なコンポーネントを提供する。コマンドライン経由で開発スタックを素早く用意でき、アナリティクス監視・会話ビューア・ヘルス診断・プラグイン管理ダッシュボードといった付随ユーティリティも備える。primary language は JavaScript、topics は <code>anthropic</code>・<code>claude</code>・<code>claude-code</code> など。スキルやプラグインが増える中で、それらを「探して入れて監視する」導線側の需要を捉えた一本。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/blader/humanizer">blader/humanizer</a></li>
+      <li><a href="https://github.com/davila7/claude-code-templates">davila7/claude-code-templates</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントの開発基盤 — 並列・知識・定番</h2>
+  <h2 class="topic__title">設計と仕様を先に — 仕様駆動開発</h2>
 
   <article class="article">
-    <h3 class="article__headline">max-sixty/worktrunk — 並列エージェント向けに git worktree を扱いやすくする CLI（週間 約1,100★）</h3>
+    <h3 class="article__headline">Fission-AI/OpenSpec — AI アシスタント向けの仕様駆動開発フレームワーク（週間 約1,400★）</h3>
     <div class="article__body">
-      <p>About は「Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows」。Git ネイティブの worktree の使い勝手の悪さを、ブランチ管理並みの手軽さへと引き下げるツールで、複数の AI エージェントを並行して走らせる用途に特化している。</p>
-      <p>README によれば、<code>switch</code>・<code>list</code>・<code>remove</code> の 3 コマンドで worktree 操作を単純化し、worktree をファイルパスではなくブランチ名で指定する。設定可能なテンプレートからのパス自動算出、post-create／pre-merge／post-merge のフック、差分からの LLM によるコミットメッセージ生成、CI 状態や PR プレビュー付きの対話的ブランチ選択、worktree 間で共有するビルドキャッシュ、PR ブランチへの直接チェックアウト、worktree ごとの開発サーバーなどを備える。<code>-x</code> フラグで作成と同時にエージェントを起動できる。primary language は Rust、topics は <code>agents</code>・<code>claude-code</code>・<code>codex</code>・<code>worktrees</code> など。並列エージェントが増える中で、各エージェントの作業ディレクトリを衝突なく分離する基盤側の需要を捉えた一本。</p>
+      <p>About は「Spec-driven development (SDD) for AI coding assistants.」。実装の前に開発者と AI アシスタントが要件を合意する、軽量な仕様駆動開発（SDD）のフレームワーク。</p>
+      <p>README によれば、各機能を専用フォルダにまとめ、提案・仕様・設計ドキュメント・タスクのチェックリストを格納する。構造化された変更提案を作る <code>/opsx:propose</code> コマンド、アーキテクチャの選択肢を評価する探索モードを持ち、スラッシュコマンド経由で 30 以上の AI コーディングアシスタントに対応する。硬直した段階分けよりも反復的な洗練を重視し、既存の開発ツールと統合する。複数リポジトリにまたがる計画を可能にする「Stores」機能（ベータ）では、共有仕様を中央リポジトリに保ちつつ実装は各プロジェクトで進められる。OpenSpec 自身がこの手法で作られている。topics は <code>spec-driven-development</code>・<code>sdd</code>・<code>prd</code>・<code>context-engineering</code> など。先週の「いきなり書かない」方法論系の流れが、仕様の合意という形で今週も続いた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/max-sixty/worktrunk">max-sixty/worktrunk</a></li>
+      <li><a href="https://github.com/Fission-AI/OpenSpec">Fission-AI/OpenSpec</a></li>
     </ul>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">知識基盤とローカル推論</h2>
 
   <article class="article">
-    <h3 class="article__headline">Tencent/WeKnora — 文書を RAG・エージェント・自動更新 Wiki に変える知識基盤（週間 約4,000★）</h3>
+    <h3 class="article__headline">Tencent/WeKnora — 文書を RAG・エージェント・自動更新 Wiki に変える知識基盤（週間 約3,700★）</h3>
     <div class="article__body">
-      <p>About は「Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.」。非構造の文書を、問い合わせ可能な知識資産へ変換する企業向けのオープンソース基盤。</p>
-      <p>README によれば、日常の照会向けの RAG ベースの Q&amp;A、検索や MCP ツールを自律的に組み立てる ReAct エージェント、そして生の文書を自己維持型で相互リンクされた Markdown 知識ベースへ蒸留する新しい Wiki モード、という 3 つの機能を統合する。ワークスペース単位の RBAC と監査ログ、10 以上の文書形式と複数の LLM／ベクトル DB プロバイダ対応、チャンク単位の編集と版管理、WeCom・Feishu・Slack・Telegram などの IM 連携、Docker／E2B／Cube を backend とするスキルサンドボックス、セッションをまたぐ長期記憶、外部公開用の埋め込みウィジェットなどを備える。各構成要素が差し替え可能なモジュール式パイプラインで、ローカルやプライベートクラウドに展開できる。primary language は Go、topics は <code>rag</code>・<code>agent</code>・<code>knowledge-base</code>・<code>vector-search</code> など。</p>
+      <p>先週に続く一本。About は「Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.」。生の文書を、問い合わせ可能な知識資産へ変換する企業向けオープンソース基盤。</p>
+      <p>README によれば、引用付きの意味検索（RAG）、知識ベースと外部ツールにアクセスする多段推論エージェント、知識グラフを伴う自動生成の Wiki ページ、という 3 つの機能を統合する。27 の LLM ベンダー、複数のベクトル DB／ストレージ、10 以上の文書形式のパース、Feishu・Confluence・GitLab などのデータソース連携、WeChat・Slack・Telegram への IM 展開に対応。セッション永続のコード実行サンドボックス、BrowserSkill によるブラウザ自動化、セッションをまたぐ記憶、ワークスペース単位のアクセス制御、Langfuse による可観測性を備え、Docker Compose・Kubernetes・単一バイナリで展開できる。primary language は Go、topics は <code>rag</code>・<code>agent</code>・<code>knowledge-base</code>・<code>vector-search</code> など。今週の「記憶」テーマとも地続きの、組織の知識をエージェントに供給する側の代表格。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/Tencent/WeKnora">Tencent/WeKnora</a></li>
@@ -160,24 +175,28 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">anthropics/claude-code — ターミナルで動くエージェント型コーディングツール（週間 約1,300★）</h3>
+    <h3 class="article__headline">JustVugg/colibri — GPU なしで巨大 MoE を回す純 C の推論エンジン（週間 約2,100★）</h3>
     <div class="article__body">
-      <p>About は「Agentic coding tool that lives in your terminal, executes tasks, and handles git workflows」。今週の上位に並ぶスキルやプラグインの多くが対応先として名前を挙げている、その土台側の本体が今週もトレンドに残った。</p>
-      <p>ターミナル上でタスクを実行し、git のワークフローまで扱うエージェント型コーディングツールとして位置づけられている。週間トレンドの上位に「Claude Code 向けのスキル・プラグイン」が数多く並ぶ中で、そのランタイム自体も継続的に伸びており、エコシステムの中心にあることを裏づける。</p>
+      <p>About は「Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦」。手持ちのハードウェアで超大規模な Mixture-of-Experts（MoE）モデルを動かすことを狙う推論エンジン。</p>
+      <p>README によれば、ストレージ・RAM・VRAM を一つのメモリ階層として扱い、モデル全体を高速メモリに載せる代わりに、必要な expert の重みをディスクからオンデマンドで<strong>ストリーミング</strong>する。これにより 744B〜2.8T パラメータ級のモデルを GPU 必須とせずに実行できるとする。純 C 実装で外部依存ゼロ、VRAM/RAM/NVMe の多段ストレージとルーティングパターンに基づくキャッシュ、計算と I/O のオーバーラップによるディスク遅延の隠蔽を特徴とする。GLM・DeepSeek V4 系・Qwen など 9 つのモデルファミリーに対応し、CUDA・Metal・Vulkan の GPU バックエンドは任意、投機的デコードやリアルタイム指標を出す Web ダッシュボードも持つ。topics は <code>moe</code>・<code>mixture-of-experts</code>・<code>inference</code>・<code>streaming</code> など。AI 応用が上位を占める中で、その足回りである「巨大モデルを安価に回す」システム実装が週間トレンドに食い込んだ。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a></li>
+    </ul>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エコシステムの土台</h2>
+
+  <article class="article">
+    <h3 class="article__headline">anthropics/claude-code — ターミナルで動くエージェント型コーディングツール（週間 約2,400★）</h3>
+    <div class="article__body">
+      <p>今週も上位のスキル・プラグイン・ツールの多くが対応先に挙げる、その本体が引き続きトレンドに残った。About は「Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.」。</p>
+      <p>ターミナル上でコードベースを理解し、定型タスクの実行・複雑なコードの説明・git ワークフローの処理までを自然言語コマンドで行う。今週の上位に並ぶ運用基盤・記憶・仕様・レビュー系の多くが Claude Code を主要な対応先に挙げており、そのランタイム自体が継続的に伸びていることが、エコシステムの中心にあることを裏づける。primary language は TypeScript。</p>
     </div>
     <ul class="article__sources">
       <li><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">home-assistant/core — ローカル制御とプライバシー優先のホームオートメーション（週間 約290★）</h3>
-    <div class="article__body">
-      <p>AI 一色になりがちな週間トレンドの中で、長寿の定番も上位に顔を出した。About は「🏡 Open source home automation that puts local control and privacy first.」。ローカル制御とプライバシーを最優先するオープンソースのホームオートメーション基盤。</p>
-      <p>README によれば、世界中の DIY 愛好家のコミュニティに支えられ、Raspberry Pi やローカルサーバーで動かすのに適する。デバイス対応やカスタムコンポーネントを容易に追加できるモジュール式のアーキテクチャを掲げ、デモやセットアップガイド・チュートリアルは home-assistant.io に用意される。primary language は Python、topics は <code>home-automation</code>・<code>iot</code>・<code>mqtt</code>・<code>raspberry-pi</code> など。エージェント関連が席巻する中でも、実用的なインフラ系プロジェクトへの根強い関心が続いている。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/home-assistant/core">home-assistant/core</a></li>
     </ul>
   </article>
 </section>
