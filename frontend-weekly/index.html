@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年9月22日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年9月29日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年9月22日">
+<meta property="og:title" content="フロントエンドニュース — 2026年9月29日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月22日（火）</span>
+        <span>2026年9月29日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -31,53 +31,54 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>先週号は「卒業と cadence」——React 19.3 の GA と Chrome の 2 週間リリース移行——の 2 語で今週を占った。その cadence が今週、<strong>予定と非常時の両方で同じ 9 月 22 日に本番を迎えた</strong>。定時側は <strong>Chrome 154 が今日から stable の本展開</strong>に入り、153 で始めた 2 週間サイクルの<strong>最初の通常ラップ</strong>を回した。非常時側は <strong>Next.js が上流依存の重大脆弱性を突き、16.3.6 / 15.5.26 を out-of-band で今日リリース</strong>——速く小さく配る体制が、機能ではなく<strong>緊急パッチ</strong>で試された。先週卒業した View Transitions も早くも<strong>各アプリが next-view-transitions を捨てて native へ乗り換え</strong>始め、卒業生が現場に配属された。今週は「速く回す列車が、平時と有事の両方で走った週」だ。</p>
+  <p>先週は「速く回す列車が平時と有事の両方で走った週」と書いた。今週、その<strong>有事のほうが「臨時」から「定例」へと座を移した</strong>。先週予告された out-of-band は 9 月 22 日に<strong>16.3.6 / 15.5.26 として実際に着地</strong>し、伏せられていた正体は <code>next/og</code>（Satori 経由）の <strong>RCE</strong> だと開示された。そして翌 23 日、Next.js は<strong>間髪入れず次の「定例」セキュリティリリースを 9 月 30 日に予告</strong>——今度は 1 件ではなく<strong>9 件（critical 1・high 2・medium 5・low 1）をまとめて</strong>配る。片やブラウザ側では <strong>Chrome 155 が 2 週間 cadence の「2 本目」を回し</strong>、周期は「宣言」から「習慣」に変わった。速い周期は、機能でもパッチでも、もう常態だ。今週は「速さが例外でなくなった週」だ。</p>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">今週の重要ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">Next.js が上流依存の重大脆弱性で緊急パッチ — 16.3.6 / 15.5.26 を本日 out-of-band 配布</h3>
+    <h3 class="article__headline">先週の「上流依存の謎」が判明 — 正体は next/og（Satori）の RCE、16.3.6 で修正済み</h3>
     <div class="article__body">
-      <p>今週いちばんの出荷は機能ではなくセキュリティだった。Next.js チームは <strong>9 月 21 日に事前告知</strong>を出し、<strong>上流依存（upstream dependency）に見つかった critical な問題</strong>に対して <strong>16.3.6</strong> と <strong>15.5.26</strong> を<strong>本日 9 月 22 日に out-of-band で公開</strong>すると予告した。詳細は advisory <strong>GHSA-vcvr-r3jv-pc5j</strong> にリリースと同時に載る予定で、影響範囲・対象バージョン・アップグレード手順はそこで開示される。ポイントは、これが Next.js 自身のコードではなく<strong>依存先由来</strong>である点と、通常リリース列を待たず<strong>臨時で差し込んだ</strong>点だ。先週の「小さく速く配る」cadence の議論が、機能ではなく緊急対応でまず現実になった格好で、16 系・15 系の両方を使う現場は<strong>即時アップグレードが必要</strong>になる。</p>
+      <p>先週「来週の最大の関心事」に挙げた <strong>GHSA-vcvr-r3jv-pc5j の全貌</strong>が、予告どおり 9 月 22 日のリリースと同時に開けた。out-of-band 更新は <strong>16.3.6（Active LTS）と 15.5.26（Maintenance LTS）</strong>として着地し、伏せられていた上流依存の正体は <strong>Satori</strong>——<code>next/og</code> の <strong>Node.js 版 <code>ImageResponse</code></strong> が生成する SVG の<strong>エスケープ不備</strong>から、他の上流依存の脆弱性と連鎖して<strong>リモートコード実行（RCE）</strong>に至りうる、という critical だった。影響は <strong><code>&gt;=16.2.0 &lt;16.3.6</code></strong>。修正は依存の巻き上げで行われ、<strong>Edge 版 <code>ImageResponse</code> は非該当</strong>、15.5.26 は関連 hardening のみ（15.x は RCE の影響を受けない）。先週の見立て「アプリのコードは 1 行も間違っていなくても晒される」は、<strong>OGP 画像を動的生成しているだけの現場</strong>が該当しうる、という形で具体になった。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026">Upcoming Next.js Security Update for a Critical Upstream Issue — nextjs.org（2026-09-21）</a></li>
+      <li><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026">Next.js Security Update for a Critical Upstream Issue — nextjs.org（2026-09-22）</a></li>
       <li><a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j">GHSA-vcvr-r3jv-pc5j — vercel/next.js Security Advisory</a></li>
+      <li><a href="https://github.com/vercel/satori/security/advisories/GHSA-wx4j-mvgx-mqwp">GHSA-wx4j-mvgx-mqwp — vercel/satori Security Advisory（上流）</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Chrome 154 が本日 stable 本展開 — 2 週間 cadence の「最初の通常ラップ」</h3>
+    <h3 class="article__headline">「臨時」の翌日に「定例」を予告 — Next.js が 9/30 に脆弱性 9 件をまとめて配る</h3>
     <div class="article__body">
-      <p>先週の Chrome 153 は「2 週間リリースへ短縮する」という<strong>宣言</strong>だった。今週その宣言が<strong>実走に変わった</strong>。<strong>Chrome 154</strong> は 9 月 2 日に beta へ出たのち、<strong>本日 9 月 22 日から stable の大半展開</strong>に入る——153 の直後、公約どおり約 2 週間で次が届いた形で、新 cadence の<strong>最初の通常ラップ</strong>が確かに回ったことを示す。中身も web プラットフォームの実務に効くものが並ぶ（詳細は後述）。「beta 追従の重要度が上がる」という先週の見立ては、現実の周期が半分になったことで<strong>今週から効き始めている</strong>。</p>
+      <p>out-of-band の翌日、9 月 23 日に Next.js は<strong>次のセキュリティリリースを 9 月 30 日に予定</strong>と告知した。先週の緊急パッチが 1 件を臨時で差し込んだのに対し、今回は<strong>9 件——critical 1・high 2・medium 5・low 1——をまとめて</strong>、通常の<strong>予告つき定例</strong>として配る。公開されるのは <strong>16.3.7</strong> と <strong>15.5.27</strong>で、影響・対象バージョン・アップグレード手順を含む advisory がリリースと同時に出る。ポイントは、たった 1 週間で<strong>「速く小さく」の対象が機能から緊急パッチへ、さらに定例のまとめ配信へ</strong>と段階を上げたことだ。事前告知でアップグレードの計画時間を渡す運用は先週と同じ形。<strong>16 系・15 系を運用する現場は 9/30 に即時アップグレードの再演</strong>を見込んでおきたい。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-154-beta">Chrome 154 beta — Chrome for Developers（2026-09-02）</a></li>
+      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026">Upcoming Next.js September Security Release — nextjs.org（2026-09-23）</a></li>
+      <li><a href="https://nextjs.org/blog/tag/security">Next.js Security Advisories — nextjs.org</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Chrome 155 が「2 本目」を回した — cadence は宣言から習慣へ</h3>
+    <div class="article__body">
+      <p>先週の Chrome 154 が 2 週間 cadence の「最初の通常ラップ」だった。今週その<strong>2 本目</strong>が回った。<strong>Chrome 155</strong> は 9 月 16 日に beta へ出て、Android では 9 月 23 日から <strong>Early Stable</strong>（一部ユーザー先行）に入り、大半への展開は 10 月 6 日から。154 のわずか約 2 週間後という間隔で、<strong>「宣言どおりの周期が 2 回続いた」</strong>——これで新 cadence は「言った」ではなく「回っている」段階に入った。先週書いた「2 本目が本当に 2 週間で来るか（宣言→習慣）」への答えは <strong>Yes</strong> だ。中身も実務に効く小粒〜大玉が揃う（後述）。beta 追従の重要度は、周期が半分のまま<strong>今週さらに定着した</strong>。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta — Chrome for Developers（2026-09-16）</a></li>
       <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Chrome's two-week release cycle — Chrome for Developers</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">卒業した View Transitions が現場へ — アプリが next-view-transitions を捨て native に乗り換え</h3>
+    <h3 class="article__headline">React 19.3 対応の波が広がる — Astro React 7 は Babel を捨て Oxc へ</h3>
     <div class="article__body">
-      <p>先週 React 19.3 で stable になった <code>&lt;ViewTransition&gt;</code> は、リリースの翌週にはもう<strong>移行の波</strong>を作った。9 月中旬、複数のプロジェクトが<strong>サードパーティの <code>next-view-transitions</code> を外し、React 19.3 の native な <code>&lt;ViewTransition&gt;</code> へ置き換える</strong>PR を出している。shared-element 遷移や方向付きアニメーションを、ポリフィル頼みから<strong>フレームワーク標準のプリミティブ</strong>へ寄せる動きだ。先週「来週の注目」に挙げた「stable 化が各フレームワークにどう波及するか」は、まず<strong>Next.js アプリ側の依存差し替え</strong>という具体で回答が出た。卒業生が現場に配属され、ポリフィルという足場が外れ始めている。</p>
+      <p>先週「卒業生が現場に配属」と書いた React 19.3 のエコシステム追従は、今週も裾野を広げた。<strong>React Three Fiber 9.8</strong> が 19.3 対応と同期的な root 構成を入れ、TanStack の同期版 React 再実装 <strong>Redact 0.1</strong> も 19.3 API を前提に GitHub 公開。<strong>React Redux 9.4 alpha</strong> は <code>react-redux/signals</code> 経由で <code>useSignalSelector()</code> と <code>&lt;SignalProvider&gt;</code> を追加し、数千接続規模の最適化に踏み込んだ。象徴的なのは <strong>@astrojs/react 7.0</strong>——JSX コンパイルと Fast Refresh の<strong>Babel を Oxc（Rust 製）に置き換え</strong>、<code>@vitejs/plugin-react</code> を v6 に上げ、<strong>Oxc 経由の実験的 React Compiler 対応（<code>compiler: true</code>）</strong>まで入れた。19.3 という「卒業生」を受け入れる足場そのものが、<strong>Babel から Rust ツールチェインへ</strong>置き換わりつつある。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://react.dev/blog/2026/09/09/react-19-3">React 19.3（&lt;ViewTransition&gt; stable）— react.dev</a></li>
-      <li><a href="https://medium.com/@sebastienlorber/this-week-in-react-296-react-19-3-3ae5580607ea">This Week in React #296（React 19.3 / 移行事例）— ThisWeekInReact.com</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Vue 3.6 は今週も RC — 「秋 GA」の窓はまだ開かない</h3>
-    <div class="article__body">
-      <p>先週に続いて視線を集めた <strong>Vue 3.6</strong> は、今週も<strong>RC のまま</strong>だった。最新の安定版は依然 <strong>3.5 系</strong>で、3.6 は <code>rc</code> 段階に留まっている。alien-signals ベースのリアクティビティ刷新と、仮想 DOM を外す <strong>Vapor Mode</strong> は feature-complete としつつ「秋 GA」の予告のまま据え置きで、エコシステム側の追従（UI ライブラリの <code>vaporInteropPlugin</code> 経由対応など）も途上にある。先週 React が波を 1 つ卒業させた後、次の卒業生と目される Vue 3.6 は<strong>まだ足踏み</strong>——「一斉ではなく 1 つずつ、見立てと違う順に割れる」というこの数週のパターンが今週も続いた。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://blog.sparkles-editor.com/en/blog/vue-3-6-rc-upgrade-guide">The Complete Vue 3.6 RC Upgrade Guide—from 3.5 to Vapor Mode and alien-signals</a></li>
-      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
+      <li><a href="https://thisweekinreact.com/newsletter/298">This Week In React #298（R3F 9.8 / Redact 0.1 / React Redux 9.4 / Astro React 7）— ThisWeekInReact.com</a></li>
+      <li><a href="https://github.com/withastro/astro/releases/tag/%40astrojs/react%407.0.0">Release @astrojs/react@7.0.0 — withastro/astro</a></li>
     </ul>
   </article>
 </section>
@@ -86,13 +87,13 @@
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">「上流依存」由来という座り — 自分のコードを直さずに晒される構図</h3>
+    <h3 class="article__headline">「OGP 画像を動的生成しているだけ」が攻撃面になる — next/og 運用の点検</h3>
     <div class="article__body">
-      <p>今回の Next.js の件で読んでおきたいのは、原因が<strong>Next.js 本体ではなく上流依存にある</strong>という座りだ。フレームワークを最新に保っていても、その<strong>依存の 1 つに critical が出れば連鎖的に影響を受ける</strong>——アプリ側のコードは 1 行も間違っていなくても、である。だからこそ Next.js は通常のリリース列を待たず、<strong>16 系（16.3.6）と 15 系（15.5.26）の両方に同時にバックポート</strong>して out-of-band で配る。advisory <strong>GHSA-vcvr-r3jv-pc5j</strong> がリリースと同時に公開され、そこで初めて具体的な影響と対象範囲が判明する設計なので、事前告知の段階では「詳細は伏せたまま、まずアップグレード準備を促す」形を取っている。運用側の実務は明快で、<strong>16.3.6 / 15.5.26 が出たら即上げる</strong>、そして自分たちの依存ツリーに<strong>同じ上流</strong>を別経由で抱えていないかを点検することだ。</p>
+      <p>今回の RCE で現場が読んでおきたいのは、<strong>攻撃面が「派手な機能」ではなく <code>next/og</code> の <code>ImageResponse</code> という日常</strong>にあった点だ。動的な OGP 画像や動的 SVG 生成を Node ランタイムで回しているアプリは、<strong>ユーザー入力が SVG に混ざる経路</strong>を持てば該当しうる。実務は 3 つ——(1) <strong>16.3.6 へ即上げる</strong>（15.x は RCE 非該当だが hardening 込みの 15.5.26 へ）、(2) <code>ImageResponse</code> を <strong>Edge ランタイムで動かしていれば非該当</strong>なので自分の構成を確認、(3) 上流の <strong>Satori（GHSA-wx4j-mvgx-mqwp）を別経由で抱えていないか</strong>依存ツリーを点検する。そして 9/30 の定例 9 件が控える以上、<strong>この「上げる→点検」を来週も一度回す前提</strong>でおくのが安全だ。先週の「同じ上流の広がり」への回答が Satori だったことで、監査の当たりどころは絞れた。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-22-2026">Upcoming Next.js Security Update for a Critical Upstream Issue — nextjs.org</a></li>
-      <li><a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j">GHSA-vcvr-r3jv-pc5j — vercel/next.js Security Advisory</a></li>
+      <li><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026">Next.js Security Update for a Critical Upstream Issue — nextjs.org</a></li>
+      <li><a href="https://github.com/vercel/satori/security/advisories/GHSA-wx4j-mvgx-mqwp">GHSA-wx4j-mvgx-mqwp — vercel/satori Security Advisory</a></li>
     </ul>
   </article>
 </section>
@@ -101,12 +102,12 @@
   <h2 class="topic__title">ブラウザ・プラットフォーム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Chrome 154 の中身 — UI の取りこぼしを潰す小粒と、暗号の大玉</h3>
+    <h3 class="article__headline">Chrome 155 の中身 — CSS の形づくりと、壊れないモジュール読み込み</h3>
     <div class="article__body">
-      <p>2 週間 cadence の第 1 弾らしく、Chrome 154 は<strong>派手な 1 本より実務の穴埋め</strong>が目立つ。CSS では <code>scroll-marker-group</code> に <strong><code>tabs</code> / <code>links</code> モード</strong>が入り、適切な ARIA ロールでカルーセルのマーカーがアクセシブルになった。下線まわりも <code>text-decoration-inset</code>（下線の余白制御）と <code>text-decoration-skip-spaces</code>（空白部分に線を引かない）で仕上げが効く。地味に効くのが<strong>popover / dialog の light-dismiss を pointer から <code>click</code> イベントへ変更</strong>した点で、スクロールや右クリックでの<strong>誤クローズが防げる</strong>ようになった。JS では <strong><code>Iterator.prototype.includes()</code></strong> が加わり、配列化せずにイテレータをそのまま探索できる。大玉は WebCrypto の<strong>耐量子暗号</strong>で、<strong>ML-KEM / ML-DSA / X-Wing / ChaCha20-Poly1305</strong> が使えるようになった。ほかに <code>streamAppendHTML()</code> などのストリーミング挿入、WebGPU の fragment depth 修飾も入る。2 週間で「小さく確実に」届く典型的な号だ。</p>
+      <p>2 本目らしく、Chrome 155 は<strong>形（shape）と堅牢さ（robustness）</strong>に効く更新が並ぶ。CSS では <strong><code>corner</code> ショートハンド</strong>（<code>corner-top-left</code> ほかで <code>border-radius</code> と <code>corner-shape</code> を同時指定）と、<code>@counter-style</code> なしでインライン定義できる <strong><code>symbols()</code></strong>、余白を刈る <strong><code>margin-trim</code></strong>、そして先週の 154 に続く <code>text-decoration-skip-spaces</code> が入る。JS 側の目玉は<strong>失敗したモジュール読み込みのリトライ</strong>——不安定なネットワークで <code>import</code> がコケても再試行できる長年の要望に応えた。<code>import … with { type: "text" }</code> の <strong>Text Modules</strong> でテキストを文字列として読み込める。Web API では <strong>Window Management</strong>（<code>maximize()</code>/<code>minimize()</code>/<code>restore()</code>/<code>setResizable()</code>）、<strong>JPEG XL の復号</strong>（Rust 製 memory-safe デコーダ jxl-rs）、Digital Credentials、WebTransport のカスタムヘッダなどが加わる。「小さく確実に」を 2 週間で積む号だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-154-beta">Chrome 154 beta（scroll-marker-group / 耐量子暗号 / Iterator.includes ほか）— Chrome for Developers</a></li>
+      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta（corner / symbols() / module retry / JPEG XL ほか）— Chrome for Developers</a></li>
     </ul>
   </article>
 </section>
@@ -115,14 +116,23 @@
   <h2 class="topic__title">エコシステム・ツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">RC 待ちの裏で足回りは進む — Vite 8.3・Astro 7.3・SvelteKit 3 の移行タスク</h3>
+    <h3 class="article__headline">足回りも Rust 化と自動化へ — pnpm 12.6・Turborepo 2.11・Node 26.10・ESLint 10.11</h3>
     <div class="article__body">
-      <p>大玉の GA が足踏みする間も、周辺ツールは着実にマイナーを刻んだ。Rolldown ベースの <strong>Vite 8</strong> は <strong>8.3.0（9 月 10 日）</strong>まで進み、3 月の 8.0 以来の高速ビルド路線を継続している。<strong>Astro 7.3.0（9 月 3 日）</strong>も出て、6 月の Astro 7（Vite 8 ベースのビルドと Rust コンパイラ）の系列を伸ばした。Svelte 側では <strong>SvelteKit 3 が依然 RC</strong>だが、移行の地ならしは進む——<code>sv migrate</code> に <strong><code>sveltekit-3</code> 移行タスク</strong>が入り、依存の bump・<code>$lib</code> から Node subpath imports の <code>#lib</code> への書き換え・<code>$app/state</code> タスクなどが用意された。新 CLI アドオンは <code>mcp</code> を <code>ai-tools</code> に置き換え済み。「3 系が来る前提」で足場を整える動きが、Vue・Svelte 双方で続いている。</p>
+      <p>Astro React 7 の Oxc 採用に象徴される <strong>Rust ツールチェインへの移行</strong>は、周辺の足回りでも進んだ。<strong>pnpm 12.6</strong> は<strong>自動 dedupe</strong>と型定義の自動導入、<code>file:</code>/<code>link:</code> catalog 対応を入れ、CI で手動 dedupe を回す手間を消した。<strong>Turborepo 2.11</strong> は <strong>Rust / Python / Go のネイティブ対応</strong>と起動高速化を追加し、モノレポの守備範囲を JS の外へ広げた。<strong>Node.js 26.9 / 26.10</strong> は <strong>Web Workers 対応</strong>、ネイティブ <code>throttle</code>/<code>debounce</code>、<code>bench</code> を、<strong>ESLint 10.11</strong> は初期化 20〜25% 高速化を、<strong>jsdom 30.1</strong> は性能・メモリ・正確性の改善を届けた。派手な GA が足踏みする間も、<strong>ビルド・テスト・依存管理の土台</strong>は着実にマイナーを刻み、その方向は一貫して「速い言語で書き直し、手作業を自動化する」だ。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://vite.dev/blog/announcing-vite8">Vite 8.0 is out!（8.3.0 は 9 月 10 日）— vite.dev</a></li>
-      <li><a href="https://blog.mean.ceo/astro-framework-news-september-2026/">Astro News — September 2026（Astro 7.3.0）</a></li>
-      <li><a href="https://svelte.dev/blog/whats-new-in-svelte-september-2026">What's new in Svelte: September 2026（sv migrate / sveltekit-3）— svelte.dev</a></li>
+      <li><a href="https://thisweekinreact.com/newsletter/298">This Week In React #298（pnpm 12.6 / Turborepo 2.11 / Node 26.9-26.10 / ESLint 10.11 / jsdom 30.1）— ThisWeekInReact.com</a></li>
+    </ul>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Vue 3.6 は今週も RC のまま — 「秋 GA」窓は開かず</h3>
+    <div class="article__body">
+      <p>先週に続き <strong>Vue 3.6</strong> は今週も<strong>RC 段階</strong>に留まった。仮想 DOM を外す <strong>Vapor Mode</strong> と alien-signals ベースのリアクティビティ刷新は feature-complete としつつ、「秋 GA」の予告は据え置きのまま。React が 19.3 で波を 1 つ卒業させ、そのエコシステム追従が今週さらに広がったのと対照的に、<strong>Vue の次の卒業生はまだ足踏み</strong>だ。「一斉ではなく 1 つずつ、見立てと違う順に割れる」という数週来のパターンは今週も崩れていない。</p>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
+      <li><a href="https://versionlog.com/vuejs/3.6/">Vue.js 3.6 — What's New, Support Lifecycle & EOL — VersionLog</a></li>
     </ul>
   </article>
 </section>
@@ -131,22 +141,22 @@
   <h2 class="topic__title">来週の注目ポイント</h2>
 
   <article class="article">
-    <h3 class="article__headline">GHSA-vcvr-r3jv-pc5j の全貌 — 影響範囲と「同じ上流」の広がり</h3>
+    <h3 class="article__headline">9/30 の Next.js 定例 9 件 — critical の中身と、上げ直しの週</h3>
     <div class="article__body">
-      <p>今日リリースと同時に公開される advisory の<strong>中身</strong>が、来週の最大の関心事になる。どのバージョン帯が影響を受け、攻撃条件は何で、<strong>問題の上流依存が具体的に何か</strong>——それが分かって初めて、Next.js 以外の（同じ依存を抱える）エコシステムへの波及が見える。1 月・5 月にも React/Next.js 系の脆弱性対応があった流れの延長として、<strong>依存監査</strong>を回す週になりそうだ。</p>
+      <p>来週の最大の予定は <strong>9 月 30 日の Next.js セキュリティリリース</strong>だ。<strong>16.3.7 / 15.5.27</strong> と同時に 9 件の advisory が公開され、とりわけ <strong>critical 1 件が何か</strong>——先週の Satori/next/og のように「日常の機能」が攻撃面になるのか——が焦点になる。今週 16.3.6 へ上げたばかりの現場も、<strong>1 週間で再度の上げ直し</strong>を迫られる可能性が高い。out-of-band から定例へと続いたこの 2 週間で、<strong>依存監査を「定期業務」として回す</strong>構えが問われる。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j">GHSA-vcvr-r3jv-pc5j — vercel/next.js Security Advisory</a></li>
+      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026">Upcoming Next.js September Security Release — nextjs.org</a></li>
     </ul>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">2 週間 cadence の第 2 ラップと、Vue 3.6 の「秋 GA」窓</h3>
+    <h3 class="article__headline">Chrome 155 の 10/6 本展開と、2 週間 cadence の「3 本目」</h3>
     <div class="article__body">
-      <p>Chrome 154 が最初の通常ラップを回したことで、次は<strong>2 本目が本当に 2 週間で来るか</strong>——cadence が「宣言」から「習慣」に変わるかを来週以降で確かめたい。同時に、今週も RC に留まった <strong>Vue 3.6</strong> の「秋 GA」窓は 9 月後半〜10 月が本番で、SvelteKit 3 と<strong>どちらが先に RC を抜けるか</strong>も引き続き見どころ。「1 つずつ、見立てと違う順で割れる」パターンが続くのかを来週も追う。</p>
+      <p>Chrome 155 は <strong>10 月 6 日から大半への展開</strong>に入る。2 本連続で回った cadence が<strong>3 本目も同じ間隔で来るか</strong>——「習慣」がさらに「制度」に固まるかを来週以降で確かめたい。合わせて、<strong>Vue 3.6 の「秋 GA」窓</strong>（9 月後半〜10 月）と SvelteKit 3 の RC 脱出が<strong>どちらが先か</strong>も引き続き見どころ。速い周期が常態化する中で、「1 つずつ、違う順に割れる」パターンが続くのかを追う。</p>
     </div>
     <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Chrome's two-week release cycle — Chrome for Developers</a></li>
+      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta — Chrome for Developers</a></li>
       <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
     </ul>
   </article>
