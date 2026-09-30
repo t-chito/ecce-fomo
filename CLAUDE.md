@@ -18,7 +18,7 @@ repo の編集だけでは完了しない。定期発行は claude.ai/code/routi
 
 PR を出す前に Claude は試し発行し、その出力をユーザーに見せて確認を求める一手を必ず挟む。ユーザーが内容と紙面を読んで `prompt.md` の調整を指示するので、了承を得てから PR に進む。
 
-`<topic>/prompt.md` は `jiji/prompt.md` を雛形にする。Skill のパース規則は緩いので、紙名・補助ラベルの書式を独自に変えると masthead の生成挙動が読めなくなる。
+`<topic>/prompt.md` は `jiji-weekly/prompt.md` を雛形にする。Skill のパース規則は緩いので、紙名・補助ラベルの書式を独自に変えると masthead の生成挙動が読めなくなる。
 
 ## コミットメッセージを変えるとき
 

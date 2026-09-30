@@ -19,7 +19,7 @@ argument-hint: <topic>
 
 このスキルは 1 つの位置引数を受け取る。
 
-- `$ARGUMENTS`: 対応するディレクトリ名（例: `/news-publish jiji` で呼ばれた場合 `$ARGUMENTS` は `jiji`）
+- `$ARGUMENTS`: 対応するディレクトリ名（例: `/news-publish jiji-weekly` で呼ばれた場合 `$ARGUMENTS` は `jiji-weekly`）
 
 ## フロー
 
@@ -89,7 +89,7 @@ argument-hint: <topic>
 | `{{BODY_HTML}}` | ステップ 2 で生成した HTML 断片 |
 | `{{YEAR}}` | 西暦（例: `2026`） |
 
-`{{MASTHEAD_TITLE}}` と `{{ISSUE_LABEL}}` は `$ARGUMENTS/prompt.md` 冒頭の `紙名:` と `補助ラベル:` の行から読み取る。新トピックを作るときも、`prompt.md` 冒頭に `紙名: <表示名>` と `補助ラベル: <短い補助文>` の 2 行を必ず書く（`jiji/prompt.md` を雛形にする）。この 2 行が無いと masthead のタイトルと補助表示が意図どおり出ない。
+`{{MASTHEAD_TITLE}}` と `{{ISSUE_LABEL}}` は `$ARGUMENTS/prompt.md` 冒頭の `紙名:` と `補助ラベル:` の行から読み取る。新トピックを作るときも、`prompt.md` 冒頭に `紙名: <表示名>` と `補助ラベル: <短い補助文>` の 2 行を必ず書く（`jiji-weekly/prompt.md` を雛形にする）。この 2 行が無いと masthead のタイトルと補助表示が意図どおり出ない。
 
 ### 4. ファイル書き出し
 
