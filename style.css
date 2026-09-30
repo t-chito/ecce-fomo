@@ -243,7 +243,7 @@ body {
   color: var(--color-text-muted);
 }
 
-.article__sources::before {
+ul.article__sources::before {
   content: "Sources";
   display: block;
   font-weight: 700;
@@ -268,6 +268,28 @@ body {
 .article__sources a:hover {
   color: var(--color-accent);
   text-decoration: underline;
+}
+
+details.article__sources summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-text-subtle);
+}
+
+details.article__sources ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+details.article__sources a {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
 }
 
 .hub-list {
