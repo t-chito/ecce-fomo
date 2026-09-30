@@ -26,6 +26,7 @@ argument-hint: <topic>
 ### 1. 入力の取得
 
 - `$ARGUMENTS/prompt.md` を読む。これは記事の調査・整形の指示
+- `prompt.md` に「週刊書式に従う」とあれば、このファイルと同じディレクトリの `weekly.md` も読む
 - `$ARGUMENTS/index.html` が存在すれば読む。これは**まだ上書きする前**なので前回号の内容そのもの
 
 このステップで読む `index.html` を「前号」として扱う。重複を完全に避けるためではなく、「前回と全く同じ内容の繰り返しを避けて、同じ話題でも進展や新しい角度を優先する」という指針のために使う。前回からの差分や追加情報を意識する。前号をこの一度読めば役割としては足りるので、退避用の別ファイルは持たない（さらに過去の号は git 履歴から辿れる）。
@@ -41,15 +42,18 @@ argument-hint: <topic>
 ```html
 <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>本日の注目点を 2〜3 行で。冒頭に置いて、忙しいときは要約だけ読めるようにする。</p>
+  <ul class="summary__list">
+    <li>注目点を 1 行で。<a class="summary__jump" href="#a1">→</a></li>
+    <!-- 3〜5 件 -->
+  </ul>
 </section>
 
 <section class="topic">
   <h2 class="topic__title">カテゴリ名</h2>
-  <article class="article">
+  <article class="article" id="a1">
     <h3 class="article__headline">記事見出し</h3>
     <div class="article__body">
-      <p>本文段落</p>
+      <p class="article__lead">何が起きたかを 1 文で。</p>
       <p>本文段落</p>
     </div>
     <ul class="article__sources">
@@ -73,6 +77,13 @@ argument-hint: <topic>
   </div>
 </section>
 ```
+
+紙面の書き方の共通ルール（`prompt.md` に別の指定があればそちらを優先する）:
+
+- まとめは段落ではなく 3〜5 件の箇条書きにする。1 件 1 行で、各行の末尾に対応する記事への `summary__jump` リンクを置く。記事には上から順に `id="a1"`, `id="a2"`, … を振る
+- 記事は冒頭に `article__lead` の 1 文（何が起きたか）を置き、本文は原則 1 段落にする。位置づけ・解釈の段落は、前号や他の記事との関係など新しい情報を加えるときだけ書く
+- 太字は 1 段落に 1〜2 箇所までにする。強調が多いと、どこが要点か分からなくなる
+- 数値の比較（価格・ベンチマーク・件数など）が 3 つ以上並ぶときは、文章で書かず表にする
 
 各記事の出典は記事直下の `<ul class="article__sources">` に置く（記事に紐づかない一般的なソースは省く）。ページ末尾にまとめた Sources セクションは持たない。
 

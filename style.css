@@ -232,6 +232,33 @@ body {
 
 .summary p:last-child { margin-bottom: 0; }
 
+.summary__list {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.summary__list li { margin: 0 0 8px; }
+.summary__list li:last-child { margin-bottom: 0; }
+
+.summary__jump {
+  margin-left: 4px;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+}
+
+.summary__jump:hover { text-decoration: underline; }
+
+.article { scroll-margin-top: 16px; }
+
+.article__body .article__lead {
+  font-weight: 700;
+  line-height: 1.7;
+}
+
 .article__sources {
   margin: 16px 0 0;
   padding: 12px 0 0;
