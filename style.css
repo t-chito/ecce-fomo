@@ -294,21 +294,6 @@ details.article__sources a {
   word-break: normal;
 }
 
-.reader-button {
-  font: inherit;
-  color: var(--color-text-muted);
-  background: none;
-  border: 1px solid var(--color-rule-soft);
-  border-radius: 999px;
-  padding: 2px 12px;
-  cursor: pointer;
-}
-
-.reader-button:hover { color: var(--color-accent); border-color: var(--color-accent); }
-.reader-button[hidden] { display: none; }
-
-.article.is-reading .article__headline { color: var(--color-accent); }
-
 .article__badge {
   display: inline-block;
   vertical-align: 0.2em;
