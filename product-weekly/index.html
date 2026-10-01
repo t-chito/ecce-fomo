@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年9月24日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年10月1日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年9月24日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年10月1日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,113 +23,116 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月24日（木）</span>
+        <span>2026年10月1日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
-      <section class="summary">
-  <h2 class="summary__title">まとめ</h2>
-  <p>今週の主役は <strong>Claude Code の Cloud セッションが research preview を抜けて正式リリース</strong>されたこと——ラップトップを閉じても Anthropic のインフラ上で作業が回り続け、CLI・モバイル・デスクトップから起動できるようになった。先週 Cursor が「コーディネーターが多数のエージェントを束ねる」構想を出したのに対し、Claude Code は<strong>自前で「常時走るクラウドの手元」</strong>を全ユーザーに開いた格好だ。同じ週に <strong>Opus 5.5 が Claude Code の既定モデル</strong>になり（Pro/Team でも Opus が既定に）、これに合わせて<strong>「plan mode を畳んで effort で深さを切り替える」「"よく考えて"は書かない・タスクを丸ごと渡す」</strong>という<strong>操作モデルの再設計</strong>が中の人・個人エンジニアの双方で議論に。足回りでは <strong>auto モードのサーバ側分類器化で分類コストが無料化</strong>し、<strong>AGENTS.md フォールバック対応</strong>、<strong>176 件の CLI 変更を積んだ 2.1.281</strong> の再開・キャッシュ・MCP 周りの堅牢化が入った。外では <strong>Cursor が Rollouts と Security Review、CodeRabbit が Change Stack、Devin が GPT-6 の激安モデルと Microsoft 連携</strong>——各社そろって<strong>「エージェントが量産する PR を、本番前にどう検証・監視するか」</strong>のレビュー／運用層に軸足を移した一週間だった。</p>
-</section>
-
-<section class="topic">
+      <section class="topic">
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">Cloud セッションが正式リリース——ラップトップを閉じても走り続ける"クラウドの手元"</h3>
+    <h3 class="article__headline">Sonnet 5.5 が Claude Code に追加、速く安い日常作業向けの選択肢に</h3>
     <div class="article__body">
-      <p><strong>9/23</strong>、Claude Code の <strong>Cloud セッションが research preview を抜けて正式リリース</strong>された。作業は <strong>Anthropic ホストのインフラ</strong>上で進むため、<strong>ラップトップを閉じても止まらない</strong>。起動口は幅広く、CLI の <code>claude --cloud</code>、Claude モバイルアプリの Code タブ、デスクトップアプリのいずれからでも開始できる。ローカルで使用量の上限に当たっても、クラウド側に切り替えて続行できるのが実運用上の勘所だ。既存の Pro/Max 加入者には<strong>ワンタイムのクレジット（Pro $100・Max $250）</strong>が配られ、<code>/claim-credit</code> か告知リンクから申請する（GitHub 連携が必要、申請期限は 10/7）。翌日には「<strong>クレジットは任意の一回きり特典で、Cloud セッションはこれを先に消費してから通常プランの使用量に落ちる</strong>」と挙動を補足する訂正も出ており、"別課金の新機能"ではなく既存プランの延長線上にある点が強調された。</p>
-      <p>位置づけは明快で、先週 Cursor が「コードを書かないコーディネーターが多数のサブエージェントを束ねる」という指揮層の構想を出したのに対し、Claude Code は<strong>「いつでも走り続けるクラウド常駐の実行環境」</strong>を全ユーザーに正式開放した。あわせて週末の <strong>2.1.281</strong> では Cloud セッションに <strong>Fast mode の切り替え</strong>も追加され、リモートでも速度を選べるようになっている。夏以来の「隔離した場所でエージェントを走らせる」流れが、Claude Code では<strong>"手元を離れても続く既定の実行場所"</strong>という形で一段実用に寄った。</p>
+      <p>9/28、Anthropic が <strong>Claude Sonnet 5.5</strong>（<code>claude-sonnet-5-5</code>）を公開した。Claude Code でもすぐ選べるようになり、<strong>2.1.284</strong> で既定の Sonnet モデルになった。Sonnet 5 より 30% ほど速く、同じ作業にかかるコストも最大 30% 低い。位置づけは「よく定義された日常作業」向けで、バグ修正や機能の素早い反復に向く。重い設計判断は引き続き Opus 5.5、軽い反復は Sonnet 5.5 に振る使い分けが公式ガイドでも示された。</p>
+      <p>価格は Sonnet 5 と同じ入力 $2・出力 $10（キャッシュ読み出し $0.20）／100万トークンで、1M コンテキストに対応する。中の人の <strong>bcherny</strong> は Claude Code 上で Sonnet 5.5 がバグを直す様子を共有した。ベンチマークによっては Low/Medium の effort でも Sonnet 5 の最高スコアを 10 分の 1 ほどのコストで上回るとされ、<strong>Claude Code の使用量を伸ばしたい用途</strong>で現実的な選択肢になった。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2102871550974427462">@ClaudeDevs: Cloud sessions are officially available and out of research preview（9/23）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2102871555244257518">@ClaudeDevs: クレジット申請（/claim-credit・GitHub 連携・10/7 期限）</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2102940480736821610">@ClaudeDevs: クレジットは先に消費される任意特典という補足（9/24）</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（4）</summary>
+      <ul>
+        <li><a href="https://x.com/claudeai/status/2104633115620823187">@claudeai: Introducing Claude Sonnet 5.5（30% 高速・最大 30% 低コスト）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2104641318555353400">@ClaudeDevs: Sonnet 5.5 を Claude Code で使う（日常作業向け・使用量が伸びる）</a></li>
+        <li><a href="https://x.com/bcherny/status/2104638725317923228">@bcherny: Sonnet 5.5 が Claude Code でバグを直すデモ</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.284：Sonnet 5.5 を既定 Sonnet に・1M・$2/$10・$0.20 キャッシュ）</a></li>
+      </ul>
+    </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Opus 5.5 が既定に——"plan mode を畳んで effort で回す"へ、操作モデルの再設計が始まった</h3>
+    <h3 class="article__headline">5時間上限でも作業を途中で切らず区切りまで進めるように</h3>
     <div class="article__body">
-      <p><strong>2.1.280</strong>（9/22）で <strong>Claude Opus 5.5（<code>claude-opus-5-5</code>）が Claude Code の既定 Opus モデル</strong>になり、Pro/Team Standard でも<strong>既定モデルが Opus に</strong>切り替わった。同版では<strong>新モデル向けの effort（思考の深さ）レベルの扱い</strong>も変更されている。公式の使い方指南（@ClaudeDevs）は今回のモデルの性格をよく表していて、曰く<strong>「タスクを丸ごと渡し、"done"の定義とチェックインの頃合いだけ決める」「"よく考えて"は書かない——常に先に考えるから」「長時間走らせた後は"次に進むのに何が要るか"を訊く」</strong>。考える量を減らしたいときも、プロンプトで頼むより <strong>effort を下げる</strong>方が確実に効く、というのが要点だ。</p>
-      <p>ここに <strong>plan mode の見直し</strong>が重なった。中の人（@trq212）が<strong>「plan mode を廃止し、shift+tab のホットキーで effort レベルを切り替える」案</strong>を投げ、「もうモデルに plan mode は要らないと思う」と踏み込んだ（plan mode 愛用者からの反対意見を募る形）。つまり<strong>「別モードで計画を立てさせる」から「深さのダイヤルを回して丸ごと任せる」へ</strong>、操作の中心が移りつつある。個人エンジニア側の反応も上々で、「Opus 5.5 は感触がかなりいい」「頼むからナーフしないでくれ」といった声や、effort/ハーネス設計を整理する解説（@oikon48）が広がった。モデルの実力が上がったぶん、<strong>プロンプトの小技より"どれだけ任せ、どこで戻すか"の設計</strong>が使い勝手を決める段階に来ている。</p>
+      <p>9/25、Claude Code に <strong>5 時間の利用上限に達しても作業を途中で打ち切らない</strong>挙動が入った。これまでは編集の途中でも止まったが、今後は<strong>区切りのいい場所を探して</strong>そこまで進める。このために週次上限から引く小さめの固定枠が割り当てられる。長いタスクを回しているときに、中途半端な状態で手が止まるのを防ぐための変更だ。</p>
+      <p>提供範囲は、<strong>Pro は週 1 回</strong>、<strong>Max と Team Premium は 5 時間セッションの上限に当たるたび</strong>。区切りの先へ進めたい場合は追加の使用量で続行できる。無人で長時間走らせる使い方が広がるなか、上限との当たり方をなめらかにする実運用寄りの調整といえる。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/ClaudeDevs/status/2102491840612380934">@ClaudeDevs: Try these in your first Opus 5.5 session（タスク丸投げ・"think carefully"不要・effort）</a></li>
-      <li><a href="https://x.com/trq212/status/2102813194196758746">@trq212: plan mode 廃止と shift+tab での effort 切り替え案</a></li>
-      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.280：Opus 5.5 を既定に・effort レベルの扱い変更）</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2103561342057943314">@ClaudeDevs: 5 時間上限で区切りのいい所まで進める（週次上限から固定枠）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2103561343391735842">@ClaudeDevs: 提供範囲（Pro 週 1 回・Max/Team Premium は上限のたび）</a></li>
+      </ul>
+    </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">分類コスト無料化・AGENTS.md 対応・176 件の 2.1.281——足回りは"安く・堅く"へ</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>effort は常に max が最適ではないと中の人が検証</h3>
     <div class="article__body">
-      <p>週の足回りは、コストと堅牢性の両面で効く更新が続いた。<strong>2.1.278</strong> で <strong>auto モードの分類器が既定でサーバ側実行</strong>になり、<strong>分類のための追加課金が発生しなくなった</strong>（<code>/status</code> に "Auto mode server" 行が追加）。先週が「auto モードのハンドバックを安全分類器で検問する」話だったのに対し、今週は<strong>その分類コストを利用者から外す</strong>方向で、無人・長時間運用のハードルを下げた。<strong>2.1.277</strong>（9/18）では <strong>CLAUDE.md が無い場合のフォールバックとして AGENTS.md を読む</strong>対応が入り、他ツールと設定ファイルを共有しやすくなった。<strong>2.1.275</strong>（9/17）は <strong>claude.ai 側の Skill/Plugin をターミナルセッションへ同期</strong>する導線を追加している。</p>
-      <p>週末の <strong>2.1.281</strong>（9/23）は <strong>176 件の CLI 変更</strong>を積んだ大型リリースで、中身の大半は<strong>「長く・遠隔で回す」ための取りこぼし修復</strong>だ。<strong>セッション再開</strong>まわり（過去ターンの再送、巨大セッションで末尾しか復元されない、権限プロンプトでプロンプトキャッシュを失う、ツール実行中に終了する等）と、<strong>プロキシ/ゲートウェイ経由でレスポンスが途中で切れて完了扱いになる／再試行がループする</strong>系の不具合が一斉に潰された。設定面では <strong><code>"attribution": false</code></strong> でコミット・PR の帰属表記を隠せるようになり、Claude Desktop 連携向けに <strong><code>blockReadsOutsideWorkingDirectories</code></strong>・<strong><code>disableBypassPermissionsMode</code></strong> といった安全側の締め付けも追加された。派手な新機能より、<strong>「大量に・遠隔で・組織で回し続ける」ための配線</strong>を今週も黙々と引き直した週だった。</p>
+      <p>effort（思考の深さ）の使い分けが引き続き話題だ。中の人の <strong>trq212</strong> は「effort とは何か、なぜ常に max を使わないのか」を evals と自前の検証で掘り下げ、<strong>全部を max にするのが最適とは限らない</strong>という結果を公開した。深く考えさせるほど良いわけではなく、作業に合わせて段階を選ぶほうが速度とコストの両面で効く、という整理だ。</p>
+      <p>ツール側も追随した。<strong>2.1.286</strong> で <strong>Ultracode が <code>/effort</code> の独立トグル</strong>になり、xhigh を強制しなくなった。どの effort レベルでも Ultracode を併用できる。「別モードで深さを決める」より「ダイヤルで深さを選ぶ」操作へ寄せる動きが、発信と実装の両方で進んでいる。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.281：176 件の CLI 変更・再開/キャッシュ/MCP 修正・attribution 非表示、2.1.278：分類器サーバ側化、2.1.277：AGENTS.md フォールバック）</a></li>
-      <li><a href="https://code.claude.com/docs/en/auto-mode-classifier-billing">Auto mode classifier billing（分類器の課金についての解説）</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Claude Marketplace 開設——ツール・エージェント・パートナーの発見口</h2>
-
-  <article class="article">
-    <h3 class="article__headline">プラグイン/コネクタから"エージェントを買う"まで、Claude の拡張が一か所に</h3>
-    <div class="article__body">
-      <p>Anthropic は <strong>9/23</strong>、<strong>Claude Marketplace</strong> を開いた。Slack や Notion のような<strong>コネクタ・プラグインの追加</strong>に加え、<strong>Cursor や CrowdStrike といった企業のエージェント／プロダクトを購入</strong>したり、Accenture・Deloitte のような<strong>サービスパートナーで導入をスケール</strong>させたりできる発見口だ。作り手側は自分のツール・エージェント・サービスを出品できる。</p>
-      <p>Claude Code で Skill やサブエージェント、プラグインを自作して積む文化が広がるなか、次に効いてくるのは<strong>「良いものをどこで見つけ、どう配るか」</strong>という流通の問題だった。<code>claude plugin eval</code> による"採点"（先週）と合わせて、<strong>作る→測る→配る</strong>の導線がプラットフォーム側で一本につながり始めている。個人開発の Skill/Plugin を追う層にとっては、今後の配布・発見の起点になり得る動きだ。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/claudeai/status/2102840851538080172">@claudeai: Claude Marketplace でツール・エージェント・パートナーを発見（9/23）</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">レビューと本番運用の層が競争軸に——Cursor・CodeRabbit</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Cursor が Rollouts と Security Review——デプロイ監視と PR セキュリティ検査を自動化</h3>
-    <div class="article__body">
-      <p>Cursor は <strong>9/23</strong>、Teams/Enterprise 向けに 2 つの自動化ボットを投入した。<strong>Rollouts</strong> は<strong>デプロイ中の PR を監視</strong>し、環境をまたいで変更の健全性を追い、テレメトリと突き合わせて回帰を検知——問題を見つけると<strong>自動リバートまでトリガー</strong>できる。<strong>Security Review</strong> は PR を対象に <strong>SQL/コマンド/テンプレートのインジェクションや認証・認可のバイパス</strong>を解析し、深刻度付きの指摘と修正案を返す。チームごとに<strong>独自ルール</strong>も設定できる。いずれも 10 日間のトライアル用クレジット付きで即日提供。</p>
-      <p>先週 Devin が「Review に必ずセキュリティ検査を通す」常駐レビュアー化を進めたのに続き、今週は Cursor が<strong>セキュリティ検査＋デプロイ監視・自動リバート</strong>まで踏み込んだ。エージェントが PR を量産する前提が定着したいま、各社の勝負どころが<strong>生成そのものより"マージ前の検証"と"本番に出た後の監視"</strong>へと移っているのがはっきり分かる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://cursor.com/changelog">Cursor Changelog（9/23：Rollouts・Security Review）</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/trq212/status/2103576349499855160">@trq212: What is effort really?（max 一択が最適でないという検証）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.286：Ultracode を /effort の独立トグルに・xhigh 強制を廃止）</a></li>
+      </ul>
+    </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">CodeRabbit Change Stack——"何をマージしようとしているか"を理解してから承認する</h3>
+    <h3 class="article__headline">週次リリースはプラグイン導線と使用量表示の整備が中心</h3>
     <div class="article__body">
-      <p>CodeRabbit は <strong>Change Stack</strong> を発表した。狙いは、<strong>エージェントが数分で作る PR を、レビュアーが本当に理解してから承認できるようにする</strong>こと。PR の<strong>目的・振る舞い・依存関係・コード</strong>を一つにつないで見せ、「自分が今マージしようとしているものを分かっているか？」を問い直させる。</p>
-      <p>Cursor の Security Review が「危険を機械が指摘する」側なら、Change Stack は<strong>「人が理解して責任を持って承認する」側</strong>を補強する。生成の速さがレビューの理解を置き去りにしがちな今の開発現場で、"承認の質"に照準を合わせた動きとして注目された。</p>
+      <p>週を通して <strong>2.1.282〜2.1.286</strong> が出て、中身は使い勝手の地固めが中心だった。プラグイン周りでは<strong>提出・レビュー追跡・利用状況</strong>を見る導線が整い、<code>claude plugin configure</code> でオプションを設定できるようになった。<code>/usage</code> には<strong>使った金額のドル表示</strong>が加わり、Opus 5.5 のコストを試算する計算機も用意された。<code>claude --desktop</code> でデスクトップアプリを現在のディレクトリから開ける導線も入った。</p>
+      <p>安全・運用面では、バックグラウンドのコマンドに<strong>時間上限</strong>（既定 30 分・最大 2 時間）が付き、<code>/doctor prompt-audit</code> が CLAUDE.md や skill を<strong>古いモデル向けの書き方</strong>がないか監査するようになった。残りの大半はセッション再開・クラウドセッション・認証更新まわりの取りこぼし修正で、長時間・遠隔運用の足元を黙々と固める更新が続いた。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/coderabbitai/status/2102767517219360794">@coderabbitai: CodeRabbit Change Stack（PR の目的・振る舞い・依存・コードを接続）</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2103577007938228300">@ClaudeDevs: プラグイン提出ポータル（提出・レビュー追跡・利用状況、MCP 利用は今年 110 倍）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2103548467729887677">@ClaudeDevs: Opus 5.5 のコストを /usage の計算機で試算</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.282〜2.1.286：plugin configure・claude --desktop・/usage のドル表示・background コマンドの時間上限・/doctor prompt-audit・再開/クラウド/認証修正）</a></li>
+      </ul>
+    </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin：GPT-6 の激安モデルと Microsoft 運用連携</h2>
+  <h2 class="topic__title">OpenAI DevDay——Codex の高速化とセキュリティ強化</h2>
 
   <article class="article">
-    <h3 class="article__headline">GPT-6 Sol/Luna を採用しコスト激減、Teams ネイティブ対応と M365 連携も</h3>
+    <h3 class="article__headline">Codex に毎秒300トークンの超高速モードとリポジトリ常時監視</h3>
     <div class="article__body">
-      <p>Cognition の Devin は <strong>9/22</strong>、<strong>GPT-6 Sol と Luna</strong> を利用可能にした。同社の <strong>FrontierCode 1.1</strong> で <strong>GPT-6 Sol は GPT-5.6 Sol と同スコアをタスク単価 61% 減で</strong>達成し、<strong>GPT-6 Luna は GPT-5.6 Luna を上回るスコアを約 1/4 のコストで</strong>出す——<strong>1 タスク $0.10 未満</strong>と、リーダーボード最安を主張する。エージェントを<strong>大量・常時走らせる</strong>ほど効いてくる、運用コストの実弾だ。</p>
-      <p>運用連携も <strong>9/23</strong> に強化され、<strong>Microsoft Teams のネイティブ対応</strong>と、メール・カレンダー・ファイル・チャットにつなぐ<strong>ファーストパーティの Microsoft 365 連携</strong>が入った。「自分の PC でも Devin が動く」というローカル寄りの訴求に、企業のコラボ基盤への食い込みを重ねた形。安いモデルと業務連携の両輪で、<strong>"チームに常駐するエージェント"</strong>としての実運用に寄せている。</p>
+      <p>OpenAI は 9/29 の DevDay で開発者向けの発表を重ねた。目玉のひとつが <strong>Ultrafast</strong> で、Codex では<strong>最大 8 倍・毎秒 300 トークン</strong>、API でも最大 6 倍の生成速度を出す有料の速度ティアだ。sama が「速すぎてもう戻れない」と評すなど、エージェントの反復を体感速度から変える方向の投資といえる。</p>
+      <p>もうひとつが <strong>Codex Security Cloud</strong> の大型更新だ。サイバー向けモデル（Daybreak Blue）を既定で使い、<strong>GitHub リポジトリ全体を走査</strong>して新しいコミットを継続的にレビューし、検出を調査・重複排除したうえで修正案まで用意する。背景には常時稼働の個人エージェント dots（GPT-6 Astra）や低価格の GPT-6.1 Sol の発表があり、「安いモデルで大量に回し、本番前に機械で検証する」路線が一段進んだ。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://x.com/cognition/status/2102463672224543018">@cognition: GPT-6 Sol/Luna が Devin で利用可能に（コスト・FrontierCode 1.1）</a></li>
-      <li><a href="https://x.com/cognition/status/2102823962380259443">@cognition: Teams ネイティブ対応・Microsoft 365 連携</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（4）</summary>
+      <ul>
+        <li><a href="https://x.com/OpenAI/status/2104993966043320759">@OpenAI: Ultrafast（Codex で最大 8 倍・毎秒 300 トークン、API で最大 6 倍）</a></li>
+        <li><a href="https://x.com/OpenAI/status/2104987422308335828">@OpenAI: Codex Security Cloud の大型更新（Daybreak Blue・リポジトリ走査・修正案）</a></li>
+        <li><a href="https://x.com/OpenAI/status/2104984504133918973">@OpenAI: 常時稼働の個人エージェント dots（GPT-6 Astra）</a></li>
+        <li><a href="https://x.com/OpenAI/status/2104986129686741046">@OpenAI: GPT-6.1 Sol（Astra の約 5 分の 1 の価格）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ChatGPT 課金の持ち込みが広がる——Devin・Notion</h2>
+
+  <article class="article">
+    <h3 class="article__headline">自分の ChatGPT Plus/Pro を Devin と Notion の AI 利用に使える</h3>
+    <div class="article__body">
+      <p>自分が契約している <strong>ChatGPT の枠を他ツールで使える</strong>動きが同じ週に重なった。<strong>Devin</strong> は 9/29、ChatGPT Plus/Pro でログインすると、Devin 内の OpenAI モデル利用がその契約枠から引かれるようにした。Devin Cloud・Desktop・CLI で有効だ。別途のモデル課金を増やさずにエージェントを使える点が、個人ユーザーには効く。</p>
+      <p><strong>Notion</strong> も同日、ChatGPT Plus/Pro の契約で Notion 内の AI 利用をまかなえるようにした。プランをつなぎ、使う GPT モデルを選ぶだけで済む。各社が<strong>「モデルの課金は利用者が持っているものを使う」</strong>方向に動くことで、ツールごとに AI 料金が積み上がる負担を下げ、乗り換えや併用のハードルを下げようとしている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/cognition/status/2104996240190792029">@cognition: ChatGPT の契約を Devin で直接使える（Cloud・Desktop・CLI）</a></li>
+        <li><a href="https://x.com/NotionHQ/status/2104994569964388738">@NotionHQ: ChatGPT Plus/Pro の契約で Notion の AI 利用をまかなえる</a></li>
+      </ul>
+    </details>
   </article>
 </section>
     </main>
