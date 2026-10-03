@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Read Later — 2026年9月19日 | Ecce Fomo</title>
+<title>Read Later — 2026年10月3日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="Read Later — 2026年9月19日">
+<meta property="og:title" content="Read Later — 2026年10月3日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">Read Later</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月19日（土）</span>
+        <span>2026年10月3日（土）</span>
         <span>今週の棚卸し</span>
       </div>
     </header>
@@ -31,203 +31,208 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の保存は一つの出来事に引き寄せられた。TypeSafe AI が発表した非 LLM の「Jev」――文章を吐かず、型付きの判断と校正済み確率を高速に返すモデル――に、日本語圏の一次検証記事が一気に群がっている。時を同じくして GPT-6 Astra が「PC を操作して仕事を終える」段階へ跳ね、会社ごと AI に運営させる Pion まで並んだ。関心の重心は明らかに<strong>「AI が判断し操作する側へ回る」</strong>ことにあり、Jev（速い型付き分類器）・AI をユーザーとみなす設計・自律運営がそこへ収束する。一方で足元――ハーネスの隠れフラグが Rules を黙って壊す、トークンとコストをどう抑えるか――と、境界・構造・データの効き方といった設計の基礎が、変わらぬ重りとして残った。薄いのは相変わらず社会・制度のマクロ視点、そして人間向けの純粋な UX 工芸は、エージェント向けの再定義に押されて影が薄い。</p>
+  <p>今週の保存は、前号に続いて Jev（非 LLM の「System One」判断モデル）へ一段と強く引き寄せられた。ただし関心は「これは何か」から<strong>「どこに効き、どこで失敗するか」</strong>へ移り、オープンウェイト実装・周辺ツール・ルーター・競合モデルというエコシステム化と、RAG・LLM ジャッジ・問い合わせ振り分け・ゲームでの実地検証が同時に積み上がった。熱狂より<strong>自前データで測って線を引く検証癖</strong>が全体を貫き、テスト・レビュー・評価の作り替えや AI 生成文の矯正にも同じ態度が延びている。薄いのは相変わらず制度・社会のマクロ視点で、今回は宇宙論や動画配信といった毛色の違う外れ値がその隙間に差した。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">非 LLM「Jev」の衝撃 ― 型付き・校正済み推論というもう一つの道</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>Jev が実装・ツール・競合を伴うエコシステムになった</h2>
   <article class="article">
     <div class="article__body">
-      <p>今週を単独で染めたテーマ。ChatGPT 開発に関わった Diogo Almeida が率いる TypeSafe AI が、LLM とは根本的に違う「System One Models」の第一弾「Jev」を 9 月 15 日に発表した。左から順にトークンを吐く LLM と違い、Jev はスキーマに沿った構造化出力を一度に返す。「文章は生成できない」代わりに、判断と確率を桁違いの速度・低コストで返す――入力は GPT-5.6 Terra 級の性能を約 1/100 のコストで、出力コストは実質ゼロ、ツール呼び出しのエラー率 0%、と謳う。記事群が共通して掴んでいるのは、これが<strong>「LLM の置き換え」ではなく「LLM に任せていた高速判断部分の切り出し」</strong>だという読みだ。状態取得やテキスト化は従来どおり LLM、次アクションを有限の選択肢から選ぶところを Jev が担う、という協働像で多くが一致している。</p>
+      <p>前号で登場した Jev をめぐり、半月で周辺が一気に揃った。公式 SDK と互換のオープンウェイト実装 OpenJev は、<strong>トークンを生成せず、閉じた候補集合を 1 回の forward で採点する</strong>という性質が Jev の特徴（高速・スキーマ準拠・確率つき）をそのまま生むことを示し、Qwen2.5-7B で 1 問 74ms・64 問同時なら 7.9ms/問を実測した。難易度でモデルを振り分ける Jev Router、ローカル実行を支える Ollama 対応、そして Clef・d1・Jeff・Kev まで含む競合の登場で、「速い型付き判断」を機構として置ける土台が出揃った。</p>
       <ul>
-        <li>構造化出力・確率つき・超高速という三点は多くの書き手が実際に叩いて確認している。mizchi は Jev 同士に五目並べ・MOBA を実時間で対戦させ、watany は「危険操作の分類ゲート」と要件ヒアリングの初期評価（8 問を 677ms・$0.00013 で処理し ADR 化）に組み込んだ。</li>
-        <li>「プログラマは既存のチャットより構造化されたエージェントの方を好むだろう」という直感が繰り返し出てくる。Jev の値は<strong>決定的なガードレールやガバナンスを安価に置ける</strong>点にあり、Rust で書いていたような判定層を高速分類器で置き換えられる、という運用目線が強い。</li>
-        <li>食い違いもはっきりある。懐疑側（nwn）は「LLM の 1 トークン目の logits を選択肢に射影し KV-cache で並列化すれば Gemma3 でも 77 倍速は出せる、Jev 固有の新しさは<strong>校正済み確率（Calibrated Probability）</strong>にこそある」と切り分け、DeepSeek V4 Flash の ~90ms 低遅延を挙げて「大手が標準 API で追随しうる」と長期の優位を保留する。「覇権を取るかは知らんが、構造化出力特化のモデルは残る」という醒めた見立てが全体のトーンを均している。</li>
+        <li>周辺ツールが実用段階に入った。<strong>jev-lint</strong> はコードの命名やコメントが実装と食い違わないかを自然文ルールで採点し、約 9,800 行・23 ルールを 7.7 秒・約 8 円で検査する。<strong>jany</strong> は自然文を正しい CLI コマンドへ直し、曖昧な語だけを Jev に役割選択させる。Ollama v0.35 は Nimble などのローカル実行に対応した。</li>
+        <li>競合は構造で割れる。プロプライエタリ API 型（Jev・d1）、27B ベースに LoRA や全微調整を乗せる型（Clef・Kev）、小型オープン型、非自己回帰の encoder 型（Laya）。d1 は HuggingFace の Decision Index で Jev 超えを謳い、多言語とプロンプトインジェクション耐性を強みに挙げる。</li>
+        <li>ただし横並び比較は難しい。比較記事は、出自の違うレイテンシ（Cloudflare は Jev を 524.1ms と測り公称 500ms 上限を超えた）は比較できないと指摘し、オープン実装も<strong>校正済み確率までは再現していない</strong>と釘を刺す。呼び出し側とモデルの間にルーティング層を挟み、ロックインを避ける設計を勧める。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://gigazine.net/news/20260916-system-one-jev/">ChatGPT共同開発者がLLMとは異なる方法で処理するAIモデル「Jev」を開発、GPT-5.6 Terra級の性能でタスクを安価かつ超高速に実行可能</a>：発表の全体像と数字（創業者・20〜200 倍速・校正済み確率・コスト構造）を一次情報寄りに押さえられる。まず読むならここ</li>
-        <li><a href="https://zenn.dev/watany/articles/36e11a20ce3743">Jevでハーネスエンジニアリング</a>：「危険操作の分類ゲート」「要件ヒアリングの自動評価」と、Jev を実際のハーネスに差した具体が濃い。677ms・$0.00013 という実測が効く</li>
-        <li><a href="https://zenn.dev/nwn/articles/824026c76116e0">TypeSafeのJevを正しく驚く、それってLLMでできませんか？</a>：「それって LLM でできませんか？」を技術的に詰め、新しさを校正済み確率に絞り込む。熱狂と距離を取りたいときの一本</li>
+        <li><a href="https://qiita.com/xeje/items/48c9835a3e5c7b3d5489?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">JevのオープンウェイトモデルOpenJevを開発した話</a>：SDK 互換のオープン実装を自分で書き、レイテンシと確率較正まで数値で出した一次記録。再現用 Colab つきでまず仕組みから入れる</li>
+        <li><a href="https://zenn.dev/mizchi/articles/jev-lint-intro">jev-lint: コード中の命名やコメントが嘘になってないかを高速に確認</a>：命名・コメントの嘘を Jev で高速採点するツールを自作し、コスト・スループットと失敗モードを正直に書く。実運用の勘所が濃い</li>
+        <li><a href="https://qiita.com/nogataka/items/a2f89a94d243b1b715cb?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jev・Clef・d1・Jeff・Kev…意思決定モデル（System One）を仕組みから比較する【2026年10月版】</a>：Jev・Clef・d1・Jeff・Kev を構造で分類し、出自の違う数値は比較できないと切り分ける。エコシステム全体の地図として効く</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://gigazine.net/news/20260916-system-one-jev/">ChatGPT共同開発者がLLMとは異なる方法で処理するAIモデル「Jev」を開発、GPT-5.6 Terra級の性能でタスクを安価かつ超高速に実行可能</a></li>
-      <li><a href="https://zenn.dev/watany/articles/36e11a20ce3743">Jevでハーネスエンジニアリング</a></li>
-      <li><a href="https://zenn.dev/nwn/articles/824026c76116e0">TypeSafeのJevを正しく驚く、それってLLMでできませんか？</a></li>
-      <li><a href="https://zenn.dev/mizchi/articles/jev-is-gpu-for-llms">既存の LLM が CPU なら、 Jev はその GPU 版みたいなやつ</a></li>
-      <li><a href="https://zenn.dev/meijin/articles/jev-impressions">Jev 所感 ダラダラと書く</a></li>
-      <li><a href="https://zenn.dev/mizchi/articles/jev-plays-gomoku">jev 同士に五目並べで対戦させた</a></li>
-      <li><a href="https://qiita.com/nasuvitz/items/44f20ed515b9734afb26?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jevとは何か？ 従来型LLMやAIエージェントとの違いを理解する</a></li>
-      <li><a href="https://qiita.com/shinkai_/items/61994be44d61c76716d3?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">「LLMじゃないAI」が来た! TypeSafe AI「Jev」はなぜ文字列生成を捨てたのか</a></li>
-      <li><a href="https://qiita.com/GeneLab_999/items/116aa006fbf93b68d791?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jevってなんだ？ — 文章を書かないAIに、LLMのif文判定を任せられるか</a></li>
-      <li><a href="https://qiita.com/harupython/items/fbe98be6d136d5b9d14a?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">LLMの代わりになる？ 文章を生成しないAI「Jev」を日本語で試してみた</a></li>
+      <li><a href="https://qiita.com/xeje/items/48c9835a3e5c7b3d5489?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">JevのオープンウェイトモデルOpenJevを開発した話</a></li>
+      <li><a href="https://zenn.dev/karaage0703/articles/jev-use-cases-open-implementations">高速判断AI Jevのユースケースとオープン実装を雑にまとめる</a></li>
+      <li><a href="https://zenn.dev/mizchi/articles/jev-lint-intro">jev-lint: コード中の命名やコメントが嘘になってないかを高速に確認</a></li>
+      <li><a href="https://qiita.com/yukihirop/items/e0d8ffb121c1a753075a?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">あらゆるCLIを「jev化」するツール jany を作った</a></li>
+      <li><a href="https://gigazine.net/news/20260928-openrouter-jev-router/">どのAIを使うかをJevで自動選択する「Jev Router」が登場、タスク難易度から適切なAIモデルを瞬時に判断可能でOpenRouterの既存ルーターより高精度</a></li>
+      <li><a href="https://gigazine.net/news/20260930-d1-decision-model-liquid-ai/">ベンチマークでJev超えな意思決定モデル「d1」が登場</a></li>
+      <li><a href="https://gigazine.net/news/20261001-ollama-jev-style-decision-models/">OllamaがJevライクな意思決定モデルの実行をサポート</a></li>
+      <li><a href="https://qiita.com/nogataka/items/a2f89a94d243b1b715cb?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jev・Clef・d1・Jeff・Kev…意思決定モデル（System One）を仕組みから比較する【2026年10月版】</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">フロンティアモデルが「操作して仕事する」段階へ ― できると任せられるの距離</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>Jev は最終判断でなく下流を止めるゲートで活きる</h2>
   <article class="article">
     <div class="article__body">
-      <p>Jev の隣で、フロンティア LLM は<strong>「答える」から「PC を操作して仕事を終える」へ</strong>踏み込んだ。OpenAI の GPT-6 Astra は ScreenSpot-Pro 92.7%（前世代 76.9%）、ExploitBench 100%、ARC-AGI-3 で最大 99.9%（前世代 7.8%）と、画面操作・抽象推論のベンチを跳ね上げ、Blender で 3D を作り UE5 の空間を歩かせるデモまで見せた。別報では Astra が人間の助けなしにパズル FPS『Portal』をクリア（API コスト約 8 万 9 千円）。会社ごと AI に任せる Pion は、メール・電話・ブラウザ・銀行機能を握って店舗やカフェを実運営する。「できる」の実演は一気に増えた。</p>
+      <p>実地検証がまとまって入り、Jev の居場所がはっきりしてきた。RAG では、再ランクよりも「対象外の質問を門前払いする」「回答不能を検出して LLM 呼び出しをブロックする」といった<strong>下流抑止の位置</strong>で 7〜75 倍速・最大 75 倍安を出す。問い合わせ振り分けや LLM ジャッジでも、誤答スクリーニングや一次仕分けに効く。共通するのは、答えの根拠が入力の中にあり、有限の選択肢から選ぶ判断に限って安く速く確実、という線だ。逆に入力外の知識や先読み・記憶が要るタスク（株価予測、チェス、部分的な誤りの検出）では精度が落ちる。</p>
       <ul>
-        <li>ただし記事を束ねると、<strong>「できる」と「任せられる」の距離</strong>がテーマとして残る。Pion の店舗・カフェは「まだ黒字化していない」と明記され、Andon Labs 自身が「実験」と位置づける。OpenAI の「ナビエ・ストークス方程式の難問解決」主張には、他者の成果を流用した疑いが付いた。能力ベンチの上昇と、信頼・経済性・帰属の担保は別軌道で動いている。</li>
-        <li>周辺のプロダクト化も速い。GPT-Live-1（音声エージェントの話し方を細かく制御）、ChatGPT Work の「ユーザーの文体を学んで再現」、DaVinci Resolve 21.1 が Claude / ChatGPT Codex と連携し映像編集を指示可能に――「操作させる」対象がクリエイティブ用途へ広がっている。</li>
+        <li>「できる」の派手な実演にも但し書きが付く。Jev はポケモン赤を 37 時間 40 分・約 260 円で殿堂入りさせたが、RAM から状態を抜く自作プログラム・移動の A* 探索・攻略ガイドという足場が前提で、個々のボタンを直接選ばせた初期構成では<strong>マサラタウンから出られなかった</strong>。高水準の行動抽象がないと自律は成立しない。</li>
+        <li>「任せられる」は確信度ゲートで作る。LLM ジャッジ比較では Jev は正答を誤判定せず 72 件中 64 件を的中させたが、「大部分正しいが一部だけ誤り」を 8 件見逃した。確率 0.2〜0.8 の不確実な判断だけ LLM へエスカレすれば、LLM 呼び出しを 12〜18% に抑えつつ精度 100% を保てる、という併用設計が繰り返し出てくる。</li>
+        <li>批判側は冷静だ。ゲームでは<strong>日本からの約 260ms のレイテンシでリアルタイム制御が全滅</strong>し、DeepSeek の判断を LightGBM に蒸留すれば推論 0.249ms で全クリアできる――自然言語入力でない用途なら古典手法や蒸留で置換できると突く。別の一本は「生成しない＝革新的」を BERT・NLI と突き合わせて分解し、ラベル付きデータが既にあり分類が安定なら Jev へ置換する理由を無理に作るな、と締める。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://gigazine.net/news/20260904-openai-gpt-6-astra/">「GPT-6 Astra」登場、PC操作が非常に上手で「Blenderで3Dモデルを作ってUE5で歩ける空間にする」なども可能＆ARC-AGI-3で99.9％を達成</a>：Astra の能力を数字で押さえられる。ScreenSpot-Pro 92.7%、ARC-AGI-3 99.9% など、跳ね方の桁を掴むのに最適</li>
-        <li><a href="https://gigazine.net/news/20260915-pion/">会社を丸ごとAIに経営させるAIエージェント「Pion」が登場、メール・電話・銀行機能まで使って事業を自律運営</a>：「会社を丸ごと AI に運営させる」を実店舗で試した記録。黒字化前という但し書きまで含めて、自律運営の現在地が分かる</li>
+        <li><a href="https://qiita.com/kikuziro/items/2be9091b328d8b844640?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">JevでRAG検索の爆速化＆コスト削減は実現できるのか検証してみた</a>：社内規程の自作ラベル付きデータで Jev を RAG の各所に差し、速度とコストを実測。どこに挿すと効くかを数値で示す</li>
+        <li><a href="https://qiita.com/taka_yayoi/items/3cc901e872209835491a?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jev は LLM ジャッジに使えるか、紛らわしい誤答72件で確かめた</a>：紛らわしい誤答 72 件で LLM ジャッジと対決させ、取りこぼしと確信度ゲートでの併用設計まで出す。限界と活かし方が同居する</li>
+        <li><a href="https://zenn.dev/nwn/articles/e49154653ecea9">Jevにゲームをやらせるな！LLMを蒸留してみよう！</a>：Jev・DeepSeek・蒸留 LightGBM をゲームで実測し、自然言語入力でないなら蒸留で置換できると突く。熱狂と距離を取る一本</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://gigazine.net/news/20260904-openai-gpt-6-astra/">「GPT-6 Astra」登場、PC操作が非常に上手で「Blenderで3Dモデルを作ってUE5で歩ける空間にする」なども可能＆ARC-AGI-3で99.9％を達成</a></li>
-      <li><a href="https://gigazine.net/news/20260915-pion/">会社を丸ごとAIに経営させるAIエージェント「Pion」が登場、メール・電話・銀行機能まで使って事業を自律運営</a></li>
-      <li><a href="https://gigazine.net/news/20260908-gpt-6-astra-plays-portal/">GPT-6 AstraがパズルFPS『Portal』を人間の助けなしにクリア、コストは約9万円</a></li>
-      <li><a href="https://gigazine.net/news/20260909-openai-navier-stokes/">OpenAIが「GPT-6 Astraより高性能なモデル」を用いて数学の難問「ナビエ・ストークス方程式」の解決を主張、一方で人間の数学者の成果を流用した疑惑も生じる</a></li>
-      <li><a href="https://gigazine.net/news/20260911-gpt-live-1/">OpenAIが音声会話AI「GPT-Live-1」のAPIをリリース</a></li>
-      <li><a href="https://gigazine.net/news/20260908-chatgpt-learning-writing-quirks/">ChatGPT Workに「ユーザーの文章のクセを学んで再現する機能」が追加される</a></li>
-      <li><a href="https://gigazine.net/news/20260909-davinci-resolve-21-1-update/">DaVinci Resolve 21.1がClaudeやChatGPTなどのAIアシスタントとの連携をサポート</a></li>
+      <li><a href="https://qiita.com/Aochan0604/items/a5bf7fc1a41e138b0a16?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">判断特化AI「Jev」はUX検証に使える？ 正解手順なしでWebサイトを探索させてみた</a></li>
+      <li><a href="https://qiita.com/pdfractal/items/b2ebef385766b1d2c12c?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">なぜ、Jevによってネット空間で詐欺や泥棒が蔓延るようになるのか？</a></li>
+      <li><a href="https://qiita.com/cushionA/items/6536a0bc611d5502beb6?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">最新事例から学ぶJevのベストプラクティス</a></li>
+      <li><a href="https://qiita.com/canadie/items/b2dafc4995b15b2dbb53?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">JevでRSSフィードのスコアリング</a></li>
+      <li><a href="https://qiita.com/kikuziro/items/2be9091b328d8b844640?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">JevでRAG検索の爆速化＆コスト削減は実現できるのか検証してみた</a></li>
+      <li><a href="https://zenn.dev/nwn/articles/e49154653ecea9">Jevにゲームをやらせるな！LLMを蒸留してみよう！</a></li>
+      <li><a href="https://zenn.dev/yesodco/articles/yesod-jev-typesafe-inquiry-triage">文章を返さないAI「Jev」を試してみた ── 社内問い合わせのエスカレーション先は判定できるか</a></li>
+      <li><a href="https://qiita.com/taka_yayoi/items/3cc901e872209835491a?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Jev は LLM ジャッジに使えるか、紛らわしい誤答72件で確かめた</a></li>
+      <li><a href="https://gigazine.net/news/20260928-jev-pokemon-red/">AI「Jev」が「ポケモン赤」を37時間40分で殿堂入り、費用はわずか約260円だが補助システムが必要で完全自律だとマサラタウンから出られず</a></li>
+      <li><a href="https://zenn.dev/blackleg/articles/4282a0f7e79737">「Jev、BERTでよくない？」と言われていたので、違いを調べてみた</a></li>
+      <li><a href="https://qiita.com/kikuziro/items/6ca269daa54c74e3bf1d?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AgenticRAGの判断をJevにしたら、爆速にはならなかったけど主導権が返ってきた</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">AI コーディングを組織で回す ― プロセス・機構・非決定なハーネス・コスト</h2>
+  <h2 class="topic__title">新モデルの使い分けと Claude Code の作り込みが進む</h2>
   <article class="article">
     <div class="article__body">
-      <p>「AI に作らせる」を組織で回すための<strong>プロセス・ルール・機構・コスト</strong>が、今週もまとまって入った。上流では、AI 前提で開発ライフサイクルごと組み直す AI-DLC（人間は What/Why と検証に退き、AI が How を分解、非機能要件が対話の中で自然に立ち上がる）や、フロントの仕様と実装を同じ語彙（Subject×Object×Verb）で書き、YAML と命名から責務を機械抽出して CI の品質ゲートにする提案が、「仕様と実装のズレを人手の目視でなく差分演算で突き合わせる」方向を示す。gherkin×Skills で E2E を自律実行させる試みも同じ流れ。</p>
+      <p>Claude 側は新モデルと作り込みの両面で動いた。Sonnet 5.5 は前世代比 30% 高速・30% 安価で、知識労働や図表理解では GPT-6 Sol を上回り、エージェント系ベンチでは Opus 5.5 並みに達した（ただし推論 Max ではトークンを食い、Opus の検討が勧められる）。実務の使い分けでは、Opus 5.5 は手を止めて聞く回数が減り、取込済みの前例を自分で調べて「同じやり方でいいか」と前例つきで確認するように変わった――問いが<strong>「どうしますか」から「これでいいですか」へ</strong>、人の仕事が立案から承認へ寄ったという観察が印象的だ。</p>
       <ul>
-        <li>足元のハーネスは、その理想ほど決定的ではない。パス指定の Claude Code Rules が「黙って発火しない」のは、隠れフラグ <code>CLAUDE_CODE_THRIFTY_SONIC</code> が cat/sed 読みを促し Read ツールに相乗りする発火経路を外すから――しかもセッション単位の A/B で挙動が割れる。ネストした <code>CLAUDE.md</code> は「その配下のファイルを Read した時に初めて」読まれ、以後同一セッションでは再読み込みされない。<strong>「機構で守る」前提のツール自体が、まだ観測しづらい非決定性を抱えている</strong>という現実が並ぶ。</li>
-        <li>コストと基盤の統制も具体化した。日本トレカセンターは全社 200 名に OpenCode を配り自前の LiteLLM ゲートウェイに通して、モデル選択と週次予算を会社側で握り<strong>コストを導入前の 1/10 以下</strong>に。Spotify は「大きなファイル読みや定型コード生成を軽量モデルへ委譲」する Portal で<strong>Claude 側トークンを平均約 90% 削減</strong>（350 行超の Read を機械的にブロックして委譲を強制）。Managed Agents の IaC 管理、使い勝手を増した Claude Code Desktop も同じ「回す道具を整える」棚。</li>
+        <li>作り込みの基盤は Claude Code Mods（Function Hooks）。TypeScript 関数をエンジンに直接ロードし、<code>on("tool.call", {tool:"Bash"})</code> で <code>rm -rf /</code> を拒否したり、<code>await next()</code> の後に API キーを <code>[REDACTED]</code> へマスクしたりできる。/diff やテレメトリなど標準機能自体が Mod として実装され、prepend→user→append→builtin→core の 5 層で組織が両端を押さえる権限モデルを持つ。</li>
+        <li>Mods の <code>$.model.classify</code> や Jev で、難易度に応じて Haiku/Sonnet/Opus を振り分けるルーターを既存サブスク内で作れる。ただし<strong>モデルを切り替えるとキャッシュが失効する</strong>ため、モデルでなく処理難度で分けるエフォートルーターへ落ち着いた、という落とし穴も報告された。</li>
+        <li>暗黙知のスキル化も進む。登壇資料のノウハウは slide-story / slide-figures / slide-design-dark の 3 スキルになり、「見出しの『！』は 7〜20%」「図内文字は 16pt 以上」といった数値基準と、PDF 書き出しのたびに検査するスクリプトまで同梱された。Opus 5.5 のワンショット生成では、470 行の単一 HTML でピクセルアニメ（ボイド群泳・ベイヤーディザ・固定シード地形）を外部依存ゼロで作れた検証もある。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/odacchi/articles/claude-code-rules-read-tool">Claude Code の Rules が発火しないのは、Claude が Read ツールを使っていないから</a>：「Rules が死んでいる」原因をフラグまで特定し、直し方を 2 通り整理した実務記録。ハーネスの非決定性に一度は目を通しておきたい</li>
-        <li><a href="https://zenn.dev/2_daiki_ando/articles/53c34e071b5d69">フロントエンドの仕様と実装を同じ言葉で書く ― 責務を機械的に突合し検証し続けるフロントエンド開発（要件定義〜実装・テスト）</a>：仕様と実装を同じ語彙で書き責務を機械照合する設計が、YAML・命名・CI ゲートまで具体的。AI の品質ゲートを自作したい人向け</li>
-        <li><a href="https://zenn.dev/jtcc/articles/7e74fef42580a1">全社に OpenCode + LiteLLM を導入してコストを抑えつつ AI 活用を進めている話</a>：全社 AI をゲートウェイ一本に集約しコストを 1/10 に落とした構成（OpenCode＋LiteLLM＋週次予算）が生々しい。統制と可視化の実例</li>
+        <li><a href="https://zenn.dev/hjpotter1/articles/e1278d79045de9">Opus 5.5とGPT-6 Solの使い分け：「どうしますか」が減った話</a>：宅建の過去問整形という実タスクで新旧モデルの「どこで手を止め何を聞くか」の差と最新 API 価格を比べる現場レポート</li>
+        <li><a href="https://zenn.dev/nogu66/articles/claude-code-function-hooks-claude-mods">Claude Mods 入門 | Claude Codeを自由にカスタマイズする</a>：公開直後の Function Hooks の API 形状と 5 層の権限設計を実コードで体系化した国内最速級の入門</li>
+        <li><a href="https://qiita.com/minorun365/items/ed4c760f616cf3c0a958?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">みのるん式 登壇資料の作成ノウハウをスキルとして公開しました！</a>：登壇資料の暗黙知を数値基準と自動検査つきスキルに落とした実物。AI に品質の物差しを渡す具体例として読める</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/odacchi/articles/claude-code-rules-read-tool">Claude Code の Rules が発火しないのは、Claude が Read ツールを使っていないから</a></li>
-      <li><a href="https://zenn.dev/2_daiki_ando/articles/53c34e071b5d69">フロントエンドの仕様と実装を同じ言葉で書く ― 責務を機械的に突合し検証し続けるフロントエンド開発（要件定義〜実装・テスト）</a></li>
-      <li><a href="https://zenn.dev/jtcc/articles/7e74fef42580a1">全社に OpenCode + LiteLLM を導入してコストを抑えつつ AI 活用を進めている話</a></li>
-      <li><a href="https://zenn.dev/simplex/articles/2dd4c86adaef49">AI-DLCを通じて、チームの開発プロセスが変わり始めた話</a></li>
-      <li><a href="https://zenn.dev/sonicmoov/articles/57a9c2d0d281b5">gherkin と skills でエージェントがブラウザを操作してテストする</a></li>
-      <li><a href="https://gigazine.net/news/20260912-spotify-cut-claude-code-token-usage/">SpotifyのエンジニアがClaude Codeのトークン消費を約90％削減した方法とは?</a></li>
-      <li><a href="https://qiita.com/moritalous/items/2168025729eb840d5143?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Claude Managed AgentsにIaC的に管理する機能が追加されたゾ!!</a></li>
-      <li><a href="https://zenn.dev/goat_eat_any/articles/claude-code-desktop-app">最近のClaude Code Desktop、使いやすさマシマシです！</a></li>
-      <li><a href="https://qiita.com/yomu_n/items/ccab4aa629a74b3231d1?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">モノレポの `frontend/CLAUDE.md`、本当に読まれてる？ Claude Code のネストしたメモリ読み込みを検証してみた</a></li>
-      <li><a href="https://qiita.com/haruki_nakayama/items/65cc8517912ca5ceb670?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AI 駆動開発に変更管理を組み込んだ話</a></li>
+      <li><a href="https://zenn.dev/nogu66/articles/claude-code-function-hooks-claude-mods">Claude Mods 入門 | Claude Codeを自由にカスタマイズする</a></li>
+      <li><a href="https://qiita.com/minorun365/items/ed4c760f616cf3c0a958?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">みのるん式 登壇資料の作成ノウハウをスキルとして公開しました！</a></li>
+      <li><a href="https://zenn.dev/aki1990/articles/1bc5c181ad19f0">Claude Opus 5.5によるピクセルアニメーション生成の検証</a></li>
+      <li><a href="https://zenn.dev/hjpotter1/articles/e1278d79045de9">Opus 5.5とGPT-6 Solの使い分け：「どうしますか」が減った話</a></li>
+      <li><a href="https://gigazine.net/news/20260929-claude-sonnet-5-5/">「Claude Sonnet 5.5」が登場、前モデルより30％高速・30％安価でGPT-6 Solより高性能</a></li>
+      <li><a href="https://qiita.com/moritalous/items/8b663db633dde3c49d62?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Claude Code ModsとJevでモデルルーターを構築（サブスクで使えるゾ！！）</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">図と可視化を「宣言」で書く ― 何を書き、どう見せるかは機械に</h2>
+  <h2 class="topic__title">AI 出力の信頼は検証の作り替えで担保する</h2>
   <article class="article">
     <div class="article__body">
-      <p>図・可視化・3D を巡って、<strong>「何を」だけ簡潔に書き、「どう見せるか」は機械に委ねる</strong>という共通形が立ち上がっている。可視化中間言語 Flint は、データの意味（「年月」「利益」）とチャート種別だけ指定すれば、軸・ラベル・余白・配色を意味から推論して Vega-Lite / ECharts / Chart.js の設定を吐く。TALA はホワイトボードの手描きに寄せた直交レイアウトで、対称性・流れ・クラスタリングを美的評価しながらアーキ図を自動配置する。ThoughtDAG は対話をコンテキスト単位で編集できるグラフに、gbdraw は論文の作図スクリプトをブラウザ内 Web アプリに変える。宣言と機構の分業という、前々からの「概念だけ書いて機構に任せる」志向の、表現側への延長だ。</p>
+      <p>AI が大量に書く前提で、テスト・レビュー・評価を作り替える記事が厚い。テストは「E2E かユニットか」の優劣でなく<strong>どの不具合を検出できるか</strong>で役割分担し、速くて原因を示せるテスト（型・lint・ユニット・PBT）が AI の反復フィードバックを担い、最大の投資はそもそも誤ったコードを書けなくする型設計（値オブジェクト＋判別可能 union で網羅を有限化）に置く、という整理が中心だ。テスト要求仕様（TRS）を設計書の前に挟めば、受け入れ基準 81 本からテストケース 360 件を生成でき、人は「書く」から「レビュー」へ回る。</p>
       <ul>
-        <li>ただし「機械に任せる」には再現性のコストが付く。TALA はランダム性を含むため<strong>ノード 1 個の追加で図が大きく組み変わる</strong>――DAG 主体や大規模図には不向き、と作者自身が但し書きを添える。「毎回同じ絵が出る」ことと「良い絵が出る」ことは両立しない領域がある。</li>
-        <li>3D は毛色の違う外れ値。「Astra に Blender を MCP で操作させる」より<strong>コードで直接モデリングさせる</strong>方（Swift の Realitizer ライブラリ）がアプリ組み込みまで一貫する、という週末実験。面白いことに、3D 品質は Astra と Claude Opus 5 が拮抗する一方、ゲームのロジック設計は Opus 5 が上回った――モデルごとの得意分野が割れる観察が付く。</li>
+        <li>レビューも観点を機構で分ける。敵対的レビューの実測では、85 件の差分への 99 回で確定した重大指摘 138 件のうち<strong>半数超の 72 件は単一レーンだけが検出</strong>しており、観点分離に意味があると示す。ただしコストは標準 code-review の約 9 倍で、適用は行数でなく「何に触るか（データ更新・計算ロジック・認可）」で切り分けよと結ぶ。</li>
+        <li>評価そのものが不安定だという計測も出た。LLM-as-a-Judge では同一入力 3 回の一貫性が 50〜75%、生成側も同一プロンプト 9 回で成功率 0〜100% とブレる。対策は違反検出（LLM）と達成検証（決定論的な正規表現）を分離し、入力を凍結して 9 回再生成し ±30 点を超えた変化だけ本物とみなす、という設計だった。</li>
+        <li>文章の質も機構で正す方向だ。AI-Slop 対策を禁止語リストでなく統語構造の病理（非生物主語＋身体性動詞、サ変名詞の過剰圧縮、架空の敵との否定対比）として捉える yomiyasu は、160 本のコーパスで単純正規表現の誤検出 95.8% を lookaround で 0% に抑え、減点式 Linter まで同梱する。「ユニットテスト不要論」への反論や「回答の前提を問う」技法も、同じ<strong>検証できる形にする</strong>関心に連なる。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://gigazine.net/news/20260830-flint/">AIエージェントが人間にとって理解しやすいシンプルなチャート仕様記述から表現力豊かで見栄えの良いグラフを確実に生成できる可視化中間言語「Flint」、50種類のチャートタイプをサポートしVega-Lite・ECharts・Chart.jsなどでレンダリング可能＆MCPサーバーあり</a>：「データの意味とチャート種別だけ書き、表示詳細はコンパイラに」という分業が明快。AI にグラフを描かせる時の仕様肥大への回答</li>
-        <li><a href="https://zenn.dev/koher/articles/code-first-3d-modeling">Astra時代のコードファースト3Dモデリング</a>：Blender 操作 vs コード直接生成のトレードオフを週末で実測。モデル別の得意分野（造形は拮抗・ゲーム設計は Opus 5）の観察が拾える</li>
+        <li><a href="https://zenn.dev/edash_tech_blog/articles/4577f7d4780bef">実務において敵対的レビューはどの程度有効なのか</a>：敵対的レビューを 85 差分・99 回の実測で標準 code-review と比べ、観点分離の効き目とコスト 9 倍まで数字で出す</li>
+        <li><a href="https://qiita.com/yusuke-kobayashi0117/items/550f50edd7b1dc4a3b54?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">【LLM-as-a-Judge】AIによるプロンプト自動評価で、監視からテスト・改善まで回す</a>：LLM-as-a-Judge の不安定性を temp・モデル・9 回統計で分解し、生スコア単独は改善検出に使えないと実証する</li>
+        <li><a href="https://zenn.dev/algoartis/articles/0b1c731881b25c">AI-Slopな日本語を構造レベルで読みやすくするSkill『yomiyasu（よみやす）』を作りました</a>：AI 臭さを統語構造の病理として捉え直し、コーパス実測と lookaround で誤検出 0% まで詰めた skill 作者の一次公開</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://gigazine.net/news/20260830-flint/">AIエージェントが人間にとって理解しやすいシンプルなチャート仕様記述から表現力豊かで見栄えの良いグラフを確実に生成できる可視化中間言語「Flint」、50種類のチャートタイプをサポートしVega-Lite・ECharts・Chart.jsなどでレンダリング可能＆MCPサーバーあり</a></li>
-      <li><a href="https://zenn.dev/koher/articles/code-first-3d-modeling">Astra時代のコードファースト3Dモデリング</a></li>
-      <li><a href="https://gigazine.net/news/20260909-tala-is-open-source/">アーキテクチャ図を念頭に置いて設計された斬新な自動レイアウトアルゴリズム「TALA」がオープンソース化</a></li>
-      <li><a href="https://gigazine.net/news/20260830-thoughtdag/">無料でAIチャットを編集可能なノードのつながりに変えてくれる「ThoughtDAG」</a></li>
-      <li><a href="https://qiita.com/satoshi_kawato/items/1b108be276cf3a7e50b9?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">gbdraw開発記：論文の図を描くPythonスクリプトがブラウザ内実行Webアプリになるまで</a></li>
+      <li><a href="https://qiita.com/e99h2121/items/62da49e9ec006b0c233c?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AI に「この回答の前提は？」と聞くと、何が分かる？</a></li>
+      <li><a href="https://zenn.dev/ababup1192/articles/77b844dcfc1529">AI開発時代だからこそ、テストの役割を見つめ直す</a></li>
+      <li><a href="https://zenn.dev/algoartis/articles/0b1c731881b25c">AI-Slopな日本語を構造レベルで読みやすくするSkill『yomiyasu（よみやす）』を作りました</a></li>
+      <li><a href="https://zenn.dev/edash_tech_blog/articles/0d49bd338b64f0">テスト要求仕様（TRS）を書いてみたら、テスト設計が楽になった話</a></li>
+      <li><a href="https://qiita.com/inoyu-qiita/items/0ffe6e74ecaf3aaa8b14?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">新しい日本語推敲スキル「yomiyasu」がバズっていたので、Claudeで日本語推敲スキル3つを比べてみた</a></li>
+      <li><a href="https://qiita.com/yusuke-kobayashi0117/items/550f50edd7b1dc4a3b54?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">【LLM-as-a-Judge】AIによるプロンプト自動評価で、監視からテスト・改善まで回す</a></li>
+      <li><a href="https://qiita.com/aganesy/items/fac4efe52b9f5b34fb33?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">ユニットテストは不要なのか?</a></li>
+      <li><a href="https://zenn.dev/edash_tech_blog/articles/4577f7d4780bef">実務において敵対的レビューはどの程度有効なのか</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">設計とデータの基礎を持ち直す ― 境界・構造・効き方</h2>
+  <h2 class="topic__title">設計とデータの基礎を数字と型で持ち直す</h2>
   <article class="article">
     <div class="article__body">
-      <p>AI が実装を書く時代でも、<strong>境界・構造・データの効き方は人が判断軸を持つ</strong>という基礎の棚が今週も厚い。モノリス分割では『ドメイン駆動トランスフォーメーション』の 6 つの指標（完了成果物の受け渡し、一方向の手渡し、担当部門の違い、用語の意味のズレ、扱う主題の差、リズムとトリガー）で、病院の予約〜処方の物語から受付→予診→診察→会計の境界を切り出す――「同じ"診断"でも事務と医師で意味が違う」ことが境界の合図になる。細かく割りすぎず大きめに切って運用で研ぐ、という勘所も共通する。</p>
+      <p>AI が実装を書く時代でも、基礎を数字と型で持ち直す棚が続く。B+ツリーが速いのはアルゴリズムの優秀さでなく、<strong>ノード 1 個をディスク I/O 単位（8kB ページ）に合わせて I/O 回数を減らす</strong>形だから、という一本は、1000 万件で二分木なら高さ 24 段・点検索で 24 ページ読むのに対し B+ツリーは高さ 3 段・計 4 回で済むことを、pgbench で高さ 3 段・shared hit=2／read=2 まで実測して見せる。型の責務を C#／Go／Rust／TS 横断で比べ、拡張メソッド・レシーバー・トレイトは「アクセス手段と用語が違うだけで実態は同じ」と整理する一本も、感覚でなく仕組みで設計を語る姿勢だ。</p>
       <ul>
-        <li>データ層の落とし穴を数値で確かめる姿勢も続く。JOIN のデカルト積問題を実測すると、兄弟テーブルを一度に結合しただけで結果 10 万行が 64 万行へ膨れ、ピークメモリは 69MB→417MB と<strong>約 6 倍</strong>に。対策はクエリ分割かページング、という当たり前を数字が裏打ちする。</li>
-        <li>再利用可能な構造の語彙も拾い直す。GoF は 23 個を網羅せず、Strategy・Adapter・Facade・Observer・Factory Method といった<strong>実務で効く一群に絞る</strong>のが実践的、という整理。REST や 3 層アーキテクチャの入門、SendGrid→SES のコスト移行、グラフエンジニアリングの初手も同じ「土台を言葉にして持つ」棚に入る。</li>
+        <li>ボトルネックの捉え方も式になる。期日に爆発する爆弾でなく「放置すると改修速度がじわじわ落ちる構造」とみなし、事業の到達状態から逆算すれば候補が一度に 10 個ほど挙がる。最大流量グラフでは、劇的に 1 箇所を解消するより<strong>全辺を 1 ずつ上げ続ける</strong>方が時間積分した価値が大きい、という結論が面白い。</li>
+        <li>思考と用語の土台も拾う。「具体と抽象」勉強会の参加記は、AI に任せられるかを自分で判断する力として具体⇄抽象の往復を据える（議論が目先に寄ってコアドメインやユビキタス言語を見落とした、という反省つき）。OIDC と SAML を IdP／SP・認証／認可・「SSO は仕組みであってプロトコルではない」まで解きほぐす初学者向け整理も同じ棚にある。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/trefac/articles/97e79f3841bbb3">【DDD】モノリスを分割するサブドメイン特定法</a>：サブドメイン境界を「6 つの指標」で機械的に見つける手順が、病院ドメインの具体で追える。分割の勘を言語化したい時に</li>
-        <li><a href="https://zenn.dev/levtech/articles/cartesian-product-doctrine-orm">デカルト積問題って知っとるか〜？　気軽にJOINでメモリ爆発するアレのヤバさ実測すぞ！</a>：デカルト積問題をメモリ実測（69MB→417MB, 約 6 倍）で突きつける。「JOIN 一本で済ませたい」誘惑への具体的な反証データ</li>
+        <li><a href="https://zenn.dev/ippe1/articles/why-db-uses-bplus-tree">B+ツリーが速いのはディスクのI/O単位に形を合わせたから</a>：B+ツリーの速さを「I/O 単位に形を合わせる」と言い切り、pgbench と pageinspect で木の高さまで実測した自前計測</li>
+        <li><a href="https://zenn.dev/339/articles/56ef43afde8bd2">大きなボトルネックをごろごろ見つける方法 - 優秀なエンジニアになる</a>：ボトルネックを最大流量グラフと逆算で捉え直す実務論。技術負債を作り込んだ当事者の視点が効いている</li>
+        <li><a href="https://zenn.dev/sator_imaging/articles/834240491191ec">SOLID 原則と型の持つ責務</a>：型が振る舞いを持つかを C／C++／C#／Java／Go／Rust／TS で横断比較し、単相化挙動まで踏み込む実装者視点の整理</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/trefac/articles/97e79f3841bbb3">【DDD】モノリスを分割するサブドメイン特定法</a></li>
-      <li><a href="https://zenn.dev/levtech/articles/cartesian-product-doctrine-orm">デカルト積問題って知っとるか〜？　気軽にJOINでメモリ爆発するアレのヤバさ実測すぞ！</a></li>
-      <li><a href="https://qiita.com/kkkkkou/items/90be6651d4d012c3f107?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">GoFデザインパターンを実務で使うものに絞って解説する — Adapter, Facade, Strategy, Observer など</a></li>
-      <li><a href="https://qiita.com/kts321/items/a51d43e3954c96212e4b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Webシステムの仕組みから理解するREST API入門</a></li>
-      <li><a href="https://qiita.com/iketani45664566/items/898986475ce74e7b52ee?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">42日でバックエンドエンジニアの基礎を完全に理解する #32 - Webアプリの3層アーキテクチャ</a></li>
-      <li><a href="https://qiita.com/ksonoda/items/f77ea69c0c2c7c9a4c1c?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">[入門]グラフエンジニアリングのクイックスタート</a></li>
-      <li><a href="https://zenn.dev/team_zenn/articles/sendgrid-to-ses-cost-reduction">SendGridからAmazon SESに移行してコストを削減する</a></li>
+      <li><a href="https://zenn.dev/ippe1/articles/why-db-uses-bplus-tree">B+ツリーが速いのはディスクのI/O単位に形を合わせたから</a></li>
+      <li><a href="https://zenn.dev/sator_imaging/articles/834240491191ec">SOLID 原則と型の持つ責務</a></li>
+      <li><a href="https://qiita.com/kazutorahattori/items/4ca1d27ad8c843faac84?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">考える力を鍛える「具体と抽象トレーニング」勉強会に参加した話</a></li>
+      <li><a href="https://qiita.com/bisketoriba/items/73c2102fe9a9827eed7b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">具体と抽象の勉強会に参加してきた話</a></li>
+      <li><a href="https://zenn.dev/339/articles/56ef43afde8bd2">大きなボトルネックをごろごろ見つける方法 - 優秀なエンジニアになる</a></li>
+      <li><a href="https://qiita.com/mshr_n17/items/bc46ca73775cd9b1c98e?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">OIDCとSAMLを初心者向けに整理</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">「ユーザー」に AI エージェントを含めて設計し直す</h2>
+  <h2 class="topic__title">AI は業務フローの側から要件を立てて組み込む</h2>
   <article class="article">
     <div class="article__body">
-      <p>デザインの側から、<strong>「ユーザー」に AI エージェントを含めて設計し直す</strong>視点が二本立てで入った。NN/g 系の「AI エージェントもデジタルインタフェースの利用者だ」は、視覚（スクショ解析＝高コスト・脆い）・アクセシビリティツリー（HTML 構造＝効率的で堅い）・API 直叩きの三経路を並べ、<strong>アクセシビリティのために整えた意味的マークアップが、そのままエージェントにも読みやすい</strong>と説く。「コンテキストアーキテクチャ」は、プロンプト単体の工夫を超えて情報アーキテクチャの原則を AI システムへ適用する構えで、命名・語彙・記憶設計が出力を左右する（"reset-password" と名付ける方が "credential-recovery workflow" より効く、という具体）。WebMCP で自社 CMS のデザインエディタをエージェント操作可能にする実験は、その実装側の裏返しだ。</p>
+      <p>AI の能力からでなく業務の側から組み込む、という要件定義の記事が揃った。サービスデザイン発想の 5 ステップ（As-Is フロー可視化→課題抽出→AI を一選択肢として役割を「代替」と「支援」に分ける→To-Be シナリオ→要件化）は、個別タスクの自動化より<strong>業務全体をどう変えるか</strong>に主眼を置く。非エンジニアが社内エンジニアと作ったニュースレター自動化（60 分→15 分）の当事者記録も、境界条件の明示と非機能要件（SLA・バリデーション・例外処理）の学びという同じ所に落ちる。</p>
       <ul>
-        <li>ただし「エージェント対応」には正当な抵抗理由もある、と 49 は明記する――広告モデルの保護、規制対応に必要な摩擦、独自データによる競争。<strong>全面的にエージェントへ開くのが常に善ではない</strong>という留保が、単純な「アクセシビリティは万能」論を締める。</li>
-        <li>人間向けの UX 工芸も並走する。ダッシュボードは「誰の何の判断を助ける画面か」を決めてから作る（重要 KPI は左上、ビューは 2〜3 に絞る）、UX ライティングの実務 Q&A、Figma の同時編集を支える CRDT 同期設計――こちらは今週やや影が薄く、関心の重心がエージェント向けの再定義へ寄ったことがそのまま出ている。</li>
+        <li>データ接続は「権限を継承したまま」が要点。Microsoft Work IQ は別途 RAG 基盤を建てずに M365 のメール・文書・会議へアクセスするが、アプリ専用権限でなく<strong>ユーザー委任アクセス</strong>で動き、本人が直接触れない情報は Work IQ 経由でも取れない。REST API は取得専用で、作成・更新は MCP 系ツールが要る。</li>
+        <li>分析の型もスキルに畳む。データサイエンス向けには「この手法ならこの図・値を必ず出す」という diagnostics を、5 つのルーターに束ねて 2 段のルーティングでコンテキスト肥大を避ける設計が示された。生成 AI へ送る前に正規表現で個人情報をマスクする雛形も、完全な匿名化でなく境界防御と割り切る。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://u-site.jp/alertbox/ai-agents-as-users">ユーザーとしてのAIエージェント</a>：「ユーザー＝人間」を解体し、アクセシビリティがそのままエージェント可読性になると説く。設計対象の再定義として今週の芯</li>
-        <li><a href="https://u-site.jp/alertbox/context-architecture">コンテキストアーキテクチャ</a>：プロンプト工夫を「情報アーキテクチャの AI 適用」へ引き上げる枠組み。命名・語彙・記憶設計が出力を決める、という具体が効く</li>
+        <li><a href="https://qiita.com/TamakiSeki/items/ac268db56f92b991970b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AIを業務改善につなげるための5ステップ ― サービスデザインを活用した要件定義</a>：AI の能力でなくユーザーニーズから要件を立てる 5 ステップと、AI の役割を「代替／支援」に分ける型が実用的</li>
+        <li><a href="https://qiita.com/yoshioterada/items/3ac3c05be12e51ea05b0?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">業務知識やデータを AI に対して安全に取り込める Microsoft Work IQ</a>：Work IQ の権限継承セキュリティと 4 つの接続方式・REST API の制約を整理した実務解説。社内データ接続の設計に効く</li>
+        <li><a href="https://zenn.dev/green_tea/articles/55d2761106ee74">続・データサイエンティストのためのSkills:分析手法×診断可視化セット</a>：手法別 diagnostics を 2 段ルーターで肥大化させず運用する実装設計。スキルの増やし方まで具体的</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://u-site.jp/alertbox/ai-agents-as-users">ユーザーとしてのAIエージェント</a></li>
-      <li><a href="https://u-site.jp/alertbox/context-architecture">コンテキストアーキテクチャ</a></li>
-      <li><a href="https://zenn.dev/chot/articles/268804cd6694ab">WebMCPを試してみた感想。フロントエンドの必須技術になりそうな予感。</a></li>
-      <li><a href="https://qiita.com/YushiYamamoto/items/608f236ec0f0c694def9?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">良いダッシュボードとは — 「誰の何を見せる画面か」から考える</a></li>
-      <li><a href="https://u-site.jp/alertbox/ux-writing-faqs">UXライティング：実務者からよく寄せられる質問</a></li>
-      <li><a href="https://qiita.com/keishin_nishiura/items/4e65bc9f74966920d625?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Figmaの同時編集、なぜこんなになめらか？CRDTに着想を得た同期設計を公式ブログから読み解く</a></li>
-      <li><a href="https://qiita.com/usui0623/items/94661f31fcc95117bfc7?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Figmaの基本操作を学ぶためにQiitaのUIを使って操作してみる</a></li>
+      <li><a href="https://qiita.com/TechStudioLab/items/83349e8b4cdf07b97cd1?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">生成AI送信前にPythonで個人情報をマスキングする</a></li>
+      <li><a href="https://zenn.dev/green_tea/articles/55d2761106ee74">続・データサイエンティストのためのSkills:分析手法×診断可視化セット</a></li>
+      <li><a href="https://qiita.com/ayanonn/items/411fc08854b9fe4c9be7?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">非エンジニアの私が、社内エンジニアと業務効率化ツールを作ってみた件</a></li>
+      <li><a href="https://qiita.com/yoshioterada/items/3ac3c05be12e51ea05b0?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">業務知識やデータを AI に対して安全に取り込める Microsoft Work IQ</a></li>
+      <li><a href="https://qiita.com/TamakiSeki/items/ac268db56f92b991970b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AIを業務改善につなげるための5ステップ ― サービスデザインを活用した要件定義</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">その他 ― 認知と労働、見積もりの式化、生成メディアの外れ値</h2>
+  <h2 class="topic__title">その他 ― フロント選定・UX 計測・毛色の違う外れ値</h2>
   <article class="article">
     <div class="article__body">
-      <p>クラスタから浮くが拾っておきたい線。ひとつは<strong>「人間が理解する必要はあるのか」</strong>という労働・認知の問い。「認知負債」を"仕組みを人が理解せぬまま動くコード"と定義し、生成速度が理解速度を超えたことが危機の本質だと突く一本と、「AI に仕事を奪われない」と考える理由を語る一本が、AI 時代の人間の役割を別角度から照らす。もうひとつは<strong>見積もり・評価を勘から式へ</strong>の系。テストケース数を「テストオブジェクト×テスト観点」の掛け算に分解して勘を式に変える手法、Google ADK でエージェント品質を評価する実装が、"数えられる形にする"点で通じる。</p>
+      <p>クラスタから浮くが拾っておきたい線。フロントでは Next.js と TanStack Start を 10 観点で実コード比較し、成熟と性能なら Next.js・型の一貫性とデプロイ自由度なら TanStack という住み分けを出す。VS Code と Cursor の違いは、モデル性能でなく<strong>エディタ状態やターミナルイベントが分離されず並列エージェントが互いの変更で脱線する</strong>というツール側の課題に絞られた。UX では、変更前にベースラインを取らないと後の数値を解釈できない（完了率 48%→67% の 19 ポイントは 48% があって初めて意味を持つ）という計測の習慣が説かれる。</p>
       <ul>
-        <li>残りは道具と生成メディアの雑食。音楽生成 YuE2（Suno 5 級のオープンモデル）、単一ファイルでアプリを持ち運ぶ Capsule、AI っぽくない画風プロンプト 38 種、AI 生成文から「AI 臭さ」（冗長さ・特定語の多用・過剰な強調）を抜く試行錯誤、AI ネイティブなデータ分析基盤、zip 不要になった GitHub Actions Artifact の活用――毛色の違う外れ値を拾う癖は今週も健在。</li>
+        <li>AI 以外の外れ値も健在だ。超新星カタログ Pantheon+ の再分析が「宇宙の膨張は加速していないかもしれない」とダークエネルギーの根拠に異議を唱え（従来補正で考慮済みとの反論つき）、Disney+ は規約改定で全プランに広告を入れ、実質「広告なし」階層を畳んだ。</li>
+        <li>道具とモデルの雑食も続く。わざと AWS 障害を注入して復旧する個人ラボ（総額約 35 円）、商用不可だが Nano Banana 2.0 超えを謳う画像モデル Qwen-Image-2.1、YouTube の A/B テストや動的サムネイル、最大 8 人を話者分離しながらリアルタイム文字起こしする NVIDIA Nemotron 3 Diarization（誤り率 14.72% で 12 システム中 1 位）。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/bitkey_dev/articles/test-estimation-formula">テスト見積もりは掛け算2つで出せる</a>：「だいたい○○ケース」の勘を、テストオブジェクト×観点の掛け算に分解する。見積もりの根拠を持ちたい時にそのまま使える</li>
-        <li><a href="https://zenn.dev/kabeya/articles/future-of-cognitive-debt">認知負債の未来は？</a>：「認知負債」を生成速度と理解速度の差として定義し直す整理。AI が書いたコードを誰が理解し保守するか、を考える起点に</li>
+        <li><a href="https://zenn.dev/643866/articles/48eae6e7b845f8">Next.js vs TanStack Start の違いを10項目で検証してみた</a>：Next.js と TanStack Start を 2026 年最新版の実コードで 10 観点比較し、設計思想の差を住み分けまで落とす</li>
+        <li><a href="https://gigazine.net/news/20260920-supernova-cosmic-acceleration-questioned/">「宇宙の膨張は加速していない」という可能性が超新星の観測データの再分析で示される</a>：ダークエネルギーの根拠に査読論争で異議を唱える一本。AI から離れて、主張と反論の両側を押さえられる</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/kabeya/articles/future-of-cognitive-debt">認知負債の未来は？</a></li>
-      <li><a href="https://qiita.com/ryoheiiwamoto/items/0134c989bb86519eec2e?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">元ヤフーエンジニア社長が考える、AIに仕事が奪われないと思う理由</a></li>
-      <li><a href="https://zenn.dev/bitkey_dev/articles/test-estimation-formula">テスト見積もりは掛け算2つで出せる</a></li>
-      <li><a href="https://zenn.dev/phper8080/articles/91ffb94fe75b45">AIエージェントの品質、どう測る？ Google ADKの評価機能を使い倒す</a></li>
-      <li><a href="https://zenn.dev/pksha/articles/5a1dc6470019d6">AI ネイティブなデータ分析基盤を作った話</a></li>
-      <li><a href="https://qiita.com/yama3133/items/16907c517a6e745adda1?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AI生成記事から「AI臭さ」を抜いて、自然な形にするために試行錯誤した記録</a></li>
-      <li><a href="https://qiita.com/maeda-niku18/items/b633dda178c505461080?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AIっぽくない画像を作る画風プロンプト38種類＋テンプレート</a></li>
-      <li><a href="https://gigazine.net/news/20260916-capsule/">AIで作ったアプリをUIもデータも単一ファイルで持ち運べる無料ツール「Capsule」、クラウド不要で完全オフラインで動作</a></li>
-      <li><a href="https://gigazine.net/news/20260911-yue2-music-generation-ai/">音楽生成AI「YuE2」が無料公開される、有料のSuno 5に近い性能で楽譜から楽曲生成可能＆日本語ボーカルも対応</a></li>
-      <li><a href="https://zenn.dev/she_techblog/articles/github-actions-artifact-no-zip">PR の概要や動作確認結果を HTML で共有するのに、zip 不要の GitHub Actions Artifact がちょうどよかった</a></li>
+      <li><a href="https://gigazine.net/news/20260920-supernova-cosmic-acceleration-questioned/">「宇宙の膨張は加速していない」という可能性が超新星の観測データの再分析で示される</a></li>
+      <li><a href="https://gigazine.net/news/20260920-disney-plus-ads-on-every-plan/">Disney+がプレミアムを含む全プランで広告表示へ</a></li>
+      <li><a href="https://zenn.dev/643866/articles/48eae6e7b845f8">Next.js vs TanStack Start の違いを10項目で検証してみた</a></li>
+      <li><a href="https://zenn.dev/imkohenauser/articles/vscode-cursor-parallel-development">分離できていない？並列開発で感じた VS Code と Cursor の違い</a></li>
+      <li><a href="https://zenn.dev/silver252/articles/7ca85e26f9a6e5">【AWS 障害対応】わざとアラートを出して復旧する自作自演やってみた</a></li>
+      <li><a href="https://gigazine.net/news/20260924-qwen-image-2-1/">画像生成・編集AI「Qwen-Image-2.1」が無料のオープンモデルとして登場したので使ってみた、日本語プロンプト対応＆透過PNG画像も生成可能</a></li>
+      <li><a href="https://gigazine.net/news/20260924-made-on-youtube-2026-new-function/">YouTubeが動画のA/Bテスト機能やショートのエピソード化など複数の新機能をまとめて発表</a></li>
+      <li><a href="https://gigazine.net/news/20260924-nvidia-nemotron-3-diarization/">最大8人の話者を識別しつつリアルタイム文字起こしできるAIモデル「NVIDIA Nemotron 3 Diarization」がオープンモデルとして公開される</a></li>
+      <li><a href="https://u-site.jp/alertbox/establishing-baselines">UXの新しい習慣： 効果を示すためのベースラインの設定</a></li>
     </ul>
   </article>
 </section>
