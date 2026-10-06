@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年9月29日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年10月6日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年9月29日">
+<meta property="og:title" content="フロントエンドニュース — 2026年10月6日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,78 +23,46 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年9月29日（火）</span>
+        <span>2026年10月6日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
-      <section class="summary">
-  <h2 class="summary__title">まとめ</h2>
-  <p>先週は「速く回す列車が平時と有事の両方で走った週」と書いた。今週、その<strong>有事のほうが「臨時」から「定例」へと座を移した</strong>。先週予告された out-of-band は 9 月 22 日に<strong>16.3.6 / 15.5.26 として実際に着地</strong>し、伏せられていた正体は <code>next/og</code>（Satori 経由）の <strong>RCE</strong> だと開示された。そして翌 23 日、Next.js は<strong>間髪入れず次の「定例」セキュリティリリースを 9 月 30 日に予告</strong>——今度は 1 件ではなく<strong>9 件（critical 1・high 2・medium 5・low 1）をまとめて</strong>配る。片やブラウザ側では <strong>Chrome 155 が 2 週間 cadence の「2 本目」を回し</strong>、周期は「宣言」から「習慣」に変わった。速い周期は、機能でもパッチでも、もう常態だ。今週は「速さが例外でなくなった週」だ。</p>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">今週の重要ポイント</h2>
-
-  <article class="article">
-    <h3 class="article__headline">先週の「上流依存の謎」が判明 — 正体は next/og（Satori）の RCE、16.3.6 で修正済み</h3>
-    <div class="article__body">
-      <p>先週「来週の最大の関心事」に挙げた <strong>GHSA-vcvr-r3jv-pc5j の全貌</strong>が、予告どおり 9 月 22 日のリリースと同時に開けた。out-of-band 更新は <strong>16.3.6（Active LTS）と 15.5.26（Maintenance LTS）</strong>として着地し、伏せられていた上流依存の正体は <strong>Satori</strong>——<code>next/og</code> の <strong>Node.js 版 <code>ImageResponse</code></strong> が生成する SVG の<strong>エスケープ不備</strong>から、他の上流依存の脆弱性と連鎖して<strong>リモートコード実行（RCE）</strong>に至りうる、という critical だった。影響は <strong><code>&gt;=16.2.0 &lt;16.3.6</code></strong>。修正は依存の巻き上げで行われ、<strong>Edge 版 <code>ImageResponse</code> は非該当</strong>、15.5.26 は関連 hardening のみ（15.x は RCE の影響を受けない）。先週の見立て「アプリのコードは 1 行も間違っていなくても晒される」は、<strong>OGP 画像を動的生成しているだけの現場</strong>が該当しうる、という形で具体になった。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026">Next.js Security Update for a Critical Upstream Issue — nextjs.org（2026-09-22）</a></li>
-      <li><a href="https://github.com/vercel/next.js/security/advisories/GHSA-vcvr-r3jv-pc5j">GHSA-vcvr-r3jv-pc5j — vercel/next.js Security Advisory</a></li>
-      <li><a href="https://github.com/vercel/satori/security/advisories/GHSA-wx4j-mvgx-mqwp">GHSA-wx4j-mvgx-mqwp — vercel/satori Security Advisory（上流）</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">「臨時」の翌日に「定例」を予告 — Next.js が 9/30 に脆弱性 9 件をまとめて配る</h3>
-    <div class="article__body">
-      <p>out-of-band の翌日、9 月 23 日に Next.js は<strong>次のセキュリティリリースを 9 月 30 日に予定</strong>と告知した。先週の緊急パッチが 1 件を臨時で差し込んだのに対し、今回は<strong>9 件——critical 1・high 2・medium 5・low 1——をまとめて</strong>、通常の<strong>予告つき定例</strong>として配る。公開されるのは <strong>16.3.7</strong> と <strong>15.5.27</strong>で、影響・対象バージョン・アップグレード手順を含む advisory がリリースと同時に出る。ポイントは、たった 1 週間で<strong>「速く小さく」の対象が機能から緊急パッチへ、さらに定例のまとめ配信へ</strong>と段階を上げたことだ。事前告知でアップグレードの計画時間を渡す運用は先週と同じ形。<strong>16 系・15 系を運用する現場は 9/30 に即時アップグレードの再演</strong>を見込んでおきたい。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026">Upcoming Next.js September Security Release — nextjs.org（2026-09-23）</a></li>
-      <li><a href="https://nextjs.org/blog/tag/security">Next.js Security Advisories — nextjs.org</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Chrome 155 が「2 本目」を回した — cadence は宣言から習慣へ</h3>
-    <div class="article__body">
-      <p>先週の Chrome 154 が 2 週間 cadence の「最初の通常ラップ」だった。今週その<strong>2 本目</strong>が回った。<strong>Chrome 155</strong> は 9 月 16 日に beta へ出て、Android では 9 月 23 日から <strong>Early Stable</strong>（一部ユーザー先行）に入り、大半への展開は 10 月 6 日から。154 のわずか約 2 週間後という間隔で、<strong>「宣言どおりの周期が 2 回続いた」</strong>——これで新 cadence は「言った」ではなく「回っている」段階に入った。先週書いた「2 本目が本当に 2 週間で来るか（宣言→習慣）」への答えは <strong>Yes</strong> だ。中身も実務に効く小粒〜大玉が揃う（後述）。beta 追従の重要度は、周期が半分のまま<strong>今週さらに定着した</strong>。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta — Chrome for Developers（2026-09-16）</a></li>
-      <li><a href="https://developer.chrome.com/blog/chrome-two-week-release">Chrome's two-week release cycle — Chrome for Developers</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">React 19.3 対応の波が広がる — Astro React 7 は Babel を捨て Oxc へ</h3>
-    <div class="article__body">
-      <p>先週「卒業生が現場に配属」と書いた React 19.3 のエコシステム追従は、今週も裾野を広げた。<strong>React Three Fiber 9.8</strong> が 19.3 対応と同期的な root 構成を入れ、TanStack の同期版 React 再実装 <strong>Redact 0.1</strong> も 19.3 API を前提に GitHub 公開。<strong>React Redux 9.4 alpha</strong> は <code>react-redux/signals</code> 経由で <code>useSignalSelector()</code> と <code>&lt;SignalProvider&gt;</code> を追加し、数千接続規模の最適化に踏み込んだ。象徴的なのは <strong>@astrojs/react 7.0</strong>——JSX コンパイルと Fast Refresh の<strong>Babel を Oxc（Rust 製）に置き換え</strong>、<code>@vitejs/plugin-react</code> を v6 に上げ、<strong>Oxc 経由の実験的 React Compiler 対応（<code>compiler: true</code>）</strong>まで入れた。19.3 という「卒業生」を受け入れる足場そのものが、<strong>Babel から Rust ツールチェインへ</strong>置き換わりつつある。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/298">This Week In React #298（R3F 9.8 / Redact 0.1 / React Redux 9.4 / Astro React 7）— ThisWeekInReact.com</a></li>
-      <li><a href="https://github.com/withastro/astro/releases/tag/%40astrojs/react%407.0.0">Release @astrojs/react@7.0.0 — withastro/astro</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
+      <section class="topic">
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">「OGP 画像を動的生成しているだけ」が攻撃面になる — next/og 運用の点検</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Next.js が定例更新で脆弱性 7 件を修正</h3>
     <div class="article__body">
-      <p>今回の RCE で現場が読んでおきたいのは、<strong>攻撃面が「派手な機能」ではなく <code>next/og</code> の <code>ImageResponse</code> という日常</strong>にあった点だ。動的な OGP 画像や動的 SVG 生成を Node ランタイムで回しているアプリは、<strong>ユーザー入力が SVG に混ざる経路</strong>を持てば該当しうる。実務は 3 つ——(1) <strong>16.3.6 へ即上げる</strong>（15.x は RCE 非該当だが hardening 込みの 15.5.26 へ）、(2) <code>ImageResponse</code> を <strong>Edge ランタイムで動かしていれば非該当</strong>なので自分の構成を確認、(3) 上流の <strong>Satori（GHSA-wx4j-mvgx-mqwp）を別経由で抱えていないか</strong>依存ツリーを点検する。そして 9/30 の定例 9 件が控える以上、<strong>この「上げる→点検」を来週も一度回す前提</strong>でおくのが安全だ。先週の「同じ上流の広がり」への回答が Satori だったことで、監査の当たりどころは絞れた。</p>
+      <p>Next.js は 9 月 30 日の定例セキュリティリリースで <strong>16.3.8（Active LTS）と 15.5.27（Maintenance LTS）</strong>を公開し、脆弱性 7 件（high 1・medium 5・low 1）を修正した。最も重いのは画像最適化の <strong>SSRF（CVE-2026-94483）</strong>で、<code>images.remotePatterns</code> に攻撃者が操作できるリモートホストを許可している場合に影響する。</p>
+      <p>medium は自己ホスト環境の SSG/ISR キャッシュ汚染や、Cache Components 下での Draft Mode コンテンツ漏洩などが中心。当初 9 件を予告していたが、<strong>critical 1 件と high 1 件は上流依存の遅延で見送られ</strong>、後続リリースに回った。対象バージョンを使う現場は即時アップグレードが要る。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/nextjs-security-update-september-22-2026">Next.js Security Update for a Critical Upstream Issue — nextjs.org</a></li>
-      <li><a href="https://github.com/vercel/satori/security/advisories/GHSA-wx4j-mvgx-mqwp">GHSA-wx4j-mvgx-mqwp — vercel/satori Security Advisory</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://nextjs.org/blog/september-2026-security-release">September 2026 Security Release — nextjs.org（2026-09-30）</a></li>
+        <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026">Upcoming Next.js September Security Release — nextjs.org</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">フレームワーク・ランタイム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Cloudflare が Vite 版 Next.js の Vinext 1.0 を公開</h3>
+    <div class="article__body">
+      <p>Cloudflare は 9 月 28 日、<strong>Vinext 1.0</strong> を公開した。Next.js の API をそのまま保ちながら、ビルド基盤を Next.js 本体から <strong>Vite</strong> に置き換えるもので、<code>next</code> を <code>vinext</code> に差し替えるだけで App Router・Pages Router の両方が動く。</p>
+      <p>狙いは Next.js アプリの<strong>可搬性</strong>だ。Cloudflare Workers の無料プランや Netlify、AWS Lambda など任意の環境へデプロイできる。顧客要望の機能で 99% を超える互換を達成したとするが、<code>use cache</code> を使う Cache Components は対応が限定的で、元は 1 週間の AI 実験として始まったプロジェクトが製品版に達した形だ。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://blog.cloudflare.com/vinext-nextjs-on-vite/">Next.js applications, powered by Vite: introducing Vinext 1.0 — Cloudflare Blog（2026-09-28）</a></li>
+      </ul>
+    </details>
   </article>
 </section>
 
@@ -102,13 +70,36 @@
   <h2 class="topic__title">ブラウザ・プラットフォーム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Chrome 155 の中身 — CSS の形づくりと、壊れないモジュール読み込み</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Chrome 155 が安定版に到達</h3>
     <div class="article__body">
-      <p>2 本目らしく、Chrome 155 は<strong>形（shape）と堅牢さ（robustness）</strong>に効く更新が並ぶ。CSS では <strong><code>corner</code> ショートハンド</strong>（<code>corner-top-left</code> ほかで <code>border-radius</code> と <code>corner-shape</code> を同時指定）と、<code>@counter-style</code> なしでインライン定義できる <strong><code>symbols()</code></strong>、余白を刈る <strong><code>margin-trim</code></strong>、そして先週の 154 に続く <code>text-decoration-skip-spaces</code> が入る。JS 側の目玉は<strong>失敗したモジュール読み込みのリトライ</strong>——不安定なネットワークで <code>import</code> がコケても再試行できる長年の要望に応えた。<code>import … with { type: "text" }</code> の <strong>Text Modules</strong> でテキストを文字列として読み込める。Web API では <strong>Window Management</strong>（<code>maximize()</code>/<code>minimize()</code>/<code>restore()</code>/<code>setResizable()</code>）、<strong>JPEG XL の復号</strong>（Rust 製 memory-safe デコーダ jxl-rs）、Digital Credentials、WebTransport のカスタムヘッダなどが加わる。「小さく確実に」を 2 週間で積む号だ。</p>
+      <p><strong>Chrome 155</strong> が安定版に入り、10 月 6 日からデスクトップで広く配信される。iOS/iPadOS には 10 月 1 日に到達済み。同じ 9 月 30 日には次の <strong>Chrome 156 が beta</strong> 入りしており、2 週間周期のリリースが実際に連続して回っている。</p>
+      <p>9 月は <strong>Chrome と Firefox がともに隔週リリースに移った最初の月</strong>で、Chrome 153・154、Firefox 155〜157、Safari 27 が相次いで安定版になった。周期が半分になったぶん、beta 追従と stable 展開の間隔管理が実務で効いてくる。</p>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta（corner / symbols() / module retry / JPEG XL ほか）— Chrome for Developers</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://developer.chrome.com/blog/chrome-156-beta">Chrome 156 beta — Chrome for Developers（2026-09-30）</a></li>
+        <li><a href="https://web.dev/blog/web-platform-09-2026">New to the web platform in September — web.dev</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">デザイン・UI（CSS）</h2>
+
+  <article class="article">
+    <h3 class="article__headline">CSS の progress() などが Baseline に加わる</h3>
+    <div class="article__body">
+      <p>9 月の Web プラットフォームまとめで、複数の CSS 機能が <strong>Baseline（newly available）</strong>に到達した。目玉は数式関数 <strong><code>progress()</code></strong>で、Firefox 155 の対応により、開始値と終了値の間の位置を数値で返し、ビューポートに応じた滑らかなサイズ指定ができる。</p>
+      <p>ほかに透明度だけを変える相対色関数 <code>alpha()</code>、画像（URL・グラデーション）も扱えるようになった <code>light-dark()</code>、ルール適用前に戻す <code>revert-rule</code>、<code>font-stretch</code> の正式名となる <code>font-width</code>、スクロールアンカリングの <code>overflow-anchor</code> が加わった。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://web.dev/blog/web-platform-09-2026">New to the web platform in September — web.dev</a></li>
+      </ul>
+    </details>
   </article>
 </section>
 
@@ -116,49 +107,28 @@
   <h2 class="topic__title">エコシステム・ツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">足回りも Rust 化と自動化へ — pnpm 12.6・Turborepo 2.11・Node 26.10・ESLint 10.11</h3>
+    <h3 class="article__headline">pnpm 12.7 や MSW 3.0 などツール更新が相次ぐ</h3>
     <div class="article__body">
-      <p>Astro React 7 の Oxc 採用に象徴される <strong>Rust ツールチェインへの移行</strong>は、周辺の足回りでも進んだ。<strong>pnpm 12.6</strong> は<strong>自動 dedupe</strong>と型定義の自動導入、<code>file:</code>/<code>link:</code> catalog 対応を入れ、CI で手動 dedupe を回す手間を消した。<strong>Turborepo 2.11</strong> は <strong>Rust / Python / Go のネイティブ対応</strong>と起動高速化を追加し、モノレポの守備範囲を JS の外へ広げた。<strong>Node.js 26.9 / 26.10</strong> は <strong>Web Workers 対応</strong>、ネイティブ <code>throttle</code>/<code>debounce</code>、<code>bench</code> を、<strong>ESLint 10.11</strong> は初期化 20〜25% 高速化を、<strong>jsdom 30.1</strong> は性能・メモリ・正確性の改善を届けた。派手な GA が足踏みする間も、<strong>ビルド・テスト・依存管理の土台</strong>は着実にマイナーを刻み、その方向は一貫して「速い言語で書き直し、手作業を自動化する」だ。</p>
+      <p>週内は足回りのツールも細かく更新が進んだ。いずれも派手な新機能より、<strong>既存ワークフローの詰め</strong>が中心だ。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
+          <tbody>
+            <tr><td>pnpm 12.7</td><td>Node shim が <code>.nvmrc</code> を尊重。<code>--allow-build</code> フラグを追加</td></tr>
+            <tr><td>Oxlint 1.86</td><td><code>only-export-components</code> を複合コンポーネントに対応。React Compiler 関連を修正</td></tr>
+            <tr><td>MSW 3.0</td><td>ESM 専用化。GraphQL サブスクリプションと React Native 連携を追加</td></tr>
+            <tr><td>Redux Toolkit 2.13</td><td>TypeScript 7 に対応</td></tr>
+            <tr><td>TC39（9 月会合）</td><td>Composites プロポーザルが Stage 2 に前進</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <ul class="article__sources">
-      <li><a href="https://thisweekinreact.com/newsletter/298">This Week In React #298（pnpm 12.6 / Turborepo 2.11 / Node 26.9-26.10 / ESLint 10.11 / jsdom 30.1）— ThisWeekInReact.com</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Vue 3.6 は今週も RC のまま — 「秋 GA」窓は開かず</h3>
-    <div class="article__body">
-      <p>先週に続き <strong>Vue 3.6</strong> は今週も<strong>RC 段階</strong>に留まった。仮想 DOM を外す <strong>Vapor Mode</strong> と alien-signals ベースのリアクティビティ刷新は feature-complete としつつ、「秋 GA」の予告は据え置きのまま。React が 19.3 で波を 1 つ卒業させ、そのエコシステム追従が今週さらに広がったのと対照的に、<strong>Vue の次の卒業生はまだ足踏み</strong>だ。「一斉ではなく 1 つずつ、見立てと違う順に割れる」という数週来のパターンは今週も崩れていない。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
-      <li><a href="https://versionlog.com/vuejs/3.6/">Vue.js 3.6 — What's New, Support Lifecycle & EOL — VersionLog</a></li>
-    </ul>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">来週の注目ポイント</h2>
-
-  <article class="article">
-    <h3 class="article__headline">9/30 の Next.js 定例 9 件 — critical の中身と、上げ直しの週</h3>
-    <div class="article__body">
-      <p>来週の最大の予定は <strong>9 月 30 日の Next.js セキュリティリリース</strong>だ。<strong>16.3.7 / 15.5.27</strong> と同時に 9 件の advisory が公開され、とりわけ <strong>critical 1 件が何か</strong>——先週の Satori/next/og のように「日常の機能」が攻撃面になるのか——が焦点になる。今週 16.3.6 へ上げたばかりの現場も、<strong>1 週間で再度の上げ直し</strong>を迫られる可能性が高い。out-of-band から定例へと続いたこの 2 週間で、<strong>依存監査を「定期業務」として回す</strong>構えが問われる。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-september-2026">Upcoming Next.js September Security Release — nextjs.org</a></li>
-    </ul>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Chrome 155 の 10/6 本展開と、2 週間 cadence の「3 本目」</h3>
-    <div class="article__body">
-      <p>Chrome 155 は <strong>10 月 6 日から大半への展開</strong>に入る。2 本連続で回った cadence が<strong>3 本目も同じ間隔で来るか</strong>——「習慣」がさらに「制度」に固まるかを来週以降で確かめたい。合わせて、<strong>Vue 3.6 の「秋 GA」窓</strong>（9 月後半〜10 月）と SvelteKit 3 の RC 脱出が<strong>どちらが先か</strong>も引き続き見どころ。速い周期が常態化する中で、「1 つずつ、違う順に割れる」パターンが続くのかを追う。</p>
-    </div>
-    <ul class="article__sources">
-      <li><a href="https://developer.chrome.com/blog/chrome-155-beta">Chrome 155 beta — Chrome for Developers</a></li>
-      <li><a href="https://github.com/vuejs/core/releases">Releases · vuejs/core — GitHub</a></li>
-    </ul>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://thisweekinreact.com/newsletter/299">This Week In React #299 — ThisWeekInReact.com（2026-09-30）</a></li>
+      </ul>
+    </details>
   </article>
 </section>
     </main>
