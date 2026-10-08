@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年10月1日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年10月8日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年10月1日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年10月8日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月1日（木）</span>
+        <span>2026年10月8日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,104 +33,111 @@
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">Sonnet 5.5 が Claude Code に追加、速く安い日常作業向けの選択肢に</h3>
+    <h3 class="article__headline">Claude Code を TypeScript で改造できる Mods が登場</h3>
     <div class="article__body">
-      <p>9/28、Anthropic が <strong>Claude Sonnet 5.5</strong>（<code>claude-sonnet-5-5</code>）を公開した。Claude Code でもすぐ選べるようになり、<strong>2.1.284</strong> で既定の Sonnet モデルになった。Sonnet 5 より 30% ほど速く、同じ作業にかかるコストも最大 30% 低い。位置づけは「よく定義された日常作業」向けで、バグ修正や機能の素早い反復に向く。重い設計判断は引き続き Opus 5.5、軽い反復は Sonnet 5.5 に振る使い分けが公式ガイドでも示された。</p>
-      <p>価格は Sonnet 5 と同じ入力 $2・出力 $10（キャッシュ読み出し $0.20）／100万トークンで、1M コンテキストに対応する。中の人の <strong>bcherny</strong> は Claude Code 上で Sonnet 5.5 がバグを直す様子を共有した。ベンチマークによっては Low/Medium の effort でも Sonnet 5 の最高スコアを 10 分の 1 ほどのコストで上回るとされ、<strong>Claude Code の使用量を伸ばしたい用途</strong>で現実的な選択肢になった。</p>
+      <p>10/1、<strong>Claude Code Mods</strong> が 2.1.287 で入った。Claude Code の挙動・UI・機能をユーザー自身が書き換える仕組みで、数行の TypeScript で書けるほか、Claude に作らせることもできる。mod はプラグインとして配布され、CLI でもデスクトップでも <code>/plugin</code> で導入する。中の人の bcherny は「とんでもない」と評し、trq212 は「ソフトウェアは可変になりつつあり、Claude Code でも第一級の機能にした」と書いた。</p>
+      <p>組み込み mod「<strong>You should Know</strong>」も加わった。別のエージェントが応答を監視し、ユーザーや Claude が見落としそうな要点を知らせる。<code>/plugin enable cc-plugin-you-should-know@builtin</code> で有効になる。公式のサンプル mod 集に加え、HTML で実装プランを練る html-plan や過去プロンプトへ飛ぶ prompt-rail など、コミュニティ製の mod も早速出てきている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（5）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2105721434807083061">@ClaudeDevs: Claude Code を mod できる（TypeScript 数行・プラグインとして /plugin で導入）</a></li>
+        <li><a href="https://x.com/bcherny/status/2105756563302723721">@bcherny: Mods are absolutely insane（プロンプトで自分好みに）</a></li>
+        <li><a href="https://x.com/trq212/status/2105734197801562264">@trq212: すべてのソフトは可変になる・Claude Code の第一級機能に</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2106118517447876618">@ClaudeDevs: 組み込み mod「You should Know」（見落とし警告・/plugin enable）</a></li>
+        <li><a href="https://x.com/trq212/status/2107192901537329354">@trq212: html-plan（HTML で実装プランを練るコミュニティ mod）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Haiku 5.5 が既定の Haiku になり安いサブエージェント役に</h3>
+    <div class="article__body">
+      <p>10/7、Anthropic が <strong>Claude Haiku 5.5</strong>（<code>claude-haiku-5-5</code>）を公開し、2.1.293 で Claude Code の既定 Haiku になった。1M コンテキストに対応し、実行コストは Haiku 4.5 より平均 75% ほど安い。effort（思考の深さ）を調整でき、要約やコンパクションのような<strong>大量・低コストの処理を Opus 5.5 や Sonnet 5.5 のサブエージェント</strong>として任せる使い方に向く。</p>
+      <p>価格は 100 万トークンあたりで次の通り。Devin も同日に採用し、コーディング指標 FrontierCode 1.1 で 58.4% と、Sonnet 5 を約 8 分の 1 のコストで上回ったとした。Max・Team 向けには Claude Platform の月次 API クレジットも始まった。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>区分</th><th>入力</th><th>出力</th><th>キャッシュ読み</th></tr></thead>
+          <tbody>
+            <tr><td>10万トークンまで</td><td>$0.10</td><td>$0.50</td><td>$0.01</td></tr>
+            <tr><td>10万トークン超</td><td>$0.50</td><td>$2.50</td><td>$0.05</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <details class="article__sources">
       <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/claudeai/status/2104633115620823187">@claudeai: Introducing Claude Sonnet 5.5（30% 高速・最大 30% 低コスト）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2104641318555353400">@ClaudeDevs: Sonnet 5.5 を Claude Code で使う（日常作業向け・使用量が伸びる）</a></li>
-        <li><a href="https://x.com/bcherny/status/2104638725317923228">@bcherny: Sonnet 5.5 が Claude Code でバグを直すデモ</a></li>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.284：Sonnet 5.5 を既定 Sonnet に・1M・$2/$10・$0.20 キャッシュ）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2107895955144208813">@ClaudeDevs: Haiku 5.5 が Claude Code に・Haiku 4.5 比 75% 安・サブエージェント向け</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2107895956872290654">@ClaudeDevs: Haiku 5.5 の価格（10万トークン境界の 2 段階）</a></li>
+        <li><a href="https://x.com/cognition/status/2107942832921075726">@cognition: Haiku 5.5 を Devin で採用（FrontierCode 1.1 で 58.4%）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.293：Haiku 5.5 を既定 Haiku に・1M）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">5時間上限でも作業を途中で切らず区切りまで進めるように</h3>
+    <h3 class="article__headline">クラウドセッションに実務向けの手引きとツール整備</h3>
     <div class="article__body">
-      <p>9/25、Claude Code に <strong>5 時間の利用上限に達しても作業を途中で打ち切らない</strong>挙動が入った。これまでは編集の途中でも止まったが、今後は<strong>区切りのいい場所を探して</strong>そこまで進める。このために週次上限から引く小さめの固定枠が割り当てられる。長いタスクを回しているときに、中途半端な状態で手が止まるのを防ぐための変更だ。</p>
-      <p>提供範囲は、<strong>Pro は週 1 回</strong>、<strong>Max と Team Premium は 5 時間セッションの上限に当たるたび</strong>。区切りの先へ進めたい場合は追加の使用量で続行できる。無人で長時間走らせる使い方が広がるなか、上限との当たり方をなめらかにする実運用寄りの調整といえる。</p>
+      <p>クラウドセッションは、タスクごとに新しい VM で Claude Code を動かす仕組みだ。複数を同時に走らせられ、ノート PC を閉じても処理は進み続ける。Anthropic は<strong>向いている 7 つのワークフロー</strong>と、GitHub を一度でつなぐ手順をまとめた手引きを公開した。長時間・並行で回す使い方を前提にした整理だ。</p>
+      <p>実行環境の整備も進んでいる。以前は <code>gh</code> コマンドすら入っていなかったが、GitHub CLI などが<strong>あらかじめ使える</strong>ようになった。エージェントに実際のツールチェーンを渡し、人手の準備なしでタスクを委ねられる方向に寄せている。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2103561342057943314">@ClaudeDevs: 5 時間上限で区切りのいい所まで進める（週次上限から固定枠）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2103561343391735842">@ClaudeDevs: 提供範囲（Pro 週 1 回・Max/Team Premium は上限のたび）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2107542087243907506">@ClaudeDevs: クラウドセッションの手引き（7 ワークフロー・GitHub 接続）</a></li>
+        <li><a href="https://x.com/oikon48/status/2106020317063995801">@oikon48: クラウドセッションに事前インストールされたツール一覧</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>effort は常に max が最適ではないと中の人が検証</h3>
+    <h3 class="article__headline">週次リリースはエージェント連携とプラグイン導線を整備</h3>
     <div class="article__body">
-      <p>effort（思考の深さ）の使い分けが引き続き話題だ。中の人の <strong>trq212</strong> は「effort とは何か、なぜ常に max を使わないのか」を evals と自前の検証で掘り下げ、<strong>全部を max にするのが最適とは限らない</strong>という結果を公開した。深く考えさせるほど良いわけではなく、作業に合わせて段階を選ぶほうが速度とコストの両面で効く、という整理だ。</p>
-      <p>ツール側も追随した。<strong>2.1.286</strong> で <strong>Ultracode が <code>/effort</code> の独立トグル</strong>になり、xhigh を強制しなくなった。どの effort レベルでも Ultracode を併用できる。「別モードで深さを決める」より「ダイヤルで深さを選ぶ」操作へ寄せる動きが、発信と実装の両方で進んでいる。</p>
+      <p>この週は <strong>2.1.287〜2.1.294</strong> が出た。エージェント周りでは、teammates が共有エージェントを生成する <code>agent.spawn</code> が入り、Agent tool に <strong>effort を指定するフラグ</strong>が付いてサブエージェントごとに思考の深さを変えられるようになった。プラグインは <code>claude plugin install --marketplace &lt;source&gt;</code> でマーケットプレイスの追加と導入を一手でこなせる。</p>
+      <p>開発者向けには、Python・TypeScript の SDK に <strong>Computer use と Browser use</strong> のツールセットが組み込まれ、クリックや入力のループを自前で書かずに済むようになった。地味な更新では、UNC ネットワークファイル読み取りで権限確認を迂回できた問題の修正や、ローカル MCP サーバーの既定プロトコルを 2026-07-28 に上げる変更が入った。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/trq212/status/2103576349499855160">@trq212: What is effort really?（max 一択が最適でないという検証）</a></li>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.286：Ultracode を /effort の独立トグルに・xhigh 強制を廃止）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.287〜2.1.294：agent.spawn・Agent tool の effort・--marketplace・UNC 権限修正・MCP プロトコル更新）</a></li>
+        <li><a href="https://x.com/ClaudeCodeLog/status/2106525277618635228">@ClaudeCodeLog: 2.1.289（agent.spawn でチームが共有エージェントを生成）</a></li>
+        <li><a href="https://x.com/oikon48/status/2107629067537440850">@oikon48: 2.1.292 でサブエージェントの effort を指定できる</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2107925762720326090">@ClaudeDevs: SDK に Computer use・Browser use ツールセットを内蔵</a></li>
       </ul>
     </details>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Devin がセッションをまたぐ記憶を持つ</h2>
 
   <article class="article">
-    <h3 class="article__headline">週次リリースはプラグイン導線と使用量表示の整備が中心</h3>
+    <h3 class="article__headline">Devin が夜間に自己改善する記憶グラフを導入</h3>
     <div class="article__body">
-      <p>週を通して <strong>2.1.282〜2.1.286</strong> が出て、中身は使い勝手の地固めが中心だった。プラグイン周りでは<strong>提出・レビュー追跡・利用状況</strong>を見る導線が整い、<code>claude plugin configure</code> でオプションを設定できるようになった。<code>/usage</code> には<strong>使った金額のドル表示</strong>が加わり、Opus 5.5 のコストを試算する計算機も用意された。<code>claude --desktop</code> でデスクトップアプリを現在のディレクトリから開ける導線も入った。</p>
-      <p>安全・運用面では、バックグラウンドのコマンドに<strong>時間上限</strong>（既定 30 分・最大 2 時間）が付き、<code>/doctor prompt-audit</code> が CLAUDE.md や skill を<strong>古いモデル向けの書き方</strong>がないか監査するようになった。残りの大半はセッション再開・クラウドセッション・認証更新まわりの取りこぼし修正で、長時間・遠隔運用の足元を黙々と固める更新が続いた。</p>
+      <p>10/5、Cognition が Devin に <strong>Dreaming</strong> を導入した。セッションをまたいで「ユーザーがどう働くか」の記憶グラフを作り、夜間に古い記録を自分で整理し、埋もれた情報を見つけて自己改善する。初期の実験では、指示していないのに複数の Devin が記憶を介して大規模に連携する様子も見られたという。</p>
+      <p>仕組みはオープン仕様「<strong>Agent Memory Repo</strong>」として公開された。エージェントがセッションをまたいで知識を保持・更新するための標準で、skill として導入できる。エージェントの「記憶」を各ツール固有の機能から、共通基盤へ広げようとする動きだ。</p>
     </div>
     <details class="article__sources">
       <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2103577007938228300">@ClaudeDevs: プラグイン提出ポータル（提出・レビュー追跡・利用状況、MCP 利用は今年 110 倍）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2103548467729887677">@ClaudeDevs: Opus 5.5 のコストを /usage の計算機で試算</a></li>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.282〜2.1.286：plugin configure・claude --desktop・/usage のドル表示・background コマンドの時間上限・/doctor prompt-audit・再開/クラウド/認証修正）</a></li>
+        <li><a href="https://x.com/cognition/status/2107165034463867001">@cognition: Dreaming（記憶グラフ・夜間の自己改善・Agent Memory Repo）</a></li>
+        <li><a href="https://x.com/cognition/status/2107165037081104826">@cognition: 複数 Devin が記憶を介して自発的に連携した初期実験</a></li>
+        <li><a href="https://x.com/oikon48/status/2107243601071899086">@oikon48: オープン仕様 Agent Memory Repo の紹介（skill で導入）</a></li>
       </ul>
     </details>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">OpenAI DevDay——Codex の高速化とセキュリティ強化</h2>
 
   <article class="article">
-    <h3 class="article__headline">Codex に毎秒300トークンの超高速モードとリポジトリ常時監視</h3>
+    <h3 class="article__headline">Devin がクラウド Mac で iOS 開発も任せられるように</h3>
     <div class="article__body">
-      <p>OpenAI は 9/29 の DevDay で開発者向けの発表を重ねた。目玉のひとつが <strong>Ultrafast</strong> で、Codex では<strong>最大 8 倍・毎秒 300 トークン</strong>、API でも最大 6 倍の生成速度を出す有料の速度ティアだ。sama が「速すぎてもう戻れない」と評すなど、エージェントの反復を体感速度から変える方向の投資といえる。</p>
-      <p>もうひとつが <strong>Codex Security Cloud</strong> の大型更新だ。サイバー向けモデル（Daybreak Blue）を既定で使い、<strong>GitHub リポジトリ全体を走査</strong>して新しいコミットを継続的にレビューし、検出を調査・重複排除したうえで修正案まで用意する。背景には常時稼働の個人エージェント dots（GPT-6 Astra）や低価格の GPT-6.1 Sol の発表があり、「安いモデルで大量に回し、本番前に機械で検証する」路線が一段進んだ。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（4）</summary>
-      <ul>
-        <li><a href="https://x.com/OpenAI/status/2104993966043320759">@OpenAI: Ultrafast（Codex で最大 8 倍・毎秒 300 トークン、API で最大 6 倍）</a></li>
-        <li><a href="https://x.com/OpenAI/status/2104987422308335828">@OpenAI: Codex Security Cloud の大型更新（Daybreak Blue・リポジトリ走査・修正案）</a></li>
-        <li><a href="https://x.com/OpenAI/status/2104984504133918973">@OpenAI: 常時稼働の個人エージェント dots（GPT-6 Astra）</a></li>
-        <li><a href="https://x.com/OpenAI/status/2104986129686741046">@OpenAI: GPT-6.1 Sol（Astra の約 5 分の 1 の価格）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ChatGPT 課金の持ち込みが広がる——Devin・Notion</h2>
-
-  <article class="article">
-    <h3 class="article__headline">自分の ChatGPT Plus/Pro を Devin と Notion の AI 利用に使える</h3>
-    <div class="article__body">
-      <p>自分が契約している <strong>ChatGPT の枠を他ツールで使える</strong>動きが同じ週に重なった。<strong>Devin</strong> は 9/29、ChatGPT Plus/Pro でログインすると、Devin 内の OpenAI モデル利用がその契約枠から引かれるようにした。Devin Cloud・Desktop・CLI で有効だ。別途のモデル課金を増やさずにエージェントを使える点が、個人ユーザーには効く。</p>
-      <p><strong>Notion</strong> も同日、ChatGPT Plus/Pro の契約で Notion 内の AI 利用をまかなえるようにした。プランをつなぎ、使う GPT モデルを選ぶだけで済む。各社が<strong>「モデルの課金は利用者が持っているものを使う」</strong>方向に動くことで、ツールごとに AI 料金が積み上がる負担を下げ、乗り換えや併用のハードルを下げようとしている。</p>
+      <p>Cognition は Devin の各セッションに<strong>専用のクラウド Mac</strong> を割り当てた。<code>xcodebuild</code> や iOS シミュレータ、画面を操作する Computer use が動くので、モバイル開発もほかのチケットと同じように委任できる。ベータ版の Devin モバイルアプリも出ており、リポジトリを明示しなくてもプロンプトから探し当てるという。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/cognition/status/2104996240190792029">@cognition: ChatGPT の契約を Devin で直接使える（Cloud・Desktop・CLI）</a></li>
-        <li><a href="https://x.com/NotionHQ/status/2104994569964388738">@NotionHQ: ChatGPT Plus/Pro の契約で Notion の AI 利用をまかなえる</a></li>
+        <li><a href="https://x.com/devindevelopers/status/2107946298242417096">@devindevelopers: 各セッションにクラウド Mac（xcodebuild・シミュレータ・Computer use）</a></li>
+        <li><a href="https://x.com/oikon48/status/2105510210223894717">@oikon48: Devin モバイルアプリ（ベータ）の所感</a></li>
       </ul>
     </details>
   </article>
