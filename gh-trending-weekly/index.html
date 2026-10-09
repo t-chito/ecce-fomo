@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年10月2日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年10月9日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年10月2日">
+<meta property="og:title" content="GitHub トレンド — 2026年10月9日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,223 +23,166 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月2日（金）</span>
+        <span>2026年10月9日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">今週の主役 — エージェントを「組織」として動かす</h2>
+  <h2 class="topic__title">今週の筆頭 — PS5 を PC へ移植する</h2>
 
   <article class="article">
-    <h3 class="article__headline">paperclipai/paperclip — エージェントを「社員」として束ねて管理するアプリ</h3>
+    <h3 class="article__headline">boykopovar/AnyPS5 — PS5 の実行ファイルを PC 向けに変換する</h3>
     <div class="article__body">
-      <p>About は「The open-source app everyone uses to manage agents at work」。複数ベンダーの AI エージェント（Claude・Codex・Cursor など）を、社員のように一つの組織として運用するためのオープンソースアプリである。</p>
-      <p>README によれば、役割と権限を持つ組織図、承認ゲート付きのタスク管理、エージェント・プロジェクト・会社の各単位でのコスト上限、共有スキルの版管理、定期実行、監査ログを備える。多数のエージェントをタブで個別に抱える代わりに、一箇所で<strong>ガバナンスと費用を統制する</strong>という発想だ。MIT ライセンス、主要言語は TypeScript。今週は週間トレンドの首位で、週間で約14,000★を集めた。</p>
+      <p>PS5 の実行ファイルを Linux と Windows のネイティブ形式へ変換するツールである。エミュレーションや別プロセスのランタイムを使わず、PS5 のシステム PRX ライブラリを動的リンク用に実装し直して動かす。シェーダは SPIR-V へ再コンパイルし、SDL でゲームパッドに対応する。README は相互運用・研究・保存・互換性のための試みと位置づけ、著作権のあるソフトやファームウェア、鍵は含まないと明記する。主要言語は C++。<strong>週間で約10,200★</strong>を集め、今週の首位となった。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/paperclipai/paperclip">paperclipai/paperclip</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">TencentCloud/Octop — 自己ホスト型の多人数・多エージェント AI アシスタント</h3>
-    <div class="article__body">
-      <p>About は「A smarter, self-hosted AI assistant — multi-user, multi-agent」。Web ダッシュボード・CLI・各種チャット連携・定期実行を一つのプロセスにまとめ、データはすべて手元に置く自己ホスト型のアシスタントである。</p>
-      <p>README によれば、タスクに応じて専門エージェントを切り替え、管理者が複数ユーザーの作業空間を分離できる。Feishu・Telegram・Discord などへの接続、RAG による知識ベース、自然言語での cron 設定、JWT 認証やシェルコマンドのガードレール、PII の秘匿を持つ。Claude Code などとは ACP で双方向に連携する。主要言語は Python。週間で約1,400★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/TencentCloud/Octop">TencentCloud/Octop</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">agent-substrate/substrate — エージェントを大量に多重実行するランタイム</h3>
-    <div class="article__body">
-      <p>About は「Agent Substrate: the core system」。状態を持つ AI エージェントを、サンドボックス環境で大規模に動かすためのランタイムである。</p>
-      <p>README によれば、多数のアクターを少数のワーカーに多重化し、suspend/resume を使って 30 倍超のオーバーサブスクリプションと毎秒 500 回超の再開を実現するという。microVM と gVisor による<strong>カーネル・ネットワーク分離</strong>、休止をまたいだ作業メモリとファイルシステムの保持、Kubernetes ネイティブな運用を特徴とする。ADK・LangChain・Claude Code・MCP サーバーに対応する。主要言語は Go。週間で約370★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/agent-substrate/substrate">agent-substrate/substrate</a></li>
+        <li><a href="https://github.com/boykopovar/AnyPS5">boykopovar/AnyPS5</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントに「記憶」を持たせる</h2>
+  <h2 class="topic__title">エージェントに新しい能力を与える</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>vectorize-io/hindsight — 学習するエージェントメモリ</h3>
+    <h3 class="article__headline">Panniantong/Agent-Reach — AI エージェントに Web を読む目を与える</h3>
     <div class="article__body">
-      <p>About は「Hindsight: Agent Memory That Learns」。会話履歴の呼び戻しにとどまらず、エージェントが時間をかけて学習・保持するための長期記憶システムである。</p>
-      <p>README によれば、記憶を世界の事実・経験・観察・メンタルモデルに整理し、retain（保存）・recall（検索）・reflect（分析）の 3 操作で扱う。意味・キーワード・グラフ・時間軸の並列検索、学習に応じて更新される knowledge pages、60 以上の連携、PII 検出による Memory Defense を備え、LongMemEval で高精度をうたう。主要言語は Python、topics は <code>ai-memory</code>・<code>agents</code> など。<strong>週間で約17,000★</strong>と、今週の伸びでも際立った。</p>
+      <p>AI エージェントに、通常は読み取りにくいサイトの内容へ届く手段を与えるツールである。Twitter・Reddit・YouTube・GitHub・Bilibili・小紅書などを 1 つの CLI から読み書きし、有料 API を使わない。各プラットフォームに複数のバックエンドを順に並べ、1 つが壊れても別に切り替わる。認証情報は手元にだけ保存し、doctor コマンドでどの経路が有効かを確認できる。Claude Code や Cursor などシェルを使えるエージェントと組み合わせる。主要言語は Python。週間で約7,000★を集めた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/vectorize-io/hindsight">vectorize-io/hindsight</a></li>
+        <li><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">earthtojake/text-to-cad — エージェントに 3D CAD を作らせる</h3>
+    <div class="article__body">
+      <p>AI コーディングエージェントに、手元で 3D モデルを生成させるプラグインである。STEP・GLB・STL・3MF 形式の出力に加え、製造性チェック、図面生成、3D プリントや板金・CNC の加工サービスへの接続を扱う。ローカルの CAD ビューアサーバーと、CAD モデリング・DXF 図面・ロボット記述ファイル・G コード生成などのスキルを備える。Claude Code・Codex・Cursor などに対応する。想定利用者はエンジニアやメイカー、ロボティクス関係者である。主要言語は Python。週間で約1,900★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">heygen-com/hyperframes — HTML から動画を生成するフレームワーク</h3>
+    <div class="article__body">
+      <p>HTML・CSS・アニメーションを、決定的な MP4 動画に変換するフレームワークである。構成は HTML ファイルで書き、データ属性でタイミングやトラックを指定する。GSAP・CSS・Lottie・Three.js などからアニメーションを取り込み、ヘッドレス Chrome で各フレームを描画して FFmpeg で符号化するため、同じ入力からは同じ出力が得られる。足場作りやプレビュー、描画を行う CLI、エージェント向けのスキル、AWS Lambda での描画を備える。<strong>エージェントや CI のパイプラインでの動画生成</strong>を想定する。主要言語は TypeScript。週間で約4,000★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">既存のソフトを「エージェント対応」にする</h2>
+  <h2 class="topic__title">エージェントを組み立て、運用する</h2>
 
   <article class="article">
-    <h3 class="article__headline">HKUDS/CLI-Anything — あらゆるソフトを CLI 化してエージェントに渡す</h3>
+    <h3 class="article__headline">mvschwarz/openrig — 複数のコーディングエージェントをチームにする</h3>
     <div class="article__body">
-      <p>About は「CLI-Anything: Making ALL Software Agent-Native」。既存のアプリケーションを、AI エージェントが操作できる CLI へ自動変換するフレームワークである。</p>
-      <p>README によれば、解析・設計・実装・テスト・ドキュメント・公開までの 7 段階のパイプラインで、ソースや GitHub リポジトリから本番品質の CLI を生成する。Blender や LibreOffice といった実アプリを直接呼び出し、対話的な REPL とスクリプト用サブコマンドの両方、機械可読な JSON 出力を持つ。導入済み CLI を束ねる CLI-Hub も備える。主要言語は Python。週間で約1,100★。</p>
+      <p>複数の AI コーディングエージェントを、役割を持つ 1 つのチームとして動かすソフトである。YAML でトポロジを定義し、1 コマンドで tmux セッションを立ち上げる。Claude Code・Codex・Pi を同じチームに混在させ、rig send や rig broadcast でエージェント同士が連絡を取り合う。既存セッションの発見・取り込み、構成の退避と復元、TUI や MCP サーバー、ローカルデーモンを備える。起動時に各ツールのフックや権限設定を書き換えるため、README は事前のバックアップを勧める。主要言語は TypeScript。週間で約2,700★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/HKUDS/CLI-Anything">HKUDS/CLI-Anything</a></li>
+        <li><a href="https://github.com/mvschwarz/openrig">mvschwarz/openrig</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">dream-num/univer — AI エージェント向けのオフィス実行基盤</h3>
+    <h3 class="article__headline">thedotmack/claude-mem — セッションをまたいで文脈を持ち越す</h3>
     <div class="article__body">
-      <p>About は「The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime」。表計算・文書・スライドなどを一つのランタイムで扱えるようにするオープンソースのオフィス SDK である。</p>
-      <p>README によれば、Canvas ベースの描画エンジン、差し替え可能なプラグイン構成、ブラウザとサーバーの両方で動く設計、計算エンジン、統一ファサード API を持つ。<strong>エージェントが内容を検査・編集できる連携</strong>を前面に出しており、オフィス文書をエージェントの作業対象に組み込む流れに乗る。主要言語は TypeScript。週間で約5,300★。</p>
+      <p>セッションをまたいでエージェントの文脈を持ち越すための記憶システムである。ツールの利用履歴を自動で捉え、AI で要約・圧縮し、次回以降のセッションに関連する文脈を差し込む。SessionStart など 5 つのフックとローカルのワーカーサービス、SQLite の全文検索と Chroma のベクトル検索を組み合わせた検索を持つ。<code>&lt;private&gt;</code> タグで秘匿内容を保存対象から外せる。Claude Code 以外のエージェントや IDE にも対応する。主要言語は TypeScript。<strong>累計で約99,000★</strong>に達し、週間でも約3,200★を集めた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/dream-num/univer">dream-num/univer</a></li>
+        <li><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">pbakaus/impeccable — AI の UI 設計を底上げするデザイン言語</h3>
+    <h3 class="article__headline">mattpocock/skills — 実務者向けに整えたエージェントスキル集</h3>
     <div class="article__body">
-      <p>About は「The design language that makes your AI harness better at design」。AI コーディングエージェントが生成するフロントエンドの UI/UX の質を底上げするためのガイダンス集である。</p>
-      <p>README によれば、24 のコマンドを持つ単一スキル <code>/impeccable</code> と、アクセシビリティ・性能・レスポンシブなどを検査する 61 の検出ルールを備える。ブラウザ上で変種を試す反復モード、設計方針を保つ PRODUCT.md／DESIGN.md、AI なしで走る CLI も持つ。Claude・Cursor・Copilot など複数のツールと連携する。主要言語は Rust。週間で約2,700★。</p>
+      <p>コーディングエージェント向けの、再利用できる指示（スキル）を集めたリポジトリである。作者は無秩序な指示出しへの代替として、小さく組み合わせやすいスキル群を示す。着手前に計画を問い直す grill 系、共通の用語集や意思決定記録、テスト駆動やバグ診断を促すスキル、仕様化やアーキテクチャ改善のスキルなどを、エンジニアリングと生産性の 2 群に整理する。Claude Code・Codex・Copilot・Gemini CLI などに対応する。主要言語は Shell。<strong>累計で約28万★</strong>と群を抜き、週間でも約7,400★を集めた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">スキル・テンプレート・CI への組み込み</h2>
-
-  <article class="article">
-    <h3 class="article__headline">alirezarezvani/claude-skills — 380 超のスキルとプラグインを束ねた大規模集</h3>
-    <div class="article__body">
-      <p>About によれば、30 超のエージェント・70 超のコマンド・380 超のスキルを収めたライブラリ。エンジニアリングからマーケティング・法務・財務・リサーチ・日々の生産性まで 20 領域をカバーする。</p>
-      <p>README によれば、Claude Code・Codex・Gemini CLI・Cursor など十数種のツールに対応し、標準ライブラリだけで動く 580 超の Python ツール、用途別のペルソナ、導入前にスキルを検査するセキュリティ監査、複数プラットフォームへ一括展開する変換スクリプトを持つ。主要言語は Python。週間で約700★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/alirezarezvani/claude-skills">alirezarezvani/claude-skills</a></li>
+        <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>davila7/claude-code-templates — 部品を集めて導入する CLI</h3>
+    <h3 class="article__headline">cursor/plugins — Cursor 公式プラグインの仕様とカタログ</h3>
     <div class="article__body">
-      <p>About は「CLI tool for configuring and monitoring Claude Code」。すぐ使える設定・エージェント・コマンド・MCP 連携をまとめて導入するためのツールキットである。</p>
-      <p>README によれば、Web の対話画面か CLI から 100 超の部品を選んで入れられ、セキュリティ監査や性能最適化などの専門エージェント、<code>/generate-tests</code> のようなスラッシュコマンド、GitHub や PostgreSQL への MCP 連携、PDF・Excel 処理スキルを含む。アナリティクス監視や会話ビューア、ヘルス診断といった運用ツールも備える。主要言語は JavaScript。週間で約600★。</p>
+      <p>エディタ Cursor の公式プラグインの仕様と実装をまとめたリポジトリである。各プラグインは独自のマニフェストを持つ単独のディレクトリで、ルートのマニフェストが一覧を束ねる。プラグインはエージェントのスキル、Cursor のルール、MCP サーバー定義を同梱する。コードレビューや CI、エージェントワークフロー向けの開発ツールに加え、GitHub・Google Workspace・Salesforce・HubSpot・Playwright などとの連携を収める。主要言語は TypeScript。週間で約1,100★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/davila7/claude-code-templates">davila7/claude-code-templates</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>anthropics/financial-services — 金融業務に特化したエージェント・スキル集</h3>
-    <div class="article__body">
-      <p>個別ページに About の記載はないが、README によれば、Anthropic の Claude を基盤に金融業務のワークフローを揃えたリファレンスである。Cowork プラグインと Managed Agents API テンプレートの両形態で提供される。</p>
-      <p>ピッチ・決算レビュー・モデル構築・バリュエーション・GL 照合・KYC など 11 のエージェント、投資銀行・株式リサーチ・PE など 7 領域の縦割りプラグイン、Daloopa・S&amp;P Global・FactSet など 11 のデータコネクタを含む。README は<strong>投資助言ではなく人のレビュー前提のドラフト用途</strong>だと明示する。主要言語は Python。週間で約1,300★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/anthropics/financial-services">anthropics/financial-services</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">anthropics/claude-code-action — Claude を GitHub の自動化に組み込む Action</h3>
-    <div class="article__body">
-      <p>個別ページに About の記載はないが、README によれば、Claude を GitHub のワークフローに組み込む GitHub Action である。</p>
-      <p>@claude メンションやイシューの割り当て、明示的なプロンプトで起動し、コードの質問応答・PR レビュー・修正や機能の実装を行う。進捗をチェックボックスで示し、検証済みの JSON を Action の出力として返す。認証は Anthropic API・AWS Bedrock・Google Vertex AI・Microsoft Foundry に対応し、処理は自前の runner 上で走る。主要言語は TypeScript。週間で約380★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/anthropics/claude-code-action">anthropics/claude-code-action</a></li>
+        <li><a href="https://github.com/cursor/plugins">cursor/plugins</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ローカル推論・GPU・学習</h2>
+  <h2 class="topic__title">エージェントの外側 — 手元で動かす道具</h2>
 
   <article class="article">
-    <h3 class="article__headline">debpalash/VoiceStudio — 完全ローカルで動く音声合成スタジオ</h3>
+    <h3 class="article__headline">EpicGames/raddebugger — Windows x64 向けのネイティブデバッガ</h3>
     <div class="article__body">
-      <p>About は「VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription &amp; audiobook creation in 646 languages」。すべて手元のマシンで完結する音声生成のデスクトップアプリである。</p>
-      <p>README によれば、参照音声からの声のクローン、説明文からの音声設計、動画の吹き替え、文字起こしや口述筆記、オーディオブック作成を備え、646 言語に対応する。ローカル API と MCP を通じて<strong>エージェントのワークフローにも組み込める</strong>。クラウドを必要としないローカルファーストを前面に出す。週間で約16,000★。</p>
+      <p>Windows x64 向けの、ネイティブで動くグラフィカルデバッガである。Epic Games が公開し、現在はアルファ版で、PDB を伴うローカルの Windows x64 デバッグに対応する。独自の RAD Debug Info 形式を使い、PDB などは必要に応じてこの形式へ変換する。大規模プロジェクト向けに調整した高速リンカ RAD Linker と、デバッグ情報を変換・ダンプする radbin を同梱する。Linux 対応と DWARF への対応は予定とされる。主要言語は C。週間で約450★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></li>
+        <li><a href="https://github.com/EpicGames/raddebugger">EpicGames/raddebugger</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">rohitg00/ai-engineering-from-scratch — AI を手で実装して学ぶ無料教材</h3>
+    <h3 class="article__headline">pablostanley/yoinks — 広告なしで動画を落とす端末ツール</h3>
     <div class="article__body">
-      <p>About は「Learn it. Build it. Ship it for others.」。AI を API 越しに使うのではなく、端から自分の手で実装して学ぶ無料のカリキュラムである。</p>
-      <p>README によれば、20 段階・523 レッスン、約342 時間分の内容で、数学の基礎から古典的機械学習・深層学習・Transformer・LLM・エージェント・本番運用までを順に扱う。Python を中心に TypeScript・Rust・Julia の実装、レッスンごとの再利用可能な成果物、6 巻の書籍、認定試験向けのトラックを含む。主要言語は Python。週間で約6,500★。</p>
+      <p>端末から動画をダウンロードする CLI である。YouTube・X・Instagram・TikTok など 1,800 以上のサイトに対応し、広告や偽のダウンロードボタン、リダイレクトを挟まない。URL を貼り付けて解像度や音声のみを選ぶと、<code>~/Downloads</code> に保存される。全画面の端末 UI を Ink で作り、内部では yt-dlp と ffmpeg を使う。README は個人的な保存を用途に挙げ、各サイトの規約に反する場合があると注意する。主要言語は TypeScript。週間で約2,700★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/rohitg00/ai-engineering-from-scratch">rohitg00/ai-engineering-from-scratch</a></li>
+        <li><a href="https://github.com/pablostanley/yoinks">pablostanley/yoinks</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">tile-ai/tilelang — 高性能 GPU カーネルを書くための DSL</h3>
+    <h3 class="article__headline">DuarteSantos8/openGym — 自分のサーバーで動かす筋トレ記録</h3>
     <div class="article__body">
-      <p>About は「Domain-specific language designed to streamline the development of high-performance GPU/CPU/Accelerators kernels」。行列積やアテンション、量子化といった高性能カーネルを書くための DSL である。</p>
-      <p>README によれば、Apache TVM を土台に、Python 風の構文で低レベルの最適化を保ったままカーネルを記述できる。NVIDIA CUDA・AMD ROCm・Apple Metal・Huawei Ascend・LLVM CPU など複数のバックエンドに対応し、自動スケジューリング、tensor core やスパース演算の活用、言語サーバーやデバッグ・可視化ツールを備える。主要言語は Python。週間で約480★。</p>
+      <p>データを自分のサーバーに置く、自己ホスト型の筋トレ・体重記録アプリである。運動ライブラリから週次のルーティンを組み、スーパーセットやウォームアップ、有酸素運動を含む記録を取れる。鍛えた部位や疲労・衰えを示す筋肉マップ、推定 1RM、進捗写真の記録を持つ。パスキーでのログイン、端末間の同期、オフライン利用、FitNotes・Strong・Hevy などからの取り込みに対応する。任意で自分の鍵を使う AI コーチや、読み取り専用の MCP サーバーも使える。Docker Compose で導入する。主要言語は JavaScript。週間で約6,100★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/tile-ai/tilelang">tile-ai/tilelang</a></li>
+        <li><a href="https://github.com/DuarteSantos8/openGym">DuarteSantos8/openGym</a></li>
       </ul>
     </details>
   </article>
