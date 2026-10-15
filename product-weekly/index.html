@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年10月8日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年10月15日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年10月8日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年10月15日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月8日（木）</span>
+        <span>2026年10月15日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,111 +33,189 @@
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">Claude Code を TypeScript で改造できる Mods が登場</h3>
+    <h3 class="article__headline">デスクトップアプリが複数セッション並行向けに刷新</h3>
     <div class="article__body">
-      <p>10/1、<strong>Claude Code Mods</strong> が 2.1.287 で入った。Claude Code の挙動・UI・機能をユーザー自身が書き換える仕組みで、数行の TypeScript で書けるほか、Claude に作らせることもできる。mod はプラグインとして配布され、CLI でもデスクトップでも <code>/plugin</code> で導入する。中の人の bcherny は「とんでもない」と評し、trq212 は「ソフトウェアは可変になりつつあり、Claude Code でも第一級の機能にした」と書いた。</p>
-      <p>組み込み mod「<strong>You should Know</strong>」も加わった。別のエージェントが応答を監視し、ユーザーや Claude が見落としそうな要点を知らせる。<code>/plugin enable cc-plugin-you-should-know@builtin</code> で有効になる。公式のサンプル mod 集に加え、HTML で実装プランを練る html-plan や過去プロンプトへ飛ぶ prompt-rail など、コミュニティ製の mod も早速出てきている。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（5）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2105721434807083061">@ClaudeDevs: Claude Code を mod できる（TypeScript 数行・プラグインとして /plugin で導入）</a></li>
-        <li><a href="https://x.com/bcherny/status/2105756563302723721">@bcherny: Mods are absolutely insane（プロンプトで自分好みに）</a></li>
-        <li><a href="https://x.com/trq212/status/2105734197801562264">@trq212: すべてのソフトは可変になる・Claude Code の第一級機能に</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2106118517447876618">@ClaudeDevs: 組み込み mod「You should Know」（見落とし警告・/plugin enable）</a></li>
-        <li><a href="https://x.com/trq212/status/2107192901537329354">@trq212: html-plan（HTML で実装プランを練るコミュニティ mod）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Haiku 5.5 が既定の Haiku になり安いサブエージェント役に</h3>
-    <div class="article__body">
-      <p>10/7、Anthropic が <strong>Claude Haiku 5.5</strong>（<code>claude-haiku-5-5</code>）を公開し、2.1.293 で Claude Code の既定 Haiku になった。1M コンテキストに対応し、実行コストは Haiku 4.5 より平均 75% ほど安い。effort（思考の深さ）を調整でき、要約やコンパクションのような<strong>大量・低コストの処理を Opus 5.5 や Sonnet 5.5 のサブエージェント</strong>として任せる使い方に向く。</p>
-      <p>価格は 100 万トークンあたりで次の通り。Devin も同日に採用し、コーディング指標 FrontierCode 1.1 で 58.4% と、Sonnet 5 を約 8 分の 1 のコストで上回ったとした。Max・Team 向けには Claude Platform の月次 API クレジットも始まった。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>区分</th><th>入力</th><th>出力</th><th>キャッシュ読み</th></tr></thead>
-          <tbody>
-            <tr><td>10万トークンまで</td><td>$0.10</td><td>$0.50</td><td>$0.01</td></tr>
-            <tr><td>10万トークン超</td><td>$0.50</td><td>$2.50</td><td>$0.05</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>10/14、Anthropic が Claude Code の<strong>デスクトップアプリ</strong>を、複数セッションを並行して回す用途に向けて大きく更新した。セッションの起動が速くなり、作業を複数に振り分けやすく、各セッションの状況が一目で分かる。具体的には、複数フォルダ・SSH・クラウドのセットアップをまとめて保存してすぐ再開できる<strong>環境の保存</strong>と、並列セッションが同じ場所を奪い合わないようフォルダごとに独立した作業領域を持つ worktree が入った。中の人の trq212 は「ほぼ v2」と呼び、アプリ自身が自分の能力を理解してサブセッションを切り出せるようになったと書いた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2107895955144208813">@ClaudeDevs: Haiku 5.5 が Claude Code に・Haiku 4.5 比 75% 安・サブエージェント向け</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2107895956872290654">@ClaudeDevs: Haiku 5.5 の価格（10万トークン境界の 2 段階）</a></li>
-        <li><a href="https://x.com/cognition/status/2107942832921075726">@cognition: Haiku 5.5 を Devin で採用（FrontierCode 1.1 で 58.4%）</a></li>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.293：Haiku 5.5 を既定 Haiku に・1M）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2110445844675838148">@ClaudeDevs: デスクトップアプリを複数セッション並行向けに更新（起動が速く・分担しやすく・状況が見える）</a></li>
+        <li><a href="https://x.com/oikon48/status/2110515034908766275">@oikon48: デスクトップアプリの改善点（環境の保存・フォルダごとの worktree）</a></li>
+        <li><a href="https://x.com/trq212/status/2110463962877989276">@trq212: Claude Code Desktop は「ほぼ v2」・サブセッションを切り出せる</a></li>
+        <li><a href="https://x.com/amorriscode/status/2110448790880821268">@amorriscode: UI を簡素化し複数セッションの管理を楽に</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">クラウドセッションに実務向けの手引きとツール整備</h3>
+    <h3 class="article__headline">Claude Code Projects が Pro・Max ユーザーへ開放</h3>
     <div class="article__body">
-      <p>クラウドセッションは、タスクごとに新しい VM で Claude Code を動かす仕組みだ。複数を同時に走らせられ、ノート PC を閉じても処理は進み続ける。Anthropic は<strong>向いている 7 つのワークフロー</strong>と、GitHub を一度でつなぐ手順をまとめた手引きを公開した。長時間・並行で回す使い方を前提にした整理だ。</p>
-      <p>実行環境の整備も進んでいる。以前は <code>gh</code> コマンドすら入っていなかったが、GitHub CLI などが<strong>あらかじめ使える</strong>ようになった。エージェントに実際のツールチェーンを渡し、人手の準備なしでタスクを委ねられる方向に寄せている。</p>
+      <p>10/9、<strong>Claude Code Projects</strong> の待機リストにいた Pro・Max ユーザーが全員開放された。Projects は、1 つの長い会話の中で Claude が調整役になり、関連するタスクを並列のクラウドセッション（スレッド）に振り分けて進める仕組みだ。ローカルの作業と組み合わせることもでき、リポジトリ・指示・メモリは全スレッドで共有される。まだベータで、容量に応じて順次開放される。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2107542087243907506">@ClaudeDevs: クラウドセッションの手引き（7 ワークフロー・GitHub 接続）</a></li>
-        <li><a href="https://x.com/oikon48/status/2106020317063995801">@oikon48: クラウドセッションに事前インストールされたツール一覧</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2108621476538781878">@ClaudeDevs: 待機リストの Pro・Max ユーザーを全員開放（4 分の入門動画つき）</a></li>
+        <li><a href="https://x.com/oikon48/status/2108702691820179747">@oikon48: Projects の仕組み（調整役の Claude が並列スレッドに振り分け・リポジトリ/指示/メモリ共有）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">週次リリースはエージェント連携とプラグイン導線を整備</h3>
+    <h3 class="article__headline">Claude Managed Agents に動的ワークフローが入る</h3>
     <div class="article__body">
-      <p>この週は <strong>2.1.287〜2.1.294</strong> が出た。エージェント周りでは、teammates が共有エージェントを生成する <code>agent.spawn</code> が入り、Agent tool に <strong>effort を指定するフラグ</strong>が付いてサブエージェントごとに思考の深さを変えられるようになった。プラグインは <code>claude plugin install --marketplace &lt;source&gt;</code> でマーケットプレイスの追加と導入を一手でこなせる。</p>
-      <p>開発者向けには、Python・TypeScript の SDK に <strong>Computer use と Browser use</strong> のツールセットが組み込まれ、クリックや入力のループを自前で書かずに済むようになった。地味な更新では、UNC ネットワークファイル読み取りで権限確認を迂回できた問題の修正や、ローカル MCP サーバーの既定プロトコルを 2026-07-28 に上げる変更が入った。</p>
+      <p>10/9、<strong>Claude Managed Agents</strong> の動的ワークフローがパブリックベータになった。リードエージェントが計画を書き、多数のエージェントがフェーズに分かれて走り、最後に結果を統合するマルチエージェント構成だ。トークン消費が大きいため、まずは範囲を絞ったタスクから始めて徐々に複雑にすることが推奨される。Claude Code からは <code>/claude-api managed-agents-onboard bug-hunter</code> で始められる。</p>
+      <p>あわせて Max・Team プランに<strong>月次 API クレジット</strong>（Max 5x で $100、20x で $200、Team は最大 $500）が付いた。クレジットは Messages API・Managed Agents・Agent SDK で使えるが、対話型の Claude Code セッションには使えない。定期実行で Slack や GitHub を読んで報告するエージェントを組む、といった自動化の土台になる。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（4）</summary>
+      <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.287〜2.1.294：agent.spawn・Agent tool の effort・--marketplace・UNC 権限修正・MCP プロトコル更新）</a></li>
-        <li><a href="https://x.com/ClaudeCodeLog/status/2106525277618635228">@ClaudeCodeLog: 2.1.289（agent.spawn でチームが共有エージェントを生成）</a></li>
-        <li><a href="https://x.com/oikon48/status/2107629067537440850">@oikon48: 2.1.292 でサブエージェントの effort を指定できる</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2107925762720326090">@ClaudeDevs: SDK に Computer use・Browser use ツールセットを内蔵</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2108591328732856655">@ClaudeDevs: 動的ワークフローがパブリックベータ（計画を書くリードエージェントがフェーズで分配）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2108320296323477683">@ClaudeDevs: Managed Agents で自動化を組む（定期的に Slack/GitHub を読んで報告）</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2108228391404966005">@ClaudeDevs: Max・Team に月次 API クレジット（$100/$200/最大$500）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>週次リリースはアイドル圧縮と可観測性を追加</h3>
+    <div class="article__body">
+      <p>この週は <strong>2.1.295〜2.1.300</strong> が出た。大きいのは 2.1.299 の<strong>アイドル圧縮</strong>で、20 万トークンを超える会話が約 54 分放置されると、1 時間のプロンプトキャッシュが切れる前に自動で圧縮する。2.1.300 では Claude Platform と連動し、OpenTelemetry のトレースに GenAI セマンティック規約の属性が乗るようになった。</p>
+      <p>破壊的な変更も入った。<code>claude remote-control</code> から <code>--sandbox</code>/<code>--no-sandbox</code> が消え、設定の <code>sandbox.enabled</code> に一本化された。MCP の allow ルールも厳格になり、<code>mcp__a</code> が <code>a__b</code> を含まなくなったので、<code>mcp__&lt;server&gt;__*</code> と正式名で書く必要がある。フックでは、起動・タイムアウト・異常終了時に動作をブロックする <code>onFailure: "block"</code> が加わった。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.295〜2.1.300：アイドル圧縮・OTel・remote-control の sandbox フラグ削除・MCP allow ルール厳格化・onFailure:"block"）</a></li>
+        <li><a href="https://x.com/ClaudeCodeLog/status/2110206740239188156">@ClaudeCodeLog: 2.1.299 リリース（190 CLI 変更）</a></li>
+        <li><a href="https://x.com/ClaudeCodeLog/status/2110440355468296404">@ClaudeCodeLog: 2.1.300 リリース（88 CLI 変更・virtualText・agent transcript ビュー）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">モバイルアプリから Claude Code セッションを起動できる</h3>
+    <div class="article__body">
+      <p>スマホの Claude アプリから Claude Code の新規セッションを立てられる設定が注目された。デスクトップなどの <strong>Remote Control</strong> で許可フォルダを登録しておけば、PC 側で <code>claude rc</code> を実行しなくても、そのフォルダからモバイルで直接セッションを起動できる。モバイルアプリ自体もコンテキストの内訳が見えるようになり、使い勝手が上がっている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/oikon48/status/2110668589980402010">@oikon48: モバイルから新規セッションを立てる設定の需要</a></li>
+        <li><a href="https://x.com/oikon48/status/2110609024060428628">@oikon48: 許可フォルダを登録すれば claude rc 不要でモバイルから起動できる</a></li>
+        <li><a href="https://x.com/oikon48/status/2110566859053674940">@oikon48: モバイルアプリでコンテキスト内訳が見られるように</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin がセッションをまたぐ記憶を持つ</h2>
+  <h2 class="topic__title">Devin が並列化と自動修正を押し出す</h2>
 
   <article class="article">
-    <h3 class="article__headline">Devin が夜間に自己改善する記憶グラフを導入</h3>
+    <h3 class="article__headline">Devin が仕事を分割して並列実行する動的ワークフロー</h3>
     <div class="article__body">
-      <p>10/5、Cognition が Devin に <strong>Dreaming</strong> を導入した。セッションをまたいで「ユーザーがどう働くか」の記憶グラフを作り、夜間に古い記録を自分で整理し、埋もれた情報を見つけて自己改善する。初期の実験では、指示していないのに複数の Devin が記憶を介して大規模に連携する様子も見られたという。</p>
-      <p>仕組みはオープン仕様「<strong>Agent Memory Repo</strong>」として公開された。エージェントがセッションをまたいで知識を保持・更新するための標準で、skill として導入できる。エージェントの「記憶」を各ツール固有の機能から、共通基盤へ広げようとする動きだ。</p>
+      <p>Cognition が Devin に<strong>動的ワークフロー</strong>を入れた。大きな仕事を分割して個々の Devin に渡し、結果を統合する。計画がエージェントの頭の中ではなくコードに残るので、どの Devin がどの順で何をするかが分かる。Devin は自分の配下に Devin を立てられ、タスクが数階層の木に広がる。直列なら全部の和の時間がかかる作業が、分割すれば最も遅い部分の時間で済む。同じ週に Anthropic も Managed Agents で似た動的ワークフローを出しており、並列オーケストレーションが各社の主題になっている。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（3）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/cognition/status/2107165034463867001">@cognition: Dreaming（記憶グラフ・夜間の自己改善・Agent Memory Repo）</a></li>
-        <li><a href="https://x.com/cognition/status/2107165037081104826">@cognition: 複数 Devin が記憶を介して自発的に連携した初期実験</a></li>
-        <li><a href="https://x.com/oikon48/status/2107243601071899086">@oikon48: オープン仕様 Agent Memory Repo の紹介（skill で導入）</a></li>
+        <li><a href="https://x.com/devindevelopers/status/2109887510184964285">@devindevelopers: 動的ワークフロー（計画がコードに残り、どの Devin が何をするか分かる）</a></li>
+        <li><a href="https://x.com/devindevelopers/status/2108587364926758936">@devindevelopers: Devin が配下の Devin を立て、数階層の木に広がる</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Devin がクラウド Mac で iOS 開発も任せられるように</h3>
+    <h3 class="article__headline">Devin がセキュリティ調査と外部連携を広げる</h3>
     <div class="article__body">
-      <p>Cognition は Devin の各セッションに<strong>専用のクラウド Mac</strong> を割り当てた。<code>xcodebuild</code> や iOS シミュレータ、画面を操作する Computer use が動くので、モバイル開発もほかのチケットと同じように委任できる。ベータ版の Devin モバイルアプリも出ており、リポジトリを明示しなくてもプロンプトから探し当てるという。</p>
+      <p>Devin の<strong>Security Swarm</strong> は、並列の Devin をコードベースに送り込んで脅威モデルを作り、ファイルをまたいで連鎖する悪用可能な脆弱性を探し、サンドボックスで実証して修正を PR で渡す。サポート基盤 Pylon との連携では、チケットを Devin が自動で修正する（新規顧客に $15,000 のクレジット）。</p>
+      <p>モデル面では <strong>Gemini 4 Argon</strong> が Devin Desktop と CLI で使え、FrontierCode 1.1 で 60.5% と Gemini 系で最高を記録した（10/27 まで Devin ユーザーは 75% 引き）。課金では、個人の ChatGPT プラン（Go・Plus・Pro）を Devin につなぎ、GPT の利用をそのプランの枠から引けるようになった。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（4）</summary>
+      <ul>
+        <li><a href="https://x.com/devindevelopers/status/2108240907539804464">@devindevelopers: Security Swarm（並列 Devin で脅威モデル構築・実証つき修正 PR）</a></li>
+        <li><a href="https://x.com/cognition/status/2110043605528408110">@cognition: Gemini 4 Argon が Devin Desktop/CLI に（FrontierCode 1.1 で 60.5%・期間限定 75% 引き）</a></li>
+        <li><a href="https://x.com/cognition/status/2110068304383725720">@cognition: Devin in Pylon（チケットを自動修正・新規に $15,000 クレジット）</a></li>
+        <li><a href="https://x.com/cognition/status/2108692010056188048">@cognition: 個人の ChatGPT プランを Devin につないで GPT 利用を賄える</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Codex が開発環境まわりを整える</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Codex が Windows サンドボックスと CLI の worktree を入れる</h3>
+    <div class="article__body">
+      <p>OpenAI の Codex が開発環境まわりを整えた。CLI 0.162.0 では、信頼済みのローカルプロジェクト向けに <strong>Git worktree の管理</strong>が入り、Command Center でタスクをピン留めでき、トランスクリプトの <code>/copy</code> も付いた。ユーザー要望の多かった Windows 向けには、MXC を土台にした<strong>新しいサンドボックス</strong>が載った。アプリ側では、Composer に次のプロンプト候補を出す予測機能と、Tab で編集可能な下書きとして受け取る操作が入った。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/Codex_Changelog/status/2108273867244425474">@Codex_Changelog: Codex CLI 0.162.0（Git worktree 管理・タスクのピン留め・/copy）</a></li>
+        <li><a href="https://x.com/embirico/status/2108607017833341421">@embirico: Windows の Codex サンドボックスを MXC 上で刷新</a></li>
+        <li><a href="https://x.com/Codex_Changelog/status/2110674916832129281">@Codex_Changelog: Composer の予測候補・Tab で編集可能な下書きに</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Grok・Cursor・X Premium が 1 つのサブスクに</h2>
+
+  <article class="article">
+    <h3 class="article__headline">The X Subscription が 3 つのプランを統合</h3>
+    <div class="article__body">
+      <p>10/12、X が <strong>The X Subscription</strong> を発表し、Grok・Cursor・X Premium のプランを統合した。Cursor でのコーディング、Grok でのチャット、X Premium の機能が 1 契約にまとまる。既存ユーザーは今のプランを維持するか、新サブスクへ切り替えてアカウントを連携する形で、段階的に展開される。従来は X と Grok の料金体系が分かりにくかったため、分かりやすくなったと歓迎する声もある。あわせて <strong>CodeRabbit</strong> が Cursor Origin のアプリマーケットプレイスのローンチパートナーになり、Origin 上の PR に AI レビューを直接出せるようになった。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/SpaceXSI/status/2109783335296008414">@SpaceXSI: The X Subscription（Grok・Cursor・X Premium を統合）</a></li>
+        <li><a href="https://x.com/oikon48/status/2109798255542583356">@oikon48: 分かりにくかった X/Grok のプランが統一されて分かりやすく</a></li>
+        <li><a href="https://x.com/coderabbitai/status/2110079539963461755">@coderabbitai: Cursor Origin のアプリマーケットプレイスにローンチパートナーとして参加</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Claude に Dashboards と Motion</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Claude がデータからダッシュボード、アイデアから動画を作る</h3>
+    <div class="article__body">
+      <p>10/8、Claude に <strong>Dashboards</strong> と <strong>Motion</strong> がベータで加わった。Dashboards は、データ基盤や CRM をつないで自然言語で質問すると、Claude がクエリを書いてダッシュボードを組み、データの変化に合わせて更新する。各チャートにはその元になったクエリが紐づく（有料プラン）。</p>
+      <p>Motion は、レポートやチャート、製品の操作手順を短いアニメーションにする。動画モデルを使わず各アニメーションをコードとして書くので、語句・数値・タイミングを後から変えて MP4 に書き出せる（Team・Enterprise プラン）。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/claudeai/status/2108271552991252810">@claudeai: Claude Dashboards と Claude Motion がベータに</a></li>
+        <li><a href="https://x.com/claudeai/status/2108271555822092483">@claudeai: Dashboards はクエリを書いて更新し続けるダッシュボードを作る（有料プラン）</a></li>
+        <li><a href="https://x.com/claudeai/status/2108271558170976743">@claudeai: Motion はアニメーションをコードで書き MP4 に書き出せる（Team・Enterprise）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Notion がエージェント向けに同期データベースを再構築</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Notion が外部データを取り込む同期データベースを作り直す</h3>
+    <div class="article__body">
+      <p>Notion が<strong>同期データベース</strong>をゼロから作り直した。GitHub・Jira・Salesforce のデータを Notion に取り込み、チームとエージェントが同じ文脈で作業できる。プロパティを足し、プロジェクトに紐づけ、自動化を走らせ、エージェントに渡せる。iPad アプリも、これまでの Web ビュー中心から<strong>ネイティブ実装</strong>へ作り替えが進んでいる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/devindevelopers/status/2107946298242417096">@devindevelopers: 各セッションにクラウド Mac（xcodebuild・シミュレータ・Computer use）</a></li>
-        <li><a href="https://x.com/oikon48/status/2105510210223894717">@oikon48: Devin モバイルアプリ（ベータ）の所感</a></li>
+        <li><a href="https://x.com/NotionHQ/status/2110410470788321595">@NotionHQ: 同期データベースを再構築（GitHub/Jira/Salesforce のデータをエージェントと共有）</a></li>
+        <li><a href="https://x.com/NotionHQ/status/2108732487925117405">@NotionHQ: iPad アプリをネイティブ実装へ作り替え</a></li>
       </ul>
     </details>
   </article>
