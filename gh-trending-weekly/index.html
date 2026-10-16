@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年10月9日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年10月16日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年10月9日">
+<meta property="og:title" content="GitHub トレンド — 2026年10月16日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,105 +23,49 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月9日（金）</span>
+        <span>2026年10月16日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">今週の筆頭 — PS5 を PC へ移植する</h2>
+  <h2 class="topic__title">今週の筆頭 — エージェントでソフトを解析する</h2>
 
   <article class="article">
-    <h3 class="article__headline">boykopovar/AnyPS5 — PS5 の実行ファイルを PC 向けに変換する</h3>
+    <h3 class="article__headline">morluto/rea — エージェントにソフトのリバースエンジニアリングをさせる</h3>
     <div class="article__body">
-      <p>PS5 の実行ファイルを Linux と Windows のネイティブ形式へ変換するツールである。エミュレーションや別プロセスのランタイムを使わず、PS5 のシステム PRX ライブラリを動的リンク用に実装し直して動かす。シェーダは SPIR-V へ再コンパイルし、SDL でゲームパッドに対応する。README は相互運用・研究・保存・互換性のための試みと位置づけ、著作権のあるソフトやファームウェア、鍵は含まないと明記する。主要言語は C++。<strong>週間で約10,200★</strong>を集め、今週の首位となった。</p>
+      <p>AI エージェントにソフトウェアの解析をさせる MCP サーバーである。ネイティブのバイナリ、JavaScript や Electron のアプリ、.NET のアセンブリ、Android の APK、Web サイト、パケットキャプチャ、ファームウェアなどを対象に、Claude Code や Codex などから挙動を調べる。バイナリ解析では Hopper・Ghidra・IDA を外部ツールとして使い、結果は根拠と前提を添えて返す。README は適法な研究・教育・相互運用・保存のための用途と位置づける。Node.js と npm で動く。<strong>週間で20万を超えるスター</strong>を集めて首位に立ったが、README 自身が名前や説明文を真似た別リポジトリに注意するよう促している。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/boykopovar/AnyPS5">boykopovar/AnyPS5</a></li>
+        <li><a href="https://github.com/morluto/rea">morluto/rea</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">NationalSecurityAgency/ghidra — NSA 製のリバースエンジニアリング基盤</h3>
+    <div class="article__body">
+      <p>米 NSA が公開するソフトウェアリバースエンジニアリングの基盤である。コンパイル済みコードを対象に、逆アセンブル・逆コンパイル・グラフ表示・スクリプティングなどの解析ツールを備え、Windows・macOS・Linux で動く。多数の命令セットと実行形式に対応し、対話的にも headless で自動化しても使える。拡張やスクリプトは Java か Python で書く。ビルドには JDK 25 と Gradle 9.1 以降が要る。主要言語は Java。週間で約6,600★。rea のようなエージェント向けツールが解析エンジンとして呼ぶ土台でもある。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/NationalSecurityAgency/ghidra">NationalSecurityAgency/ghidra</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントに新しい能力を与える</h2>
+  <h2 class="topic__title">エージェントに渡すスキルとプラグイン</h2>
 
   <article class="article">
-    <h3 class="article__headline">Panniantong/Agent-Reach — AI エージェントに Web を読む目を与える</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>mattpocock/skills — 実務者向けに整えたエージェントスキル集</h3>
     <div class="article__body">
-      <p>AI エージェントに、通常は読み取りにくいサイトの内容へ届く手段を与えるツールである。Twitter・Reddit・YouTube・GitHub・Bilibili・小紅書などを 1 つの CLI から読み書きし、有料 API を使わない。各プラットフォームに複数のバックエンドを順に並べ、1 つが壊れても別に切り替わる。認証情報は手元にだけ保存し、doctor コマンドでどの経路が有効かを確認できる。Claude Code や Cursor などシェルを使えるエージェントと組み合わせる。主要言語は Python。週間で約7,000★を集めた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">earthtojake/text-to-cad — エージェントに 3D CAD を作らせる</h3>
-    <div class="article__body">
-      <p>AI コーディングエージェントに、手元で 3D モデルを生成させるプラグインである。STEP・GLB・STL・3MF 形式の出力に加え、製造性チェック、図面生成、3D プリントや板金・CNC の加工サービスへの接続を扱う。ローカルの CAD ビューアサーバーと、CAD モデリング・DXF 図面・ロボット記述ファイル・G コード生成などのスキルを備える。Claude Code・Codex・Cursor などに対応する。想定利用者はエンジニアやメイカー、ロボティクス関係者である。主要言語は Python。週間で約1,900★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">heygen-com/hyperframes — HTML から動画を生成するフレームワーク</h3>
-    <div class="article__body">
-      <p>HTML・CSS・アニメーションを、決定的な MP4 動画に変換するフレームワークである。構成は HTML ファイルで書き、データ属性でタイミングやトラックを指定する。GSAP・CSS・Lottie・Three.js などからアニメーションを取り込み、ヘッドレス Chrome で各フレームを描画して FFmpeg で符号化するため、同じ入力からは同じ出力が得られる。足場作りやプレビュー、描画を行う CLI、エージェント向けのスキル、AWS Lambda での描画を備える。<strong>エージェントや CI のパイプラインでの動画生成</strong>を想定する。主要言語は TypeScript。週間で約4,000★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントを組み立て、運用する</h2>
-
-  <article class="article">
-    <h3 class="article__headline">mvschwarz/openrig — 複数のコーディングエージェントをチームにする</h3>
-    <div class="article__body">
-      <p>複数の AI コーディングエージェントを、役割を持つ 1 つのチームとして動かすソフトである。YAML でトポロジを定義し、1 コマンドで tmux セッションを立ち上げる。Claude Code・Codex・Pi を同じチームに混在させ、rig send や rig broadcast でエージェント同士が連絡を取り合う。既存セッションの発見・取り込み、構成の退避と復元、TUI や MCP サーバー、ローカルデーモンを備える。起動時に各ツールのフックや権限設定を書き換えるため、README は事前のバックアップを勧める。主要言語は TypeScript。週間で約2,700★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/mvschwarz/openrig">mvschwarz/openrig</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">thedotmack/claude-mem — セッションをまたいで文脈を持ち越す</h3>
-    <div class="article__body">
-      <p>セッションをまたいでエージェントの文脈を持ち越すための記憶システムである。ツールの利用履歴を自動で捉え、AI で要約・圧縮し、次回以降のセッションに関連する文脈を差し込む。SessionStart など 5 つのフックとローカルのワーカーサービス、SQLite の全文検索と Chroma のベクトル検索を組み合わせた検索を持つ。<code>&lt;private&gt;</code> タグで秘匿内容を保存対象から外せる。Claude Code 以外のエージェントや IDE にも対応する。主要言語は TypeScript。<strong>累計で約99,000★</strong>に達し、週間でも約3,200★を集めた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">mattpocock/skills — 実務者向けに整えたエージェントスキル集</h3>
-    <div class="article__body">
-      <p>コーディングエージェント向けの、再利用できる指示（スキル）を集めたリポジトリである。作者は無秩序な指示出しへの代替として、小さく組み合わせやすいスキル群を示す。着手前に計画を問い直す grill 系、共通の用語集や意思決定記録、テスト駆動やバグ診断を促すスキル、仕様化やアーキテクチャ改善のスキルなどを、エンジニアリングと生産性の 2 群に整理する。Claude Code・Codex・Copilot・Gemini CLI などに対応する。主要言語は Shell。<strong>累計で約28万★</strong>と群を抜き、週間でも約7,400★を集めた。</p>
+      <p>コーディングエージェント向けの、小さく組み合わせやすい指示（スキル）を集めたリポジトリである。重いフレームワークに任せず開発者が過程を握るための代替として示す。着手前に計画を問い直す grill 系、用語集 <code>GLOSSARY.md</code> や意思決定記録を保つスキル、テスト駆動やバグ診断、仕様化からプルリクエストまでを促すスキルなどを収める。Claude Code・Codex・Copilot・Gemini CLI などに対応する。主要言語は Shell。<strong>累計で約29万★</strong>と群を抜き、週間でも約12,000★を集めた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
@@ -132,9 +76,35 @@
   </article>
 
   <article class="article">
-    <h3 class="article__headline">cursor/plugins — Cursor 公式プラグインの仕様とカタログ</h3>
+    <h3 class="article__headline">cathrynlavery/diagram-design — ブランドに合わせて図を描くスキル</h3>
     <div class="article__body">
-      <p>エディタ Cursor の公式プラグインの仕様と実装をまとめたリポジトリである。各プラグインは独自のマニフェストを持つ単独のディレクトリで、ルートのマニフェストが一覧を束ねる。プラグインはエージェントのスキル、Cursor のルール、MCP サーバー定義を同梱する。コードレビューや CI、エージェントワークフロー向けの開発ツールに加え、GitHub・Google Workspace・Salesforce・HubSpot・Playwright などとの連携を収める。主要言語は TypeScript。週間で約1,100★。</p>
+      <p>自己完結した 1 枚の HTML+SVG として図を生成するエージェントスキルである。アーキテクチャ・フローチャート・シーケンス・ガントなど44種類の図を、明暗と編集向けの各体裁で描く。細い罫線と影なし、1 色のアクセント、4px グリッドという統一した見た目を持つ。導入時にサイトの色やフォントを読み取り、文字のコントラストを確かめて以降の図に反映する。既存の draw.io・Mermaid・Excalidraw を自分の体裁に描き直すこともできる。Claude Code・Codex・Copilot などに対応する。週間で約10,000★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/cathrynlavery/diagram-design">cathrynlavery/diagram-design</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">twostraws/SwiftUI-Agent-Skill — SwiftUI の書き方を教えるスキル</h3>
+    <div class="article__body">
+      <p>AI コーディング支援に、より良い SwiftUI を書かせるためのスキルである。API の使い方・設計・性能・アクセシビリティを扱い、ナビゲーションやレイアウト、状態管理、VoiceOver、非推奨 API など「LLM が実際に犯す誤り」に的を絞る。全体のレビューと、非推奨 API だけといった的を絞ったレビューの双方を頼める。iOS 26 以降と Swift 6.4 以降を対象とする。作者は Hacking with Swift の Paul Hudson で、自身の AGENTS.md を土台にしている。Claude Code・Codex・Gemini・Cursor などに対応する。週間で約900★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/twostraws/SwiftUI-Agent-Skill">twostraws/SwiftUI-Agent-Skill</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>cursor/plugins — Cursor 公式プラグインの仕様とカタログ</h3>
+    <div class="article__body">
+      <p>エディタ Cursor のプラグインの仕様と実装をまとめたリポジトリである。各プラグインは <code>plugin.json</code> を持つ単独のディレクトリで、ルートの <code>marketplace.json</code> が一覧を束ねる。プラグインはエージェントのスキル、Cursor のルール、MCP サーバー定義を同梱する。新規プラグインの雛形作り、反復ループ、並列のクラウドエージェントへのタスク分配、TypeScript SDK といった開発ツールに加え、CRM・メール・会議記録・金融など多数の外部連携を収める。主要言語は TypeScript。週間で約1,200★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
@@ -146,38 +116,68 @@
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントの外側 — 手元で動かす道具</h2>
+  <h2 class="topic__title">エージェントの出力と文脈を広げる</h2>
 
   <article class="article">
-    <h3 class="article__headline">EpicGames/raddebugger — Windows x64 向けのネイティブデバッガ</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>heygen-com/hyperframes — HTML から動画を生成するフレームワーク</h3>
     <div class="article__body">
-      <p>Windows x64 向けの、ネイティブで動くグラフィカルデバッガである。Epic Games が公開し、現在はアルファ版で、PDB を伴うローカルの Windows x64 デバッグに対応する。独自の RAD Debug Info 形式を使い、PDB などは必要に応じてこの形式へ変換する。大規模プロジェクト向けに調整した高速リンカ RAD Linker と、デバッグ情報を変換・ダンプする radbin を同梱する。Linux 対応と DWARF への対応は予定とされる。主要言語は C。週間で約450★。</p>
+      <p>HTML・CSS・アニメーションを、決定的な MP4 動画に変換するフレームワークである。構成は HTML ファイルで書き、データ属性でタイミングやトラックを指定する。React もビルド手順も要らない。GSAP・CSS・Lottie・Three.js などからアニメーションを取り込み、headless Chrome で各フレームを描画して FFmpeg で符号化するため、同じ入力からは同じ出力が得られる。足場作りやプレビュー、描画を行う CLI、エージェント向けのスキル、AWS Lambda での分散描画を備える。製品紹介やデータ可視化、ドキュメントの動画化を想定する。主要言語は TypeScript。週間で約5,300★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/EpicGames/raddebugger">EpicGames/raddebugger</a></li>
+        <li><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">pablostanley/yoinks — 広告なしで動画を落とす端末ツール</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>earthtojake/text-to-cad — エージェントに 3D CAD を作らせる</h3>
     <div class="article__body">
-      <p>端末から動画をダウンロードする CLI である。YouTube・X・Instagram・TikTok など 1,800 以上のサイトに対応し、広告や偽のダウンロードボタン、リダイレクトを挟まない。URL を貼り付けて解像度や音声のみを選ぶと、<code>~/Downloads</code> に保存される。全画面の端末 UI を Ink で作り、内部では yt-dlp と ffmpeg を使う。README は個人的な保存を用途に挙げ、各サイトの規約に反する場合があると注意する。主要言語は TypeScript。週間で約2,700★。</p>
+      <p>AI コーディングエージェントに、手元で 3D モデルを生成させるプラグインである。文章や画像から STEP・GLB・STL・3MF 形式を出力し、既製の STEP 部品、PDF の図面、DXF の 2D 図面、ロボット記述ファイルを扱うスキルを持つ。製造性チェックや板金・CNC サービス向けの準備、OrcaSlicer での G コード生成、Bambu Lab プリンターへの送信も行える。<code>cadgen mcp</code> が立てるローカルの CAD ビューアで確認できる。Claude Code・Codex・Cursor などに対応する。想定利用者はエンジニアやメイカーである。主要言語は Python。週間で約2,200★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/pablostanley/yoinks">pablostanley/yoinks</a></li>
+        <li><a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">DuarteSantos8/openGym — 自分のサーバーで動かす筋トレ記録</h3>
+    <h3 class="article__headline">ranxianglei/billion-context — 文脈を圧縮してセッションを延ばすプロキシ</h3>
     <div class="article__body">
-      <p>データを自分のサーバーに置く、自己ホスト型の筋トレ・体重記録アプリである。運動ライブラリから週次のルーティンを組み、スーパーセットやウォームアップ、有酸素運動を含む記録を取れる。鍛えた部位や疲労・衰えを示す筋肉マップ、推定 1RM、進捗写真の記録を持つ。パスキーでのログイン、端末間の同期、オフライン利用、FitNotes・Strong・Hevy などからの取り込みに対応する。任意で自分の鍵を使う AI コーチや、読み取り専用の MCP サーバーも使える。Docker Compose で導入する。主要言語は JavaScript。週間で約6,100★。</p>
+      <p>コーディングエージェントとモデル API の間に入り、文脈を圧縮するプロキシ兼プラグインである。消費済みの会話を層状の要約に畳み込み、必要なときに元へ戻せる。モデルが呼ぶ <code>compress</code>・<code>decompress</code>・<code>search_context</code> などのツールを差し込み、要約は増分かつ可逆で、プレフィックスキャッシュと両立するとうたう。ローカルのダッシュボードやキャッシュ命中率の表示を持ち、Claude Code・Codex・pi に対応する。README は「5 倍少ないトークン」と述べる一方、まだ「初期段階」で実モデルとの統合試験が次の節目だと記す。主要言語は TypeScript。週間で約660★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/ranxianglei/billion-context">ranxianglei/billion-context</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">手元で動かす道具</h2>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>boykopovar/AnyPS5 — PS5 の実行ファイルを PC 向けに変換する</h3>
+    <div class="article__body">
+      <p>PS5 の実行ファイルを Linux と Windows のネイティブ形式へ変換するツールである。エミュレーションや別プロセスのランタイムを使わず、再リンカが対象システムの形式へ変換し、PS5 のシステム PRX ライブラリを動的リンク用に実装し直して動かす。シェーダは SPIR-V へ再コンパイルし、SDL でゲームパッドに対応する。ブラウザ上の変換器も用意し、ファイルは端末内に留まるとする。README は相互運用・研究・保存・互換性のための試みと位置づけ、著作権物やファームウェア、鍵は含まないと明記する。主要言語は C++。週間で約25,000★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/boykopovar/AnyPS5">boykopovar/AnyPS5</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>DuarteSantos8/openGym — 自分のサーバーで動かす筋トレ記録</h3>
+    <div class="article__body">
+      <p>データを自分のサーバーに置く、自己ホスト型の筋トレ・体重記録アプリである。5,600 以上の運動から週次ルーティンを組み、スーパーセットやウォームアップ、有酸素運動を含む記録を取れる。推定 1RM、進捗の自動判定、鍛えた・回復中・未使用の部位を示す筋肉マップ、進捗写真を持つ。パスキーでのログインと端末間同期、オフライン利用、FitNotes・Strong・Hevy・Apple Health からの取り込みに対応する。任意で自分の鍵を使う AI コーチと読み取り専用の MCP サーバーも使える。Docker Compose で導入する。主要言語は JavaScript。週間で約4,500★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
@@ -187,7 +187,6 @@
     </details>
   </article>
 </section>
-
     </main>
 
     <footer>
