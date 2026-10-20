@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年10月13日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年10月20日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年10月13日">
+<meta property="og:title" content="フロントエンドニュース — 2026年10月20日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,64 +23,86 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月13日（火）</span>
+        <span>2026年10月20日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">フレームワーク・ランタイム</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Next.js 16.4 が Cache Components を全アプリで推奨</h3>
-    <div class="article__body">
-      <p>Vercel は 10 月 6 日に <strong>Next.js 16.4</strong> を公開した。目玉は Cache Components で、<code>'use cache'</code> を付けたコンポーネントだけをキャッシュ対象に印付けする段階的なキャッシュモデルだ。<strong>16.4 から全アプリへの推奨構成となり</strong>、<code>create-next-app</code> の既定で有効、次の v17 では標準になる。</p>
-      <p>新たに <strong><code>ensureStatic</code></strong> が入り、静的であるべきルートに動的処理が紛れ込むとビルドを失敗させられる。prefetch から特定の内容を外す <code>navigation()</code> も加わった。同梱の <strong>React 19.3</strong> は View Transitions と Fragment Refs を安定化している。</p>
-      <p>土台の改善も多い。Turbopack はディスクキャッシュを 20〜25% 削減し、共有ランタイムで配信量も減らした。Rust 版 React Compiler は<strong>メモリを 30%、コンパイル時間を 15% 削減</strong>し、<code>next upgrade --agent</code> などエージェントによる更新支援も広げた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://nextjs.org/blog/next-16-4">Next.js 16.4 — nextjs.org（2026-10-06）</a></li>
-        <li><a href="https://react.dev/blog/2026/09/09/react-19-3">React 19.3 — react.dev</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Next.js が 10 月 14 日に臨時セキュリティ更新を予告</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Next.js が臨時更新で致命的 RCE 2 件を修正</h3>
     <div class="article__body">
-      <p>Next.js は <strong>10 月 14 日に帯域外（out-of-band）のセキュリティ更新</strong>を出すと予告した。上流依存にある <strong>critical 2 件と high 1 件</strong>の脆弱性を修正する。9 月 30 日の定例リリースで上流の遅れにより見送られた分が、ここで公開される見込みだ。</p>
-      <p>公開前のため、対象の依存・修正版・CVE 番号はまだ開示されていない。critical を含むので、Next.js を自己ホストする現場は、公開後にすみやかな適用の判断が要る。詳細は当日の security ページで確認する。</p>
+      <p>Next.js は <strong>10 月 14 日に帯域外のセキュリティ更新</strong>を公開した。修正は <strong>v16.4.1（Active LTS）と v15.5.28（Maintenance LTS）</strong>に入り、9 月の定例で上流依存の遅れにより見送られていた分が含まれる。自己ホストする現場は速やかな適用が要る。</p>
+      <p>致命的な 2 件はいずれも<strong>認証不要の遠隔コード実行（RCE）</strong>だ。<code>use cache</code> が複数の TypedArray を返す場合の RCE には回避策が無く、該当機能を使っていなくても更新が推奨される。画像最適化の SVG 処理の RCE は、同梱の <code>sharp</code> を 0.35.5 以上にすることで回避できる。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>識別子</th><th>深刻度</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>GHSA-673q-mjm6-r5xr</td><td>Critical</td><td><code>use cache</code> が TypedArray を返す際の RCE</td></tr>
+            <tr><td>CVE-2026-96889</td><td>Critical</td><td>画像最適化 API の SVG 処理での RCE</td></tr>
+            <tr><td>GHSA-p3m5-59mp-jv5r</td><td>High</td><td>Server Actions 悪用による CPU 枯渇の DoS</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://nextjs.org/blog/security">Security — nextjs.org</a></li>
-        <li><a href="https://nextjs.org/blog/september-2026-security-release">September 2026 Security Release — nextjs.org（2026-09-30）</a></li>
+        <li><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026">Next.js Security Update for Upstream Vulnerabilities — nextjs.org（2026-10-14）</a></li>
+        <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-96889">CVE-2026-96889 — cve.org</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">React Foundation・コミュニティ</h2>
+  <h2 class="topic__title">フレームワーク</h2>
 
   <article class="article">
-    <h3 class="article__headline">React Foundation が体制を強化しイベントを拡充</h3>
+    <h3 class="article__headline">TanStack Start 1.0 が安定版に到達</h3>
     <div class="article__body">
-      <p>React Foundation が組織とイベントを広げている。<strong>Barbara Markiewicz 氏が Director of Community に就任</strong>し、コミュニティ運営の専任体制が整った。</p>
-      <p>11 月には地域イベントが続く。<strong>React Conf Ghana が 11 月 4〜5 日にアクラ</strong>で、Contributors Summit が 11 月 10〜12 日にロンドンで開かれる。サミットは招待制だが、エコシステムの貢献者は自己応募もできる。</p>
+      <p>フルスタックフレームワーク <strong>TanStack Start が 1.0</strong> になった。<strong>React と Solid の両方</strong>に対応し、SPA 的なルーティングとキャッシュを土台に、サーバレンダリングと型付きのサーバ関数を足す「クライアント優先」の構えを取る。</p>
+      <p>ルートパラメータ、検索パラメータ、ローダのデータ、サーバ関数の入力まで型が通る。RSC は任意で有効化する方式とし、配信は <strong>Vite と Nitro</strong>（Rsbuild も可）を通す。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://tanstack.com/blog/tanstack-start-1-0">TanStack Start 1.0 — tanstack.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ランタイム・プラットフォーム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Deno チームが Cloudflare に合流する</h3>
+    <div class="article__body">
+      <p>Ryan Dahl 氏は 10 月 9 日、<strong>Deno チーム全員が Cloudflare に加わる</strong>と発表した。今後は Workers と Durable Objects を軸にした共通基盤に注力し、独自ランタイムとホスティングの単独路線からは退く。</p>
+      <p>影響は段階的だ。<strong>Deno ランタイムはあと 1 年</strong>、毎月のバグ・セキュリティ修正を受けたうえで開発を終える（OSS としては存続）。<strong>Deno Deploy は半年で停止</strong>し、有料顧客には Workers への移行支援が付く。JSR は Cloudflare 基盤へ移して存続する。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/300">This Week In React #300 — ThisWeekInReact.com（2026-10-07）</a></li>
+        <li><a href="https://deno.com/blog/cloudflare">Deno is joining Cloudflare — deno.com（2026-10-09）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Bun 1.4.3 が型チェッカ bun check を追加</h3>
+    <div class="article__body">
+      <p><strong>Bun 1.4.3</strong> が公開された。新コマンド <strong><code>bun check</code></strong> で型チェックを内蔵し、Rust 製 TypeScript コンパイラ（typescript-go）の移植を取り込んだ。サーバの待機時 CPU 使用も下げ、<code>Bun.FetchSession</code> を加えている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://bun.com/blog/bun-v1.4.3">Bun v1.4.3 — bun.com</a></li>
       </ul>
     </details>
   </article>
@@ -90,70 +112,96 @@
   <h2 class="topic__title">React Native・モバイル</h2>
 
   <article class="article">
-    <h3 class="article__headline">React Native Skia 3.0 が Graphite で描画を刷新</h3>
+    <h3 class="article__headline">RN フレームワークがネイティブ基盤を作り直す</h3>
     <div class="article__body">
-      <p><strong>React Native Skia 3.0</strong> が公開された。描画基盤を <strong>Skia Graphite に載せ替え</strong>、マルチスレッド描画、WebGPU との対称性、Three.js とのゼロコピー連携を実現した。</p>
-      <p>下回りも整理し、Android の最小 SDK は 26 に上がり、<strong>OpenGL を廃して Vulkan に一本化</strong>した。あわせて Callstack の React 特化コーディングモデル Apex が一般提供を始めた。</p>
+      <p>React Native 向けのフレームワークが土台を書き換える動きが続く。オールインワンの <strong>One 2.0</strong> は Bun と Rust 製バンドラを採り、SwiftUI と Compose のコード生成まで含めた。UI ライブラリの <strong>Tamagui 3</strong> は <strong>C++ 製のネイティブランタイムと Rust 製コンパイラ</strong>に刷新し、Strict DOM とフラットな style props、Tailwind 風の記法を入れた。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://onestack.dev">One — onestack.dev</a></li>
+        <li><a href="https://tamagui.dev/blog/version-three">Tamagui 3 — tamagui.dev</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">React Native Web の保守を React Foundation が継承</h3>
+    <div class="article__body">
+      <p>Web へ React Native を載せる <strong>React Native Web</strong> の保守を、<strong>Expo が React Foundation の下で引き継ぐ</strong>ことになった。長く個人メンテに依存してきた基盤が、財団の体制に移って継続性を得る。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/300">This Week In React #300 — ThisWeekInReact.com（2026-10-07）</a></li>
+        <li><a href="https://github.com/necolas/react-native-web/discussions/2872">react-native-web discussion #2872 — github.com</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ライブラリ・ツール</h2>
+  <h2 class="topic__title">デザイン・UI</h2>
 
   <article class="article">
-    <h3 class="article__headline">Effect 4.0 が依存ゼロのコアで再構築</h3>
+    <h3 class="article__headline">UI ライブラリがジェスチャとキーボードを強化</h3>
     <div class="article__body">
-      <p>TypeScript 向けの関数型ライブラリ Effect が <strong>4.0 でコアを依存ゼロに再構築</strong>した。内部構成を見直した結果、<strong>バンドルは最大 5 分の 1</strong> まで小さくなったとする。</p>
+      <p>アクセシブルな UI ライブラリが操作性を詰めた。<strong>React Aria 1.22</strong> は、JS のタッチ処理ではなく <strong>CSS のスクロールスナップと view timeline</strong> で動くスワイプ可能な Sheet を加え、オーバーレイを仮想キーボードに追従させた。<strong>Base UI 1.9</strong> は絞り込みできる Filterable Menu を足し、Select・Combobox・Menu を高速化、Drawer のジェスチャ処理も改善した。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/300">This Week In React #300 — ThisWeekInReact.com（2026-10-07）</a></li>
+        <li><a href="https://react-aria.adobe.com/releases/v1-22-0">React Aria v1.22.0 — react-aria.adobe.com</a></li>
+        <li><a href="https://base-ui.com/react/overview/releases/v1-9-0">Base UI 1.9 — base-ui.com</a></li>
       </ul>
     </details>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">Web プラットフォーム・ブラウザ</h2>
 
   <article class="article">
-    <h3 class="article__headline">TanStack が Charts と Markdown の 1.0 を公開</h3>
+    <h3 class="article__headline">主要ブラウザが JPEG XL と新しい CSS を載せる</h3>
     <div class="article__body">
-      <p>TanStack が新しいライブラリ 2 本を 1.0 にした。<strong>Charts 1.0</strong> はフレームワーク非依存のコアに React アダプタを持つ描画ライブラリ、<strong>Markdown 1.0</strong> はドキュメントや AI の逐次出力向けの軽量レンダラで、<code>&lt;Markdown&gt;</code> コンポーネントと構文ハイライトを備える。</p>
+      <p>ブラウザ側の足並みも進んだ。画像形式の <strong>JPEG XL が Chrome 155 と Firefox 158</strong> に入り、Safari は部分対応となった。長く停滞していた形式が、主要エンジンでようやく実装の段階に入る。</p>
+      <p>CSS では <strong>Safari Technology Preview 254</strong> が <code>calc-size()</code> と <code>interpolate-size</code> を載せ、auto への高さアニメーションに道を開いた。Chrome 154 は <code>frame-sizing: content-height</code> を出荷し、iframe を中身の高さに合わせられるようにした。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/300">This Week In React #300 — ThisWeekInReact.com（2026-10-07）</a></li>
+        <li><a href="https://tonisagrista.com/blog/2026/chrome-jpegxl/">JPEG XL in Chrome — tonisagrista.com</a></li>
+        <li><a href="https://webkit.org/blog/18420/release-notes-for-safari-technology-preview-254/">Safari Technology Preview 254 — webkit.org</a></li>
       </ul>
     </details>
   </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エコシステム・ツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">pnpm や TypeScript などツール更新が続く</h3>
+    <h3 class="article__headline">テストやパッケージ管理のツール更新が続く</h3>
     <div class="article__body">
-      <p>足回りのツールも小さく進んだ。目立つ新機能より、既存ワークフローの詰めが中心だ。</p>
+      <p>周辺ツールも小さく進んだ。大きな新機能より、既存ワークフローの詰めが中心だ。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>TypeScript 7.1</td><td>イテレーション計画を公開。beta は延期</td></tr>
-            <tr><td>SvelteKit 3.0</td><td>非推奨 API の整理とツールチェーン底上げが中心のメジャー更新</td></tr>
-            <tr><td>pnpm 12.9 / 12.10</td><td>実験的な「loaded」リンカと、lockfile への解決設定の記録を追加</td></tr>
-            <tr><td>Ink 8.0</td><td>React 製 CLI レンダラが React 19.3+ とスクロール可能な Box に対応</td></tr>
-            <tr><td>Streamdown 2.7</td><td>AI 向け Markdown の逐次ハイライトを高速化、Mermaid を非ブロッキング化</td></tr>
+            <tr><td>Playwright 1.64</td><td>WebMCP 向けテスト API、<code>--shuffle</code>、<code>locator.within()</code> を追加</td></tr>
+            <tr><td>pnpm 12.11〜12.13</td><td>agent skills のリンクと、タスク結果・ビルドのリモートキャッシュ</td></tr>
+            <tr><td>vitest-plugin-rsc 0.3</td><td>Next.js App Router を Vitest Browser Mode で丸ごとテスト（要 16.4+）</td></tr>
+            <tr><td>Partytown 1.0</td><td>サードパーティスクリプトを web worker で動かす仕組みが安定版に</td></tr>
+            <tr><td>sv 1.0</td><td>Svelte の CLI が 1.0 となり、コミュニティ add-on API が正式化</td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/300">This Week In React #300 — ThisWeekInReact.com（2026-10-07）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
+        <li><a href="https://svelte.dev/blog/whats-new-in-svelte-october-2026">What's new in Svelte: October 2026 — svelte.dev</a></li>
       </ul>
     </details>
   </article>
