@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM ニュース — 2026年10月14日 | Ecce Fomo</title>
+<title>LLM ニュース — 2026年10月21日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="LLM ニュース — 2026年10月14日">
+<meta property="og:title" content="LLM ニュース — 2026年10月21日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,195 +23,159 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">LLM ニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月14日（水）</span>
+        <span>2026年10月21日（水）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">モデルリリース</h2>
+  <h2 class="topic__title">推論インフラ</h2>
 
   <article class="article">
-    <h3 class="article__headline">Anthropic が Haiku 5.5 を公開、Haiku 4.5 比で約 75% 安い小型モデル</h3>
+    <h3 class="article__headline">OpenAI が初の自社 AI チップ Jalapeño を公開</h3>
     <div class="article__body">
-      <p>Anthropic は小型モデル <strong>Claude Haiku 5.5</strong> を公開した。これまでで最も安く速い小型モデルで、実行コストは平均で <strong>Haiku 4.5 比 約 75% 減</strong>という。</p>
-      <p>Haiku 系で初めてコストと知能を切り替える effort 設定を持ち、1M トークンの文脈に対応する。AWS・Google Cloud・Azure を含む全主要基盤で使え、高頻度・低コストの処理や上位モデルのサブエージェント用途を狙う。小型モデルの価格と速度の競争が一段進んだ。</p>
+      <p>OpenAI は初の AI アクセラレータ <strong>Jalapeño</strong> を明らかにし、TIME の 2026 年ベストインベンションに選ばれたと伝えた。推論を自社シリコンで効率よく回し、より多くの人に AI を届けるためのチップだという。</p>
+      <p>需要の拡大に合わせて自前チップを増やす構えで、モデルを作る側が推論の土台まで自分で持とうとする動きである。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（4）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/claudeai/status/2107894039626277339">Claude (X) — Introducing Claude Haiku 5.5: the cheapest, fastest, and most capable small model we’ve ever released</a></li>
-        <li><a href="https://x.com/claudeai/status/2107894048753164362">Claude (X) — First Haiku with an adjustable effort setting, to optimize for cost or intelligence</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2107895955144208813">Claude Developers (X) — Haiku 5.5 now available in the Claude Platform and Claude Code, pairs with Opus 5.5 or Sonnet 5.5</a></li>
-        <li><a href="https://x.com/cognition/status/2107942832921075726">Cognition (X) — Haiku 5.5 scores 58.4% on FrontierCode 1.1, ahead of Sonnet 5 at ~1/8 the cost</a></li>
+        <li><a href="https://x.com/OpenAINewsroom/status/2111142554079268944">OpenAI Newsroom (X) — Jalapeño, our first AI chip, is included in TIME's Best Inventions of 2026</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI が GPT-6 を一般提供、回答に対話的 UI を生成する機能を追加</h3>
+    <h3 class="article__headline">Opus 5.5 の高速版が正式提供、最大 2.5 倍速に</h3>
     <div class="article__body">
-      <p>OpenAI は <strong>GPT-6</strong> を ChatGPT の全ユーザーへ広げ、あわせて <strong>Intelligent UI</strong> を導入した。回答をテキストだけでなく、グラフや図、押せるボタンやフォーム、その場で使える小さな道具として組み立てる。</p>
-      <p>有料層では <strong>GPT-6 Sol</strong>、無料層では GPT-6 Luna が動く。検索や質問応答が、読む情報から操作できる画面へと変わりつつある。</p>
+      <p>Anthropic は <strong>Opus 5.5 fast mode</strong> の研究プレビューと順番待ちを終え、正式提供にした。中身は同じ Opus 5.5 のまま<strong>最大 2.5 倍速</strong>で、価格は 100 万トークンあたり入力 $8・出力 $40 である。</p>
+      <p>Microsoft Foundry（Azure 上）でも使え、Google Cloud でも近く対応する。速度を選べる層を増やし、基盤を越えてモデルを配る動きが続く。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2110825294655562048">Claude Developers (X) — Opus 5.5 fast mode is no longer in research preview; up to 2.5x faster at $8/$40, now on Microsoft Foundry</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エージェントと開発基盤</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Claude が自社コードの 9 割を書き、レビューを再設計</h3>
+    <div class="article__body">
+      <p>Anthropic は、<strong>Claude Code のコードの約 9 割を Claude が書いている</strong>と開示した。6〜9 月でマージされた PR は 2 倍以上に増え、取り消し（revert）の割合は 4 割以上下がったという。増える変更に品質を合わせるため、コードレビューの回し方を作り替えた。</p>
+      <p>あわせて Claude Code の <strong>Code Review を一般提供</strong>にした。Team・Enterprise 向けで、レビューは約 3 倍速くなり、リポジトリごとに Quick・Standard・Deep を選べる。AI が書いた大量のコードを、AI のレビューで支える形が整ってきた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://x.com/OpenAI/status/2107894997538525580">OpenAI (X) — GPT‑6 and Intelligent UI, now rolling out in ChatGPT for everyone</a></li>
-        <li><a href="https://x.com/OpenAI/status/2107895006350791071">OpenAI (X) — GPT‑6 Sol for paid tiers, GPT‑6 Luna for Free and Go</a></li>
-        <li><a href="https://x.com/sama/status/2107924408597950702">Sam Altman (X) — ChatGPT can now generate a custom UI for you</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2111168901723906176">Claude Developers (X) — Claude writes about 90% of Claude Code's code; merged PRs more than doubled while reverts fell 40%+</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2110866210573386065">Claude Developers (X) — Code Review is now generally available for Team and Enterprise plans</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2110866212217651527">Claude Developers (X) — At GA: ~3x faster reviews, more of the bugs that matter, Quick/Standard/Deep per repo</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Gemini 4 Argon が全世界展開、API と Gemini アプリで解禁</h3>
+    <h3 class="article__headline">Devin がコーディング指標で首位、運用監視にも展開</h3>
     <div class="article__body">
-      <p>Google は、先に政府・サイバー防衛向けに限って出した <strong>Gemini 4 Argon</strong> を全世界に開放した。Gemini API、Gemini アプリの Pro・Ultra、コーディング環境 Antigravity で使える。社内の 10 万人超が 1 か月使って検証したという。</p>
-      <p>コード生成の指標 <strong>FrontierCode 1.1 で 60.5%</strong> と、Gemini 系では最高だった（Cognition 計測）。フロンティアモデルを広く配る動きが続く。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（4）</summary>
-      <ul>
-        <li><a href="https://x.com/OfficialLoganK/status/2110038940841545827">Logan Kilpatrick (X) — Rolling out Gemini 4 Argon globally in the Gemini API, App, and Antigravity</a></li>
-        <li><a href="https://x.com/GeminiApp/status/2110039322229649783">Gemini App (X) — Our new frontier model, Gemini 4 Argon, is rolling out now in the Gemini app</a></li>
-        <li><a href="https://x.com/GoogleAI/status/2110039860077527293">Google AI (X) — Gemini 4 Argon is now rolling out globally, built for complex real-world tasks</a></li>
-        <li><a href="https://x.com/cognition/status/2110043605528408110">Cognition (X) — Argon scores 60.5% on FrontierCode 1.1, highest Gemini model on the leaderboard</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">推論の価格競争</h2>
-
-  <article class="article">
-    <h3 class="article__headline">小型モデルと長時間処理に価格引き下げが波及</h3>
-    <div class="article__body">
-      <p>モデルの値下げが、小型モデルと長時間動くエージェントの両方に及んだ。Anthropic は <strong>Haiku 5.5</strong> を安く出し、<strong>Sonnet 5.5 のキャッシュ読み出しを半額</strong>（$0.10／百万トークン）にして、長い処理を約 20% 安くした。</p>
-      <p>あわせて Max・Team プランに毎月の API クレジットを付け、自分のコードや他社ツールでも使えるようにした。トークン単価の下げ合いが、使い方の幅を広げている。</p>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>項目</th><th>価格（百万トークンあたり）</th></tr></thead>
-        <tbody>
-          <tr><td>Haiku 5.5（10 万トークン未満）</td><td>入力 $0.10 / 出力 $0.50（キャッシュ読み出し $0.01）</td></tr>
-          <tr><td>Haiku 5.5（10 万トークン超）</td><td>入力 $0.50 / 出力 $2.50（キャッシュ読み出し $0.05）</td></tr>
-          <tr><td>Sonnet 5.5 キャッシュ読み出し</td><td>$0.50 → $0.10（約半額、処理が約 20% 安く）</td></tr>
-          <tr><td>月次 API クレジット</td><td>Max 5x $100 / Max 20x $200 / Team 最大 $500（共用）</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://x.com/claudeai/status/2107894060229034197">Claude (X) — Halving the price of cache reads on Sonnet 5.5 to $0.10 per million tokens</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2107895956872290654">Claude Developers (X) — Haiku 5.5 pricing: $0.10/$0.50 under 100K, $0.50/$2.50 above</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2107895957933408429">Claude Developers (X) — Monthly Claude Platform API credits for Max and Team plans</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェント・開発基盤</h2>
-
-  <article class="article">
-    <h3 class="article__headline">複数エージェントのオーケストレーションが各社で製品化</h3>
-    <div class="article__body">
-      <p>作業を多数のエージェントに分けて進める仕組みが、相次いで製品になった。Anthropic は <strong>Claude Managed Agents の動的ワークフロー</strong>を公開ベータにした。親エージェントが計画を立て、最大 1,000 体を段階的に動かして結果を束ねる。</p>
-      <p>社内試験では、仕込んだ 70 個のバグを単体エージェントが 14〜27 個、<strong>ワークフローは 66 個</strong>見つけた。Cognition も Devin に同種の動的ワークフローを入れ、Claude Code Projects も並列スレッドでタスクを同時に進める形で公開ベータに入った。賢さに続き、仕事の割り振り方が差になりつつある。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（4）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2108591328732856655">Claude Developers (X) — Claude Managed Agents dynamic workflows now in public beta</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2108591330129523146">Claude Developers (X) — 70 planted bugs: a single agent found 14/15/27, a workflow found 66 each run</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2108621476538781878">Claude Developers (X) — Claude Code Projects now open to Pro and Max users</a></li>
-        <li><a href="https://x.com/devindevelopers/status/2109887510184964285">Devin (X) — Dynamic workflows let Devin split a job across its own Devins</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">自社開発インフラ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Anthropic が独自ソース管理 Scion を自作、マージ急増に対応</h3>
-    <div class="article__body">
-      <p>Anthropic はエンジニアリングブログで、自社で作った<strong>ソース管理システム Scion</strong> を紹介した。AI 支援開発でコード変更が急増し、<strong>日次のマージは 5 月の約 2,500 件から 9 月には 3 万件超</strong>へ伸び、人間規模で作られた開発基盤が追いつかなくなった。</p>
-      <p>そこで Git から独自システムへ、モノレポを 5 か月で全面移行したという。モデルを作る側自身の開発の進め方が、エージェント前提に組み替わっている。</p>
+      <p>Cognition の <strong>Devin Fusion</strong> が、Artificial Analysis のコーディングエージェント指標で<strong>スコア 68 の首位</strong>に立った。Opus 5.5 を主、GPT-6 Luna を従に組み合わせ、Claude Code（Opus 5.5）を 1 タスクあたり 31% 安いコストで上回ったという。</p>
+      <p>同社は障害対応を自動化する <strong>Devin Oncall</strong> も出した。アラートを自ら調べて原因究明と修正を助け、大手で毎日数千件を処理しているとする。エージェントがコード生成から運用まで広がっている。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/AnthropicAI/status/2110047081414987957">Anthropic (X) — New on our Engineering blog: Creating in-house source control; ~2,500/day in May to 30,000+/day in September</a></li>
-        <li><a href="https://x.com/oikon48/status/2110121902199214145">oikon48 (X) — Anthropic built its own source control "Scion" and migrated its monorepo in five months</a></li>
+        <li><a href="https://x.com/cognition/status/2112290148205436979">Cognition (X) — Devin Fusion scores 68 on the Artificial Analysis Coding Agent Index, beating Claude Code with Opus 5.5 at 31% lower cost</a></li>
+        <li><a href="https://x.com/cognition/status/2110790097369010292">Cognition (X) — Introducing Devin Oncall, automatically investigating alerts and bugs for production incidents</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">セキュリティ・サイバー防衛</h2>
+  <h2 class="topic__title">科学応用</h2>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI のモデルが Chrome の重大な脆弱性を発見</h3>
+    <h3 class="article__headline">Claude がサソリ毒に対するタンパク質を設計</h3>
     <div class="article__body">
-      <p>OpenAI の Greg Brockman は、同社のモデル <strong>GPT-5.6 Sol</strong> が <strong>Chrome の重大な脆弱性</strong>を見つけたと述べた。<strong>6 日・約 4 万ドル</strong>の計算資源をかけ、Google の 2026 年で初となる full-chain 報奨を得たという。推計で 10 億人規模の利用者に影響しうる欠陥で、防御側がこうしたツールを使う好機だと位置づけた。モデルの能力が攻防の両面で実務に入り込んでいる。</p>
+      <p>Anthropic は、<strong>Claude がサソリ毒を無力化するタンパク質バインダー</strong>を設計したと伝えた。毒が細胞に取り付く部分を狙い、64 時間で 30 万超の設計を生成し、211 個を実験に回したところ <strong>17 個が条件を満たした</strong>という。</p>
+      <p>同社は量子回路の設計でも、平易な指示から既存の最良を桁違いに上回る回路を作らせた例を示した。まだ探索段階だとしつつ、モデルを科学研究の道具として使う動きが具体化している。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/gdb/status/2110063893016096831">Greg Brockman (X) — 6 days and $40,000 of compute with GPT-5.6 Sol to find a critical Chrome vulnerability</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2112579251555721573">Anthropic (X) — Designing protein binders against scorpion neurotoxins with Claude</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2112579254538141981">Anthropic (X) — Over 64 hours Claude generated 300,000+ designs; 211 were sent for lab testing</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2112579257704882246">Anthropic (X) — 17 of the 211 met the criteria for a binder</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2111152183240511640">Anthropic (X) — STEM Fellows: Claude designed quantum circuits that improve on the best published ones by an order of magnitude or more</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Anthropic がサイバー防衛と重要インフラ、連邦政府に資源投入</h3>
+    <h3 class="article__headline">OpenAI が生命科学へ、創薬企業を買収し学術支援</h3>
     <div class="article__body">
-      <p>Anthropic はサイバー防衛の取り組みをまとめて広げた。<strong>Anthropic Cyber Mission</strong> を立ち上げ、重要インフラを守る Critical Infrastructure Defense Program と、OSS を無償でスキャンし修正案まで出す <strong>OSS Scanner</strong> を始めた。</p>
-      <p>あわせて科学技術の <strong>Genesis Mission に 1.5 億ドル</strong>を拠出し、Claude を 15 以上の連邦機関に提供する。モデルの力を防御と公共に向ける動きが具体化している。</p>
+      <p>OpenAI は生命科学への投資を重ねた。創薬の工程をまとめる <strong>Orchestra Bio を買収</strong>し、自社の生物学向けモデル群 Rosalind と組み合わせて治療の実用化を速めるという。</p>
+      <p>あわせて研究室向けの <strong>Rosalind 学術プラン</strong>を広げ、米大学の対象ラボに最長 12 か月の提供枠を用意した。数学では Simons 財団の新構想に 500 万ドルを拠出する。AI を研究の現場に入れる競争が、企業買収や資金拠出にまで及んでいる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://x.com/AnthropicAI/status/2108302539498414208">Anthropic (X) — Launching the Anthropic Cyber Mission to secure critical infrastructure and open-source software</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2108302543977906649">Anthropic (X) — Launching OSS Scanner to scan opted-in open-source projects for vulnerabilities at no cost</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2108226292235809081">Anthropic (X) — Committing $150M to the Genesis Mission, making Claude available to 15+ federal agencies</a></li>
+        <li><a href="https://x.com/OpenAI/status/2112607347688583586">OpenAI (X) — We've acquired Orchestra Bio to build on Rosalind for life sciences research</a></li>
+        <li><a href="https://x.com/OpenAI/status/2110841898076418336">OpenAI (X) — Expanding access to GPT-Rosalind with the Rosalind Academic Plan for U.S. university labs</a></li>
+        <li><a href="https://x.com/OpenAI/status/2110741355739963884">OpenAI (X) — Contributing $5 million to a new Simons Foundation initiative for mathematics</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">科学・来歴</h2>
+  <h2 class="topic__title">安全性・ガバナンス</h2>
 
   <article class="article">
-    <h3 class="article__headline">Claude Science を使い、初の紫外線による全天地図を作成</h3>
+    <h3 class="article__headline">Anthropic が株式の 5% を公益目的の基金に拠出</h3>
     <div class="article__body">
-      <p>天体物理学者が <strong>Claude Science</strong> と組み、<strong>初めての紫外線による全天地図</strong>を作ったと Anthropic が伝えた。電波からガンマ線まで全天地図はあったが、紫外線では広い領域が未観測だった。AI を研究の相棒にして、これまで埋まらなかった観測の空白を埋めた例である。</p>
+      <p>Anthropic は、自社株の一部を公益のための新組織 <strong>Anthropic Public Benefit Fund</strong> に充てると発表した。まず<strong>株式の 5%</strong> から始め、企業価値が基準から 50% 上がるごとに追加で充てられる仕組みにする。</p>
+      <p>同社はまた、安全対策を第三者に評価させる取り組みを進め、METR のチームに従業員並みのアクセスを与えたと明らかにした。利益と安全の両面で外部の目を入れる動きである。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/AnthropicAI/status/2108290395599667700">Anthropic (X) — An astrophysicist worked with Claude Science to create the first complete ultraviolet map of the sky</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2111881963657412903">Anthropic (X) — Committing a portion of our shares, starting with 5%, to the Anthropic Public Benefit Fund</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2110784662071398807">Anthropic (X) — Giving a team from METR employee-like access to assess our safety practices</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Google が SynthID 検出ポータルを一般公開、誰でも来歴確認</h3>
+    <h3 class="article__headline">OpenAI が超知能の安全責任者を迎え、防御も競争に</h3>
     <div class="article__body">
-      <p>Google は AI 生成物を見分ける <strong>SynthID</strong> の検出ポータルを一般公開した。画像・動画・音声について、Google 製か提携先が作ったものかを<strong>誰でも照合</strong>できる。生成物の来歴をたどる仕組みを広く開く動きで、規制対応とも重なる。</p>
+      <p>OpenAI の Sam Altman は、<strong>超知能に備える安全・セキュリティの責任者</strong>として Aleksander 氏を迎えたと述べ、目の前の課題は大きいと位置づけた。</p>
+      <p>攻撃面では、Anthropic の Boris Cherny が <strong>Gray Swan と組んだプロンプトインジェクション対策コンペ</strong>を案内し、エージェントが使われるほど業界横断で解く必要が増すとした。能力の向上に合わせ、守りの体制づくりが各社の競争点になっている。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/GoogleAI/status/2107836750257107133">Google AI (X) — Expanding access to SynthID; anyone can now check files for a SynthID watermark</a></li>
+        <li><a href="https://x.com/sama/status/2112652656602923366">Sam Altman (X) — Grateful Aleksander accepted this role on the safety and security challenges of superintelligence</a></li>
+        <li><a href="https://x.com/bcherny/status/2110791698611855624">Boris Cherny (X) — Partnering with Gray Swan on a prompt injection competition; urgent to solve across the industry</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>OSS Scanner が初週に重大 77 件を検出</h3>
+    <div class="article__body">
+      <p>Anthropic が始めた <strong>OSS Scanner</strong> の最初のスキャンで、重要な OSS に<strong>重大 77 件・高 803 件</strong>の指摘がメンテナーへ報告された。各指摘には再現手順が付き、可能なら修正案も添える。強いモデルによる無償の脆弱性スキャンが、実際の成果を出し始めた。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2112299602510749992">Claude Developers (X) — OSS Scanner gives critical open source projects free, periodic scans with a proof-of-concept and patch</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2112299603634860121">Claude Developers (X) — First scans reported 77 critical and 803 high model-rated findings to maintainers</a></li>
       </ul>
     </details>
   </article>
@@ -223,22 +187,26 @@
     <table>
       <thead><tr><th>主体</th><th>動き</th></tr></thead>
       <tbody>
-        <tr><td>xAI</td><td>Grok・Cursor・X Premium のプランを 1 つに束ねた <strong>The X Subscription</strong> を発表。Free から Ultra まで 5 段階で、同額の旧プランより自社モデルを多く使えるとする。</td></tr>
-        <tr><td>Anthropic</td><td><strong>シンガポールに拠点</strong>を開き、同国政府と AI 安全・責任ある導入の MOU を締結。<strong>日本でハッカソン</strong>（11/2〜11/10、賞金総額 $50,000 相当）も開催する。</td></tr>
-        <tr><td>OpenAI</td><td>18 歳未満向けの <strong>ChatGPT for Teens</strong> を案内。年齢が判定された口座に自動適用し、学習ツールや進学支援を加える。</td></tr>
-        <tr><td>Google DeepMind</td><td>CZI と <strong>Virtual Biology Initiative</strong> で提携し、医療・健康分野に AI を向ける。</td></tr>
-        <tr><td>Notion</td><td>版履歴を刷新し、<strong>どのエージェントや人が変更したか</strong>を行単位で記録・復元できるようにした。</td></tr>
+        <tr><td>TypeSafe AI</td><td>"System One" の machine-native types を掲げる <strong>Jev 1.14</strong> を公開し、画像入力や長い文脈に対応。<strong>シリーズ A</strong> も調達した。</td></tr>
+        <tr><td>Google</td><td><strong>Gemini 4 Argon</strong> が公開から 72 時間で約 25 兆トークンを処理。Antigravity で 3D 世界を自動生成し、NotebookLM はスライドや動画を対話的に共同生成する。</td></tr>
+        <tr><td>OpenAI</td><td>ChatGPT の <strong>GPT-6 Astra Pro</strong> が複数エージェントの並行実行に対応。音声を GPT-Live-1.1 で刷新し、COBOL・Fortran 等<strong>レガシー言語の移行</strong>能力も強化した。</td></tr>
+        <tr><td>Notion</td><td>モデルルーター <strong>Auto</strong>（フロンティア品質を約 9 割安く）、自分の AI 契約を使う BYOK、端末とブラウザを持ち最長 24 時間動くエージェントを導入。</td></tr>
+        <tr><td>Anthropic</td><td><strong>Claude Code デスクトップアプリ</strong>で複数セッションの並行実行を強化。STEM と概念推論の 2 つのフェローシップの募集も始めた。</td></tr>
       </tbody>
     </table>
   </div>
   <details class="article__sources">
-    <summary>出典（5）</summary>
+    <summary>出典（9）</summary>
     <ul>
-      <li><a href="https://x.com/SpaceXSI/status/2109783335296008414">Grok / xAI (X) — Introducing The X Subscription, unifying Grok, Cursor, and X Premium</a></li>
-      <li><a href="https://x.com/AnthropicAI/status/2110289695888511368">Anthropic (X) — Opening an office in Singapore and signing an MOU with the Government of Singapore on AI safety</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2110128453760815153">Claude Developers (X) — The Claude Code hackathon is coming to Japan</a></li>
-      <li><a href="https://x.com/OpenAI/status/2107909792945832070">OpenAI (X) — Sharing progress on ChatGPT for Teens, our experience for people under 18</a></li>
-      <li><a href="https://x.com/demishassabis/status/2107861788301607261">Demis Hassabis (X) — Partnership with CZI and the Virtual Biology Initiative</a></li>
+      <li><a href="https://x.com/typesafeai/status/2110536685805355064">TypeSafe AI (X) — Jev 1.14 with images, a new box type, and longer context</a></li>
+      <li><a href="https://x.com/coderabbitai/status/2112567149311279213">CodeRabbit (X) — Congrats to TypeSafe AI on the Series A</a></li>
+      <li><a href="https://x.com/OfficialLoganK/status/2112767157746688480">Logan Kilpatrick (X) — ~25 trillion tokens processed in the first 72 hours since Gemini 4 Argon launched</a></li>
+      <li><a href="https://x.com/GoogleAI/status/2110744759111213217">Google AI (X) — Gemini 4 Argon autonomously builds an explorable 3D world in Antigravity</a></li>
+      <li><a href="https://x.com/Gemini_Notebook/status/2112317553762840595">NotebookLM (X) — Co-create slide decks and video overviews</a></li>
+      <li><a href="https://x.com/OpenAI/status/2111192259073094035">OpenAI (X) — GPT-6 Astra Pro upgraded; multiple agents can tackle parts of a task in parallel</a></li>
+      <li><a href="https://x.com/OpenAI/status/2112310345863930168">OpenAI (X) — Stronger capabilities for low-resource languages such as COBOL, Fortran, and Visual Basic</a></li>
+      <li><a href="https://x.com/NotionHQ/status/2112269722075242887">Notion (X) — Notion AI upgrades: more capable agents, a smarter Auto, BYOK, improved MCP</a></li>
+      <li><a href="https://x.com/ClaudeDevs/status/2110445844675838148">Claude Developers (X) — Claude Code desktop app now built for running many sessions side by side</a></li>
     </ul>
   </details>
 </section>
