@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年10月20日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年10月27日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年10月20日">
+<meta property="og:title" content="フロントエンドニュース — 2026年10月27日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月20日（火）</span>
+        <span>2026年10月27日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,126 +33,94 @@
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Next.js が臨時更新で致命的 RCE 2 件を修正</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>React 本体に認証不要の遠隔コード実行</h3>
     <div class="article__body">
-      <p>Next.js は <strong>10 月 14 日に帯域外のセキュリティ更新</strong>を公開した。修正は <strong>v16.4.1（Active LTS）と v15.5.28（Maintenance LTS）</strong>に入り、9 月の定例で上流依存の遅れにより見送られていた分が含まれる。自己ホストする現場は速やかな適用が要る。</p>
-      <p>致命的な 2 件はいずれも<strong>認証不要の遠隔コード実行（RCE）</strong>だ。<code>use cache</code> が複数の TypedArray を返す場合の RCE には回避策が無く、該当機能を使っていなくても更新が推奨される。画像最適化の SVG 処理の RCE は、同梱の <code>sharp</code> を 0.35.5 以上にすることで回避できる。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>識別子</th><th>深刻度</th><th>内容</th></tr></thead>
-          <tbody>
-            <tr><td>GHSA-673q-mjm6-r5xr</td><td>Critical</td><td><code>use cache</code> が TypedArray を返す際の RCE</td></tr>
-            <tr><td>CVE-2026-96889</td><td>Critical</td><td>画像最適化 API の SVG 処理での RCE</td></tr>
-            <tr><td>GHSA-p3m5-59mp-jv5r</td><td>High</td><td>Server Actions 悪用による CPU 枯渇の DoS</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p><strong>React Server Components（RSC）</strong>に、認証不要の遠隔コード実行（RCE）が見つかった。深刻度は <strong>Critical（9.5）</strong>で、細工したペイロードが RSC 対応フレームワーク上でサーバ側のコード実行につながる。影響は <code>react-server-dom-webpack</code> ・ <code>-turbopack</code> ・ <code>-parcel</code> の 19.0.0〜19.3.0 に及ぶ。</p>
+      <p>修正は <strong>19.0.9 / 19.1.10 / 19.2.9 / 19.3.1</strong> に入り、Server Functions の DoS 修正も同梱される。クライアント専用の SPA は対象外だが、キャレット指定やロックファイル、推移的依存が脆弱な版を抱え込むことがあるため、<code>npm ls react-server-dom-webpack</code> などで実際の解決版を確かめるとよい。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://nextjs.org/blog/nextjs-security-update-october-14-2026">Next.js Security Update for Upstream Vulnerabilities — nextjs.org（2026-10-14）</a></li>
-        <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-96889">CVE-2026-96889 — cve.org</a></li>
+        <li><a href="https://github.com/react/react/security/advisories/GHSA-xqc2-xf4c-x3h3">Unauthenticated Remote Code Execution in React Server Components — github.com（2026-10-14）</a></li>
+        <li><a href="https://aws.amazon.com/security/security-bulletins/AWS-2025-030/">CVE: RCE in React Server Components — aws.amazon.com</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">フレームワーク</h2>
+  <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">TanStack Start 1.0 が安定版に到達</h3>
+    <h3 class="article__headline">Shopify Hydrogen がライブラリへ転換</h3>
     <div class="article__body">
-      <p>フルスタックフレームワーク <strong>TanStack Start が 1.0</strong> になった。<strong>React と Solid の両方</strong>に対応し、SPA 的なルーティングとキャッシュを土台に、サーバレンダリングと型付きのサーバ関数を足す「クライアント優先」の構えを取る。</p>
-      <p>ルートパラメータ、検索パラメータ、ローダのデータ、サーバ関数の入力まで型が通る。RSC は任意で有効化する方式とし、配信は <strong>Vite と Nitro</strong>（Rsbuild も可）を通す。</p>
+      <p>Shopify の <strong>Hydrogen 2026-10</strong> が一般提供になった。これまでの独自フレームワークをやめ、<strong>既存フレームワークに足すライブラリ</strong>に作り替えた。カートやバリアント選択、顧客ログインといった商取引の部品を担い、ルーティングやデータ取得、描画は乗せる側のフレームワークに任せる。</p>
+      <p>スタータは <strong>React Router と Next.js</strong> 向けが用意され、WebMCP にも対応する。ホスティングは任意で、無料の Oxygen も引き続き使える。既存プロジェクトは 2026-04 以前から移行でき、React Router 系パッケージの版を揃えて一括更新するよう案内されている。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://tanstack.com/blog/tanstack-start-1-0">TanStack Start 1.0 — tanstack.com</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
+        <li><a href="https://shopify.dev/changelog/hydrogen-2026-10-is-now-available">Hydrogen 2026-10 is now available — shopify.dev（2026-10-14）</a></li>
+        <li><a href="https://shopify.dev/docs/storefronts/hydrogen/migrate">Migrate to Hydrogen 2026-10 — shopify.dev</a></li>
       </ul>
     </details>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ランタイム・プラットフォーム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Deno チームが Cloudflare に合流する</h3>
+    <h3 class="article__headline">React Router 8.5 が標準の遷移 API に寄せる</h3>
     <div class="article__body">
-      <p>Ryan Dahl 氏は 10 月 9 日、<strong>Deno チーム全員が Cloudflare に加わる</strong>と発表した。今後は Workers と Durable Objects を軸にした共通基盤に注力し、独自ランタイムとホスティングの単独路線からは退く。</p>
-      <p>影響は段階的だ。<strong>Deno ランタイムはあと 1 年</strong>、毎月のバグ・セキュリティ修正を受けたうえで開発を終える（OSS としては存続）。<strong>Deno Deploy は半年で停止</strong>し、有料顧客には Workers への移行支援が付く。JSR は Cloudflare 基盤へ移して存続する。</p>
+      <p><strong>React Router 8.5</strong> が公開された。独自の View Transition API を非推奨とし、React 19.3 で安定化した <strong><code>&lt;ViewTransition&gt;</code></strong> に寄せる。あわせて、CDN 配信のプリレンダ済み HTML を扱う <strong>API のみのモード</strong>（unstable）を加えた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://deno.com/blog/cloudflare">Deno is joining Cloudflare — deno.com（2026-10-09）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Bun 1.4.3 が型チェッカ bun check を追加</h3>
+    <h3 class="article__headline">Astro 7.4 が並列プリレンダを実験導入</h3>
     <div class="article__body">
-      <p><strong>Bun 1.4.3</strong> が公開された。新コマンド <strong><code>bun check</code></strong> で型チェックを内蔵し、Rust 製 TypeScript コンパイラ（typescript-go）の移植を取り込んだ。サーバの待機時 CPU 使用も下げ、<code>Bun.FetchSession</code> を加えている。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://bun.com/blog/bun-v1.4.3">Bun v1.4.3 — bun.com</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">React Native・モバイル</h2>
-
-  <article class="article">
-    <h3 class="article__headline">RN フレームワークがネイティブ基盤を作り直す</h3>
-    <div class="article__body">
-      <p>React Native 向けのフレームワークが土台を書き換える動きが続く。オールインワンの <strong>One 2.0</strong> は Bun と Rust 製バンドラを採り、SwiftUI と Compose のコード生成まで含めた。UI ライブラリの <strong>Tamagui 3</strong> は <strong>C++ 製のネイティブランタイムと Rust 製コンパイラ</strong>に刷新し、Strict DOM とフラットな style props、Tailwind 風の記法を入れた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://onestack.dev">One — onestack.dev</a></li>
-        <li><a href="https://tamagui.dev/blog/version-three">Tamagui 3 — tamagui.dev</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">React Native Web の保守を React Foundation が継承</h3>
-    <div class="article__body">
-      <p>Web へ React Native を載せる <strong>React Native Web</strong> の保守を、<strong>Expo が React Foundation の下で引き継ぐ</strong>ことになった。長く個人メンテに依存してきた基盤が、財団の体制に移って継続性を得る。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/necolas/react-native-web/discussions/2872">react-native-web discussion #2872 — github.com</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">デザイン・UI</h2>
-
-  <article class="article">
-    <h3 class="article__headline">UI ライブラリがジェスチャとキーボードを強化</h3>
-    <div class="article__body">
-      <p>アクセシブルな UI ライブラリが操作性を詰めた。<strong>React Aria 1.22</strong> は、JS のタッチ処理ではなく <strong>CSS のスクロールスナップと view timeline</strong> で動くスワイプ可能な Sheet を加え、オーバーレイを仮想キーボードに追従させた。<strong>Base UI 1.9</strong> は絞り込みできる Filterable Menu を足し、Select・Combobox・Menu を高速化、Drawer のジェスチャ処理も改善した。</p>
+      <p><strong>Astro 7.4</strong> が、ビルド時間の内訳表示と、ビルド用・実行時用に分けた画像サービスを加えた。目玉は<strong>実験的な並列プリレンダ</strong>で、静的生成の所要時間短縮を狙う。7.4.2 では、10 月の Node.js セキュリティ修正に合わせて最小対応版を 22.23.4 に引き上げた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://react-aria.adobe.com/releases/v1-22-0">React Aria v1.22.0 — react-aria.adobe.com</a></li>
-        <li><a href="https://base-ui.com/react/overview/releases/v1-9-0">Base UI 1.9 — base-ui.com</a></li>
+        <li><a href="https://github.com/withastro/astro/releases">Astro Releases — github.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">言語・ツールチェーン</h2>
+
+  <article class="article">
+    <h3 class="article__headline">TypeScript 7.1 beta が他フレーム向け API を追加</h3>
+    <div class="article__body">
+      <p><strong>TypeScript 7.1 beta</strong> が 10 月 20 日に公開された。型付き import 属性、WebAssembly の source phase import、<code>es2026</code> ターゲットの安定化に加え、<strong>スナップショット付きの新しいプログラマティック API</strong> を備える。</p>
+      <p>注目は <strong>Vue・Svelte・MDX など独自ファイルを扱うプラグイン点</strong>だ。Go 製への移行で崩れていた周辺ツールの連携を取り戻す狙いがある。RC は約 1 か月後、安定版はその後とされ、具体日は示されていない。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
+        <li><a href="https://www.digitalapplied.com/blog/typescript-7-1-beta-whats-new-what-to-test">TypeScript 7.1 Beta: What's New — digitalapplied.com（2026-10-20）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Rust 製型チェッカ tsrs が登場</h3>
+    <div class="article__body">
+      <p>Cloudflare と VoidZero が、TypeScript 型チェッカを Rust に移植した <strong>tsrs</strong> を公開した。Oxc の一部として開発され、<strong>Cloudflare Workers 上で WebAssembly として動く</strong>。同社の値では TypeScript 7.0 比で最大 8 倍速く、メモリは約 7 割減という。いずれも実験段階のベンダ計測である点には注意が要る。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://socket.dev/blog/cloudflare-typescript-rust">Cloudflare Introduces a Faster TypeScript Compiler Written in Rust — socket.dev</a></li>
       </ul>
     </details>
   </article>
@@ -162,16 +130,98 @@
   <h2 class="topic__title">Web プラットフォーム・ブラウザ</h2>
 
   <article class="article">
-    <h3 class="article__headline">主要ブラウザが JPEG XL と新しい CSS を載せる</h3>
+    <h3 class="article__headline">Chrome 156 が CSS の乱数と遷移元疑似クラスを搭載</h3>
     <div class="article__body">
-      <p>ブラウザ側の足並みも進んだ。画像形式の <strong>JPEG XL が Chrome 155 と Firefox 158</strong> に入り、Safari は部分対応となった。長く停滞していた形式が、主要エンジンでようやく実装の段階に入る。</p>
-      <p>CSS では <strong>Safari Technology Preview 254</strong> が <code>calc-size()</code> と <code>interpolate-size</code> を載せ、auto への高さアニメーションに道を開いた。Chrome 154 は <code>frame-sizing: content-height</code> を出荷し、iframe を中身の高さに合わせられるようにした。</p>
+      <p><strong>Chrome 156</strong> が 10 月 20 日に安定版となった。CSS に乱数を生む <strong><code>random()</code></strong> と、ページ遷移を起こしたリンクやボタンに当たる <strong><code>:navigation-source</code></strong> 疑似クラスを載せた。後者は View Transitions と組み合わせ、遷移元の見せ方を CSS で指定できる。</p>
+      <p>スクロール関連も進んだ。<code>overflow: scroll clip</code> で片方の軸だけをスクロールコンテナにでき、<code>scroll-snap-type: pair</code> は両軸を同じ要素にスナップさせる。内部では IndexedDB の保存先を <strong>SQLite 基盤</strong>へ移し、353 件のセキュリティ修正も入った。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://tonisagrista.com/blog/2026/chrome-jpegxl/">JPEG XL in Chrome — tonisagrista.com</a></li>
-        <li><a href="https://webkit.org/blog/18420/release-notes-for-safari-technology-preview-254/">Safari Technology Preview 254 — webkit.org</a></li>
+        <li><a href="https://gigazine.net/gsc_news/en/20261021-google-chrome-156/">Google Chrome 156 stable released — gigazine.net（2026-10-21）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Edge 156 がネイティブ XSLT を非推奨化</h3>
+    <div class="article__body">
+      <p><strong>Microsoft Edge 156</strong> が 10 月 22 日に出た。Chrome と同じ <code>random()</code> や <code>:navigation-source</code>、単軸スクロールコンテナを入れつつ、<strong>ブラウザ内蔵の XSLT を非推奨</strong>とし、<code>XSLTProcessor</code> API を既定で無効化する方針を示した。CSS からのスタイルシート参照は影響を受けない。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://learn.microsoft.com/en-us/microsoft-edge/web-platform/release-notes/156">Microsoft Edge 156 web platform release notes — learn.microsoft.com（2026-10-22）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ライブラリ</h2>
+
+  <article class="article">
+    <h3 class="article__headline">React Three Fiber 10 が WebGPU を既定化</h3>
+    <div class="article__body">
+      <p><strong>React Three Fiber 10.0 alpha 6</strong> が、<strong>WebGPU レンダラを既定</strong>に切り替えた。あわせて React 19 への対応を進め、<code>&lt;Activity&gt;</code> と <code>&lt;ViewTransition&gt;</code> を扱えるようにした。3D 表現の土台が新しい描画 API に寄っていく。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">shadcn/ui がエージェント UI 部品を公開</h3>
+    <div class="article__body">
+      <p><strong>shadcn/ui</strong> が、エージェント向け UI の <strong>AI Elements</strong> を出した。チャットや生成系の画面でよく使う <strong>21 のコピペ可能なパターン</strong>をそろえ、Vercel の AI SDK Elements を置き換える位置づけになる。状態管理系では、Immer より速いと主張する更新ライブラリの新版も続いた。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
+          <tbody>
+            <tr><td>Mutative 2.0</td><td>Immer 比 3.6 倍速い更新を主張（バンドルは 7.9kB と大きめ、Immer は 3.6kB）</td></tr>
+            <tr><td>Immer 11.2</td><td><code>isModified()</code> を追加</td></tr>
+            <tr><td>React Window 2.4</td><td>サーバレンダリングに対応</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">React Native・モバイル</h2>
+
+  <article class="article">
+    <h3 class="article__headline">React Native 0.88 が標準イベント API を採用</h3>
+    <div class="article__body">
+      <p><strong>React Native 0.88</strong> が、イベント配送を既定で <strong>W3C の <code>EventTarget</code> API</strong> に載せ替えた。利用側に破壊的変更はない。iOS の SceneDelegate 対応、可変フォント設定、Java TurboModule の ArrayBuffer 対応、SwiftPM 周りの改善も入る。SwiftPM は次の 0.89 で既定になる見込みだ。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Expo SDK 58 が iOS 27 対応と Router 安定化</h3>
+    <div class="article__body">
+      <p><strong>Expo SDK 58</strong> が iOS 27 と iPhone Duo に向けて出た。<strong>Expo Modules 2.0</strong>（beta）や Android ビルドの高速化（クリーンデバッグ版が約 80 秒から約 39 秒へ）、Siri 連携の App Intents（alpha）を含む。<strong>Expo Router の data loaders・SSR・middleware が安定版</strong>になった点が大きい。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
       </ul>
     </details>
   </article>
@@ -181,27 +231,25 @@
   <h2 class="topic__title">エコシステム・ツール</h2>
 
   <article class="article">
-    <h3 class="article__headline">テストやパッケージ管理のツール更新が続く</h3>
+    <h3 class="article__headline">ランタイムとビルドツールの更新が続く</h3>
     <div class="article__body">
-      <p>周辺ツールも小さく進んだ。大きな新機能より、既存ワークフローの詰めが中心だ。</p>
+      <p>周辺の基盤やビルドツールも小さく進んだ。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Playwright 1.64</td><td>WebMCP 向けテスト API、<code>--shuffle</code>、<code>locator.within()</code> を追加</td></tr>
-            <tr><td>pnpm 12.11〜12.13</td><td>agent skills のリンクと、タスク結果・ビルドのリモートキャッシュ</td></tr>
-            <tr><td>vitest-plugin-rsc 0.3</td><td>Next.js App Router を Vitest Browser Mode で丸ごとテスト（要 16.4+）</td></tr>
-            <tr><td>Partytown 1.0</td><td>サードパーティスクリプトを web worker で動かす仕組みが安定版に</td></tr>
-            <tr><td>sv 1.0</td><td>Svelte の CLI が 1.0 となり、コミュニティ add-on API が正式化</td></tr>
+            <tr><td>Node.js 24.22 LTS</td><td><code>util.throttle()</code> と <code>util.debounce()</code>、暗号まわりの改善を追加</td></tr>
+            <tr><td>Rsdoctor 2.0</td><td>Rspack 専用に。Agent CLI を備え、解析が 57% 高速化</td></tr>
+            <tr><td>Webpack 5.112</td><td>SSR 向けアセットマニフェスト、source map scopes、非同期の <code>DefinePlugin</code> 値</td></tr>
+            <tr><td>Next.js 16.4.3</td><td>10 月 23 日公開のバグ修正リリース</td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/301">This Week In React #301 — ThisWeekInReact.com（2026-10-14）</a></li>
-        <li><a href="https://svelte.dev/blog/whats-new-in-svelte-october-2026">What's new in Svelte: October 2026 — svelte.dev</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
       </ul>
     </details>
   </article>
