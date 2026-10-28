@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM ニュース — 2026年10月21日 | Ecce Fomo</title>
+<title>LLM ニュース — 2026年10月28日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="LLM ニュース — 2026年10月21日">
+<meta property="og:title" content="LLM ニュース — 2026年10月28日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,159 +23,166 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">LLM ニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月21日（水）</span>
+        <span>2026年10月28日（水）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">推論インフラ</h2>
+  <h2 class="topic__title">モデルリリース</h2>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI が初の自社 AI チップ Jalapeño を公開</h3>
+    <h3 class="article__headline">OpenAI が GPT-6.1 Terra を公開、コンピュータ操作に軸足</h3>
     <div class="article__body">
-      <p>OpenAI は初の AI アクセラレータ <strong>Jalapeño</strong> を明らかにし、TIME の 2026 年ベストインベンションに選ばれたと伝えた。推論を自社シリコンで効率よく回し、より多くの人に AI を届けるためのチップだという。</p>
-      <p>需要の拡大に合わせて自前チップを増やす構えで、モデルを作る側が推論の土台まで自分で持とうとする動きである。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://x.com/OpenAINewsroom/status/2111142554079268944">OpenAI Newsroom (X) — Jalapeño, our first AI chip, is included in TIME's Best Inventions of 2026</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Opus 5.5 の高速版が正式提供、最大 2.5 倍速に</h3>
-    <div class="article__body">
-      <p>Anthropic は <strong>Opus 5.5 fast mode</strong> の研究プレビューと順番待ちを終え、正式提供にした。中身は同じ Opus 5.5 のまま<strong>最大 2.5 倍速</strong>で、価格は 100 万トークンあたり入力 $8・出力 $40 である。</p>
-      <p>Microsoft Foundry（Azure 上）でも使え、Google Cloud でも近く対応する。速度を選べる層を増やし、基盤を越えてモデルを配る動きが続く。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2110825294655562048">Claude Developers (X) — Opus 5.5 fast mode is no longer in research preview; up to 2.5x faster at $8/$40, now on Microsoft Foundry</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントと開発基盤</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Claude が自社コードの 9 割を書き、レビューを再設計</h3>
-    <div class="article__body">
-      <p>Anthropic は、<strong>Claude Code のコードの約 9 割を Claude が書いている</strong>と開示した。6〜9 月でマージされた PR は 2 倍以上に増え、取り消し（revert）の割合は 4 割以上下がったという。増える変更に品質を合わせるため、コードレビューの回し方を作り替えた。</p>
-      <p>あわせて Claude Code の <strong>Code Review を一般提供</strong>にした。Team・Enterprise 向けで、レビューは約 3 倍速くなり、リポジトリごとに Quick・Standard・Deep を選べる。AI が書いた大量のコードを、AI のレビューで支える形が整ってきた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2111168901723906176">Claude Developers (X) — Claude writes about 90% of Claude Code's code; merged PRs more than doubled while reverts fell 40%+</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2110866210573386065">Claude Developers (X) — Code Review is now generally available for Team and Enterprise plans</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2110866212217651527">Claude Developers (X) — At GA: ~3x faster reviews, more of the bugs that matter, Quick/Standard/Deep per repo</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Devin がコーディング指標で首位、運用監視にも展開</h3>
-    <div class="article__body">
-      <p>Cognition の <strong>Devin Fusion</strong> が、Artificial Analysis のコーディングエージェント指標で<strong>スコア 68 の首位</strong>に立った。Opus 5.5 を主、GPT-6 Luna を従に組み合わせ、Claude Code（Opus 5.5）を 1 タスクあたり 31% 安いコストで上回ったという。</p>
-      <p>同社は障害対応を自動化する <strong>Devin Oncall</strong> も出した。アラートを自ら調べて原因究明と修正を助け、大手で毎日数千件を処理しているとする。エージェントがコード生成から運用まで広がっている。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/cognition/status/2112290148205436979">Cognition (X) — Devin Fusion scores 68 on the Artificial Analysis Coding Agent Index, beating Claude Code with Opus 5.5 at 31% lower cost</a></li>
-        <li><a href="https://x.com/cognition/status/2110790097369010292">Cognition (X) — Introducing Devin Oncall, automatically investigating alerts and bugs for production incidents</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">科学応用</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Claude がサソリ毒に対するタンパク質を設計</h3>
-    <div class="article__body">
-      <p>Anthropic は、<strong>Claude がサソリ毒を無力化するタンパク質バインダー</strong>を設計したと伝えた。毒が細胞に取り付く部分を狙い、64 時間で 30 万超の設計を生成し、211 個を実験に回したところ <strong>17 個が条件を満たした</strong>という。</p>
-      <p>同社は量子回路の設計でも、平易な指示から既存の最良を桁違いに上回る回路を作らせた例を示した。まだ探索段階だとしつつ、モデルを科学研究の道具として使う動きが具体化している。</p>
+      <p>OpenAI は <strong>GPT-6.1 Terra</strong> を公開した。画面を理解してアプリをまたいで操作するモデルで、標準 API 価格は前世代比 <strong>50% 安い</strong>。GPT-6 Astra 並みの性能をトークン単価 1/10 で出し、処理は 3 倍速いという。ChatGPT Work・Codex・API で使える。</p>
+      <p>Sam Altman は「コンピュータ操作の新時代」と位置づけ、Greg Brockman は自分が手で操作するより速いと感じる水準に達したと述べた。安価なコンピュータ操作モデルが、仕事の自動化の前提になりつつある。</p>
     </div>
     <details class="article__sources">
       <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/AnthropicAI/status/2112579251555721573">Anthropic (X) — Designing protein binders against scorpion neurotoxins with Claude</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2112579254538141981">Anthropic (X) — Over 64 hours Claude generated 300,000+ designs; 211 were sent for lab testing</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2112579257704882246">Anthropic (X) — 17 of the 211 met the criteria for a binder</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2111152183240511640">Anthropic (X) — STEM Fellows: Claude designed quantum circuits that improve on the best published ones by an order of magnitude or more</a></li>
+        <li><a href="https://x.com/OpenAI/status/2114780711664398349">OpenAI (X) — GPT-6.1 Terra: delivering fast and capable computer use at a lower price</a></li>
+        <li><a href="https://x.com/OpenAI/status/2114780717188272382">OpenAI (X) — Matches GPT-6 Astra at one-tenth the price per token and over 3× faster</a></li>
+        <li><a href="https://x.com/sama/status/2114818620782248024">Sam Altman (X) — 6.1 Terra is here; especially excited for this new era of computer use</a></li>
+        <li><a href="https://x.com/gdb/status/2114814747254432243">Greg Brockman (X) — Computer use with Terra feels faster than what I can do unassisted</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI が生命科学へ、創薬企業を買収し学術支援</h3>
+    <h3 class="article__headline">Google が対話的な世界モデル Genie 4 を公開</h3>
     <div class="article__body">
-      <p>OpenAI は生命科学への投資を重ねた。創薬の工程をまとめる <strong>Orchestra Bio を買収</strong>し、自社の生物学向けモデル群 Rosalind と組み合わせて治療の実用化を速めるという。</p>
-      <p>あわせて研究室向けの <strong>Rosalind 学術プラン</strong>を広げ、米大学の対象ラボに最長 12 か月の提供枠を用意した。数学では Simons 財団の新構想に 500 万ドルを拠出する。AI を研究の現場に入れる競争が、企業買収や資金拠出にまで及んでいる。</p>
+      <p>Google DeepMind は世界モデル <strong>Genie 4</strong> を公開した。リアルタイムの物理・推論・音声を備え、自然言語で天候やカメラ、登場する要素を動かせる対話的な環境を生成する。初めて <strong>API で提供</strong>する予定だという。</p>
+      <p>生成 AI がテキストや画像にとどまらず、操作できる環境そのものを作る方向に広がっている。Demis Hassabis は「シミュレーションの中のシミュレーション」と表現した。</p>
     </div>
     <details class="article__sources">
       <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://x.com/OpenAI/status/2112607347688583586">OpenAI (X) — We've acquired Orchestra Bio to build on Rosalind for life sciences research</a></li>
-        <li><a href="https://x.com/OpenAI/status/2110841898076418336">OpenAI (X) — Expanding access to GPT-Rosalind with the Rosalind Academic Plan for U.S. university labs</a></li>
-        <li><a href="https://x.com/OpenAI/status/2110741355739963884">OpenAI (X) — Contributing $5 million to a new Simons Foundation initiative for mathematics</a></li>
+        <li><a href="https://x.com/GoogleAI/status/2115114625985368299">Google AI (X) — Introducing Genie 4, our most realistic and interactive world model yet</a></li>
+        <li><a href="https://x.com/OfficialLoganK/status/2115129174826647863">Logan Kilpatrick (X) — An early look at Genie 4, coming soon to the API for the first time</a></li>
+        <li><a href="https://x.com/demishassabis/status/2115232001275924722">Demis Hassabis (X) — Genie 4, bringing together real-time physics, reasoning, and audio</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">安全性・ガバナンス</h2>
+  <h2 class="topic__title">AI とセキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">Anthropic が株式の 5% を公益目的の基金に拠出</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>AI が PHP と Brotli に重大な脆弱性を発見</h3>
     <div class="article__body">
-      <p>Anthropic は、自社株の一部を公益のための新組織 <strong>Anthropic Public Benefit Fund</strong> に充てると発表した。まず<strong>株式の 5%</strong> から始め、企業価値が基準から 50% 上がるごとに追加で充てられる仕組みにする。</p>
-      <p>同社はまた、安全対策を第三者に評価させる取り組みを進め、METR のチームに従業員並みのアクセスを与えたと明らかにした。利益と安全の両面で外部の目を入れる動きである。</p>
+      <p>OpenAI は取り組み「Patch the Planet」で、推定 7 割の web サイトが使う <strong>PHP の重大な欠陥（php2shell）</strong>を見つけ、メンテナや研究者の連合を組んで修正を調整した。広く使われる圧縮ライブラリ <strong>Brotli</strong>（Node.js・Bun・Envoy などが内包）の未認証リモートコード実行も発見した。</p>
+      <p>強いモデルによる脆弱性発見が、実際に使われている重大な OSS バグの修正につながっている。影響確認用の Codex スキルも配られた。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://x.com/AnthropicAI/status/2111881963657412903">Anthropic (X) — Committing a portion of our shares, starting with 5%, to the Anthropic Public Benefit Fund</a></li>
-        <li><a href="https://x.com/AnthropicAI/status/2110784662071398807">Anthropic (X) — Giving a team from METR employee-like access to assess our safety practices</a></li>
+        <li><a href="https://x.com/OpenAI/status/2112907856018309586">OpenAI (X) — OpenAI models helped discover critical security flaws in PHP, used by ~70% of websites</a></li>
+        <li><a href="https://x.com/OpenAI/status/2113766354386084338">OpenAI (X) — An unauthenticated remote code execution in Brotli, included in Node.js, Bun, and Envoy</a></li>
+        <li><a href="https://x.com/gdb/status/2112921529650688312">Greg Brockman (X) — Leading a coalition to mitigate php2shell, found via Patch the Planet</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">OpenAI が超知能の安全責任者を迎え、防御も競争に</h3>
+    <h3 class="article__headline">セキュリティ防御ツールの投入が各社で相次ぐ</h3>
     <div class="article__body">
-      <p>OpenAI の Sam Altman は、<strong>超知能に備える安全・セキュリティの責任者</strong>として Aleksander 氏を迎えたと述べ、目の前の課題は大きいと位置づけた。</p>
-      <p>攻撃面では、Anthropic の Boris Cherny が <strong>Gray Swan と組んだプロンプトインジェクション対策コンペ</strong>を案内し、エージェントが使われるほど業界横断で解く必要が増すとした。能力の向上に合わせ、守りの体制づくりが各社の競争点になっている。</p>
+      <p>Anthropic は <strong>Claude Security</strong> を Enterprise で公開ベータにした。リポジトリをつなぐと深くスキャンし、変更が入るたびに再スキャンして指摘を最新の状態に保つ。Cognition は <strong>Devin Security</strong>、CodeRabbit は Deep Scan（11 月 8 日まで無償、総額 100 万ドル分）を出した。いずれもフロンティアのサイバー向けモデルを土台にする。</p>
+      <p>OpenAI は訓練環境も固め、フロンティアモデルの訓練中はネット接続を外し、キャッシュした「オフラインの web」を使わせるようにした。攻撃と防御の両面で、AI を使ったセキュリティ競争が立ち上がっている。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（4）</summary>
       <ul>
-        <li><a href="https://x.com/sama/status/2112652656602923366">Sam Altman (X) — Grateful Aleksander accepted this role on the safety and security challenges of superintelligence</a></li>
-        <li><a href="https://x.com/bcherny/status/2110791698611855624">Boris Cherny (X) — Partnering with Gray Swan on a prompt injection competition; urgent to solve across the industry</a></li>
+        <li><a href="https://x.com/claudeai/status/2112962248218148878">Claude (X) — Claude Security now keeps up with your code as it changes; public beta on Enterprise</a></li>
+        <li><a href="https://x.com/cognition/status/2114741368627335379">Cognition (X) — Introducing the new Devin Security, powered by frontier cyber models</a></li>
+        <li><a href="https://x.com/coderabbitai/status/2114039241907085753">CodeRabbit (X) — $1,000,000 in Deep Scan usage is on us through November 8</a></li>
+        <li><a href="https://x.com/OpenAI/status/2113718797505036665">OpenAI (X) — Removed live internet access for frontier models during training; built an offline world</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">エージェントと標準化</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Anthropic が能動的エージェント Claude Duet を公開</h3>
+    <div class="article__body">
+      <p>Anthropic は、Claude が自分から動くアプリ <strong>Claude Duet</strong> の研究プレビューを始めた。土台は Opus 5.5 で、必要なことを持ってきて、離席中も作業を続け、代わりに動く前に確認する。米国の Pro・Max でウェイトリスト制である。</p>
+      <p>あわせて web・デスクトップ・モバイルの既定動作を、危険な操作だけ自動で止める <strong>auto モード</strong>に切り替える。対話に答える道具から、自分で動くエージェントへと軸が移りつつある。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/claudeai/status/2112984664256241837">Claude (X) — Opening a research preview of Claude Duet, where Claude works as a proactive agent</a></li>
+        <li><a href="https://x.com/claudeai/status/2112984666437546104">Claude (X) — Claude Duet is designed around Claude Opus 5.5</a></li>
+        <li><a href="https://x.com/claudeai/status/2113360845409583307">Claude (X) — Sessions will run in auto mode by default on Pro, Max, and Team plans</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>OSS Scanner が初週に重大 77 件を検出</h3>
+    <h3 class="article__headline">Anthropic が Agent Skills を標準化団体へ寄贈</h3>
     <div class="article__body">
-      <p>Anthropic が始めた <strong>OSS Scanner</strong> の最初のスキャンで、重要な OSS に<strong>重大 77 件・高 803 件</strong>の指摘がメンテナーへ報告された。各指摘には再現手順が付き、可能なら修正案も添える。強いモデルによる無償の脆弱性スキャンが、実際の成果を出し始めた。</p>
+      <p>Anthropic は、MCP に続いて <strong>Agent Skills</strong> を中立の Agentic AI Foundation に寄贈した。2025 年 12 月以降 <strong>70 を超える</strong>エージェント基盤が採用し、ChatGPT・Cursor・GitHub Copilot・VS Code が含まれる。</p>
+      <p>運営する技術委員会には Anthropic・Google・Microsoft・OpenAI などが並ぶ。ライセンスは変わらず、参加しなくても利用や貢献ができる。競合も交えてエージェントの共通規格をまとめる動きである。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2112299602510749992">Claude Developers (X) — OSS Scanner gives critical open source projects free, periodic scans with a proof-of-concept and patch</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2112299603634860121">Claude Developers (X) — First scans reported 77 critical and 803 high model-rated findings to maintainers</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2113328526413996100">Claude Developers (X) — Donating Agent Skills to the Agentic AI Foundation; 70+ platforms have integrated it</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2113328528536305718">Claude Developers (X) — A Technical Steering Committee of Anthropic, Google, Microsoft, OpenAI, and others</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Claude API が初の版付け、MCP に長時間タスクを追加</h3>
+    <div class="article__body">
+      <p>Anthropic は、2023 年以来初めて Claude API に版（<strong>2026-10-21</strong>）を付けた。破壊的変更を新モデルの登場前に扱えるよう、今後は版を頻繁に出すという。SDK と CLI も新しい版を既定にした。</p>
+      <p>あわせて MCP に <strong>Tasks</strong>（深い調査などの長時間ジョブを任せ、終わったら報告させる）と <strong>Elicitations</strong>（作業の途中でユーザーに確認を求める）を加えた。エージェント連携の土台が整理されてきた。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2113013247209021918">Claude Developers (X) — API version 2026-10-21, our first official version release since 2023</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2113698001889927608">Claude Developers (X) — Adding MCP Tasks and Elicitations in Claude</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">リサーチ・ベンチマーク</h2>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>AI が数学・物理・創薬で成果を後押し</h3>
+    <div class="article__body">
+      <p>OpenAI の Greg Brockman は、数学（調和解析）・計算機科学（計算量理論）・物理（場の量子論）で AI が関わった発見を <strong>3 件</strong>示した。本人は「素晴らしいが人の理解を超えてはいない」水準だとする。</p>
+      <p>Anthropic は新薬を開発する <strong>6 組織</strong>と研究提携し、自社でも創薬に着手した。OpenAI の生物学モデル Rosalind も神経変性に関わる新たな手がかりを出した。モデルを研究の現場で使う例が、具体的な成果として積み上がっている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://x.com/gdb/status/2114837059462627533">Greg Brockman (X) — Three major scientific discoveries in mathematics, computer science, and physics</a></li>
+        <li><a href="https://x.com/AnthropicAI/status/2115178675050307942">Anthropic (X) — Deep research partnerships with six organizations developing new medicines</a></li>
+        <li><a href="https://x.com/OpenAI/status/2112899854569762936">OpenAI (X) — GPT-Rosalind surfaced a new lead for drug discovery</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">新ベンチマークが非公開データと実運用を重視</h3>
+    <div class="article__body">
+      <p>Artificial Analysis は Intelligence Index を <strong>v5</strong> に更新し、ベンチマークを 2 つ追加して 3 つを改良した。初めて指標の<strong>過半を非公開データセット</strong>で組んだという。Cognition は「その PR を実際にマージするか」を問う FrontierCode 2.0 を出した。</p>
+      <p>学習データへの混入や見かけのスコアを避け、実際に役立つかで測り直す動きが広がっている。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/ArtificialAnlys/status/2115265133467635877">Artificial Analysis (X) — Intelligence Index v5; for the first time, the majority of the Index is built on private datasets</a></li>
+        <li><a href="https://x.com/cognition/status/2115132488775524793">Cognition (X) — Introducing FrontierCode 2.0: would you actually merge the PR?</a></li>
       </ul>
     </details>
   </article>
@@ -183,30 +190,39 @@
 
 <section class="topic">
   <h2 class="topic__title">業界動向</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Anthropic が IPO に向け SEC に S-1 を提出</h3>
+    <div class="article__body">
+      <p>Anthropic は、株式公開に向けて <strong>SEC に S-1 登録届出書</strong>を提出したと発表した。届出書はまだ発効していないとする法的注記を添えた。大手 AI 企業が本格的に上場準備へ進む節目であり、資金調達と情報開示の面で業界の見え方が変わる。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://x.com/AnthropicAI/status/2114705042817110293">Anthropic (X) — Anthropic has filed an S-1 registration statement with the SEC related to its proposed IPO</a></li>
+      </ul>
+    </details>
+  </article>
+
   <div class="table-wrap">
     <table>
       <thead><tr><th>主体</th><th>動き</th></tr></thead>
       <tbody>
-        <tr><td>TypeSafe AI</td><td>"System One" の machine-native types を掲げる <strong>Jev 1.14</strong> を公開し、画像入力や長い文脈に対応。<strong>シリーズ A</strong> も調達した。</td></tr>
-        <tr><td>Google</td><td><strong>Gemini 4 Argon</strong> が公開から 72 時間で約 25 兆トークンを処理。Antigravity で 3D 世界を自動生成し、NotebookLM はスライドや動画を対話的に共同生成する。</td></tr>
-        <tr><td>OpenAI</td><td>ChatGPT の <strong>GPT-6 Astra Pro</strong> が複数エージェントの並行実行に対応。音声を GPT-Live-1.1 で刷新し、COBOL・Fortran 等<strong>レガシー言語の移行</strong>能力も強化した。</td></tr>
-        <tr><td>Notion</td><td>モデルルーター <strong>Auto</strong>（フロンティア品質を約 9 割安く）、自分の AI 契約を使う BYOK、端末とブラウザを持ち最長 24 時間動くエージェントを導入。</td></tr>
-        <tr><td>Anthropic</td><td><strong>Claude Code デスクトップアプリ</strong>で複数セッションの並行実行を強化。STEM と概念推論の 2 つのフェローシップの募集も始めた。</td></tr>
+        <tr><td>OpenAI</td><td>フロンティアモデルと Codex を <strong>Google Cloud の Model Garden</strong> に展開。企業が使い慣れた基盤で OpenAI の技術を使えるようにする。</td></tr>
+        <tr><td>Anthropic</td><td><strong>Claude を Google Cloud で一般提供</strong>。競合が相次ぎ同じクラウドへ乗り入れ、モデルの配布が主要クラウドに集まる。</td></tr>
+        <tr><td>Anthropic</td><td>GSA との <strong>OneGov 協定</strong>で連邦・州・地方政府に Claude を 40% 引きで提供。年次 Public Benefit Report も公開した。</td></tr>
+        <tr><td>人材</td><td>Claude Code を率いた <strong>Thariq</strong>、デスクトップ版を作った <strong>Anthony Morris</strong> が相次ぎ Anthropic を退職した。</td></tr>
       </tbody>
     </table>
   </div>
   <details class="article__sources">
-    <summary>出典（9）</summary>
+    <summary>出典（5）</summary>
     <ul>
-      <li><a href="https://x.com/typesafeai/status/2110536685805355064">TypeSafe AI (X) — Jev 1.14 with images, a new box type, and longer context</a></li>
-      <li><a href="https://x.com/coderabbitai/status/2112567149311279213">CodeRabbit (X) — Congrats to TypeSafe AI on the Series A</a></li>
-      <li><a href="https://x.com/OfficialLoganK/status/2112767157746688480">Logan Kilpatrick (X) — ~25 trillion tokens processed in the first 72 hours since Gemini 4 Argon launched</a></li>
-      <li><a href="https://x.com/GoogleAI/status/2110744759111213217">Google AI (X) — Gemini 4 Argon autonomously builds an explorable 3D world in Antigravity</a></li>
-      <li><a href="https://x.com/Gemini_Notebook/status/2112317553762840595">NotebookLM (X) — Co-create slide decks and video overviews</a></li>
-      <li><a href="https://x.com/OpenAI/status/2111192259073094035">OpenAI (X) — GPT-6 Astra Pro upgraded; multiple agents can tackle parts of a task in parallel</a></li>
-      <li><a href="https://x.com/OpenAI/status/2112310345863930168">OpenAI (X) — Stronger capabilities for low-resource languages such as COBOL, Fortran, and Visual Basic</a></li>
-      <li><a href="https://x.com/NotionHQ/status/2112269722075242887">Notion (X) — Notion AI upgrades: more capable agents, a smarter Auto, BYOK, improved MCP</a></li>
-      <li><a href="https://x.com/ClaudeDevs/status/2110445844675838148">Claude Developers (X) — Claude Code desktop app now built for running many sessions side by side</a></li>
+      <li><a href="https://x.com/OpenAI/status/2112988118471295323">OpenAI (X) — OpenAI models are coming to Google Cloud's Model Garden</a></li>
+      <li><a href="https://x.com/claudeai/status/2113380122468454765">Claude (X) — Claude Models on Google Cloud (Anthropic managed) is now generally available</a></li>
+      <li><a href="https://x.com/AnthropicAI/status/2115207004293853358">Anthropic (X) — Expanding our partnership with GSA; Claude to governments at 40% off</a></li>
+      <li><a href="https://x.com/trq212/status/2113844051938054167">Thariq (X) — I've left Anthropic after more than a year working on Claude Code</a></li>
+      <li><a href="https://x.com/amorriscode/status/2113972174524674247">Anthony Morris (X) — Yesterday was my last day at Anthropic; I created Claude Code on desktop</a></li>
     </ul>
   </details>
 </section>
