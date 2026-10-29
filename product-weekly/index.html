@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年10月22日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年10月29日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年10月22日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年10月29日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月22日（木）</span>
+        <span>2026年10月29日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,190 +33,139 @@
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">Claude API に2023年以来初の正式バージョンが入る</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>週次リリースで長文脈の自動継続と Monitor ツールが入る</h3>
     <div class="article__body">
-      <p>10/21、Anthropic が <strong>API バージョン 2026-10-21</strong> を公開した。Claude API は進化を続けてきたが、正式なバージョン発行は 2023 年以来初だという。今後はより頻繁にバージョンを出し、新モデルが要求する前に破壊的変更へ備えられるようにする。<code>2023-06-01</code> は非推奨にはならない。</p>
-      <p>このバージョンでは、Messages API から <code>temperature</code>・<code>top_p</code>・<code>top_k</code> が外れ、アシスタントターンの documents とユーザーターンの citations が <code>400</code> を返すようになる。SDK と <code>ant</code> CLI も新メジャーが出て既定が 2026-10-21 になった。Claude Code からは 2.1.307 で入った <code>/claude-api api-version</code> でコードを移行できる。</p>
+      <p>この週は <strong>2.1.308〜2.1.312</strong> が出た。2.1.311 では、標準コンテキストのセッションが 200K トークンを超えると「1M 契約が要る」と止まっていたのを直し、<strong>自動で圧縮して続行</strong>するようにした。<code>ultrathink</code> は対応モデルで xhigh 相当の思考量で走るようになった。2.1.310 では Monitor ツールとプラグイン monitor が Bedrock・Vertex・Foundry でも使えるようになった。</p>
+      <p>安全側の修正も多い。2.1.309 は、サンドボックスの Bash が各コマンドの前にシェルの起動ファイルを<strong>枠の外で実行してしまう</strong>穴をふさぎ、<code>--mcp-config</code> で渡した設定ファイルを自動承認の編集が書き換えられる問題も直した。2.1.312 は、冒頭だけ見て巨大な <code>CLAUDE.md</code> や @ 取り込みファイルを上書きする不具合を直した。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（3）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2113013247209021918">@ClaudeDevs: API バージョン 2026-10-21 を公開（2023 年以来初の正式版・今後は頻繁に発行）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2113013248714744208">@ClaudeDevs: 変更点（temperature/top_p/top_k 削除・documents/citations が 400・一部 Admin/Analytics フィールド置換）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2113013250136662488">@ClaudeDevs: SDK と ant CLI の新メジャーが既定 2026-10-21・/claude-api skill と移行ガイド</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.308〜2.1.312：200K 超の自動圧縮継続・ultrathink xhigh・Monitor ツール・サンドボックス起動ファイルと CLAUDE.md 上書きの修正）</a></li>
+        <li><a href="https://github.com/anthropics/claude-code/releases">anthropics/claude-code Releases（2.1.308〜2.1.312）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">gzip 圧縮とクラウド先行起動で応答が速くなる</h3>
+    <h3 class="article__headline">Agent Skills を Agentic AI Foundation へ寄贈</h3>
     <div class="article__body">
-      <p>Claude Code が毎ターン送る会話を <strong>gzip 圧縮</strong>するようになり、モデルへ届くまでが速くなった。応答が始まるまでの待ちが縮んでいる。あわせてクラウドセッションは、入力を始めた時点で起動を先に走らせるので、送信してから立ち上がりを待つ時間が減る。派手な機能ではないが、毎回の体感に効く地味な改善だ。</p>
+      <p>10/22、Anthropic が <strong>Agent Skills</strong> を Agentic AI Foundation に寄贈した。MCP を寄贈したのと同じ財団で、仕様を中立な場に移して業界共通の土台にする狙いだ。Skills は Claude Code の実験として始まったものだという。</p>
+      <p>2025 年 12 月以降、ChatGPT・Cursor・GitHub Copilot・VS Code を含む <strong>70 以上</strong>のエージェント基盤がこの仕様を取り込んでいる。特定のツールに閉じた拡張ではなく、どのエージェントでも同じ Skill が動く前提が広がりつつある。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://x.com/ClaudeDevs/status/2113328526413996100">@ClaudeDevs: Agent Skills を Agentic AI Foundation へ寄贈・70+ 基盤が採用（ChatGPT/Cursor/Copilot/VS Code）</a></li>
+        <li><a href="https://x.com/bcherny/status/2113333859907747871">@bcherny: Skills は Claude Code の実験から始まり、MCP の隣へ寄贈</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Claude が MCP の Tasks と Elicitations に対応する</h3>
+    <div class="article__body">
+      <p>10/23、Claude が MCP の <strong>Tasks</strong> と <strong>Elicitations</strong> に対応すると告知された。Tasks は、ディープリサーチのような時間のかかる仕事をプラグインへ投げ、終わったら結果を返させる仕組みだ。エージェントが待ち時間の長い処理を外部へ預けられるようになる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2111209208012210409">@ClaudeDevs: 会話を毎ターン gzip 圧縮・クラウドセッションは入力開始で起動</a></li>
+        <li><a href="https://x.com/ClaudeDevs/status/2113698001889927608">@ClaudeDevs: MCP Tasks と Elicitations に対応（長時間ジョブをプラグインへ委譲し完了時に報告）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Code Review が Team・Enterprise で一般提供に</h3>
+    <h3 class="article__headline">Utah の州政府導入で時間短縮の数値が出る</h3>
     <div class="article__body">
-      <p>10/15、Claude の <strong>Code Review</strong> が Team・Enterprise プランで一般提供になった。管理者が Claude Code の設定でリポジトリを選んで有効化すると、開発者側の設定なしで新規 PR ごとにレビューが走る。リポジトリ単位で Quick・Standard・Deep の深さを選べ、プレビュー時より約 3 倍速く、重要なバグをより多く拾うという。Enterprise は 1/15 までに最低 $10,000 のクレジットを請求できる。</p>
-      <p>背景には、Anthropic 自身が <strong>Claude Code のコードの約 9 割を Claude に書かせ</strong>、6〜9 月でマージ PR を倍以上に増やしつつ revert 率を 40% 以上下げた経験がある。どうレビューを変えたかはブログにまとまっている。開発者の bcherny は「Code Review なしの生産性は想像できない。全 PR で走り、出る前にほぼ全部のバグを捕まえる」と書いた。</p>
+      <p>10/28、Anthropic の bcherny が、Utah 州が <strong>Claude Code</strong> を 10 の州機関の開発者 34 人に配った事例を紹介した。4 週間の試行で、<strong>8 割</strong>が 30 分以内に動く環境を用意でき、7 割が 20 時間以上の節約を報告したという。公的機関での実測値として示された点が目を引く。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（4）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2110866210573386065">@ClaudeDevs: Code Review が Team・Enterprise で GA（Quick/Standard/Deep をリポジトリ単位で選択）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2110866214528716975">@ClaudeDevs: 管理者が設定でリポジトリを選ぶと開発者の設定なしで全 PR にレビュー</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2111168901723906176">@ClaudeDevs: Claude が Claude Code のコードの約 90% を記述・PR 倍増で revert 40%+ 減のレビュー手法</a></li>
-        <li><a href="https://x.com/bcherny/status/2111158313463525518">@bcherny: Code Review が全 PR で走り、出る前にほぼ全バグを捕まえる</a></li>
+        <li><a href="https://x.com/bcherny/status/2115491259381072269">@bcherny: Utah の 10 州機関 34 開発者に Claude Code を配布、80% が 30 分で環境構築・71% が 20 時間以上節約</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>週次リリースはサンドボックスと API 移行を整える</h3>
+    <h3 class="article__headline">Claude Code を作った開発者の退職が相次ぐ</h3>
     <div class="article__body">
-      <p>この週は <strong>2.1.301〜2.1.308</strong> が出た。2.1.302 では Read ツールが <strong>128MB 超の画像を拒否</strong>してメモリ逼迫での crash を防ぎ、アイドル圧縮の on/off が <code>/config</code> から切れるようになった。fork サブエージェントも既定で有効になった。2.1.304 で <code>/auto-mode-setup</code>（環境を走査して Auto Mode に学習させる案内）が入った。</p>
-      <p>2.1.305 では <code>sandbox.allowNestedUserNamespaces</code> が加わり、Linux のサンドボックス内で Chromium や rootless podman がユーザー名前空間を作れる（その分ファイル保護は回避され得るので承知のうえで使う）。2.1.306 はクラウドセッションで <code>claude -p</code> が「Not logged in」になる不具合と、MCP 多用時に API エラーが「prompt is too long」に化ける不具合を直した。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.301〜2.1.308：Read の 128MB 画像拒否・アイドル圧縮トグル・allowNestedUserNamespaces・クラウドログイン修正）</a></li>
-        <li><a href="https://x.com/ClaudeCodeLog/status/2112299932837142975">@ClaudeCodeLog: 2.1.304 リリース（/auto-mode-setup・mod の人間承認・76 CLI 変更）</a></li>
-        <li><a href="https://x.com/ClaudeCodeLog/status/2112650002778501148">@ClaudeCodeLog: 2.1.305 リリース（Bash 実行ツール・サブエージェント委譲・38 CLI 変更）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Claude Duet が先回りするエージェントとして登場</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Claude Duet が「先回りして動く」エージェントを打ち出す</h3>
-    <div class="article__body">
-      <p>10/21、Anthropic が <strong>Claude Duet</strong> のリサーチプレビューを開いた。Claude が能動的なエージェントとして動く新しいアプリで、注意が要ることを向こうから持ってきて、頼んだタスクをこなし、席を外しても作業を続け、代わりに動く前には確認を取る。<strong>Opus 5.5</strong> を軸に設計され、何が急ぎで何を後回しにでき、いつ確認すべきかを判断する。アカウントのメモリ・スキル・連携アプリを引き継ぐので設定はほぼ要らない。</p>
-      <p>提供は米国の Pro・Max プランで、待機リスト経由の早期プレビュー。緊急度の見誤りはまだあり得るとしている。安全面では、パスワードを直接見ることはなく、機微な情報の共有を防ぐ分類器を新たに置き、重要な判断は人に残す設計だという。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://x.com/claudeai/status/2112984664256241837">@claudeai: Claude Duet のリサーチプレビュー（先回りして動き、代行前に確認するエージェント）</a></li>
-        <li><a href="https://x.com/claudeai/status/2112984666437546104">@claudeai: Opus 5.5 を軸に設計・メモリ/スキル/連携アプリを引き継ぐ</a></li>
-        <li><a href="https://x.com/claudeai/status/2112984667758510197">@claudeai: 安全設計（パスワードを直接見ない・機微情報を守る分類器・重要判断は人に）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">各社が AI でコードの脆弱性を探し始める</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Anthropic が OSS と自社コードを継続スキャンする</h3>
-    <div class="article__body">
-      <p>10/19、Anthropic が <strong>OSS Scanner</strong> を出した。重要な OSS プロジェクトに、最も強いモデルによる無料の定期脆弱性スキャンを提供する。各指摘には実証（PoC）が付き、可能なら修正も添える。最初の 1 週間で 77 件の critical と 803 件の high をメンテナへ報告し、curl の修正も含まれた。</p>
-      <p>10/21 には <strong>Claude Security</strong> がコードの変化に追従するようになった。リポジトリを一度つなぐと深い初回スキャンの後、変更が入るたび再スキャンして指摘を現状に合わせる。Claude がコードから書く脅威モデルも付き、修正が入れば finding を fixed にし、再発すれば開き直す。Enterprise でパブリックベータ、対象組織に月 $25,000 のクレジットが付く。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2112299602510749992">@ClaudeDevs: OSS Scanner（重要 OSS に無料の定期脆弱性スキャン・PoC と修正つき）</a></li>
-        <li><a href="https://x.com/ClaudeDevs/status/2112299603634860121">@ClaudeDevs: 初週で critical 77・high 803 を報告、curl の修正も</a></li>
-        <li><a href="https://x.com/claudeai/status/2112962248218148878">@claudeai: Claude Security がコードの変化に追従して再スキャン（Enterprise ベータ）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">OpenAI が PHP の重大な脆弱性を発見しスキルを配る</h3>
-    <div class="article__body">
-      <p>10/21、OpenAI が、自社モデルが研究者とともに <strong>PHP</strong> の重大なセキュリティ欠陥を見つけたと公表した。PHP は推計で全ウェブサイトの約 70% を動かす。2 か月かけてメンテナ・研究者の連合を率いて進めた、"Patch the Planet" 構想の成果だという。発表後、PHP の緊急対応に追われた開発者も多かった。</p>
-      <p>自分のサイトが影響を受けるか確かめられるよう、OpenAI は <strong>Codex 用のスキル</strong>を用意した。リポジトリを指す形で Codex に渡すと、確認手順を案内する。モデルが脆弱性を見つけ、その対処まで同じエージェントの手順に落とす流れだ。</p>
+      <p>この週、Claude Code に関わった開発者の退職表明が続いた。10/24、1 年以上 Claude Code に携わってきた trq212 が Anthropic を離れたと書いた。同じ頃、<strong>デスクトップ版の Claude Code</strong> を作った amorriscode も最終出社を報告し、コミュニティからの要望やバグ報告が製品を形づくったと振り返った。製品そのものの変化ではないが、x では大きな反応を集めた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/OpenAI/status/2112907856018309586">@OpenAI: モデルが PHP（全サイトの約 70% を駆動）の重大な欠陥を発見（Patch the Planet）</a></li>
-        <li><a href="https://x.com/OpenAI/status/2112945805686604033">@OpenAI: 影響の有無を確かめる Codex スキルを配布（リポジトリを Codex に渡す）</a></li>
+        <li><a href="https://x.com/trq212/status/2113844051938054167">@trq212: 1 年以上の Claude Code 開発を経て Anthropic を退職</a></li>
+        <li><a href="https://x.com/amorriscode/status/2113972174524674247">@amorriscode: デスクトップ版 Claude Code を作った開発者が最終出社を報告</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Codex が開発環境の操作性を詰める</h2>
+  <h2 class="topic__title">コーディング支援ツールが脆弱性対応へ向かう</h2>
 
   <article class="article">
-    <h3 class="article__headline">Codex が CLI とアプリの細かい使い勝手を改善</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Devin Security が脆弱性の発見と修正を担う</h3>
     <div class="article__body">
-      <p>OpenAI の Codex が開発環境まわりを細かく整えた。アプリ側は、Composer に次のプロンプト候補を出す<strong>予測機能</strong>と、Tab でそれを編集可能な下書きとして受け取る操作が入った。CLI 0.163.0 では <code>/config</code> の検索と即時編集、<code>/keymap</code> のリーダーキー（既定 Ctrl+X）、ターン途中のフォローアップと読み取り専用ツールの並列実行が加わった。</p>
-      <p>提供範囲も広がる。OpenAI のフロンティアモデルと <strong>Codex のエージェント的ワークフロー</strong>が Google Cloud の Model Garden に載り、既に Google Cloud で構築している企業が自社の場で使えるようになる。</p>
+      <p>10/26、Cognition が <strong>Devin Security</strong> を出した。Claude Mythos とフロンティアのサイバー向けモデルを土台に、緊急の脆弱性をチームが見つけ、優先順位を付け、直すところまで Devin が手伝う。「サイバーセキュリティの新たな暗黒時代に入りつつある」とし、導入を後押しするため<strong>数億ドル規模のクレジット</strong>を付けるという。先週の Oncall・Fusion に続く Devin の機能拡張だ。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（3）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/Codex_Changelog/status/2110674916832129281">@Codex_Changelog: Composer の予測候補・Tab で編集可能な下書きに</a></li>
-        <li><a href="https://x.com/Codex_Changelog/status/2110855940463583297">@Codex_Changelog: Codex CLI 0.163.0（/config 検索・リーダーキー・ターン途中フォローアップと並列読み取り）</a></li>
-        <li><a href="https://x.com/OpenAI/status/2112988118471295323">@OpenAI: モデルと Codex ワークフローを Google Cloud Model Garden に提供</a></li>
+        <li><a href="https://x.com/cognition/status/2114741368627335379">@cognition: Devin Security（Claude Mythos とサイバーモデルで脆弱性の発見・優先順位付け・修正を支援、数億ドルのクレジット）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">CodeRabbit が脆弱性を実証してから指摘する</h3>
+    <div class="article__body">
+      <p>10/27、<strong>CodeRabbit Secure</strong> の Deep Scan が更新された。脆弱性を連携済みのリポジトリ群にまたいで追跡し、<strong>使い捨てのサンドボックスで実際にエクスプロイトを再現</strong>して、本物だと確かめてから指摘する。指摘する前に実証を挟むことで、誤検知で開発者の手を止めない作りを狙う。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://x.com/coderabbitai/status/2115097038396493934">@coderabbitai: CodeRabbit Secure の Deep Scan が脆弱性をリポジトリ横断で追跡し、使い捨てサンドボックスで再現してから報告</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin が指標首位と障害初動を押し出す</h2>
+  <h2 class="topic__title">Devin が開発環境を実機 macOS まで広げる</h2>
 
   <article class="article">
-    <h3 class="article__headline">Devin Fusion がコーディング指標で首位を主張</h3>
+    <h3 class="article__headline">Device Hub の実機 macOS で iPhone アプリを開発する</h3>
     <div class="article__body">
-      <p>Cognition の <strong>Devin Fusion</strong> が、Artificial Analysis の Coding Agent Index で 68 の首位スコアを主張した。Opus 5.5 を主役に GPT-6 Luna を補助役に組み合わせる構成で、Opus 5.5 を使う Claude Code に対し、性能と価格の両方で上回り、タスク単価は 31% 安いという。単一モデルではなく複数モデルの役割分担で指標を取りにいく形が目を引く。</p>
+      <p>Cognition は開発環境まわりも広げている。<strong>Device Hub</strong> では Devin Cloud Agents が<strong>実機の macOS</strong> 上で動き、複数人での iPhone アプリ開発を回せる。TestFlight や App Store への配信まで同じ流れでできるという。</p>
+      <p>10/23 には <strong>Devin Desktop</strong> アプリも刷新された。エージェントの指令所をまとめた画面で、以前より滑らかで整った操作を目指したとしている。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/cognition/status/2112290148205436979">@cognition: Devin Fusion が Coding Agent Index で 68 の首位・Claude Code+Opus 5.5 比で 31% 安い</a></li>
-        <li><a href="https://x.com/devindevelopers/status/2112300426867699814">@devindevelopers: Devin Fusion は「より良く、より安く」</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Devin Oncall が本番障害の初動を自動化する</h3>
-    <div class="article__body">
-      <p>10/15、Cognition が <strong>Devin Oncall</strong> を出した。アラートやバグを Devin が自動で調べ、本番インシデントの診断と解消をチームに代わって進める。Datadog・Dynatrace・Sentry などと箱から出してつながり、一部の大規模企業では既に日々数千件のアラートをさばいているという。あわせて、使いこなす人ほど枠を広げる<strong>効率ベースの自動承認</strong>と、底上げ役の Devin Coach も導入された。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/cognition/status/2110790097369010292">@cognition: Devin Oncall（アラート/バグを自動調査・Datadog/Dynatrace/Sentry と連携）</a></li>
-        <li><a href="https://x.com/cognition/status/2112223929414607228">@cognition: 効率ベースの自動承認と Devin Coach</a></li>
+        <li><a href="https://x.com/dabit3/status/2114534717898858980">@dabit3: Device Hub で Devin Cloud Agents が実機 macOS 上で動き、iPhone アプリの複数人開発と TestFlight/App Store 配信まで</a></li>
+        <li><a href="https://x.com/cognition/status/2113671026286682500">@cognition: Devin Desktop アプリを刷新、エージェントの指令所をまとめた画面に</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Notion のエージェントが長時間稼働へ</h2>
+  <h2 class="topic__title">Notion のエージェントがファイル作成までこなす</h2>
 
   <article class="article">
-    <h3 class="article__headline">Notion のエージェントが 24 時間連続で動けるように</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Notion Agent が Excel や PDF を作れるようになる</h3>
     <div class="article__body">
-      <p>10/19、Notion AI が大きく更新された。<strong>Notion Agents</strong> は自分専用のコンピューターとブラウザを持ち、稼働時間が従来の 5 分から <strong>24 時間以上</strong>に伸びた。実行前に安全確認を挟む「Review for me」モードが入り、個人の ChatGPT プランを Notion 内で使うこともできる。Web・モバイルの読み込みは最大 50% 速くなった。</p>
-      <p>モデル選びは新しいルーター <strong>Auto</strong> が担う。タスクごとに品質・速度・コストの釣り合う型を選び、行き詰まれば方針を変える。フロンティア級の品質を 90% 安く出すという。BYOK・MCP の改善・新しいクレジット制も加わった。</p>
+      <p>10/27、<strong>Notion Agent</strong> がコンピューターを使ってファイルを作り、編集できるようになった。会話から Excel・Word・PowerPoint・PDF の仕上がりまで、Notion の中だけで完結する。チャットの先に成果物の生成までつながった形だ。</p>
+      <p>あわせて、Google Meet 向けの <strong>AI Meeting Notes</strong> の Chrome 拡張も出た。これまで「自分とそれ以外」の 2 者だった議事録の話者が、発言ごとに名前付きで分かれるようになった。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（3）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://x.com/NotionHQ/status/2112269722075242887">@NotionHQ: Notion AI 更新（より強力な Agents・Auto・BYOK・MCP 改善・新クレジット制）</a></li>
-        <li><a href="https://x.com/NotionHQ/status/2112269723740299771">@NotionHQ: Agents が自前のコンピューター/ブラウザを持ち 24 時間以上稼働・Review for me</a></li>
-        <li><a href="https://x.com/NotionHQ/status/2112601748888322109">@NotionHQ: ルーター Auto がタスクに合わせモデルを選び、行き詰まれば方針転換（90% 安く）</a></li>
+        <li><a href="https://x.com/NotionHQ/status/2115146056598163708">@NotionHQ: Notion Agent がコンピューターで Excel/Word/PowerPoint/PDF を作成・編集</a></li>
+        <li><a href="https://x.com/NotionHQ/status/2115225539825008816">@NotionHQ: Google Meet 向け AI Meeting Notes の Chrome 拡張、話者ごとに名前付きで分離</a></li>
       </ul>
     </details>
   </article>
