@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年10月23日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年10月30日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年10月23日">
+<meta property="og:title" content="GitHub トレンド — 2026年10月30日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,131 +23,139 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月23日（金）</span>
+        <span>2026年10月30日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">今週の筆頭 — ソフトを解析するエージェント</h2>
+  <h2 class="topic__title">今週の筆頭 — コード監査を任せるスキル</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>morluto/rea — ソフト解析エージェントが2週連続で首位</h3>
+    <h3 class="article__headline">cloudflare/security-audit-skill — Cloudflare がコード監査を任せるスキルを公開</h3>
     <div class="article__body">
-      <p>AI エージェントにソース無しでソフトを解析させる MCP サーバー兼 CLI である。ネイティブバイナリ、JavaScript や Electron のアプリ、.NET アセンブリ、Android の APK、Web サイト、ファームウェア、パケットキャプチャなどを対象に、所見を根拠と限界を添えて返す。バイナリ解析は Hopper・Ghidra・IDA を外部ツールとして呼ぶ。Node.js 22 以降で動く。<strong>週間で10万を超えるスター</strong>を集めて首位を保った。README は適法な研究・教育・相互運用・保存のための用途と明記し、名前や README を真似た偽物に注意を促す。</p>
+      <p>AI コーディングエージェントをセキュリティ監査者に仕立てるスキルである。偵察・網羅的な探索・候補の検証・構造化出力・独立検証・報告の6段で、機械可読な所見を返す。メモリ安全性、バイナリ、プロンプトインジェクション、HTTP、サプライチェーンなど広い領域を対象にする。<strong>対象コードを実行する工程には外部ネットワークを断ったOS サンドボックスが要り</strong>、無ければ検証は保留に回す。<code>npx skills add</code> で導入する。週間で約14,300★を集め首位に立った。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/morluto/rea">morluto/rea</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>NationalSecurityAgency/ghidra — rea が呼ぶ解析基盤</h3>
-    <div class="article__body">
-      <p>米 NSA が公開するソフトウェアリバースエンジニアリングの基盤である。コンパイル済みコードの逆アセンブル・逆コンパイル・グラフ表示・スクリプティングを備え、Windows・macOS・Linux で動く。多数の命令セットと実行形式に対応し、対話的にもバッチでも使える。拡張やスクリプトは Java か Python で書く。ビルドには JDK 25 と Gradle 9.1 以降が要る。主要言語は Java。rea のようなエージェント向けツールが解析の土台として呼ぶ。週間で約4,900★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/NationalSecurityAgency/ghidra">NationalSecurityAgency/ghidra</a></li>
+        <li><a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">スキルとプラグインを配る</h2>
+  <h2 class="topic__title">デザインの質をエージェントに仕込む</h2>
 
   <article class="article">
-    <h3 class="article__headline">anthropics/claude-plugins-official — Anthropic 公式のプラグイン目録</h3>
+    <h3 class="article__headline">pbakaus/impeccable — AI 臭いUI をレビューで弾くスキル</h3>
     <div class="article__body">
-      <p>Anthropic が運営する Claude Code 向けプラグインの公式目録である。Anthropic 自身が作る <code>/plugins</code> と、パートナーやコミュニティによる <code>/external_plugins</code> の 2 つを持つ。各プラグインは MCP サーバー設定・スラッシュコマンド・エージェント定義・スキルを束ねられ、<code>SKILL.md</code> だけを公開する「スキル束」形式も認める。<code>/plugin install</code> で導入する。README は、<strong>中身は Anthropic の管理外で検証もされない</strong>ため導入前に信頼できるか確かめるよう促す。主要言語は Python。週間で約5,600★。</p>
+      <p>コーディングエージェントにデザインの語彙を与え、UI を直させるツール群である。<code>/impeccable critique</code> のようなスラッシュコマンドで既存画面を批評・調整し、62 の規則を持つ検出器で定型的な「AI っぽさ」を見つける。新規ページも作れるが、既存の画面に強いとうたう。Claude Code や VS Code の Copilot などにプラグインとして入る。README は、<strong>live モードはローカルの作業コピーだけを編集させ</strong>、本番サイトに差し込まないよう促す。週間で約9,700★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/anthropics/claude-plugins-official">anthropics/claude-plugins-official</a></li>
+        <li><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>cursor/plugins — Cursor 公式プラグインの市場</h3>
+    <h3 class="article__headline">Leonxlnx/taste-skill — 実写と実機確認で凡庸な画面を避ける</h3>
     <div class="article__body">
-      <p>エディタ Cursor 向けプラグインの仕様と公式プラグインを束ねたリポジトリである。各プラグインは <code>plugin.json</code> を持つ単独のディレクトリで、ルートの <code>marketplace.json</code> が一覧をまとめる。プラグインはスキル・Cursor ルール・MCP サーバー定義を同梱する。開発ワークフロー、Google Workspace などの生産性、CRM・会計・決済といった多数の外部連携を収める。<strong>金融や取引のプラグインは口座を見たり注文を出したりできる</strong>ため、権限を確かめて使う。主要言語は TypeScript。週間で約2,000★。</p>
+      <p>コーディングエージェントに「趣味の良さ」を与えるスキルである。20 種の研究済みデザイン方針から3 つを提示して選ばせ、実写の素材で作り、3 つの画面幅でブラウザ確認したうえで自らのスクリーンショットを最大3 巡見直す。ありふれたランディングページを避けることが狙いで、v2.1 からダッシュボードやアプリ画面も扱う。Node.js 22 以降と Chrome 系ブラウザが要る。<strong>素材は CC0 などの公開画像で、出典を明記する</strong>。週間で約4,400★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/cursor/plugins">cursor/plugins</a></li>
+        <li><a href="https://github.com/Leonxlnx/taste-skill">Leonxlnx/taste-skill</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">android/skills — Android 公式が配る開発スキル集</h3>
+    <h3 class="article__headline">jakubkrehel/skills — 画面作りに効く14 のスキル集</h3>
     <div class="article__body">
-      <p>Google の Android チームが公開する、エージェント向けのスキル集である。developer.android.com の開発指針に沿って、AI に Android 開発の作法を守らせる Markdown の指示を収める。LLM が苦手とする領域を狙い、基本的な Jetpack Compose の作法のような既に確立した話題は避ける。ビルドツールの更新、CameraX、Compose、性能、セキュリティ、テスト、Wear OS、XR などを扱う。Android CLI か Claude Code・Codex・Gemini のプラグインとして導入する。公開への貢献は今は受け付けていない。週間で約1,400★。</p>
+      <p>良いインターフェースを作るための14 のスキルを束ねたものである。UI・タイポグラフィ・配色・アクセシビリティ・レイアウト・文章を扱う。画面やフローを一つのランク付き報告でレビューする better-interface、WCAG 2.2 に照らして直す better-accessibility、コンポーネントの各状態を使い捨てページに描く state-machine などを収める。作者が運営するデザイン誌の題材に沿う。<code>npx skills add</code> や Claude Code のプラグインで入れる。週間で約980★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/android/skills">android/skills</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">K-Dense-AI/scientific-agent-skills — 科学研究向けのスキル177種</h3>
-    <div class="article__body">
-      <p>AI エージェントに科学分野の作法を与える、177 種のスキル集である。生物・化学・医療・創薬を中心に、RDKit や Scanpy などのパッケージ、PubChem・UniProt など 100 を超えるデータベース、多段のワークフローを扱う。各スキルには例と検証が付き、組み合わせてパイプラインを組める。Cursor・Claude Code・Codex・Gemini CLI などに対応する。README は、スキルがコード実行やネットワーク通信を指示しうるため導入前の確認を促し、<strong>臨床・診断用途には使えない</strong>と明記する。主要言語は Python。週間で約4,000★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></li>
+        <li><a href="https://github.com/jakubkrehel/skills">jakubkrehel/skills</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントを束ね、走らせる</h2>
+  <h2 class="topic__title">エージェントの流儀を定める</h2>
 
   <article class="article">
-    <h3 class="article__headline">anomalyco/opencode — 端末で動く OSS のコーディングエージェント</h3>
+    <h3 class="article__headline">obra/superpowers — 自動で発火する開発方法論のスキル</h3>
     <div class="article__body">
-      <p>端末で動くオープンソースのコーディングエージェントである。全権限を持つ既定の build エージェントと、解析と探索に限る読み取り専用の plan エージェントを Tab で切り替える。複雑な検索や多段作業は general サブエージェントに任せられる。CLI に加え、macOS・Windows・Linux 向けのデスクトップアプリ（ベータ）を持つ。shell・npm・Homebrew・Nix などで導入する。README は、一行インストーラを「YOLO」と呼び実行前に中身を読むよう促す。累計で約22万★、週間で約6,700★。</p>
+      <p>コーディングエージェントに開発の作法を与えるスキルの枠組みである。発想と設計から、文書化した計画、隔離した git worktree での実行、テスト駆動、コードレビュー、ブランチ完了までの流れを定める。<strong>スキルは自動で発火し</strong>、利用者が手で呼ぶ必要はない。デバッグや検証、並行エージェントの扱いも収める。Claude Code・Codex・Cursor・Gemini CLI など多くのハーネスに対応し、導入手順はそれぞれ異なる。新しいスキルの寄贈は原則受け付けない。週間で約4,900★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/anomalyco/opencode">anomalyco/opencode</a></li>
+        <li><a href="https://github.com/obra/superpowers">obra/superpowers</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">stablyai/orca — 複数のエージェントを並べて走らせる司令塔</h3>
+    <h3 class="article__headline">multica-ai/andrej-karpathy-skills — 1 枚で振る舞いを正す指示書</h3>
     <div class="article__body">
-      <p>複数のコーディングエージェントを束ねて動かすデスクトップの司令塔である。各エージェントを個別の git worktree で並行して走らせ、一つの画面で追う。端末、ファイル編集、差分レビュー、GitHub・Linear 連携を備える。<strong>一つの指示を複数のエージェントに同時に送り</strong>、結果を比べて良いものを採り込める。SSH 越しの遠隔実行や、スマホからの監視と追い指示にも対応する。Claude Code・Codex・Grok・Cursor など端末で動くエージェントを扱う。日次で出荷するため変化が速い。週間で約9,400★。</p>
+      <p>Claude Code の振る舞いを正す、1 枚の CLAUDE.md である。LLM が前提を確かめず作り込みすぎ、頼まれない編集をするという Andrej Karpathy の指摘をもとに、コード前に思考すること、最小限で書くこと、変更を局所に留めること、検証可能な成功条件に落とすことの4 原則を置く。既存の CLAUDE.md に追記するか、プラグインとして入れる。README は、<strong>誤字修正のような些事に全工程は要らない</strong>とし、判断して使うよう促す。週間で約4,250★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/stablyai/orca">stablyai/orca</a></li>
+        <li><a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">職種・分野に特化させる</h2>
+
+  <article class="article">
+    <h3 class="article__headline">anthropics/knowledge-work-plugins — 職種ごとに仕立てるプラグイン束</h3>
+    <div class="article__body">
+      <p>Anthropic が公開する、Claude を職種や職能の専門家に仕立てるプラグイン集である。各プラグインはスキル・スラッシュコマンド・MCP コネクタを束ね、<strong>コードを持たず Markdown と JSON だけで組む</strong>。営業・顧客対応・製品管理・法務・財務・データ・生命科学 R&D など11 種を目録に並べる。主に Claude Cowork 向けだが Claude Code でも動く。README は、これらは汎用の出発点で、自社の文脈に合わせて手を入れる前提だと述べる。週間で約2,500★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">ruvnet/ruflo — Claude Code を包むマルチエージェント基盤</h3>
+    <h3 class="article__headline">AgriciDaniel/claude-seo — SEO 監査を任せる無料プラグイン</h3>
     <div class="article__body">
-      <p>Claude Code や Codex を包み、複数エージェントの群れ・持続する記憶・学習の仕組みを足すオープンソースの基盤である。作者 Reuven Cohen が Claude Flow として出したものの後継にあたる。コーディング・テスト・レビュー・セキュリティ・文書の作業を分担させ、機械をまたいだエージェント連携や、ベクトル RAG による記憶を持つ。Claude Code・Codex・MCP 対応クライアント・単独の端末 UI で使える。README は、<strong>プラグインがサンドボックス無しで権限ごと動く</strong>ため導入前の確認を促し、ベンチマークなどの数値は自己申告だと述べる。主要言語は TypeScript。週間で約3,700★。</p>
+      <p>Claude Code 向けの無料の SEO プラグインである。26 のサブスキルと19 の専門エージェントを持ち、サイト監査を10〜15 分で終えて優先順位付きの行動計画を返す。技術 SEO、E-E-A-T、構造化データ、AI 検索(GEO/AEO)、ローカル・越境・EC の SEO、Google API 連携、PDF・Excel の報告を扱う。Claude Code 1.0.33 以降と Python が要る。README は、<strong>全監査は Opus 上で5 つのエージェントが動くため利用枠を多く使う</strong>と断る。週間で約4,100★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/AgriciDaniel/claude-seo">AgriciDaniel/claude-seo</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">複数エージェントを束ねて走らせる</h2>
+
+  <article class="article">
+    <h3 class="article__headline"><span class="article__badge">続報</span>ruvnet/ruflo — Claude Code を包むマルチエージェント基盤</h3>
+    <div class="article__body">
+      <p>Claude Code や Codex を包み、複数エージェントの群れ・記憶・学習を足すオープンソースの実行層である。100 を超えるエージェント、群れの協調、ベクトル記憶、過去の作業からの自己学習、機械をまたぐ連携、コンソール UI を持つ。CLI・MCP サーバー・35 のプラグインで導入でき、Claude Code 2.1.287 以降が要る。README は、<strong>プラグインはサンドボックス無しで権限ごと動く</strong>ため導入前の確認を促し、ベンチマークの優位は条件付きだと断る。主要言語は TypeScript。週間で約1,850★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
@@ -156,93 +164,34 @@
       </ul>
     </details>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">文脈と記憶を保たせる</h2>
 
   <article class="article">
-    <h3 class="article__headline">mksglu/context-mode — ツール出力を隔離して文脈窓を節約する</h3>
+    <h3 class="article__headline">TauricResearch/TradingAgents — 取引会社を模すマルチエージェント枠組み</h3>
     <div class="article__body">
-      <p>コーディングエージェントの文脈窓に入る生のツール出力を減らす MCP サーバー兼プラグインである。ツール出力を隔離した別プロセスで走らせ、結果だけを返す。索引した内容は SQLite FTS5 に収め BM25 で検索する。ファイル編集・git 操作・エラー・判断などのセッション事象を記録し、文脈の圧縮や再開のあと作業状態を取り戻せる。README は一例で<strong>315KB を 5.4KB へ減らした</strong>とする。約17 のクライアントに対応するが、フックの無い環境では指示ファイル頼みで遵守は約6割にとどまる。主要言語は TypeScript。週間で約2,300★。</p>
+      <p>取引会社の役割を LLM エージェントで模す、金融取引のマルチエージェント枠組みである。ファンダメンタル・センチメント・ニュース・テクニカルの分析班、強気と弱気が討論する調査班、意思決定するトレーダー、承認するリスク管理班からなる。LangGraph 上に組み、多くの LLM に対応する。Python で動く。README は、<strong>これは研究目的であり投資助言ではない</strong>とし、出力は非決定的でバックテスト結果の再現は保証しないと断る。週間で約5,600★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/mksglu/context-mode">mksglu/context-mode</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">akitaonrails/ai-memory — 別ベンダーへ引き継げる長期記憶</h3>
-    <div class="article__body">
-      <p>コーディングエージェントに持続する共有の記憶を与えるツールである。ライフサイクルフックでセッションの活動を捉え、整えてからプロジェクトごとの Markdown wiki に畳み込む。真実の源は git で管理する wiki で、検索用に SQLite 索引を派生させる。<strong>ある agent で終えた作業を別ベンダーのエージェントで引き継げる</strong>のが眼目で、機械やチームをまたいだ共有もできる。Claude Code・Codex・Cursor など 20 を超えるクライアントに対応する。主要言語は Rust。既定では LLM 呼び出し無しで動き、要約などは任意で有効にする。週間で約3,300★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/akitaonrails/ai-memory">akitaonrails/ai-memory</a></li>
+        <li><a href="https://github.com/TauricResearch/TradingAgents">TauricResearch/TradingAgents</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ソフトをエージェントに開く</h2>
+  <h2 class="topic__title">定番の更新</h2>
 
   <article class="article">
-    <h3 class="article__headline">HKUDS/CLI-Anything — 既存ソフトをエージェント操作可能にする</h3>
+    <h3 class="article__headline">php/php-src — 緊急の脆弱性修正でトレンド入り</h3>
     <div class="article__body">
-      <p>既存ソフトをエージェントが操作できる CLI に変える生成器である。解析・設計・実装・テスト・文書・公開の多段パイプラインで、REPL・JSON 出力・<code>SKILL.md</code> を備えた Python 製 CLI を作る。GIMP・Blender・LibreOffice などのデスクトップ道具や、Web サービスの API を、GUI 自動化を介さずに扱わせる。出来合いの CLI を配る登録所 CLI-Hub も持つ。Claude Code を軸に Cursor・Codex・OpenCode などに対応する。多くは対象ソフトを別途入れる必要がある。主要言語は Python。週間で約3,300★。</p>
+      <p>PHP インタプリタの本体リポジトリである。README は PHP を汎用のスクリプト言語、とりわけ Web 開発に向くと説明する。主要言語は C。今週トレンドに入った背景には、PHP プロジェクトが10 月21 日に予告した緊急のセキュリティリリースがある。いずれも深刻度 CVSS 9.2 とされる<strong>2 件の脆弱性を修正する</strong>もので、該当・修正バージョンは告知時点で未公表とされた。別に PHP 8.6 はベータ版が公開中である。週間で約960★。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://github.com/HKUDS/CLI-Anything">HKUDS/CLI-Anything</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>heygen-com/hyperframes — HTML から動画を生成する枠組み</h3>
-    <div class="article__body">
-      <p>HTML・CSS・アニメーションを決定的な MP4 動画に変換するオープンソースの枠組みである。構成は HTML ファイルで書き、データ属性でタイミングやトラックを指定する。React もビルド手順も要らず、同じ入力からは同じ出力が得られる。GSAP・Lottie・Three.js などからアニメーションを取り込む。今週は <strong>Mac と Linux 向けのネイティブアプリ</strong>が加わり、スキルが中核と随時導入の組に整理された。Claude Code・Codex・Cursor などに対応し、Node.js 22 以降と FFmpeg で動く。主要言語は TypeScript。週間で約5,700★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">手元で動かす生成ツール</h2>
-
-  <article class="article">
-    <h3 class="article__headline">debpalash/VoiceStudio — 手元で動く ElevenLabs の代替</h3>
-    <div class="article__body">
-      <p>端末内で完結する、ElevenLabs の代替をうたう音声 AI アプリである。声の複製・声の設計・動画の吹き替え・音声入力・文字起こし・オーディオブック作成を、646 言語で行える。バッチ処理や再利用できるレシピ、監視フォルダも持つ。Electron 製で macOS・Windows・Linux と Docker に対応し、ローカル API と MCP でエージェントからも使える。NVIDIA・Apple Silicon・CPU のいずれでも動く。README は<strong>声の複製は許可を得た場合に限る</strong>よう促す。週間で約13,600★と今週の注目株。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Comfy-Org/ComfyUI — ノードで組む拡散モデルの GUI</h3>
-    <div class="article__body">
-      <p>ノードをつないで拡散モデルのワークフローを組む、ローカル動作の GUI 兼 API・バックエンドである。画像・動画・音声・3D・文章の生成を視覚的に組み立て、JSON で保存したり API から動かしたりできる。チェックポイント・LoRA・ControlNet の読み込み、修復や拡大、カスタムノードに対応する。Windows・Linux・macOS で動き、NVIDIA・AMD・Intel・Apple Silicon など幅広いハードを使える。README は comfyanonymous から Comfy-Org への移管には触れず、配布はなお旧 org にひもづく。主要言語は Python。週間で約4,400★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/Comfy-Org/ComfyUI">Comfy-Org/ComfyUI</a></li>
+        <li><a href="https://github.com/php/php-src">php/php-src</a></li>
+        <li><a href="https://blog.qualys.com/vulnerabilities-threat-research/2026/10/20/php-announces-critical-security-release-for-two-vulnerabilities">PHP Announces Critical Security Release for Two Vulnerabilities — Qualys</a></li>
       </ul>
     </details>
   </article>
