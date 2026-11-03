@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年10月27日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年11月3日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年10月27日">
+<meta property="og:title" content="フロントエンドニュース — 2026年11月3日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月27日（火）</span>
+        <span>2026年11月3日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,16 +33,29 @@
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>React 本体に認証不要の遠隔コード実行</h3>
+    <h3 class="article__headline">Node.js の Brotli デコーダに遠隔コード実行の脆弱性</h3>
     <div class="article__body">
-      <p><strong>React Server Components（RSC）</strong>に、認証不要の遠隔コード実行（RCE）が見つかった。深刻度は <strong>Critical（9.5）</strong>で、細工したペイロードが RSC 対応フレームワーク上でサーバ側のコード実行につながる。影響は <code>react-server-dom-webpack</code> ・ <code>-turbopack</code> ・ <code>-parcel</code> の 19.0.0〜19.3.0 に及ぶ。</p>
-      <p>修正は <strong>19.0.9 / 19.1.10 / 19.2.9 / 19.3.1</strong> に入り、Server Functions の DoS 修正も同梱される。クライアント専用の SPA は対象外だが、キャレット指定やロックファイル、推移的依存が脆弱な版を抱え込むことがあるため、<code>npm ls react-server-dom-webpack</code> などで実際の解決版を確かめるとよい。</p>
+      <p>Node.js 同梱の Brotli デコーダに、<strong>高深刻度の領域外書き込み（CVE-2026-111497）</strong>が見つかった。不正なブロック切り替えを「入力が足りないだけ」と誤って扱い、ストリーミング復号が 8 バイトの内部バッファを越えて書き込む。クラッシュやメモリ漏えい、<strong>遠隔コード実行</strong>につながりうる。</p>
+      <p>影響は <strong>26.x・24.x・22.x</strong> に及ぶ。修正版 <code>22.23.4</code> / <code>24.22.1</code> / <code>26.12.1</code> が出ている。<code>node:zlib</code> で信頼できない Brotli データを展開するアプリは早めに更新する。報告は OpenAI Codex Security による。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://github.com/react/react/security/advisories/GHSA-xqc2-xf4c-x3h3">Unauthenticated Remote Code Execution in React Server Components — github.com（2026-10-14）</a></li>
-        <li><a href="https://aws.amazon.com/security/security-bulletins/AWS-2025-030/">CVE: RCE in React Server Components — aws.amazon.com</a></li>
+        <li><a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases">October 2026 Security Releases — nodejs.org</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Next.js が 11 月 3 日に定例セキュリティ更新を予告</h3>
+    <div class="article__body">
+      <p>Vercel は <strong>Next.js の定例セキュリティ更新を 11 月 3 日（火）に出す</strong>と事前告知した。<strong>中深刻度 7 件</strong>を修正する予定で、影響範囲・対象版・更新手順はリリースと同時に公開するとしている。事前告知は、各チームが更新計画を立てる時間を確保するための運用だという。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026">Upcoming Next.js November Security Release — nextjs.org（2026-10-27）</a></li>
       </ul>
     </details>
   </article>
@@ -52,146 +65,103 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Shopify Hydrogen がライブラリへ転換</h3>
+    <h3 class="article__headline">TanStack が AI 1.0 と軽量ランタイム Redact を公開</h3>
     <div class="article__body">
-      <p>Shopify の <strong>Hydrogen 2026-10</strong> が一般提供になった。これまでの独自フレームワークをやめ、<strong>既存フレームワークに足すライブラリ</strong>に作り替えた。カートやバリアント選択、顧客ログインといった商取引の部品を担い、ルーティングやデータ取得、描画は乗せる側のフレームワークに任せる。</p>
-      <p>スタータは <strong>React Router と Next.js</strong> 向けが用意され、WebMCP にも対応する。ホスティングは任意で、無料の Oxygen も引き続き使える。既存プロジェクトは 2026-04 以前から移行でき、React Router 系パッケージの版を揃えて一括更新するよう案内されている。</p>
+      <p>AI 機能を組み込むためのツールキット <strong>TanStack AI が 10 月 23 日に 1.0</strong> となった。チャット・ツール・MCP・永続化・エージェントを扱い、コア API を production ready とした。プロバイダアダプタは <strong>23 種</strong>で、OpenAI 互換 API も受ける。<code>createMCPServer</code> で自作ツールを MCP サーバとして公開でき、Claude Desktop や Cursor から使える。実験段階の agent harness も同梱する。</p>
+      <p>あわせて、React 互換の小さなブラウザランタイム <strong>TanStack Redact</strong> も出た。time slicing を持たず同期的に描画する割り切りで、挙動の読みやすさとサイズを優先する。TanStack DB 1.0 RC や TanStack Start 向けの Module Federation も続き、周辺の整備が進む。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://shopify.dev/changelog/hydrogen-2026-10-is-now-available">Hydrogen 2026-10 is now available — shopify.dev（2026-10-14）</a></li>
-        <li><a href="https://shopify.dev/docs/storefronts/hydrogen/migrate">Migrate to Hydrogen 2026-10 — shopify.dev</a></li>
+        <li><a href="https://tanstack.com/blog/tanstack-ai-1-0">TanStack AI 1.0 — tanstack.com（2026-10-23）</a></li>
+        <li><a href="https://tanstack.com/blog/introducing-tanstack-redact">Introducing TanStack Redact — tanstack.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">React Router 8.5 が標準の遷移 API に寄せる</h3>
+    <h3 class="article__headline">Remix 3.1 と Vinext 1.4 が SSR の高速化を進める</h3>
     <div class="article__body">
-      <p><strong>React Router 8.5</strong> が公開された。独自の View Transition API を非推奨とし、React 19.3 で安定化した <strong><code>&lt;ViewTransition&gt;</code></strong> に寄せる。あわせて、CDN 配信のプリレンダ済み HTML を扱う <strong>API のみのモード</strong>（unstable）を加えた。</p>
+      <p>SSR 周りの更新が続いた。<strong>Remix 3.1</strong> は SSR が <strong>2 倍速くなった</strong>とし、<code>prefetch()</code> を加えた。<strong>Vinext 1.4</strong> はサーバ処理を減らし、水和とプリフェッチを改善した。いずれも初期表示と画面遷移の体感を詰める方向だ。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://github.com/remix-run/remix/releases/tag/remix%403.1.0">Remix 3.1.0 — github.com</a></li>
+        <li><a href="https://vinext.dev/blog/vinext-1-4">Vinext 1.4 — vinext.dev</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Owner が 1 万超の店舗サイトを Next.js から Astro へ移行</h3>
+    <div class="article__body">
+      <p>飲食店向けの <strong>Owner</strong> が、1 万以上の店舗サイトを <strong>Next.js から Astro に移した</strong>。ページ全体を React で描かず、React は島（islands）の中だけで動かす構成に変えた。必要な部分だけを水和させて表示速度を上げる狙いで、アイランドアーキテクチャの実運用例として参考になる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Astro 7.4 が並列プリレンダを実験導入</h3>
-    <div class="article__body">
-      <p><strong>Astro 7.4</strong> が、ビルド時間の内訳表示と、ビルド用・実行時用に分けた画像サービスを加えた。目玉は<strong>実験的な並列プリレンダ</strong>で、静的生成の所要時間短縮を狙う。7.4.2 では、10 月の Node.js セキュリティ修正に合わせて最小対応版を 22.23.4 に引き上げた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://github.com/withastro/astro/releases">Astro Releases — github.com</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+        <li><a href="https://building.owner.com/project-speed">Project Speed — building.owner.com</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">言語・ツールチェーン</h2>
+  <h2 class="topic__title">ビルド・ツールチェーン</h2>
 
   <article class="article">
-    <h3 class="article__headline">TypeScript 7.1 beta が他フレーム向け API を追加</h3>
+    <h3 class="article__headline">Bun 1.4.4 が Prettier 互換のフォーマッタを内蔵</h3>
     <div class="article__body">
-      <p><strong>TypeScript 7.1 beta</strong> が 10 月 20 日に公開された。型付き import 属性、WebAssembly の source phase import、<code>es2026</code> ターゲットの安定化に加え、<strong>スナップショット付きの新しいプログラマティック API</strong> を備える。</p>
-      <p>注目は <strong>Vue・Svelte・MDX など独自ファイルを扱うプラグイン点</strong>だ。Go 製への移行で崩れていた周辺ツールの連携を取り戻す狙いがある。RC は約 1 か月後、安定版はその後とされ、具体日は示されていない。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://devblogs.microsoft.com/typescript/">TypeScript Blog — devblogs.microsoft.com</a></li>
-        <li><a href="https://www.digitalapplied.com/blog/typescript-7-1-beta-whats-new-what-to-test">TypeScript 7.1 Beta: What's New — digitalapplied.com（2026-10-20）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Rust 製型チェッカ tsrs が登場</h3>
-    <div class="article__body">
-      <p>Cloudflare と VoidZero が、TypeScript 型チェッカを Rust に移植した <strong>tsrs</strong> を公開した。Oxc の一部として開発され、<strong>Cloudflare Workers 上で WebAssembly として動く</strong>。同社の値では TypeScript 7.0 比で最大 8 倍速く、メモリは約 7 割減という。いずれも実験段階のベンダ計測である点には注意が要る。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://socket.dev/blog/cloudflare-typescript-rust">Cloudflare Introduces a Faster TypeScript Compiler Written in Rust — socket.dev</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Web プラットフォーム・ブラウザ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Chrome 156 が CSS の乱数と遷移元疑似クラスを搭載</h3>
-    <div class="article__body">
-      <p><strong>Chrome 156</strong> が 10 月 20 日に安定版となった。CSS に乱数を生む <strong><code>random()</code></strong> と、ページ遷移を起こしたリンクやボタンに当たる <strong><code>:navigation-source</code></strong> 疑似クラスを載せた。後者は View Transitions と組み合わせ、遷移元の見せ方を CSS で指定できる。</p>
-      <p>スクロール関連も進んだ。<code>overflow: scroll clip</code> で片方の軸だけをスクロールコンテナにでき、<code>scroll-snap-type: pair</code> は両軸を同じ要素にスナップさせる。内部では IndexedDB の保存先を <strong>SQLite 基盤</strong>へ移し、353 件のセキュリティ修正も入った。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://gigazine.net/gsc_news/en/20261021-google-chrome-156/">Google Chrome 156 stable released — gigazine.net（2026-10-21）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Edge 156 がネイティブ XSLT を非推奨化</h3>
-    <div class="article__body">
-      <p><strong>Microsoft Edge 156</strong> が 10 月 22 日に出た。Chrome と同じ <code>random()</code> や <code>:navigation-source</code>、単軸スクロールコンテナを入れつつ、<strong>ブラウザ内蔵の XSLT を非推奨</strong>とし、<code>XSLTProcessor</code> API を既定で無効化する方針を示した。CSS からのスタイルシート参照は影響を受けない。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://learn.microsoft.com/en-us/microsoft-edge/web-platform/release-notes/156">Microsoft Edge 156 web platform release notes — learn.microsoft.com（2026-10-22）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ライブラリ</h2>
-
-  <article class="article">
-    <h3 class="article__headline">React Three Fiber 10 が WebGPU を既定化</h3>
-    <div class="article__body">
-      <p><strong>React Three Fiber 10.0 alpha 6</strong> が、<strong>WebGPU レンダラを既定</strong>に切り替えた。あわせて React 19 への対応を進め、<code>&lt;Activity&gt;</code> と <code>&lt;ViewTransition&gt;</code> を扱えるようにした。3D 表現の土台が新しい描画 API に寄っていく。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">shadcn/ui がエージェント UI 部品を公開</h3>
-    <div class="article__body">
-      <p><strong>shadcn/ui</strong> が、エージェント向け UI の <strong>AI Elements</strong> を出した。チャットや生成系の画面でよく使う <strong>21 のコピペ可能なパターン</strong>をそろえ、Vercel の AI SDK Elements を置き換える位置づけになる。状態管理系では、Immer より速いと主張する更新ライブラリの新版も続いた。</p>
+      <p><strong>Bun 1.4.4</strong> が <code>bun fmt</code> を加えた。Prettier 互換のフォーマッタを組み込みで持ち、<code>bun check</code> も速くした。前述の Node.js の Brotli 問題も同版で直している。周辺のビルドツールも揃って動いた。</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
+          <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Mutative 2.0</td><td>Immer 比 3.6 倍速い更新を主張（バンドルは 7.9kB と大きめ、Immer は 3.6kB）</td></tr>
-            <tr><td>Immer 11.2</td><td><code>isModified()</code> を追加</td></tr>
-            <tr><td>React Window 2.4</td><td>サーバレンダリングに対応</td></tr>
+            <tr><td>SWC Next</td><td>flat な ESTree ベースの AST。ネイティブ解析が最大 3 倍速く、Rspack 2.3 で導入予定</td></tr>
+            <tr><td>pnpm 12.16</td><td><code>pnpm-workspace.yml</code> の include、zstd 圧縮のレジストリ応答、<code>--env-file</code> のグローバル対応</td></tr>
+            <tr><td>Biome 2.6</td><td>Markdown・YAML・SCSS に対応、JavaScript 製プラグイン（preview）、<code>biome inspect</code></td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://bun.com/blog/bun-v1.4.4">Bun v1.4.4 — bun.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">ブラウザ・Web プラットフォーム</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Firefox 159 がスクロール駆動アニメーションを既定化</h3>
+    <div class="article__body">
+      <p><strong>Firefox 159</strong> が 10 月 27 日に出た。スクロール量に動きを紐づける <strong>スクロール駆動アニメーション</strong> を既定で有効にした。影の DOM ごとに独自の <code>CustomElementRegistry</code> を持てる <strong>スコープ付きカスタム要素レジストリ</strong> も入り、同名要素の衝突を避けやすくなった。</p>
+      <p>Sanitizer 系では、<code>Element.setHTML()</code> が解析の途中で不要な要素・属性を取り除くようになった。また旧 masonry 構文（<code>grid-template</code> の <code>masonry</code> 値と <code>masonry-auto-flow</code>）を削除し、<code>display: grid-lanes</code> に寄せた。</p>
+    </div>
+    <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/159">Firefox 159 for developers — developer.mozilla.org（2026-10-27）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Safari 27.2 が iPhone Duo 系の API をフラグ付きで追加</h3>
+    <div class="article__body">
+      <p><strong>Safari 27.1〜27.2</strong> が、<strong>iPhone Duo・Device Posture・Viewport Segments</strong> の各 API をフラグの裏に入れた。折りたたみや分割画面の端末に向けた API を、まず試せる段階に置く位置づけだ。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://webkit.org/blog/">WebKit Blog — webkit.org</a></li>
       </ul>
     </details>
   </article>
@@ -201,47 +171,50 @@
   <h2 class="topic__title">React Native・モバイル</h2>
 
   <article class="article">
-    <h3 class="article__headline">React Native 0.88 が標準イベント API を採用</h3>
+    <h3 class="article__headline">React Native がデスクトップへ広がる動きが続く</h3>
     <div class="article__body">
-      <p><strong>React Native 0.88</strong> が、イベント配送を既定で <strong>W3C の <code>EventTarget</code> API</strong> に載せ替えた。利用側に破壊的変更はない。iOS の SceneDelegate 対応、可変フォント設定、Java TurboModule の ArrayBuffer 対応、SwiftPM 周りの改善も入る。SwiftPM は次の 0.89 で既定になる見込みだ。</p>
+      <p><strong>React Native Windows 0.85</strong> が出て、New Architecture への移行を完了した。デスクトップ方面では、コミュニティ製の <strong>Expo Desktop v1</strong>（macOS・Windows 対応、Expo SDK 55 上で動く）、その上に載る <strong>Legend Spark</strong>、Expo 創業者らによる非 React の <strong>Exact</strong> といった試みが並ぶ。Electron や Tauri からの移行先を狙う動きが見える。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（3）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+        <li><a href="https://devblogs.microsoft.com/react-native/react-native-windows-v0-85-is-here/">React Native Windows v0.85 is here — devblogs.microsoft.com</a></li>
+        <li><a href="https://legend.so/spark">Legend Spark — legend.so</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Expo SDK 58 が iOS 27 対応と Router 安定化</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Expo SDK 58 が iPhone Duo に対応</h3>
     <div class="article__body">
-      <p><strong>Expo SDK 58</strong> が iOS 27 と iPhone Duo に向けて出た。<strong>Expo Modules 2.0</strong>（beta）や Android ビルドの高速化（クリーンデバッグ版が約 80 秒から約 39 秒へ）、Siri 連携の App Intents（alpha）を含む。<strong>Expo Router の data loaders・SSR・middleware が安定版</strong>になった点が大きい。</p>
+      <p><strong>Expo SDK 58</strong> が iPhone Duo 対応を加えた。横方向のセーフエリア余白や <code>expo-hinge</code> を扱える。ネイティブモジュール基盤の <strong>Nitro も v1 alpha</strong> に入り、JSI だけで動く <code>nitro-core</code> を切り出した。コーディングエージェントに Expo プロジェクトを理解させる <strong>Expo Agent CLI</strong> も出た。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+        <li><a href="https://expo.dev/blog/supporting-iphone-duo">Supporting iPhone Duo — expo.dev</a></li>
+        <li><a href="https://expo.dev/blog/introducing-expo-agent-cli">Introducing Expo Agent CLI — expo.dev</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エコシステム・ツール</h2>
+  <h2 class="topic__title">ライブラリ</h2>
 
   <article class="article">
-    <h3 class="article__headline">ランタイムとビルドツールの更新が続く</h3>
+    <h3 class="article__headline">React 周辺ライブラリの更新が続く</h3>
     <div class="article__body">
-      <p>周辺の基盤やビルドツールも小さく進んだ。</p>
+      <p>主要な React 系ライブラリが小さく進んだ。</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
+          <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Node.js 24.22 LTS</td><td><code>util.throttle()</code> と <code>util.debounce()</code>、暗号まわりの改善を追加</td></tr>
-            <tr><td>Rsdoctor 2.0</td><td>Rspack 専用に。Agent CLI を備え、解析が 57% 高速化</td></tr>
-            <tr><td>Webpack 5.112</td><td>SSR 向けアセットマニフェスト、source map scopes、非同期の <code>DefinePlugin</code> 値</td></tr>
-            <tr><td>Next.js 16.4.3</td><td>10 月 23 日公開のバグ修正リリース</td></tr>
+            <tr><td>Motion 14.7</td><td><code>scopeMotion()</code>、バニラ JS 向け <code>animateLayout()</code>、キーボードでの並べ替え、unmount で後始末する <code>useScopeMotion()</code></td></tr>
+            <tr><td>React Hook Form 7.91</td><td>field array と非同期バリデーションの修正、再レンダー削減</td></tr>
+            <tr><td>React Window 2.5</td><td>ページスクロール、ヘッドレスな <code>useVirtualizer()</code>、<code>useIsScrolling()</code></td></tr>
+            <tr><td>React Resizable Panels 4.15</td><td>親グループ向けフック、隣接を考慮した命令的リサイズ</td></tr>
           </tbody>
         </table>
       </div>
@@ -249,7 +222,7 @@
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/302">This Week In React #302 — ThisWeekInReact.com（2026-10-21）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
       </ul>
     </details>
   </article>
