@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年10月29日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年11月5日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年10月29日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年11月5日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年10月29日（木）</span>
+        <span>2026年11月5日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,139 +33,88 @@
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>週次リリースで長文脈の自動継続と Monitor ツールが入る</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>この週の更新は個人情報と書き込みの安全策が中心</h3>
     <div class="article__body">
-      <p>この週は <strong>2.1.308〜2.1.312</strong> が出た。2.1.311 では、標準コンテキストのセッションが 200K トークンを超えると「1M 契約が要る」と止まっていたのを直し、<strong>自動で圧縮して続行</strong>するようにした。<code>ultrathink</code> は対応モデルで xhigh 相当の思考量で走るようになった。2.1.310 では Monitor ツールとプラグイン monitor が Bedrock・Vertex・Foundry でも使えるようになった。</p>
-      <p>安全側の修正も多い。2.1.309 は、サンドボックスの Bash が各コマンドの前にシェルの起動ファイルを<strong>枠の外で実行してしまう</strong>穴をふさぎ、<code>--mcp-config</code> で渡した設定ファイルを自動承認の編集が書き換えられる問題も直した。2.1.312 は、冒頭だけ見て巨大な <code>CLAUDE.md</code> や @ 取り込みファイルを上書きする不具合を直した。</p>
+      <p>この週は <strong>2.1.314〜2.1.318</strong> が出た。安全側の調整が目立つ。Web 検索やシェルのツールが<strong>アカウントのメールアドレスを外部へ送る前に確認を挟む</strong>ようになった。クラウドのスケジュール実行では、頼んでいない connector が付いたときに <code>/schedule</code> が警告する。</p>
+      <p>書き込みの制限も入った。<code>permissions.blockWritesOutsideWorkingDirectories</code> を立てると、Write・Edit・NotebookEdit が作業ディレクトリの外へ書くのを拒む。<code>deniedMcpServers</code> に挙げた URL は、同じ宛先の Anthropic 提供サーバーもまとめて止めるようになった。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.308〜2.1.312：200K 超の自動圧縮継続・ultrathink xhigh・Monitor ツール・サンドボックス起動ファイルと CLAUDE.md 上書きの修正）</a></li>
-        <li><a href="https://github.com/anthropics/claude-code/releases">anthropics/claude-code Releases（2.1.308〜2.1.312）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.314〜2.1.318：メール送信前の確認・/schedule の connector 警告・blockWritesOutsideWorkingDirectories・deniedMcpServers）</a></li>
+        <li><a href="https://github.com/anthropics/claude-code/releases">anthropics/claude-code Releases（2.1.314〜2.1.318）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Agent Skills を Agentic AI Foundation へ寄贈</h3>
+    <h3 class="article__headline">Opus 4.8 の Fast モードが 11 月 30 日に廃止される</h3>
     <div class="article__body">
-      <p>10/22、Anthropic が <strong>Agent Skills</strong> を Agentic AI Foundation に寄贈した。MCP を寄贈したのと同じ財団で、仕様を中立な場に移して業界共通の土台にする狙いだ。Skills は Claude Code の実験として始まったものだという。</p>
-      <p>2025 年 12 月以降、ChatGPT・Cursor・GitHub Copilot・VS Code を含む <strong>70 以上</strong>のエージェント基盤がこの仕様を取り込んでいる。特定のツールに閉じた拡張ではなく、どのエージェントでも同じ Skill が動く前提が広がりつつある。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2113328526413996100">@ClaudeDevs: Agent Skills を Agentic AI Foundation へ寄贈・70+ 基盤が採用（ChatGPT/Cursor/Copilot/VS Code）</a></li>
-        <li><a href="https://x.com/bcherny/status/2113333859907747871">@bcherny: Skills は Claude Code の実験から始まり、MCP の隣へ寄贈</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Claude が MCP の Tasks と Elicitations に対応する</h3>
-    <div class="article__body">
-      <p>10/23、Claude が MCP の <strong>Tasks</strong> と <strong>Elicitations</strong> に対応すると告知された。Tasks は、ディープリサーチのような時間のかかる仕事をプラグインへ投げ、終わったら結果を返させる仕組みだ。エージェントが待ち時間の長い処理を外部へ預けられるようになる。</p>
+      <p>2.1.316 で、Opus 4.8 の Fast モードを <strong>11 月 30 日に廃止</strong>すると告知された。廃止後は Opus 4.8 への Fast モード要求はエラーになり、別のモデルへは切り替わらない。速さを保つには <strong>Opus 5.5</strong> へ移る必要がある。スクリプトで Fast モードを前提にしていると動かなくなるので、期日までの移行が要る。</p>
+      <p>あわせて思考量を環境変数から制御できるようになった。<code>CLAUDE_CODE_SUBAGENT_EFFORT</code> でサブエージェントの思考量を決め、<code>CLAUDE_CODE_DISABLE_ULTRATHINK</code> で ultrathink を無効にできる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/ClaudeDevs/status/2113698001889927608">@ClaudeDevs: MCP Tasks と Elicitations に対応（長時間ジョブをプラグインへ委譲し完了時に報告）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.316：Opus 4.8 Fast モードを 11/30 に廃止、CLAUDE_CODE_SUBAGENT_EFFORT・CLAUDE_CODE_DISABLE_ULTRATHINK）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Utah の州政府導入で時間短縮の数値が出る</h3>
+    <h3 class="article__headline">IDE 拡張をエディタ起動時に自動導入しなくなる</h3>
     <div class="article__body">
-      <p>10/28、Anthropic の bcherny が、Utah 州が <strong>Claude Code</strong> を 10 の州機関の開発者 34 人に配った事例を紹介した。4 週間の試行で、<strong>8 割</strong>が 30 分以内に動く環境を用意でき、7 割が 20 時間以上の節約を報告したという。公的機関での実測値として示された点が目を引く。</p>
+      <p>2.1.318 から、IDE のターミナルで Claude Code を起動しても IDE 拡張を自動では入れず、更新もしなくなった。入れたいときは外のターミナルから <code>/ide</code> を使う。2.1.314 では、放置したセッションの自動要約（idle compaction）が、ターミナルに続いて <strong>VS Code と Claude Desktop の Code タブ</strong>にも広がった。</p>
+      <p>細かい使い勝手も直った。2.1.317 では Read ツールの「ファイル変更なし」のスタブをやめ、読み直すと中身がそのまま返るようになった。別モデルで動くサブエージェントは、セッション側ではなくそのモデルの思考量で走る。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/bcherny/status/2115491259381072269">@bcherny: Utah の 10 州機関 34 開発者に Claude Code を配布、80% が 30 分で環境構築・71% が 20 時間以上節約</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Claude Code を作った開発者の退職が相次ぐ</h3>
-    <div class="article__body">
-      <p>この週、Claude Code に関わった開発者の退職表明が続いた。10/24、1 年以上 Claude Code に携わってきた trq212 が Anthropic を離れたと書いた。同じ頃、<strong>デスクトップ版の Claude Code</strong> を作った amorriscode も最終出社を報告し、コミュニティからの要望やバグ報告が製品を形づくったと振り返った。製品そのものの変化ではないが、x では大きな反応を集めた。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/trq212/status/2113844051938054167">@trq212: 1 年以上の Claude Code 開発を経て Anthropic を退職</a></li>
-        <li><a href="https://x.com/amorriscode/status/2113972174524674247">@amorriscode: デスクトップ版 Claude Code を作った開発者が最終出社を報告</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.314・2.1.317・2.1.318：IDE 拡張の自動導入停止と /ide・VS Code/Desktop の idle compaction・Read スタブ廃止・サブエージェントの effort）</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">コーディング支援ツールが脆弱性対応へ向かう</h2>
+  <h2 class="topic__title">Devin が低価格・高速のモデルを載せる</h2>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Devin Security が脆弱性の発見と修正を担う</h3>
+    <h3 class="article__headline">Devin が低価格・高速の SWE-2 Flash を載せる</h3>
     <div class="article__body">
-      <p>10/26、Cognition が <strong>Devin Security</strong> を出した。Claude Mythos とフロンティアのサイバー向けモデルを土台に、緊急の脆弱性をチームが見つけ、優先順位を付け、直すところまで Devin が手伝う。「サイバーセキュリティの新たな暗黒時代に入りつつある」とし、導入を後押しするため<strong>数億ドル規模のクレジット</strong>を付けるという。先週の Oncall・Fusion に続く Devin の機能拡張だ。</p>
+      <p>11/4、Cognition が小型の coding モデル <strong>SWE-2 Flash</strong> を出した。Devin Desktop と Devin CLI で使え、<strong>11 月 30 日まで無料</strong>で試せる。売りは速さと安さで、上位の SWE-2 に性能は近いという。SWE-Bench Pro v2 Hard では 89.9% と、SWE-2 に迫る水準を公表した。重みは公開せず、研究者らに限って渡す。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>項目</th><th>SWE-2 Flash</th><th>SWE-2</th></tr></thead>
+          <tbody>
+            <tr><td>生成速度（公称）</td><td>約 200 トークン/秒</td><td>約 60 トークン/秒</td></tr>
+            <tr><td>価格</td><td>SWE-2 の約 5 分の 1</td><td>基準</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/cognition/status/2114741368627335379">@cognition: Devin Security（Claude Mythos とサイバーモデルで脆弱性の発見・優先順位付け・修正を支援、数億ドルのクレジット）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">CodeRabbit が脆弱性を実証してから指摘する</h3>
-    <div class="article__body">
-      <p>10/27、<strong>CodeRabbit Secure</strong> の Deep Scan が更新された。脆弱性を連携済みのリポジトリ群にまたいで追跡し、<strong>使い捨てのサンドボックスで実際にエクスプロイトを再現</strong>して、本物だと確かめてから指摘する。指摘する前に実証を挟むことで、誤検知で開発者の手を止めない作りを狙う。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://x.com/coderabbitai/status/2115097038396493934">@coderabbitai: CodeRabbit Secure の Deep Scan が脆弱性をリポジトリ横断で追跡し、使い捨てサンドボックスで再現してから報告</a></li>
+        <li><a href="https://cognition.com/blog/swe-2-flash">Cognition: Introducing SWE-2 Flash（Devin Desktop/CLI で提供・11/30 まで無料・公称 200 vs 60 トークン/秒・価格は SWE-2 の 1/5・SWE-Bench Pro v2 Hard 89.9%）</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">Devin が開発環境を実機 macOS まで広げる</h2>
+  <h2 class="topic__title">Codex がキュー再開とネットワーク診断を加える</h2>
 
   <article class="article">
-    <h3 class="article__headline">Device Hub の実機 macOS で iPhone アプリを開発する</h3>
+    <h3 class="article__headline">Codex がキュー再開とネットワーク診断を加える</h3>
     <div class="article__body">
-      <p>Cognition は開発環境まわりも広げている。<strong>Device Hub</strong> では Devin Cloud Agents が<strong>実機の macOS</strong> 上で動き、複数人での iPhone アプリ開発を回せる。TestFlight や App Store への配信まで同じ流れでできるという。</p>
-      <p>10/23 には <strong>Devin Desktop</strong> アプリも刷新された。エージェントの指令所をまとめた画面で、以前より滑らかで整った操作を目指したとしている。</p>
+      <p>10/29、OpenAI の Codex CLI が <strong>v0.166.0</strong> になった。<code>codex queue --resume</code> で、まだ読み込んでいないスレッドを、キューに積んだメッセージから再開できる。<code>codex doctor --network-only</code> は設定・接続・WebSocket の診断だけを回す。TUI ではキーボードだけでトランスクリプトを選び、検索もできるようになった。</p>
+      <p>モデル面では <strong>GPT-6.1 Terra</strong> が同梱・Vertex AI・Amazon Bedrock のカタログに加わった。安全方針で処理を止めたときは理由を示し、より安全な言い換えを選べるようにした。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://x.com/dabit3/status/2114534717898858980">@dabit3: Device Hub で Devin Cloud Agents が実機 macOS 上で動き、iPhone アプリの複数人開発と TestFlight/App Store 配信まで</a></li>
-        <li><a href="https://x.com/cognition/status/2113671026286682500">@cognition: Devin Desktop アプリを刷新、エージェントの指令所をまとめた画面に</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Notion のエージェントがファイル作成までこなす</h2>
-
-  <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Notion Agent が Excel や PDF を作れるようになる</h3>
-    <div class="article__body">
-      <p>10/27、<strong>Notion Agent</strong> がコンピューターを使ってファイルを作り、編集できるようになった。会話から Excel・Word・PowerPoint・PDF の仕上がりまで、Notion の中だけで完結する。チャットの先に成果物の生成までつながった形だ。</p>
-      <p>あわせて、Google Meet 向けの <strong>AI Meeting Notes</strong> の Chrome 拡張も出た。これまで「自分とそれ以外」の 2 者だった議事録の話者が、発言ごとに名前付きで分かれるようになった。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/NotionHQ/status/2115146056598163708">@NotionHQ: Notion Agent がコンピューターで Excel/Word/PowerPoint/PDF を作成・編集</a></li>
-        <li><a href="https://x.com/NotionHQ/status/2115225539825008816">@NotionHQ: Google Meet 向け AI Meeting Notes の Chrome 拡張、話者ごとに名前付きで分離</a></li>
+        <li><a href="https://github.com/openai/codex/releases/tag/rust-v0.166.0">openai/codex Releases rust-v0.166.0（codex queue --resume・codex doctor --network-only・キーボードでのトランスクリプト選択/検索・GPT-6.1 Terra をカタログへ追加）</a></li>
       </ul>
     </details>
   </article>
