@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年11月3日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年11月10日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年11月3日">
+<meta property="og:title" content="フロントエンドニュース — 2026年11月10日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年11月3日（火）</span>
+        <span>2026年11月10日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,29 +33,29 @@
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">Node.js の Brotli デコーダに遠隔コード実行の脆弱性</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Next.js がキャッシュ周り中心に 7 件の脆弱性を修正</h3>
     <div class="article__body">
-      <p>Node.js 同梱の Brotli デコーダに、<strong>高深刻度の領域外書き込み（CVE-2026-111497）</strong>が見つかった。不正なブロック切り替えを「入力が足りないだけ」と誤って扱い、ストリーミング復号が 8 バイトの内部バッファを越えて書き込む。クラッシュやメモリ漏えい、<strong>遠隔コード実行</strong>につながりうる。</p>
-      <p>影響は <strong>26.x・24.x・22.x</strong> に及ぶ。修正版 <code>22.23.4</code> / <code>24.22.1</code> / <code>26.12.1</code> が出ている。<code>node:zlib</code> で信頼できない Brotli データを展開するアプリは早めに更新する。報告は OpenAI Codex Security による。</p>
+      <p>Vercel は予告どおり 11 月 3 日に定例セキュリティ更新を出した。修正版は <strong>16.4.5（Active LTS）と 15.5.29（Maintenance LTS）</strong>。7 件のうち最も重いのは高深刻度の「テナント間キャッシュ漏えい」で、<code>unstable_cache</code> と <code>use cache</code> を組み合わせたとき、別テナントの結果が混ざりうる。</p>
+      <p>残り 6 件は中深刻度で、<strong>Cache Components とキャッシュまわりに集中</strong>する。Edge ルートで <code>HttpOnly</code> クッキーが内部ヘッダ経由で漏れる問題や、画像最適化で SVG 拒否を回避される問題も含む。Cache Components を使うアプリは早めに更新する。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://nodejs.org/en/blog/vulnerability/october-2026-security-releases">October 2026 Security Releases — nodejs.org</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+        <li><a href="https://nextjs.org/blog/november-2026-security-release">November 2026 Security Release — nextjs.org（2026-11-03）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Next.js が 11 月 3 日に定例セキュリティ更新を予告</h3>
+    <h3 class="article__headline">GitHub Actions が pull_request_target を既定で遮断</h3>
     <div class="article__body">
-      <p>Vercel は <strong>Next.js の定例セキュリティ更新を 11 月 3 日（火）に出す</strong>と事前告知した。<strong>中深刻度 7 件</strong>を修正する予定で、影響範囲・対象版・更新手順はリリースと同時に公開するとしている。事前告知は、各チームが更新計画を立てる時間を確保するための運用だという。</p>
+      <p>GitHub は <strong>12 月 2 日から public リポジトリで <code>pull_request_target</code> を既定で無効化</strong>すると告知した。このトリガは fork からの PR でも書き込み権限付きで走るため、秘密情報の漏えいや任意コード実行の踏み台になりやすかった。必要なワークフローは設定で明示的に許可する形に変わる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://nextjs.org/blog/upcoming-nextjs-security-release-november-2026">Upcoming Next.js November Security Release — nextjs.org（2026-10-27）</a></li>
+        <li><a href="https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/">pull_request_target blocked by default — github.blog（2026-11-02）</a></li>
       </ul>
     </details>
   </article>
@@ -65,44 +65,29 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">TanStack が AI 1.0 と軽量ランタイム Redact を公開</h3>
+    <h3 class="article__headline">Node.js 27 の alpha が新リリースモデルで登場</h3>
     <div class="article__body">
-      <p>AI 機能を組み込むためのツールキット <strong>TanStack AI が 10 月 23 日に 1.0</strong> となった。チャット・ツール・MCP・永続化・エージェントを扱い、コア API を production ready とした。プロバイダアダプタは <strong>23 種</strong>で、OpenAI 互換 API も受ける。<code>createMCPServer</code> で自作ツールを MCP サーバとして公開でき、Claude Desktop や Cursor から使える。実験段階の agent harness も同梱する。</p>
-      <p>あわせて、React 互換の小さなブラウザランタイム <strong>TanStack Redact</strong> も出た。time slicing を持たず同期的に描画する割り切りで、挙動の読みやすさとサイズを優先する。TanStack DB 1.0 RC や TanStack Start 向けの Module Federation も続き、周辺の整備が進む。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（3）</summary>
-      <ul>
-        <li><a href="https://tanstack.com/blog/tanstack-ai-1-0">TanStack AI 1.0 — tanstack.com（2026-10-23）</a></li>
-        <li><a href="https://tanstack.com/blog/introducing-tanstack-redact">Introducing TanStack Redact — tanstack.com</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Remix 3.1 と Vinext 1.4 が SSR の高速化を進める</h3>
-    <div class="article__body">
-      <p>SSR 周りの更新が続いた。<strong>Remix 3.1</strong> は SSR が <strong>2 倍速くなった</strong>とし、<code>prefetch()</code> を加えた。<strong>Vinext 1.4</strong> はサーバ処理を減らし、水和とプリフェッチを改善した。いずれも初期表示と画面遷移の体感を詰める方向だ。</p>
+      <p><strong>Node.js 27.0 の alpha</strong> が出た。新しいリリースモデルの最初の alpha で、2027 年 4 月に Current、10 月に LTS となる予定だ。<strong>V8 15.6 と npm 12.1</strong> を同梱し、環境変数へのアクセスを絞る <code>--allow-env</code> 権限、ネイティブの <code>fs.glob</code>、Promise 版の <code>net/promises</code> を加えた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://github.com/remix-run/remix/releases/tag/remix%403.1.0">Remix 3.1.0 — github.com</a></li>
-        <li><a href="https://vinext.dev/blog/vinext-1-4">Vinext 1.4 — vinext.dev</a></li>
+        <li><a href="https://nodejs.org/en/blog/release/v27.0.0-alpha.0.0.0">Node.js v27.0.0-alpha — nodejs.org</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Owner が 1 万超の店舗サイトを Next.js から Astro へ移行</h3>
+    <h3 class="article__headline">Next.js が先読み遷移と Go ルートを試験導入</h3>
     <div class="article__body">
-      <p>飲食店向けの <strong>Owner</strong> が、1 万以上の店舗サイトを <strong>Next.js から Astro に移した</strong>。ページ全体を React で描かず、React は島（islands）の中だけで動かす構成に変えた。必要な部分だけを水和させて表示速度を上げる狙いで、アイランドアーキテクチャの実運用例として参考になる。</p>
+      <p>Next.js に実験的な機能が相次いで入った。<code>router.experimental_prepare()</code> は <strong>pointerdown で遷移を先に始め</strong>、click で確定する。<code>create-next-app</code> は <strong>App Router に固定</strong>され、ルータ選択のプロンプトを廃止した。さらに <code>route.go</code> ファイルで <strong>Go 製のルートハンドラ</strong>を書ける実験も始まった（まず Route Handlers と Proxy から）。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://building.owner.com/project-speed">Project Speed — building.owner.com</a></li>
+        <li><a href="https://github.com/vercel/next.js/pull/101050">feat: router.experimental_prepare() (PR #101050) — github.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
@@ -112,25 +97,30 @@
   <h2 class="topic__title">ビルド・ツールチェーン</h2>
 
   <article class="article">
-    <h3 class="article__headline">Bun 1.4.4 が Prettier 互換のフォーマッタを内蔵</h3>
+    <h3 class="article__headline">Rust 製バンドラの Parcel 3 と Rspack 2.3 が高速化</h3>
     <div class="article__body">
-      <p><strong>Bun 1.4.4</strong> が <code>bun fmt</code> を加えた。Prettier 互換のフォーマッタを組み込みで持ち、<code>bun check</code> も速くした。前述の Node.js の Brotli 問題も同版で直している。周辺のビルドツールも揃って動いた。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
-          <tbody>
-            <tr><td>SWC Next</td><td>flat な ESTree ベースの AST。ネイティブ解析が最大 3 倍速く、Rspack 2.3 で導入予定</td></tr>
-            <tr><td>pnpm 12.16</td><td><code>pnpm-workspace.yml</code> の include、zstd 圧縮のレジストリ応答、<code>--env-file</code> のグローバル対応</td></tr>
-            <tr><td>Biome 2.6</td><td>Markdown・YAML・SCSS に対応、JavaScript 製プラグイン（preview）、<code>biome inspect</code></td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>バンドラの高速化が続く。<strong>Parcel 3.0 alpha</strong> は Rust で書き直し、単体バイナリ・ネイティブプラグイン・賢いコード分割で<strong>最大 100 倍速い</strong>ビルドをうたう。<strong>Rspack 2.3</strong> は SWC Next パーサを採り入れ、ビルドが 5〜20% 速く、メモリ使用も最大 27% 減った。実験的な新キャッシュも入る。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（3）</summary>
+      <ul>
+        <li><a href="https://v3.parceljs.org/blog/v3-alpha/">Parcel v3 alpha — v3.parceljs.org</a></li>
+        <li><a href="https://rspack.rs/blog/announcing-2-3">Announcing Rspack 2.3 — rspack.rs</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Vitest 5.1 と Babel 8.1 がテストとビルドを更新</h3>
+    <div class="article__body">
+      <p><strong>Vitest 5.1</strong> は前回実行以降の変更だけを回す <code>--since-last-run</code> と対話的なスナップショット確認を加え、Istanbul の計測を 5〜10 倍速くした。<strong>Babel 8.1</strong>（11 月 2 日）は Import Bytes/Text、絞り込んだ名前空間、実験的なソースマップ範囲対応を入れた。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://bun.com/blog/bun-v1.4.4">Bun v1.4.4 — bun.com</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+        <li><a href="https://vitest.dev/blog/vitest-5-1">Vitest 5.1 — vitest.dev</a></li>
+        <li><a href="https://babeljs.io/blog/2026/11/02/8.1.0">Babel 8.1.0 — babeljs.io（2026-11-02）</a></li>
       </ul>
     </details>
   </article>
@@ -140,28 +130,27 @@
   <h2 class="topic__title">ブラウザ・Web プラットフォーム</h2>
 
   <article class="article">
-    <h3 class="article__headline">Firefox 159 がスクロール駆動アニメーションを既定化</h3>
+    <h3 class="article__headline">Chrome 157 が canvas 内の対話的 DOM を安定化</h3>
     <div class="article__body">
-      <p><strong>Firefox 159</strong> が 10 月 27 日に出た。スクロール量に動きを紐づける <strong>スクロール駆動アニメーション</strong> を既定で有効にした。影の DOM ごとに独自の <code>CustomElementRegistry</code> を持てる <strong>スコープ付きカスタム要素レジストリ</strong> も入り、同名要素の衝突を避けやすくなった。</p>
-      <p>Sanitizer 系では、<code>Element.setHTML()</code> が解析の途中で不要な要素・属性を取り除くようになった。また旧 masonry 構文（<code>grid-template</code> の <code>masonry</code> 値と <code>masonry-auto-flow</code>）を削除し、<code>display: grid-lanes</code> に寄せた。</p>
+      <p><strong>Chrome 157</strong> で HTML-in-Canvas がフラグなしの安定機能になった。2D・WebGL・WebGPU のキャンバスの中に<strong>対話できる DOM を置ける</strong>。これまで canvas の描画はテキスト選択やフォーム操作ができなかったが、その制約を越える道が開ける。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/159">Firefox 159 for developers — developer.mozilla.org（2026-10-27）</a></li>
+        <li><a href="https://developer.chrome.com/blog/html-in-canvas">HTML in Canvas — developer.chrome.com</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Safari 27.2 が iPhone Duo 系の API をフラグ付きで追加</h3>
+    <h3 class="article__headline">jsdom 31 が新しい CSS エンジンを搭載</h3>
     <div class="article__body">
-      <p><strong>Safari 27.1〜27.2</strong> が、<strong>iPhone Duo・Device Posture・Viewport Segments</strong> の各 API をフラグの裏に入れた。折りたたみや分割画面の端末に向けた API を、まず試せる段階に置く位置づけだ。</p>
+      <p>テスト環境向けの DOM 実装 <strong>jsdom 31.0</strong> が新しい CSS エンジンを入れた。セレクタ検索が速くなり、<strong>cascade layers・ネスト・scope</strong> に対応する。ブラウザを使わないユニットテストで、近年の CSS を前提にした検証がしやすくなる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://webkit.org/blog/">WebKit Blog — webkit.org</a></li>
+        <li><a href="https://github.com/jsdom/jsdom/releases/tag/v31.0.0">jsdom v31.0.0 — github.com</a></li>
       </ul>
     </details>
   </article>
@@ -171,30 +160,41 @@
   <h2 class="topic__title">React Native・モバイル</h2>
 
   <article class="article">
-    <h3 class="article__headline">React Native がデスクトップへ広がる動きが続く</h3>
+    <h3 class="article__headline">React Native 0.89 RC が 12 月の正式版へ前進</h3>
     <div class="article__body">
-      <p><strong>React Native Windows 0.85</strong> が出て、New Architecture への移行を完了した。デスクトップ方面では、コミュニティ製の <strong>Expo Desktop v1</strong>（macOS・Windows 対応、Expo SDK 55 上で動く）、その上に載る <strong>Legend Spark</strong>、Expo 創業者らによる非 React の <strong>Exact</strong> といった試みが並ぶ。Electron や Tauri からの移行先を狙う動きが見える。</p>
+      <p><strong>React Native 0.89 RC</strong> が出た。テキストのレイアウトとネイティブモジュール呼び出しを速くし、旧ブリッジ API を外した。<code>useAppState()</code> やグローバルな <code>structuredClone</code> を加え、正式版は <strong>12 月 7 日</strong>の予定。</p>
+      <p>あわせて国際化 API の <strong>Hermes Intl</strong>（ICU4X ベース）が preview に入った。Amazon の <strong>Vega OS 2.0</strong> も RN 0.83・React 19・コンパイラを載せ、Fire TV 上で動くものとして出た。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（3）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://devblogs.microsoft.com/react-native/react-native-windows-v0-85-is-here/">React Native Windows v0.85 is here — devblogs.microsoft.com</a></li>
-        <li><a href="https://legend.so/spark">Legend Spark — legend.so</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+        <li><a href="https://github.com/react/react-native/releases/tag/v0.89.0-rc.0">React Native v0.89.0-rc.0 — github.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Expo SDK 58 が iPhone Duo に対応</h3>
+    <h3 class="article__headline">React Native 周辺ライブラリの更新が相次ぐ</h3>
     <div class="article__body">
-      <p><strong>Expo SDK 58</strong> が iPhone Duo 対応を加えた。横方向のセーフエリア余白や <code>expo-hinge</code> を扱える。ネイティブモジュール基盤の <strong>Nitro も v1 alpha</strong> に入り、JSI だけで動く <code>nitro-core</code> を切り出した。コーディングエージェントに Expo プロジェクトを理解させる <strong>Expo Agent CLI</strong> も出た。</p>
+      <p>主要な RN ライブラリが揃って動いた。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
+          <tbody>
+            <tr><td>Screens 5.0 beta</td><td>iOS の contained modal、Android Stack v5 のアニメ、iOS 27 のヘッダ操作</td></tr>
+            <tr><td>Unistyles 3.8</td><td>Metro 連携で Babel 変換が不要に、Web のスタイル更新が 2〜8 倍速い（RN 0.85+）</td></tr>
+            <tr><td>Nitro Fetch 1.10</td><td><code>XMLHttpRequest</code> ブリッジ、ネイティブ <code>prefetch()</code>、事前起動の Cronet</td></tr>
+            <tr><td>Safe Area Context 5.11</td><td>角に沿った inset、Android のサブツリー inset、Web のスクロール修正</td></tr>
+            <tr><td>Skia 3.9</td><td><code>colorSpace</code> プロップと非同期の読み出し</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://expo.dev/blog/supporting-iphone-duo">Supporting iPhone Duo — expo.dev</a></li>
-        <li><a href="https://expo.dev/blog/introducing-expo-agent-cli">Introducing Expo Agent CLI — expo.dev</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
@@ -204,17 +204,18 @@
   <h2 class="topic__title">ライブラリ</h2>
 
   <article class="article">
-    <h3 class="article__headline">React 周辺ライブラリの更新が続く</h3>
+    <h3 class="article__headline">React エコシステムのライブラリが小さく前進</h3>
     <div class="article__body">
-      <p>主要な React 系ライブラリが小さく進んだ。</p>
+      <p>React 系ライブラリの更新が続いた。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Motion 14.7</td><td><code>scopeMotion()</code>、バニラ JS 向け <code>animateLayout()</code>、キーボードでの並べ替え、unmount で後始末する <code>useScopeMotion()</code></td></tr>
-            <tr><td>React Hook Form 7.91</td><td>field array と非同期バリデーションの修正、再レンダー削減</td></tr>
-            <tr><td>React Window 2.5</td><td>ページスクロール、ヘッドレスな <code>useVirtualizer()</code>、<code>useIsScrolling()</code></td></tr>
-            <tr><td>React Resizable Panels 4.15</td><td>親グループ向けフック、隣接を考慮した命令的リサイズ</td></tr>
+            <tr><td>Redux Toolkit 2.14</td><td>dispatch の高速化、RTK Query のキャッシュ選択子、2.x / 3.0 ロードマップを公開</td></tr>
+            <tr><td>React Resizable Panels 4.18</td><td>IDE 風レイアウトの <code>&lt;Workspace&gt;</code>、ドラッグ・折りたたみ可能なタブセット</td></tr>
+            <tr><td>Preact 11.1</td><td>React Compiler 向け <code>preact/compat/compiler-runtime</code></td></tr>
+            <tr><td>TanStack Redact 0.3</td><td>ブラウザ SPA 向けの Webpack・Rspack プラグインと Rsbuild 手順</td></tr>
+            <tr><td>safe-mdx 2.1</td><td><code>eval</code> なしで MDX を描画、LLM 出力向けのストリーミング解析</td></tr>
           </tbody>
         </table>
       </div>
@@ -222,7 +223,7 @@
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/303">This Week In React #303 — ThisWeekInReact.com（2026-10-28）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/304">This Week In React #304 — ThisWeekInReact.com（2026-11-04）</a></li>
       </ul>
     </details>
   </article>
