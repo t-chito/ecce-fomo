@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub トレンド — 2026年11月13日 | Ecce Fomo</title>
+<title>GitHub トレンド — 2026年11月20日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="GitHub トレンド — 2026年11月13日">
+<meta property="og:title" content="GitHub トレンド — 2026年11月20日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,166 +23,192 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">GitHub トレンド</a></h1>
       <div class="masthead__meta">
-        <span>2026年11月13日（金）</span>
+        <span>2026年11月20日（金）</span>
         <span>過去1週間</span>
       </div>
     </header>
 
     <main class="content">
       <section class="topic">
-  <h2 class="topic__title">Agent Skills が GitHub を席巻する</h2>
+  <h2 class="topic__title">コーディングエージェントのスキルが量産される</h2>
 
   <article class="article">
-    <h3 class="article__headline">Cloudflare が多段構成のセキュリティ監査スキルを公開</h3>
+    <h3 class="article__headline">Google Chrome が最新の Web 標準をエージェントに教えるスキルを公開</h3>
     <div class="article__body">
-      <p>コーディングエージェントをセキュリティ監査役として動かすスキルである。偵察から探索、候補の検証、独立した再検証、報告までの六段階を、隔離した複数のエージェントで分担する。結果は confirmed・needs_validation・rejected の判定を付けた findings.json と Markdown で出す。Cloudflare 社内の脆弱性発見基盤の出発点になったコードで、対象コードの実行には OS のサンドボックスが要る。<strong>週間で約10,700のスターを集め、今週の最多となった</strong>。</p>
+      <p>コーディングエージェントに今の Web プラットフォームの知識と互換性データを与えるスキル集である。重い JavaScript や古い library に頼る書き方から、ブラウザ標準の API へ寄せることを狙う。CSS・HTML・JavaScript・性能・accessibility・security など<strong>262 の機能と 204 の実例</strong>を収める。<code>npx modern-web-guidance@latest install</code> で導入し、CLI で指針を検索したりコードの旧い書き方を走査できる。Chrome・Edge・Firefox・MDN の各チームが共同で保守する。この repo は内容の執筆・調整・評価のための原本。週間で約6,900★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></li>
+        <li><a href="https://github.com/GoogleChrome/modern-web-guidance-src">GoogleChrome/modern-web-guidance-src</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>Anthropic 公式のスキル集が約19万スターで定番化</h3>
+    <h3 class="article__headline">Google Stitch と組んでデザインを生成するスキル集</h3>
     <div class="article__body">
-      <p>Claude 向けスキルの公式サンプル集である。スキルは SKILL.md という指示書を核に、必要なときだけ読み込むフォルダで、この repo は書式・作例・仕様・雛形をまとめる。創作から Web アプリ検証、MCP サーバー生成、企業向けの定型業務まで収める。docx・pdf・pptx・xlsx など本番で使う文書スキルも参考として入り、多くは Apache-2.0 で公開される。README はあくまで実演・教育用で、重要な用途では事前に検証せよと断る。週間で約6,000★。</p>
+      <p>Google のデザインツール Stitch の MCP サーバーと組み合わせて使う Agent Skills の集まりである。Claude Code・Cursor・Gemini CLI などのエージェントが、デザインの作成・編集、既存のフロントエンドコードから Stitch デザインへの変換、画面から React や React Native のコード生成などを行える。skill は stitch-design・stitch-build・stitch-utilities の三つの plugin にまとまり、<code>npx plugins add</code> などで導入する。README は<strong>「Google の公式サポート製品ではない」</strong>と断る。Apache-2.0。週間で約1,800★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/anthropics/skills">anthropics/skills</a></li>
+        <li><a href="https://github.com/google-labs-code/stitch-skills">google-labs-code/stitch-skills</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">個人の .agents ディレクトリ発のスキル集が急伸</h3>
+    <h3 class="article__headline">FFmpeg を 42 のツールに整理した動画編集スキル</h3>
     <div class="article__body">
-      <p>TypeScript 界隈で知られる Matt Pocock が日々使うスキルを公開した collection である。いわゆる雰囲気コーディングではなく実務向けだとし、小さく差し替えやすく組み合わせやすい設計を掲げる。方向のずれ・冗長さ・壊れたコード・設計の劣化という四つの失敗に対応づけ、変更前に要件を問い詰める <code>/grill-me</code> や、red-green-refactor を回す <code>/tdd</code> などを並べる。Claude Code・Codex・Copilot などにプラグインで導入できる。<strong>週間で約8,700★</strong>を集めた。</p>
+      <p>コーディングエージェントに、手元の FFmpeg で動画を編集させる Agent Skill である。切り出し、字幕、画角の変更、音量の正規化、配信先ごとの書き出しなど<strong>42 のツール</strong>を用意する。各ツールは型付きの選択肢を持ち、エージェントが生の FFmpeg コマンドを書かずに済む。入出力を自動で調べて結果を検証もする。機械可読の仕様と MCP サーバーを備える。クラウドや API キーは不要で、PATH に <code>ffmpeg</code> と <code>python3</code> があれば <code>npx ffmpeg-skill</code> で入る。MIT。週間で約3,000★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
+        <li><a href="https://github.com/kajisho5/ffmpeg-skill">kajisho5/ffmpeg-skill</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Google が自社製品向けのスキル集を公開</h3>
+    <h3 class="article__headline">SNS や予測市場を横断して話題を集めるリサーチスキル</h3>
     <div class="article__body">
-      <p>Google が自社製品・技術向けに用意した Agent Skills の集まりである。Google Cloud のレシピをはじめ、AI／ML、インフラ、データベースと分析、開発ツール、セキュリティと認証、広告、設計指針などの領域ごとにスキルを分類する。<code>npx skills add google/skills</code> で導入し、対象エージェントと適用範囲を選ぶ。MCP サーバーを束ねたプラグインは Claude Code・Codex・Antigravity CLI に入る。ライセンスは Apache-2.0。週間で約1,900★。</p>
+      <p>一つの話題について Reddit・X・YouTube・Hacker News・Polymarket・GitHub・Web を並行して検索し、出典付きの要約を書く Agent Skill である。upvote や likes、予測市場の取引量といった反応の大きさで結果を並べ、エージェントが一つの brief にまとめる。検索エンジンが拾う内容ではなく<strong>「今、人々が何を話しているか」</strong>を集める狙いだという。Reddit・HN・Polymarket・GitHub は設定なしで動き、ほかは API キーや CLI が要る。既定では検索サービスへの問い合わせ以外、データは手元に残る。MIT。週間で約3,200★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/google/skills">google/skills</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントにブラウザとデスクトップを操らせる</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Vercel が AI エージェント用のブラウザ操作 CLI を公開</h3>
-    <div class="article__body">
-      <p>AI エージェントに、一度に一つのコマンドで動かせるブラウザを与える Rust 製の CLI である。snapshot でページを簡潔なテキストにし、要素ごとに <code>@e1</code> のような参照を振る。エージェントはその参照を指して操作し、ページを読み直して結果を確かめ、これを繰り返す。<strong>ブラウザはコマンド間で開いたままなので、各手順は短いシェル呼び出し一つで済む</strong>。背後の常駐プロセスが Chrome DevTools Protocol で制御し、MCP サーバーとしても起動できる。週間で約4,600★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/vercel-labs/agent-browser">vercel-labs/agent-browser</a></li>
+        <li><a href="https://github.com/mvanhorn/last30days-skill">mvanhorn/last30days-skill</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">Vercel はデスクトップ操作版の姉妹 CLI も同時に展開</h3>
+    <h3 class="article__headline">個人投資家の作業を型にはめる Claude スキル集</h3>
     <div class="article__body">
-      <p>同じ Vercel Labs が出した、デスクトップアプリを操作させる CLI である。スクリーンショットや画素照合を使わず、アプリのアクセシビリティツリーを JSON で読み、操作できる要素に参照を振る。「ループは利用者のエージェント側にあり、agent-desktop の中にモデルは無い」とし、ブラウザ版と同じ snapshot→操作→再読込の流れを取る。macOS・Windows・Ubuntu に対応し、既定では headless でポインタを動かさない。スナップショットに私的な内容が写りうるため公開ログに残すなと促す。週間で約6,400★。</p>
+      <p>株式の個人投資家・トレーダー向けに、市場分析、テクニカルのチャート、スクリーナー、取引記録、改善などの作業を Claude の skill に落とした toolkit である。売買の判断を AI に委ねるのではなく、相場の見直しやリスク管理、売買計画、記録づけの<strong>手順を構造化する</strong>ことに主眼を置く。README は signal 配信サービスではなく利益も約束しないとし、内容は教育・研究目的で投資助言ではないと断る。<code>.skill</code> を Claude の web アプリに上げるか、フォルダを Claude Code にコピーして使う。MIT。週間で約3,400★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/vercel-labs/agent-desktop">vercel-labs/agent-desktop</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline"><span class="article__badge">続報</span>連絡先ごとに AI ボットが立つ Grok Bot 代替</h3>
-    <div class="article__body">
-      <p>連絡先の一人ひとりが AI ボットになる、自己ホスト型のチャットアプリである。各ボットは独自のモデルと専用のコンピュータを持ち、手元の claude・codex・grok の CLI を通して動く。シェル実行やファイル編集には許可・拒否の確認カードを挟む。ボットが使うクラウドのコンピュータ Boat は試用後は有料で、利用に応じて課金されうる。README はまだ粗削りだと認め、<strong>CLI 版は API キーを config.json に平文で置く</strong>と注意する。xAI とは無関係で暗号通貨トークンも持たないと断る。週間で約9,100★。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></li>
+        <li><a href="https://github.com/tradermonty/claude-trading-skills">tradermonty/claude-trading-skills</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">AI の土台となるデータ基盤</h2>
+  <h2 class="topic__title">エージェントの仕事を人が点検する</h2>
 
   <article class="article">
-    <h3 class="article__headline">NVIDIA が企業データに意味の層を与える推論基盤を公開</h3>
+    <h3 class="article__headline">エージェントの計画とコードを注釈して突き返す作業台</h3>
     <div class="article__body">
-      <p>企業のメタデータから AI エージェント用の文脈の層を組み立てる Python ライブラリである。データがどこにあり何を意味しどこから来たかを記述し、システムごとに食い違う定義を揃える。メタデータからオントロジーの下書きを作り、人が認証し、エージェントがそれを基に質問へ答えるという流れを取る。生成したクエリを認証済みの定義と来歴に照らして検証する。MCP・CLI・API でエージェントに文脈を渡す。外部からの貢献は受け付けず、ライセンスは Apache-2.0。週間で約5,800★。</p>
+      <p>AI コーディングエージェントの計画と成果物を、ブラウザ上で見て注釈するローカルのツールである。Claude Code・Codex・Gemini CLI・OpenCode などに対応する。<strong>エージェントが計画を出したときや作業を終えたときに画面が開き</strong>、計画・仕様・Markdown・HTML に印を付けて feedback を送り返す。コードレビューは手元の変更にも GitHub・GitLab の pull request にも効き、コメントがエージェントに戻る。エージェントからの質問やファイルを受けて返信する Inbox も持つ。ライセンスは Apache-2.0 か MIT の選択制。今週のトレンド首位で、週間で約3,500★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/NVIDIA/auto-ontology">NVIDIA/auto-ontology</a></li>
+        <li><a href="https://github.com/backnotprop/plannotator">backnotprop/plannotator</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">LLM 連携を備えた Python スクレイピング基盤 Scrapling</h3>
+    <h3 class="article__headline">Alibaba が規則と LLM を混ぜたコードレビュー CLI を公開</h3>
     <div class="article__body">
-      <p>HTTP リクエスト、ステルスブラウザ、解析、並行クロールを一つにまとめた Python のスクレイピングフレームワークである。CSS と XPath で要素を選び、サイト構造が変わっても要素を追い直せるという。Scrapy に似た Spider API を持ち、プロキシ回転や再試行、JSON・CSV・XML 出力に対応する。<strong>MCP サーバーと Agent Skill、LLM 向けの Markdown 出力も備える</strong>。基本の pip 導入は解析器だけで、取得器やブラウザは追加導入が要る。教育・研究目的でありサイトの規約と robots.txt を守れと断る。週間で約4,700★。</p>
+      <p>Git の差分を読み、変更されたファイルを LLM に送って行単位のコメントを返すレビュー CLI である。Alibaba 製で、ファイル選びや位置づけといった決まった手順と、ファイル全体を読んで検索もできるエージェントの分析を組み合わせる。NPE、スレッド安全性、XSS、SQL injection などの多言語ルールを内蔵する。差分向けの <code>ocr review</code> と、ファイルやディレクトリを丸ごと見る <code>ocr scan</code> を持つ。<strong>API キーが無くても、手元のコーディングエージェントにレビューを代行させる委譲モードがある</strong>。Apache-2.0、Go 製。週間で約4,500★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/D4Vinci/Scrapling">D4Vinci/Scrapling</a></li>
+        <li><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">AI 一色の中の常連</h2>
+  <h2 class="topic__title">エージェントを前提に土台を作り直す</h2>
 
   <article class="article">
-    <h3 class="article__headline">高速コードエディタ Zed が根強い人気でトレンドに残る</h3>
+    <h3 class="article__headline">Meta がエージェント対応をうたう design system を公開</h3>
     <div class="article__body">
-      <p>Atom と Tree-sitter の作者陣による高性能なコードエディタである。多人数での同時編集を掲げ、macOS・Linux・Windows で直接ダウンロードするかパッケージマネージャで入れられる。Web 版はまだ用意されていない。開発元の Zed Industries は営利企業で、GitHub Sponsors の支援は会社の一般収入になり見返りは無いとする。ライセンスは主に GPL-3.0 以降で、一部に Apache-2.0 の部品を含む。Rust 製。週間で約2,300★。</p>
+      <p>150 以上の accessible な React コンポーネントからなる design system である。Meta が社内で約 8 年かけて育て、数多くの内部アプリで使ってきたという。React 19 以降と StyleX の上に作られ、ビルド済みの CSS を取り込む。コンポーネントを任意の階層で組み合わせられること、swizzle でコンポーネントの原本を取り出せること、<code>className</code> や CSS 変数で見た目を変えられることを特徴に挙げる。<strong>人も AI も同じ API・ドキュメント・CLI を使う前提で設計する</strong>。まだ beta。MIT。週間で約5,000★。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/zed-industries/zed">zed-industries/zed</a></li>
+        <li><a href="https://github.com/meta/astryx">meta/astryx</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">物理シミュレータ MuJoCo が安定して注目を集める</h3>
+    <h3 class="article__headline">人と AI が同じ API で使う Office SDK の Univer</h3>
     <div class="article__body">
-      <p>Google DeepMind が保守する汎用の物理エンジンである。MuJoCo は Multi-Joint dynamics with Contact の略で、関節でつながった構造が環境と接触しながら動く様子を、速く正確に解くことを狙う。ロボティクス、生体力学、グラフィックス、機械学習などの研究開発を対象とし、C の API と Python バインディング、Unity プラグインを持つ。Linux・Windows・macOS 向けのビルド済みバイナリがあり、毎月第一週の公開を目指す。ライセンスは Apache-2.0。週間で約1,700★。</p>
+      <p>自前のアプリに表計算や文書の編集機能を組み込むための Office SDK である。この repo は Sheets・Docs のエディタ、数式計算、描画、そしてアプリやエージェントが内容を読み書きするための Facade API を含むオープンソースの中核を提供する。サーバー側の共同編集やファイルの入出力、AI 向けの道具は商用アドオンが担う。README の quick start は<strong>ブラウザアプリに表計算エディタを作る例</strong>を示し、同じ API を Node.js で画面なしに動かせるとする。CLI などのエージェント連携も挙げる。中核は Apache-2.0。週間で約7,200★と、今週の最多。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/google-deepmind/mujoco">google-deepmind/mujoco</a></li>
+        <li><a href="https://github.com/dream-num/univer">dream-num/univer</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">エージェントと画面をつなぐ protocol AG-UI が 1.0 に</h3>
+    <div class="article__body">
+      <p>AI エージェントと利用者向けアプリをつなぐ、イベント方式の open な protocol である。エージェントの出力の stream、ツール呼び出し、共有状態の更新、人の入力待ちを、どの client でも描ける型付きイベントの一本の流れに載せる。どの framework で作ったエージェントでも扱える。README は<strong>AG-UI 1.0 が後方互換を保つ安定仕様になった</strong>とし、JSON Schema から生成した SDK を TypeScript・Python・.NET で出す。LangChain・CrewAI・Google ADK・Mastra などに対応し、ツールの MCP やエージェント間の A2A を補う。CopilotKit 発、MIT。週間で約3,500★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/ag-ui-protocol/ag-ui">ag-ui-protocol/ag-ui</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Chrome DevTools をコーディングエージェントに開放する MCP</h3>
+    <div class="article__body">
+      <p>AI コーディングアシスタントに、起動中の Chrome を操作・観察させるツールである。MCP サーバーと <code>chrome-devtools</code> という CLI の形で配る。トレース記録による性能分析、ネットワーク・スクリーンショット・コンソールを使ったデバッグ、Puppeteer に基づくブラウザ自動化が主な用途。<code>npx chrome-devtools-mcp@latest</code> の短い設定を MCP client に足して使う。README は<strong>ブラウザの内容が MCP client に渡るので機微な情報を扱うなと注意する</strong>。性能ツールはトレースの URL を CrUX API に送ることがあり、フラグで止められる。Apache-2.0。週間で約3,200★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">AI 一色の中の常連・話題</h2>
+
+  <article class="article">
+    <h3 class="article__headline">開発停止した Maybe を継ぐ個人向け家計アプリ Sure</h3>
+    <div class="article__body">
+      <p>個人の家計を管理するための personal finance アプリである。元になった Maybe Finance が開発を止めたため、その<strong>archive 済みコードを有志が引き継いだ fork</strong>だと README は述べ、Maybe Finance 社とは無関係で承認も受けていないと断る。Docker での self-host のほか、Render・PikaPods・Hostim での一括デプロイに対応する。ブラウザ、macOS のデスクトップアプリ、モバイルアプリ、API client、LLM エージェントから使える。Ruby on Rails 製で、ローカル開発には PostgreSQL と Redis が要る。ライセンスは AGPLv3。週間で約3,200★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/we-promise/sure">we-promise/sure</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Apple Watch で Hermès 文字盤を使えるようにするアプリ</h3>
+    <div class="article__body">
+      <p>本来は Hermès モデルだけが使える文字盤を、ほかの Apple Watch でも使えるようにするアプリである。README は <strong>watchOS 27.0 から 27.3 beta 1 まで対応</strong>とし、watchOS 26 は対象外、未対応版には同じ作者の別プロジェクト Clocky を案内する。導入は iPhone と Apple Watch をペアにして行い、macOS では Sideloadly や Xcode で入れる。更新のたびに同じ Bundle Identifier と Apple ID を保てといった注意を添え、「自己責任で使え」と断る。MIT。週間で約900★。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://github.com/pookjw/HermesEnabler">pookjw/HermesEnabler</a></li>
       </ul>
     </details>
   </article>
