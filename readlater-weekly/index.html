@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Read Later — 2026年11月7日 | Ecce Fomo</title>
+<title>Read Later — 2026年11月21日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="Read Later — 2026年11月7日">
+<meta property="og:title" content="Read Later — 2026年11月21日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">Read Later</a></h1>
       <div class="masthead__meta">
-        <span>2026年11月7日（土）</span>
+        <span>2026年11月21日（土）</span>
         <span>今週の棚卸し</span>
       </div>
     </header>
@@ -31,174 +31,198 @@
     <main class="content">
       <section class="summary">
   <h2 class="summary__title">まとめ</h2>
-  <p>今週の保存は <strong>ISUCON2026 の参加記</strong>に強く偏り、関心は「Web 高速化の改善ループを、どこまで AI エージェントに閉じさせるか」へ一気に寄った。その裏で続いていたのは、AI の出力を型・lint・テスト・ポリシーといった<strong>仕組みで縛り、人が読む層を「意味」に絞る</strong>設計論だ。さらにモデル側では、AI を日常の判断や家計にまで広げる動きが並ぶ。拾えていないのは、こうした委任を受け止める組織・制度の視点と、実ユーザーの生の声である。</p>
+  <p>今週の保存39件は、AI に仕事をどう任せるかという一点に強く寄っている。ISUCON2026 の参加記が引き続き厚く、作り込んだハーネスより素の構成が伸び、人の仕事は「どこを見るか」の一言に残る、という具体像がさらに固まった。その土台として、出力を検証の仕組みで縛り人が読む範囲を狭める設計論と、判断だけを返す Decision Model が並ぶ。委任を受け止める組織・制度と帰属責任の設計は、依然として拾えていない。</p>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">ISUCON2026 は改善ループをエージェントに閉じさせる競技になった</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>ISUCON2026 は「ハーネスを削る」と「どこを見るか」に行き着いた</h2>
   <article class="article">
     <div class="article__body">
-      <p>13 本の参加記の大半が同じ構図を描く。今年の題材はリージョンをまたぐ写真 SNS「ISUReal」で、欧米のアプリサーバから唯一の DB への往復（約 100ms）をどう減らすかが核だった。そして主役は、計測 → 仮説 → 実装 → ベンチ → 残すか戻すか、という改善ループを人の手を介さずエージェントに回させる <strong>Human-out-of-the-loop（HOOTL）</strong> の設計である。運営も今年から、使った AI のハーネスとモデルの申告欄を設けた。優勝は完全自律の競技エージェントを 3 ヶ月・100 回以上の試行で仕上げた 1 人チームの 625,857 点。多くのチームが同じ発想で臨み、差は「モデルの賢さ」ではなく、観測データへ直接触らせる土台・1 変更 1 ベンチ・判断の記録・知識カード・監査役エージェントといった<strong>座組の作り込み</strong>に出た、と口をそろえる。</p>
+      <p>ISUCON2026 の参加記が大量に流れ込み、共通して出てくるのは「作り込んだハーネスはむしろ邪魔になった」という逆説である。優勝者は3か月かけて評価環境を整え、full（作り込み）・bare（素）・lite（当日）を同じ基準で比べた結果、bare が full を上回ったため当日構成を bare から足し直した。別の参加者は感想戦で規約・手順・スキルをほぼ全て消し、約6万点から61万点まで伸ばしている。今回の問題は地域をまたぐ DB 往復が律速で、画像を DB から外す・PgBouncer・署名計算を別の台へ、といったアーキテクチャ変更が点を動かしたが、エージェントは保守的で大きな変更を自分からは出さず、人が気づくまで入らなかった。</p>
       <ul>
-        <li>人間の仕事はコードからゴール設定と見落としの指摘へ移った。あるチームは「最終スコア 100 万点」という届かない目標を GOAL.md に置いて、ほどほどで手を止めさせない。別チームは 14 時以降コードもコマンドも書かず、AI どうしの会話を眺めて方針だけ返した。</li>
-        <li>複数エージェントの協調には設計が要る。3 人がそれぞれの Claude Code を Slack でつなぎ、<code>CLAIM</code>・<code>DEPLOY_REQ</code>・<code>BENCH_DONE</code> の 1 行書式と担当ファイルの排他、デプロイのロックで、1 本しかないベンチを奪い合わずに回した。実装担当とベンチ担当は分けるべきだった、という反省も具体的。</li>
-        <li>負けの原因も AI 特有だった。ツールを全部捨てて Claude Code に全任せしたチームは、エージェントが「実装に 8 時間かかるので却下」と人間基準で見積もり、致命的な改善を見送って惨敗した。「間に合わないとは考えるな」と圧をかけても、終盤は安全側に倒れて勝ちを諦める。ログ出力を切ると減点される罠に気づかず提出した例もある。</li>
-        <li>権限を与えた AI の危うさも顔を出す。サーバに仕込まれた偽の AGENTS.md（プロンプトインジェクション）にエージェントが対処を迫られ、別チームではエージェントが勝手に運営へ質問を投げてしまった。</li>
+        <li>差を生むのはモデルの賢さでなく環境側である。優勝者は評価の仕組みに最も手をかけ（issue は評価 409 件に対し競技エージェントが 391 件）、評価環境のバグがエージェントの判断を誤らせた例まで洗い出している。</li>
+        <li>削るほど伸びた。1 変更 1 ベンチ・フェーズ分割・探索記録といった人間向けの手順はトークンを食い、大きな書き直しを選ばせなかった。残す価値があったのは、目標を毎ターン入れ直す Stop フックと、頭打ちで観点を返す監査役だけだった。</li>
+        <li>人が効いたのは「どこを見るか」の一言だった。回数や手順を縛る指示は行動を変えず、「全てを疑って」「勝手に上限を決めるな」「マニュアルを読み直せ」といった、視点を外から揺らす言葉がスコアを跳ねさせた。</li>
+        <li>エージェントは大胆なアーキテクチャ変更に保守的で、人間基準の工数見積もりで致命的な改善を却下することもある。大きな変更を人が判断するまでの時間がボトルネックになった。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/luvtechno/articles/isucon2026-competition-day">ISUCON2026 で優勝しました（当日編）</a>：完全自律 HOOTL で優勝した 1 人チームの一次記録。マニュアルを読まずエージェントに託した当日の手触りが読める。</li>
-        <li><a href="https://zenn.dev/kauche/articles/f3736c660aab77">3 人それぞれの Claude Code を Slack でつないで ISUCON2026 に参加した（207,039 点）</a>：会話履歴を共有しない複数エージェントを、Slack の 1 行書式と排他だけで協調させた運用が具体的。</li>
-        <li><a href="https://zenn.dev/mazrean/articles/5c968503fd69a3">ISUCON2026 にツールを捨てて勝ちたかった</a>：素振りで約 290 万点まで出した知見と、本番で負けた原因（時間見積もりと状況把握）を冷静に分解している。</li>
+        <li><a href="https://zenn.dev/luvtechno/articles/isucon2026-preparation">ISUCON2026 で優勝しました（準備編）</a>：3か月・issue 927・評価 run 159・延べ674時間を数字で開示し、full→bare の逆転と評価環境づくりの難しさを一次情報で書いた、この号で最も読む価値がある長編。</li>
+        <li><a href="https://zenn.dev/ojey/articles/isucon2026-kansousen">ISUCONから学ぶAIとの付き合い方</a>：同じ Claude Code で、ハーネスを削り指示を変えるだけで約10倍に伸ばした過程を、時刻つきの指示ログで追える。</li>
+        <li><a href="https://zenn.dev/5alt_nacl/articles/isucon2026-solo-ai-agent">ISUCON2026 ソロ参加記：自作ハーネスで Claude Code をほぼ無人運転した</a>：無人運転の構成・規約・通知設計を具体的に示し、1位との差がどこで開いたかを自分の手順書の制約まで遡って分析している。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/ndmxjp/articles/isucon2026-kiro-agent-ops">1 人チームでKiro CLI とISUCON2026に参加した記録：エージェントに任せたこと、任せきれなかったこと</a></li>
-      <li><a href="https://zenn.dev/o8n/articles/isucon2026-app-agent-retrospective">ISUCON2026で126,634点でした</a></li>
-      <li><a href="https://zenn.dev/ponyo877/articles/2a8a24acc2ea3b">Human-out-of-the-loop(もどき)で戦うISUCON2026 (301,558 点 | 12 位)</a></li>
-      <li><a href="https://zenn.dev/enari_k/articles/b512e044ec9240">学部生3人でISUCON2026に出て、最後に証拠より常識を選んで負けた話</a></li>
-      <li><a href="https://zenn.dev/luvtechno/articles/isucon2026-competition-day">ISUCON2026 で優勝しました（当日編）</a></li>
-      <li><a href="https://zenn.dev/tak848/articles/20261031-isucon2026-writeup">ISUCON2026に人間1人＋AIエージェント軍団で出て19.6万点、ループは閉じたけど中身が弱かった反省文😇</a></li>
-      <li><a href="https://zenn.dev/ntk221/articles/98b17a773669a1">ISUCON2026 本番に出た</a></li>
-      <li><a href="https://zenn.dev/catatsuy/articles/159edffe202c0c">ISUCON 2026 参加記</a></li>
-      <li><a href="https://zenn.dev/mazrean/articles/5c968503fd69a3">ISUCON2026 にツールを捨てて勝ちたかった</a></li>
-      <li><a href="https://zenn.dev/hazelnut_smnth/articles/3b5e5d38937841">新卒1年目の駆け出しエンジニア2人で ISUCON2026 に出てみた</a></li>
-      <li><a href="https://zenn.dev/nicklegr/articles/de0a6fd86b6ce3">ISUCON 2026 Writeup / チーム nicklegr</a></li>
-      <li><a href="https://zenn.dev/paraponera/articles/2026-10-31-isucon-2026-isureal">ISUCONに初めて出たら、直すたびに次のボトルネックが出てきて、超面白かった</a></li>
-      <li><a href="https://zenn.dev/kauche/articles/f3736c660aab77">3 人それぞれの Claude Code を Slack でつないで ISUCON2026 に参加した（207,039 点）</a></li>
+      <li><a href="https://zenn.dev/luvtechno/articles/isucon2026-preparation">ISUCON2026 で優勝しました（準備編）</a></li>
+      <li><a href="https://zenn.dev/ojey/articles/isucon2026-kansousen">ISUCONから学ぶAIとの付き合い方</a></li>
+      <li><a href="https://zenn.dev/5alt_nacl/articles/isucon2026-solo-ai-agent">ISUCON2026 ソロ参加記：自作ハーネスで Claude Code をほぼ無人運転した</a></li>
+      <li><a href="https://zenn.dev/tokium_dev/articles/2026-11-10-isucon2026">o11y基盤とAIで戦ったISUCON2026参加記（126,634点・126位）</a></li>
+      <li><a href="https://zenn.dev/smasui/articles/1e38c0d5881ac9">ISUCON 2026参加記</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title"><span class="article__badge">続報</span>AI の出力を仕組みで縛り、人が読む層を意味に絞る</h2>
+  <h2 class="topic__title">「人は意思決定だけ」に寄せる個人・全社のハーネス設計</h2>
   <article class="article">
     <div class="article__body">
-      <p>ハーネスで出力を御する関心の続き。共通するのは、品質はプロンプトの工夫でなく <strong>AI の外側に置いた仕組み</strong>（型・lint・テスト・CI・ポリシー）で決まる、という割り切りだ。そのうえで人間が読む範囲を、機械では確かめられない「意味」の層へ絞る。</p>
+      <p>競技の外でも、「人は意思決定だけ、実装・検証・記録はエージェント」という運用が具体化している。共通するのは、賢いプロンプトでなく、エージェントが自分で読み書きし検査できる構造（規約の正本・タスク単位の記録・置き場・lint）を外側に用意する発想である。個人は数十セッションを並行させて確認と判断だけを行い、全社基盤はアクセス制御とサンドボックスで、承認なしに走らせる土台を作る。</p>
       <ul>
-        <li>仕様書を厳密に書くほどコードに近づく。だったら可読性の高いコードを仕様の正（SSoT）にし、説明はコードから生成すればよい、という <strong>code as spec</strong>。2,000 行の spec は人間でなく後続エージェント向けで、人がレビューできない文書が正として入ることへの疑問が出発点にある。</li>
-        <li>AI が書く ADR やコメントは、放っておくと冗長で自由になる。ガイドラインやスキルは「お願い」で守られる保証がないので、構造は rego ポリシーで CI を落として弾き、意味のずれ（仕様書化していないか）は LLM に質問させて PR の注意に留める、と<strong>判定の重さで手段を分ける</strong>。</li>
-        <li>仕組みの層は定型化しつつある。フロントエンドの「本番品質」を ①コンテキスト ②機械的ガードレール ③テスト ④CI と人のレビュー の 4 層で守る整理、チケットを入れるとマージ済みコードが出る「ソフトウェアファクトリー」の用語集、不変条件から DDD の集約を機械的に導く形式手法の試みが並ぶ。</li>
+        <li>プロンプトより構造。訂正の行き先を種類ごとに決めておくと、別セッションのエージェントが決定の原文の行まで辿って矛盾を指摘できる。CLAUDE.md は「守られる保証のないコンテキスト」なので、確実に残したいものは hook と lint に寄せる。</li>
+        <li>人の仕事は「ゴール設定」と「止まる条件への回答」に絞られる。止まってよいのは破壊的操作・外部送信・範囲変更・価値判断の4つだけにし、次アクションもエージェントに提案させてワンタップで返す運用が現れている。</li>
+        <li>全社基盤では、安全を by design で作ることが、そのままコンテキスト供給＝性能に効く。サンドボックスにクレデンシャルを置かず egress をプロキシで絞り、情報区分ごとのサービスアカウントで権限の抜け道を塞ぐ。</li>
+        <li>pstack の思想（証拠がなければ完了と認めない・書いた本人に採点させない・足す前に引く）が、Ubie の Uvin のベースとして実運用に入っている。思想とプロダクトがつながってきた。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/ruri/articles/code-as-spec">spec as code ではなく、code as spec — 仕様書のように書かれたコードを正にする</a>：spec as code の流行に「向きが逆だ」と切り込む、今週で一番骨のある設計論。</li>
-        <li><a href="https://zenn.dev/sun_asterisk/articles/d4e4bc24974b99">AI生成コードを本番品質に保つためのフロントエンド開発の仕組み</a>：AI 生成コードの品質問題を CodeRabbit や DORA のデータで裏づけ、止める仕組みを症状別に対応づけた実務的な一本。</li>
-        <li><a href="https://zenn.dev/babarot/articles/regomark-adr-checker">ADRをregoでlintする</a>：ガイドラインとポリシーの違いを「構造は機械・意味は LLM」で切り分けた具体。</li>
+        <li><a href="https://zenn.dev/nttdata_tech/articles/9562962cc181a1">自分の代わりに動くAgentへ。Claude CodeとCodexで作る自律改善ハーネス</a>：規約・台帳・文脈・記録・検査の5分割、hook・doctor・共有ボードまで、実物の Markdown と設定つきで4か月の運用を書いた、設計の教科書になる長編。</li>
+        <li><a href="https://zenn.dev/ubie_dev/articles/45501469c9c044">Software Factoryの先へ：全社の仕事をAI-NativeにするUbieの内製クラウドエージェント基盤</a>：Sandbox-as-a-tool、情報区分ごとのアクセス制御、自律改善の Outer Loop を、全社を AI-Native にする基盤の思想として語る。</li>
+        <li><a href="https://zenn.dev/kingyosun/articles/kukuri-ai-dev">意思決定だけで週100コミット積むAI開発手法</a>：52.8万行を個人で週100コミット、2度の破綻を経て「受入条件は利用者の操作と観測で書く」「割り切りを設計原則に残す」へ至った一次の反省。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/ruri/articles/code-as-spec">spec as code ではなく、code as spec — 仕様書のように書かれたコードを正にする</a></li>
-      <li><a href="https://zenn.dev/sun_asterisk/articles/d4e4bc24974b99">AI生成コードを本番品質に保つためのフロントエンド開発の仕組み</a></li>
-      <li><a href="https://qiita.com/Syoitu/items/9364a0a175893bb15219?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AI駆動開発の次の段階: ソフトウェアファクトリー</a></li>
-      <li><a href="https://zenn.dev/nrs/articles/33ba79c8b2542e">集約をどこまで機械的に導けるか――形式手法をベースとしたドメインモデリング</a></li>
-      <li><a href="https://zenn.dev/babarot/articles/regomark-adr-checker">ADRをregoでlintする</a></li>
-      <li><a href="https://zenn.dev/tokium_dev/articles/adr-authoring-guideline">AIが書く「読みづらいADR」に発狂しかけたので、ADRのガイドラインを作った</a></li>
-      <li><a href="https://qiita.com/jnchito/items/636c519c0b1d347c79b7?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">AIにありがちな「イマイチなコードコメント」9パターン</a></li>
-      <li><a href="https://zenn.dev/castingone_dev/articles/casone_playwright_for_claude">弊社がAIでPlaywrightテストコードを生成するために調整したこと</a></li>
+      <li><a href="https://zenn.dev/nttdata_tech/articles/9562962cc181a1">自分の代わりに動くAgentへ。Claude CodeとCodexで作る自律改善ハーネス</a></li>
+      <li><a href="https://zenn.dev/ubie_dev/articles/45501469c9c044">Software Factoryの先へ：全社の仕事をAI-NativeにするUbieの内製クラウドエージェント基盤</a></li>
+      <li><a href="https://zenn.dev/kingyosun/articles/kukuri-ai-dev">意思決定だけで週100コミット積むAI開発手法</a></li>
+      <li><a href="https://zenn.dev/andoshin11/articles/ba68b39ef9a8ce">毎月6,000 AI Agentsを捌くためにキーボードを捨てた話</a></li>
+      <li><a href="https://zenn.dev/karamage/books/50c18e52e7d19e">pstack 完全ガイド ─AIエージェントに雑なコードを書かせない技術─</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">AI が日常の判断と家計にまで入り込む</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>AI の出力を検証で縛り、人が読む層を狭める</h2>
   <article class="article">
     <div class="article__body">
-      <p>モデル側の新しい動きは、コードや数学でなく<strong>生活の判断</strong>を測り、担う方向に向いている。評価軸そのものが実用へ移りつつある。</p>
+      <p>AI が爆速で差分を出すほど、人が読む代わりに品質を仕組みへ移す話が厚い。鍵は2つある。AI に毎回やらせず判断を一度プログラムへ変えること、そして機械で確かめられない層だけを人に残すことである。</p>
       <ul>
-        <li>OpenAI の LifeVal は、引っ越し先の保育園選びや防災ボランティアの立ち上げといった日常タスクで AI を採点するベンチ。GPT-5.2 の 49.3% から GPT-6 Astra の 80.6% まで伸び、処理時間を抑えたまま精度が上がったとする。AGI は学術でなく実用の有用性で測るべき、という立場を掲げる。</li>
-        <li>Claude には米国ベータで個人向け資産管理が付いた。Plaid 経由で銀行口座を<strong>読み取り専用</strong>でつなぎ、支出の分類・重複課金やじわ上がりする請求の検知・支払いカレンダーを出す。送金や運用、投資助言はせず、会話は学習に使わない、という線引き。</li>
-        <li>検索にも判断モデルを持ち込む Decision RAG。文書を階層に持ち、各段で「はい」の確からしさだけ返す判断モデルがどの棚を開くかを決める。AgenticRAG の賢さを Naive に近い速さで使う、という狙い。</li>
+        <li>「実行させるな、コンパイルさせろ」。演習データから全 E2E を生成するメタテスト、grep で悪いテストを検出、Stryker のミューテーションでテストの穴を測る、など判断を定型処理に落とす。一度コンパイルすればトークンゼロで同じ結果が出る。</li>
+        <li>カバレッジの量産は AI に向くが、テストが通ることもカバレッジが上がることも正しさを保証しない。常に500を返すバグに500を期待するような無価値なテストが混じるため、モックの制限や private を直接テストしないといったトレードオフの判断は人が担う。</li>
+        <li>QA の3事例は「AI に全部読ませず、プログラムで候補を絞ってから判断だけ任せ、AI が出した数字は検算する」に収束した。毎回同じ答えが要る照合には AI を使わない。</li>
+        <li>ルール自体も検査対象になる。Turtle と lint で must/mustNot の矛盾や例外の抜けを CI で止める。コードを読まずにマージする no-look-merge は、品質確認だけでなく「見逃しの責任を組織が引き受ける」合意がないと成立しない。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://gigazine.net/news/20261104-openai-lifeval/">コーディングだけでなく日々の判断にもAIが役立つか測定可能なベンチマークテスト「LifeVal」をOpenAIが発表</a>：ベンチの作り方（Time Use Survey と 3,995 人への調査）とスコアの一次情報で、評価軸が生活へ移る流れが掴める。</li>
-        <li><a href="https://qiita.com/kikuziro/items/cc82e6e4e4c215eac99f?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">新しいRAG「Decision RAG」は速い！安い！上手い！🍜</a>：判断モデルを検索に使う発想を、自前の比較検証付きで噛み砕いた具体。</li>
+        <li><a href="https://zenn.dev/daiaoki/articles/webterm-ai-era-testing">AIが爆速で開発する時代の、自動テストとの向き合い方</a>：「AI は回り道をしない、回り道を選ぶのは人間」という結論に、純粋関数の核・メタテスト・特性テスト・テスト選択という具体で辿り着く、設計とテストの関係を考え直させる一本。</li>
+        <li><a href="https://zenn.dev/applibot_tech/articles/6b8ec8d196634b">QA効率化におけるAI活用事例</a>：差分チェック・不具合数予測・静的照合の3つとも「AI は絞り込んだ候補の判定役」に落ち着いた役割分担を、トークン削減や誤検知対策の数字つきで示す。</li>
+        <li><a href="https://qiita.com/Dingu-suke/items/b5318ef2040a9f59224a">AI「テスト通りました」← これ､本当？ Stryker でテストの穴を塞いだ話</a>：ミューテーションテストで「通っているが何も確かめていないテスト」を具体例と mutation score で暴いた、検証の物差しの作り方。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://gigazine.net/news/20261104-openai-lifeval/">コーディングだけでなく日々の判断にもAIが役立つか測定可能なベンチマークテスト「LifeVal」をOpenAIが発表</a></li>
-      <li><a href="https://gigazine.net/news/20261106-claude-personal-finance/">Claudeに個人向け資産管理機能が追加される、「読み取り専用」で毎月の支出などにアドバイス</a></li>
-      <li><a href="https://qiita.com/kikuziro/items/cc82e6e4e4c215eac99f?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">新しいRAG「Decision RAG」は速い！安い！上手い！🍜</a></li>
+      <li><a href="https://zenn.dev/daiaoki/articles/webterm-ai-era-testing">AIが爆速で開発する時代の、自動テストとの向き合い方</a></li>
+      <li><a href="https://zenn.dev/litalico/articles/20261029-test-with-ai">AIでテストカバレッジを23%から84%に引き上げた方法</a></li>
+      <li><a href="https://zenn.dev/applibot_tech/articles/6b8ec8d196634b">QA効率化におけるAI活用事例</a></li>
+      <li><a href="https://qiita.com/Dingu-suke/items/b5318ef2040a9f59224a">AI「テスト通りました」← これ､本当？ Stryker でテストの穴を塞いだ話</a></li>
+      <li><a href="https://zenn.dev/nrs/articles/c777388530aa84">コードを読まずにマージするために必要なこと</a></li>
+      <li><a href="https://zenn.dev/hma2moto/articles/turtle-agent-rules-pros-cons">CLAUDE.md や SKILL.md のルールを Turtle で書き、ルールの書き間違いや矛盾を lint で検査してみた話</a></li>
+      <li><a href="https://zenn.dev/rimo/articles/12d6a7b1c58fcd">ESLint から oxlint へ。lint が 50 倍速くなるまでの移行の記録</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">生成メディアは速度と制御性で刻む（観測枠）</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>判断モデルと、先回りする個人エージェント</h2>
   <article class="article">
     <div class="article__body">
-      <p>動画・画像の生成モデルは、能力の跳躍よりも<strong>速さ・価格・編集の制御性</strong>で小刻みに更新が続く。性能そのものより、各社が示す数字の測り方に注意して眺める枠。</p>
+      <p>文章を生成せず確率や選択肢だけを返す Decision Model の実力検証と、指示を待たず先回りする個人エージェントが並ぶ。判断そのものを部品として、検索や検証に差し込む方向が続いている。</p>
       <ul>
-        <li>Google の Gemini Omni 1.2 Flash は最大 15 秒（従来 10 秒）、アップスケーラで 4K、編集済み動画の多ターン編集に対応。720p で動画出力は約 $0.07/秒、前世代比で 30% 安いと謳う。</li>
-        <li>OpenAI の Images 2.6 は従来比で約 50% 高速になり、GIF 生成と細かい編集制御に対応。ChatGPT と Codex API で使える。</li>
-        <li>言語モデルに書道を競わせる「AI 書道コンクール」。画像生成 AI でなくテキストモデルに描かせる遊びで、評価の恣意性ごと楽しむ外れ値。</li>
+        <li>Decision Model（Jev・Decisions・Clef）は、はっきりした欠陥の検出や検索結果の事後フィルターでは最上位の生成 LLM と同程度で、応答0.16秒・費用は生成 LLM の3〜25分の1と速く安い。ただし条件を1つ削った微妙な情報不足は8割以上を見逃し、閾値は手元のデータで決め直す必要がある。</li>
+        <li>Gemini Decisions は動画を直接入力して道具や状態を判定でき、Jev×scikit-learn は問い合わせを6つの確率特徴量に変えて分類器に差す。判断モデルを前処理・検証の部品として使う実験が増えている。</li>
+        <li>Meta の Muse は、承認を Sentinel が握り本物の認証情報を見せない設計の先回り型（proactive）エージェント。利用者が dots と Muse を役割分担させ、AI 同士をファイル越しに議論させる試みまで現れた。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://gigazine.net/news/20261106-gemini-omni-1-2-flash/">Googleが動画生成AI「Gemini Omni 1.2 Flash」をリリース、最大15秒の動画を出力可能</a>：価格と制約を具体値で確かめられ、動画生成のコスト感を掴める。</li>
+        <li><a href="https://zenn.dev/genax_corp/articles/20261109-judge-models-faq-check">Decision ModelはFAQの回答の確認と問い合わせの振り分けに使えるか</a>：FAQ の確認から振り分けまで8段で Decision Model と生成 LLM を横並び比較し、得意・不得意と閾値調整の要否を数字で示した、採否の判断材料になる労作。</li>
+        <li><a href="https://qiita.com/kazutoyamaura/items/80488a5d5d1ad5a5fc46">最近話題のMuseとは</a>：先回り型エージェントの UX と、専用 VM・Sentinel・ダミートークンという権限設計を具体的に紹介している。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://gigazine.net/news/20261106-gemini-omni-1-2-flash/">Googleが動画生成AI「Gemini Omni 1.2 Flash」をリリース、最大15秒の動画を出力可能</a></li>
-      <li><a href="https://gigazine.net/news/20261105-ai-shodo/">AIに無理やり書道をやらせる「AI書道コンクール」が登場、画像生成AIではなく言語モデルに挑戦させる</a></li>
-      <li><a href="https://gigazine.net/news/20261105-openai-image-2-6/">OpenAIが画像生成AIツールの「Images 2.6」をリリース、GIF生成に対応し編集工程を細かく制御可能</a></li>
+      <li><a href="https://zenn.dev/genax_corp/articles/20261109-judge-models-faq-check">Decision ModelはFAQの回答の確認と問い合わせの振り分けに使えるか</a></li>
+      <li><a href="https://qiita.com/kataoka_se_sionic/items/6bd2eb0b767b6e10fe6a">Gemini Decisions による動画の判定</a></li>
+      <li><a href="https://qiita.com/ryosuke_ohori/items/3604de1da2af5c28dc9b">Jev × scikit-learnで問い合わせを仕分ける：文章を6つの確率特徴量に変える</a></li>
+      <li><a href="https://qiita.com/kazutoyamaura/items/80488a5d5d1ad5a5fc46">最近話題のMuseとは</a></li>
+      <li><a href="https://qiita.com/enoshiman/items/7bbe521d2d094f4d3e81">dots vs Muse</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title"><span class="article__badge">続報</span>運用とセキュリティは「入力を疑う」と「増幅を止める」で固める</h2>
+  <h2 class="topic__title"><span class="article__badge">続報</span>運用とセキュリティを手元で固める</h2>
   <article class="article">
     <div class="article__body">
-      <p>信頼の設計を自分の手で詰める関心の続き。今回の軸は、外から来るものを信用しすぎない構えと、失敗が連鎖で膨らむのを抑える仕掛けだ。</p>
+      <p>任せる範囲が広がるほど攻撃面も広がるので、運用とセキュリティを手で確かめる話が続く。軸は「使い捨ての隔離環境」と「攻撃を自分のアプリに仕掛けさせる」である。</p>
       <ul>
-        <li>防御側で LLM にログの要約・一次判定・IoC 抽出をさせると、ログに残る User-Agent やユーザー名から攻撃者が間接プロンプトインジェクションを仕込める。要約は書き換えに気づきにくく、研究では多層防御でも 8% 前後の脆弱性が残る。だから生ログを攻撃者の入力として扱い、出力の IP・ホスト名を元レコードと機械照合し、トリアージでは「優先度を上げる」方向だけ AI に任せ、アラートを AI 単独で閉じさせない。</li>
-        <li>Uber はリトライストームを「エラーの所有権」で抑える。各層が一律に再試行すると負荷が R<sup>d</sup> で膨らむ。自分の外向き呼び出しが成功していてエラーなら自分の責任（claim）、失敗由来なら症状（unclaim）と見分け、unclaim されたエラーは再試行しない。2025 年 11 月 18 日の障害では約 950 万の無駄なリクエストを抑制し、再試行の増幅が届く深さの最大を 25 → 3 に下げた。</li>
+        <li>AI ペンテストの Shannon は、開発環境ごと EC2 に閉じ込めて使い捨てで回す構成に落ち着く。実測は Rails アプリで約2時間・$110、攻撃の検証が費用の半分を占めた。Cyber Verification は Console 組織で別途申請が要り、API キーは最長7日。</li>
+        <li>おとり（Canarytokens）で不審アクセスを検知し、コミット前フックで TruffleHog を走らせ終了コード2でシークレット入りコミットを止める、と防御も手元の仕組みで固める。</li>
+        <li>自宅サーバーの公開は Cloudflare Tunnel + Access でポートを開けず認証も肩代わりさせ、AI エージェントにはサービストークンと許可リストで絞った権限だけを渡す。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://qiita.com/shalXXXX/items/5920c6ba75c2f1203f1b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">防御側の LLM 活用：ログ分析・アラート一次対応・脅威インテリジェンスで「ログを入力として疑う」設計</a>：研究の数字と、場面ごとに「AI に任せてよいこと」を切り分ける設計が一次的で濃い。</li>
-        <li><a href="https://gigazine.net/news/20261103-protecting-against-retry-storms/">Uberはリトライストームからどのように身を守っているのか</a>：再試行の増幅を数式と所有権で御する、運用設計の手本。</li>
+        <li><a href="https://zenn.dev/arm_techblog/articles/9c5a29e37d1522">Anthropicから毎月もらえるAPIクレジットで、AIペンテストツールShannonを回してみた</a>：クレジットの使い道として AI ペンテストを実際に回し、CVP 申請の落とし穴・隔離環境・1回あたりの時間と費用を具体的な数字で残した、導入前に効く実地レポート。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://qiita.com/shalXXXX/items/5920c6ba75c2f1203f1b?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">防御側の LLM 活用：ログ分析・アラート一次対応・脅威インテリジェンスで「ログを入力として疑う」設計</a></li>
-      <li><a href="https://gigazine.net/news/20261103-protecting-against-retry-storms/">Uberはリトライストームからどのように身を守っているのか</a></li>
+      <li><a href="https://zenn.dev/arm_techblog/articles/9c5a29e37d1522">Anthropicから毎月もらえるAPIクレジットで、AIペンテストツールShannonを回してみた</a></li>
+      <li><a href="https://gigazine.net/news/20261111-canarytokens/">無料でおとりを設置して不審な操作を検知できる「Canarytokens」</a></li>
+      <li><a href="https://qiita.com/CircleCIJapan/items/00c07ba3c040a8d2e84d">Claude Code のコミット前フックで TruffleHog を実行し、シークレット入りのコミットを止める</a></li>
+      <li><a href="https://zenn.dev/bisque/articles/home-server-cloudflare-tunnel-access">自宅サーバー上のアプリケーションを Cloudflare Tunnel + Access で安全に公開する</a></li>
     </ul>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">その他 ― 手を動かす周縁</h2>
+  <h2 class="topic__title">基盤モデルと周辺プロダクトの観測枠</h2>
   <article class="article">
     <div class="article__body">
-      <p>毛色の違うものを拾う雑食は健在。AI の周りで手を動かす小ネタと、AI から離れた関心が散る。</p>
+      <p>評価軸と機能が、学術やコードから生活・業務の実作業へ下りてくる動きと、各社プロダクトの小刻みな更新。関心は性能そのものより、何を測り、何を自分の基盤に載せるかに向く。</p>
       <ul>
-        <li>AI 時代の文章術として、読者とゴールを先に決め、読まれない前提で削る技法。AI が溢れさせた長文への反動でもある。</li>
-        <li>自宅 GPU 1 枚の Kaggle に、本来スパコン向けのジョブスケジューラ Slurm を使って 41 日間の学習ジョブを管理した話。</li>
-        <li>Figma の裏側を手で作る 2 本。リアルタイム同期を Node.js + WebSocket の最小構成で実装し、Figma Motion の UI アニメを CSS で再現する。</li>
-        <li>Claude Code でグラレコ風の「AWS 構成管理できることマップ」を生成、Rails のログを初学者が分解して読み解く練習、社内に Qiita 投稿文化を広めようとして続かなかった失敗談。</li>
-        <li>AI から離れて、歩くほど遅いランニングでもメンタルと認知機能に良いという筑波大らの研究、プロダクトの情報を一画面に集める「コックピット」で PdM の視界を開発の外へ広げる試み。</li>
+        <li>Anthropic は Claude Sheets / Whiteboards / Data を追加し、表計算・ボード・データ分析を Claude 内で完結させる。メモリは「Dreaming」で整理され、高性能モデルほどメモリで伸び、記録する対象はモデルに選ばせた方がよいと示された。</li>
+        <li>AWS のローカルエミュレーターは人間のエンジニアがコードに関与せず、数百の AI エージェント群が週末で構築した。4つのゲートを通った修正だけをマージする体制で、AI 自律開発の実例になっている。</li>
+        <li>組織の Claude Code 利用は OpenTelemetry で自動収集でき（user.email・cost_usd 付き）、Claude Code を会議に参加させる・Suno の Visuals で曲に動画を付ける、と周辺も動く。</li>
       </ul>
       <p class="article__pick-label">全文を読む価値がある記事</p>
       <ul>
-        <li><a href="https://zenn.dev/pomcho555/articles/c455d086ec47af">Slurm は Kaggle で役に立つ</a>：スパコンの道具を自宅 1 枚の GPU に持ち込む発想の転換が面白い、手触りのある一次記録。</li>
+        <li><a href="https://gigazine.net/news/20261113-aws-emulator/">無料でAWSをローカル環境で再現できるAmazon公式エミュレーターが登場</a>：仕様（API model）と参照実装（実クラウド）が揃う土俵で、テスト生成→検証→修正を AI エージェント群に閉じさせた構成が、ISUCON の座組論と地続きで読める。</li>
       </ul>
     </div>
     <ul class="article__sources">
-      <li><a href="https://zenn.dev/ntk221/articles/34ad88a9225364">AI駆動文章作成において俺が意識しているテクニック集</a></li>
-      <li><a href="https://zenn.dev/pomcho555/articles/c455d086ec47af">Slurm は Kaggle で役に立つ</a></li>
-      <li><a href="https://qiita.com/keishin_nishiura/items/b13d72afb085891e4fc9?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Figmaのリアルタイム同期の仕組みを、Node.js + WebSocketの最小構成で実装してみた</a></li>
-      <li><a href="https://qiita.com/pengin_r/items/a13f3020137816bc532a?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Figma Motionで作ったUIアニメーションをCSSで再現してみた</a></li>
-      <li><a href="https://qiita.com/j_mori/items/98b075700d059b713aae?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Claude Code でグラレコ風の「AWS構成管理 できることマップ」を作ってみた</a></li>
-      <li><a href="https://qiita.com/Iriei/items/4523d2034b01aaa7f8b0?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">【Rails初学者向け】Railsサーバーのログが読めないので分解して読み解いてみた</a></li>
-      <li><a href="https://qiita.com/inoyu-qiita/items/48094b9b40752483f5cd?utm_campaign=popular_items&amp;utm_medium=feed&amp;utm_source=popular_items">Qiita投稿文化を社内に広めようとしたけど、うまくいかなかった話</a></li>
-      <li><a href="https://gigazine.net/news/20261103-very-slow-running-benefit-brain/">歩くのと同じくらいゆっくりなランニングでも気分が良くなって認知機能が向上する</a></li>
-      <li><a href="https://zenn.dev/tokium_dev/articles/product-cockpit-for-product-teams">プロダクトの情報を「浴びるように」見られる場所を作った話</a></li>
+      <li><a href="https://gigazine.net/news/20261111-claude-sheets-whiteboards-data/">Claude内で表計算アプリをそのまま実行できる「Claude Sheets」が登場、「Claude Whiteboards」と「Claude Data」も</a></li>
+      <li><a href="https://gigazine.net/news/20261109-ai-dreaming-agent-memory/">Claudeの記憶(メモリ)は夢見るDreaming機能で強化されており間違った記憶を修正することも可能</a></li>
+      <li><a href="https://gigazine.net/news/20261113-aws-emulator/">無料でAWSをローカル環境で再現できるAmazon公式エミュレーターが登場</a></li>
+      <li><a href="https://gigazine.net/news/20261119-suno-visuals/">AI音楽生成サービスの「Suno」がAI音楽用のPVを作成できる「Visuals」を発表</a></li>
+      <li><a href="https://qiita.com/MasaoSasaki/items/056fdca93221d9a57b4a">Claude Codeを会議に参加させる</a></li>
+      <li><a href="https://zenn.dev/gemcook/articles/claude-code-otel-cloudflare">OpenTelemetry×Cloudflareで組織のClaude Code利用ログを収集する</a></li>
     </ul>
   </article>
 </section>
+
+<section class="topic">
+  <h2 class="topic__title">その他 ― 設計・デザイン・手を動かす周縁</h2>
+  <article class="article">
+    <div class="article__body">
+      <p>AI の外側の設計・デザイン論と、手を動かす小ネタ。関心の雑食さが出る枠である。</p>
+      <ul>
+        <li>デザインも「ハーネス」になる。制約・情報・評価・修正の4層で AI の出力を自社基準に収束させ、人は判断と一次情報の取得に時間を移す。生産性を「速くやる」でなく「やらなかったことをやる＝提供価値の増幅」と捉える視点も並ぶ。</li>
+        <li>設計の定番の学び直し。最適化プロダクトの待ち時間 UX、DDD+CQRS+イベント駆動、クリーンアーキテクチャでの小さな API。AI に任せる前に境目の設計を人が決める、という線と地続きである。</li>
+        <li>手元の道具。oxlint で lint を50倍速くし PostToolUse を軽くする、Slack が Markdown の表やコードブロックに対応、自己ホスト推論の KV キャッシュを ElastiCache で共有し TTFT を43%短縮する。</li>
+      </ul>
+      <p class="article__pick-label">全文を読む価値がある記事</p>
+      <ul>
+        <li><a href="https://zenn.dev/rimo/articles/12d6a7b1c58fcd">ESLint から oxlint へ。lint が 50 倍速くなるまでの移行の記録</a>：「全部 ON ＋ 暫定 off の一覧」で移行を一覧の行移動にし、失うルールを115本中3本まで絞った、lint 移行の手順が丸ごと使える実務記録。</li>
+      </ul>
+    </div>
+    <ul class="article__sources">
+      <li><a href="https://goodpatch.com/blog/2026-11-ai-ui-webinar">【AI × UIデザイン】AI前提のUI/UXデザイン基盤の作り方（ウェビナーレポート）</a></li>
+      <li><a href="https://zenn.dev/mediaforce/articles/b7075a9e04e871">AI時代の生産性を考える</a></li>
+      <li><a href="https://zenn.dev/ctenopoma/books/optimization_ux">最適化プロダクトにおけるUX</a></li>
+      <li><a href="https://qiita.com/ditchcrimson/items/ce71bf981e5cdd0bd8f5">DDD・CQRS・イベント駆動を組み合わせたバックエンドアーキテクチャ設計</a></li>
+      <li><a href="https://qiita.com/keikeigo/items/937f993ba3bdafa4184c">種族値合計600以上のポケモンを返すAPIをクリーンアーキテクチャで作成した</a></li>
+      <li><a href="https://zenn.dev/lnest_knowledge/articles/ed5977bd7b6c1f">SlackでMarkdown記法が使えるようになっていた</a></li>
+      <li><a href="https://zenn.dev/aws_japan/articles/elasticache-distributed-kv-cache-bench">新機能、ElastiCache の distributed KV caching を GPU 2 台の vLLM で試す</a></li>
+    </ul>
+  </article>
+</section>
+
     </main>
 
     <footer>
