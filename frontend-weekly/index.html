@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>フロントエンドニュース — 2026年11月17日 | Ecce Fomo</title>
+<title>フロントエンドニュース — 2026年11月24日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="フロントエンドニュース — 2026年11月17日">
+<meta property="og:title" content="フロントエンドニュース — 2026年11月24日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">フロントエンドニュース</a></h1>
       <div class="masthead__meta">
-        <span>2026年11月17日（火）</span>
+        <span>2026年11月24日（火）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,16 +33,25 @@
   <h2 class="topic__title">セキュリティ</h2>
 
   <article class="article">
-    <h3 class="article__headline">Node.js が 3 系統で高深刻度の脆弱性を一斉修正</h3>
+    <h3 class="article__headline">Next.js が全 PR に敵対的なセキュリティ審査を導入</h3>
     <div class="article__body">
-      <p>Node.js は 11 月 11 日に <strong>22・24・26 系統</strong>の定例セキュリティ更新を出した。修正は 15 件で、うち <strong>7 件が高深刻度</strong>。多くが HTTP/2 と TLS まわりに集中する。ストリーム破棄時の use-after-free で解放済みメモリ（TLS 鍵を含みうる）が相手に送られる問題や、TLS 1.2 の再ネゴシエーションでクライアント証明書認証を迂回される問題を含む。</p>
-      <p>修正版は <strong>22.23.5・24.22.3・26.13.1</strong>。HTTP/2 や mTLS を使うサーバは影響が出やすいので、該当ラインは早めに更新する。</p>
+      <p>Next.js は新しいコードに脆弱性を入れないため、Vercel Agent の <strong>Security Review</strong> を全 PR で走らせ始めた（11 月 17 日公表）。独自のガイドラインに沿って変更を攻撃者の視点で突き、CI を通過してマージ直前だった PR から問題を見つけた例もあるという。</p>
+      <p>背景には advisory の急増がある。AI が既存コードのバグ発見を安くしたためで、2026 年の 51 件のうち <strong>70% は 1 年以上前のコード</strong>に由来する。利用者向けには <code>next dev</code>・<code>next build</code> が脆弱な版を警告し、<code>npx next@canary upgrade --agent</code> で安全な版へ上げられる。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>年</th><th>advisory 件数</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>6</td></tr>
+            <tr><td>2025</td><td>14</td></tr>
+            <tr><td>2026（公表時点）</td><td>51</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://nodejs.org/en/blog/vulnerability/november-2026-security-releases">November 2026 Security Releases — nodejs.org（2026-11-11）</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
+        <li><a href="https://nextjs.org/blog/how-were-using-ai-to-make-nextjs-more-secure">How we're using AI to make Next.js more secure — nextjs.org（2026-11-17）</a></li>
       </ul>
     </details>
   </article>
@@ -52,48 +61,16 @@
   <h2 class="topic__title">フレームワーク・ランタイム</h2>
 
   <article class="article">
-    <h3 class="article__headline">X が web アプリを Vite と React で作り直し</h3>
+    <h3 class="article__headline">Solid 2.0 が非同期をリアクティブグラフに統合</h3>
     <div class="article__body">
-      <p>X が web アプリを一から書き直したと公表した。ビルドを Webpack から <strong>Vite</strong>、サーバを Express から <strong>Fastify</strong> に替え、<strong>React のストリーミング SSR</strong> と Relay・GraphQL でページを上から順に描画する。GraphQL の応答はページに埋め込み、ブラウザ側の再取得を省く。</p>
-      <p>低速 4G での初投稿表示は約 24 秒から <strong>約 2.7 秒</strong>に縮んだという。大規模サービスが近年のビルドツールとサーバ構成に乗り換えた実例として注目された。</p>
+      <p><strong>Solid 2.0</strong> が安定版になった（11 月 16 日）。計算が Promise や async iterator を返せるようになり、<code>isPending</code> と <code>Loading</code> で保留中の UI を扱う。投機的な状態は自動で巻き戻る。Server Functions がコアに入り、RPC と Server-Sent Events に対応した。</p>
+      <p>開発ビルドはリアクティブの誤りを、安定したコードと修正案つきで報告する。一方で <code>createResource</code>・<code>batch</code>・<code>startTransition</code> などの API は削除された。<strong>SolidStart は廃止</strong>され、役割はコアとフレームワーク非依存の Vite プラグインが引き継ぐ。</p>
     </div>
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://blog.x.com/en/engineering/rebuilding-the-global-town-square-from-scratch">Rebuilding the global town square from scratch — blog.x.com</a></li>
-        <li><a href="https://www.besthub.dev/articles/x-web-rewrite-vite-node-26-achieve-8x-faster-first-paint-01d9f7290966">X web rewrite with Vite achieves faster first paint — besthub.dev（2026-11）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">ブラウザ・Web プラットフォーム</h2>
-
-  <article class="article">
-    <h3 class="article__headline">Safari 27.3 beta が Temporal と新 CSS を搭載</h3>
-    <div class="article__body">
-      <p><strong>Safari 27.3 beta</strong>（11 月 16 日）が出た。JavaScript に日時 API の <strong>Temporal</strong>、<code>using</code> による明示的リソース管理（<code>Symbol.dispose</code>）、<code>import defer</code> が入った。</p>
-      <p>CSS では <code>@function</code>・<code>if()</code>・<code>attr()</code>・<code>calc-mix()</code>・<code>corner-shape</code> など宣言的な機能が<strong>まとめて搭載</strong>された。近年提案された仕様の実装が一気に進んだ。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://developer.apple.com/documentation/safari-release-notes/safari-27_3-release-notes">Safari 27.3 Beta Release Notes — developer.apple.com（2026-11-16）</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Chrome が agent 向けの Web ガイダンスを安定化</h3>
-    <div class="article__body">
-      <p>Google は <strong>Modern Web Guidance 1.0</strong> を安定版にした。coding agent に最新の web platform の作法を教えるスキル群で、古い定石ではなく今の API を使うよう促す。agent 経由のフロントエンド開発を想定した整備が各所で進む。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://developer.chrome.com/blog/modern-web-guidance-v1">Modern Web Guidance v1 — developer.chrome.com</a></li>
+        <li><a href="https://www.solidjs.com/blog/solid-2-0-the-long-hold/">Solid 2.0: The Long Hold — solidjs.com（2026-11-16）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/306">This Week In React #306 — ThisWeekInReact.com（2026-11-18）</a></li>
       </ul>
     </details>
   </article>
@@ -103,38 +80,61 @@
   <h2 class="topic__title">ビルド・ツールチェーン</h2>
 
   <article class="article">
-    <h3 class="article__headline">Playwright 1.65 が Bun でのテスト実行に対応</h3>
+    <h3 class="article__headline">Webpack が CSS と HTML をプラグインなしで扱えるように</h3>
     <div class="article__body">
-      <p><strong>Playwright 1.65</strong>（11 月 5 日）が <strong>Bun でのテスト実行</strong>に対応した。<code>bunx --bun playwright test</code> で動くが、watch モード未対応など制約もある。失敗したテストだけを集める <code>failures</code> レポータと、HTML・JSON・JUnit 向けの <code>onlyFailures</code> も加わった。</p>
+      <p><strong>Webpack 5.109</strong> は CSS と HTML をビルトインで扱えるようにした（11 月 16 日）。<code>import "./styles.css"</code> が動き、<code>@import</code> と <code>url()</code> を解決し、<code>*.module.css</code> を CSS Modules として扱う。HTML をエントリにすれば、参照したスクリプトや画像をまとめて URL を書き換える。</p>
+      <p>これにより <code>css-loader</code>・<code>style-loader</code>・<code>mini-css-extract-plugin</code>・<code>html-webpack-plugin</code> などが<strong>非推奨</strong>になった。既存設定はそのまま動き、移行用の codemod も用意される。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.com/microsoft/playwright/releases/tag/v1.65.0">Playwright v1.65.0 — github.com（2026-11-05）</a></li>
+        <li><a href="https://webpack.js.org/blog/2026-11-16-css-and-html-are-built-in/">CSS and HTML are built-in — webpack.js.org（2026-11-16）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">開発ツールの更新が相次ぐ</h3>
+    <h3 class="article__headline">Oxlint が型を見る lint の高速なバックエンドを追加</h3>
     <div class="article__body">
-      <p>ビルド・開発まわりのツールが揃って動いた。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>ツール</th><th>更新内容</th></tr></thead>
-          <tbody>
-            <tr><td>Prettier 3.10</td><td>公式の Yuku パーサプラグイン、Flow 構文の拡充、Structs など JS 提案への対応</td></tr>
-            <tr><td>pnpm 12.19</td><td><code>pnpm fund</code>、エージェントのスキル単位の承認、オフラインの <code>store add</code></td></tr>
-            <tr><td>Rolldown 1.3</td><td>import 属性（実験的）、計測用の <code>@rolldown/perf-kit</code></td></tr>
-            <tr><td>ESLint Shell plugin</td><td>Bash・POSIX sh・mksh の lint</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>Oxlint に型を見る lint の新バックエンド <strong>tsrs</strong> が入った（11 月 17 日）。TypeScript を Rust に移植したもので、従来の tsgolint 比で最大 <strong>5 倍速く</strong>、メモリ使用は約 70% 少ない。typescript-eslint と比べればさらに大きな差が出るという。</p>
+      <p>tsgolint v7.0.2007 の 61 ルールをすべて実装し、設定や診断はそのまま使える。<code>pnpm i -D oxlint tsrs</code> の後、<code>oxlint --type-aware</code> で試せる。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
+        <li><a href="https://oxc.rs/blog/2026-11-17-faster-type-aware-linting-with-tsrs">Faster type-aware linting with tsrs — oxc.rs（2026-11-17）</a></li>
+      </ul>
+    </details>
+  </article>
+</section>
+
+<section class="topic">
+  <h2 class="topic__title">デザイン・UI</h2>
+
+  <article class="article">
+    <h3 class="article__headline">Vercel が agent 操作を前提にした UI SDK を beta 公開</h3>
+    <div class="article__body">
+      <p><strong>Vercel UI SDK</strong> の beta が出た（11 月 12 日）。キーボード操作・フォーカス・ポップアップなどの振る舞いを <code>createRovingFocus</code> のような関数で提供し、必要な ARIA 属性も含む。React・Vue・Svelte・Solid・Web Components で同じ部品が使え、スタイルは利用者が付ける。</p>
+      <p><code>createAgent</code> を使うと、agent が利用者の定めた権限の範囲でページを読んで操作できる。ブラウザ内蔵 agent 向けの WebMCP にも対応する。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（2）</summary>
+      <ul>
+        <li><a href="https://ui-sdk.dev/docs/core/changelog/introducing-ui-sdk">Introducing UI SDK — ui-sdk.dev（2026-11-12）</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/306">This Week In React #306 — ThisWeekInReact.com（2026-11-18）</a></li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="article">
+    <h3 class="article__headline">Google が生成 UI のプロトコル A2UI 1.0 を公開</h3>
+    <div class="article__body">
+      <p>Google が生成的な UI のためのプロトコル <strong>A2UI 1.0</strong> を公開した。agent が組み立てた UI を、React・Angular・Lit・Flutter・SwiftUI のレンダラで描ける。agent が UI を生成・操作する前提の基盤づくりが、今週は各所で同時に進んだ。</p>
+    </div>
+    <details class="article__sources">
+      <summary>出典（1）</summary>
+      <ul>
+        <li><a href="https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/">A2UI 1.0 — developers.googleblog.com</a></li>
       </ul>
     </details>
   </article>
@@ -144,41 +144,25 @@
   <h2 class="topic__title">ライブラリ</h2>
 
   <article class="article">
-    <h3 class="article__headline">Storybook 11 beta が coding agent 向けスキルを同梱</h3>
+    <h3 class="article__headline">React Flow 13 がストア分割と自動ダークモードに対応</h3>
     <div class="article__body">
-      <p><strong>Storybook 11 beta</strong>（11 月 9 日）が coding agent 向けのスキルを同梱した。コンポーネント文書の探索、ストーリー生成、ストーリーをテストとして実行、変更分のレビューの <strong>4 種</strong>で、アップグレード時に入る。</p>
-      <p>型安全な <strong>CSF 4</strong> と、スクリプト向けの headless な <code>storybook tools</code> CLI も加わり、パッケージは約 25% 小さくなった。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（1）</summary>
-      <ul>
-        <li><a href="https://storybook.js.org/blog/storybook-11-beta/">Storybook 11 beta — storybook.js.org（2026-11-09）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">状態管理・フォーム系ライブラリが小さく前進</h3>
-    <div class="article__body">
-      <p>React 系ライブラリの更新が続いた。</p>
+      <p><strong>React Flow 13</strong> が出た。内部ストアを分割し、<code>useNode</code>・<code>useEdge</code> フックを追加した。ESM 専用になり React 18 以上が必要で、ダークモードは自動で切り替わる。あわせて React 系ライブラリの更新も続いた。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Zustand 5.1</td><td>非同期の永続化ストレージ、待てる <code>rehydrate()</code></td></tr>
-            <tr><td>XState 6 beta</td><td>遷移を素の関数で書ける、実験的な durable execution</td></tr>
-            <tr><td>React Hook Form 7.92</td><td>バリデーション・field array・<code>reset()</code> の修正</td></tr>
-            <tr><td>Preact 11.2</td><td>スコープ付きカスタム要素レジストリ、バンドル縮小（続き）</td></tr>
-            <tr><td>React Resizable Panels 4.21</td><td>タブの切り離し、フローティングなタブセット（続き）</td></tr>
-            <tr><td>MobX React Plugin 1.0</td><td>自動 <code>observer()</code>、React Compiler 対応</td></tr>
+            <tr><td>React Virtualized 10.0</td><td>TypeScript で書き直し、hooks 化。<code>WindowScroller</code> を <code>scrollElement</code> に置換</td></tr>
+            <tr><td>type-fest 6.0</td><td>型 120 種を追加。TypeScript 6 と <code>exactOptionalPropertyTypes</code> が必須</td></tr>
+            <tr><td>React Helmet Async 3.1</td><td>React 19 で入れ子 <code>&lt;Helmet&gt;</code> の統合を復活、依存 2 つを削除</td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <details class="article__sources">
-      <summary>出典（1）</summary>
+      <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
+        <li><a href="https://xyflow.com/blog/react-flow-13-major-release">React Flow 13 major release — xyflow.com</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/306">This Week In React #306 — ThisWeekInReact.com（2026-11-18）</a></li>
       </ul>
     </details>
   </article>
@@ -188,32 +172,15 @@
   <h2 class="topic__title">React Native・モバイル</h2>
 
   <article class="article">
-    <h3 class="article__headline">Discord が Electron と React Native をやめ Rust へ</h3>
+    <h3 class="article__headline">Expo が agent 向けのクラウドシミュレータを公開</h3>
     <div class="article__body">
-      <p>Discord が desktop と mobile のクライアントを <strong>Rust 製の共有コア</strong>に作り直すと CTO が明らかにした。desktop は Electron をやめ、UI 描画に Zed 発の <strong>GPUI</strong> を使う。mobile は React Native をやめ、ネイティブ UI に Rust のロジックを共有する。</p>
-      <p>初期の Windows ビルドは <strong>約 290MB</strong> のメモリで動いたという。時期は未定だが、脱 Electron・脱 RN の大きな事例として話題になった。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://x.com/svishnevskiy/status/2118081920194203799">Stanislav Vishnevskiy（Discord CTO）— x.com（2026-11-04）</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
-      </ul>
-    </details>
-  </article>
-
-  <article class="article">
-    <h3 class="article__headline">Expo が新フレームワークとネイティブ高速化を前進</h3>
-    <div class="article__body">
-      <p>Expo が高速化と新しい作りを進めた。<strong>Expo Modules 2.0</strong> は新しい JNI 層で C++ 呼び出しが fbjni 比<strong>最大 51 倍</strong>速い。<strong>Expo Exact</strong> は Rust 製・エージェント志向のアプリフレームワークの pre-alpha として公開された。あわせて主要な RN ライブラリも動いた。</p>
+      <p><strong>Expo Simulators</strong> が公開された。クラウド上の iOS シミュレータと Android エミュレータで、agent が操作できる。各セッションは隔離した VM で動き、画面をブラウザに配信して録画とログを残す。あわせて RN 系ライブラリも動いた。</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>ライブラリ</th><th>更新内容</th></tr></thead>
           <tbody>
-            <tr><td>Gesture Handler 3.5</td><td>新しい <code>Begin</code>・<code>Deactivate</code>・<code>Finalize</code> イベント</td></tr>
-            <tr><td>Skia 3.10</td><td><code>SkShapeBlob</code> と <code>canvas.drawShapes</code></td></tr>
-            <tr><td>Audio API 1.0</td><td>初の安定版、空間オーディオ、Recorder 2.0</td></tr>
-            <tr><td>Keyboard Controller 1.23</td><td>精密な入力追跡、<code>KeyboardExtender</code></td></tr>
+            <tr><td>Bottom Sheet 1.0</td><td>初の安定版。iOS・Android・web でモーダルの閉じ方を統一</td></tr>
+            <tr><td>React Navigation 7.25</td><td><code>GenericNavigation</code> 型、入れ子ルートの linking 修正</td></tr>
           </tbody>
         </table>
       </div>
@@ -221,8 +188,8 @@
     <details class="article__sources">
       <summary>出典（2）</summary>
       <ul>
-        <li><a href="https://expo.dev/blog/expo-modules-2-0-new-jni-layer">Expo Modules 2.0 new JNI layer — expo.dev</a></li>
-        <li><a href="https://thisweekinreact.com/newsletter/305">This Week In React #305 — ThisWeekInReact.com（2026-11-11）</a></li>
+        <li><a href="https://expo.dev/blog/introducing-expo-simulators-cloud-simulators-built-for-agents">Introducing Expo Simulators — expo.dev</a></li>
+        <li><a href="https://thisweekinreact.com/newsletter/306">This Week In React #306 — ThisWeekInReact.com（2026-11-18）</a></li>
       </ul>
     </details>
   </article>
