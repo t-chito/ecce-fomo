@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>プロダクトウォッチ — 2026年11月19日 | Ecce Fomo</title>
+<title>プロダクトウォッチ — 2026年11月26日 | Ecce Fomo</title>
 <meta name="description" content="Consummatum est.">
 <link rel="icon" href="../icon.png">
 <link rel="apple-touch-icon" href="../icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ecce Fomo">
-<meta property="og:title" content="プロダクトウォッチ — 2026年11月19日">
+<meta property="og:title" content="プロダクトウォッチ — 2026年11月26日">
 <meta property="og:description" content="Consummatum est.">
 <meta property="og:image" content="https://t-chito.github.io/ecce-fomo/icon.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
     <header class="masthead">
       <h1 class="masthead__title"><a href="../">プロダクトウォッチ</a></h1>
       <div class="masthead__meta">
-        <span>2026年11月19日（木）</span>
+        <span>2026年11月26日（木）</span>
         <span>過去1週間</span>
       </div>
     </header>
@@ -33,113 +33,89 @@
   <h2 class="topic__title">Claude Code</h2>
 
   <article class="article">
-    <h3 class="article__headline">Claude が JavaScript を書いてツールを呼ぶ Code Mode が入った</h3>
+    <h3 class="article__headline">MCP サーバーが提供する skill を使えるようになった</h3>
     <div class="article__body">
-      <p>2.1.323 で <strong>Code Mode</strong> が実験的な opt-in として追加された。従来はツールを 1 つずつ呼んでいたところを、Claude が <strong>JavaScript を書いて自分のツールを呼ぶ</strong>。複数のツール呼び出しをコードでまとめられるので、繰り返しの多い作業で往復が減る。</p>
-      <p>2.1.326 で agent teams を有効にしたままでも Code Mode を使えるようになった。2.1.328 では、Code Mode はスクリプトの出力に対して UserPromptSubmit hook を走らせないよう変わった。</p>
+      <p>2.1.332 で、<strong>MCP サーバーが配布する skill</strong> を Claude Code 側で使えるようになった（beta）。これまで skill はローカルやプラグインから読み込むものだったが、MCP サーバーを足せばそのサーバーが持つ skill をそのまま呼べる。</p>
+      <p>あわせて <strong>PreSkillShellCommand hook</strong> が追加された。skill がシェルコマンドを実行する前にこの hook が走るので、外部コマンドを叩く前に確認や制御を挟める。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.323：Code Mode を実験的 opt-in で追加／2.1.326：agent teams と併用可／2.1.328：スクリプト出力に UserPromptSubmit hook を走らせない）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.332：MCP サーバーからの skill を beta で追加・PreSkillShellCommand hook を追加）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">権限とサンドボックスのチェックが各所で締め直された</h3>
+    <h3 class="article__headline">定期タスクと /loop が最長30日まで動くようになった</h3>
     <div class="article__body">
-      <p>2.1.325 で、zstd 圧縮レスポンスのデコードにあった脆弱性が直された。あわせて、複合コマンドが確認なしに走る穴、allow ルールが名前と違うプログラムを実行できる問題、<code>cd</code> 後に <code>Read(./.env)</code> のような相対 deny ルールが効かなくなる問題を修正した。sandbox 内の Bash も既定で通常の権限フローに従う。</p>
-      <p>2.1.326 では多くの sandbox・Bash チェックがより頻繁に確認・拒否するようになり、追加ディレクトリの <code>.claude</code> 配下への書き込みは拒否される。2.1.325 からは scheduled task と <code>/loop</code> が、<code>allowed-tools</code> や hook を宣言した skill を走らせる前に確認を挟む（<code>permissions.allow</code> に <code>Skill(name)</code> を足すと無人で動く）。</p>
+      <p>2.1.330 で、スケジュールされた定期タスクと <code>/loop</code> の継続期間が、従来の7日から<strong>最長30日</strong>に延びた。長期で回す監視・巡回タスクを、途中で切れずに流し続けられる。</p>
+      <p>2.1.329 では <code>/tasks</code> にスケジュールタスクと <code>/loop</code> の<strong>起床予定</strong>が並ぶようになり、次にいつ何が動くかを一覧で確認できる。なお旧版で保存したスケジュールタスクは、新しいセッションで登録し直す必要がある。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.325：zstd デコードの脆弱性・複合コマンド/allow ルール/相対 deny ルールのバイパス修正・sandbox Bash を通常フローに・skill 実行前の確認／2.1.326：sandbox 書き込み拒否と権限チェックの厳格化）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.330：定期タスクと /loop を最長30日に延長／2.1.329：/tasks に起床予定を表示・保存済みタスクは再登録が必要）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">auto モードが主要クラウドのゲートウェイに広がった</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>Code Mode が主要クラウドのターミナルでも動くようになった</h3>
     <div class="article__body">
-      <p>2.1.328 で、<strong>Opus 4.6 と Sonnet 4.6</strong> が Amazon Bedrock・Google Cloud の Agent Platform・Microsoft Foundry・Claude apps gateway でも <strong>auto モード</strong>に対応した。権限モードを指定しない対話セッションは auto モードで始まる。</p>
-      <p>2.1.326 では、Claude Code + Cowork の HIPAA 構成を持つ組織の端末・VS Code セッションが既定で auto モード開始になった。<code>disableAutoMode</code> で止められる。</p>
+      <p>2.1.331 で、Claude が JavaScript を書いて自分のツールを呼ぶ <strong>Code Mode</strong> が、ターミナルセッションでも <strong>Amazon Bedrock・Google Cloud の Agent Platform・Microsoft Foundry・AWS 上の Claude Platform</strong> で動くようになった。主要クラウド基盤のターミナルからも Code Mode を使える。</p>
+      <p>同じ版で <code>claude doctor</code> に API 接続のチェックが加わり、疎通が通らないときの切り分けがしやすくなった。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.328：Bedrock・Google Agent Platform・Microsoft Foundry・Claude apps gateway で auto モード・権限モード未指定は auto 開始／2.1.326：HIPAA 構成の組織は既定で auto 開始）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.331：Code Mode を Bedrock・Google Agent Platform・Microsoft Foundry・AWS 上 Claude Platform のターミナルセッションで有効化・claude doctor に API 接続チェック）</a></li>
       </ul>
     </details>
   </article>
 
   <article class="article">
-    <h3 class="article__headline">/code-review が bug の指摘に専念し /simplify と分かれた</h3>
+    <h3 class="article__headline"><span class="article__badge">続報</span>root や作業フォルダを狙う rm に確認が入るようになった</h3>
     <div class="article__body">
-      <p>2.1.328 で、多くのモデルで <code>/code-review</code> が<strong>バグと CLAUDE.md 違反だけ</strong>を報告するようになった。再利用や効率化の整理は <code>/simplify</code> に回る。レビューの出力が目的別に分かれ、バグ探しとクリーンアップを別々に走らせられる。</p>
-      <p>同じ版で <code>/bug</code> は送信前に Yes / No を聞くようになり、permission プロンプトで Esc が取りこぼされる不具合も直った。</p>
+      <p>2.1.330 で、root・ホーム・作業フォルダを対象にする <strong>rm コマンド</strong>の多くが、実行前に確認を求めるようになった。意図しない広範囲の削除を手前で止める。</p>
+      <p>2.1.332 では macOS の <strong>computer use の安全ルール</strong>も更新された。破壊的な操作を自動で走らせないよう、権限まわりの確認が各所で足されている。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.328：/code-review はバグと CLAUDE.md 違反のみ・整理は /simplify へ・/bug の送信前確認・permission プロンプトの Esc 取りこぼし修正）</a></li>
+        <li><a href="https://code.claude.com/docs/en/changelog">Claude Code Changelog（2.1.330：root・ホーム・作業フォルダ向け rm に確認を要求／2.1.332：macOS computer use の安全ルールを更新）</a></li>
       </ul>
     </details>
   </article>
 </section>
 
 <section class="topic">
-  <h2 class="topic__title">エージェントがエージェントを束ねる</h2>
+  <h2 class="topic__title">エージェントの作業を見える化する</h2>
 
   <article class="article">
-    <h3 class="article__headline">Cognition が Devin を束ねる管理エージェント Devin Bots を出した</h3>
+    <h3 class="article__headline">Antigravity が自律実行の進捗を逐次表示するようになった</h3>
     <div class="article__body">
-      <p>11/17、Cognition が <strong>Devin Bots</strong> を発表した。個々の Devin の上に立つ<strong>常駐の管理エージェント</strong>で、大きなプロジェクトをタスクに割り、複数の Devin セッションを立ち上げ、進捗を追い、人の承認が要る判断だけ上げてくる。各 Bot はプロジェクトをまたいで記憶を持ち、数日から数週間にわたって動く。</p>
-      <p>Bot は計画・設計・computer use など場面ごとに適したモデルを選び、単純なコードには速く安いモデルを使う。Slack やテキスト、電話、CI・Linear を見るスケジュール起動で外から呼べる。Cognition はこれを Anthropic の Duet や OpenAI の Dots への対抗と位置づける。ツールが「タスクをこなす」段から「プロジェクトの成果を預かる」段へ動いている。</p>
-    </div>
-    <details class="article__sources">
-      <summary>出典（2）</summary>
-      <ul>
-        <li><a href="https://fortune.com/2026/11/17/exclusive-cognition-bets-on-devin-bots-coding-agents-in-challenge-to-anthropics-duet-and-openais-dots/">Fortune: Cognition bets on Devin Bots, coding agents, in challenge to Anthropic's Duet and OpenAI's Dots（2026/11/17・常駐の管理エージェント・数日〜数週間・場面ごとのモデル選択）</a></li>
-        <li><a href="https://alphasignal.ai/news/cognition-s-devin-bots-now-run-parallel-coding-sessions-hitting-2-000-pull">AlphaSignal: Cognition's Devin Bots run parallel coding sessions（目標をタスクに分割・複数セッションの起動と追跡・承認が要る判断のエスカレーション）</a></li>
-      </ul>
-    </details>
-  </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">エージェントをテストする仕組み</h2>
-
-  <article class="article">
-    <h3 class="article__headline">GitHub Copilot に skill や MCP を検証する Evals が入った</h3>
-    <div class="article__body">
-      <p>11/17、GitHub が <strong>Copilot Evals</strong> を public preview で出した。自分の Copilot に入れた <strong>skill・カスタムエージェント・MCP ツール</strong>が、プロンプトやモデルの変化の後でも期待どおり動くかを、繰り返せるテストとして確かめられる。</p>
-      <p><code>/eval</code> か自然言語でテストを作り、実行（開始前に毎回承認する）、合否とその理由を見て、変更の前後で結果を比べる。AI の出力は実行ごとにぶれるので、1 回うまくいっただけではカスタマイズの良し悪しは分からない、という前提に立つ。VS Code・Copilot CLI・Copilot アプリで使え、Individual・Business・Enterprise が対象。</p>
+      <p>Google の agent-first IDE、Antigravity が、自律実行中の進捗をリアルタイムの<strong>チェックリスト</strong>で見せるようになった（v2.34.0）。補助ペインの Task タブに計画の各ステップが並び、実行中・並列中・完了がその場で分かる。各ステップを開けばツール呼び出しや差分、途中結果まで辿れる。</p>
+      <p>10〜20分かかる長い実行や、複数のサブエージェントが同時に動く場面で、ターミナル出力を拾い集めずに全体の進み具合を把握できる。無料クライアントでも使える。</p>
     </div>
     <details class="article__sources">
       <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview">GitHub Changelog: GitHub Copilot Evals is now in public preview（2026/11/17・skill/カスタムエージェント/MCP の繰り返しテスト・/eval・変更前後の比較・VS Code/CLI/アプリ）</a></li>
+        <li><a href="https://alphasignal.ai/news/google-antigravity-now-shows-live-agent-progress-as-code-writes-itself">AlphaSignal: Google Antigravity Now Shows Live Agent Progress（2026/11/24・v2.34.0・Task タブのライブチェックリスト・ステップ展開でツール呼び出しや差分・無料クライアントで利用可）</a></li>
       </ul>
     </details>
   </article>
-</section>
-
-<section class="topic">
-  <h2 class="topic__title">Google が Jules を畳む</h2>
 
   <article class="article">
-    <h3 class="article__headline">Google の自律コーディングエージェント Jules が年末で終わる</h3>
+    <h3 class="article__headline">Codex CLI の TUI ワークスペースが既定になった</h3>
     <div class="article__body">
-      <p>Google が <strong>Jules</strong> の終了を進めている。<strong>11/11 に read-only</strong> になり、過去のセッションは見られるが新しいコーディングは走らせられない。<strong>12/31 に完全終了</strong>する。残したいセッション履歴・設定・リポジトリ接続は、閉じる前に書き出しておく必要がある。</p>
-      <p>Google はこれを agentic coding の取り組みを<strong>一本化する</strong>動きと説明し、エージェント優先の基盤として Antigravity を挙げる。1 年ほど前に注目された自律コーディングエージェントが、別プロダクトへ畳まれる形になった。</p>
+      <p>OpenAI の Codex CLI で、<strong>TUI ワークスペース</strong>が既定になった（0.171.0）。メインの会話の横に、検索できるドキュメントプレビュー・画像プレビュー・サブエージェントの記録が並び、長い作業で何が起きているかを 1 画面で追える。同じ版で <strong>GPT-6.2</strong>（Sol・Astra）がモデル一覧に加わり、Sol が既定になった。</p>
+      <p>続く 0.172.0 では、検索結果やトランスクリプトのリンクから、保存した会話やネストしたエージェントをターミナルで直接開けるようになった。</p>
     </div>
     <details class="article__sources">
-      <summary>出典（2）</summary>
+      <summary>出典（1）</summary>
       <ul>
-        <li><a href="https://techradar.com/pro/google-kills-off-jules-its-ai-coding-agent-which-promised-to-do-all-the-jobs-you-didnt-want-to">TechRadar: Google kills off Jules, its AI coding agent（11/11 read-only・12/31 完全終了・Antigravity への一本化）</a></li>
-        <li><a href="https://fourweekmba.com/ai-google-shuts-jules-exit-guide-points-users-to-claude-code/">FourWeekMBA: Google shuts Jules; exit guide points users to Claude Code（セッション履歴・設定・リポジトリ接続の書き出しが必要）</a></li>
+        <li><a href="https://learn.chatgpt.com/docs/changelog">ChatGPT &amp; Codex Changelog（0.171.0・2026/11/20：TUI ワークスペースを既定化・GPT-6.2 Sol/Astra を追加し Sol を既定に／0.172.0・2026/11/24：検索結果やトランスクリプトのリンクから会話・ネストしたエージェントを開く）</a></li>
       </ul>
     </details>
   </article>
